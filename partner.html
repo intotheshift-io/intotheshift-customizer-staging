@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace partenaire — Into The Shift</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Asap',sans-serif;
+      background:#f4f7fb;
+      color:#17375d;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      padding:32px 20px 60px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#0d4c72,#1b7898);
+      color:#fff;
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(13,76,114,.18);
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      margin:0 0 8px;
+      font-size:32px;
+      line-height:1.1;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:760px;
+      font-size:16px;
+      line-height:1.5;
+      opacity:.95;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-bottom:24px;
+    }
+
+    .stat{
+      background:#fff;
+      border:1px solid #e1e8f0;
+      border-radius:20px;
+      padding:18px;
+      box-shadow:0 10px 24px rgba(15,45,80,.06);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:28px;
+      color:#0d4c72;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      font-size:14px;
+      color:#61738a;
+    }
+
+    .toolbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .toolbar h2{
+      margin:0;
+      font-size:24px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-family:'Asap',sans-serif;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn-primary{
+      background:#0d4c72;
+      color:#fff;
+      box-shadow:0 10px 22px rgba(13,76,114,.18);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:#0d4c72;
+      border:1px solid #cbd9e7;
+    }
+
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+
+    .filters{
+      display:grid;
+      grid-template-columns:1fr 220px;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .filters input,
+    .filters select{
+      width:100%;
+      border:1px solid #d8e2ec;
+      border-radius:16px;
+      padding:13px 14px;
+      font-family:'Asap',sans-serif;
+      font-size:15px;
+      background:#fff;
+      color:#17375d;
+    }
+
+    .clients-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .client-card{
+      background:#fff;
+      border:1px solid #e1e8f0;
+      border-radius:24px;
+      padding:20px;
+      box-shadow:0 12px 28px rgba(15,45,80,.07);
+    }
+
+    .client-head{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .client-head h3{
+      margin:0;
+      font-size:21px;
+      color:#17375d;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      height:26px;
+      padding:0 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .badge-active{
+      background:#e9f8ef;
+      color:#207444;
+    }
+
+    .badge-draft{
+      background:#fff5da;
+      color:#8a6200;
+    }
+
+    .client-meta{
+      color:#61738a;
+      font-size:14px;
+      margin-bottom:16px;
+      line-height:1.5;
+    }
+
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .mini{
+      background:#f7fafd;
+      border:1px solid #e4edf5;
+      border-radius:16px;
+      padding:12px;
+    }
+
+    .mini strong{
+      display:block;
+      font-size:20px;
+      color:#0d4c72;
+    }
+
+    .mini span{
+      font-size:12px;
+      color:#61738a;
+    }
+
+    .ad-list{
+      border-top:1px solid #eef2f6;
+      padding-top:14px;
+      margin-top:10px;
+    }
+
+    .ad-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
+      border-bottom:1px solid #f0f3f7;
+    }
+
+    .ad-row:last-child{
+      border-bottom:none;
+    }
+
+    .ad-title{
+      font-weight:700;
+      color:#17375d;
+    }
+
+    .ad-sub{
+      font-size:13px;
+      color:#718197;
+      margin-top:2px;
+    }
+
+    .status{
+      font-size:12px;
+      font-weight:700;
+      border-radius:999px;
+      padding:6px 9px;
+      white-space:nowrap;
+    }
+
+    .status-live{
+      background:#e8f6ff;
+      color:#0d4c72;
+    }
+
+    .status-draft{
+      background:#fff5da;
+      color:#8a6200;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .small-btn{
+      border-radius:999px;
+      padding:9px 13px;
+      border:1px solid #d8e2ec;
+      background:#fff;
+      color:#0d4c72;
+      font-weight:700;
+      font-family:'Asap',sans-serif;
+      cursor:pointer;
+    }
+
+    .small-btn.main{
+      background:#0d4c72;
+      color:#fff;
+      border-color:#0d4c72;
+    }
+
+    .empty{
+      background:#fff;
+      border:1px dashed #cbd9e7;
+      border-radius:24px;
+      padding:28px;
+      text-align:center;
+      color:#61738a;
+      display:none;
+    }
+
+    .loading{
+      background:#fff;
+      border:1px solid #e1e8f0;
+      border-radius:24px;
+      padding:28px;
+      text-align:center;
+      color:#61738a;
+      margin-bottom:18px;
+    }
+
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(9,30,52,.52);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:20px;
+    }
+
+    .modal-backdrop.open{
+      display:flex;
+    }
+
+    .modal{
+      width:min(560px,100%);
+      background:#fff;
+      border-radius:28px;
+      box-shadow:0 28px 80px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+
+    .modal-header{
+      background:#0d4c72;
+      color:#fff;
+      padding:24px 26px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    .modal-header h3{
+      margin:0 0 6px;
+      font-size:24px;
+    }
+
+    .modal-header p{
+      margin:0;
+      opacity:.9;
+      line-height:1.4;
+      font-size:14px;
+    }
+
+    .modal-close{
+      border:none;
+      background:rgba(255,255,255,.16);
+      color:#fff;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      font-size:20px;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    .modal-body{
+      padding:24px 26px 10px;
+    }
+
+    .form-grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .field label{
+      display:block;
+      font-weight:800;
+      color:#0d4c72;
+      font-size:13px;
+      text-transform:uppercase;
+      margin-bottom:7px;
+      letter-spacing:.02em;
+    }
+
+    .field input{
+      width:100%;
+      border:1px solid #d8e2ec;
+      border-radius:16px;
+      padding:14px 15px;
+      font-family:'Asap',sans-serif;
+      font-size:15px;
+      color:#17375d;
+      background:#fff;
+      outline:none;
+    }
+
+    .field input:focus{
+      border-color:#0d4c72;
+      box-shadow:0 0 0 4px rgba(13,76,114,.08);
+    }
+
+    .form-help{
+      color:#718197;
+      font-size:13px;
+      margin-top:8px;
+      line-height:1.4;
+    }
+
+    .modal-error{
+      display:none;
+      margin:16px 26px 0;
+      padding:12px 14px;
+      border-radius:16px;
+      background:#fff0f0;
+      color:#9b1c1c;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .modal-error.show{
+      display:block;
+    }
+
+    .modal-footer{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      padding:20px 26px 26px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:850px){
+      .stats,
+      .clients-grid,
+      .filters{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:26px;
+      }
+
+      .mini-stats{
+        grid-template-columns:1fr;
+      }
+
+      .modal-footer{
+        justify-content:stretch;
+      }
+
+      .modal-footer .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <main class="page">
+
+    <section class="hero">
+      <h1>Mon espace partenaire</h1>
+      <p>
+        Gérez vos clients, créez leurs autodiagnostics, suivez leurs campagnes et retrouvez leurs résultats dans un espace séparé par dossier client.
+      </p>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <strong id="stat-quota-total">0</strong>
+        <span>Passations achetées</span>
+      </div>
+      <div class="stat">
+        <strong id="stat-quota-used">0</strong>
+        <span>Passations utilisées</span>
+      </div>
+      <div class="stat">
+        <strong id="stat-quota-left">0</strong>
+        <span>Passations restantes</span>
+      </div>
+      <div class="stat">
+        <strong id="stat-clients">0</strong>
+        <span>Clients suivis</span>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <h2>Mes clients</h2>
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="goToLibrary()">Créer un AD</button>
+        <button class="btn btn-primary" onclick="openNewClient()">+ Ajouter un client</button>
+      </div>
+    </section>
+
+    <section class="filters">
+      <input id="searchInput" type="search" placeholder="Rechercher un client, un AD, une campagne…" oninput="filterClients()">
+      <select id="statusFilter" onchange="filterClients()">
+        <option value="all">Tous les statuts</option>
+        <option value="sent">Transmis</option>
+        <option value="draft">Brouillon</option>
+        <option value="published">Publié</option>
+      </select>
+    </section>
+
+    <section id="loadingState" class="loading">
+      Chargement de vos clients…
+    </section>
+
+    <section id="clientsGrid" class="clients-grid"></section>
+
+    <section id="emptyState" class="empty">
+      Aucun client final pour le moment. Ajoutez un client pour créer son cockpit, ses autodiagnostics, ses campagnes et ses résultats.
+    </section>
+
+  </main>
+
+  <div id="clientModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="clientModalTitle">
+      <div class="modal-header">
+        <div>
+          <h3 id="clientModalTitle">Ajouter un client</h3>
+          <p>Créez un dossier client pour y rattacher ensuite ses autodiagnostics, campagnes et résultats.</p>
+        </div>
+        <button class="modal-close" type="button" onclick="closeClientModal()" aria-label="Fermer">×</button>
+      </div>
+
+      <div id="clientModalError" class="modal-error"></div>
+
+      <form id="clientForm" onsubmit="submitNewClient(event)">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="field">
+              <label for="clientNameInput">Nom du client final *</label>
+              <input id="clientNameInput" name="name" type="text" placeholder="Ex. Orange — Service RH" required>
+              <div class="form-help">Ce nom servira de dossier client dans votre espace partenaire.</div>
+            </div>
+
+            <div class="field">
+              <label for="clientContactInput">Contact principal</label>
+              <input id="clientContactInput" name="contactName" type="text" placeholder="Ex. Sophie Martin">
+            </div>
+
+            <div class="field">
+              <label for="clientEmailInput">Email du contact</label>
+              <input id="clientEmailInput" name="contactEmail" type="email" placeholder="Ex. sophie.martin@entreprise.com">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" onclick="closeClientModal()">Annuler</button>
+          <button id="saveClientBtn" class="btn btn-primary" type="submit">Créer le dossier client</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="header.js"></script>
+
+  <script>
+    const API_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+
+    let clients = [];
+    let currentPartner = null;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      if(!protectPartnerPage()) return;
+      await loadPartnerQuota();
+      await loadPartnerClients();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape"){
+        closeClientModal();
+      }
+    });
+
+    function getToken(){
+      return (
+        localStorage.getItem("its_token") ||
+        localStorage.getItem("token") ||
+        localStorage.getItem("auth_token") ||
+        ""
+      );
+    }
+
+    function decodeJwt(token){
+      try{
+        const payload = token.split(".")[1];
+        return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));
+      }catch(e){
+        return null;
+      }
+    }
+
+    function getRole(){
+      return localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "";
+    }
+
+    function protectPartnerPage(){
+      const logged = localStorage.getItem("its_logged_in") === "true" || !!getToken();
+      const role = getRole();
+
+      if(!logged){
+        window.location.href = "login.html?redirect=partner.html";
+        return false;
+      }
+
+      if(role === "admin"){
+        alert("La page partenaire est réservée à un compte partner. En admin, ouvre le dossier partner depuis l’onglet Admin > Partners.");
+        window.location.href = "admin.html";
+        return false;
+      }
+
+      if(role !== "partner"){
+        alert("Cet espace est réservé aux partenaires.");
+        window.location.href = "index.html";
+        return false;
+      }
+
+      return true;
+    }
+
+    function isProjectConfigSent(project){
+      const data = project?.data || {};
+      const payload = data?.payload || {};
+
+      return (
+        project?.configTransmise === true ||
+        project?.config_transmise === true ||
+        project?.submitted === true ||
+        data?.configTransmise === true ||
+        data?.config_transmise === true ||
+        data?.submitted === true ||
+        payload?.configTransmise === true ||
+        payload?.config_transmise === true ||
+        payload?.submitted === true
+      );
+    }
+
+    function normalizeProjectForEdit(project){
+      const data = project?.data || {};
+      const payload = data?.payload || data || {};
+
+      return {
+        title: payload.titre_autodiag || data.autodiagTitle || data.title || project?.title || "Autodiag",
+        themeTitle: payload.titre_autodiag || data.autodiagTitle || data.title || project?.title || "Autodiag",
+        chapters: payload.chapters || data.chapters || [],
+        parametrage: {
+          nom: payload.titre_autodiag || data.autodiagTitle || project?.title || "Autodiag",
+          titre: payload.titre_repondants || payload.titre_autodiag || project?.title || "Autodiag",
+          titre_repondants: payload.titre_repondants || payload.titre_autodiag || project?.title || "Autodiag",
+          entreprise: payload.entreprise || payload.client_info?.entreprise || "",
+          date_lancement: payload.date_lancement || "",
+          date_cloture: payload.date_cloture || "",
+          pack: payload.pack || "",
+          slug: payload.slug || "",
+          url_prevue: payload.url_prevue || ""
+        },
+        clientInfo: payload.client_info || {},
+        transmission: {
+          status: isProjectConfigSent(project) ? "sent" : "draft",
+          payload
+        }
+      };
+    }
+
+    async function loadPartnerQuota(){
+      try{
+        const token = getToken();
+
+        const response = await fetch(`${API_URL}/api/partner/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if(!response.ok){
+          throw new Error("Erreur API quota " + response.status);
+        }
+
+        const data = await response.json();
+        const partner = data.partner || data.user || data || {};
+        currentPartner = partner;
+
+        const quota = Number(partner.passations_quota || partner.passationsQuota || 0);
+        const used = Number(partner.passations_used || partner.passationsUsed || 0);
+        const left = Math.max(quota - used, 0);
+
+        document.getElementById("stat-quota-total").textContent = quota;
+        document.getElementById("stat-quota-used").textContent = used;
+        document.getElementById("stat-quota-left").textContent = left;
+
+        localStorage.setItem("its_partner_passations_quota", String(quota));
+        localStorage.setItem("its_partner_passations_used", String(used));
+        localStorage.setItem("its_partner_passations_left", String(left));
+
+      } catch(err){
+        console.error("Erreur chargement quota partenaire", err);
+
+        document.getElementById("stat-quota-total").textContent = "—";
+        document.getElementById("stat-quota-used").textContent = "—";
+        document.getElementById("stat-quota-left").textContent = "—";
+
+        localStorage.removeItem("its_partner_passations_quota");
+        localStorage.removeItem("its_partner_passations_used");
+        localStorage.removeItem("its_partner_passations_left");
+      }
+    }
+
+    async function loadPartnerClients(){
+      const loading = document.getElementById("loadingState");
+
+      try{
+        const token = getToken();
+
+        const response = await fetch(`${API_URL}/api/partner/clients`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if(!response.ok){
+          throw new Error("Erreur API " + response.status);
+        }
+
+        const data = await response.json();
+
+        const partnerCompany = String(currentPartner?.companyName || currentPartner?.company_name || "").trim().toLowerCase();
+        const partnerEmail = String(currentPartner?.email || "").trim().toLowerCase();
+
+        clients = (data.clients || [])
+          .filter(client => {
+            const clientName = String(client.name || "").trim().toLowerCase();
+            const clientEmail = String(client.contact_email || client.contactEmail || "").trim().toLowerCase();
+            const hasProjects = Array.isArray(client.projects) && client.projects.length > 0;
+
+            // Sécurité front : un partner ne doit pas se voir lui-même comme client.
+            // On masque uniquement le dossier automatique vide qui reprend son entreprise/email.
+            if(
+              partnerCompany &&
+              clientName === partnerCompany &&
+              (!clientEmail || clientEmail === partnerEmail) &&
+              !hasProjects
+            ){
+              return false;
+            }
+
+            return true;
+          })
+          .map(client => {
+            const projects = client.projects || [];
+
+            return {
+              id: client.id,
+              name: client.name,
+              contact: client.contact_name || "—",
+              email: client.contact_email || "",
+              status: Number(client.active_campaigns_count || 0) > 0 ? "active" : "draft",
+              ads: projects.map(project => {
+
+                const configSent = isProjectConfigSent(project);
+
+                return {
+                  id: project.id,
+                  title:
+                    project?.data?.payload?.titre_autodiag ||
+                    project?.data?.autodiagTitle ||
+                    project.title ||
+                    "Autodiag",
+                  campaign: configSent ? "Configuration transmise" : "Brouillon",
+                  status:
+                    project.status ||
+                    (configSent ? "sent" : "draft"),
+                  raw: project
+                };
+              })
+            };
+          });
+
+        renderClients(clients);
+        updateStats(clients);
+      } catch(err){
+        console.error("Erreur chargement clients partenaires", err);
+        clients = [];
+        renderClients(clients);
+        updateStats(clients);
+        document.getElementById("emptyState").textContent =
+          "Impossible de charger vos clients. Vérifiez votre connexion ou votre rôle partenaire.";
+      } finally {
+        loading.style.display = "none";
+      }
+    }
+
+    function renderClients(list){
+      const grid = document.getElementById("clientsGrid");
+      const empty = document.getElementById("emptyState");
+
+      grid.innerHTML = "";
+
+      if(!list.length){
+        empty.style.display = "block";
+        return;
+      }
+
+      empty.style.display = "none";
+
+      list.forEach(client => {
+        const ads = client.ads || [];
+        const sentAds = ads.filter(ad => ad.status === "sent").length;
+        const publishedAds = ads.filter(ad => ad.status === "published").length;
+        const draftAds = ads.filter(ad => ad.status === "draft" || ad.status === "trial").length;
+        const card = document.createElement("article");
+        card.className = "client-card";
+        card.dataset.status = client.status;
+        card.dataset.search = `${client.name} ${client.contact} ${client.email} ${ads.map(ad => ad.title).join(" ")}`.toLowerCase();
+
+        card.innerHTML = `
+          <div class="client-head">
+            <div>
+              <h3>${escapeHtml(client.name)}</h3>
+              <div class="client-meta">
+                Contact : ${escapeHtml(client.contact || "—")}<br>
+                ${escapeHtml(client.email || "")}
+              </div>
+            </div>
+            <span class="badge ${client.status === "active" ? "badge-active" : "badge-draft"}">
+              ${client.status === "active" ? "Actif" : "Brouillon"}
+            </span>
+          </div>
+
+          <div class="mini-stats">
+            <div class="mini">
+              <strong>${ads.length}</strong>
+              <span>AD créés</span>
+            </div>
+            <div class="mini">
+              <strong>${sentAds}</strong>
+              <span>Transmis</span>
+            </div>
+
+            <div class="mini">
+             <strong>${publishedAds}</strong>
+             <span>Publiés</span>
+           </div>
+            <div class="mini">
+              <strong>${draftAds}</strong>
+              <span>Brouillons</span>
+            </div>
+            </div>
+          <div class="ad-list">
+            ${
+              ads.length
+                ? ads.map(ad => `
+                  <div class="ad-row">
+                    <div>
+                      <div class="ad-title">${escapeHtml(ad.title)}</div>
+                      <div class="ad-sub">${escapeHtml(ad.campaign)}</div>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+                      <span class="status ${
+                          ad.status === "published"
+                            ? "status-live"
+                            : ad.status === "sent"
+                            ? "status-live"
+                            : "status-draft"
+                      }">
+                        ${
+                          ad.status === "published"
+                            ? "Publié"
+                            : ad.status === "sent"
+                            ? "Transmis ITS"
+                            : "Brouillon"
+                        }
+                      </span>
+
+                      <button class="small-btn" onclick="editProject(${ad.id})">
+                        Modifier l’AD
+                      </button>
+                    </div>
+                  </div>
+                `).join("")
+                : `<div class="ad-sub">Aucun autodiagnostic créé pour ce client.</div>`
+            }
+          </div>
+
+          <div class="card-actions">
+            <button class="small-btn main" onclick="openClientFolder(${client.id})">Voir le dossier</button>
+            <button class="small-btn" onclick="createAdForClient(${client.id})">Créer un AD</button>
+            <button class="small-btn" onclick="openResults(${client.id})">Résultats</button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function updateStats(list){
+      document.getElementById("stat-clients").textContent = list.length;
+    }
+
+    function filterClients(){
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const status = document.getElementById("statusFilter").value;
+
+      const filtered = clients.filter(client => {
+        const ads = client.ads || [];
+        const searchText = `${client.name} ${client.contact} ${client.email} ${ads.map(ad => ad.title).join(" ")}`.toLowerCase();
+        const matchSearch = !q || searchText.includes(q);
+
+        let matchStatus = true;
+
+       if(status === "sent"){
+         matchStatus = ads.some(ad => ad.status === "sent");
+       }
+      
+       if(status === "published"){
+         matchStatus = ads.some(ad => ad.status === "published");
+       }
+
+       if(status === "draft"){
+         matchStatus = ads.some(ad => ad.status === "draft" || ad.status === "trial") || ads.length === 0;
+       }
+
+        return matchSearch && matchStatus;
+      });
+
+      renderClients(filtered);
+    }
+
+    function openNewClient(){
+      const modal = document.getElementById("clientModal");
+      const form = document.getElementById("clientForm");
+      const error = document.getElementById("clientModalError");
+
+      form.reset();
+      error.classList.remove("show");
+      error.textContent = "";
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+
+      setTimeout(() => {
+        document.getElementById("clientNameInput").focus();
+      }, 50);
+    }
+
+    function closeClientModal(){
+      const modal = document.getElementById("clientModal");
+      if(!modal) return;
+
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    async function submitNewClient(event){
+      event.preventDefault();
+
+      const name = document.getElementById("clientNameInput").value.trim();
+      const contactName = document.getElementById("clientContactInput").value.trim();
+      const contactEmail = document.getElementById("clientEmailInput").value.trim();
+      const error = document.getElementById("clientModalError");
+      const saveBtn = document.getElementById("saveClientBtn");
+
+      error.classList.remove("show");
+      error.textContent = "";
+
+      if(!name){
+        error.textContent = "Le nom du client est obligatoire.";
+        error.classList.add("show");
+        return;
+      }
+
+      try{
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Création…";
+
+        const token = getToken();
+
+        const response = await fetch(`${API_URL}/api/partner/clients`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            name,
+            contactName,
+            contactEmail
+          })
+        });
+
+        const data = await response.json();
+
+        if(!response.ok){
+          throw new Error(data.error || "Erreur création client");
+        }
+
+        closeClientModal();
+        await loadPartnerQuota();
+        await loadPartnerClients();
+
+      } catch(err){
+        console.error("Erreur création client", err);
+        error.textContent = "Le client n’a pas pu être créé. Vérifiez votre connexion ou votre rôle partenaire.";
+        error.classList.add("show");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Créer le dossier client";
+      }
+    }
+
+    async function editProject(projectId){
+      try{
+        const token = getToken();
+
+        const response = await fetch(`${API_URL}/api/projects`, {
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        });
+
+        if(!response.ok){
+          throw new Error("Impossible de charger les projets");
+        }
+
+        const data = await response.json();
+        const projects = data.projects || [];
+
+        const project = projects.find(
+          p => Number(p.id) === Number(projectId)
+        );
+
+        if(!project){
+          alert("Projet introuvable.");
+          return;
+        }
+
+        const restoredState = normalizeProjectForEdit(project);
+
+        localStorage.setItem(
+          "intotheshift_customizer_state_v1",
+          JSON.stringify(restoredState)
+        );
+
+        localStorage.setItem(
+          "its_state",
+          JSON.stringify(restoredState)
+        );
+
+        localStorage.setItem(
+          "its_current_project_id",
+          project.id
+        );
+
+        if(project.organization_id || project.organizationId){
+          localStorage.setItem(
+            "its_selected_partner_client_id",
+            project.organization_id || project.organizationId
+          );
+        }
+
+        window.location.href = "questions.html";
+
+      } catch(err){
+        console.error(err);
+        alert("Impossible d’ouvrir cet autodiag.");
+      }
+    }
+
+    function openClientFolder(clientId){
+      localStorage.setItem("its_selected_partner_client_id", clientId);
+      window.location.href = `client-folder.html?id=${clientId}`;
+    }
+
+    function createAdForClient(clientId){
+      localStorage.setItem("its_selected_partner_client_id", clientId);
+      window.location.href = "index.html";
+    }
+
+    function openResults(clientId){
+      localStorage.setItem("its_selected_partner_client_id", clientId);
+      alert("Étape suivante : brancher cette action vers la page résultats du client.");
+    }
+
+    function goToLibrary(){
+      window.location.href = "index.html";
+    }
+
+    function escapeHtml(value = ""){
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>

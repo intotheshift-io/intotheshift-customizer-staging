@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes autodiagnostics - Into The Shift</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Asap',sans-serif;background:#f5f7fb;color:#18375d}
+    .page{max-width:1180px;margin:0 auto;padding:28px 20px 48px}
+    .hero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px}
+    .hero h1{font-size:28px;margin:0 0 8px;color:#18375d}
+    .hero p{margin:0;color:#64748b;font-size:15px;line-height:1.5;max-width:720px}
+    .btn-primary{background:#eb6366;color:#fff;border:none;border-radius:10px;padding:12px 18px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap}
+    .btn-primary:hover{background:#d94f52}
+
+    .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
+    .stat{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:16px}
+    .stat strong{display:block;font-size:24px;color:#18375d;margin-bottom:4px}
+    .stat span{font-size:13px;color:#64748b}
+
+    .toolbar{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:14px;display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tab{border:1px solid #d8e0ea;background:#fff;color:#64748b;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif}
+    .tab.active{background:#18375d;color:#fff;border-color:#18375d}
+    .search{min-width:250px;flex:1;max-width:360px}
+    .search input{width:100%;border:1px solid #d8e0ea;border-radius:10px;padding:10px 12px;font-family:'Asap',sans-serif;font-size:14px}
+
+    .list{display:flex;flex-direction:column;gap:10px}
+    .card{background:#fff;border:1px solid #d8e0ea;border-radius:16px;padding:16px;display:grid;grid-template-columns:5px 1fr auto;gap:14px;align-items:center;position:relative}
+    .bar{width:5px;height:100%;min-height:76px;border-radius:8px;background:#c5ccd5}
+    .bar.draft{background:#94a3b8}
+    .bar.submitted{background:#ffc744}
+    .bar.published{background:#007883}
+    .bar.results{background:#77CD8a}
+    .bar.archived{background:#cbd5e1}
+    .bar.unpublished{background:#94a3b8}
+
+    .title{font-size:16px;font-weight:800;color:#18375d;margin-bottom:5px}
+    .meta{font-size:13px;color:#64748b;line-height:1.5}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .tag{font-size:12px;font-weight:700;border-radius:999px;background:#edf1f7;color:#18375d;border:1px solid #d0d8e8;padding:4px 9px}
+    .status{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
+    .status.draft{background:#edf1f7;color:#475569}
+    .status.submitted{background:#fff4d5;color:#9a6700}
+    .status.published{background:#e5f4f5;color:#007883}
+    .status.results{background:#e8f8ef;color:#22824d}
+    .status.archived{background:#f1f4f8;color:#94a3b8}
+    .status.unpublished{background:#eef2f6;color:#64748b}
+
+    .actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+    .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:9px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif}
+    .btn:hover{background:#f7f9fc}
+    .btn-blue{background:#18375d;color:#fff;border-color:#18375d}
+    .btn-blue:hover{background:#122a47}
+    .btn-green{background:#e5f4f5;color:#007883;border-color:#b8dfe0}
+    .btn-red{background:#fceaea;color:#c24141;border-color:#f4c6c6}
+    .btn[disabled]{opacity:.45;cursor:not-allowed}
+    .contact-note{font-size:12px;color:#64748b;line-height:1.35;text-align:right;max-width:280px}
+    .contact-note a{color:#18375d;font-weight:800;text-decoration:none}
+    .contact-note a:hover{text-decoration:underline}
+
+    .empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
+    .empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
+
+    .menu{position:absolute;right:16px;top:74px;background:#fff;border:1px solid #d8e0ea;border-radius:12px;box-shadow:0 14px 35px rgba(24,55,93,.14);min-width:250px;z-index:20;display:none;overflow:hidden}
+    .menu.open{display:block}
+    .menu button{display:block;width:100%;border:0;background:#fff;text-align:left;padding:11px 14px;font-family:'Asap',sans-serif;font-size:13px;font-weight:700;color:#18375d;cursor:pointer}
+    .menu button:hover{background:#f7f9fc}
+    .menu .danger{color:#c24141}
+    .sep{height:1px;background:#edf1f6;margin:3px 0}
+
+
+    /* Modale archive */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(15,30,55,.42);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
+    .modal-backdrop.open{display:flex}
+    .modal-box{width:min(460px,100%);background:#fff;border:1px solid #d8e0ea;border-radius:18px;box-shadow:0 22px 60px rgba(24,55,93,.22);padding:22px}
+    .modal-icon{width:42px;height:42px;border-radius:14px;background:#fff4d5;color:#9a6700;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
+    .modal-box h2{margin:0 0 8px;color:#18375d;font-size:20px}
+    .modal-box p{margin:0;color:#64748b;font-size:14px;line-height:1.55}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
+    .modal-btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
+    .modal-btn:hover{background:#f7f9fc}
+    .modal-btn.danger{background:#eb6366;border-color:#eb6366;color:#fff}
+    .modal-btn.danger:hover{background:#d94f52}
+
+    @media(max-width:850px){
+      .hero{flex-direction:column}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .card{grid-template-columns:5px 1fr}
+      .actions{grid-column:2;align-items:flex-start}
+      .row-actions{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+  <script src="header.js"></script>
+  <script src="app.js"></script>
+
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Mes autodiagnostics</h1>
+        <p>
+          Retrouvez ici tous vos autodiagnostics : brouillons, configurations transmises à Into The Shift,
+          campagnes publiées, liens de diffusion et accès aux résultats.
+        </p>
+      </div>
+      <button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><strong id="countAll">0</strong><span>Total</span></div>
+      <div class="stat"><strong id="countDraft">0</strong><span>Brouillons</span></div>
+      <div class="stat"><strong id="countSubmitted">0</strong><span>Transmis</span></div>
+      <div class="stat"><strong id="countPublished">0</strong><span>Publiés</span></div>
+      <div class="stat"><strong id="countUnpublished">0</strong><span>Dépubliés</span></div>
+    </section>
+
+    <section class="toolbar">
+      <div class="tabs">
+        <button class="tab active" data-filter="all">Tous</button>
+        <button class="tab" data-filter="draft">Brouillons</button>
+        <button class="tab" data-filter="submitted">Transmis</button>
+        <button class="tab" data-filter="published">Publiés</button>
+        <button class="tab" data-filter="unpublished">Dépubliés</button>
+      </div>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Rechercher un autodiagnostic..." />
+      </div>
+    </section>
+
+    <section class="list" id="adList"></section>
+  </main>
+
+
+
+  <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
+      <div class="modal-icon">🗄️</div>
+      <h2 id="archiveModalTitle">Archiver cet autodiagnostic ?</h2>
+      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.</p>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button>
+        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE =
+      window.ITS_API_BASE ||
+      localStorage.getItem("its_api_base") ||
+      "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+
+    let projects = [];
+    let currentFilter = "all";
+    let pendingArchiveProjectId = "";
+
+    function token() {
+      return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
+    }
+
+    function normalizeStatus(project) {
+      const raw = String(project.status || project.project_status || "").toLowerCase();
+      const data = getProjectData(project);
+      const sentFlag =
+        project.configTransmise === true ||
+        project.config_transmise === true ||
+        data.configTransmise === true ||
+        data.config_transmise === true ||
+        data.submitted === true;
+
+      if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
+      if (raw.includes("publi")) return "published";
+      if (raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
+      if (raw.includes("archiv")) return "archived";
+      return "draft";
+    }
+
+    function statusLabel(status) {
+      return {
+        draft: "Brouillon",
+        submitted: "Transmis à Into The Shift",
+        published: "Publié",
+        unpublished: "Dépublié",
+        archived: "Archivé"
+      }[status] || "Brouillon";
+    }
+
+    function formatDate(value) {
+      if (!value) return "—";
+      try {
+        return new Date(value).toLocaleDateString("fr-FR");
+      } catch {
+        return "—";
+      }
+    }
+
+    function getTitle(p) {
+      return p.title || p.name || p.project_name || p.ad_title || "Autodiagnostic sans titre";
+    }
+
+    function deepFindTheme(obj, depth = 0) {
+      if (!obj || depth > 5) return "";
+
+      if (typeof obj === "string") {
+        const s = obj.trim();
+        if (!s) return "";
+        if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
+          try { return deepFindTheme(JSON.parse(s), depth + 1); } catch(e) {}
+        }
+        return "";
+      }
+
+      if (Array.isArray(obj)) {
+        for (const item of obj) {
+          const found = deepFindTheme(item, depth + 1);
+          if (found) return found;
+        }
+        return "";
+      }
+
+      const keys = [
+        "theme", "thematique", "thématique", "selectedTheme", "themeLabel", "themeName",
+        "baseTheme", "catalogTheme", "base_theme", "catalog_theme", "category", "topic",
+        "categorie", "catégorie", "subject", "domaine", "universe", "libraryTheme"
+      ];
+
+      for (const key of keys) {
+        const value = obj[key];
+        if (!value) continue;
+        if (typeof value === "string" && value.trim()) return value.trim();
+        if (typeof value === "object") {
+          const label = value.title || value.name || value.label || value.titre || value.nom;
+          if (label) return String(label).trim();
+          const found = deepFindTheme(value, depth + 1);
+          if (found) return found;
+        }
+      }
+
+      const likelyContainers = ["data", "payload", "meta", "config", "parametrage", "settings", "source", "base", "catalogue", "template"];
+      for (const key of likelyContainers) {
+        const found = deepFindTheme(obj[key], depth + 1);
+        if (found) return found;
+      }
+
+      return "";
+    }
+
+    function inferThemeFromTitle(title) {
+      const t = String(title || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      if (t.includes("rps") || t.includes("risques psychosociaux") || t.includes("qvt") || t.includes("signaux faibles")) return "QVT & RPS";
+      if (t.includes("fraude") || t.includes("cyber") || t.includes("phishing") || t.includes("numerique")) return "Cybersécurité";
+      if (t.includes("securite") || t.includes("surete") || t.includes("accident") || t.includes("risque")) return "Sécurité & sûreté au travail";
+      if (t.includes("changer") || t.includes("transformation") || t.includes("management") || t.includes("manager")) return "Transformation & management";
+      if (t.includes("energie") || t.includes("sobriete") || t.includes("rse") || t.includes("environnement")) return "RSE";
+      if (t.includes("ethique") || t.includes("compliance") || t.includes("conformite")) return "Éthique & compliance";
+
+      return "";
+    }
+
+    function getTheme(p) {
+      return deepFindTheme(p) || inferThemeFromTitle(getTitle(p)) || "Thématique non renseignée";
+    }
+
+    function getCampaignDates(p) {
+      const data = getProjectData(p);
+      const param = data.parametrage || {};
+      const start = p.campaign_start_date || p.campaignStartDate || p.start_date || data.campaign_start_date || data.campaignStartDate || data.date_lancement || param.date_lancement;
+      const end = p.campaign_end_date || p.campaignEndDate || p.end_date || data.campaign_end_date || data.campaignEndDate || data.date_cloture || param.date_cloture;
+      if (!start && !end) return "Dates de campagne non renseignées";
+      return `Campagne : ${formatDate(start)} → ${formatDate(end)}`;
+    }
+
+    function getProjectData(project) {
+      const raw = project?.data || project?.payload || project?.configuration || {};
+      if (typeof raw === "string") {
+        try { return JSON.parse(raw); } catch(e) { return {}; }
+      }
+      return raw && typeof raw === "object" ? raw : {};
+    }
+
+    function getProjectStep(project) {
+      const data = getProjectData(project);
+      return String(
+        project.currentStep ||
+        project.current_step ||
+        data.current_step ||
+        data.currentStep ||
+        data.step ||
+        "questions"
+      ).toLowerCase();
+    }
+
+    function resumeLabel(project) {
+      const status = normalizeStatus(project);
+      if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+
+      const step = getProjectStep(project);
+      if (step.includes("validation")) return "Reprendre la transmission";
+      if (step.includes("campagne")) return "Reprendre la campagne";
+      if (step.includes("param")) return "Reprendre le paramétrage";
+      return "Reprendre la création";
+    }
+
+    function resumeUrl(project) {
+      const status = normalizeStatus(project);
+      const id = project.id || project.project_id || "";
+      const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
+
+      if (status === "published" || status === "unpublished" || status === "archived") return "validation.html" + suffix;
+
+      const step = getProjectStep(project);
+      if (step.includes("validation")) return "validation.html" + suffix;
+      if (step.includes("campagne")) return "campagne.html" + suffix;
+      if (step.includes("param")) return "parametrage.html" + suffix;
+      return "questions.html" + suffix;
+    }
+
+    function restoreProjectLocally(project) {
+      const data = getProjectData(project);
+      if (!data || typeof data !== "object") return false;
+
+      if (typeof itsRestoreProject === "function") {
+        return itsRestoreProject(project);
+      }
+
+      localStorage.setItem("its_current_project_id", String(project.id || project.project_id || ""));
+      localStorage.setItem("its_current_ad_id", String(project.id || project.project_id || ""));
+      localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(data));
+      return true;
+    }
+
+    function resumeProjectByIndex(index) {
+      const project = projects[index];
+      if (!project) return alert("Projet introuvable.");
+      restoreProjectLocally(project);
+      window.location.href = resumeUrl(project);
+    }
+
+    function canCloneProject(project) {
+      return ["submitted", "published", "unpublished"].includes(normalizeStatus(project));
+    }
+
+    function openExternal(url) {
+      if (!url) return;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function copyText(text) {
+      if (!text) return alert("Aucun lien n’est encore disponible.");
+      navigator.clipboard.writeText(text);
+      alert("Lien copié.");
+    }
+
+    function renderStats() {
+      const counts = { draft:0, submitted:0, published:0, unpublished:0 };
+      projects.forEach(p => counts[normalizeStatus(p)] = (counts[normalizeStatus(p)] || 0) + 1);
+
+      document.getElementById("countAll").textContent = projects.length;
+      document.getElementById("countDraft").textContent = counts.draft || 0;
+      document.getElementById("countSubmitted").textContent = counts.submitted || 0;
+      document.getElementById("countPublished").textContent = counts.published || 0;
+      document.getElementById("countUnpublished").textContent = counts.unpublished || 0;
+    }
+
+    function renderProjects() {
+      const list = document.getElementById("adList");
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      const filtered = projects.filter(p => {
+        const status = normalizeStatus(p);
+        const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
+        return (currentFilter === "all" || status === currentFilter) && (!q || text.includes(q));
+      });
+
+      if (!filtered.length) {
+        list.innerHTML = `
+          <div class="empty">
+            <strong>Aucun autodiagnostic trouvé</strong>
+            Aucun élément ne correspond à ce filtre.
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = filtered.map((p, index) => {
+        const status = normalizeStatus(p);
+        const title = getTitle(p);
+        const theme = getTheme(p);
+        const data = getProjectData(p);
+        const shareUrl = p.shareUrl || p.share_url || p.ad_url || p.public_url || data.shareUrl || data.share_url || "";
+        const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
+        const isLocked = status === "published" || status === "unpublished" || status === "archived";
+        const hasShare = status === "published" && Boolean(shareUrl);
+        const hasResults = (status === "published" || status === "unpublished") && Boolean(resultsUrl);
+        const canClone = canCloneProject(p);
+
+        return `
+          <article class="card">
+            <div class="bar ${status}"></div>
+
+            <div>
+              <div class="title">${escapeHtml(title)}</div>
+              <div class="meta">
+                Créé le ${formatDate(p.created_at || p.createdAt)} ·
+                ${getCampaignDates(p)}<br>
+                Lien de diffusion : ${hasShare ? "disponible" : "en attente admin"} ·
+                Résultats : ${hasResults ? "disponibles" : "non disponibles"}
+              </div>
+              <div class="url-lines">
+                ${hasShare ? `<div class="url-line"><strong>URL diffusion :</strong> <a href="${escapeAttr(shareUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(shareUrl)}</a></div>` : ""}
+                ${hasResults ? `<div class="url-line"><strong>URL résultats :</strong> <a href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resultsUrl)}</a></div>` : ""}
+              </div>
+              <div class="tags">
+                <span class="tag">${escapeHtml(theme)}</span>
+                ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
+              </div>
+            </div>
+
+            <div class="actions">
+              <span class="status ${status}">${statusLabel(status)}</span>
+              <div class="row-actions">
+                <button class="btn btn-blue" onclick="resumeProjectByIndex(${index})">
+                  ${resumeLabel(p)}
+                </button>
+                ${hasShare ? `
+                  <button class="btn btn-green" onclick="openExternal('${escapeAttr(shareUrl)}')">
+                    Voir l’AD
+                  </button>
+                ` : ""}
+                ${hasResults ? `
+                  <button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">
+                    Résultats
+                  </button>
+                ` : ""}
+                ${canClone ? `
+                  <button class="btn" onclick="duplicateProject('${p.id || p.project_id || ""}')">
+                    Cloner
+                  </button>
+                ` : ""}
+                ${status === "draft" ? `<button class="btn" onclick="toggleMenu(${index})">···</button>` : ""}
+              </div>
+            </div>
+
+            ${status === "draft" ? `
+              <div class="menu" id="menu-${index}">
+                <button class="danger" onclick="archiveProject('${p.id || p.project_id || ""}')">Archiver</button>
+              </div>
+            ` : ""}
+          </article>
+        `;
+      }).join("");
+    }
+
+    function toggleMenu(index) {
+      document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
+      const menu = document.getElementById(`menu-${index}`);
+      if (menu) menu.classList.toggle("open");
+    }
+
+    document.addEventListener("click", e => {
+      if (e.target.id === "archiveModal") closeArchiveModal();
+      if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
+        document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
+      }
+    });
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentFilter = tab.dataset.filter;
+        renderProjects();
+      });
+    });
+
+    document.getElementById("searchInput").addEventListener("input", renderProjects);
+
+    async function loadProjects() {
+      try {
+        const res = await fetch(`${API_BASE}/api/projects`, {
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+
+        if (!res.ok) throw new Error("Erreur API");
+
+        const data = await res.json();
+        projects = Array.isArray(data) ? data : (data.projects || data.items || []);
+      } catch (e) {
+        projects = JSON.parse(localStorage.getItem("its_projects_cache") || "[]");
+      }
+
+      renderStats();
+      renderProjects();
+    }
+
+    async function duplicateProject(id) {
+      if (!id) return alert("Projet introuvable.");
+
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token()}`
+          }
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Clonage impossible");
+
+        const cloned = data.project;
+        if (cloned) {
+          restoreProjectLocally(cloned);
+          window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
+          return;
+        }
+
+        await loadProjects();
+      } catch (e) {
+        alert(e.message || "Clonage impossible pour le moment.");
+      }
+    }
+
+    function archiveProject(id) {
+      if (!id) return alert("Projet introuvable.");
+      pendingArchiveProjectId = String(id);
+      document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function closeArchiveModal() {
+      pendingArchiveProjectId = "";
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function confirmArchiveProject() {
+      if (!pendingArchiveProjectId) return closeArchiveModal();
+      closeArchiveModal();
+      showArchiveNotice();
+    }
+
+    function showArchiveNotice() {
+      const modal = document.getElementById("archiveModal");
+      if (!modal) return alert("Cette action n’est pas encore disponible dans votre espace.");
+      modal.querySelector(".modal-icon").textContent = "ℹ️";
+      modal.querySelector("#archiveModalTitle").textContent = "Archivage indisponible pour le moment";
+      modal.querySelector("p").textContent = "Cette action n’est pas encore disponible dans votre espace. Aucun changement n’a été appliqué pour le moment.";
+      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn danger" type="button" onclick="resetArchiveModal()">Compris</button>';
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function resetArchiveModal() {
+      const modal = document.getElementById("archiveModal");
+      if (!modal) return;
+      modal.querySelector(".modal-icon").textContent = "🗄️";
+      modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
+      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.";
+      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>';
+      closeArchiveModal();
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str).replaceAll("`", "");
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>
+
+

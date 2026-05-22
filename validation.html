@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmission — Into The Shift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18375d}
+.subnav{background:#fff;border-bottom:1px solid #e2e8f0;display:flex;padding:8px 18px;gap:4px;overflow-x:auto}
+.subnav::-webkit-scrollbar{display:none}
+.sn{padding:7px 14px;border-radius:8px;font-size:12px;color:#64748b;cursor:pointer;border:none;background:transparent;white-space:nowrap;font-weight:500;font-family:'Asap',sans-serif;transition:all .12s}
+.sn.on{background:#18375d;color:#fff;font-weight:600}
+.sn:not(.on):hover{background:#eef1f6;color:#18375d}
+
+.stepper-wrap{background:#fff;border-bottom:1px solid #e2e8f0;padding:16px 24px;overflow-x:auto}
+.stepper{display:flex;align-items:center;gap:0;min-width:620px}
+.step{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer}
+.step-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.step-circle.done{background:#007883;color:#fff}
+.step-circle.active{background:#18375d;color:#fff}
+.step-label{font-size:12px;font-weight:600;white-space:nowrap}
+.step-label.done{color:#007883}
+.step-label.active{color:#18375d}
+.step-connector{flex:1;height:2px;margin:0 12px;border-radius:1px;min-width:20px;background:#007883}
+
+.page-wrap{max-width:1100px;margin:0 auto;padding:24px 24px 60px}
+.page-title{font-size:20px;font-weight:700;color:#18375d;margin-bottom:6px}
+.page-sub{font-size:13px;color:#64748b;line-height:1.5;max-width:760px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.block{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.block-title{font-size:15px;font-weight:700;color:#18375d;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.block-sub{font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:18px}
+.alert{border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.5;display:flex;gap:9px;margin-top:12px}
+.alert-neutral{background:#f0f8f7;border:1px solid #b8dfe0;color:#007883}
+.alert-warning{background:#fff8ec;border:1px solid #ffd490;color:#8a6408}
+.alert-success{background:#f0fbf2;border:1px solid #b8e8c0;color:#27823a}
+.alert-pdf{background:#f7f9fc;border:1px solid #d8e0ea;color:#18375d}
+.alert-ico{font-size:15px;flex-shrink:0;margin-top:1px}
+
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:640px){.summary-grid{grid-template-columns:1fr}}
+.sum-card{background:#fafbfc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px}
+.sum-lbl{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sum-val{font-size:13px;font-weight:700;color:#18375d;line-height:1.35;word-break:break-word}
+
+.checklist{display:flex;flex-direction:column;gap:9px}
+.check-row{display:flex;gap:9px;align-items:flex-start;padding:11px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+.check-row input{margin-top:2px;accent-color:#007883}
+.check-title{font-size:12px;font-weight:700;color:#18375d;display:block}
+.check-sub{font-size:11px;color:#64748b;line-height:1.4;margin-top:2px;display:block}
+
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1 / -1}
+.form-label{font-size:11px;font-weight:800;color:#18375d}
+.form-label .req{color:#eb6366}
+.form-input,.form-textarea{border:1px solid #d8e0ea;border-radius:9px;padding:10px 12px;font-size:13px;color:#18375d;font-family:'Asap',sans-serif;background:#fff;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:#007883;box-shadow:0 0 0 3px rgba(0,120,131,.12)}
+.form-textarea{min-height:78px;resize:vertical}
+.field-error{font-size:10px;color:#eb6366;display:none}
+.form-field.invalid .form-input,.form-field.invalid .form-textarea{border-color:#eb6366;background:#fffafa}
+.form-field.invalid .field-error{display:block}
+
+.btn-main,.btn-back{border-radius:8px;padding:11px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:all .12s}
+.btn-main{border:none;background:#eb6366;color:#fff}
+.btn-main:hover:not(:disabled){background:#d4474a}
+.btn-main:disabled{background:#f5c0c1;cursor:not-allowed}
+.btn-back{border:1px solid #d8e0ea;background:#fff;color:#64748b}
+.btn-back:hover{background:#f7f9fc}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}
+
+.sidebar{position:sticky;top:78px}
+.sidebar-card,.side-mini{background:#fff;border:1px solid #d8e0ea;border-radius:14px;overflow:hidden;margin-bottom:14px}
+.sidebar-head{background:#18375d;padding:13px 16px}
+.sidebar-head-lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+.sidebar-head-val{font-size:14px;font-weight:600;color:#fff}
+.sidebar-body{padding:14px 16px}
+.sidebar-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid #f0f4f8}
+.sidebar-row:last-child{border-bottom:none}
+.sidebar-row-lbl{font-size:12px;color:#64748b}
+.sidebar-row-val{font-size:12px;font-weight:700;color:#18375d;text-align:right}
+.sidebar-url{padding:10px 14px;background:#f0f8f7;border-top:1px solid #e2e8f0}
+.sidebar-url-lbl{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.sidebar-url-val{font-size:11px;color:#007883;font-weight:600;word-break:break-all}
+
+.side-mini-head{padding:12px 14px;background:#18375d;color:#fff;font-size:13px;font-weight:800}
+.side-mini-body{padding:13px 14px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;font-size:10px;font-weight:800;background:#fff8ec;color:#b7840a}
+.pill-ok{background:#f0fbf2;color:#27823a}
+.progress-wrap{height:7px;background:#edf1f7;border-radius:20px;overflow:hidden;margin:8px 0}
+.progress-fill{height:100%;background:#007883;border-radius:20px;transition:width .2s}
+.hidden{display:none}
+.locked-transmission{background:#f0fbf2;border:1px solid #b8e8c0;color:#1f7a3b;border-radius:14px;padding:18px;margin-bottom:16px;line-height:1.55;font-size:13px}
+.locked-transmission strong{display:block;color:#18375d;font-size:16px;margin-bottom:4px}
+.locked-transmission a{color:#0d4c72;font-weight:900;text-decoration:none}
+.locked-transmission a:hover{text-decoration:underline}
+.is-transmitted .form-input,
+.is-transmitted .form-textarea,
+.is-transmitted input[type="checkbox"]{pointer-events:none;opacity:.72}
+.is-transmitted .check-row{background:#f8fafc}
+.is-transmitted #btn-transmit{background:#94a3b8;cursor:not-allowed}
+
+
+/* Modal transmission */
+.transmit-modal-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
+.transmit-modal-overlay.on{display:flex}
+.transmit-modal{width:min(460px,92vw);background:#fff;border-radius:18px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:28px 30px;text-align:center;border:1px solid #d8e0ea}
+.transmit-modal-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;background:#f0f8f7;color:#007883;font-size:24px;font-weight:800}
+.transmit-modal-icon.loading{background:#fff8ec;color:#b7840a}
+.transmit-modal-icon.error{background:#fceaea;color:#eb6366}
+.transmit-modal-title{font-size:18px;font-weight:800;color:#18375d;margin-bottom:8px}
+.transmit-modal-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:18px}
+.transmit-modal-spinner{width:28px;height:28px;border:3px solid #ffe2b2;border-top-color:#b7840a;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.transmit-modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.transmit-modal-btn{border:none;border-radius:9px;padding:10px 16px;background:#18375d;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
+.transmit-modal-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}
+
+</style>
+</head>
+<body>
+<div id="header"></div>
+<script src="header.js"></script>
+<script src="catalogue-core.js?v=2"></script>
+<script src="catalogue-cyber.js?v=2"></script>
+<script src="catalogue-securite.js?v=2"></script>
+<script src="catalogue-qvt.js?v=2"></script>
+<script src="catalogue-transfo.js?v=2"></script>
+<script src="catalogue-rse.js?v=2"></script>
+<script src="catalogue-ethique.js?v=2"></script>
+<script src="catalogue-custom.js?v=2"></script>
+<script src="catalogue-init.js?v=2"></script>
+<script src="app.js"></script>
+
+
+<div class="stepper-wrap">
+  <div class="stepper">
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="parametrage.html">Paramétrer</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="campagne.html">Campagne</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle active">5</div><span class="step-label active">Transmettre</span></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <h1 class="page-title">Transmettre votre autodiagnostic pour mise en ligne</h1>
+  <p class="page-sub" id="default-page-sub">
+    Votre autodiagnostic est prêt à être finalisé. Une fois transmis, l’équipe Into The Shift vérifiera les derniers éléments,
+    configurera la mise en ligne et vous recevrez un récapitulatif PDF des choix renseignés.
+  </p>
+  <div id="already-transmitted-box" class="locked-transmission hidden">
+    <strong>Configuration déjà transmise à Into The Shift.</strong>
+    Votre demande est en cours de traitement. Pour tout changement, contactez
+    <a href="mailto:contact@intotheshift.io">contact@intotheshift.io</a>.
+  </div>
+
+  <div class="grid">
+    <main>
+      <section class="block">
+        <div class="block-title">Récapitulatif avant transmission</div>
+        <div class="block-sub">Vérifiez les informations principales avant de nous transmettre votre demande.</div>
+        <div class="summary-grid">
+          <div class="sum-card"><div class="sum-lbl">Entreprise</div><div class="sum-val" id="sum-company">—</div></div>
+          <div class="sum-card"><div class="sum-lbl">Titre collaborateur</div><div class="sum-val" id="sum-title">—</div></div>
+          <div class="sum-card"><div class="sum-lbl">Date de lancement souhaitée</div><div class="sum-val" id="sum-launch">—</div></div>
+          <div class="sum-card"><div class="sum-lbl">Date de clôture</div><div class="sum-val" id="sum-close">—</div></div>
+          <div class="sum-card"><div class="sum-lbl">Pack choisi</div><div class="sum-val" id="sum-pack">—</div></div>
+          <div class="sum-card"><div class="sum-lbl">URL prévue</div><div class="sum-val" id="sum-url">—</div></div>
+        </div>
+        <div class="alert alert-neutral">
+          <span class="alert-ico">ℹ️</span>
+          <span>Le lien affiché ici correspond à l’adresse prévue. Nous vous confirmerons le lien définitif après mise en ligne.</span>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block-title">Entreprise commanditaire</div>
+        <div class="block-sub">Ces informations identifient l’entreprise commanditaire et le contact à utiliser pour préparer la mise en ligne de votre autodiagnostic.</div>
+        <div class="form-grid">
+          <div class="form-field" id="field-company">
+            <label class="form-label" for="client-company">Entreprise commanditaire <span class="req">*</span></label>
+            <input class="form-input" id="client-company" type="text" autocomplete="organization" placeholder="Nom de l’entreprise" oninput="updateReady()">
+            <div class="field-error">Entreprise obligatoire.</div>
+          </div>
+          <div class="form-field" id="field-email">
+            <label class="form-label" for="client-email">Email professionnel <span class="req">*</span></label>
+            <input class="form-input" id="client-email" type="email" autocomplete="email" placeholder="prenom.nom@entreprise.com" oninput="updateReady()">
+            <div class="field-error">Email professionnel obligatoire.</div>
+          </div>
+          <div class="form-field" id="field-firstname">
+            <label class="form-label" for="client-firstname">Prénom <span class="req">*</span></label>
+            <input class="form-input" id="client-firstname" type="text" autocomplete="given-name" placeholder="Prénom" oninput="updateReady()">
+            <div class="field-error">Prénom obligatoire.</div>
+          </div>
+          <div class="form-field" id="field-lastname">
+            <label class="form-label" for="client-lastname">Nom <span class="req">*</span></label>
+            <input class="form-input" id="client-lastname" type="text" autocomplete="family-name" placeholder="Nom" oninput="updateReady()">
+            <div class="field-error">Nom obligatoire.</div>
+          </div>
+          <div class="form-field" id="field-role">
+            <label class="form-label" for="client-role">Fonction <span class="req">*</span></label>
+            <input class="form-input" id="client-role" type="text" autocomplete="organization-title" placeholder="Ex. DRH, Responsable formation…" oninput="updateReady()">
+            <div class="field-error">Fonction obligatoire.</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="client-phone">Téléphone</label>
+            <input class="form-input" id="client-phone" type="tel" autocomplete="tel" placeholder="Optionnel" oninput="updateReady()">
+          </div>
+          <div class="form-field full">
+            <label class="form-label" for="client-comment">Commentaire ou besoin spécifique</label>
+            <textarea class="form-textarea" id="client-comment" placeholder="Ex. besoin de visuels, contrainte de calendrier, diffusion internationale…" oninput="updateReady()"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block-title">Validation finale</div>
+        <div class="block-sub">Cochez les points validés avant de transmettre votre demande.</div>
+        <div class="checklist">
+          <label class="check-row"><input type="checkbox" checked onchange="updateReady()"><span><span class="check-title">Dates de campagne vérifiées</span><span class="check-sub">La date de lancement souhaitée et la date de clôture sont correctes.</span></span></label>
+          <label class="check-row"><input type="checkbox" checked onchange="updateReady()"><span><span class="check-title">Messages de communication vérifiés</span><span class="check-sub">Les textes du kit de communication sont prêts à être adaptés ou diffusés.</span></span></label>
+          <label class="check-row"><input type="checkbox" checked onchange="updateReady()"><span><span class="check-title">Canaux de diffusion vérifiés</span><span class="check-sub">Email, managers, intranet, Teams / Slack ou autres canaux internes sont identifiés.</span></span></label>
+          <label class="check-row"><input type="checkbox" onchange="updateReady()"><span><span class="check-title">Visuels demandés si besoin</span><span class="check-sub">Vous pouvez nous demander des visuels prêts à diffuser pour accompagner le lancement.</span></span></label>
+          <label class="check-row"><input type="checkbox" onchange="updateReady()"><span><span class="check-title">Transmission à Into The Shift validée</span><span class="check-sub">Vous confirmez que les éléments peuvent être transmis pour préparation de la mise en ligne.</span></span></label>
+        </div>
+        <div class="alert alert-warning" id="missing-alert">
+          <span class="alert-ico">⚠️</span>
+          <span>Le bouton de transmission s’activera quand les informations obligatoires seront remplies, notamment l’entreprise commanditaire et la fonction, et quand tous les points seront cochés.</span>
+        </div>
+        <div class="alert alert-success hidden" id="success-alert">
+          <span class="alert-ico">✓</span>
+          <span><strong>Votre demande a bien été transmise.</strong><br>L’équipe Into The Shift va finaliser la mise en ligne et vous envoyer prochainement le lien de passation.</span>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn-back" onclick="window.location.href='campagne.html'">← Retour à la campagne</button>
+        <button class="btn-main" id="btn-transmit" onclick="transmit()" disabled>Transmettre pour mise en ligne</button>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-head">
+          <div class="sidebar-head-lbl">Autodiagnostic</div>
+          <div class="sidebar-head-val" id="sb-title">—</div>
+        </div>
+        <div class="sidebar-body">
+          <div class="sidebar-row"><span class="sidebar-row-lbl">Chapitres</span><span class="sidebar-row-val" id="sb-chapters">—</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-questions">—</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-lbl">Pack</span><span class="sidebar-row-val" id="sb-pack">—</span></div>
+        </div>
+        <div class="sidebar-url">
+          <div class="sidebar-url-lbl">URL prévue</div>
+          <div class="sidebar-url-val" id="sb-url">—</div>
+        </div>
+      </div>
+
+      <div class="side-mini">
+        <div class="side-mini-head">État de validation</div>
+        <div class="side-mini-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+            <span style="font-size:12px;color:#64748b">Points validés</span>
+            <span class="pill" id="check-pill">0/5</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div>
+          <div style="font-size:11px;color:#94a3b8;line-height:1.4" id="check-hint">Transmission en attente de validation.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+
+
+<div class="transmit-modal-overlay" id="transmit-modal" aria-hidden="true">
+  <div class="transmit-modal" role="dialog" aria-modal="true" aria-labelledby="transmit-modal-title">
+    <div id="transmit-modal-spinner" class="transmit-modal-spinner"></div>
+    <div class="transmit-modal-icon loading" id="transmit-modal-icon">⏳</div>
+    <div class="transmit-modal-title" id="transmit-modal-title">Transmission en cours</div>
+    <div class="transmit-modal-text" id="transmit-modal-text">Nous préparons votre récapitulatif et transmettons votre configuration à l’équipe Into The Shift.</div>
+    <div class="transmit-modal-actions" id="transmit-modal-actions" style="display:none">
+      <button class="transmit-modal-btn" type="button" onclick="closeTransmitModal()">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let state = {};
+try {
+  state = typeof itsLoad === 'function' ? itsLoad() : (JSON.parse(localStorage.getItem('its_state') || '{}') || {});
+} catch(e) {
+  state = {};
+}
+
+function esc(s){
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function slugify(text){
+  return String(text || '')
+    .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+function formatDateFr(s){
+  if(!s) return '—';
+  const p = String(s).split('-');
+  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : s;
+}
+function formatPack(pack){
+  if(!pack) return '—';
+  if(typeof pack === 'string' || typeof pack === 'number') return String(pack);
+  if(typeof pack === 'object'){
+    const val = pack.value || pack.label || pack.nom || pack.name || pack.pack || pack.nb || pack.nombre || '';
+    if(val) return String(val);
+    try {
+      const values = Object.values(pack).filter(v => typeof v === 'string' || typeof v === 'number');
+      return values.length ? String(values[0]) : '—';
+    } catch(e) {
+      return '—';
+    }
+  }
+  return String(pack);
+}
+
+function pickFirstDefined(values){
+  return values.find(v => v !== undefined && v !== null && v !== '');
+}
+function findDeepPack(obj, depth = 0){
+  if(!obj || typeof obj !== 'object' || depth > 4) return undefined;
+  const wanted = /^(pack|packChoisi|pack_choisi|selectedPack|formule|offre|offreChoisie|offre_choisie|nombre_passations|nb_passations|passations)$/i;
+  for(const [key, value] of Object.entries(obj)){
+    if(wanted.test(key) && value !== undefined && value !== null && value !== '') return value;
+  }
+  for(const value of Object.values(obj)){
+    if(value && typeof value === 'object' && !Array.isArray(value)){
+      const found = findDeepPack(value, depth + 1);
+      if(found !== undefined && found !== null && found !== '') return found;
+    }
+  }
+  return undefined;
+}
+function getPackChoice(){
+  const param = getParam();
+  return pickFirstDefined([
+    param.pack, param.packChoisi, param.pack_choisi, param.selectedPack, param.formule, param.offre, param.offreChoisie,
+    state.pack, state.packChoisi, state.pack_choisi, state.selectedPack, state.formule, state.offre, state.offreChoisie,
+    state.campagne?.pack, state.campagne?.packChoisi, state.campagne?.pack_choisi, state.campagne?.selectedPack, state.campagne?.formule, state.campagne?.offre, state.campagne?.offreChoisie,
+    state.campaign?.pack, state.campaign?.packChoisi, state.campaign?.selectedPack, state.campaign?.formule, state.campaign?.offre,
+    findDeepPack(state)
+  ]);
+}
+function getParam(){
+  state.parametrage = state.parametrage || {};
+  return state.parametrage;
+}
+function getThemeTitle(){
+  return state.themeTitle || state.title || state.nom || getParam().titre || getParam().nom || 'Autodiagnostic';
+}
+function getCollaboratorTitle(){
+  return getParam().titre_repondants || getParam().titre || getThemeTitle();
+}
+function getCompany(){
+  return getClientInfo().entreprise || getParam().entreprise || getParam().company || state.company || '';
+}
+function getSlug(){
+  return getParam().slug || state.slug || slugify(getThemeTitle()) || 'autodiagnostic';
+}
+function getUrl(){
+  return 'https://selfdiag-mayt.meandyoutoo.app/' + slugify(getCompany()) + '/' + getSlug();
+}
+function normalizeAnswer(a){
+  return {
+    text: a.text || a.label || a.l || a.reponse || '',
+    score: (a.score !== undefined ? a.score : (a.s !== undefined ? a.s : ''))
+  };
+}
+function normalizeQuestion(q){
+  const answers = (q.answers || q.opts || []).map((a, i) => {
+    if(typeof a === 'string') return { text:a, score:(q.scores && q.scores[i] !== undefined ? q.scores[i] : '') };
+    return normalizeAnswer(a);
+  });
+  return {
+    type: q.type || 'choix',
+    text: q.text || q.question || '',
+    answers
+  };
+}
+function getChapters(){
+  return (state.chapters || state.theme?.chapters || []).map((c, i) => ({
+    title: c.title || c.name || `Chapitre ${i+1}`,
+    description: c.description || c.desc || '',
+    questions: (c.questions || []).map(normalizeQuestion),
+    profiles: c.profiles || c.profils || [],
+    seuils: c.seuils || []
+  }));
+}
+function profileTitle(p){ return p.title || p.titre || ''; }
+function profilePhrase(p){ return p.summary || p.phrase || ''; }
+function profileDesc(p){ return p.description || p.desc || ''; }
+function profileMin(ch,p,i){ return p.min ?? (ch.seuils?.[i]?.min ?? ''); }
+function profileMax(ch,p,i){ return p.max ?? (ch.seuils?.[i]?.max ?? ''); }
+
+function buildExcelHtml(){
+  const chapters = getChapters();
+  const param = getParam();
+  const client = getClientInfo();
+  const campagne = state.campagne || state.campaign || {};
+  const resources = Array.isArray(param.resources) ? param.resources : [];
+  const sociodemo = Array.isArray(param.sociodemo) ? param.sociodemo : [];
+  const submitted = new Date().toLocaleString('fr-FR');
+  const pack = formatPack(getPackChoice());
+  const url = getUrl();
+
+  function x(v){
+    return String(v ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+  function isNumberLike(v){
+    return typeof v === 'number' && isFinite(v);
+  }
+  function cell(v, style){
+    const dataType = isNumberLike(v) ? 'Number' : 'String';
+    const ss = style ? ` ss:StyleID="${style}"` : ' ss:StyleID="Left"';
+    return `<Cell${ss}><Data ss:Type="${dataType}">${x(v)}</Data></Cell>`;
+  }
+  function row(values, style, height){
+    const h = height ? ` ss:Height="${height}" ss:AutoFitHeight="0"` : '';
+    return `<Row${h}>${values.map(v => cell(v, style)).join('')}</Row>`;
+  }
+  function rowStyles(values, styles, height){
+    const h = height ? ` ss:Height="${height}" ss:AutoFitHeight="0"` : '';
+    return `<Row${h}>${values.map((v, i) => cell(v, styles[i] || 'Left')).join('')}</Row>`;
+  }
+  function section(title, mergeAcross = 5){
+    return `<Row><Cell ss:StyleID="Section" ss:MergeAcross="${mergeAcross}"><Data ss:Type="String">${x(title)}</Data></Cell></Row>`;
+  }
+  function columns(widths){
+    return widths.map(w => `<Column ss:Width="${w}"/>`).join('');
+  }
+  function sheet(name, rowsXml, widths, freeze = true){
+    return `<Worksheet ss:Name="${x(name).slice(0,31)}">
+      <Table>${columns(widths || [180,520])}${rowsXml}</Table>
+      ${freeze ? `<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><FreezePanes/><FrozenNoSplit/><SplitHorizontal>1</SplitHorizontal><TopRowBottomPane>1</TopRowBottomPane><ActivePane>2</ActivePane></WorksheetOptions>` : ''}
+    </Worksheet>`;
+  }
+  function cleanPackLabel(v){ return v === 'illimite' ? 'Illimité' : String(v || '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + (v && v !== 'illimite' ? ' passations' : ''); }
+  function chapStyle(ci){ return `Chap${(ci % 8) + 1}`; }
+  function chapNumStyle(ci){ return `Chap${(ci % 8) + 1}Num`; }
+
+  const totalQuestions = chapters.reduce((a,c)=>a+(c.questions||[]).length,0);
+  const totalProfils = chapters.reduce((a,c)=>a+(c.profiles||[]).length,0);
+  const clientId = slugify((client.entreprise || getCompany()) + '-' + getSlug() + '-' + new Date().getFullYear());
+
+  const generalRows = [
+    section('Informations de transmission', 1),
+    row(['Champ','Valeur'], 'Header'),
+    row(['ID projet proposé', clientId]),
+    row(['Date de transmission', submitted]),
+    row(['Entreprise déclarée', client.entreprise || getCompany()]),
+    row(['Prénom', client.prenom]),
+    row(['Nom', client.nom]),
+    row(['Email professionnel', client.email]),
+    row(['Fonction', client.fonction]),
+    row(['Téléphone', client.telephone]),
+    row(['Commentaire client', client.commentaire]),
+    row(['URL prévue', url]),
+    row(['Slug', getSlug()]),
+    row(['Pack choisi', pack]),
+    row(['Date lancement souhaitée', param.date_lancement || param.dateLancement || '']),
+    row(['Date clôture', param.date_cloture || param.dateCloture || '']),
+    row(['Nombre répondants estimé', param.nb_repondants || '']),
+    row(['Langue', param.langue || state.langue || 'FR'])
+  ].join('');
+
+  const paramRows = [
+    section('Configuration générale', 1),
+    row(['Champ','Valeur'], 'Header'),
+    row(["Nom de l'autodiagnostic", param.nom || getThemeTitle()]),
+    row(['Titre visible par les répondants', getCollaboratorTitle()]),
+    row(['Description interne', param.desc || '']),
+    row(['Entreprise / espace client', param.entreprise || getCompany()]),
+    row(['Pack choisi', pack]),
+    row(['Slug', getSlug()]),
+    row(['URL de passation prévue', url]),
+    row(['Introduction affichée avant autodiagnostic', param.intro || ''], undefined, 90),
+    row(['Nombre de chapitres', chapters.length]),
+    row(['Nombre total de questions', totalQuestions]),
+    row(['Nombre total de profils', totalProfils])
+  ].join('');
+
+  const campagneRows = [
+    section('Données de campagne', 1),
+    row(['Champ','Valeur'], 'Header'),
+    row(['Date de lancement souhaitée', param.date_lancement || param.dateLancement || '']),
+    row(['Date de clôture', param.date_cloture || param.dateCloture || '']),
+    row(['Pack de passations', pack]),
+    row(['URL collaborateur prévue', url]),
+    row(['Template actif dans le kit', campagne.activeTemplate || '']),
+    row(['Statut', state.status || state.transmission?.status || ''])
+  ].join('');
+
+  const contentHeader = row([
+    'Chapitre n°','Chapitre','Description chapitre','Question n°','Type question','Question',
+    'Réponse 1','Score 1','Réponse 2','Score 2','Réponse 3','Score 3','Réponse 4','Score 4'
+  ], 'Header');
+  let contentRows = contentHeader;
+  chapters.forEach((ch, ci) => {
+    (ch.questions || []).forEach((q, qi) => {
+      const a = q.answers || [];
+      const base = chapStyle(ci), num = chapNumStyle(ci);
+      contentRows += rowStyles([
+        ci+1, ch.title, ch.description, qi+1, q.type, q.text,
+        a[0]?.text || '', a[0]?.score ?? '',
+        a[1]?.text || '', a[1]?.score ?? '',
+        a[2]?.text || '', a[2]?.score ?? '',
+        a[3]?.text || '', a[3]?.score ?? ''
+      ], [num, base, base, num, num, base, base, num, base, num, base, num, base, num], 62);
+    });
+  });
+
+  const profileHeader = row([
+    'Chapitre n°','Chapitre','Profil n°','Titre profil','Phrase courte','Description','Score min','Score max'
+  ], 'Header');
+  let profileRows = profileHeader;
+  chapters.forEach((ch, ci) => {
+    (ch.profiles || []).forEach((p, pi) => {
+      const base = chapStyle(ci), num = chapNumStyle(ci);
+      profileRows += rowStyles([
+        ci+1, ch.title, pi+1, profileTitle(p), profilePhrase(p), profileDesc(p), profileMin(ch,p,pi), profileMax(ch,p,pi)
+      ], [num, base, num, base, base, base, num, num], 62);
+    });
+  });
+
+  const socioHeader = row(['Question socio-démo n°','Intitulé','Options','Effectif minimum du plus petit groupe'], 'Header');
+  let socioRows = socioHeader;
+  sociodemo.forEach((s, i) => {
+    socioRows += row([i+1, s.q || s.question || '', (s.opts || s.options || []).join(' | '), s.min_groupe ?? '']);
+  });
+
+  const resourceHeader = row(['Ressource n°','Titre','URL'], 'Header');
+  let resourceRows = resourceHeader;
+  resources.forEach((r, i) => {
+    resourceRows += row([i+1, r.titre || r.title || '', r.url || '']);
+  });
+
+  const colors = ['#FFF2CC','#DDEBF7','#E2F0D9','#FCE4D6','#EADCF8','#D9EAD3','#DDEBF7','#F4CCCC'];
+  const chapterStyles = colors.map((color, i) => `
+  <Style ss:ID="Chap${i+1}"><Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10"/><Interior ss:Color="${color}" ss:Pattern="Solid"/><Borders><Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/></Borders></Style>
+  <Style ss:ID="Chap${i+1}Num"><Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10"/><Interior ss:Color="${color}" ss:Pattern="Solid"/><Borders><Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/><Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FFFFFF"/></Borders></Style>`).join('');
+
+  const workbook = `<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal"><Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10"/></Style>
+  <Style ss:ID="Left"><Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10"/></Style>
+  <Style ss:ID="Num"><Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10"/></Style>
+  <Style ss:ID="Header"><Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/><Font ss:FontName="Arial" ss:Size="10" ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#18375D" ss:Pattern="Solid"/><Borders><Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/><Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/><Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/><Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/></Borders></Style>
+  <Style ss:ID="Section"><Alignment ss:Horizontal="Left" ss:Vertical="Center"/><Font ss:FontName="Arial" ss:Size="12" ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#007883" ss:Pattern="Solid"/></Style>
+  ${chapterStyles}
+ </Styles>
+ ${sheet('01_Récap client', generalRows, [230,760])}
+ ${sheet('02_Paramétrage', paramRows, [230,760])}
+ ${sheet('03_Campagne', campagneRows, [230,760])}
+ ${sheet('04_Contenus AD', contentRows, [70,260,380,70,110,620,330,65,330,65,330,65,330,65])}
+ ${sheet('05_Profils scoring', profileRows, [70,260,70,300,360,650,80,80])}
+ ${sheet('06_Socio demo', socioRows, [140,360,650,180])}
+ ${sheet('07_Ressources', resourceRows, [100,360,650])}
+</Workbook>`;
+  return workbook;
+}
+
+
+function getClientInfo(){
+  const byId = id => document.getElementById(id)?.value?.trim() || '';
+  return {
+    entreprise: byId('client-company'),
+    prenom: byId('client-firstname'),
+    nom: byId('client-lastname'),
+    email: byId('client-email'),
+    fonction: byId('client-role'),
+    telephone: byId('client-phone'),
+    commentaire: byId('client-comment')
+  };
+}
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
+}
+function validateClientInfo(showErrors){
+  const info = getClientInfo();
+  const rules = [
+    ['field-company', !!info.entreprise],
+    ['field-firstname', !!info.prenom],
+    ['field-lastname', !!info.nom],
+    ['field-email', isValidEmail(info.email)],
+    ['field-role', !!info.fonction]
+  ];
+  rules.forEach(([id, ok]) => {
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('invalid', showErrors && !ok);
+  });
+  return rules.every(([, ok]) => ok);
+}
+function restoreClientInfo(){
+  const info = state.clientInfo || state.transmission?.clientInfo || {};
+  const map = {
+    'client-company': info.entreprise || getParam().entreprise || getParam().company || state.company || '',
+    'client-firstname': info.prenom || '',
+    'client-lastname': info.nom || '',
+    'client-email': info.email || '',
+    'client-role': info.fonction || '',
+    'client-phone': info.telephone || '',
+    'client-comment': info.commentaire || ''
+  };
+  Object.entries(map).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if(el && value) el.value = value;
+  });
+}
+
+
+function buildPdfHtml(){
+  const param = getParam();
+  const client = getClientInfo();
+  const chapters = getChapters();
+  const resources = Array.isArray(param.resources) ? param.resources : [];
+  const campagne = state.campagne || state.campaign || {};
+  const submitted = new Date().toLocaleDateString('fr-FR');
+  const qCount = chapters.reduce((a,c)=>a+(c.questions||[]).length,0);
+  const pCount = chapters.reduce((a,c)=>a+(c.profiles||[]).length,0);
+  const pack = formatPack(getPackChoice());
+  const url = getUrl();
+  const theme = getThemeTitle();
+  const collaboratorTitle = getCollaboratorTitle();
+
+  function h(v){
+    return String(v ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+  function safe(v, fallback='—'){
+    const s = String(v ?? '').trim();
+    return s ? h(s) : fallback;
+  }
+  function chapterRows(){
+    if(!chapters.length) return '<tr><td colspan="3">Aucun chapitre renseigné</td></tr>';
+    return chapters.map((ch, i) => `
+      <tr>
+        <td>${i+1}</td>
+        <td><strong>${safe(ch.title, 'Chapitre ' + (i+1))}</strong><br><span>${safe(ch.description, '')}</span></td>
+        <td>${(ch.questions || []).length}</td>
+      </tr>`).join('');
+  }
+  function profileRows(){
+    const rows = [];
+    chapters.forEach((ch, ci) => {
+      (ch.profiles || []).forEach((p, pi) => {
+        rows.push(`
+          <tr>
+            <td>${safe(ch.title, 'Chapitre ' + (ci+1))}</td>
+            <td>${safe(profileTitle(p), 'Profil ' + (pi+1))}</td>
+            <td>${safe(profileMin(ch,p,pi))} – ${safe(profileMax(ch,p,pi))}</td>
+          </tr>`);
+      });
+    });
+    return rows.length ? rows.join('') : '<tr><td colspan="3">Aucun profil renseigné</td></tr>';
+  }
+  function resourceList(){
+    if(!resources.length) return '<li>Aucune ressource renseignée</li>';
+    return resources.map(r => {
+      const title = safe(r.titre || r.title || r.nom || r.name || r.url, 'Ressource');
+      const link = String(r.url || r.lien || r.link || '').trim();
+      if(link){
+        return `<li><span class="res-title">${title}</span><br><a class="res-link" href="${h(link)}">${h(link)}</a></li>`;
+      }
+      return `<li><span class="res-title">${title}</span></li>`;
+    }).join('');
+  }
+  function questionsContent(){
+    if(!chapters.length) return '<div class="bloc">Aucune question renseignée</div>';
+    return chapters.map((ch, ci) => {
+      const questions = ch.questions || [];
+      const qHtml = questions.length ? questions.map((q, qi) => {
+        const answers = q.answers || [];
+        const aHtml = answers.length
+          ? `<ul class="answers">${answers.map((a, ai) => `<li><strong>Réponse ${ai+1} :</strong> ${safe(a.text || a.label || a.reponse || a)}</li>`).join('')}</ul>`
+          : '<div class="sub">Aucune réponse renseignée</div>';
+        return `<div class="question-card"><div class="question-title">Question ${qi+1} : ${safe(q.text || q.question)}</div>${aHtml}</div>`;
+      }).join('') : '<div class="bloc">Aucune question renseignée pour ce chapitre</div>';
+      return `<div class="chapter-detail"><h3>Chapitre ${ci+1} — ${safe(ch.title, 'Sans titre')}</h3>${qHtml}</div>`;
+    }).join('');
+  }
+
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Récapitulatif Shift Studio</title>
+<style>
+  @page { margin: 28px; }
+  body{font-family:Arial,Helvetica,sans-serif;color:#18375d;background:#fff;margin:0;font-size:13px;line-height:1.45}
+  .cover{border-bottom:5px solid #0d4c72;padding:0 0 18px;margin-bottom:22px}
+  .brand{font-size:20px;font-weight:800;color:#0d4c72;letter-spacing:.2px}
+  h1{font-size:26px;margin:18px 0 6px;color:#18375d;line-height:1.15}
+  .sub{color:#64748b;font-size:12px}
+  h2{font-size:15px;color:#0d4c72;margin:22px 0 9px;padding-bottom:5px;border-bottom:1px solid #dce5ee}
+  .bloc{background:#f7f9fc;border:1px solid #dce5ee;border-radius:10px;padding:13px 15px;margin-bottom:10px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+  .row{margin-bottom:6px}.label{font-weight:800;color:#18375d}.value{color:#18375d}
+  table{width:100%;border-collapse:collapse;margin-top:6px;background:#fff}
+  th{background:#18375d;color:#fff;text-align:left;font-size:11px;padding:8px;border:1px solid #18375d}
+  td{padding:8px;border:1px solid #dce5ee;vertical-align:top}
+  td span{font-size:11px;color:#64748b}
+  ul{margin:6px 0 0 18px;padding:0}
+  li{margin-bottom:4px}
+  .notice{font-size:11px;color:#64748b;border-top:1px solid #dce5ee;margin-top:24px;padding-top:12px}
+  .url{word-break:break-all;color:#007883;font-weight:700}
+  .res-title{font-weight:800;color:#18375d}
+  .res-link{word-break:break-all;color:#007883;font-size:12px}
+  .chapter-detail{page-break-inside:avoid;margin-bottom:14px}
+  .chapter-detail h3{font-size:13px;color:#18375d;margin:10px 0 7px}
+  .question-card{border:1px solid #dce5ee;border-radius:8px;padding:9px 10px;margin:8px 0;background:#fff;page-break-inside:avoid}
+  .question-title{font-weight:800;color:#18375d;margin-bottom:5px}
+  .answers{margin:6px 0 0 18px;padding:0}
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="brand">Into The Shift — Shift Studio</div>
+    <h1>Récapitulatif de votre configuration</h1>
+    <div class="sub">Document généré automatiquement le ${h(submitted)}</div>
+  </div>
+
+  <h2>1. Informations générales</h2>
+  <div class="bloc grid">
+    <div class="row"><span class="label">Entreprise :</span> <span class="value">${safe(client.entreprise || getCompany())}</span></div>
+    <div class="row"><span class="label">Contact :</span> <span class="value">${safe([client.prenom, client.nom].filter(Boolean).join(' '))}</span></div>
+    <div class="row"><span class="label">Email :</span> <span class="value">${safe(client.email)}</span></div>
+    <div class="row"><span class="label">Fonction :</span> <span class="value">${safe(client.fonction)}</span></div>
+    <div class="row"><span class="label">Titre de l’autodiagnostic :</span> <span class="value">${safe(theme)}</span></div>
+    <div class="row"><span class="label">Titre visible répondants :</span> <span class="value">${safe(collaboratorTitle)}</span></div>
+  </div>
+
+  <h2>2. Configuration choisie</h2>
+  <div class="bloc grid">
+    <div class="row"><span class="label">Thématique / base :</span> <span class="value">${safe(theme)}</span></div>
+    <div class="row"><span class="label">Pack choisi :</span> <span class="value">${safe(pack)}</span></div>
+    <div class="row"><span class="label">Nombre de chapitres :</span> <span class="value">${chapters.length}</span></div>
+    <div class="row"><span class="label">Nombre de questions :</span> <span class="value">${qCount}</span></div>
+    <div class="row"><span class="label">Nombre de profils :</span> <span class="value">${pCount}</span></div>
+    <div class="row"><span class="label">Slug :</span> <span class="value">${safe(getSlug())}</span></div>
+  </div>
+
+  <h2>3. Structure de l’autodiagnostic</h2>
+  <table>
+    <thead><tr><th style="width:60px">N°</th><th>Chapitre</th><th style="width:90px">Questions</th></tr></thead>
+    <tbody>${chapterRows()}</tbody>
+  </table>
+
+  <h2>4. Profils et scoring</h2>
+  <table>
+    <thead><tr><th>Chapitre</th><th>Profil</th><th style="width:130px">Seuil</th></tr></thead>
+    <tbody>${profileRows()}</tbody>
+  </table>
+
+  <h2>5. Ressources associées</h2>
+  <div class="bloc"><ul>${resourceList()}</ul></div>
+
+  <h2>6. Questions et réponses choisies</h2>
+  ${questionsContent()}
+
+  <h2>7. Paramétrage de campagne</h2>
+  <div class="bloc grid">
+    <div class="row"><span class="label">Date de lancement souhaitée :</span> <span class="value">${safe(formatDateFr(param.date_lancement || param.dateLancement || ''))}</span></div>
+    <div class="row"><span class="label">Date de clôture :</span> <span class="value">${safe(formatDateFr(param.date_cloture || param.dateCloture || ''))}</span></div>
+    <div class="row"><span class="label">Template kit actif :</span> <span class="value">${safe(campagne.activeTemplate)}</span></div>
+    <div class="row"><span class="label">URL prévue :</span> <span class="url">${safe(url)}</span></div>
+  </div>
+
+  <h2>8. Commentaire transmis</h2>
+  <div class="bloc">${safe(client.commentaire, 'Aucun commentaire renseigné')}</div>
+
+  <div class="notice">
+    Ce document récapitule les éléments renseignés dans Shift Studio. Il ne constitue pas une proposition commerciale. Into The Shift n'est pas responsable des contenus que vous avez choisi d'intégrer. Le lien affiché correspond à l’adresse prévue mais devra être confirmé par notre équipe après mise en ligne. Ne communiquez pas le lien avant sa confirmation.<br><br>
+    Pour toute question, contactez-nous : <a href="mailto:contact@intotheshift.io">contact@intotheshift.io</a>
+  </div>
+</body>
+</html>`;
+}
+  function getSelectedPartnerClientId(){
+  return (
+    localStorage.getItem("its_selected_partner_client_id") ||
+    state.selectedPartnerClientId ||
+    state.organizationId ||
+    null
+  );
+}
+
+function buildPayload(){
+  const param = getParam();
+  const excelHtml = buildExcelHtml();
+  const pdfHtml = buildPdfHtml();
+  const safeCompanySlug = slugify(getCompany() || 'client');
+  const excelFilename = 'configuration-shift-studio-' + safeCompanySlug + '.xls';
+  const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
+
+  return {
+    organizationId: getSelectedPartnerClientId(),
+    submitted_at: new Date().toISOString(),
+    client_info: getClientInfo(),
+    entreprise: getCompany(),
+    titre_autodiag: getThemeTitle(),
+    titre_repondants: getCollaboratorTitle(),
+    date_lancement: param.date_lancement || param.dateLancement || '',
+    date_cloture: param.date_cloture || param.dateCloture || '',
+    pack: formatPack(getPackChoice()),
+    slug: getSlug(),
+    url_prevue: getUrl(),
+    passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+    passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
+    chapters: getChapters(),
+
+    // Champs historiques conservés pour le scénario Make existant.
+    excel_html: excelHtml,
+    pdf_html: pdfHtml,
+    excel_filename: excelFilename,
+    pdf_filename: pdfFilename,
+
+    // Champs ajoutés pour éviter l'erreur Make "Missing value of required parameter data".
+    // Le module Email de Make attend souvent un champ obligatoire nommé data pour la pièce jointe.
+    data: excelHtml,
+    filename: excelFilename,
+    file_name: excelFilename,
+    mime_type: 'application/vnd.ms-excel',
+
+    // Champs explicites, plus faciles à mapper dans Make si le scénario est ajusté.
+    excel: {
+      data: excelHtml,
+      filename: excelFilename,
+      mime_type: 'application/vnd.ms-excel'
+    },
+    recap: {
+      data: pdfHtml,
+      filename: pdfFilename,
+      mime_type: 'text/html'
+    },
+    attachments: [
+      {
+        data: excelHtml,
+        filename: excelFilename,
+        mime_type: 'application/vnd.ms-excel'
+      },
+      {
+        data: pdfHtml,
+        filename: pdfFilename,
+        mime_type: 'text/html'
+      }
+    ]
+  };
+}
+
+function refresh(){
+  const param = getParam();
+  const chapters = getChapters();
+  const qCount = chapters.reduce((a,c)=>a+(c.questions||[]).length,0);
+  const pCount = chapters.reduce((a,c)=>a+(c.profiles||[]).length,0);
+  const title = getThemeTitle();
+  const company = getCompany();
+  const launch = param.date_lancement || param.dateLancement || '';
+  const close = param.date_cloture || param.dateCloture || '';
+  const pack = formatPack(getPackChoice());
+  const url = getUrl();
+
+  document.getElementById('sum-company').textContent = company;
+  document.getElementById('sum-title').textContent = getCollaboratorTitle();
+  document.getElementById('sum-launch').textContent = formatDateFr(launch);
+  document.getElementById('sum-close').textContent = formatDateFr(close);
+  document.getElementById('sum-pack').textContent = pack;
+  document.getElementById('sum-url').textContent = url;
+
+  document.getElementById('sb-title').textContent = title;
+  document.getElementById('sb-chapters').textContent = chapters.length;
+  document.getElementById('sb-questions').textContent = qCount;
+  document.getElementById('sb-profils').textContent = pCount;
+  document.getElementById('sb-pack').textContent = pack;
+  document.getElementById('sb-url').textContent = url;
+
+  updateReady();
+}
+
+function updateReady(){
+  const boxes = Array.from(document.querySelectorAll('.check-row input'));
+  const checked = boxes.filter(b => b.checked).length;
+  const total = boxes.length;
+  const checksOk = checked === total;
+  const clientOk = validateClientInfo(false);
+  const ok = checksOk && clientOk;
+  document.getElementById('check-pill').textContent = checked + '/' + total;
+  document.getElementById('check-pill').className = 'pill ' + (checksOk ? 'pill-ok' : '');
+  document.getElementById('check-progress').style.width = Math.round((checked/total)*100) + '%';
+  document.getElementById('check-hint').textContent = ok ? 'Tout est validé : vous pouvez transmettre.' : 'Transmission en attente des informations obligatoires et de la validation finale.';
+  document.getElementById('btn-transmit').disabled = !ok;
+  document.getElementById('missing-alert').classList.toggle('hidden', ok);
+}
+
+
+function showTransmitModal(mode, title, text){
+  const modal = document.getElementById('transmit-modal');
+  const icon = document.getElementById('transmit-modal-icon');
+  const spinner = document.getElementById('transmit-modal-spinner');
+  const actions = document.getElementById('transmit-modal-actions');
+  document.getElementById('transmit-modal-title').textContent = title;
+  document.getElementById('transmit-modal-text').textContent = text;
+  icon.className = 'transmit-modal-icon ' + (mode === 'loading' ? 'loading' : mode === 'error' ? 'error' : '');
+  icon.textContent = mode === 'loading' ? '⏳' : mode === 'error' ? '!' : '✓';
+  spinner.style.display = mode === 'loading' ? 'block' : 'none';
+  actions.style.display = mode === 'loading' ? 'none' : 'flex';
+  modal.classList.add('on');
+  modal.setAttribute('aria-hidden','false');
+}
+function closeTransmitModal(){
+  const modal = document.getElementById('transmit-modal');
+  modal.classList.remove('on');
+  modal.setAttribute('aria-hidden','true');
+}
+
+
+async function sendClientRecapEmail(payload, token){
+  const email = payload?.client_info?.email || "";
+  if(!email){
+    console.warn("Email récap client non envoyé : email client manquant.");
+    return { ok:false, reason:"MISSING_CLIENT_EMAIL" };
+  }
+
+  try{
+    const response = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/transmissions/client-recap", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + token
+      },
+      body: JSON.stringify({
+        client_info: payload.client_info,
+        entreprise: payload.entreprise,
+        titre_autodiag: payload.titre_autodiag,
+        titre_repondants: payload.titre_repondants,
+        pdf_html: payload.pdf_html,
+        recap_html: payload.pdf_html,
+        subject: "Récapitulatif de votre configuration Shift Studio — " + (payload.titre_repondants || payload.titre_autodiag || "autodiagnostic")
+      })
+    });
+
+    const json = await response.json().catch(() => ({}));
+    if(!response.ok || json.ok === false){
+      console.warn("Email récap client non confirmé", response.status, json);
+      return { ok:false, reason:json.emailStatus || json.error || "SEND_FAILED" };
+    }
+
+    return { ok:true };
+  }catch(e){
+    console.warn("Erreur envoi email récap client", e);
+    return { ok:false, reason:"REQUEST_FAILED" };
+  }
+}
+
+
+function getCurrentProjectIdForSave(){
+  return state.currentAdId || state.project_id || state.projectId ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
+}
+async function transmit(){
+  if(!validateClientInfo(true)){
+    document.getElementById('missing-alert').classList.remove('hidden');
+    document.getElementById('missing-alert').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  const payload = buildPayload();
+  showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre fichier Excel interne et le récapitulatif PDF destiné au contact renseigné.');
+
+  state.clientInfo = getClientInfo();
+  state.transmission = state.transmission || {};
+  state.transmission.clientInfo = state.clientInfo;
+  state.transmission.status = 'ready_to_send';
+  state.transmission.submitted_at = payload.submitted_at;
+  state.transmission.payload = payload;
+
+  try {
+    if (typeof itsSave === 'function') itsSave(state);
+    else localStorage.setItem('its_state', JSON.stringify(state));
+  } catch(e) {}
+  const token =
+  localStorage.getItem("its_token") ||
+  localStorage.getItem("token") ||
+  localStorage.getItem("auth_token") ||
+  "";
+
+ try {
+  const projectResponse = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/projects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      projectId: getCurrentProjectIdForSave() || undefined,
+      title: getThemeTitle(),
+      organizationId: getSelectedPartnerClientId(),
+      status: 'sent',
+      currentStep: 'validation',
+      campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
+      campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
+      passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || undefined,
+      passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || undefined,
+      data: Object.assign({}, state, {
+        autodiagTitle: getThemeTitle(),
+        campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || '',
+        campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || '',
+        campaign_start_date: getParam().date_lancement || state.campaign_start_date || state.campaignStartDate || '',
+        campaign_end_date: getParam().date_cloture || state.campaign_end_date || state.campaignEndDate || '',
+        configTransmise: true,
+        config_transmise: true,
+        submitted: true,
+        step: 'validation',
+        current_step: 'validation',
+        status: 'sent',
+        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
+        payload
+      })
+    })
+  });
+
+  if(!projectResponse.ok){
+    const err = await projectResponse.json().catch(() => ({}));
+    console.error("Erreur API sauvegarde projet", projectResponse.status, err);
+  } else {
+    const saved = await projectResponse.json().catch(() => ({}));
+    const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
+    if(id){
+      state.currentAdId = id;
+      state.project_id = id;
+      localStorage.setItem('its_current_project_id', String(id));
+      localStorage.setItem('its_current_ad_id', String(id));
+      if (typeof itsSave === 'function') itsSave(state);
+    }
+  }
+} catch(e) {
+  console.error("Erreur sauvegarde projet", e);
+}
+  let sentOk = false;
+  const webhook = 'https://hook.eu1.make.com/cs7ho799lf6mzkfurl1dcp9ai2pn1led';
+  if (webhook) {
+    try {
+      const makeResponse = await fetch(webhook, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+
+      if(!makeResponse.ok){
+        const makeErrorText = await makeResponse.text().catch(() => '');
+        throw new Error('Make webhook error ' + makeResponse.status + ' ' + makeErrorText);
+      }
+
+      state.transmission.status = 'sent';
+      sentOk = true;
+      if (typeof itsSave === 'function') itsSave(state);
+    } catch(e) {
+      state.transmission.status = 'send_error';
+      sentOk = false;
+      if (typeof itsSave === 'function') itsSave(state);
+    }
+  }
+
+  const clientRecapResult = await sendClientRecapEmail(payload, token);
+  state.transmission.client_recap_email_sent = clientRecapResult.ok === true;
+  state.transmission.client_recap_email_status = clientRecapResult.reason || (clientRecapResult.ok ? 'SENT' : 'NOT_SENT');
+  if (typeof itsSave === 'function') itsSave(state);
+
+  if(sentOk){
+    state.status = 'sent';
+    state.configTransmise = true;
+    state.config_transmise = true;
+    state.submitted = true;
+    state.transmission.status = 'sent';
+    if (typeof itsSave === 'function') itsSave(state);
+    document.getElementById('success-alert').classList.remove('hidden');
+    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Un récapitulatif vient d’être envoyé à l’email renseigné. Pour tout changement, contactez contact@intotheshift.io.');
+    document.getElementById('btn-transmit').disabled = true;
+    document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
+  } else {
+    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement. Vérifiez votre email et transférez nous le document si nécessaire.');
+    document.getElementById('btn-transmit').disabled = false;
+  }
+}
+
+function isAlreadyTransmitted(){
+  return state?.status === 'sent' ||
+    state?.configTransmise === true ||
+    state?.config_transmise === true ||
+    state?.submitted === true ||
+    state?.transmission?.status === 'sent' ||
+    state?.transmission?.status === 'ready_to_send' ||
+    !!state?.transmission?.submitted_at;
+}
+
+function applyTransmittedView(){
+  if(!isAlreadyTransmitted()) return;
+  document.body.classList.add('is-transmitted');
+  const box = document.getElementById('already-transmitted-box');
+  if(box) box.classList.remove('hidden');
+  const title = document.querySelector('.page-title');
+  if(title) title.textContent = 'Configuration transmise à Into The Shift';
+  const sub = document.getElementById('default-page-sub');
+  if(sub) sub.textContent = 'Votre autodiagnostic a déjà été transmis. La page reste consultable, mais une nouvelle transmission n’est plus nécessaire.';
+  document.querySelectorAll('.form-input,.form-textarea').forEach(el => { el.readOnly = true; });
+  document.querySelectorAll('.check-row input').forEach(el => { el.checked = true; el.disabled = true; });
+  const missing = document.getElementById('missing-alert');
+  if(missing) missing.classList.add('hidden');
+  const success = document.getElementById('success-alert');
+  if(success) success.classList.remove('hidden');
+  const btn = document.getElementById('btn-transmit');
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = 'Configuration déjà transmise ✓';
+  }
+}
+
+restoreClientInfo();
+refresh();
+applyTransmittedView();
+</script>
+</body>
+</html>

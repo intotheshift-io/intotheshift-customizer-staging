@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Création — Into The Shift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
+
+/* ── SHELL ─────────────────────────────────────── */
+.shell{font-family:'Asap',sans-serif;background:#fff;min-height:100vh}
+
+/* ── TOPBAR ────────────────────────────────────── */
+.topbar{background:#18375d;display:flex;align-items:center;padding:0 24px;height:54px;gap:12px}
+.logo{display:flex;align-items:stretch}
+.logo-self{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.5px;align-self:center}
+.logo-tech{background:#eb6366;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 5px;margin-left:3px;border-radius:2px;min-height:30px}
+.logo-tech span{font-size:8px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:0.5px}
+.tb-sp{flex:1}
+
+/* Compte client masqué */
+.acct{display:none!important}
+
+.av{width:26px;height:26px;border-radius:50%;background:#eb6366;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.acct-n{font-size:13px;color:rgba(255,255,255,0.9)}
+
+/* ── SUBNAV ────────────────────────────────────── */
+.subnav{background:#fff;border-bottom:1px solid #e2e8f0;display:flex;padding:8px 18px;gap:4px;overflow-x:auto}
+.subnav::-webkit-scrollbar{display:none}
+.sn{padding:7px 14px;border-radius:8px;font-size:12px;color:#64748b;cursor:pointer;border:none;background:transparent;white-space:nowrap;font-weight:500;font-family:'Asap',sans-serif;transition:all 0.12s}
+.sn.on{background:#18375d;color:#fff;font-weight:600}
+.sn:not(.on):hover{background:#eef1f6;color:#18375d}
+
+/* ── BREADCRUMB ────────────────────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:6px;padding:11px 24px;border-bottom:1px solid #f0f4f8;background:#fafbfc;flex-wrap:wrap}
+.bc-link{font-size:12px;color:#007883;cursor:pointer;font-weight:500;font-family:'Asap',sans-serif}
+.bc-link:hover{text-decoration:underline}
+.bc-sep{font-size:12px;color:#c5ccd5}
+.bc-cur{font-size:12px;color:#64748b;font-family:'Asap',sans-serif}
+.bc-title{font-size:12px;color:#18375d;font-weight:700;font-family:'Asap',sans-serif}
+
+/* ── LAYOUT ────────────────────────────────────── */
+.editor-layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 120px)}
+
+/* ── SIDEBAR ───────────────────────────────────── */
+.sidebar{border-right:1px solid #e8edf4;padding:16px 12px;background:#fafbfc;display:flex;flex-direction:column;gap:5px}
+.sb-title{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;padding:0 4px;font-family:'Asap',sans-serif}
+.btn-add-chapter{width:100%;margin:6px 0 10px;background:#fff;color:#18375d;border:1px dashed #b8c4d4;border-radius:9px;padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;transition:all .15s}
+.btn-add-chapter:hover{background:#edf1f7;border-color:#18375d}
+.btn-add-chapter:disabled{opacity:.45;cursor:not-allowed;background:#f7f9fc;color:#94a3b8}
+
+.cni{border-radius:10px;border:1px solid transparent;font-family:'Asap',sans-serif;transition:all 0.15s;background:transparent;overflow:hidden}
+.cni.on{background:#fff;border-color:#d8e0ea;box-shadow:0 2px 8px rgba(24,55,93,0.08)}
+.cni-head{padding:10px 11px 8px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.cni:not(.on) .cni-head:hover{background:#eef1f6;border-radius:9px 9px 0 0}
+.cni-lbl{font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em}
+.cni-name{font-size:13px;font-weight:600;color:#18375d;line-height:1.3}
+.cni-meta{display:flex;align-items:center;gap:5px;margin-top:3px}
+.cni-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cni-qcount{font-size:11px;color:#64748b;font-family:'Asap',sans-serif}
+
+/* Boutons Questions / Profils */
+.cni-tabs{display:flex;gap:5px;padding:0 11px 10px;margin-top:2px}
+.cni-tab{flex:1;padding:5px 8px;border-radius:20px;font-size:11px;font-weight:600;font-family:'Asap',sans-serif;text-align:center;cursor:pointer;border:1px solid #d8e0ea;background:#fff;color:#64748b;transition:all 0.15s}
+.cni-tab.on{background:#18375d;color:#fff;border-color:#18375d}
+.cni-tab:not(.on):hover{background:#eef1f6;border-color:#b8c4d4;color:#18375d}
+.cni-tab.disabled{opacity:.42;cursor:not-allowed;background:#f7f9fc;color:#94a3b8;border-style:dashed}
+.cni-tab.disabled:hover{background:#f7f9fc;color:#94a3b8;border-color:#d8e0ea}
+
+.sb-bot{margin-top:auto;padding-top:14px;border-top:1px solid #e8edf4;display:flex;flex-direction:column;gap:6px}
+.sb-total{font-size:11px;color:#94a3b8;font-family:'Asap',sans-serif;text-align:center;padding:0 4px}
+.sb-total strong{color:#18375d}
+.btn-save{width:100%;background:#18375d;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;transition:all 0.15s}
+.btn-save:hover:not(:disabled){background:#122a47}
+.btn-save:disabled{background:#c5ccd5;cursor:not-allowed;opacity:0.7}
+.btn-save-hint{font-size:10px;color:#eb6366;font-family:'Asap',sans-serif;text-align:center;padding:0 4px;line-height:1.4;display:none}
+.btn-save-hint.visible{display:block}
+
+/* ── MAIN ──────────────────────────────────────── */
+.main-editor{padding:22px 28px;overflow-y:auto;background:#fff}
+
+/* En-tête chapitre */
+.chap-head{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f0f4f8;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.chap-info{flex:1;min-width:0}
+.chap-badge{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;font-family:'Asap',sans-serif;margin-bottom:4px}
+.chap-name-inp{font-size:17px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;border:none;outline:none;border-bottom:2px solid transparent;background:transparent;width:100%;transition:border-color 0.15s;padding-bottom:1px}
+.chap-name-inp:focus{border-bottom-color:#18375d}
+.chap-desc-inp{font-size:12px;color:#64748b;font-family:'Asap',sans-serif;border:none;outline:none;border-bottom:1px solid transparent;background:transparent;width:100%;margin-top:5px;transition:border-color 0.15s}
+.chap-desc-inp:focus{border-bottom-color:#d8e0ea}
+.chap-actions{display:flex;gap:7px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.btn-regen-all{background:linear-gradient(90deg,#18375d,#007883);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-regen-all:hover{opacity:0.88}
+.btn-pioche{background:#fff;color:#007883;border:1px solid #b8dfe0;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-pioche:hover{background:#e5f4f5}
+.btn-add-manual{background:#fff;color:#18375d;border:1px solid #c5cfdc;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-add-manual:hover{background:#edf1f7}
+.btn-add-ai-one{background:#fff;color:#18375d;border:1.5px solid #18375d;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:all 0.15s}
+.btn-add-ai-one:hover:not(:disabled){background:linear-gradient(90deg,#18375d,#007883);color:#fff;border-color:transparent}
+.btn-add-ai-one:disabled{opacity:0.38;cursor:not-allowed}
+
+/* Compteur questions */
+.q-counter{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.qc-text{font-size:12px;color:#64748b;font-family:'Asap',sans-serif}
+.qc-text strong{color:#18375d}
+.qc-bar{height:5px;background:#edf1f7;border-radius:3px;overflow:hidden;width:90px}
+.qc-fill{height:100%;border-radius:3px;background:#007883;transition:width 0.3s}
+
+/* Info Likert */
+.likert-info{background:#f0f8ff;border:1px solid #b8dfe0;border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px}
+.likert-info-ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.likert-info-body{font-size:11px;color:#18375d;font-family:'Asap',sans-serif;line-height:1.5}
+.likert-info-body strong{font-weight:700}
+.likert-info-toggle{font-size:11px;color:#007883;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:auto;flex-shrink:0}
+
+/* Questions list */
+.q-list{display:flex;flex-direction:column;gap:8px}
+
+/* Question card */
+.q-card{border:1px solid #d8e0ea;border-radius:12px;overflow:hidden;background:#fff;transition:border-color 0.12s}
+.q-card:hover{border-color:#b8c4d4}
+.q-card.open{border-color:#18375d}
+.q-header{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;cursor:pointer;user-select:none}
+.q-num{width:24px;height:24px;border-radius:50%;background:#edf1f7;color:#18375d;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Asap',sans-serif;margin-top:1px;transition:all 0.15s}
+.q-card.open .q-num{background:#18375d;color:#fff}
+.q-main{flex:1;min-width:0}
+.q-text{font-size:13px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif;line-height:1.4;margin-bottom:7px}
+.editable-q{outline:none;border-radius:6px;padding:2px 4px;margin-left:-4px;min-height:18px;cursor:text}
+.editable-q:focus{background:#edf1f7;box-shadow:0 0 0 1px #d8e0ea inset}
+.q-tags-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+
+/* Tags de provenance */
+.tag-prov{display:inline-flex;align-items:center;gap:4px;background:#f0edff;border:1px solid #c4b5fd;border-radius:20px;padding:2px 8px;font-size:10px;font-weight:700;color:#6d28d9;font-family:'Asap',sans-serif;white-space:nowrap;cursor:default}
+.tag-prov.expert{background:#fef3c7;border-color:#fcd34d;color:#92400e}
+.tag-prov.client{background:#f0fdf4;border-color:#86efac;color:#166534}
+.tag-prov.help{background:#eef6ff;border-color:#b7d4f3;color:#18375d}
+.tag-prov.review{background:#fff7e8;border-color:#ffc866;color:#8a5a00}
+
+/* Tags de contenu */
+.tag-pill{display:inline-flex;align-items:center;gap:3px;background:#edf1f7;border:1px solid #c5cfdc;border-radius:20px;padding:2px 8px;font-size:10px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif}
+.tag-pill.ai-sug{background:#e5f4f5;border-color:#b8dfe0;color:#007883}
+.tag-x{cursor:pointer;opacity:0.45;margin-left:1px;font-size:12px;line-height:1}
+.tag-x:hover{opacity:1;color:#eb6366}
+.tag-add{display:inline-flex;align-items:center;gap:3px;background:transparent;border:1px dashed #c5cfdc;border-radius:20px;padding:2px 8px;font-size:10px;font-weight:600;color:#94a3b8;font-family:'Asap',sans-serif;cursor:pointer;transition:all 0.12s}
+.tag-add:hover{border-color:#007883;color:#007883;background:#e5f4f5}
+
+/* Actions droite */
+.q-right{display:flex;align-items:center;gap:0;flex-shrink:0;margin-top:1px}
+.q-chevron-btn{background:none;border:none;cursor:pointer;color:#c5ccd5;font-size:14px;padding:4px 6px;transition:all 0.15s;line-height:1}
+.q-chevron-btn:hover{color:#18375d}
+.q-card.open .q-chevron-btn{color:#18375d;transform:rotate(180deg)}
+.q-vsep{width:1px;height:22px;background:#e8edf4;margin:0 4px}
+.qa-btn{width:30px;height:30px;border-radius:8px;border:1px solid #e8edf4;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.12s;flex-shrink:0}
+.qa-btn:hover{background:#f7f9fc;border-color:#c5cfdc}
+.qa-btn.del:hover{background:#fceaea;border-color:#f5c0c1}
+.qa-btn.regen-q:hover{background:#e5f4f5;border-color:#b8dfe0}
+
+/* Corps question */
+.q-body{display:none;padding:10px 14px 14px 48px;border-top:1px solid #f0f4f8}
+.q-card.open .q-body{display:block}
+.type-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'Asap',sans-serif;margin-bottom:10px;display:inline-block}
+.tb-likert{background:#e5f4f5;color:#007883}
+.tb-choix{background:#edf1f7;color:#18375d}
+.score-note{font-size:11px;color:#94a3b8;font-family:'Asap',sans-serif;font-style:italic;margin-bottom:8px}
+.likert-list{display:flex;flex-direction:column;gap:6px}
+.la-row{display:flex;align-items:center;gap:8px}
+.la-bar{width:3px;height:18px;border-radius:2px;background:#e2e8f0;flex-shrink:0}
+.la-inp{flex:1;font-size:12px;font-family:'Asap',sans-serif;border:none;outline:none;background:transparent;border-bottom:1px solid transparent;transition:border-color 0.15s}
+.la-inp:focus{border-bottom-color:#d8e0ea}
+.la-score-info{font-size:10px;color:#94a3b8;font-family:'Asap',sans-serif;flex-shrink:0;min-width:55px;text-align:right}
+.mc-list{display:flex;flex-direction:column;gap:6px}
+.mc-row{display:flex;align-items:center;gap:8px;background:#fafbfc;border:1px solid #e8edf4;border-radius:8px;padding:8px 12px;transition:border-color 0.12s}
+.mc-row:hover{border-color:#c5cfdc}
+.mc-dot{width:7px;height:7px;border-radius:50%;background:#c5ccd5;flex-shrink:0}
+.mc-inp{flex:1;font-size:12px;font-family:'Asap',sans-serif;border:none;outline:none;background:transparent}
+.score-pill{display:flex;align-items:center;gap:4px;background:#edf1f7;border:1px solid #c5cfdc;border-radius:20px;padding:4px 10px;cursor:pointer;transition:all 0.15s;flex-shrink:0}
+.score-pill:hover{background:#dde3ed}
+.score-pill.editing{background:#18375d;border-color:#18375d}
+.sp-lbl{font-size:9px;font-weight:700;color:#94a3b8;font-family:'Asap',sans-serif;text-transform:uppercase}
+.sp-lbl.e{color:rgba(255,255,255,0.6)}
+.sp-val{font-size:12px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;min-width:22px;text-align:center}
+.sp-val.e{color:#fff}
+
+/* ── VUE PROFILS ───────────────────────────────── */
+.profils-view{display:none}
+.profils-view.on{display:block}
+
+/* Seuils */
+.seuils-card{background:#fafbfc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;margin-bottom:20px}
+.seuils-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.seuils-title{font-size:13px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:7px}
+.seuils-hint{font-size:11px;color:#94a3b8;font-family:'Asap',sans-serif;font-style:italic}
+.seuils-row{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.seuil-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #d8e0ea;border-radius:10px;padding:10px 16px;flex:1;min-width:180px}
+.seuil-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.seuil-label{font-size:12px;font-weight:600;color:#475569;font-family:'Asap',sans-serif;flex:1}
+.seuil-range{display:flex;align-items:center;gap:6px}
+.seuil-inp{width:52px;padding:5px 8px;border:1px solid #d8e0ea;border-radius:7px;font-size:13px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;text-align:center;outline:none;transition:border-color 0.15s}
+.seuil-inp:focus{border-color:#18375d}
+.seuil-sep{font-size:12px;color:#94a3b8;font-family:'Asap',sans-serif}
+
+/* Profil cards */
+.profils-grid{display:flex;flex-direction:column;gap:16px}
+.profil-card{border-radius:12px;overflow:hidden;border:1px solid #e2e8f0}
+.profil-header{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.profil-level{display:flex;align-items:center;gap:9px}
+.profil-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.profil-level-name{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-family:'Asap',sans-serif}
+.profil-score-range{font-size:12px;font-weight:600;font-family:'Asap',sans-serif;opacity:0.7}
+.btn-ai-profil{display:flex;align-items:center;gap:5px;border:none;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;transition:all 0.12s}
+.profil-body{padding:18px;background:#fff;display:flex;flex-direction:column;gap:14px}
+.pfield label{display:block;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;font-family:'Asap',sans-serif}
+.pfield input{width:100%;padding:9px 12px;border:1px solid #d8e0ea;border-radius:8px;font-size:13px;color:#18375d;font-family:'Asap',sans-serif;outline:none;transition:border-color 0.15s}
+.pfield input:focus{border-color:#18375d}
+.pfield input::placeholder{color:#c5ccd5;font-weight:400}
+.pfield input.short{font-weight:400;color:#475569}
+
+/* Rich text editor */
+.rte-wrap{border:1px solid #d8e0ea;border-radius:8px;overflow:hidden;transition:border-color 0.15s}
+.rte-wrap:focus-within{border-color:#18375d}
+.rte-toolbar{display:flex;gap:3px;padding:6px 8px;border-bottom:1px solid #f0f4f8;background:#fafbfc;flex-wrap:wrap;align-items:center}
+.rte-btn{width:28px;height:28px;border:1px solid transparent;border-radius:6px;background:transparent;cursor:pointer;font-size:12px;font-weight:700;color:#475569;display:flex;align-items:center;justify-content:center;font-family:'Asap',sans-serif;transition:all 0.12s}
+.rte-btn:hover{background:#edf1f7;border-color:#d8e0ea}
+.rte-sep{width:1px;height:20px;background:#e2e8f0;margin:0 3px}
+.rte-area{min-height:80px;padding:11px 13px;font-size:13px;color:#475569;font-family:'Asap',sans-serif;line-height:1.6;outline:none}
+.rte-area:empty:before{content:attr(data-placeholder);color:#c5ccd5;pointer-events:none}
+
+/* Mots clés profil */
+.mkw-wrap{display:flex;flex-wrap:wrap;gap:5px;align-items:center;padding:7px 10px;border:1px solid #d8e0ea;border-radius:8px;min-height:38px;background:#fff;cursor:text;transition:border-color 0.15s}
+.mkw-wrap:focus-within{border-color:#18375d}
+.mkw{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:'Asap',sans-serif;border:1px solid}
+.mkw-x{cursor:pointer;opacity:0.45;font-size:12px;margin-left:1px}
+.mkw-x:hover{opacity:1}
+.mkw-inp{border:none;outline:none;font-size:12px;font-family:'Asap',sans-serif;color:#18375d;background:transparent;min-width:80px;flex:1}
+.mkw-inp::placeholder{color:#c5ccd5}
+
+/* Médias */
+.media-row{display:flex;gap:10px}
+.media-slot{flex:1;border:1.5px dashed #d8e0ea;border-radius:8px;padding:14px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:all 0.12s;background:#fafbfc;text-align:center}
+.media-slot:hover{border-color:#007883;background:#e5f4f5}
+.media-ico{font-size:22px}
+.media-lbl{font-size:11px;font-weight:600;color:#94a3b8;font-family:'Asap',sans-serif}
+.media-hint{font-size:10px;color:#c5ccd5;font-family:'Asap',sans-serif}
+
+/* Panel latéral */
+.overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,30,55,0.35);z-index:40;display:none}
+.overlay.on{display:block}
+.panel-right{position:fixed;top:0;right:-560px;width:520px;max-width:92vw;height:100%;background:#fff;border-left:1px solid #d8e0ea;z-index:50;transition:right 0.25s ease;display:flex;flex-direction:column}
+.panel-right.on{right:0}
+.panel-head{padding:15px 18px;border-bottom:1px solid #e8edf4;display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-size:14px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif}
+.panel-close{width:28px;height:28px;border-radius:7px;border:1px solid #e8edf4;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#64748b}
+.panel-close:hover{background:#f7f9fc}
+.panel-context{padding:10px 16px;background:#fafbfc;border-bottom:1px solid #f0f4f8;font-family:'Asap',sans-serif}
+.panel-context-title{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.panel-context-body{font-size:12px;color:#18375d;line-height:1.4}
+.panel-search{padding:10px 16px;border-bottom:1px solid #f0f4f8}
+.search-inp{width:100%;padding:8px 12px;border:1px solid #d8e0ea;border-radius:8px;font-size:13px;font-family:'Asap',sans-serif;outline:none;color:#18375d}
+.search-inp:focus{border-color:#007883}
+.panel-tags{padding:8px 16px 10px;border-bottom:1px solid #f0f4f8;flex-shrink:0;background:#fff}
+.panel-tags-lbl{font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px;font-family:'Asap',sans-serif;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tags-scroll-hint{font-weight:600;text-transform:none;letter-spacing:0;color:#64748b;background:#edf1f7;border:1px solid #d8e0ea;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.panel-tags-scroll{max-height:78px;overflow-y:auto;padding-right:5px;scrollbar-width:thin;scrollbar-color:#c5cfdc #f4f6f9}
+.panel-tags-scroll::-webkit-scrollbar{width:7px}
+.panel-tags-scroll::-webkit-scrollbar-track{background:#f4f6f9;border-radius:999px}
+.panel-tags-scroll::-webkit-scrollbar-thumb{background:#c5cfdc;border-radius:999px}
+.panel-tags-wrap{display:flex;flex-wrap:wrap;gap:5px;align-items:flex-start}
+.filter-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;border:1px solid #d8e0ea;background:#fff;color:#64748b;cursor:pointer;font-family:'Asap',sans-serif;transition:all 0.12s}
+.filter-tag.on{background:#18375d;color:#fff;border-color:#18375d}
+.filter-tag:hover:not(.on){background:#edf1f7}
+.panel-list{flex:1;min-height:220px;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:6px;background:#fff}
+.panel-q{background:#fafbfc;border:1px solid #e8edf4;border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;transition:border-color 0.12s}
+.panel-q:hover{border-color:#b8c4d4}
+.panel-q-text{font-size:12px;color:#18375d;font-family:'Asap',sans-serif;font-weight:500;line-height:1.4;margin-bottom:4px}
+.panel-q-meta{display:flex;flex-wrap:wrap;gap:4px}
+.btn-add-from-base{width:26px;height:26px;border-radius:50%;background:#18375d;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0;margin-top:2px;transition:background 0.12s}
+.btn-add-from-base:hover{background:#007883}
+
+/* Modales */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,30,55,0.45);z-index:60;display:none;align-items:center;justify-content:center}
+.modal-overlay.on{display:flex}
+.modal{background:#fff;border-radius:14px;padding:26px;max-width:380px;width:90%;border:1px solid #d8e0ea;box-shadow:0 12px 32px rgba(24,55,93,0.15)}
+.modal h3{font-size:15px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;margin-bottom:8px}
+.modal p{font-size:13px;color:#64748b;font-family:'Asap',sans-serif;line-height:1.6;margin-bottom:18px}
+.modal-acts{display:flex;gap:8px;justify-content:flex-end}
+.btn-cancel{padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;font-family:'Asap',sans-serif;cursor:pointer;border:1px solid #d8e0ea;background:#fff;color:#64748b}
+.btn-cancel:hover{background:#f7f9fc}
+.btn-confirm{padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;font-family:'Asap',sans-serif;cursor:pointer;border:none;background:#eb6366;color:#fff}
+.btn-confirm:hover{background:#d4474a}
+
+.empty-q{text-align:center;padding:40px;color:#94a3b8;font-size:13px;font-family:'Asap',sans-serif;border:1.5px dashed #e2e8f0;border-radius:10px}
+
+/* ── ÉCRAN DE CADRAGE MODE VIERGE ───────────────── */
+.blank-setup-wrap{max-width:920px;margin:0 auto;padding:12px 0 40px}
+.blank-setup-hero{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-radius:16px;padding:28px 30px;color:#fff;margin-bottom:18px}
+.blank-setup-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.72;margin-bottom:8px;font-family:'Asap',sans-serif}
+.blank-setup-title{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:8px;font-family:'Asap',sans-serif}
+.blank-setup-text{font-size:13px;line-height:1.6;opacity:.84;max-width:760px;font-family:'Asap',sans-serif}
+.blank-setup-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:22px 24px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
+.blank-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.blank-field{display:flex;flex-direction:column;gap:6px}
+.blank-field.full{grid-column:1 / -1}
+.blank-field label{font-size:11px;font-weight:800;color:#18375d;text-transform:uppercase;letter-spacing:.05em;font-family:'Asap',sans-serif}
+.blank-field input,.blank-field textarea,.blank-field select{border:1px solid #d8e0ea;border-radius:9px;padding:10px 12px;font-size:13px;color:#18375d;font-family:'Asap',sans-serif;outline:none;background:#fff}
+.blank-field textarea{min-height:86px;resize:vertical;line-height:1.5}
+.blank-field input:focus,.blank-field textarea:focus,.blank-field select:focus{border-color:#007883;box-shadow:0 0 0 3px rgba(0,120,131,.08)}
+.blank-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px;flex-wrap:wrap}
+.blank-help{font-size:12px;color:#64748b;line-height:1.5;font-family:'Asap',sans-serif;max-width:560px}
+.blank-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#8a5a00;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.4;margin-top:14px;font-family:'Asap',sans-serif}
+.blank-error.on{display:block}
+@media(max-width:760px){.blank-form-grid{grid-template-columns:1fr}.blank-setup-hero{padding:22px}.blank-actions{align-items:flex-start;flex-direction:column}.blank-actions .btn-save{width:auto}}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+
+/* ── Correctifs responsive iPhone / mobile ───────────────── */
+@media (max-width: 760px){
+  body{overflow-x:hidden;}
+  .topbar{height:auto;min-height:54px;padding:10px 14px;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:80;}
+  .logo-img{height:26px;max-width:150px;object-fit:contain;}
+  .main-nav{order:3;width:100%;margin-left:0;overflow-x:auto;max-width:100%;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
+  .main-nav a{white-space:nowrap;font-size:12px;padding:7px 9px;}
+  .acct{padding:4px 8px 4px 4px;}
+  .acct-n{display:none;}
+  .subnav{padding:8px 12px;-webkit-overflow-scrolling:touch;}
+  .breadcrumb{padding:9px 14px;}
+  .stepper-wrap{padding:12px 14px;-webkit-overflow-scrolling:touch;}
+  .stepper{min-width:520px;}
+  .step-label{font-size:11px;}
+  .page-wrap{padding:18px 14px 46px;max-width:100%;}
+  .page-title{font-size:19px;line-height:1.2;}
+  .page-sub{font-size:12px;margin-bottom:16px;}
+  .block,.card{padding:16px 14px;border-radius:12px;}
+  .bottom-actions{justify-content:stretch;}
+  .bottom-actions .btn,.bottom-actions button,.btn-back,.btn-continue{width:100%;justify-content:center;}
+  .sidebar{position:static;top:auto;}
+  .launch-url-box,.template-head,.chap-head,.q-header,.profile-head{align-items:flex-start;}
+  .btn-copy,.btn-test,.btn-secondary,.btn-ai,.btn-primary,.btn-add,.btn-danger{width:100%;justify-content:center;}
+  input,select,textarea,button{font-size:16px;}
+}
+@media (max-width: 520px){
+  .stepper{min-width:470px;}
+  .step-circle{width:24px;height:24px;font-size:11px;}
+  .step-connector{margin:0 7px;min-width:12px;}
+}
+
+
+/* ── Correctifs responsive spécifiques éditeur questions ─── */
+@media (max-width: 760px){
+  .editor-layout{display:block;min-height:auto;}
+  .sidebar-chapters{border-right:0;border-bottom:1px solid #d8e0ea;padding:12px;background:#f8fafc;}
+  .chapters-list{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;}
+  .chapter-nav-item{min-width:220px;flex:0 0 220px;}
+  .sb-bot{margin-top:10px;}
+  .main-editor{padding:16px 14px 42px;}
+  .chap-head{display:block;}
+  .chap-actions{justify-content:stretch;margin-top:12px;}
+  .chap-actions button{width:100%;justify-content:center;}
+  .q-counter{display:block;}
+  .qc-bar{width:100%;margin-top:8px;}
+  .q-header{gap:8px;padding:12px;}
+  .q-right{width:100%;margin-top:8px;justify-content:flex-end;}
+  .q-body{padding:12px;}
+  .mc-row,.la-row{align-items:flex-start;}
+  .score-pill{padding:5px 8px;}
+  .panel-right{width:100vw;max-width:100vw;right:-100vw;z-index:120;}
+  .panel-right.on{right:0;}
+  .panel-body{padding:12px;}
+  .panel-tags-scroll{max-height:116px;}
+  .seuil-wrap,.profiles-grid,.blank-actions{display:block;}
+  .seuil-item{min-width:100%;margin-bottom:8px;}
+}
+@media (max-width: 520px){
+  .chapter-nav-item{min-width:190px;flex-basis:190px;}
+  .q-header{flex-wrap:wrap;}
+  .q-main{flex:1 1 calc(100% - 36px);}
+  .mc-row{display:grid;grid-template-columns:10px 1fr;}
+  .mc-row .score-pill{grid-column:2;width:max-content;}
+}
+
+
+
+/* Correctif mobile réel pour la page questions */
+@media (max-width: 760px){
+  .editor-layout{display:block!important;min-height:auto!important;}
+  .editor-layout > .sidebar{position:static!important;border-right:0!important;border-bottom:1px solid #d8e0ea!important;padding:12px!important;background:#f8fafc!important;display:block!important;}
+  #chap-nav{display:flex!important;gap:8px!important;overflow-x:auto!important;padding-bottom:4px!important;-webkit-overflow-scrolling:touch!important;}
+  #chap-nav .cni{min-width:210px!important;flex:0 0 210px!important;background:#fff!important;border-color:#d8e0ea!important;}
+  .main-editor{padding:16px 14px 42px!important;}
+}
+
+</style>
+</head>
+
+<body>
+<div class="shell">
+
+<div id="header"></div>
+<script src="header.js"></script>
+<script src="catalogue-core.js?v=2"></script>
+<script src="catalogue-cyber.js?v=2"></script>
+<script src="catalogue-securite.js?v=2"></script>
+<script src="catalogue-qvt.js?v=2"></script>
+<script src="catalogue-transfo.js?v=2"></script>
+<script src="catalogue-rse.js?v=2"></script>
+<script src="catalogue-ethique.js?v=2"></script>
+<script src="catalogue-custom.js?v=2"></script>
+<script src="catalogue-init.js?v=2"></script>
+<script src="app.js"></script>
+
+<div class="breadcrumb">
+  <span class="bc-link" onclick="window.location.href='index.html'">Bibliothèque</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-title" id="bc-title" style="display:none"></span>
+  <span class="bc-sep" id="bc-title-sep" style="display:none">›</span>
+  <span class="bc-cur" id="bc-cur">Questions</span>
+</div>
+
+<div class="editor-layout">
+  <div class="sidebar">
+    <div class="sb-title">Chapitres</div>
+    <div id="chap-nav"></div>
+    <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
+    <div class="sb-bot">
+      <div class="sb-total" id="sb-total"></div>
+      <div class="btn-save-hint" id="btn-save-hint">4 questions min. par chapitre</div>
+      <button class="btn-save" id="btn-save" onclick="trySave()">Enregistrer le thème</button>
+    </div>
+  </div>
+
+  <div class="main-editor" id="main-editor"></div>
+</div>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+<div class="panel-right" id="panel-right">
+  <div class="panel-head">
+    <span class="panel-title">Piocher dans la bibliothèque</span>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-context">
+    <div class="panel-context-title">Pioche filtrée</div>
+    <div class="panel-context-body" id="panel-context-body">Questions adaptées au sujet et au chapitre sélectionné.</div>
+  </div>
+  <div class="panel-search">
+    <input class="search-inp" id="panel-search-inp" placeholder="Rechercher par mot-clé…" oninput="filterPanel(this.value)">
+  </div>
+  <div class="panel-tags">
+    <div class="panel-tags-lbl">
+      <span>Filtrer par tag</span>
+      <span class="tags-scroll-hint">↕ faites défiler les tags</span>
+    </div>
+    <div class="panel-tags-scroll">
+      <div id="panel-tags-wrap" class="panel-tags-wrap"></div>
+    </div>
+  </div>
+  <div class="panel-list" id="panel-list"></div>
+</div>
+
+<div class="modal-overlay" id="modal-save-blocked">
+  <div class="modal">
+    <div style="font-size:22px;margin-bottom:12px">🔒</div>
+    <h3>Impossible d'enregistrer le thème</h3>
+    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>4 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
+    <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
+    <div class="modal-acts">
+      <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-profiles-locked">
+  <div class="modal">
+    <div style="font-size:22px;margin-bottom:12px">🔒</div>
+    <h3>Complétez d’abord les questions</h3>
+    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>4 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
+    <div class="modal-acts">
+      <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-regen">
+  <div class="modal">
+    <div style="font-size:22px;margin-bottom:12px">⚠️</div>
+    <h3>Créer des brouillons avec l’aide IA ?</h3>
+    <p>Les <strong id="modal-q-count"></strong> questions actuelles seront remplacées par des brouillons à adapter, relire et valider avant diffusion.</p>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="closeRegenModal()">Annuler</button>
+      <button class="btn-confirm" onclick="confirmRegen()">Créer les brouillons</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const isBlankMode = urlParams.get('mode') === 'blank';
+
+function makeBlankDiagnosticState(){
+  return {
+    mode: 'blank',
+    source: 'blank',
+    selectedTheme: null,
+    selectedPack: null,
+    currentAdId: null,
+    title: '',
+    subject: '',
+    chapters: [
+      {
+        title: 'Chapitre 1',
+        description: 'Décrivez ici le sujet de ce chapitre',
+        questions: [],
+        profiles: [
+          { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
+          { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+          { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
+        ]
+      }
+    ],
+    resources: [],
+    campaign: {},
+    blankSetupDone: false
+  };
+}
+
+let state = (typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}');
+
+// Sécurité reprise projet : si une ancienne sauvegarde contient { state: {...} },
+// on récupère le vrai contenu de l'autodiagnostic avant de tester les chapitres.
+if (state && state.state && typeof state.state === 'object') {
+  const wrapper = state;
+  state = {
+    ...state.state,
+    current_step: wrapper.step || wrapper.current_step || state.state.current_step || state.state.step || 'questions',
+    step: wrapper.step || wrapper.current_step || state.state.step || state.state.current_step || 'questions',
+    status: wrapper.status || state.state.status || 'draft',
+    configTransmise: wrapper.configTransmise === true || state.state.configTransmise === true
+  };
+  if (typeof itsSave === 'function') itsSave(state);
+  else localStorage.setItem('its_state', JSON.stringify(state));
+}
+
+if (isBlankMode) {
+  const freshBlank = makeBlankDiagnosticState();
+  if (!state || state.mode !== 'blank') {
+    state = freshBlank;
+  } else if (!Array.isArray(state.chapters) || !state.chapters.length) {
+    state.chapters = freshBlank.chapters;
+    state.blankSetupDone = false;
+  }
+  state.mode = 'blank';
+  state.source = 'blank';
+  if (typeof itsSave === 'function') itsSave(state);
+  else localStorage.setItem('its_state', JSON.stringify(state));
+} else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
+  const hasProjectId = typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId();
+  if(hasProjectId && typeof itsBootstrapProjectFromUrl === 'function'){
+    document.body.innerHTML = '<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d">Chargement du projet…</div>';
+
+    const bootstrapTimeout = new Promise(resolve => {
+      setTimeout(() => resolve({timeout:true}), 6000);
+    });
+
+    Promise.race([
+      Promise.resolve(itsBootstrapProjectFromUrl()).then(() => ({timeout:false})).catch(err => ({timeout:false,error:err})),
+      bootstrapTimeout
+    ]).then(result => {
+      const loaded = typeof itsLoad === 'function' ? itsLoad() : {};
+      if(loaded && Array.isArray(loaded.chapters) && loaded.chapters.length){
+        window.location.reload();
+        return;
+      }
+
+      const projectId = hasProjectId;
+      document.body.innerHTML = `<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d;max-width:760px">
+        <h2 style="margin:0 0 10px;font-size:20px">Projet non chargé</h2>
+        <p style="font-size:14px;line-height:1.6;color:#64748b">La page n’a pas réussi à récupérer le contenu du projet${projectId ? ` <strong>${projectId}</strong>` : ''}. Retournez au dashboard puis ouvrez le projet avec le bouton “Reprendre” ou “Modifier le contenu”.</p>
+        <button onclick="window.location.href='admin.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour admin</button>
+      </div>`;
+    });
+    throw new Error('Chargement projet en cours');
+  }
+  window.location.href = 'index.html';
+}
+
+const PROV = {
+  AI: { key:'ai', label:'Base assistée par IA', ico:'🤖', cls:'' },
+  TBF: { key:'tbf', label:'Conçu par The Big Factory', ico:'⭐', cls:'expert' },
+  COMPANY: { key:'company', label:'Création entreprise', ico:'✍️', cls:'client' }
+};
+
+const profils_config = [
+  {couleur:'#ff847e', bgHead:'#fff0ef', borderHead:'#ffd6d4', textColor:'#c0392b', nom:'En développement'},
+  {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'En progression'},
+  {couleur:'#77cd8a', bgHead:'#f0fbf2', borderHead:'#b8e8c0', textColor:'#27823a', nom:'Ancré'}
+];
+
+function esc(v){
+  return String(v ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+}
+
+function stripHtml(v){
+  const d = document.createElement('div');
+  d.innerHTML = v || '';
+  return d.textContent || d.innerText || '';
+}
+
+function norm(v){
+  return String(v || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .trim();
+}
+
+function getCurrentSubject(){
+  return state.subject || state.theme || state.topic || state.title || state.name || state.selectedSubject || '';
+}
+
+function normalizeProv(tags){
+  const joined = (tags || []).join(' ').toLowerCase();
+  if (joined.includes('the big factory') || joined.includes('manager-engageant-tbf')) return 'TBF';
+  if (joined.includes('création entreprise') || joined.includes('creation entreprise')) return 'COMPANY';
+  return 'AI';
+}
+
+function complianceBadgesHTML(prov){
+  if (prov === 'COMPANY') return '';
+  return `<span class="tag-prov help">Aide à la rédaction</span><span class="tag-prov review">Relecture obligatoire</span>`;
+}
+
+function complianceTagsForState(prov){
+  if (prov === 'COMPANY') return [];
+  return ['Aide à la rédaction', 'Relecture obligatoire'];
+}
+
+function normalizeTags(tags){
+  return (tags || [])
+    .filter(Boolean)
+    .filter(t => {
+      const x = String(t).toLowerCase();
+      return !x.includes('base assistée')
+        && !x.includes('base assistee')
+        && !x.includes('conçu par')
+        && !x.includes('concu par')
+        && !x.includes('création entreprise')
+        && !x.includes('creation entreprise')
+        && !x.includes('contribution client')
+        && !x.includes('validation obligatoire')
+        && !x.includes('relecture obligatoire')
+        && !x.includes('aide à la rédaction')
+        && !x.includes('aide a la redaction');
+    })
+    .slice(0,10)
+    .map(t => ({t:String(t), ai:String(t).toLowerCase().includes('ia')}));
+}
+
+function uniqTags(tags){
+  const seen = new Set();
+  return (tags || [])
+    .map(t => String(t || '').trim())
+    .filter(Boolean)
+    .filter(t => {
+      const k = norm(t);
+      if(seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+}
+
+function inferContentTags(text, subject, chapter){
+  const hay = norm([text, subject, chapter].join(' '));
+  const tags = [];
+
+  if(hay.includes('cyber') || hay.includes('securite numerique') || hay.includes('risque numerique') || hay.includes('email') || hay.includes('sms') || hay.includes('mot de passe') || hay.includes('piece jointe')) {
+    tags.push('Cybersécurité');
+  }
+  if(hay.includes('email') || hay.includes('mail') || hay.includes('sms') || hay.includes('message')) tags.push('Message suspect');
+  if(hay.includes('lien') || hay.includes('url')) tags.push('Lien suspect');
+  if(hay.includes('mot de passe') || hay.includes('acces') || hay.includes('réinitialiser') || hay.includes('reinitialiser')) tags.push('Accès');
+  if(hay.includes('piece jointe') || hay.includes('document') || hay.includes('fichier')) tags.push('Document');
+  if(hay.includes('virement') || hay.includes('rib') || hay.includes('paiement')) tags.push('Fraude');
+  if(hay.includes('donnee') || hay.includes('confidentiel') || hay.includes('sensible') || hay.includes('comptabilite')) tags.push('Données sensibles');
+  if(hay.includes('signaler') || hay.includes('alerte') || hay.includes('doute')) tags.push('Signalement');
+  if(hay.includes('qvt') || hay.includes('rps') || hay.includes('charge de travail') || hay.includes('épuisement') || hay.includes('epuisement')) tags.push('QVT / RPS');
+  if(hay.includes('management') || hay.includes('manager') || hay.includes('équipe') || hay.includes('equipe')) tags.push('Management');
+  if(hay.includes('environnement') || hay.includes('sobriete') || hay.includes('empreinte')) tags.push('Environnement');
+
+  return tags;
+}
+
+function panelSearchHaystack(q){
+  return norm([
+    q.text,
+    q.subject,
+    q.adTitle,
+    q.chapter,
+    ...(q.tags || [])
+  ].join(' '));
+}
+
+function normalizeAnswers(q){
+  const answers = q.answers || [];
+  return answers.map((a, i) => ({
+    l: a.l ?? a.label ?? a.text ?? `Réponse ${String.fromCharCode(65+i)}`,
+    s: Number(a.s ?? a.score ?? i)
+  }));
+}
+
+function normalizeChaptersFromState(){
+  return state.chapters.map((c, i) => {
+    const profiles = c.profiles || c.profils || [];
+    return {
+      id: i + 1,
+      name: c.name || c.title || `Chapitre ${i+1}`,
+      desc: c.desc || c.description || '',
+      questions: (c.questions || []).map((q, qi) => ({
+        id: q.id || `q${i+1}_${qi+1}_${Date.now()}`,
+        type: q.type === 'likert' ? 'likert' : 'choix',
+        prov: q.prov || normalizeProv(q.tags),
+        text: q.text || q.question || 'Nouvelle mise en situation',
+        tags: Array.isArray(q.tags) && q.tags.length && typeof q.tags[0] === 'object'
+          ? q.tags
+          : normalizeTags(q.tags),
+        answers: normalizeAnswers(q)
+      })),
+      profils: [0,1,2].map(pi => {
+        const p = profiles[pi] || {};
+        return {
+          niveau: p.niveau || p.level || pi+1,
+          titre: p.titre || p.title || '',
+          phrase: p.phrase || p.summary || '',
+          description: p.description || '',
+          motscles: p.motscles || p.keywords || []
+        };
+      }),
+      seuils: [{min:0,max:0.66},{min:0.66,max:1.32},{min:1.32,max:2}]
+    };
+  });
+}
+
+function syncToState(){
+  state.chapters = chapters.map(c => ({
+    title: c.name,
+    description: c.desc,
+    questions: c.questions.map(q => ({
+      id: q.id,
+      type: q.type,
+      text: q.text,
+      tags: [
+        q.prov === 'TBF'
+          ? 'Conçu par The Big Factory'
+          : q.prov === 'COMPANY'
+            ? 'Création entreprise'
+            : 'Base assistée par IA',
+        ...complianceTagsForState(q.prov),
+        ...(q.tags || []).map(t => t.t)
+      ],
+      answers: q.answers.map(a => ({text:a.l, score:Number(a.s)}))
+    })),
+    profiles: c.profils.map((p, i) => ({
+      level: profils_config[i]?.nom || p.niveau || `Profil ${i+1}`,
+      title: p.titre,
+      summary: p.phrase,
+      description: p.description,
+      min: c.seuils[i]?.min ?? 0,
+      max: c.seuils[i]?.max ?? 2
+    }))
+  }));
+
+  if (typeof itsSave === 'function') itsSave(state);
+  else localStorage.setItem('its_state', JSON.stringify(state));
+}
+
+function saveState(){ syncToState(); }
+
+let chapters = normalizeChaptersFromState();
+let activeChap = 0;
+let activeTab = 'questions';
+let openCards = {};
+let activeFilterTag = '';
+let likertInfoOpen = false;
+
+const fallbackBibliotheque = [
+  {id:'b1',prov:'AI',subject:'',chapter:'',text:"Vous recevez une demande inhabituelle dans votre quotidien professionnel. Que faites-vous ?",tags:["Réflexe","Situation concrète"],added:false},
+  {id:'b2',prov:'AI',subject:'',chapter:'',text:"Une situation ambiguë apparaît et personne ne semble vouloir la traiter. Que faites-vous ?",tags:["Zone grise","Arbitrage"],added:false},
+  {id:'b3',prov:'AI',subject:'',chapter:'',text:"Vous devez choisir entre aller vite et vérifier un point important. Que privilégiez-vous ?",tags:["Priorisation","Vigilance"],added:false}
+];
+
+function getRawBibliotheque(){
+  const out = [];
+  const seen = new Set();
+
+  if (Array.isArray(window.ITS_CATALOGUE)) {
+    window.ITS_CATALOGUE.forEach(ad => {
+      const isTBF = ad.id === 'manager-engageant-tbf';
+
+      (ad.chapters || []).forEach(ch => {
+        (ch.questions || []).forEach(q => {
+          const key = norm(q.text || '') + '|' + norm(ch.title || '');
+          if (!norm(q.text || '') || seen.has(key)) return;
+          seen.add(key);
+
+          const contentTags = uniqTags([
+            ...normalizeTags(q.tags).map(t => t.t),
+            ...normalizeTags(ch.tags).map(t => t.t),
+            ...normalizeTags(ad.tags).map(t => t.t),
+            ...inferContentTags(q.text || '', ad.theme || ad.title || '', ch.title || '')
+          ]);
+
+          out.push({
+            id: q.id,
+            prov: isTBF ? 'TBF' : 'AI',
+            subject: ad.theme || '',
+            adTitle: ad.title || '',
+            chapter: ch.title || '',
+            text: q.text || '',
+            tags: contentTags,
+            answers: q.answers || [],
+            type: q.type || 'choix',
+            added: false
+          });
+        });
+      });
+    });
+
+    return out;
+  }
+
+  return fallbackBibliotheque;
+}
+
+function normalizeLibraryQuestion(q, i){
+  const rawTags = q.tags || q.keywords || [];
+  return {
+    id: q.id || `lib_${i}`,
+    prov: q.prov || normalizeProv(rawTags),
+    subject: q.subject || q.sujet || q.theme || q.thematique || q.category || '',
+    adTitle: q.adTitle || '',
+    chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
+    text: q.text || q.question || q.title || 'Question de bibliothèque',
+    tags: Array.isArray(rawTags) ? rawTags.map(String) : [],
+    answers: q.answers || q.reponses || null,
+    type: q.type || 'choix',
+    added: q.added || false
+  };
+}
+
+function bibliothequeQuestions(){
+  return getRawBibliotheque().map(normalizeLibraryQuestion);
+}
+
+const icoRegen = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6" stroke="#007883" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 .49-4.95L1 10" stroke="#007883" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const icoTrash = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><polyline points="3 6 5 6 21 6" stroke="#eb6366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6l-1 14H6L5 6" stroke="#eb6366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11v6M14 11v6" stroke="#eb6366" stroke-width="2" stroke-linecap="round"/><path d="M9 6V4h6v2" stroke="#eb6366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const icoStar = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>`;
+
+function questionHasValidScoring(q){
+  return q && Array.isArray(q.answers) && q.answers.length >= 3 && q.answers.every(a => {
+    const n = Number(a.s);
+    return !isNaN(n) && n >= 0 && n <= 2;
+  });
+}
+
+function chapterQuestionsReady(c){
+  return c && Array.isArray(c.questions) && c.questions.length >= 4 && c.questions.every(questionHasValidScoring);
+}
+
+function openProfilesLockedModal(){
+  document.getElementById('modal-profiles-locked')?.classList.add('on');
+}
+
+function closeProfilesLockedModal(){
+  document.getElementById('modal-profiles-locked')?.classList.remove('on');
+}
+
+function tryOpenProfiles(i){
+  activeChap = i;
+  if(!chapterQuestionsReady(chapters[i])){
+    activeTab = 'questions';
+    openCards = {};
+    renderNav();
+    renderMain();
+    updateSaveButton();
+    openProfilesLockedModal();
+    return;
+  }
+  applyAutoSeuils(chapters[i]);
+  setTab(i,'profils');
+}
+
+function getQuestionMaxScore(q){
+  const scores = (q.answers || []).map(a => Number(a.s)).filter(n => !isNaN(n));
+  return scores.length ? Math.max(...scores) : 2;
+}
+
+function getChapterMaxAverageScore(ch){
+  const validQuestions = (ch.questions || []).filter(questionHasValidScoring);
+  if (!validQuestions.length) return 2;
+  const totalMax = validQuestions.reduce((sum, q) => sum + getQuestionMaxScore(q), 0);
+  return totalMax / validQuestions.length;
+}
+
+function roundScore(n){
+  return Math.round(Number(n) * 100) / 100;
+}
+
+function suggestAutoSeuils(ch){
+  const max = getChapterMaxAverageScore(ch);
+  return [
+    {min:0, max:roundScore(max * 0.33)},
+    {min:roundScore(max * 0.33), max:roundScore(max * 0.66)},
+    {min:roundScore(max * 0.66), max:roundScore(max)}
+  ];
+}
+
+function applyAutoSeuils(ch){
+  if(!chapterQuestionsReady(ch)) return;
+  ch.seuils = suggestAutoSeuils(ch);
+  ch.seuils_auto = true;
+  saveState();
+}
+
+function refreshThresholdsAfterQuestionChange(){
+  const ch = chapters[activeChap];
+  if(chapterQuestionsReady(ch)) applyAutoSeuils(ch);
+}
+
+
+function needsBlankSetup(){
+  return state && state.mode === 'blank' && state.blankSetupDone !== true;
+}
+
+function makeBlankProfiles(){
+  return [
+    { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
+    { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+    { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
+  ];
+}
+
+function makeEmptyChapter(index){
+  const subject = getCurrentSubject();
+  return {
+    id: index + 1,
+    name: `Chapitre ${index + 1}`,
+    desc: subject ? `À préciser — ${subject}` : 'À préciser',
+    questions: [],
+    profils: [0,1,2].map(i => ({
+      niveau: i + 1,
+      titre: '',
+      phrase: '',
+      description: '',
+      motscles: []
+    })),
+    seuils: [{min:0,max:0.66},{min:0.66,max:1.32},{min:1.32,max:2}]
+  };
+}
+
+function addChapter(){
+  if(!Array.isArray(chapters)) chapters = [];
+  if(chapters.length >= 10){
+    alert('Vous pouvez créer jusqu’à 10 chapitres dans cette version.');
+    return;
+  }
+
+  const newIndex = chapters.length;
+  chapters.push(makeEmptyChapter(newIndex));
+  activeChap = newIndex;
+  activeTab = 'questions';
+  openCards = {};
+
+  state.chapterCount = chapters.length;
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+
+function renderBlankSetup(){
+  updateBreadcrumb('Cadrage de l’autodiag');
+  document.getElementById('chap-nav').innerHTML = '<div style="font-size:12px;color:#94a3b8;line-height:1.5;padding:6px 4px;font-family:Asap,sans-serif">Définissez d’abord le cadre de votre autodiag.</div>';
+  document.getElementById('sb-total').innerHTML = '<strong>0</strong> question';
+  const saveBtn = document.getElementById('btn-save');
+  const hint = document.getElementById('btn-save-hint');
+  saveBtn.disabled = true;
+  const addChapBtn = document.getElementById('btn-add-chapter');
+  if(addChapBtn) addChapBtn.disabled = true;
+  saveBtn.textContent = 'Cadrage requis';
+  hint.classList.add('visible');
+  hint.textContent = 'Complétez le cadrage pour créer les chapitres';
+
+  document.getElementById('main-editor').innerHTML = `
+    <div class="blank-setup-wrap">
+      <div class="blank-setup-hero">
+        <div class="blank-setup-kicker">Création de A à Z</div>
+        <div class="blank-setup-title">Définir le cadre avant de créer les questions</div>
+        <div class="blank-setup-text">Pour éviter de générer ou de piocher des situations hors sujet, commencez par préciser le thème, le public et l’objectif. Les chapitres seront ensuite créés vides, prêts à être remplis manuellement ou avec une aide contextualisée.</div>
+      </div>
+      <div class="blank-setup-card">
+        <div class="blank-form-grid">
+          <div class="blank-field full">
+            <label for="blank-title">Titre de l’autodiag</label>
+            <input id="blank-title" placeholder="Ex. Autodiag cybersécurité — réflexes du quotidien" value="${esc(state.title || '')}">
+          </div>
+          <div class="blank-field">
+            <label for="blank-subject">Sujet / thématique</label>
+            <input id="blank-subject" placeholder="Ex. Cybersécurité, QVT, management…" value="${esc(state.subject || '')}">
+          </div>
+          <div class="blank-field">
+            <label for="blank-audience">Public cible</label>
+            <input id="blank-audience" placeholder="Ex. Managers, collaborateurs, équipe RH…" value="${esc(state.audience || '')}">
+          </div>
+          <div class="blank-field full">
+            <label for="blank-objective">Objectif de l’autodiag</label>
+            <textarea id="blank-objective" placeholder="Ex. Identifier les réflexes actuels, sensibiliser aux situations à risque, préparer un plan d’action…">${esc(state.objective || '')}</textarea>
+          </div>
+          <div class="blank-field">
+            <label for="blank-count">Nombre de chapitres</label>
+            <select id="blank-count">
+              ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${Number(state.chapterCount || 4) === n ? 'selected' : ''}>${n} chapitre${n>1?'s':''}</option>`).join('')}
+            </select>
+          </div>
+          <div class="blank-field">
+            <label for="blank-chapters">Noms des chapitres</label>
+            <input id="blank-chapters" placeholder="Optionnel : séparez par des virgules" value="${esc(state.chapterNames || '')}">
+          </div>
+        </div>
+        <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, un sujet et un objectif.</div>
+        <div class="blank-actions">
+          <div class="blank-help">Après validation, vous arriverez dans l’éditeur avec des chapitres vides. Les boutons IA et bibliothèque seront alors contextualisés par votre sujet.</div>
+          <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Créer les chapitres</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function completeBlankSetup(){
+  const title = document.getElementById('blank-title').value.trim();
+  const subject = document.getElementById('blank-subject').value.trim();
+  const audience = document.getElementById('blank-audience').value.trim();
+  const objective = document.getElementById('blank-objective').value.trim();
+  const count = Number(document.getElementById('blank-count').value || 4);
+  const chapterNamesRaw = document.getElementById('blank-chapters').value.trim();
+  const err = document.getElementById('blank-error');
+
+  if(!title || !subject || !objective){
+    err.classList.add('on');
+    return;
+  }
+
+  const names = chapterNamesRaw
+    ? chapterNamesRaw.split(',').map(x => x.trim()).filter(Boolean)
+    : [];
+
+  state.title = title;
+  state.subject = subject;
+  state.theme = subject;
+  state.audience = audience;
+  state.objective = objective;
+  state.chapterCount = count;
+  state.chapterNames = chapterNamesRaw;
+  state.blankSetupDone = true;
+  state.chapters = Array.from({length: count}, (_, i) => ({
+    title: names[i] || `Chapitre ${i+1}`,
+    description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${subject}`,
+    questions: [],
+    profiles: makeBlankProfiles()
+  }));
+
+  chapters = normalizeChaptersFromState();
+  activeChap = 0;
+  activeTab = 'questions';
+  openCards = {};
+  syncToState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function renderNav() {
+  const addChapBtn = document.getElementById('btn-add-chapter');
+  if(addChapBtn){
+    addChapBtn.disabled = needsBlankSetup() || chapters.length >= 10;
+    addChapBtn.textContent = chapters.length >= 10 ? 'Maximum 10 chapitres' : '+ Ajouter un chapitre';
+  }
+
+  const nav = document.getElementById('chap-nav');
+  nav.innerHTML = '';
+
+  chapters.forEach((c, i) => {
+    const n = c.questions.length;
+    const nProfils = c.profils.filter(p => String(p.titre).trim() && String(p.phrase).trim() && stripHtml(p.description).trim()).length;
+    const dotColorQ = n >= 4 ? '#77cd8a' : n > 0 ? '#ffc744' : '#d8e0ea';
+    const dotColorP = nProfils === 3 ? '#77cd8a' : nProfils > 0 ? '#ffc744' : '#d8e0ea';
+
+    const div = document.createElement('div');
+    div.className = `cni ${i === activeChap ? 'on' : ''}`;
+    div.innerHTML = `
+      <div class="cni-head" onclick="selectChap(${i})">
+        <div class="cni-lbl">Chapitre ${i+1}</div>
+        <div class="cni-name">${esc(c.name)}</div>
+        <div class="cni-meta"><span class="cni-dot" style="background:${dotColorQ}"></span><span class="cni-qcount">${n}/10 questions</span></div>
+        <div class="cni-meta"><span class="cni-dot" style="background:${dotColorP}"></span><span class="cni-qcount">${nProfils}/3 profils</span></div>
+      </div>
+      <div class="cni-tabs">
+        <button class="cni-tab ${i === activeChap && activeTab === 'questions' ? 'on' : ''}" onclick="setTab(${i},'questions')">Questions</button>
+        <button class="cni-tab ${i === activeChap && activeTab === 'profils' ? 'on' : ''} ${chapterQuestionsReady(c) ? '' : 'disabled'}" onclick="tryOpenProfiles(${i})">Profils</button>
+      </div>`;
+    nav.appendChild(div);
+  });
+
+  const total = chapters.reduce((a, c) => a + c.questions.length, 0);
+  document.getElementById('sb-total').innerHTML = `<strong>${total}</strong> questions au total`;
+}
+
+function selectChap(i) {
+  activeChap = i;
+  openCards = {};
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function setTab(i, tab) {
+  if(tab === 'profils'){
+    if(!chapterQuestionsReady(chapters[i])){
+      tryOpenProfiles(i);
+      return;
+    }
+    applyAutoSeuils(chapters[i]);
+  }
+  activeChap = i;
+  activeTab = tab;
+  openCards = {};
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+
+function updateBreadcrumb(label){
+  const titleEl = document.getElementById('bc-title');
+  const sepEl = document.getElementById('bc-title-sep');
+  const curEl = document.getElementById('bc-cur');
+  const title = String(state.title || '').trim();
+  if(title){
+    titleEl.textContent = title;
+    titleEl.style.display = 'inline';
+    sepEl.style.display = 'inline';
+  } else {
+    titleEl.textContent = '';
+    titleEl.style.display = 'none';
+    sepEl.style.display = 'none';
+  }
+  curEl.textContent = label;
+}
+
+function renderMain() {
+  const ch = chapters[activeChap];
+  updateBreadcrumb(activeTab === 'questions' ? `Questions — ${ch.name}` : `Profils — ${ch.name}`);
+  if (activeTab === 'questions') renderQuestions(ch);
+  else renderProfils(ch);
+}
+
+function isBlankFlow(){
+  return state && (state.mode === 'blank' || state.source === 'blank');
+}
+
+function getKnownThemeLabels(){
+  const labels = [];
+  if (Array.isArray(window.ITS_THEMES)) {
+    window.ITS_THEMES.forEach(t => {
+      if(t.label) labels.push(t.label);
+      if(t.key) labels.push(t.key);
+    });
+  }
+  if (Array.isArray(window.ITS_CATALOGUE)) {
+    window.ITS_CATALOGUE.forEach(ad => {
+      if(ad.theme) labels.push(ad.theme);
+      if(ad.themeKey) labels.push(ad.themeKey);
+      if(ad.title) labels.push(ad.title);
+    });
+  }
+  labels.push('cybersécurité','cybersecurite','sécurité numérique','securite numerique','risques numériques','risques numeriques','sécurité informatique','securite informatique');
+  return [...new Set(labels.map(norm).filter(Boolean))];
+}
+
+function isKnownTheme(subject){
+  const s = norm(subject);
+  if(!s) return false;
+  return getKnownThemeLabels().some(t => s === t || s.includes(t) || t.includes(s));
+}
+
+function aiHelpAvailable(){
+  if(!isBlankFlow()) return true;
+  return isKnownTheme(getCurrentSubject());
+}
+
+function aiUnavailableMessage(){
+  return "L’aide à la rédaction est disponible uniquement quand le sujet correspond à une thématique reconnue du catalogue. Ajoutez vos questions manuellement ou choisissez une base existante.";
+}
+
+function aiActionLabel(){
+  return "Aide IA à la rédaction (brouillon)";
+}
+
+function aiActionText(){
+  return "L’IA propose un brouillon à partir du sujet et du chapitre. Il doit être adapté, relu et validé avant diffusion.";
+}
+
+function emptyActionCard(title, text, onclick, primary, disabled){
+  const bg = primary ? 'linear-gradient(135deg,#18375d 0%,#007883 100%)' : '#fff';
+  const color = primary ? '#fff' : '#18375d';
+  const sub = primary ? 'rgba(255,255,255,0.75)' : '#94a3b8';
+  const border = primary ? 'none' : '1px solid #d8e0ea';
+  const opacity = disabled ? '.45' : '1';
+  const cursor = disabled ? 'not-allowed' : 'pointer';
+  const click = disabled ? '' : `onclick="${onclick}"`;
+  return `<div ${click} style="background:${bg};border:${border};border-radius:14px;padding:${primary?'24px':'18px'} ${primary?'24px':'16px'};cursor:${cursor};opacity:${opacity}">
+    <div style="font-size:${primary?'15px':'13px'};font-weight:700;color:${color};font-family:Asap,sans-serif;margin-bottom:4px">${title}</div>
+    <div style="font-size:${primary?'12px':'11px'};color:${sub};font-family:Asap,sans-serif;line-height:1.4">${text}</div>
+  </div>`;
+}
+
+function renderQuestions(ch) {
+  const n = ch.questions.length;
+  const pct = Math.min(100, Math.round((n / 10) * 100));
+  const isEmpty = n === 0;
+
+  const header = `
+    <div class="chap-head">
+      <div class="chap-info">
+        <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input class="chap-name-inp" value="${esc(ch.name)}" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <span title="Cliquez sur le titre pour le modifier" style="color:#c5ccd5;font-size:13px;cursor:default;flex-shrink:0">✏️</span>
+        </div>
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+      </div>
+      ${!isEmpty ? `<div class="chap-actions">
+        <button class="btn-regen-all" onclick="askRegen()" ${!aiHelpAvailable() ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button>
+        <button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque</button>
+        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement</button>
+      </div>` : ''}
+    </div>`;
+
+  const aiAllowed = aiHelpAvailable();
+  const emptyState = `
+    <div style="padding:12px 0 0">
+      ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, false)}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+        ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, false)}
+        ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, !aiAllowed)}
+      </div>
+    </div>`;
+
+  const qHTML = isEmpty ? emptyState : ch.questions.map((q, qi) => renderCard(q, qi)).join('');
+
+  document.getElementById('main-editor').innerHTML = `
+    ${header}
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 4, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    <div class="likert-info">
+      <span class="likert-info-ico">ℹ️</span>
+      <div class="likert-info-body">
+        <strong>Conversion échelle → score</strong> — Les questions Likert (1→5) sont normalisées : 1=0 · 2=0,5 · 3=1 · 4=1,5 · 5=2.
+        <span id="likert-extra" style="display:none"> Le score du chapitre est une moyenne des réponses, ce qui permet de comparer les profils même si le nombre de questions varie. Les seuils sont proposés automatiquement sur une échelle 0 → 2.</span>
+      </div>
+      <span class="likert-info-toggle" onclick="toggleLikertInfo()">Voir plus</span>
+    </div>` : ''}
+    <div class="q-list" id="q-list">${qHTML}</div>`;
+}
+
+function toggleLikertInfo() {
+  likertInfoOpen = !likertInfoOpen;
+  const el = document.getElementById('likert-extra');
+  const btn = document.querySelector('.likert-info-toggle');
+  if(el) el.style.display = likertInfoOpen ? 'inline' : 'none';
+  if(btn) btn.textContent = likertInfoOpen ? 'Réduire' : 'Voir plus';
+}
+
+function updateQuestionText(qid, value) {
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if (q) {
+    q.text = value;
+    saveState();
+  }
+}
+
+function renderCard(q, qi) {
+  const open = openCards[q.id];
+  const p = PROV[q.prov] || PROV.AI;
+  const provHTML = `<span class="tag-prov ${p.cls}">${p.ico} ${p.label}</span>` + complianceBadgesHTML(q.prov);
+  const tagsHTML = (q.tags || []).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span></span>`).join('');
+  const addBtn = (q.tags || []).length < 6 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
+  let bodyHTML = '';
+
+  if (open) {
+    const isLikert = q.type === 'likert';
+    const answersHTML = isLikert
+      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
+      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
+
+    bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive</div>${answersHTML}</div>`;
+  }
+
+  return `<div class="q-card ${open ? 'open' : ''}" id="qc-${q.id}">
+    <div class="q-header" onclick="toggleCard('${q.id}')">
+      <div class="q-num">${qi + 1}</div>
+      <div class="q-main">
+        <div class="q-text editable-q" contenteditable="true" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+        <div class="q-tags-row">${provHTML}${tagsHTML}${addBtn}</div>
+      </div>
+      <div class="q-right" onclick="event.stopPropagation()">
+        <button class="q-chevron-btn" onclick="toggleCard('${q.id}')">▾</button>
+        <div class="q-vsep"></div>
+        <button class="qa-btn regen-q" title="Créer un nouveau brouillon avec l’aide rédactionnelle" onclick="regenOne('${q.id}',this)">${icoRegen}</button>
+        <button class="qa-btn del" title="Supprimer" onclick="deleteQ('${q.id}')">${icoTrash}</button>
+      </div>
+    </div>
+    ${bodyHTML}
+  </div>`;
+}
+
+function updateAnswer(qid, ai, field, value){
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if(q && q.answers[ai]){
+    q.answers[ai][field] = field === 's' ? Number(value) : value;
+    refreshThresholdsAfterQuestionChange();
+    saveState();
+  }
+}
+
+function addAnswer(qid){
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if(q){
+    q.answers.push({l:'Nouvelle réponse',s:1});
+    refreshThresholdsAfterQuestionChange();
+    saveState();
+    renderMain();
+  }
+}
+
+function deleteAnswer(qid, ai){
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if(q){
+    q.answers.splice(ai,1);
+    refreshThresholdsAfterQuestionChange();
+    saveState();
+    renderMain();
+    updateSaveButton();
+  }
+}
+
+function renderProfils(ch) {
+  if(!chapterQuestionsReady(ch)){
+    openProfilesLockedModal();
+    activeTab = 'questions';
+    renderNav();
+    renderQuestions(ch);
+    return;
+  }
+
+  applyAutoSeuils(ch);
+
+  const seuilsHTML = ch.seuils.map((s, i) => {
+    const pc = profils_config[i];
+    return `<div class="seuil-item">
+      <div class="seuil-dot" style="background:${pc.couleur}"></div>
+      <span class="seuil-label">${pc.nom}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
+      <div class="seuil-range">
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
+        <span class="seuil-sep">→</span>
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.max}" onchange="chapters[activeChap].seuils[${i}].max=parseFloat(this.value);saveState();updateSaveButton()">
+      </div>
+    </div>`;
+  }).join('');
+
+  const profilsHTML = ch.profils.map((p, i) => {
+    const pc = profils_config[i];
+    const mkwHTML = (p.motscles||[]).map((m, mi) => `<span class="mkw" style="background:${pc.bgHead};border-color:${pc.borderHead};color:${pc.textColor}">${esc(m)}<span class="mkw-x" onclick="removeMkw(${i},${mi})">×</span></span>`).join('');
+    return `<div class="profil-card">
+      <div class="profil-header" style="background:${pc.bgHead};border-bottom:1px solid ${pc.borderHead}">
+        <div class="profil-level">
+          <div class="profil-dot" style="background:${pc.couleur}"></div>
+          <span class="profil-level-name" style="color:${pc.textColor}">Profil ${i+1} — ${pc.nom}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="profil-score-range" style="color:${pc.textColor}">Moyenne ${ch.seuils[i].min} → ${ch.seuils[i].max}</span>
+          <button class="btn-ai-profil" style="background:rgba(0,0,0,0.08);color:${pc.textColor}" onclick="genProfil(${i})">${icoStar} Générer avec l'IA</button>
+        </div>
+      </div>
+      <div class="profil-body">
+        <div class="pfield">
+          <label>Titre du profil <span style="color:#eb6366">*</span></label>
+          <input type="text" value="${esc(p.titre)}" placeholder="Titre évocateur" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
+        </div>
+        <div class="pfield">
+          <label>Phrase courte de résumé</label>
+          <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Une phrase concise, bienveillante" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
+        </div>
+        <div class="pfield">
+          <label>Description détaillée</label>
+          <div class="rte-wrap">
+            <div class="rte-toolbar">
+              <button class="rte-btn" onclick="fmt('bold')" title="Gras"><b>G</b></button>
+              <button class="rte-btn" onclick="fmt('underline')" title="Souligné"><u>S</u></button>
+              <div class="rte-sep"></div>
+              <button class="rte-btn" onclick="fmt('insertUnorderedList')" title="Liste à puces">☰</button>
+              <div class="rte-sep"></div>
+              <button class="rte-btn" onclick="addLink()" title="Lien hypertexte">🔗</button>
+            </div>
+            <div class="rte-area" contenteditable="true" data-placeholder="Description bienveillante et actionnable…" oninput="chapters[activeChap].profils[${i}].description=this.innerHTML;saveState();updateSaveButton()">${p.description}</div>
+          </div>
+        </div>
+        <div class="pfield">
+          <label>Mots clés</label>
+          <div class="mkw-wrap" onclick="this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" placeholder="+ mot clé" onkeydown="addMkw(event,${i})"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('main-editor').innerHTML = `
+    <div class="chap-head">
+      <div class="chap-info">
+        <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input class="chap-name-inp" value="${esc(ch.name)}" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <span style="color:#c5ccd5;font-size:13px">✏️</span>
+        </div>
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+      </div>
+    </div>
+    <div class="seuils-card">
+      <div class="seuils-head">
+        <span class="seuils-title">${icoStar} Seuils de moyenne par profil</span>
+        <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne 0 → 2.</span>
+      </div>
+      <div class="seuils-row">${seuilsHTML}</div>
+    </div>
+    <div class="profils-grid">${profilsHTML}</div>`;
+}
+
+function toggleCard(id) {
+  openCards[id] = !openCards[id];
+  renderMain();
+}
+
+function deleteQ(id) {
+  chapters[activeChap].questions = chapters[activeChap].questions.filter(q => q.id !== id);
+  delete openCards[id];
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function regenOne(id, btn) {
+  const ch = chapters[activeChap];
+  const idx = ch.questions.findIndex(q => q.id === id);
+  if (idx > -1) ch.questions[idx] = makeAIQuestion(id);
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function makeAIQuestion(id){
+  const subject = getCurrentSubject();
+  const ch = chapters[activeChap] || {name:'ce chapitre'};
+  const sid = String(id || 'q' + Date.now());
+  const variantsCyber = [
+    {
+      text:`Vous recevez un message contenant un lien urgent lié à ${ch.name}. Que faites-vous ?`,
+      tags:[{t:'Cybersécurité',ai:true},{t:'Lien suspect',ai:true}],
+      answers:[
+        {l:"Je clique rapidement pour vérifier de quoi il s’agit.",s:0},
+        {l:"Je demande à une personne autour de moi si le message semble fiable.",s:1},
+        {l:"Je vérifie l’expéditeur, l’adresse du lien et je signale le message en cas de doute.",s:2}
+      ]
+    },
+    {
+      text:`Un document sensible doit être partagé avec une personne externe dans le cadre de ${ch.name}. Que faites-vous ?`,
+      tags:[{t:'Cybersécurité',ai:true},{t:'Données sensibles',ai:true}],
+      answers:[
+        {l:"Je l’envoie par le canal le plus rapide pour ne pas bloquer le dossier.",s:0},
+        {l:"Je demande confirmation à mon interlocuteur avant l’envoi.",s:1},
+        {l:"Je vérifie le droit de partage, le canal sécurisé et les règles internes avant d’envoyer.",s:2}
+      ]
+    },
+    {
+      text:`Vous devez créer ou modifier un mot de passe pour accéder à un outil professionnel. Quel réflexe adoptez-vous ?`,
+      tags:[{t:'Cybersécurité',ai:true},{t:'Mot de passe',ai:true}],
+      answers:[
+        {l:"J’utilise un mot de passe simple dont je me souviens facilement.",s:0},
+        {l:"Je réutilise un ancien mot de passe en le modifiant légèrement.",s:1},
+        {l:"Je crée un mot de passe robuste ou j’utilise le gestionnaire validé par l’organisation.",s:2}
+      ]
+    },
+    {
+      text:`Une demande inhabituelle vous invite à transmettre rapidement une information confidentielle. Que faites-vous ?`,
+      tags:[{t:'Cybersécurité',ai:true},{t:'Vérification',ai:true}],
+      answers:[
+        {l:"Je réponds vite pour éviter de retarder la demande.",s:0},
+        {l:"Je vérifie seulement si le nom de l’expéditeur me semble connu.",s:1},
+        {l:"Je contrôle la demande par un autre canal et j’applique la procédure de signalement si nécessaire.",s:2}
+      ]
+    },
+    {
+      text:`Vous utilisez un outil numérique non validé pour gagner du temps sur une tâche liée à ${ch.name}. Quelle posture adoptez-vous ?`,
+      tags:[{t:'Cybersécurité',ai:true},{t:'Outil numérique',ai:true}],
+      answers:[
+        {l:"Je l’utilise si l’outil est pratique et gratuit.",s:0},
+        {l:"Je l’utilise seulement pour des informations qui me semblent peu sensibles.",s:1},
+        {l:"Je vérifie les règles internes avant d’y déposer des données professionnelles.",s:2}
+      ]
+    }
+  ];
+
+  const variantsGeneric = [
+    {
+      text:`Dans une situation liée à ${subject || ch.name}, vous devez choisir entre aller vite et vérifier un point important. Que faites-vous ?`,
+      tags:[{t:'Brouillon',ai:true},{t:'À adapter',ai:true}],
+      answers:[
+        {l:"J’avance rapidement avec les informations disponibles.",s:0},
+        {l:"Je demande un avis avant de décider.",s:1},
+        {l:"Je clarifie le cadre et les risques avant d’agir.",s:2}
+      ]
+    }
+  ];
+
+  const pool = norm(subject).includes('cyber') || norm(subject).includes('securite numerique') || norm(subject).includes('risques numeriques') || norm(subject).includes('securite informatique') ? variantsCyber : variantsGeneric;
+  const n = Math.abs([...sid].reduce((a,c)=>a+c.charCodeAt(0),0)) % pool.length;
+  return { id: sid, type:'choix', prov:'AI', ...pool[n] };
+}
+
+function addManual() {
+  if (chapters[activeChap].questions.length >= 10) return;
+
+  const id = 'q' + Date.now();
+  chapters[activeChap].questions.push({
+    id,
+    type: 'choix',
+    prov: 'COMPANY',
+    text: 'Nouvelle mise en situation',
+    tags: [],
+    answers: [
+      {l:'Réponse A',s:0},
+      {l:'Réponse B',s:1},
+      {l:'Réponse C',s:2}
+    ]
+  });
+
+  openCards[id] = true;
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function addOneAI() {
+  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
+  if (chapters[activeChap].questions.length >= 10) return;
+  const q = makeAIQuestion('q' + Date.now());
+  chapters[activeChap].questions.push(q);
+  openCards[q.id] = true;
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function removeTag(qid, ti) {
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if (q) q.tags.splice(ti, 1);
+  saveState();
+  renderMain();
+}
+
+function addTag(qid) {
+  const t = prompt('Nom du tag :');
+  if (!t) return;
+  const q = chapters[activeChap].questions.find(q => q.id === qid);
+  if (q && q.tags.length < 6) q.tags.push({t, ai:false});
+  saveState();
+  renderMain();
+}
+
+function askRegen() {
+  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
+  const n = chapters[activeChap].questions.length;
+  document.getElementById('modal-q-count').textContent = `${n} question${n!==1?'s':''}`;
+  document.getElementById('modal-regen').classList.add('on');
+}
+
+function closeRegenModal() {
+  document.getElementById('modal-regen').classList.remove('on');
+}
+
+function confirmRegen() {
+  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
+  closeRegenModal();
+  chapters[activeChap].questions = [
+    makeAIQuestion('qr1'),
+    makeAIQuestion('qr2'),
+    makeAIQuestion('qr3'),
+    makeAIQuestion('qr4'),
+    makeAIQuestion('qr5')
+  ];
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  openCards = {};
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function editScore(pill, e, qid, ai) {
+  e.stopPropagation();
+  const v = prompt('Score entre 0 et 2 :', pill.dataset.score);
+  if (v === null) return;
+  const n = Number(v);
+  if (isNaN(n) || n < 0 || n > 2) return;
+  updateAnswer(qid, ai, 's', n);
+  renderMain();
+  updateSaveButton();
+}
+
+function removeMkw(profIdx, mkIdx) {
+  chapters[activeChap].profils[profIdx].motscles.splice(mkIdx, 1);
+  saveState();
+  renderMain();
+}
+
+function addMkw(e, profIdx) {
+  if (e.key !== 'Enter') return;
+  const val = e.target.value.trim();
+  if (!val) return;
+  e.preventDefault();
+  chapters[activeChap].profils[profIdx].motscles.push(val);
+  saveState();
+  renderMain();
+}
+
+function genProfil(profIdx) {
+  const texts = [
+    {
+      titre:"La prise de conscience démarre",
+      phrase:"Vous identifiez certains réflexes, mais ils restent encore irréguliers.",
+      desc:"Ce profil montre une posture en construction. L'objectif est de rendre les bons réflexes plus visibles et plus faciles à activer dans le quotidien."
+    },
+    {
+      titre:"Les réflexes progressent",
+      phrase:"Vous adoptez déjà plusieurs comportements utiles, mais pas encore dans toutes les situations.",
+      desc:"Vous disposez de points d'appui solides. La prochaine étape consiste à gagner en constance, notamment dans les moments de pression ou d'incertitude."
+    },
+    {
+      titre:"Les bons réflexes sont ancrés",
+      phrase:"Vous agissez avec constance et pouvez inspirer les pratiques autour de vous.",
+      desc:"Votre posture est installée dans le quotidien. Vous êtes une ressource pour renforcer la dynamique collective et diffuser les bons comportements."
+    }
+  ];
+  const t = texts[profIdx];
+  Object.assign(chapters[activeChap].profils[profIdx], {
+    titre:t.titre,
+    phrase:t.phrase,
+    description:t.desc
+  });
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+function fmt(cmd) {
+  document.execCommand(cmd, false, null);
+}
+
+function addLink() {
+  const url = prompt('URL du lien :');
+  if (url) document.execCommand('createLink', false, url);
+}
+
+function libraryMatchesContext(q){
+  const ch = chapters[activeChap];
+  const subject = norm(getCurrentSubject());
+  const chapterName = norm(ch.name);
+  const chapterDesc = norm(ch.desc);
+  const qSubject = norm(q.subject);
+  const qChapter = norm(q.chapter);
+  const qTags = (q.tags || []).map(norm);
+
+  const subjectOk = !subject || !qSubject || qSubject === subject || qSubject.includes(subject) || subject.includes(qSubject) || qTags.some(t => t === subject || t.includes(subject));
+  const chapterOk = !qChapter || qChapter === chapterName || qChapter.includes(chapterName) || chapterName.includes(qChapter) || chapterDesc.includes(qChapter) || qTags.some(t => t === chapterName || t.includes(chapterName));
+
+  return subjectOk && chapterOk;
+}
+
+function openPanel() {
+  activeFilterTag = '';
+  document.getElementById('panel-search-inp').value = '';
+  document.getElementById('overlay').classList.add('on');
+  document.getElementById('panel-right').classList.add('on');
+  updatePanelContext();
+  renderPanelTags();
+  renderPanelList('', '');
+}
+
+function closePanel() {
+  document.getElementById('overlay').classList.remove('on');
+  document.getElementById('panel-right').classList.remove('on');
+}
+
+function updatePanelContext(){
+  const ch = chapters[activeChap];
+  const subject = getCurrentSubject();
+  const el = document.getElementById('panel-context-body');
+  if(!el) return;
+  el.textContent = `${subject ? `Sujet : ${subject} · ` : ''}Partie : ${ch.name}`;
+}
+
+function currentQuestionKeys(){
+  const ch = chapters[activeChap];
+  return new Set((ch.questions || []).flatMap(q => [
+    String(q.id || ''),
+    norm(q.text || '')
+  ]).filter(Boolean));
+}
+
+function currentLib() {
+  const existing = currentQuestionKeys();
+
+  function notAlreadyInChapter(q){
+    const sameId = existing.has(String(q.id || ''));
+    const sameText = existing.has(norm(q.text || ''));
+    return !sameId && !sameText;
+  }
+
+  const allAvailable = bibliothequeQuestions()
+    .filter(q => !q.added)
+    .filter(notAlreadyInChapter);
+
+  const contextual = allAvailable.filter(q => libraryMatchesContext(q));
+
+  // On ne retombe plus automatiquement sur toute la bibliothèque quand un sujet est connu :
+  // cela évite d'afficher des situations hors sujet dans une base de travail.
+  return norm(getCurrentSubject()) ? contextual : allAvailable;
+}
+
+function renderPanelTags() {
+  const all = [...new Set(currentLib().flatMap(q => q.tags || []))];
+  document.getElementById('panel-tags-wrap').innerHTML = all.map(t => `<span class="filter-tag ${t === activeFilterTag ? 'on' : ''}" onclick="filterByTag('${esc(t)}')">${esc(t)}</span>`).join('');
+}
+
+function filterByTag(t) {
+  activeFilterTag = activeFilterTag === t ? '' : t;
+  renderPanelTags();
+  renderPanelList(document.getElementById('panel-search-inp').value, activeFilterTag);
+}
+
+function filterPanel(val) {
+  renderPanelList(val, activeFilterTag);
+}
+
+function renderPanelList(search, tag) {
+  const s = norm(search);
+  const filtered = currentLib().filter(q => {
+    const haystack = panelSearchHaystack(q);
+    const tagOk = !tag || (q.tags || []).some(t => norm(t) === norm(tag));
+    const searchOk = !s || haystack.includes(s);
+    return searchOk && tagOk;
+  });
+
+  const list = document.getElementById('panel-list');
+
+  if(!filtered.length){
+    list.innerHTML = '<div style="text-align:center;padding:28px;color:#94a3b8;font-size:13px;font-family:Asap,sans-serif">Toutes les questions disponibles pour ce chapitre sont déjà ajoutées, ou aucune question ne correspond au filtre.</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(q => `<div class="panel-q" id="pq-${q.id}">
+    <div style="flex:1">
+      <div class="panel-q-text">${esc(q.text)}</div>
+      <div class="panel-q-meta">
+        <span class="tag-prov ${q.prov==='TBF'?'expert':''}" style="font-size:10px">${PROV[q.prov]?.ico||'🤖'} ${PROV[q.prov]?.label||''}</span>
+        ${(q.adTitle ? [`Base : ${q.adTitle}`] : []).map(t => `<span class="tag-pill" style="font-size:10px">${esc(t)}</span>`).join('')}
+        ${(q.chapter ? [`Partie : ${q.chapter}`] : []).map(t => `<span class="tag-pill" style="font-size:10px">${esc(t)}</span>`).join('')}
+        ${(q.tags||[])
+          .filter(t => norm(t) !== norm(q.subject) && norm(t) !== norm(q.chapter) && !norm(q.adTitle).includes(norm(t)))
+          .slice(0,6)
+          .map(t => `<span class="tag-pill" style="font-size:10px">${esc(t)}</span>`)
+          .join('')}
+      </div>
+    </div>
+    <button class="btn-add-from-base" onclick="addFromLib('${q.id}')" title="Ajouter">+</button>
+  </div>`).join('');
+}
+
+function normalizeImportedAnswers(bq){
+  if(Array.isArray(bq.answers) && bq.answers.length >= 3){
+    return bq.answers.map((a, i) => ({
+      l: a.l ?? a.label ?? a.text ?? a.reponse ?? `Réponse ${String.fromCharCode(65+i)}`,
+      s: Number(a.s ?? a.score ?? Math.min(i,2))
+    })).map(a => ({...a, s: isNaN(a.s) ? 1 : Math.max(0, Math.min(2, a.s))}));
+  }
+
+  return [
+    {l:'Réponse A',s:0},
+    {l:'Réponse B',s:1},
+    {l:'Réponse C',s:2}
+  ];
+}
+
+function markLibraryAdded(qid){
+  const raw = getRawBibliotheque();
+  const item = raw.find((q, i) => (q.id || `lib_${i}`) === qid);
+  if(item) item.added = true;
+}
+
+function addFromLib(qid) {
+  if (chapters[activeChap].questions.length >= 10) return;
+
+  const existing = currentQuestionKeys();
+  const bq = bibliothequeQuestions().find(q => q.id === qid);
+
+  if(!bq) return;
+
+  if(existing.has(String(bq.id || '')) || existing.has(norm(bq.text || ''))){
+    alert("Cette question est déjà présente dans ce chapitre.");
+    renderPanelTags();
+    renderPanelList(document.getElementById('panel-search-inp').value, activeFilterTag);
+    return;
+  }
+
+  markLibraryAdded(qid);
+
+  chapters[activeChap].questions.push({
+    id: bq.id || ('q' + Date.now()),
+    type: bq.type === 'likert' ? 'likert' : 'choix',
+    prov: bq.prov || 'AI',
+    text: bq.text,
+    tags:(bq.tags || [])
+      .filter(t => {
+        const x = String(t).toLowerCase();
+        return !x.includes('base assistée')
+          && !x.includes('base assistee')
+          && !x.includes('conçu par')
+          && !x.includes('concu par')
+          && !x.includes('validation obligatoire')
+          && !x.includes('relecture obligatoire')
+          && !x.includes('aide à la rédaction')
+          && !x.includes('aide a la redaction')
+          && !x.includes('contribution client');
+      })
+      .map(t => ({t, ai:false})),
+    answers: normalizeImportedAnswers(bq)
+  });
+
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+
+  renderPanelTags();
+  renderPanelList(document.getElementById('panel-search-inp').value, activeFilterTag);
+}
+
+function chapProblems(c) {
+  const problems = [];
+
+  if(c.questions.length < 4) {
+    problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 4 requises`, tab:'questions'});
+  } else {
+    const badQ = c.questions.filter(q => !q.answers || q.answers.length < 3 || q.answers.some(a => isNaN(Number(a.s)) || Number(a.s)<0 || Number(a.s)>2));
+    if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — min 3 réponses, scores entre 0 et 2 requis`, tab:'questions'});
+  }
+
+  const badP = c.profils.filter(p => !String(p.titre).trim() || !String(p.phrase).trim() || !stripHtml(p.description).trim());
+  if(badP.length) problems.push({type:'p', msg:`${badP.length} profil${badP.length>1?'s':''} incomplet${badP.length>1?'s':''} — titre, résumé et description requis`, tab:'profils'});
+
+  const badS = c.seuils.some(s => isNaN(Number(s.min)) || isNaN(Number(s.max)) || Number(s.min)>=Number(s.max) || Number(s.min)<0 || Number(s.max)>2);
+  if(badS) problems.push({type:'p', msg:'Seuils incohérents — ils doivent rester sur une moyenne 0 → 2', tab:'profils'});
+
+  return problems;
+}
+
+function updateSaveButton() {
+  const btn = document.getElementById('btn-save');
+  const hint = document.getElementById('btn-save-hint');
+
+  btn.textContent = 'Continuer vers le paramétrage';
+
+  const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
+
+  btn.disabled = allProblems.length > 0;
+  hint.classList.toggle('visible', allProblems.length > 0);
+
+  if(allProblems.length) hint.textContent = 'Questions et/ou profils incomplets sur certains chapitres';
+}
+
+function trySave() {
+  syncToState();
+  const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
+
+  if(allProblems.length){
+    const list = document.getElementById('modal-save-list');
+    list.innerHTML = allProblems.map(({c,problems}) => problems.map(p => `<div style="display:flex;align-items:center;justify-content:space-between;background:#fafbfc;border:1px solid #e8edf4;border-radius:8px;padding:9px 14px;gap:10px">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(c.name)}</div>
+        <div style="font-size:11px;color:#94a3b8;font-family:Asap,sans-serif;margin-top:2px;line-height:1.4">${p.msg}</div>
+      </div>
+      <button onclick="closeSaveModal();setTab(${c.id-1},'${p.tab}')" style="background:#eb6366;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:Asap,sans-serif;flex-shrink:0">Compléter →</button>
+    </div>`).join('')).join('');
+
+    document.getElementById('modal-save-blocked').classList.add('on');
+    return;
+  }
+
+  window.location.href = 'parametrage.html';
+}
+
+function closeSaveModal() {
+  document.getElementById('modal-save-blocked').classList.remove('on');
+}
+
+if (needsBlankSetup()) {
+  renderBlankSetup();
+} else {
+  renderNav();
+  renderMain();
+  updateSaveButton();
+  syncToState();
+}
+
+
+function itsCurrentUserRoleForQuestions(){
+  const keys = ['its_user','user','currentUser','auth_user'];
+  for (const key of keys) {
+    try {
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const data = JSON.parse(raw);
+      if(data && data.role) return String(data.role).toLowerCase();
+      if(data && data.user && data.user.role) return String(data.user.role).toLowerCase();
+    } catch(e) {}
+  }
+
+  const tokenKeys = ['its_token','token','authToken','jwt'];
+  for (const key of tokenKeys) {
+    try {
+      const token = localStorage.getItem(key);
+      if(!token || !token.includes('.')) continue;
+      const payload = JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+      if(payload && payload.role) return String(payload.role).toLowerCase();
+    } catch(e) {}
+  }
+
+  return '';
+}
+
+function restoreAdminQuestionNavigation(){
+  if(itsCurrentUserRoleForQuestions() !== 'admin') return;
+
+  // Le mode lecture seule global peut désactiver tous les boutons d'une page transmise/publiée.
+  // En admin, on garde au minimum la navigation interne Questions / Profils cliquable.
+  document.querySelectorAll('.cni-head').forEach(el => {
+    el.style.pointerEvents = 'auto';
+    el.style.cursor = 'pointer';
+  });
+
+  document.querySelectorAll('.cni-tab').forEach(btn => {
+    btn.style.pointerEvents = 'auto';
+    if(!btn.classList.contains('disabled')){
+      btn.disabled = false;
+      btn.removeAttribute('disabled');
+      btn.style.cursor = 'pointer';
+    }
+  });
+}
+
+if(typeof itsApplyReadOnlyMode === 'function'){
+  setTimeout(() => {
+    itsApplyReadOnlyMode();
+    restoreAdminQuestionNavigation();
+  }, 50);
+  setTimeout(restoreAdminQuestionNavigation, 250);
+}
+</script>
+</body>
+</html>
+
+

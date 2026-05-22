@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — Into The Shift</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Asap',sans-serif;
+  background:linear-gradient(180deg,#eef6fb 0%,#f4f6f9 42%,#ffffff 100%);
+  color:#18375d;
+  min-height:100vh;
+}
+
+.login-wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:36px 22px 64px;
+}
+
+.login-shell{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:28px;
+  align-items:center;
+}
+
+.login-hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffffff 0%,#e6f0f6 62%,#d7ecf3 100%);
+  border:1px solid #cbddea;
+  border-radius:28px;
+  padding:38px;
+  box-shadow:0 18px 48px rgba(24,55,93,.11);
+}
+
+.login-hero::before{
+  content:"";
+  position:absolute;
+  right:-90px;
+  top:-110px;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(13,76,114,.12);
+}
+
+.login-hero::after{
+  content:"";
+  position:absolute;
+  left:-80px;
+  bottom:-120px;
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  background:rgba(255,192,0,.18);
+}
+
+.login-hero-content{
+  position:relative;
+  z-index:1;
+}
+
+.login-logo{
+  width:320px;
+  max-width:100%;
+  margin-bottom:22px;
+}
+
+.hero-kicker{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e6f0f6;
+  color:#0d4c72;
+  font-size:13px;
+  font-weight:900;
+  border:1px solid #c6deec;
+  margin-bottom:16px;
+}
+
+.login-hero h1{
+  font-size:40px;
+  line-height:1.08;
+  color:#18375d;
+  letter-spacing:-.6px;
+  margin-bottom:16px;
+}
+
+.login-hero h1 span{color:#0d4c72}
+
+.login-hero p{
+  color:#4f6378;
+  font-size:16px;
+  line-height:1.65;
+  max-width:660px;
+}
+
+.hero-points{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:24px;
+}
+
+.hero-point{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:16px;
+  padding:16px;
+}
+
+.hero-point strong{
+  display:block;
+  color:#18375d;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.hero-point span{
+  display:block;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.45;
+}
+
+.login-card{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 18px 48px rgba(24,55,93,.10);
+}
+
+.login-kicker{
+  font-size:12px;
+  font-weight:900;
+  color:#0d4c72;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:8px;
+}
+
+.login-card h2{
+  font-size:28px;
+  line-height:1.12;
+  color:#18375d;
+  margin-bottom:10px;
+}
+
+.login-sub{
+  font-size:14px;
+  line-height:1.55;
+  color:#64748b;
+  margin-bottom:22px;
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:800;
+  color:#18375d;
+}
+
+.input{
+  width:100%;
+  height:50px;
+  border-radius:14px;
+  border:1px solid #d8e0ea;
+  background:#fff;
+  padding:0 14px;
+  font-size:15px;
+  font-family:'Asap',sans-serif;
+  color:#18375d;
+}
+
+.input:focus{
+  outline:none;
+  border-color:#0d4c72;
+  box-shadow:0 0 0 4px rgba(13,76,114,.08);
+}
+
+.password-wrap{
+  position:relative;
+}
+.password-wrap .input{
+  padding-right:48px;
+}
+.password-toggle{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:10px;
+  background:transparent;
+  color:#0d4c72;
+  font-size:17px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.password-toggle:hover{
+  background:#eef6fb;
+}
+
+.login-btn,
+.secondary-btn{
+  width:100%;
+  height:50px;
+  border-radius:14px;
+  font-family:'Asap',sans-serif;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.login-btn{
+  border:none;
+  background:#0d4c72;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(13,76,114,.18);
+  margin-top:6px;
+}
+
+.login-btn:hover{background:#0a3f60}
+
+.separator{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:22px 0;
+  color:#94a3b8;
+  font-size:12px;
+  font-weight:800;
+}
+
+.separator::before,
+.separator::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#dbe5ee;
+}
+
+.secondary-btn{
+  border:1px solid #d8e0ea;
+  background:#fff;
+  color:#18375d;
+}
+
+.secondary-btn:hover{background:#f8fbfd}
+
+.auth-error{
+  display:none;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#fff1f2;
+  border:1px solid #fecdd3;
+  color:#9f1239;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.auth-error.show{display:block}
+
+.login-note{
+  margin-top:14px;
+  text-align:center;
+  font-size:13px;
+  color:#64748b;
+  line-height:1.45;
+}
+
+.bottom-points{
+  margin-top:22px;
+  display:grid;
+  gap:8px;
+}
+
+.bottom-point{
+  font-size:12px;
+  color:#4c6178;
+  line-height:1.45;
+}
+
+.bottom-point strong{
+  color:#0d4c72;
+}
+
+@media(max-width:980px){
+  .login-shell{
+    grid-template-columns:1fr;
+  }
+
+  .login-card{
+    max-width:460px;
+    width:100%;
+    margin:0 auto;
+  }
+
+  .hero-points{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:620px){
+  .login-wrap{
+    padding:22px 14px 44px;
+  }
+
+  .login-hero{
+    padding:24px;
+    border-radius:20px;
+  }
+
+  .login-logo{
+    width:250px;
+  }
+
+  .login-hero h1{
+    font-size:30px;
+  }
+
+  .login-card{
+    padding:22px;
+    border-radius:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="header"></div>
+<script src="header.js"></script>
+<script src="app.js"></script>
+
+<main class="login-wrap">
+
+  <div class="login-shell">
+
+    <section class="login-hero">
+      <div class="login-hero-content">
+
+        <img src="into-the-shift-logo.png" alt="Into The Shift" class="login-logo">
+
+        <div class="hero-kicker">Shift Studio · Version découverte</div>
+
+        <h1>
+          Créez des <span>autodiagnostics comportementaux</span> prêts à diffuser
+        </h1>
+
+        <p>
+          Connectez-vous pour créer votre autodiagnostic, partir d’une base existante ou reprendre une configuration en cours.
+        </p>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>Bibliothèque</strong>
+            <span>Des situations concrètes prêtes à adapter.</span>
+          </div>
+
+          <div class="hero-point">
+            <strong>Personnalisation</strong>
+            <span>Questions, profils, ressources et campagne.</span>
+          </div>
+
+          <div class="hero-point">
+            <strong>Diffusion</strong>
+            <span>Lien, QR code et dashboard de résultats.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <aside class="login-card">
+
+      <div class="login-kicker">Connexion</div>
+
+      <h2>Bienvenue dans Shift Studio</h2>
+
+      <p class="login-sub">
+        Connectez-vous pour continuer votre parcours.
+      </p>
+
+      <form id="login-form">
+
+        <div class="form-group">
+          <label class="form-label">Adresse email</label>
+          <input id="login-email" type="email" class="input" placeholder="votre.email@entreprise.com" autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mot de passe</label>
+          <div class="password-wrap">
+            <input id="login-password" type="password" class="input" placeholder="" autocomplete="current-password" required>
+            <button class="password-toggle" type="button" onclick="toggleLoginPassword()" aria-label="Afficher ou masquer le mot de passe">👁</button>
+          </div>
+        </div>
+        <div class="forgot-password-link">
+          <a href="forgot-password.html">Mot de passe oublié ?</a>
+        </div>
+
+        <button id="login-submit" class="login-btn" type="submit">
+          Se connecter
+        </button>
+
+        <div id="login-error" class="auth-error"></div>
+
+      </form>
+
+      <div class="separator">ou</div>
+
+      <button class="secondary-btn" onclick="window.location.href='register.html'">
+        Première connexion
+      </button>
+
+      <p class="login-note">
+        Créez gratuitement votre espace de travail et découvrez la plateforme.
+      </p>
+
+      <div class="bottom-points">
+        <div class="bottom-point"><strong>✓</strong> Aucune carte bancaire demandée</div>
+        <div class="bottom-point"><strong>✓</strong> Accès découverte multi-thématiques</div>
+        <div class="bottom-point"><strong>✓</strong> Vous pouvez consulter la bibliothèque avant connexion</div>
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script>
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+
+
+function toggleLoginPassword(){
+  const input = document.getElementById("login-password");
+  const btn = document.querySelector(".password-toggle");
+  if(!input) return;
+
+  const hidden = input.type === "password";
+  input.type = hidden ? "text" : "password";
+  if(btn) btn.textContent = hidden ? "🙈" : "👁";
+}
+
+function showLoginError(message){
+  const box = document.getElementById("login-error");
+  if(!box) return;
+  box.textContent = message;
+  box.classList.add("show");
+}
+
+function clearLoginError(){
+  const box = document.getElementById("login-error");
+  if(!box) return;
+  box.textContent = "";
+  box.classList.remove("show");
+}
+
+document.getElementById("login-form").addEventListener("submit", async function(event){
+  event.preventDefault();
+  clearLoginError();
+
+  const submitBtn = document.getElementById("login-submit");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Connexion...";
+
+  const payload = {
+    email: document.getElementById("login-email").value.trim().toLowerCase(),
+    password: document.getElementById("login-password").value
+  };
+
+  try{
+    const response = await fetch(`${API_BASE_URL}/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if(!response.ok){
+      throw new Error(data.error || "Identifiants incorrects.");
+    }
+
+    localStorage.setItem("its_token", data.token);
+    localStorage.setItem("its_user", JSON.stringify(data.user));
+    localStorage.setItem("its_logged_in", "true");
+    localStorage.setItem("its_user_id", data.user?.id || "");
+    localStorage.setItem("its_user_email", data.user?.email || "");
+    localStorage.setItem("its_user_firstname", data.user?.firstName || "Mon espace");
+    localStorage.setItem("its_user_lastname", data.user?.lastName || "");
+    localStorage.setItem("its_user_company", data.user?.companyName || "");
+    localStorage.setItem("its_user_role", data.user?.role || "client");
+
+    const forcedRedirect = localStorage.getItem("its_after_login_redirect");
+    localStorage.removeItem("its_after_login_redirect");
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryRedirect = urlParams.get("redirect");
+    const mustChangePassword = data.user?.mustChangePassword === true;
+    const redirect = mustChangePassword
+      ? "account.html?tab=securite&firstLogin=1"
+      : (forcedRedirect || queryRedirect || "dashboard.html");
+    window.location.href = redirect;
+  }catch(error){
+    showLoginError(error.message || "Erreur de connexion à l’API.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Se connecter";
+  }
+});
+</script>
+
+</body>
+</html>

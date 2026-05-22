@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Préparer le lancement — Into The Shift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18375d}.subnav{background:#fff;border-bottom:1px solid #e2e8f0;display:flex;padding:8px 18px;gap:4px;overflow-x:auto}.sn{padding:7px 14px;border-radius:8px;font-size:12px;color:#64748b;cursor:pointer;border:none;background:transparent;white-space:nowrap;font-weight:500;font-family:'Asap',sans-serif}.sn.on{background:#18375d;color:#fff;font-weight:600}.sn:not(.on):hover{background:#eef1f6;color:#18375d}.breadcrumb{display:flex;align-items:center;gap:6px;padding:11px 24px;border-bottom:1px solid #f0f4f8;background:#fafbfc;flex-wrap:wrap}.bc-link{font-size:12px;color:#007883;cursor:pointer;font-weight:500}.bc-sep{font-size:12px;color:#c5ccd5}.bc-cur{font-size:12px;color:#64748b}.stepper-wrap{background:#fff;border-bottom:1px solid #e2e8f0;padding:16px 24px;overflow-x:auto}.stepper{display:flex;align-items:center;gap:0;min-width:600px}.step{display:flex;align-items:center;gap:8px;flex-shrink:0}.step-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.step-circle.done{background:#007883;color:#fff}.step-circle.active{background:#18375d;color:#fff}.step-circle.todo{background:#edf1f7;color:#94a3b8}.step-label{font-size:12px;font-weight:600;white-space:nowrap}.step-label.done{color:#007883}.step-label.active{color:#18375d}.step-label.todo{color:#c5ccd5}.step-connector{flex:1;height:2px;margin:0 12px;border-radius:1px;min-width:20px}.step-connector.done{background:#007883}.step-connector.todo{background:#e2e8f0}.page-wrap{max-width:1100px;margin:0 auto;padding:24px 24px 60px}.page-title{font-size:20px;font-weight:700;color:#18375d;margin-bottom:6px}.page-sub{font-size:13px;color:#64748b;line-height:1.5;max-width:760px;margin-bottom:22px}.launch-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}@media(max-width:900px){.launch-grid{grid-template-columns:1fr}}.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}@media(max-width:650px){.kpi-grid{grid-template-columns:1fr}}.kpi{background:#fff;border:1px solid #d8e0ea;border-radius:12px;padding:14px}.kpi-lbl{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}.kpi-val{font-size:18px;font-weight:800;color:#18375d}.kpi-sub{font-size:11px;color:#64748b;margin-top:3px;line-height:1.35}.date-edit,.pack-select{width:100%;margin-top:9px;padding:7px 9px;border:1px solid #d8e0ea;border-radius:8px;font-size:12px;color:#18375d;font-family:'Asap',sans-serif;outline:none;background:#fff}.progress-wrap{height:8px;background:#edf1f7;border-radius:20px;overflow:hidden;margin:8px 0}.progress-fill{height:100%;width:40%;background:#007883;border-radius:20px}.block{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:22px 24px;margin-bottom:16px}.block-title{font-size:15px;font-weight:700;color:#18375d;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.block-sub{font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:18px}.launch-url-box{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.url-label{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}.url-big{font-size:13px;color:#007883;font-weight:700;word-break:break-all}.btn-copy,.btn-test,.btn-secondary,.btn-ai{border:none;border-radius:8px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:7px;transition:all .12s;text-decoration:none}.btn-copy{background:#007883;color:#fff}.btn-test,.btn-secondary{background:#fff;color:#18375d;border:1px solid #d8e0ea}.btn-ai{background:linear-gradient(90deg,#18375d,#007883);color:#fff}.qr-box{width:132px;height:132px;border:1px solid #d8e0ea;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px}.qr-box canvas,.qr-box svg{width:108px!important;height:108px!important}.comm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.comm-tab{padding:7px 11px;border-radius:20px;border:1px solid #d8e0ea;background:#fff;color:#64748b;font-size:11px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif}.comm-tab.on{background:#18375d;color:#fff;border-color:#18375d}.template-card{background:#fafbfc;border:1px solid #d8e0ea;border-radius:12px;padding:14px;margin-bottom:10px}.template-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.template-title{font-size:13px;font-weight:800;color:#18375d}.template-meta{font-size:10px;color:#94a3b8;text-transform:uppercase;font-weight:700;letter-spacing:.05em}.template-body{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:13px;font-size:12px;color:#475569;line-height:1.55;white-space:pre-wrap}.timeline{display:flex;flex-direction:column;gap:10px}.time-row{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start}.time-day{font-size:11px;font-weight:800;color:#007883;background:#f0f8f7;border:1px solid #b8dfe0;border-radius:20px;padding:4px 7px;text-align:center}.time-txt{font-size:12px;color:#18375d;font-weight:700}.time-sub{font-size:11px;color:#64748b;margin-top:2px;line-height:1.35}.checklist{display:flex;flex-direction:column;gap:9px}.check-row{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}.check-row input{margin-top:2px;accent-color:#007883}.check-title{font-size:12px;font-weight:700;color:#18375d;display:block}.check-sub{font-size:11px;color:#64748b;line-height:1.4;margin-top:2px;display:block}.publish-help{display:none;margin-top:12px;background:#fff8ec;border:1px solid #ffd490;color:#8a6408;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.45}.publish-help ul{margin:7px 0 0 18px}.bottom-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}.btn-back{padding:10px 20px;border:1px solid #d8e0ea;border-radius:8px;background:#fff;color:#64748b;font-size:13px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif}.btn-continue{padding:10px 22px;border:none;border-radius:8px;background:#eb6366;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif}.btn-continue:disabled{background:#f5c0c1;cursor:not-allowed}.sidebar{position:sticky;top:78px}.sidebar-card,.side-mini,.pack-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;overflow:hidden;margin-bottom:14px}.sidebar-head,.side-mini-head{background:#18375d;padding:13px 16px;color:#fff}.sidebar-head-lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em}.sidebar-head-val{font-size:14px;font-weight:600;color:#fff}.sidebar-body,.side-mini-body,.pack-body{padding:14px 16px}.sidebar-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f0f4f8}.sidebar-row:last-child{border-bottom:none}.sidebar-row-lbl{font-size:12px;color:#64748b}.sidebar-row-val{font-size:12px;font-weight:700;color:#18375d}.status-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#edf1f7;color:#64748b}.sidebar-url{padding:10px 14px;background:#f0f8f7;border-top:1px solid #e2e8f0}.sidebar-url-lbl{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}.sidebar-url-val{font-size:11px;color:#007883;font-weight:600;word-break:break-all}.pack-head{background:#fceaea;padding:10px 14px;border-bottom:1px solid #ffd6d4}.pack-head-lbl{font-size:10px;font-weight:700;color:#c0392b;text-transform:uppercase;letter-spacing:.06em}.pack-head-val{font-size:13px;font-weight:700;color:#c0392b}.pack-note{font-size:11px;color:#94a3b8;line-height:1.4}.pack-contact{display:inline-flex;margin-top:10px;font-size:12px;font-weight:800;color:#007883;text-decoration:none}.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;font-size:10px;font-weight:800;background:#fff8ec;color:#b7840a}.pill-ok{background:#f0fbf2;color:#27823a}
+/* Modale passation */.pass-overlay{position:fixed;inset:0;background:rgba(15,30,55,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:28px}.pass-overlay.on{display:flex}.pass-modal{width:min(780px,94vw);height:min(88vh,920px);background:#eef0f4;border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.28);overflow:hidden;display:flex;flex-direction:column}.pass-modal-head{height:50px;background:#fff;border-bottom:1px solid #d8e0ea;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 18px}.pass-modal-title{font-size:13px;font-weight:800;color:#18375d}.pass-close{width:32px;height:32px;border-radius:8px;border:1px solid #d8e0ea;background:#fff;color:#64748b;cursor:pointer}.pass-frame{flex:1;overflow:auto;background:#eef0f4}.p-hbar{background:#fff;border-bottom:1px solid #e2e8f0;padding:11px 24px;text-align:center;position:sticky;top:0;z-index:10}.p-hbar-title{font-size:13px;font-weight:600;color:#64748b}.p-page{max-width:600px;margin:0 auto;padding:20px 16px 56px}.p-card{background:#fff;border-radius:14px;padding:22px 20px;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:12px}.p-hero-wrap{border-radius:14px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:12px}.p-hero-img{height:180px;background:linear-gradient(135deg,#18375d 0%,#0d4c72 50%,#007883 100%);display:flex;align-items:center;justify-content:center}.p-hero-body{background:#fff;padding:22px 20px;text-align:center}.p-hero-sup{font-size:12px;color:#94a3b8;margin-bottom:8px;font-weight:500}.p-hero-title{font-size:22px;font-weight:700;color:#18375d;margin-bottom:20px;line-height:1.3}.p-hero-stats{display:flex;align-items:center;justify-content:center}.p-hero-stat{flex:1;text-align:center}.p-hero-stat-val{font-size:22px;font-weight:700;color:#007883}.p-hero-stat-lbl{font-size:12px;color:#64748b;margin-top:3px}.p-hero-divider{width:1px;height:44px;background:#e2e8f0}.p-btn{width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;margin-top:4px}.p-btn-primary{background:#18375d;color:#fff}.p-btn-primary:disabled{background:#b8c4d4;cursor:not-allowed}.p-btn-secondary{background:#fff;color:#18375d;border:1.5px solid #18375d}.p-socio-label{font-size:14px;font-weight:700;color:#18375d;margin-bottom:10px}.p-socio-option,.p-ans{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:9px;margin-bottom:6px;background:#fff;cursor:pointer}.p-socio-option.sel,.p-ans.sel{border-color:#18375d;background:#edf1f7}.p-radio{width:18px;height:18px;border-radius:50%;border:2px solid #c5ccd5;flex-shrink:0}.p-socio-option.sel .p-radio{border-color:#18375d;background:#18375d}.p-q-text{font-size:15px;font-weight:800;color:#18375d;line-height:1.5;margin-bottom:18px}.p-answer-num{width:30px;height:30px;border-radius:8px;background:#edf1f7;color:#18375d;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}.p-ans.sel .p-answer-num{background:#18375d;color:#fff}.p-prog-card{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:12px;box-shadow:0 1px 8px rgba(0,0,0,.06)}.p-prog-meta{display:flex;justify-content:space-between;margin-bottom:8px}.p-prog-label{font-size:12px;color:#64748b}.p-prog-label strong{color:#18375d}.p-prog-pct{font-size:12px;font-weight:700;color:#18375d}.p-prog-bar{display:flex;gap:4px}.p-pb-seg{flex:1;height:6px;border-radius:3px;background:#e2e8f0;overflow:hidden}.p-pb-fill{height:100%;border-radius:3px;background:#18375d}.p-chap-top{height:140px;display:flex;align-items:center;justify-content:center}.p-chap-top.bad{background:linear-gradient(135deg,#ff847e 0%,#ffe2e0 100%)}.p-chap-top.mid{background:linear-gradient(135deg,#ffc744 0%,#fff2c5 100%)}.p-chap-top.good{background:linear-gradient(135deg,#77cd8a 0%,#dbf5e0 100%)}.p-profile-card{border-radius:14px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:12px;background:#fff;border-left:4px solid}.p-profile-body{padding:18px 20px}.p-profile-phrase{font-size:13px;color:#64748b;font-style:italic;margin-bottom:12px;line-height:1.5}.p-profile-desc{font-size:13px;color:#475569;line-height:1.65;margin-bottom:14px}.p-final-thanks{text-align:center}.p-final-merci{font-size:12px;color:#94a3b8;margin-bottom:6px}.p-final-title{font-size:20px;font-weight:700;color:#18375d}.p-recap-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:10px}.p-recap-head{padding:16px 18px;border-left:4px solid}.p-recap-head.bad{border-left-color:#ff847e}.p-recap-head.mid{border-left-color:#ffc744}.p-recap-head.good{border-left-color:#77cd8a}.p-recap-chapnum{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}.p-recap-ptitle{font-size:16px;font-weight:700;color:#18375d;margin-bottom:4px;line-height:1.3}.p-recap-phrase{font-size:12px;color:#64748b;font-style:italic;margin-bottom:8px;line-height:1.4}.p-mots{display:flex;flex-wrap:wrap;gap:5px}.p-mot{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid}.p-mot.bad{background:#fff0ef;color:#c0392b;border-color:#ffd6d4}.p-mot.mid{background:#fff9ec;color:#b7840a;border-color:#ffedb8}.p-mot.good{background:#f0fbf2;color:#27823a;border-color:#b8e8c0}.p-coll-btn{width:100%;padding:12px 18px;border:none;background:#f7f9fc;color:#18375d;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;border-top:1px solid #f0f4f8;display:flex;justify-content:space-between;align-items:center}.p-coll-body{display:none;padding:16px 18px;border-top:1px solid #f0f4f8;background:#fafbfc}.p-coll-body.open{display:block}.p-coll-pct{font-size:28px;font-weight:800;color:#18375d}.p-coll-lbl{font-size:12px;color:#64748b;margin:2px 0 14px}.p-coll-row{display:grid;grid-template-columns:10px 1fr 36px 150px;gap:8px;align-items:center;margin-bottom:7px}.p-coll-dot{width:8px;height:8px;border-radius:50%}.p-coll-dot.bad,.p-coll-bar-f.bad{background:#ff847e}.p-coll-dot.mid,.p-coll-bar-f.mid{background:#ffc744}.p-coll-dot.good,.p-coll-bar-f.good{background:#77cd8a}.p-coll-bar-w{height:6px;background:#e8edf4;border-radius:3px;overflow:hidden}.p-coll-bar-f{height:100%;border-radius:3px}.p-coll-bar-p,.p-coll-bar-n{font-size:11px;color:#64748b}.p-radar-svg{width:100%;max-width:420px;margin:8px auto 2px;display:block}.p-radar-legend{display:flex;justify-content:center;gap:18px;margin-top:8px}.p-radar-legend span{display:flex;align-items:center;gap:6px;font-size:11px;color:#64748b}.p-legend-line{width:24px;height:2px;border-radius:2px;background:#18375d}.p-legend-dash{width:24px;height:0;border-top:2px dashed #94a3b8}.p-doc-section{border-radius:14px;padding:18px 20px;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:12px;background:#fff}.p-doc-title{font-size:13px;font-weight:700;color:#18375d;margin-bottom:12px}.p-doc-btn{width:100%;padding:11px 14px;border:1px solid #d8e0ea;border-radius:8px;background:#fafbfc;color:#18375d;font-size:13px;text-align:left;display:flex;align-items:center;gap:10px;margin-bottom:7px}
+
+
+/* ── Correctifs responsive iPhone / mobile ───────────────── */
+@media (max-width: 760px){
+  body{overflow-x:hidden;}
+  .topbar{height:auto;min-height:54px;padding:10px 14px;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:80;}
+  .logo-img{height:26px;max-width:150px;object-fit:contain;}
+  .main-nav{order:3;width:100%;margin-left:0;overflow-x:auto;max-width:100%;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
+  .main-nav a{white-space:nowrap;font-size:12px;padding:7px 9px;}
+  .acct{padding:4px 8px 4px 4px;}
+  .acct-n{display:none;}
+  .subnav{padding:8px 12px;-webkit-overflow-scrolling:touch;}
+  .breadcrumb{padding:9px 14px;}
+  .stepper-wrap{padding:12px 14px;-webkit-overflow-scrolling:touch;}
+  .stepper{min-width:520px;}
+  .step-label{font-size:11px;}
+  .page-wrap{padding:18px 14px 46px;max-width:100%;}
+  .page-title{font-size:19px;line-height:1.2;}
+  .page-sub{font-size:12px;margin-bottom:16px;}
+  .block,.card{padding:16px 14px;border-radius:12px;}
+  .bottom-actions{justify-content:stretch;}
+  .bottom-actions .btn,.bottom-actions button,.btn-back,.btn-continue{width:100%;justify-content:center;}
+  .sidebar{position:static;top:auto;}
+  .launch-url-box,.template-head,.chap-head,.q-header,.profile-head{align-items:flex-start;}
+  .btn-copy,.btn-test,.btn-secondary,.btn-ai,.btn-primary,.btn-add,.btn-danger{width:100%;justify-content:center;}
+  input,select,textarea,button{font-size:16px;}
+}
+@media (max-width: 520px){
+  .stepper{min-width:470px;}
+  .step-circle{width:24px;height:24px;font-size:11px;}
+  .step-connector{margin:0 7px;min-width:12px;}
+}
+
+.toast-customizer{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:#18375d;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:800;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:9999;opacity:0;pointer-events:none;transition:all .18s ease}.toast-customizer.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.qr-download-btn{background:#007883!important;color:#fff!important;border-color:#007883!important;box-shadow:0 8px 18px rgba(0,120,131,.16);cursor:pointer!important}.qr-download-btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(0,120,131,.20)}
+.campaign-locked input,.campaign-locked select,.campaign-locked textarea{background:#f6f8fb!important;color:#64748b!important}
+.help-dot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;margin-left:6px;cursor:help;position:relative}.help-dot:hover::after{content:attr(data-help);position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:260px;background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.35;text-transform:none;letter-spacing:0;z-index:20;box-shadow:0 12px 30px rgba(15,30,55,.22)}
+
+</style>
+</head>
+<body>
+<div id="header"></div><script src="header.js"></script><script src="catalogue-core.js?v=2"></script>
+<script src="catalogue-cyber.js?v=2"></script>
+<script src="catalogue-securite.js?v=2"></script>
+<script src="catalogue-qvt.js?v=2"></script>
+<script src="catalogue-transfo.js?v=2"></script>
+<script src="catalogue-rse.js?v=2"></script>
+<script src="catalogue-ethique.js?v=2"></script>
+<script src="catalogue-custom.js?v=2"></script>
+<script src="catalogue-init.js?v=2"></script><script src="app.js"></script>
+<div class="breadcrumb"><span class="bc-link" onclick="location.href='index.html'">Bibliothèque</span><span class="bc-sep">›</span><span class="bc-link" onclick="location.href='questions.html'" id="bc-theme">Thème sélectionné</span><span class="bc-sep">›</span><span class="bc-cur">Campagne</span></div>
+<div class="stepper-wrap"><div class="stepper"><div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector done"></div><div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div><div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="parametrage.html">Paramétrer</a></div><div class="step-connector done"></div><div class="step"><div class="step-circle active">4</div><span class="step-label active">Campagne</span></div><div class="step-connector todo"></div><div class="step"><div class="step-circle todo">5</div><span class="step-label todo">Transmettre</span></div></div></div>
+<div class="page-wrap"><h1 class="page-title">Préparer la campagne</h1><p class="page-sub">Centralisez le lien de passation prévu, les messages prêts à copier, les canaux de communication et les éléments à transmettre à Into The Shift pour la mise en ligne.</p>
+<div class="launch-grid"><main>
+<div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"><div class="kpi-sub">Modifiable avant transmission</div></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"><div class="kpi-sub">Date choisie par le client</div></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
+<section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="margin-top:12px"><label style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em">Nom de l’entreprise <span class="help-dot" data-help="Ce nom sert à générer le slug de l’URL prévue. Il doit correspondre à l’espace client ou à l’entreprise affichée dans le lien de passation.">?</span></label><input class="date-edit" id="company-name" type="text" placeholder="Ex. Nom de l’entreprise" oninput="updateCompanyName()"></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary qr-download-btn" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
+<section class="block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
+<section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
+<section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
+<div class="bottom-actions"><button class="btn-back" onclick="location.href='parametrage.html'">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
+</main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><select class="pack-select" id="pack-select" onchange="updatePackChoice()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><a class="pack-contact" href="mailto:contact@intotheshift.io?subject=Tarifs%20pack%20de%20passations">Pour obtenir les tarifs →</a></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
+<div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
+<script>
+let state = {};
+let backendProject = null;
+function saveState(){ if(typeof itsSave==='function') itsSave(state); else localStorage.setItem('intoTheShiftState',JSON.stringify(state)); }
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function slugify(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
+function p(){state.parametrage=state.parametrage||{};return state.parametrage}function c(){state.campagne=state.campagne||{};return state.campagne}
+function themeTitle(){return (state.theme&&state.theme.title)||state.title||p().themeName||'Nouveau thème'}
+function cleanTheme(){return String(themeTitle()).replace(/^Autodiagnostic\s+/i,'')}
+function companyName(){return String(p().entreprise||p().company||p().client||'').trim()}
+function companySlug(){return slugify(companyName())}
+function getPublishedShareUrl(){
+  return String(
+    (backendProject && (backendProject.shareUrl || backendProject.share_url)) ||
+    state.shareUrl || state.share_url ||
+    (state.publication && (state.publication.shareUrl || state.publication.share_url)) ||
+    ''
+  ).trim();
+}
+function getPublishedResultsUrl(){
+  return String(
+    (backendProject && (backendProject.resultsUrl || backendProject.results_url)) ||
+    state.resultsUrl || state.results_url ||
+    (state.publication && (state.publication.resultsUrl || state.publication.results_url)) ||
+    ''
+  ).trim();
+}
+function buildPlannedUrl(){
+  let cs=companySlug();
+  if(!cs)return '';
+  return 'https://selfdiag-mayt.meandyoutoo.app/'+cs+'/'+(p().slug||slugify(cleanTheme())||'autodiagnostic')
+}
+function buildUrl(){
+  return getPublishedShareUrl() || buildPlannedUrl();
+}
+function displayUrl(){return buildUrl()||'Renseignez le nom de l’entreprise pour générer le lien'}
+function ensureResultsUrlBlock(){
+  let box=document.querySelector('.launch-url-box');
+  if(!box)return null;
+  let block=document.getElementById('results-url-box');
+  if(!block){
+    block=document.createElement('div');
+    block.id='results-url-box';
+    block.className='launch-url-box';
+    block.style.marginTop='10px';
+    block.innerHTML='<div><div class="url-label">URL résultats</div><div class="url-big" id="results-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyResultsUrl()">Copier l’URL résultats</button><button class="btn-test" onclick="openResultsUrl()">Ouvrir</button></div>';
+    box.insertAdjacentElement('afterend',block);
+  }
+  return block;
+}
+function refreshPublicationUrls(){
+  let share=buildUrl();
+  let results=getPublishedResultsUrl();
+  let launchEl=document.getElementById('launch-url');
+  let sbUrl=document.getElementById('sb-url');
+  if(launchEl)launchEl.textContent=displayUrl();
+  if(sbUrl)sbUrl.textContent=displayUrl();
+  let block=ensureResultsUrlBlock();
+  if(block){
+    const resultsEl=document.getElementById('results-url');
+    if(resultsEl)resultsEl.textContent=results || 'URL résultats renseignée par l’admin après publication';
+    block.style.display = results ? 'flex' : 'none';
+  }
+  drawQrCode(share);
+}
+function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab.on')||document.querySelector('.comm-tab'))}
+function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}copyToClipboard(url,'URL résultats copiée')}
+function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
+function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
+function normalizeDateInputValue(s){if(!s)return'';let str=String(s);if(/^\d{4}-\d{2}-\d{2}/.test(str))return str.slice(0,10);let d=new Date(str);return Number.isNaN(d.getTime())?str:d.toISOString().slice(0,10)}
+function formatDateFR(s){s=normalizeDateInputValue(s);if(!s)return'—';let a=s.split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:s}function parseD(s){let a=String(s||'').split('-');return a.length===3?new Date(+a[0],+a[1]-1,+a[2]):null}function diffDays(a,b){return(!a||!b)?null:Math.round((b-a)/(86400000))}
+const templates={launch:{title:'Email de lancement',meta:'Jour du lancement',body:`Bonjour à toutes et tous,\n\nNous lançons un autodiagnostic consacré à {{THEME}}.\n\nIl vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes, vos points d’appui et les sujets à renforcer collectivement.\n\nLa démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.\n\nLien de passation : {{URL}}\n\nMerci pour votre participation.`},managers:{title:'Email managers',meta:'Relais managers',body:`Bonjour,\n\nNous lançons la campagne {{THEME}}. Merci de relayer l’autodiagnostic auprès de vos équipes, sans orienter les réponses.\n\nLa démarche est anonyme et vise à mieux comprendre les réflexes du quotidien pour identifier des actions utiles collectivement.\n\nLien : {{URL}}`},reminder:{title:'Relance',meta:'Mi-campagne',body:`Bonjour,\n\nPetit rappel : l’autodiagnostic {{THEME}} est toujours ouvert.\n\nVotre participation est importante pour obtenir une vision utile des pratiques du quotidien.\n\nLien : {{URL}}`},last:{title:'Dernière chance',meta:'Avant clôture',body:`Bonjour,\n\nDernière chance pour participer à l’autodiagnostic avant la clôture de la campagne.\n\nLa démarche reste entièrement anonyme.\n\nLien : {{URL}}`},channels:{title:'Canaux internes',meta:'Teams / Slack',body:`📣 L’autodiagnostic {{THEME}} est ouvert.\n\n5 à 7 minutes, 100 % anonyme, sans login ni suivi individuel.\n\n👉 {{URL}}`},intranet:{title:'Post intranet',meta:'Intranet',body:`Nous lançons un autodiagnostic pour mieux comprendre les réflexes du quotidien autour de {{THEME}}.\n\nL’objectif n’est pas d’évaluer les personnes, mais d’identifier les leviers utiles pour progresser collectivement.\n\nAccéder à l’autodiagnostic : {{URL}}`},firstResults:{title:'Restitution premiers enseignements',meta:'Après clôture',body:`Merci pour votre participation à l’autodiagnostic.\n\nLes premiers enseignements permettent d’identifier les points d’appui et les sujets à approfondir collectivement.\n\nLes résultats seront partagés de manière agrégée.`},finalResults:{title:'Restitution finale',meta:'Après restitution',body:`Suite à l’autodiagnostic, nous partageons les principaux enseignements et les actions qui seront engagées.\n\nMerci encore pour votre contribution à cette démarche collective.`}};
+function showTemplate(k,btn){document.querySelectorAll('.comm-tab').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');let t=templates[k]||templates.launch;document.getElementById('tpl-title').textContent=t.title;document.getElementById('tpl-meta').textContent=t.meta;document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());c().activeTemplate=k;saveState()}
+function showToast(message){let el=document.getElementById('toastCustomizer');if(!el)return;el.textContent=message;el.classList.add('on');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove('on'),2200)}
+async function copyToClipboard(text,successMessage){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');ta.remove()}showToast(successMessage||'Copié')}catch(e){console.error(e);showToast('Copie impossible : copiez manuellement')}}
+function copyUrl(){let url=buildUrl();if(!url){showToast('Renseignez d’abord le nom de l’entreprise pour générer le lien.');return}copyToClipboard(url,'Lien de passation copié')}function copyTemplate(){let text=document.getElementById('tpl-body').textContent;copyToClipboard(text,'Message copié')}
+let qrCodeInstance=null;
+function makeStyledQr(url,size){
+  return new QRCodeStyling({
+    width:size,
+    height:size,
+    type:'canvas',
+    data:url,
+    margin:Math.round(size*0.035),
+    qrOptions:{errorCorrectionLevel:'H'},
+    dotsOptions:{type:'dots',color:'#18375d'},
+    cornersSquareOptions:{type:'extra-rounded',color:'#18375d'},
+    cornersDotOptions:{type:'dot',color:'#18375d'},
+    backgroundOptions:{color:'#ffffff'}
+  });
+}
+function drawQrCode(url){
+  let el=document.getElementById('qr-code');
+  if(!el)return;
+  el.innerHTML='';
+  qrCodeInstance=null;
+  if(!url){
+    el.innerHTML='<span style="font-size:11px;color:#94a3b8;text-align:center;line-height:1.35">QR code généré après saisie du nom d’entreprise</span>';
+    return;
+  }
+  if(typeof QRCodeStyling==='undefined'){
+    el.innerHTML='<span style="font-size:11px;color:#94a3b8;text-align:center;line-height:1.35">QR code indisponible<br>Vérifiez la connexion</span>';
+    return;
+  }
+  qrCodeInstance=makeStyledQr(url,108);
+  qrCodeInstance.append(el);
+}
+function downloadQrCode(){
+  let url=buildUrl();
+  if(!url){showToast('Renseignez d’abord le nom de l’entreprise pour générer le QR code.');return}
+  if(typeof QRCodeStyling==='undefined'){showToast('Le générateur de QR code n’est pas encore chargé.');return}
+  let filename='qr-code-'+companySlug()+'-'+(p().slug||slugify(cleanTheme())||'autodiagnostic');
+  let holder=document.createElement('div');
+  holder.style.position='fixed';
+  holder.style.left='-9999px';
+  holder.style.top='-9999px';
+  holder.style.width='1024px';
+  holder.style.height='1024px';
+  holder.style.background='#ffffff';
+  document.body.appendChild(holder);
+  let exportQr=makeStyledQr(url,1024);
+  exportQr.append(holder);
+  setTimeout(()=>{
+    exportQr.download({name:filename,extension:'png'});
+    document.body.removeChild(holder);
+  },150);
+}
+function normalizeCampaignDatesInState(){
+  const param = p();
+  const nestedState = (state.data && state.data.state) || {};
+  const nestedPayload = (state.data && state.data.payload) || {};
+  const nestedPayloadState = (nestedPayload && nestedPayload.state) || {};
+  const nestedParam = (nestedState && nestedState.parametrage) || {};
+  const nestedPayloadParam = (nestedPayload && nestedPayload.parametrage) || {};
+  const nestedPayloadStateParam = (nestedPayloadState && nestedPayloadState.parametrage) || {};
+
+  let start = normalizeDateInputValue(
+    param.date_lancement ||
+    param.dateLancement ||
+    state.campaign_start_date ||
+    state.campaignStartDate ||
+    nestedParam.date_lancement ||
+    nestedParam.dateLancement ||
+    nestedPayloadParam.date_lancement ||
+    nestedPayloadParam.dateLancement ||
+    nestedPayloadStateParam.date_lancement ||
+    nestedPayloadStateParam.dateLancement ||
+    ''
+  );
+
+  let end = normalizeDateInputValue(
+    param.date_cloture ||
+    param.dateCloture ||
+    state.campaign_end_date ||
+    state.campaignEndDate ||
+    nestedParam.date_cloture ||
+    nestedParam.dateCloture ||
+    nestedPayloadParam.date_cloture ||
+    nestedPayloadParam.dateCloture ||
+    nestedPayloadStateParam.date_cloture ||
+    nestedPayloadStateParam.dateCloture ||
+    ''
+  );
+
+  param.date_lancement=start;
+  param.dateLancement=start;
+  param.date_cloture=end;
+  param.dateCloture=end;
+  state.campaignStartDate=start;
+  state.campaign_start_date=start;
+  state.campaignEndDate=end;
+  state.campaign_end_date=end;
+}
+
+function forceInjectCampaignDatesUI(){
+  normalizeCampaignDatesInState();
+  const start = p().date_lancement || '';
+  const end = p().date_cloture || '';
+  const launchInput = document.getElementById('date-launch');
+  const closeInput = document.getElementById('date-close');
+  if(launchInput) launchInput.value = start;
+  if(closeInput) closeInput.value = end;
+  updateDatesUI();
+  console.log('[ITS campagne] dates injectées UI', {start, end, stateStart: state.campaign_start_date, stateEnd: state.campaign_end_date});
+}
+
+function updateDatesFromInputs(){p().date_lancement=document.getElementById('date-launch').value;p().date_cloture=document.getElementById('date-close').value;normalizeCampaignDatesInState();updateDatesUI();updateChecklist();saveState()}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+function packLabel(v){return !v?'Pack à choisir':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations')}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const v=document.getElementById('pack-select').value||'';state.pack.volume=v;state.parametrage.pack_choisi=v;document.getElementById('pack-val').textContent=packLabel(v);saveState()}
+function isBackofficeViewingCampaign(){
+  const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
+  return role === 'admin' || role === 'partner';
+}
+
+function updateChecklist(){let cc=c();cc.checklist=cc.checklist||{};let boxes=[...document.querySelectorAll('.check-row input')];boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});if(!p().date_lancement)missing.push('Date de lancement');if(!p().date_cloture)missing.push('Date de clôture');if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');if(!companyName())missing.push('Nom de l’entreprise');let ok=missing.length===0;document.getElementById('check-pill').textContent=checked+'/'+total;document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');document.getElementById('btn-launch').disabled=!ok;if(!isBackofficeViewingCampaign()){document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';}else{document.getElementById('sb-status').textContent=statusLabel();}let help=document.getElementById('publish-help');help.style.display=ok?'none':'block';help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':'Transmission bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.';saveState()}
+const CFG=[{key:'bad',hex:'#ff847e',mk:'#fff0ef',text:'#c0392b'},{key:'mid',hex:'#ffc744',mk:'#fff9ec',text:'#b7840a'},{key:'good',hex:'#77cd8a',mk:'#f0fbf2',text:'#27823a'}];let PS={step:'home',chap:0,q:0,sel:null,socio:{},scores:{},chapScores:[],chapProfil:[],open:{}};
+function normAD(){let chapters=(state.chapters||[]).map((ch,i)=>({title:ch.title||ch.name||'Chapitre '+(i+1),questions:(ch.questions||[]).map(q=>{let ans=q.answers||q.opts||[];return{text:q.text||q.question||'Question',opts:ans.map(a=>a.text||a.l||a.label||String(a)),scores:ans.map(a=>Number(a.score??a.s??1))}}),profiles:(ch.profiles||ch.profils||[]).map((pr,j)=>({title:pr.title||pr.titre||'Profil',summary:pr.summary||pr.phrase||'',description:pr.description||pr.desc||'',keywords:pr.keywords||pr.motscles||pr.mots||[]})),seuils:ch.seuils||[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}));if(!chapters.length)chapters=[{title:'Chapitre 1',questions:[{text:'Première question de démonstration',opts:['Réponse A','Réponse B','Réponse C'],scores:[0,1,2]}],profiles:[{title:'Profil en progression',summary:'Votre profil apparaît ici.',description:'La description détaillée du profil sera affichée ici.',keywords:['Mot clé']}],seuils:[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}];return{title:cleanTheme(),intro:p().intro||'Bienvenue dans cet autodiagnostic. Il vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes. La démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.',socio:p().sociodemo||[{q:'À quelle catégorie appartenez-vous ?',opts:['Collaborateur·rice','Manager','Direction']}],chapters,resources:p().resources||state.resources||[]}}
+function pEsc(s){return esc(s)}function cleanProfileTitle(t){return String(t||'Profil').replace(/^(Pratiques en construction|Réflexes installés|Réflexes ancrés|En développement|En progression|Ancré|Mauvais|Moyen|Bon)\s*[—–-]\s*/i,'').trim()||'Profil'}function splitRadarLabel(t){let words=String(t||'').split(' '),lines=[''];words.forEach(w=>{let last=lines.length-1;if((lines[last]+' '+w).trim().length>18&&lines.length<3){lines.push(w)}else{lines[last]=(lines[last]+' '+w).trim()}});return lines}function pTotal(ad){return ad.chapters.reduce((a,ch)=>a+ch.questions.length,0)}function pDone(ad){return ad.chapters.slice(0,PS.chap).reduce((a,ch)=>a+ch.questions.length,0)+PS.q}function pCalc(ad,ci){let ch=ad.chapters[ci],t=0;for(let i=0;i<ch.questions.length;i++)t+=PS.scores[ci+'_'+i]||0;return t/ch.questions.length}function pIdx(score,seuils){let s=(seuils||[]).map(x=>x.max??x);return score<(s[0]??.7)?0:score<(s[1]??1.7)?1:2}
+function openPassationPreview(){PS={step:'home',chap:0,q:0,sel:null,socio:{},scores:{},chapScores:[],chapProfil:[],open:{}};document.getElementById('pass-overlay').classList.add('on');renderPass()}function closePassationPreview(){document.getElementById('pass-overlay').classList.remove('on')}function pSetStep(st){PS.step=st;PS.sel=null;renderPass();document.getElementById('pass-app').scrollTop=0}function pSelectSocio(i,j){PS.socio[i]=j;renderPass()}function pSelectAns(i){PS.sel=i;renderPass()}function pContinue(){let ad=normAD(),q=ad.chapters[PS.chap].questions[PS.q];PS.scores[PS.chap+'_'+PS.q]=q.scores[PS.sel]??1;if(PS.q<ad.chapters[PS.chap].questions.length-1){PS.q++;PS.sel=null;pSetStep('question')}else{let sc=pCalc(ad,PS.chap);PS.chapScores[PS.chap]=sc;PS.chapProfil[PS.chap]=pIdx(sc,ad.chapters[PS.chap].seuils);pSetStep('chap_end')}}function pNextChap(){let ad=normAD();if(PS.chap<ad.chapters.length-1){PS.chap++;PS.q=0;pSetStep('question')}else pSetStep('final')}function renderPass(){let ad=normAD(),html='';if(PS.step==='home')html=pHome(ad);if(PS.step==='socio')html=pSocio(ad);if(PS.step==='question')html=pQuestion(ad);if(PS.step==='chap_end')html=pChapEnd(ad);if(PS.step==='final')html=pFinal(ad);document.getElementById('pass-app').innerHTML=html}
+function pHome(ad){let intro=Array.isArray(ad.intro)?ad.intro:[ad.intro];return `<div class="p-hbar"><div class="p-hbar-title">${pEsc(ad.title)}</div></div><div class="p-page"><div class="p-hero-wrap"><div class="p-hero-img"><svg width="72" height="72" viewBox="0 0 80 80" fill="none"><path d="M40 8L56 16V36C56 50 40 62 40 62C40 62 24 50 24 36V16L40 8Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.6)" stroke-width="2"/><path d="M33 36L38 41L48 30" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="p-hero-body"><div class="p-hero-sup">Autodiagnostic Into The Shift</div><div class="p-hero-title">${pEsc(ad.title)}</div><div class="p-hero-stats"><div class="p-hero-stat"><div class="p-hero-stat-val">${ad.chapters.length} parties</div><div class="p-hero-stat-lbl">Ce test comporte</div></div><div class="p-hero-divider"></div><div class="p-hero-stat"><div class="p-hero-stat-val">environ ${Math.max(5,Math.round(pTotal(ad)*.5))} min.</div><div class="p-hero-stat-lbl">Ce test durera</div></div></div></div></div>${intro.map(t=>`<div class="p-card"><p style="font-size:14px;color:#475569;line-height:1.65">${pEsc(t)}</p></div>`).join('')}<div class="p-card"><button class="p-btn p-btn-primary" onclick="pSetStep('socio')">Commencer le test</button><p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:10px">Pour une meilleure expérience, ouvrez cette page sur Chrome, Safari ou Firefox.</p></div></div>`}
+function pSocio(ad){let all=(ad.socio||[]).every((s,i)=>PS.socio[i]!==undefined);return `<div class="p-hbar"><div class="p-hbar-title">${pEsc(ad.title)}</div></div><div class="p-page"><div class="p-card"><h2 style="font-size:18px;font-weight:700;color:#18375d;margin-bottom:6px">Avant de commencer</h2><p style="font-size:13px;color:#94a3b8">Tous les champs sont requis pour commencer le questionnaire.</p></div><div class="p-card">${(ad.socio||[]).map((s,si)=>`<div style="margin-bottom:20px"><div class="p-socio-label">${pEsc(s.q||s.question)} <span style="color:#eb6366">*</span></div>${(s.opts||s.options||[]).map((o,oi)=>`<div class="p-socio-option ${PS.socio[si]===oi?'sel':''}" onclick="pSelectSocio(${si},${oi})"><div class="p-radio"></div><span style="font-size:13px;color:#18375d">${pEsc(o)}</span></div>`).join('')}</div>`).join('<hr style="border:none;border-top:1px solid #f0f4f8;margin:18px 0">')}</div><div class="p-card"><button class="p-btn p-btn-primary" onclick="pSetStep('question')" ${all?'':'disabled'}>Étape suivante</button><p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:10px">Données anonymes — non traitées individuellement.</p></div></div>`}
+function pQuestion(ad){let ch=ad.chapters[PS.chap],q=ch.questions[PS.q],pct=Math.max(1,Math.round(pDone(ad)/pTotal(ad)*100)),segs=ad.chapters.map((c,i)=>`<div class="p-pb-seg"><div class="p-pb-fill" style="width:${i<PS.chap?100:(i===PS.chap?PS.q/c.questions.length*100:0)}%"></div></div>`).join('');return `<div class="p-hbar"><div class="p-hbar-title">${pEsc(ad.title)}</div></div><div class="p-page"><div class="p-prog-card"><div class="p-prog-meta"><span class="p-prog-label"><strong>Partie ${PS.chap+1}/${ad.chapters.length}</strong> · Question ${PS.q+1}/${ch.questions.length}</span><span class="p-prog-pct">${pct}%</span></div><div class="p-prog-bar">${segs}</div></div><div class="p-card"><div class="p-q-text">${pEsc(q.text)} <span style="color:#eb6366">*</span></div>${q.opts.map((o,i)=>`<div class="p-ans ${PS.sel===i?'sel':''}" onclick="pSelectAns(${i})"><div class="p-answer-num">${i+1}</div><span style="font-size:14px;color:#18375d;line-height:1.5">${pEsc(o)}</span></div>`).join('')}</div><div class="p-card"><button class="p-btn p-btn-primary" onclick="pContinue()" ${PS.sel!==null?'':'disabled'}>Continuer</button></div></div>`}
+function pChapEnd(ad){let ch=ad.chapters[PS.chap],pi=PS.chapProfil[PS.chap]??1,pr=ch.profiles[pi]||ch.profiles[1]||ch.profiles[0]||{},cfg=CFG[pi]||CFG[1],last=PS.chap===ad.chapters.length-1;return `<div class="p-hbar"><div class="p-hbar-title">${pEsc(ad.title)}</div></div><div class="p-page"><div class="p-hero-wrap"><div class="p-chap-top ${cfg.key}"><svg width="60" height="60" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" fill="rgba(255,255,255,.25)"/><path d="M25 40L35 50L55 30" stroke="rgba(255,255,255,.95)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="p-hero-body"><div style="font-size:13px;font-weight:700;color:${cfg.text};margin-bottom:8px">✓ Fin du chapitre ${PS.chap+1} — ${pEsc(ch.title)}</div><div class="p-hero-title" style="margin-bottom:0">${pEsc(cleanProfileTitle(pr.title))}</div></div></div><div class="p-profile-card" style="border:2px solid ${cfg.hex};border-left-width:4px"><div class="p-profile-body"><p class="p-profile-phrase">${pEsc(pr.summary||'')}</p><p class="p-profile-desc">${pEsc(pr.description||'')}</p><div class="p-mots">${(pr.keywords||[]).map(m=>`<span class="p-mot ${cfg.key}">${pEsc(m)}</span>`).join('')}</div></div></div><div class="p-card"><button class="p-btn p-btn-primary" onclick="${last?'pSetStep(\'final\')':'pNextChap()'}">${last?'Voir mes résultats':'Chapitre suivant →'}</button></div></div>`}
+function dist(pi){return pi===0?[{pct:14,lvl:0,lbl:'Profil en développement'},{pct:42,lvl:1,lbl:'Profil intermédiaire'},{pct:44,lvl:2,lbl:'Profil ancré'}]:pi===2?[{pct:18,lvl:0,lbl:'Profil en développement'},{pct:39,lvl:1,lbl:'Profil intermédiaire'},{pct:43,lvl:2,lbl:'Profil ancré'}]:[{pct:18,lvl:0,lbl:'Profil en développement'},{pct:44,lvl:1,lbl:'Profil intermédiaire'},{pct:38,lvl:2,lbl:'Profil ancré'}]}function pToggleColl(i){PS.open['c'+i]=!PS.open['c'+i];renderPass()}
+function radar(ad){let labels=ad.chapters.map(ch=>ch.title).slice(0,4);while(labels.length<4)labels.push('Chapitre '+(labels.length+1));let vals=PS.chapScores.length?PS.chapScores.slice(0,4):[.7,1.25,1.1,1.5];while(vals.length<4)vals.push(1.15);let avg=[1.25,1.45,1.1,1.3],cx=230,cy=210,r=115,ang=[-Math.PI/2,0,Math.PI/2,Math.PI],pts=a=>a.map((v,i)=>`${cx+(Math.min(2,Math.max(0,v))/2*r)*Math.cos(ang[i])},${cy+(Math.min(2,Math.max(0,v))/2*r)*Math.sin(ang[i])}`).join(' ');let grids=[.35,.7,1].map(f=>`<polygon points="${ang.map(a=>`${cx+r*f*Math.cos(a)},${cy+r*f*Math.sin(a)}`).join(' ')}" fill="none" stroke="#e2e8f0"/>`).join(''),axes=ang.map(a=>`<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(a)}" y2="${cy+r*Math.sin(a)}" stroke="#e2e8f0"/>`).join(''),labs=[{x:cx,y:cy-r-24,ta:'middle',t:labels[0],dy:0},{x:cx+r+22,y:cy-10,ta:'start',t:labels[1],dy:0},{x:cx,y:cy+r+28,ta:'middle',t:labels[2],dy:0},{x:cx-r-22,y:cy-10,ta:'end',t:labels[3],dy:0}].map(l=>{let lines=splitRadarLabel(l.t);return `<text x="${l.x}" y="${l.y}" text-anchor="${l.ta}" font-size="10.5" fill="#64748b" font-family="Asap,sans-serif">${lines.map((line,i)=>`<tspan x="${l.x}" dy="${i?13:0}">${pEsc(line)}</tspan>`).join('')}</text>`}).join('');return `<svg class="p-radar-svg" viewBox="0 0 460 430">${grids}${axes}<polygon points="${pts(avg)}" fill="rgba(148,163,184,.12)" stroke="#94a3b8" stroke-dasharray="4,3"/><polygon points="${pts(vals)}" fill="rgba(24,55,93,.14)" stroke="#18375d" stroke-width="2"/>${labs}</svg><div class="p-radar-legend"><span><i class="p-legend-line"></i>Votre profil</span><span><i class="p-legend-dash"></i>Profil des autres répondants</span></div>`}
+function pFinal(ad){let cards=ad.chapters.map((ch,i)=>{let pi=PS.chapProfil[i]??1,pr=ch.profiles[pi]||ch.profiles[1]||ch.profiles[0]||{},cfg=CFG[pi]||CFG[1],open=PS.open['c'+i],d=dist(pi);return `<div class="p-recap-item"><div class="p-recap-head ${cfg.key}"><div class="p-recap-chapnum">${i+1}. ${pEsc(ch.title)}</div><div class="p-recap-ptitle">${pEsc(cleanProfileTitle(pr.title))}</div><div class="p-recap-phrase">${pEsc(pr.summary||'')}</div><div class="p-mots">${(pr.keywords||[]).map(m=>`<span class="p-mot ${cfg.key}">${pEsc(m)}</span>`).join('')}</div></div><button class="p-coll-btn" onclick="pToggleColl(${i})"><span>Afficher le résultat de mes collègues</span><span>${open?'▲':'▼'}</span></button><div class="p-coll-body ${open?'open':''}"><div class="p-coll-pct">${d[pi]?.pct||d[1].pct}%</div><div class="p-coll-lbl">de vos collègues ont<br>le même profil que vous</div>${d.map(x=>{let c=CFG[x.lvl];return `<div class="p-coll-row"><div class="p-coll-dot ${c.key}"></div><div class="p-coll-bar-w"><div class="p-coll-bar-f ${c.key}" style="width:${x.pct}%"></div></div><div class="p-coll-bar-p">${x.pct}%</div><div class="p-coll-bar-n">${pEsc(x.lbl)}</div></div>`}).join('')}</div></div>`}).join(''),res=(ad.resources||[]).filter(r=>r&&(r.titre||r.title)),icons=['📄','🦺','💻','📋','🔗'];return `<div class="p-hbar"><div class="p-hbar-title">${pEsc(ad.title)}</div></div><div class="p-page"><div class="p-card p-final-thanks"><div class="p-final-merci">Merci d'avoir répondu à cet autodiagnostic !</div><div class="p-final-title">Récapitulatif de vos résultats</div></div><div class="p-card"><div style="font-size:13px;font-weight:700;text-align:center;color:#18375d">${pEsc(ad.title)}</div>${radar(ad)}</div>${cards}${res.length?`<div class="p-doc-section"><div class="p-doc-title">Pour approfondir</div>${res.map((r,i)=>`<div class="p-doc-btn"><span>${icons[i%icons.length]}</span>${pEsc(r.titre||r.title)}</div>`).join('')}</div>`:''}<div class="p-card"><button class="p-btn p-btn-primary" onclick="alert('Téléchargement du rapport PDF — disponible en production.')">Téléchargez ce rapport (PDF)</button><button class="p-btn p-btn-secondary" onclick="closePassationPreview()">Fermer cette fenêtre</button></div></div>`}
+
+
+function getCurrentProjectIdForSave(){
+  return state.currentAdId || state.project_id || state.projectId ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
+}
+async function persistProjectDraft(step, status){
+  saveState();
+  state.status = status || state.status || 'ready_for_transmission';
+  state.current_step = step || 'campagne';
+  saveState();
+  const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+  if(!token) return;
+  try{
+    const response = await fetch('https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/projects', {
+      method:'POST',
+      headers:{'Content-Type':'application/json', 'Authorization':'Bearer ' + token},
+      body: JSON.stringify({
+        projectId: getCurrentProjectIdForSave() || undefined,
+        title: (state.parametrage&&state.parametrage.nom) || state.themeTitle || state.title || 'Autodiagnostic',
+        organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
+        status: status || state.status || 'ready_for_transmission',
+        currentStep: step || 'campagne',
+        campaignStartDate: p().date_lancement || undefined,
+        campaignEndDate: p().date_cloture || undefined,
+        data: Object.assign({}, state, {
+          campaignStartDate: p().date_lancement || '',
+          campaignEndDate: p().date_cloture || '',
+          campaign_start_date: p().date_lancement || '',
+          campaign_end_date: p().date_cloture || '',
+          step: step || 'campagne',
+          current_step: step || 'campagne',
+          status: status || state.status || 'ready_for_transmission',
+          configTransmise:false
+        })
+      })
+    });
+    const saved = await response.json().catch(()=>({}));
+    const id = saved.id || saved.project_id || saved.projectId || (saved.project&&saved.project.id);
+    if(id){ state.currentAdId=id; state.project_id=id; state.projectId=id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); saveState(); }
+  }catch(e){ console.error('Sauvegarde backend impossible pour la campagne', e); }
+}
+
+
+function apiBase(){
+  return window.location.hostname === 'localhost'
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
+}
+function getToken(){
+  return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+}
+function decodeJwt(token){
+  try{
+    const payload=token.split('.')[1];
+    return JSON.parse(atob(payload.replace(/-/g,'+').replace(/_/g,'/')));
+  }catch(e){return null}
+}
+function getRole(){
+  return localStorage.getItem('its_user_role') || decodeJwt(getToken())?.role || '';
+}
+function getCurrentProjectId(){
+  const params=new URLSearchParams(window.location.search);
+  return params.get('projectId') || params.get('project_id') || params.get('id') ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    localStorage.getItem('its_current_project') ||
+    state.currentAdId || state.project_id || state.projectId || '';
+}
+function getVal(obj,keys,fallback=''){
+  for(const key of keys){
+    if(obj && obj[key]!==undefined && obj[key]!==null && obj[key]!=='') return obj[key];
+  }
+  return fallback;
+}
+function parseProjectObject(value){
+  if(!value)return {};
+  if(typeof value==='object')return value;
+  if(typeof value==='string'){
+    try{return JSON.parse(value)}catch(e){return {}}
+  }
+  return {};
+}
+function unwrapCampaignProjectData(raw){
+  const data = parseProjectObject(raw);
+  if(!data || typeof data !== 'object') return {};
+  const payload = parseProjectObject(data.payload || {});
+  const stateObj = parseProjectObject(data.state || {});
+  const payloadState = parseProjectObject(payload.state || {});
+  return Object.assign({}, data, payload, stateObj, payloadState);
+}
+function extractProjectDate(project, data, payload, kind){
+  const dataState = parseProjectObject(data && data.state || {});
+  const payloadState = parseProjectObject(payload && payload.state || {});
+  const dataPayload = parseProjectObject(data && data.payload || {});
+  const dataPayloadState = parseProjectObject(dataPayload && dataPayload.state || {});
+
+  const param = (data && data.parametrage) || {};
+  const payloadParam = (payload && payload.parametrage) || {};
+  const stateParam = (dataState && dataState.parametrage) || {};
+  const payloadStateParam = (payloadState && payloadState.parametrage) || {};
+  const dataPayloadParam = (dataPayload && dataPayload.parametrage) || {};
+  const dataPayloadStateParam = (dataPayloadState && dataPayloadState.parametrage) || {};
+  const campaign = (data && data.campagne) || (payload && payload.campagne) || (dataState && dataState.campagne) || (payloadState && payloadState.campagne) || {};
+
+  const startKeys = ['campaign_start_date','campaignStartDate','start_date','startDate','date_lancement','dateLancement'];
+  const endKeys = ['campaign_end_date','campaignEndDate','end_date','endDate','date_cloture','dateCloture'];
+  const keys = kind === 'start' ? startKeys : endKeys;
+
+  const found =
+    getVal(project, keys, '') ||
+    getVal(data, keys, '') ||
+    getVal(payload, keys, '') ||
+    getVal(dataState, keys, '') ||
+    getVal(payloadState, keys, '') ||
+    getVal(dataPayload, keys, '') ||
+    getVal(dataPayloadState, keys, '') ||
+    getVal(param, keys, '') ||
+    getVal(payloadParam, keys, '') ||
+    getVal(stateParam, keys, '') ||
+    getVal(payloadStateParam, keys, '') ||
+    getVal(dataPayloadParam, keys, '') ||
+    getVal(dataPayloadStateParam, keys, '') ||
+    getVal(campaign, keys, '') ||
+    '';
+
+  return normalizeDateInputValue(found);
+}
+async function fetchProjectFromBackend(projectId){
+  if(!projectId || !getToken()) return null;
+  const headers={Authorization:'Bearer '+getToken()};
+  const role=String(getRole()||'').toLowerCase();
+
+  if(role==='admin'){
+    const direct=await fetch(apiBase()+'/api/admin/projects/'+encodeURIComponent(projectId),{headers});
+    const directData=await direct.json().catch(()=>({}));
+    if(direct.ok && directData.project) return directData.project;
+    if(direct.ok && directData.id) return directData;
+
+    const res=await fetch(apiBase()+'/api/admin/projects',{headers});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.error || directData.error || 'Erreur chargement projets admin');
+    const projects=Array.isArray(data) ? data : (data.projects || data.autodiags || data.data || []);
+    return projects.find(p=>String(p.id)===String(projectId)) || null;
+  }
+
+  if(role==='partner'){
+    const res=await fetch(apiBase()+'/api/partner/clients',{headers});
+    const data=await res.json().catch(()=>({}));
+    if(res.ok){
+      const clients=data.clients || [];
+      for(const client of clients){
+        const found=(client.projects || []).find(p=>String(p.id)===String(projectId));
+        if(found){
+          return Object.assign({}, found, {
+            organizationName: client.name || found.organizationName || found.organization_name || '',
+            organization_id: client.id || found.organization_id,
+            organizationId: client.id || found.organizationId
+          });
+        }
+      }
+    }
+  }
+
+  const res=await fetch(apiBase()+'/api/projects/'+encodeURIComponent(projectId),{headers});
+  const data=await res.json().catch(()=>({}));
+  if(!res.ok)throw new Error(data.error || 'Erreur chargement projet');
+  return data.project || data;
+}
+function normalizeLoadedProject(project){
+  if(!project)return;
+  backendProject=project;
+
+  const data=parseProjectObject(project.data || project.payload || project.configuration || {});
+  const payload=parseProjectObject(data.payload || {});
+  const merged=unwrapCampaignProjectData(project.data || project.payload || project.configuration || {});
+
+  // Hydratation stricte depuis le projet backend :
+  // le backend est prioritaire, le localStorage ne doit plus écraser la consultation admin.
+  state=Object.assign({}, merged);
+
+  state.data=data;
+  state.currentAdId=project.id || state.currentAdId;
+  state.project_id=project.id || state.project_id;
+  state.projectId=project.id || state.projectId;
+  state.status=project.status || project.statut || merged.status || merged.project_status || 'draft';
+
+  state.shareUrl=project.shareUrl || project.share_url || merged.shareUrl || merged.share_url || '';
+  state.share_url=state.shareUrl;
+  state.resultsUrl=project.resultsUrl || project.results_url || merged.resultsUrl || merged.results_url || '';
+  state.results_url=state.resultsUrl;
+
+  state.title=project.title || merged.autodiagTitle || merged.title || merged.titre || merged.titre_autodiag || '';
+  state.themeTitle=merged.themeTitle || merged.autodiagTitle || merged.titre_autodiag || project.title || state.title || '';
+  state.theme=merged.theme && typeof merged.theme === 'object' ? merged.theme : {};
+  state.theme.title=state.theme.title || state.themeTitle || state.title || '';
+  state.chapters=merged.chapters || merged.questions?.chapters || [];
+
+  state.parametrage=Object.assign({}, merged.parametrage || {});
+  state.parametrage.nom =
+    state.parametrage.nom ||
+    merged.titre_autodiag ||
+    merged.autodiagTitle ||
+    project.title ||
+    state.title ||
+    '';
+
+  state.parametrage.entreprise =
+    state.parametrage.entreprise ||
+    merged.entreprise ||
+    merged.clientCompany ||
+    merged.company ||
+    getVal(project,['organizationName','organization_name','clientName','company_name'],'');
+
+  const backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
+  const backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
+
+  console.log('[ITS campagne] dates backend détectées', {backendStartDate, backendEndDate, projectStart: project.campaign_start_date || project.campaignStartDate, projectEnd: project.campaign_end_date || project.campaignEndDate});
+  state.parametrage.date_lancement = backendStartDate || '';
+  state.parametrage.dateLancement = backendStartDate || '';
+  state.parametrage.date_cloture = backendEndDate || '';
+  state.parametrage.dateCloture = backendEndDate || '';
+  state.campaign_start_date = backendStartDate || '';
+  state.campaignStartDate = backendStartDate || '';
+  state.campaign_end_date = backendEndDate || '';
+  state.campaignEndDate = backendEndDate || '';
+  normalizeCampaignDatesInState();
+
+  state.parametrage.pack_choisi =
+    state.parametrage.pack_choisi ||
+    project.pack ||
+    merged.pack_choisi ||
+    merged.packChoisi ||
+    merged.selectedPack ||
+    merged.pack ||
+    '';
+
+  if(project.id){
+    try{sessionStorage.setItem('its_project_cache_'+project.id, JSON.stringify(project));}catch(e){}
+  }
+
+  try{
+    localStorage.setItem('its_current_project_id', String(project.id || ''));
+    localStorage.setItem('its_current_ad_id', String(project.id || ''));
+    const storageKey = typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '';
+    if(storageKey) localStorage.setItem(storageKey, JSON.stringify(state));
+    else localStorage.setItem('intoTheShiftState', JSON.stringify(state));
+  }catch(e){}
+}
+
+async function persistLoadedProjectDatesIfNeeded(project){
+  if(!project || !project.id || !getToken()) return;
+  const start = state.parametrage?.date_lancement || '';
+  const end = state.parametrage?.date_cloture || '';
+  if(!start && !end) return;
+  try{
+    await fetch(apiBase()+'/api/projects/'+encodeURIComponent(project.id),{
+      method:'PUT',
+      headers:{'Content-Type':'application/json', Authorization:'Bearer '+getToken()},
+      body:JSON.stringify({
+        title: state.parametrage?.nom || state.themeTitle || state.title || project.title || 'Autodiagnostic',
+        organizationId: project.organizationId || project.organization_id || localStorage.getItem('its_selected_partner_client_id') || null,
+        status: project.status || state.status || 'draft',
+        currentStep: state.current_step || state.currentStep || 'campagne',
+        campaignStartDate: start || undefined,
+        campaignEndDate: end || undefined,
+        data:Object.assign({}, state, {campaignStartDate:start,campaignEndDate:end,campaign_start_date:start,campaign_end_date:end})
+      })
+    });
+  }catch(e){console.warn('Migration dates projet non bloquante', e);}
+}
+function countQuestions(){
+  return (state.chapters||[]).reduce((a,ch)=>a+((ch.questions||[]).length),0);
+}
+function countProfiles(){
+  return (state.chapters||[]).reduce((a,ch)=>a+((ch.profiles||ch.profils||[]).length),0);
+}
+function statusLabel(){
+  const s=String((backendProject&&backendProject.status)||state.status||'draft').toLowerCase();
+  if(s==='published'||s.includes('publi'))return 'Publié';
+  if(s==='unpublished'||s.includes('dépub')||s.includes('depub'))return 'Dépublié';
+  if(s==='sent'||s.includes('transmis')||s.includes('submitted'))return 'Transmis';
+  if(s==='ready_for_transmission')return 'Prêt';
+  return 'Brouillon';
+}
+function applyBackendHydrationUI(){
+  document.getElementById('bc-theme').textContent=cleanTheme();
+  document.getElementById('sb-title').textContent=cleanTheme();
+  document.getElementById('sb-status').textContent=statusLabel();
+  document.getElementById('sb-q').textContent=countQuestions();
+  document.getElementById('sb-profils').textContent=countProfiles();
+  if(document.getElementById('company-name'))document.getElementById('company-name').value=companyName();
+  const v=(state.parametrage&&state.parametrage.pack_choisi)||(state.pack&&state.pack.volume)||'';
+  const packSelect=document.getElementById('pack-select');
+  if(packSelect && v) packSelect.value=v;
+  document.getElementById('pack-val').textContent=packLabel(v);
+}
+
+function init(){
+  applyBackendHydrationUI();
+  refreshLaunchUrl();
+  forceInjectCampaignDatesUI();
+  let ck=c().checklist||{};
+  document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);
+  showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));
+  refreshLaunchUrl();
+  updateChecklist();
+  if(isBackofficeViewingCampaign()){
+    const sbStatus=document.getElementById('sb-status');
+    if(sbStatus)sbStatus.textContent=statusLabel();
+  }
+}
+async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
+  const params=new URLSearchParams(window.location.search);
+  const projectIdFromUrl=params.get('projectId') || params.get('project_id') || params.get('id') || '';
+  const projectId=projectIdFromUrl ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
+
+  let projectLoaded=false;
+
+  if(projectId){
+    localStorage.setItem('its_current_project_id', String(projectId));
+    localStorage.setItem('its_current_ad_id', String(projectId));
+
+    if(!projectIdFromUrl){
+      params.set('projectId', String(projectId));
+      history.replaceState(null,'',window.location.pathname+'?'+params.toString());
+    }
+
+    try{
+      const project=await fetchProjectFromBackend(projectId);
+      if(project){
+        normalizeLoadedProject(project);
+        projectLoaded=true;
+        await persistLoadedProjectDatesIfNeeded(project);
+      }
+    }catch(e){
+      console.error('Chargement backend campagne impossible', e);
+      try{
+        const cached=JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
+        if(cached){
+          normalizeLoadedProject(cached);
+          projectLoaded=true;
+          await persistLoadedProjectDatesIfNeeded(cached);
+        }
+      }catch(cacheError){}
+    }
+  }
+
+  // Fallback uniquement si aucun projet backend/cache n'a été trouvé.
+  // On évite qu'un ancien localStorage vide écrase les données admin.
+  if(!projectLoaded){
+    if(typeof itsBootstrapProjectFromUrl === "function"){
+      state = await itsBootstrapProjectFromUrl();
+    } else {
+      state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
+    }
+  }
+
+  if(!state || typeof state !== 'object'){
+    state={theme:{title:'Sécurité & culture de sûreté'},chapters:[]};
+  }
+
+  init();
+
+  if(typeof window.applyCampaignModeAfterHydration === "function"){
+    window.applyCampaignModeAfterHydration();
+  }
+
+  if(typeof itsApplyReadOnlyMode === "function"){
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
+  }
+}
+
+
+
+bootCampagnePage();
+</script>
+
+<script>
+(function(){
+  function getToken(){
+    return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+  }
+
+  function decodeJwt(token){
+    try{
+      const payload = token.split(".")[1];
+      return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));
+    }catch(e){
+      return null;
+    }
+  }
+
+  function getUserRole(){
+    return String(localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "").toLowerCase();
+  }
+
+  function isBackofficeRole(){
+    const role=getUserRole();
+    return role === "admin" || role === "partner";
+  }
+
+  function allowedButton(button){
+    const onclick = String(button.getAttribute("onclick") || "");
+    return (
+      button.classList.contains("comm-tab") ||
+      onclick.includes("copyTemplate") ||
+      onclick.includes("copyUrl") ||
+      onclick.includes("copyResultsUrl") ||
+      onclick.includes("downloadQrCode")
+    );
+  }
+
+  function applyLockedCampaignMode(){
+    document.body.classList.add("campaign-locked");
+
+    document.querySelectorAll(".bottom-actions").forEach(el => {
+      el.style.display = "none";
+    });
+
+    document.querySelectorAll("input, select, textarea").forEach(el => {
+      if(el.id === "date-launch" || el.id === "date-close"){
+        el.disabled = false;
+        el.readOnly = true;
+        el.style.pointerEvents = "none";
+        el.style.cursor = "not-allowed";
+        el.style.background = "#f6f8fb";
+        return;
+      }
+      el.disabled = true;
+      el.style.cursor = "not-allowed";
+    });
+
+    document.querySelectorAll("button").forEach(button => {
+      if(allowedButton(button)){
+        button.disabled = false;
+        button.style.cursor = "pointer";
+        button.style.opacity = "1";
+        return;
+      }
+      button.disabled = true;
+      button.style.cursor = "not-allowed";
+      button.style.opacity = ".55";
+    });
+
+    document.querySelectorAll("a.pack-contact, a.btn-secondary").forEach(link => {
+      link.style.pointerEvents = "none";
+      link.style.opacity = ".55";
+      link.style.cursor = "not-allowed";
+    });
+
+    const sidebarHint = document.getElementById("sidebar-check-hint");
+    if(sidebarHint) sidebarHint.textContent = "Consultation verrouillée : lien, QR code et messages restent copiables.";
+
+    const help = document.getElementById("publish-help");
+    if(help){
+      help.style.display = "none";
+      help.innerHTML = "";
+    }
+  }
+
+  function applyClientReadonlyText(){
+    const title = document.querySelector(".page-title");
+    const sub = document.querySelector(".page-sub");
+    if(title) title.textContent = "Voir la campagne";
+    if(sub) sub.textContent = "Cette campagne est publiée. Elle est consultable en lecture seule. Vous pouvez copier les messages de communication ci-dessous.";
+  }
+
+  function applyCampaignMode(){
+    const params = new URLSearchParams(window.location.search);
+    const readonly = params.get("readonly") === "1";
+    const role = getUserRole();
+
+    const status = String((typeof backendProject !== "undefined" && backendProject && backendProject.status) || (typeof state !== "undefined" && state && state.status) || "").toLowerCase();
+    const lockedStatus = status === "published" || status === "unpublished" || status.includes("publi") || status.includes("dépub") || status.includes("depub");
+
+    // Admin / partner : on ne verrouille plus toute la page uniquement à cause du rôle.
+    // Le verrou s'applique seulement en consultation explicite ou si la campagne est déjà publiée/dépubliée.
+    if(isBackofficeRole()){
+      if(readonly || lockedStatus){
+        applyLockedCampaignMode();
+      }
+      return;
+    }
+
+    // Client final : message de lecture seule uniquement si explicitement demandé ou campagne publiée/dépubliée.
+    if(readonly || lockedStatus){
+      applyClientReadonlyText();
+      applyLockedCampaignMode();
+    }
+  }
+
+  window.applyCampaignModeAfterHydration = applyCampaignMode;
+})();
+</script>
+
+</body>
+</html>

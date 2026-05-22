@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Première connexion — Into The Shift</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Asap',sans-serif;
+  background:linear-gradient(180deg,#eef6fb 0%,#f4f6f9 40%,#ffffff 100%);
+  min-height:100vh;
+  color:#18375d;
+}
+
+.auth-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#fff;
+  border-bottom:1px solid #dbe5ee;
+  height:72px;
+  display:flex;
+  align-items:center;
+  padding:0 28px;
+  box-shadow:0 8px 22px rgba(24,55,93,.06);
+}
+
+.auth-header img{
+  height:38px;
+}
+
+.auth-header-spacer{flex:1}
+
+.auth-header a{
+  text-decoration:none;
+  color:#0d4c72;
+  font-weight:800;
+  font-size:14px;
+}
+
+.register-page{
+  min-height:calc(100vh - 72px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 500px;
+}
+
+.hero-side{
+  position:relative;
+  overflow:hidden;
+  padding:36px 48px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-side::before{
+  content:"";
+  position:absolute;
+  right:-140px;
+  top:-140px;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:rgba(13,76,114,.10);
+}
+
+.hero-side::after{
+  content:"";
+  position:absolute;
+  left:-120px;
+  bottom:-120px;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(255,192,0,.18);
+}
+
+.hero-card{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:720px;
+  background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);
+  border:1px solid #d8e0ea;
+  border-radius:28px;
+  padding:34px;
+  box-shadow:0 24px 60px rgba(24,55,93,.12);
+}
+
+.hero-logo{
+  width:260px;
+  max-width:100%;
+  margin-bottom:20px;
+}
+
+.hero-badge{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e6f0f6;
+  color:#0d4c72;
+  font-size:13px;
+  font-weight:800;
+  border:1px solid #c6deec;
+  margin-bottom:16px;
+}
+
+.hero-title{
+  font-size:38px;
+  line-height:1.08;
+  color:#18375d;
+  margin-bottom:16px;
+  letter-spacing:-1px;
+}
+
+.hero-title span{color:#0d4c72}
+
+.hero-text{
+  font-size:16px;
+  line-height:1.6;
+  color:#4c6178;
+  max-width:620px;
+  margin-bottom:22px;
+}
+
+.hero-steps{
+  display:grid;
+  gap:10px;
+}
+
+.hero-step{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:16px;
+  padding:14px;
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:start;
+}
+
+.step-num{
+  width:38px;
+  height:38px;
+  border-radius:13px;
+  background:#0d4c72;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+.hero-step h3{
+  font-size:15px;
+  color:#18375d;
+  margin-bottom:4px;
+}
+
+.hero-step p{
+  font-size:13px;
+  line-height:1.45;
+  color:#5b6b7f;
+}
+
+.form-side{
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px);
+  border-left:1px solid #dbe5ee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:26px 34px;
+}
+
+.form-panel{
+  width:100%;
+  max-width:410px;
+}
+
+.form-kicker{
+  font-size:12px;
+  font-weight:900;
+  color:#0d4c72;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.form-title{
+  font-size:28px;
+  line-height:1.1;
+  color:#18375d;
+  margin-bottom:8px;
+}
+
+.form-sub{
+  font-size:14px;
+  line-height:1.45;
+  color:#5b6b7f;
+  margin-bottom:16px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 12px;
+}
+
+.form-group{
+  margin-bottom:0;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+.form-label{
+  display:block;
+  margin-bottom:5px;
+  font-size:12px;
+  font-weight:800;
+  color:#18375d;
+}
+
+.input,
+.select{
+  width:100%;
+  height:44px;
+  border-radius:12px;
+  border:1px solid #d8e0ea;
+  background:#fff;
+  padding:0 12px;
+  font-size:14px;
+  font-family:'Asap',sans-serif;
+  color:#18375d;
+}
+
+.input:focus,
+.select:focus{
+  outline:none;
+  border-color:#0d4c72;
+  box-shadow:0 0 0 4px rgba(13,76,114,.08);
+}
+
+.register-btn{
+  width:100%;
+  height:48px;
+  border:none;
+  border-radius:13px;
+  background:#0d4c72;
+  color:#fff;
+  font-family:'Asap',sans-serif;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  margin-top:14px;
+  box-shadow:0 10px 24px rgba(13,76,114,.18);
+}
+
+.register-btn:hover{
+  background:#0a3f60;
+}
+
+.login-link{
+  margin-top:12px;
+  text-align:center;
+  font-size:13px;
+  color:#64748b;
+}
+
+.login-link a{
+  color:#0d4c72;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.auth-error{
+  display:none;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#fff1f2;
+  border:1px solid #fecdd3;
+  color:#9f1239;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.auth-error.show{display:block}
+
+.notice{
+  margin-top:14px;
+  background:#fff7e8;
+  border:1px solid #ffc866;
+  border-radius:13px;
+  padding:11px 13px;
+  font-size:12px;
+  line-height:1.45;
+  color:#7a4b00;
+}
+
+@media(max-width:1100px){
+  .register-page{grid-template-columns:1fr}
+  .hero-side{padding:24px 24px 0}
+  .form-side{border-left:none;padding:28px 24px}
+  .form-panel{max-width:560px}
+}
+
+@media(max-width:620px){
+  .auth-header{height:64px;padding:0 18px}
+  .auth-header img{height:32px}
+  .register-page{min-height:calc(100vh - 64px)}
+  .hero-card{padding:24px;border-radius:22px}
+  .hero-title{font-size:30px}
+  .hero-logo{width:220px}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="auth-header">
+  <a href="index.html">
+    <img src="into-the-shift-logo.png" alt="Into The Shift">
+  </a>
+  <div class="auth-header-spacer"></div>
+  <a href="login.html">Se connecter</a>
+</header>
+
+<div class="register-page">
+
+  <section class="hero-side">
+    <div class="hero-card">
+
+      <img src="into-the-shift-logo.png" alt="Into The Shift" class="hero-logo">
+
+      <div class="hero-badge">Première connexion · Version découverte</div>
+
+      <h1 class="hero-title">
+        Configurez votre <span>espace de travail</span>
+      </h1>
+
+      <p class="hero-text">
+        Shift Studio vous aide à créer, personnaliser et préparer la diffusion d’autodiagnostics comportementaux multi-thématiques.
+      </p>
+
+      <div class="hero-steps">
+        <div class="hero-step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Créez votre espace</h3>
+            <p>Indiquez vos informations de contact et votre entreprise.</p>
+          </div>
+        </div>
+
+        <div class="hero-step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Explorez les bases disponibles</h3>
+            <p>Partez d’une bibliothèque de situations concrètes ou créez votre autodiagnostic de zéro.</p>
+          </div>
+        </div>
+
+        <div class="hero-step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Préparez votre première campagne</h3>
+            <p>Personnalisez les questions, profils, ressources, QR code et paramètres de diffusion.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <aside class="form-side">
+
+    <div class="form-panel">
+
+      <div class="form-kicker">Créer mon accès</div>
+
+      <h2 class="form-title">
+        Bienvenue dans Shift Studio
+      </h2>
+
+      <p class="form-sub">
+        Quelques informations nous permettent de personnaliser votre espace découverte.
+      </p>
+
+      <form id="register-form">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label class="form-label">Prénom</label>
+            <input id="firstname" class="input" type="text" placeholder="Prénom">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nom</label>
+            <input id="lastname" class="input" type="text" placeholder="Nom">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Email professionnel</label>
+            <input id="email" class="input" type="email" placeholder="prenom.nom@entreprise.com" required>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Entreprise</label>
+            <input id="company" class="input" type="text" placeholder="Nom de votre organisation">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Fonction</label>
+            <select id="jobTitle" class="select">
+              <option value="">Sélectionner</option>
+              <option>Direction RH</option>
+              <option>Responsable formation</option>
+              <option>Responsable D&I / RSE</option>
+              <option>Manager / Direction métier</option>
+              <option>Consultant·e / organisme de formation</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Secteur</label>
+            <select id="sector" class="select">
+              <option value="">Sélectionner</option>
+              <option>Banque / Assurance</option>
+              <option>Industrie</option>
+              <option>Services</option>
+              <option>Santé / Médico-social</option>
+              <option>Secteur public</option>
+              <option>Éducation / Formation</option>
+              <option>Tech / Numérique</option>
+              <option>Retail / Distribution</option>
+              <option>Association / ESS</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Mot de passe</label>
+            <input id="password" class="input" type="password" placeholder="Créer un mot de passe" required>
+          </div>
+
+        </div>
+
+        <button id="register-submit" class="register-btn" type="submit">
+          Créer mon espace découverte
+        </button>
+
+        <div id="register-error" class="auth-error"></div>
+
+      </form>
+
+      <p class="login-link">
+        Vous avez déjà un compte ? <a href="login.html">Se connecter</a>
+      </p>
+
+      <div class="notice">
+        Cet espace vous permet de découvrir Shift Studio et de préparer un premier autodiagnostic.
+      </div>
+
+    </div>
+
+  </aside>
+
+</div>
+
+
+<script>
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+
+function showRegisterError(message){
+  const box = document.getElementById("register-error");
+  if(!box) return;
+  box.textContent = message;
+  box.classList.add("show");
+}
+
+function clearRegisterError(){
+  const box = document.getElementById("register-error");
+  if(!box) return;
+  box.textContent = "";
+  box.classList.remove("show");
+}
+
+document.getElementById("register-form").addEventListener("submit", async function(event){
+  event.preventDefault();
+  clearRegisterError();
+
+  const submitBtn = document.getElementById("register-submit");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Création en cours...";
+
+  const payload = {
+    firstName: document.getElementById("firstname").value.trim(),
+    lastName: document.getElementById("lastname").value.trim(),
+    email: document.getElementById("email").value.trim().toLowerCase(),
+    companyName: document.getElementById("company").value.trim(),
+    jobTitle: document.getElementById("jobTitle").value,
+    sector: document.getElementById("sector").value,
+    password: document.getElementById("password").value
+  };
+
+  if(!payload.email || !payload.password){
+    showRegisterError("Merci de renseigner un email et un mot de passe.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Créer mon espace découverte";
+    return;
+  }
+
+  try{
+    const response = await fetch(`${API_BASE_URL}/api/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if(!response.ok){
+      throw new Error(data.error || "Impossible de créer le compte pour le moment.");
+    }
+
+    localStorage.setItem("its_token", data.token);
+    localStorage.setItem("its_user", JSON.stringify(data.user));
+    localStorage.setItem("its_logged_in", "true");
+    localStorage.setItem("its_user_firstname", data.user?.firstName || payload.firstName || "Mon espace");
+    localStorage.setItem("its_user_role", data.user?.role || "client");
+
+    window.location.href = "dashboard.html";
+  }catch(error){
+    showRegisterError(error.message || "Erreur de connexion à l’API.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Créer mon espace découverte";
+  }
+});
+</script>
+
+</body>
+</html>

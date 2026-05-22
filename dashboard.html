@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon dashboard — Into The Shift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  background:linear-gradient(180deg,#eef6fb 0%,#f4f6f9 42%,#ffffff 100%);
+}
+
+.dashboard-wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:28px 22px 70px;
+}
+
+.dash-hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffffff 0%,#e6f0f6 62%,#d7ecf3 100%);
+  border:1px solid #cbddea;
+  border-radius:28px;
+  padding:34px;
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:24px;
+  align-items:center;
+  box-shadow:0 18px 48px rgba(24,55,93,.11);
+}
+
+.dash-hero::before{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-110px;
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  background:rgba(13,76,114,.12);
+}
+
+.dash-hero::after{
+  content:"";
+  position:absolute;
+  left:-80px;
+  bottom:-120px;
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  background:rgba(255,192,0,.18);
+}
+
+.dash-hero > *{position:relative;z-index:1}
+
+.dash-kicker{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e6f0f6;
+  color:#0d4c72;
+  font-size:13px;
+  font-weight:900;
+  border:1px solid #c6deec;
+  margin-bottom:14px;
+}
+
+.dash-hero h1{
+  font-size:38px;
+  line-height:1.08;
+  color:#18375d;
+  letter-spacing:-.5px;
+  margin-bottom:14px;
+}
+
+.dash-hero h1 span{color:#0d4c72}
+
+.dash-hero p{
+  color:#4f6378;
+  font-size:16px;
+  line-height:1.6;
+  max-width:680px;
+}
+
+.dash-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.dash-mini-card{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 12px 30px rgba(24,55,93,.08);
+}
+
+.dash-mini-title{
+  font-size:14px;
+  font-weight:900;
+  color:#18375d;
+  margin-bottom:10px;
+}
+
+.dash-mini-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid #edf1f7;
+  font-size:13px;
+}
+
+.dash-mini-row:last-of-type{border-bottom:0}
+
+.dash-mini-row span:first-child{color:#64748b}
+.dash-mini-row span:last-child{font-weight:900;color:#18375d;text-align:right}
+
+.dash-mini-btn{
+  width:100%;
+  margin-top:14px;
+}
+
+.dash-section{
+  margin-top:26px;
+}
+
+.dash-section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-end;
+  margin-bottom:14px;
+}
+
+.dash-section-kicker{
+  color:#0d4c72;
+  text-transform:uppercase;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  margin-bottom:5px;
+}
+
+.dash-section-title{
+  font-size:24px;
+  color:#18375d;
+  line-height:1.15;
+}
+
+.dash-section-sub{
+  font-size:13px;
+  color:#64748b;
+  line-height:1.5;
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.quick-card{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 10px 26px rgba(24,55,93,.06);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:210px;
+}
+
+.quick-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:#e6f0f6;
+  color:#0d4c72;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.quick-card h3{
+  font-size:18px;
+  color:#18375d;
+  margin-bottom:8px;
+}
+
+.quick-card p{
+  font-size:13px;
+  color:#5b6b7f;
+  line-height:1.55;
+  margin-bottom:18px;
+}
+
+.draft-card{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 10px 26px rgba(24,55,93,.06);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:center;
+}
+
+.draft-status{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#fff7e8;
+  color:#9a6100;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.draft-title{
+  font-size:20px;
+  font-weight:900;
+  color:#18375d;
+  margin-bottom:8px;
+}
+
+.draft-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.draft-pill{
+  padding:6px 9px;
+  border-radius:999px;
+  background:#edf1f7;
+  color:#18375d;
+  font-size:12px;
+  font-weight:800;
+}
+
+.draft-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.btn-danger{
+  background:#fff;
+  color:#b42318;
+  border:1px solid #f3b4ad;
+}
+
+.btn-danger:hover{
+  background:#fff1ef;
+}
+
+.support-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.support-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  padding:24px;
+  min-height:210px;
+  box-shadow:0 12px 30px rgba(24,55,93,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.support-card::after{
+  content:"";
+  position:absolute;
+  right:-54px;
+  top:-54px;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:rgba(255,255,255,.36);
+}
+
+.support-card > *{position:relative;z-index:1}
+
+.support-content{
+  background:linear-gradient(135deg,#fff8e4 0%,#ffffff 100%);
+  border:1px solid #ffd978;
+}
+
+.support-tool{
+  background:linear-gradient(135deg,#0d4c72 0%,#176b83 100%);
+  border:1px solid #0d4c72;
+  color:#fff;
+}
+
+.support-kicker{
+  display:inline-flex;
+  width:max-content;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:14px;
+}
+
+.support-content .support-kicker{
+  background:#fff1bd;
+  color:#8a5a00;
+  border:1px solid #ffd978;
+}
+
+.support-tool .support-kicker{
+  background:rgba(255,255,255,.14);
+  color:#d8f1fb;
+  border:1px solid rgba(255,255,255,.22);
+}
+
+.support-card h2{
+  font-size:22px;
+  line-height:1.18;
+  margin-bottom:9px;
+}
+
+.support-content h2{color:#18375d}
+.support-tool h2{color:#fff}
+
+.support-card p{
+  font-size:14px;
+  line-height:1.55;
+  margin-bottom:18px;
+}
+
+.support-content p{color:#5b6b7f}
+.support-tool p{color:rgba(255,255,255,.86)}
+
+.support-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.support-tool .btn{
+  background:#fff;
+  color:#0d4c72;
+}
+
+.path-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.path-card{
+  background:#fff;
+  border:1px solid #d8e0ea;
+  border-radius:16px;
+  padding:16px;
+}
+
+.path-num{
+  width:32px;
+  height:32px;
+  border-radius:11px;
+  background:#0d4c72;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.path-card h3{
+  font-size:14px;
+  color:#18375d;
+  margin-bottom:6px;
+}
+
+.path-card p{
+  font-size:12px;
+  color:#64748b;
+  line-height:1.45;
+}
+
+
+.preview-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:30000;
+  background:rgba(15,30,55,.62);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.preview-modal{
+  position:relative;
+  width:min(980px,100%);
+  height:min(760px,92vh);
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.preview-modal iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  background:#fff;
+}
+
+.preview-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:2;
+  width:38px;
+  height:38px;
+  border-radius:999px;
+  border:1px solid #d8e0ea;
+  background:#fff;
+  color:#18375d;
+  font-size:24px;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(24,55,93,.16);
+}
+
+.preview-close:hover{background:#f4f6f9}
+
+.delete-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:30000;
+  background:rgba(15,30,55,.58);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.delete-modal{
+  width:min(480px,100%);
+  background:#fff;
+  border-radius:22px;
+  border:1px solid #d8e0ea;
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+  padding:26px;
+}
+
+.delete-modal h2{
+  font-size:22px;
+  color:#18375d;
+  margin-bottom:10px;
+}
+
+.delete-modal p{
+  font-size:14px;
+  color:#5b6b7f;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.delete-modal-actions{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+
+@media(max-width:980px){
+  .dash-hero{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:1fr}
+  .path-grid{grid-template-columns:1fr 1fr}
+  .draft-card{grid-template-columns:1fr}
+  .draft-actions{justify-content:flex-start}
+  .support-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:620px){
+  .dashboard-wrap{padding:20px 14px 46px}
+  .dash-hero{padding:24px;border-radius:20px}
+  .dash-hero h1{font-size:30px}
+  .dash-section-head{display:block}
+  .path-grid{grid-template-columns:1fr}
+  .support-actions .btn{width:100%}
+  .delete-modal-actions .btn{width:100%}
+  .preview-modal-overlay{padding:10px}
+  .preview-modal{height:94vh;border-radius:18px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="header"></div>
+<script src="header.js"></script>
+<script src="app.js"></script>
+
+<main class="dashboard-wrap">
+
+  <section class="dash-hero">
+    <div>
+      <div class="dash-kicker">Espace découverte</div>
+      <h1>Bienvenue<span id="user-firstname-inline"></span> dans votre espace <span>Shift Studio</span></h1>
+      <p>
+        Créez votre premier autodiagnostic comportemental, partez d’une base existante ou reprenez une configuration en cours.
+      </p>
+
+      <div class="dash-actions">
+        <a href="index.html" class="btn btn-primary">Explorer les bases</a>
+        <a href="questions.html?mode=blank" class="btn btn-secondary">Créer de zéro</a>
+        <a href="mes-autodiagnostics.html" class="btn btn-secondary client-only">Voir mes Autodiagnostics</a>
+      </div>
+    </div>
+
+    <aside class="dash-mini-card">
+      <div class="dash-mini-title">Mon parcours</div>
+      <div class="dash-mini-row"><span>Type d’accès</span><span>Découverte</span></div>
+      <div class="dash-mini-row"><span>Projet en cours</span><span id="mini-project">Aucun projet démarré</span></div>
+      <div class="dash-mini-row"><span>Avancement</span><span id="mini-progress">À démarrer</span></div>
+      <div class="dash-mini-row"><span>Prochaine étape</span><span id="mini-next">Choisir une base</span></div>
+      <a href="index.html" class="btn btn-primary dash-mini-btn" id="mini-action">Commencer un autodiag</a>
+    </aside>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Parcours guidé</div>
+        <h2 class="dash-section-title">De l’idée à la transmission</h2>
+      </div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="path-num">1</div>
+        <h3>Bibliothèque</h3>
+        <p>Choisir une base de travail ou créer de zéro.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">2</div>
+        <h3>Création</h3>
+        <p>Modifier les questions, réponses, profils et ressources.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">3</div>
+        <h3>Paramétrage</h3>
+        <p>Définir le titre, l’introduction et les informations de campagne.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">4</div>
+        <h3>Campagne</h3>
+        <p>Préparer le lien, le QR code et les éléments de diffusion.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">5</div>
+        <h3>Transmission</h3>
+        <p>Envoyer la configuration à l’équipe Into The Shift.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Démarrer rapidement</div>
+        <h2 class="dash-section-title">Que souhaitez-vous faire ?</h2>
+      </div>
+      <p class="dash-section-sub">Choisissez votre point de départ ou ouvrez un aperçu côté répondant.</p>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">▣</div>
+          <h3>Partir d’une base</h3>
+          <p>Choisissez une thématique existante et personnalisez les situations, réponses, profils et ressources.</p>
+        </div>
+        <a href="index.html" class="btn btn-primary">Explorer la bibliothèque</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">＋</div>
+          <h3>Créer de zéro</h3>
+          <p>Construisez votre autodiagnostic sans base prédéfinie, chapitre par chapitre.</p>
+        </div>
+        <a href="questions.html?mode=blank" class="btn btn-secondary">Créer un autodiag</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">◎</div>
+          <h3>Voir l’autodiagnostic côté répondant</h3>
+          <p>Prévisualisez votre autodiagnostic comme une personne répondante, avec un parcours de passation simulé.</p>
+        </div>
+        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Voir côté répondant</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Projet en cours</div>
+        <h2 class="dash-section-title" id="current-project-heading">Projet en cours</h2>
+      </div>
+    </div>
+
+    <div class="draft-card">
+      <div>
+        <div class="draft-status" id="draft-status">Aucun projet finalisé</div>
+        <div class="draft-title" id="draft-title">Vous n’avez pas encore créé d’autodiagnostic.</div>
+        <div class="draft-meta">
+          <span class="draft-pill" id="draft-theme">Thématique à choisir</span>
+          <span class="draft-pill" id="draft-questions">0 question</span>
+          <span class="draft-pill" id="draft-step">Étape 1/5</span>
+        </div>
+      </div>
+
+      <div class="draft-actions">
+        <a href="questions.html" class="btn btn-primary" id="resume-draft-btn" style="display:none">Reprendre la création</a>
+        <a href="parametrage.html" class="btn btn-secondary" id="settings-draft-btn" style="display:none">Paramétrer</a>
+
+        <a href="index.html" class="btn btn-primary" id="draft-library-btn">Explorer les bases</a>
+        <a href="questions.html?mode=blank" class="btn btn-secondary" id="draft-blank-btn">Créer de zéro</a>
+
+        <button id="delete-draft-btn" class="btn btn-danger" type="button" onclick="openDeleteDraftModal()" style="display:none">
+          Supprimer le brouillon
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Besoin d’aide ?</div>
+        <h2 class="dash-section-title">Deux accompagnements possibles</h2>
+      </div>
+      <p class="dash-section-sub">Un appui sur le fond des contenus ou sur l’utilisation de l’outil.</p>
+    </div>
+
+    <div class="support-grid">
+      <article class="support-card support-content">
+        <div>
+          <div class="support-kicker">Accompagnement éditorial</div>
+          <h2>Besoin d’un expert contenu ?</h2>
+          <p>
+            Nous pouvons vous mettre en contact avec un expert pour vous aider à cadrer votre thématique, reformuler vos situations, relire les réponses ou sécuriser la cohérence pédagogique de votre autodiagnostic.
+          </p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:contact@intotheshift.io?subject=Besoin%20d%27un%20expert%20contenu" class="btn btn-secondary">Contactez-nous</a>
+        </div>
+      </article>
+
+      <article class="support-card support-tool">
+        <div>
+          <div class="support-kicker">Aide outil</div>
+          <h2>Besoin d’aide pour utiliser le studio ?</h2>
+          <p>
+            Nous pouvons vous guider pour choisir une base, reprendre un brouillon, paramétrer votre campagne, générer un QR code ou transmettre votre configuration.
+          </p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:contact@intotheshift.io?subject=Besoin%20d%27aide%20sur%20Shift%20Studio" class="btn">Contactez-nous</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<div class="preview-modal-overlay" id="previewModal">
+  <div class="preview-modal">
+    <button class="preview-close" type="button" onclick="closePreviewModal()" aria-label="Fermer l’aperçu">×</button>
+    <iframe id="previewFrame" src="" title="Aperçu de la passation"></iframe>
+  </div>
+</div>
+
+<div class="delete-modal-overlay" id="deleteDraftModal">
+  <div class="delete-modal">
+    <h2>Supprimer ce brouillon ?</h2>
+    <p>
+      Attention, vous allez supprimer votre autodiagnostic en cours.
+      Cette action est définitive : les questions, profils, ressources et paramètres déjà saisis ne pourront pas être récupérés.
+    </p>
+
+    <div class="delete-modal-actions">
+      <button class="btn btn-secondary" type="button" onclick="closeDeleteDraftModal()">Annuler</button>
+      <button class="btn btn-danger" type="button" onclick="confirmDeleteDraft()">Oui, supprimer le brouillon</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+let latestVisibleProject = null;
+
+function getToken(){
+  return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+}
+
+function openDeleteDraftModal(){
+  const modal = document.getElementById("deleteDraftModal");
+  if(modal) modal.style.display = "flex";
+}
+
+function closeDeleteDraftModal(){
+  const modal = document.getElementById("deleteDraftModal");
+  if(modal) modal.style.display = "none";
+}
+
+function getCurrentDraftTitle(){
+  const state = typeof itsLoad === "function" ? itsLoad() : {};
+  return state?.title || state?.subject || state?.meta?.nom || "";
+}
+
+function parseMaybeJson(value){
+  if(typeof value !== "string") return value;
+  try{return JSON.parse(value);}catch(e){return value;}
+}
+
+function getApiProjectPayload(apiProject){
+  const rawData = parseMaybeJson(apiProject?.data || apiProject?.config || apiProject?.configuration || apiProject?.payload || {});
+  const data = rawData && typeof rawData === "object" ? rawData : {};
+  const rawPayload = parseMaybeJson(data.payload || data.data || data);
+  return rawPayload && typeof rawPayload === "object" ? rawPayload : {};
+}
+
+function normalizeProjectForPreview(apiProject){
+  const payload = getApiProjectPayload(apiProject);
+  const title = getProjectTitle(apiProject);
+  const theme = getProjectTheme(apiProject);
+  const chapters = Array.isArray(payload.chapters) ? payload.chapters : [];
+
+  return {
+    ...payload,
+    title: payload.title || payload.titre || title,
+    subject: payload.subject || theme,
+    theme: payload.theme || theme,
+    selectedTheme: payload.selectedTheme || theme,
+    intro: payload.intro || payload.introduction || "Répondez spontanément aux situations proposées. Cet aperçu est une simulation côté répondant.",
+    duration: payload.duration || payload.duree || "5 à 7 min",
+    chapters: chapters,
+    demographics: Array.isArray(payload.demographics) ? payload.demographics : [],
+    resources: Array.isArray(payload.resources) ? payload.resources : [],
+    meta: {
+      ...(payload.meta || {}),
+      titre: payload?.meta?.titre || payload.titre || payload.title || title
+    }
+  };
+}
+
+function savePreviewStateFromProject(apiProject){
+  if(!apiProject) return false;
+  const previewState = normalizeProjectForPreview(apiProject);
+  if(!Array.isArray(previewState.chapters) || !previewState.chapters.length) return false;
+
+  if(typeof itsSave === "function"){
+    itsSave(previewState);
+  }else{
+    localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(previewState));
+  }
+  return true;
+}
+
+function hasLocalPreviewState(){
+  try{
+    const state = typeof itsLoad === "function" ? itsLoad() : {};
+    return !!(state && Array.isArray(state.chapters) && state.chapters.length);
+  }catch(e){
+    return false;
+  }
+}
+
+function openPreviewModal(){
+  const modal = document.getElementById("previewModal");
+  const frame = document.getElementById("previewFrame");
+  if(!modal || !frame) return;
+
+  const projectReady = latestVisibleProject ? savePreviewStateFromProject(latestVisibleProject) : hasLocalPreviewState();
+
+  if(!projectReady){
+    alert("La prévisualisation côté répondant sera disponible dès qu’un autodiagnostic contiendra au moins un chapitre avec des questions.");
+    return;
+  }
+
+  frame.src = "apercu-passation.html";
+  modal.style.display = "flex";
+}
+
+function closePreviewModal(){
+  const modal = document.getElementById("previewModal");
+  const frame = document.getElementById("previewFrame");
+  if(modal) modal.style.display = "none";
+  if(frame) frame.src = "";
+}
+
+function confirmDeleteDraft(){
+  if(typeof itsClear === "function"){
+    itsClear();
+  } else {
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+  }
+
+  localStorage.removeItem("its_current_ad_id");
+  localStorage.removeItem("its_selected_pack");
+  localStorage.removeItem("its_campaign_config");
+  localStorage.removeItem("its_generated_excel");
+  localStorage.removeItem("its_generated_pdf");
+  window.location.reload();
+}
+
+function getProjectTitle(apiProject){
+  const data = apiProject?.data || {};
+  const payload = data.payload || {};
+
+  return apiProject?.title ||
+    data.autodiagTitle ||
+    data.title ||
+    data.titre ||
+    payload.titre_autodiag ||
+    payload.titre_repondants ||
+    "Autodiagnostic";
+}
+
+function getProjectTheme(apiProject){
+  const data = apiProject?.data || {};
+  const payload = data.payload || {};
+
+  return data.theme ||
+    data.selectedTheme ||
+    payload.theme ||
+    payload.thematique ||
+    "Autodiagnostic";
+}
+
+function getProjectQuestionCount(apiProject){
+  const data = apiProject?.data || {};
+  const payload = data.payload || {};
+  const chapters = payload.chapters || data.chapters || [];
+
+  if(!Array.isArray(chapters)) return 0;
+
+  return chapters.reduce((sum, ch) => {
+    return sum + ((ch.questions || []).length);
+  }, 0);
+}
+
+function getEffectiveStatus(apiProject){
+  const data = apiProject?.data || {};
+  const payload = data.payload || {};
+  const rawStatus = String(apiProject?.status || data.status || "draft").toLowerCase();
+
+  const configSent =
+    apiProject?.configTransmise === true ||
+    apiProject?.config_transmise === true ||
+    data.configTransmise === true ||
+    data.config_transmise === true ||
+    data.submitted === true ||
+    payload.configTransmise === true ||
+    payload.config_transmise === true ||
+    payload.submitted === true ||
+    !!payload.submitted_at;
+
+  if(rawStatus === "unpublished" || rawStatus.includes("dépub") || rawStatus.includes("depub")){
+    return "unpublished";
+  }
+
+  if(rawStatus === "published" || rawStatus.includes("publi") || rawStatus.includes("ligne")){
+    return "published";
+  }
+
+  if(rawStatus === "sent" || rawStatus.includes("transmis") || rawStatus.includes("submitted") || configSent){
+    return "sent";
+  }
+
+  return "draft";
+}
+
+async function loadLatestApiProject(){
+  const token = getToken();
+  if(!token) return null;
+
+  try{
+    const response = await fetch(API_BASE_URL + "/api/projects", {
+      headers:{
+        "Authorization":"Bearer " + token
+      }
+    });
+
+    if(!response.ok) return null;
+
+    const data = await response.json();
+    const projects = Array.isArray(data.projects) ? data.projects : [];
+
+    if(!projects.length) return null;
+
+    projects.sort((a,b) => {
+      const da = new Date(a.updated_at || a.updatedAt || a.created_at || a.createdAt || 0).getTime();
+      const db = new Date(b.updated_at || b.updatedAt || b.created_at || b.createdAt || 0).getTime();
+      return db - da;
+    });
+
+    return projects[0];
+  }catch(e){
+    console.error("Erreur chargement projets API", e);
+    return null;
+  }
+}
+
+function renderNoProject(){
+  const miniAction = document.getElementById("mini-action");
+  const deleteBtn = document.getElementById("delete-draft-btn");
+  const resumeBtn = document.getElementById("resume-draft-btn");
+  const settingsBtn = document.getElementById("settings-draft-btn");
+  const libraryBtn = document.getElementById("draft-library-btn");
+  const blankBtn = document.getElementById("draft-blank-btn");
+
+  document.getElementById("mini-project").textContent = "Aucun projet démarré";
+  document.getElementById("mini-progress").textContent = "À démarrer";
+  document.getElementById("mini-next").textContent = "Choisir une base";
+  const heading = document.getElementById("current-project-heading");
+  if(heading) heading.textContent = "Projet en cours";
+  document.getElementById("draft-status").textContent = "Aucun projet finalisé";
+  document.getElementById("draft-title").textContent = "Vous n’avez pas encore créé d’autodiagnostic.";
+  document.getElementById("draft-theme").textContent = "Thématique à choisir";
+  document.getElementById("draft-questions").textContent = "0 question";
+  document.getElementById("draft-step").textContent = "Étape 1/5";
+
+  if(miniAction){
+    miniAction.textContent = "Commencer un autodiag";
+    miniAction.href = "index.html";
+  }
+
+  if(resumeBtn) resumeBtn.style.display = "none";
+  if(settingsBtn) settingsBtn.style.display = "none";
+  if(deleteBtn) deleteBtn.style.display = "none";
+  if(libraryBtn) libraryBtn.style.display = "inline-flex";
+  if(blankBtn) blankBtn.style.display = "inline-flex";
+  const previewBtn = document.getElementById("preview-link-card");
+  if(previewBtn){
+    previewBtn.disabled = false;
+    previewBtn.textContent = "Voir côté répondant";
+  }
+}
+
+function renderLocalDraft(state){
+  const title = state?.title || state?.subject || state?.meta?.nom || "";
+
+  if(!title){
+    renderNoProject();
+    return;
+  }
+
+  const theme = state?.theme || state?.selectedTheme || "Thématique à choisir";
+  const chapters = Array.isArray(state?.chapters) ? state.chapters : [];
+  const qCount = chapters.reduce((sum, ch) => sum + ((ch.questions || []).length), 0);
+
+  const miniAction = document.getElementById("mini-action");
+  const deleteBtn = document.getElementById("delete-draft-btn");
+  const resumeBtn = document.getElementById("resume-draft-btn");
+  const settingsBtn = document.getElementById("settings-draft-btn");
+  const libraryBtn = document.getElementById("draft-library-btn");
+  const blankBtn = document.getElementById("draft-blank-btn");
+
+  document.getElementById("mini-project").textContent = title;
+  document.getElementById("mini-progress").textContent = qCount > 0 ? qCount + " question" + (qCount > 1 ? "s" : "") : "Contenus à compléter";
+  document.getElementById("mini-next").textContent = "Continuer la création";
+  const heading = document.getElementById("current-project-heading");
+  if(heading) heading.textContent = "Brouillon en cours";
+  document.getElementById("draft-status").textContent = "Brouillon local";
+  document.getElementById("draft-title").textContent = title;
+  document.getElementById("draft-theme").textContent = theme;
+  document.getElementById("draft-questions").textContent = qCount + " question" + (qCount > 1 ? "s" : "");
+  document.getElementById("draft-step").textContent = "Étape 2/5";
+
+  if(miniAction){
+    miniAction.textContent = "Continuer la création";
+    miniAction.href = getProjectResumeUrl(apiProject);
+  }
+
+  if(resumeBtn) resumeBtn.style.display = "inline-flex";
+  if(settingsBtn) settingsBtn.style.display = "inline-flex";
+  if(deleteBtn) deleteBtn.style.display = "inline-flex";
+  if(libraryBtn) libraryBtn.style.display = "none";
+  if(blankBtn) blankBtn.style.display = "none";
+  const previewBtn = document.getElementById("preview-link-card");
+  if(previewBtn) previewBtn.textContent = "Voir côté répondant";
+}
+
+function getProjectResumeUrl(apiProject){
+  const data = getApiProjectPayload(apiProject);
+  const status = getEffectiveStatus(apiProject);
+  const id = apiProject?.id ? "?projectId=" + encodeURIComponent(apiProject.id) : "";
+  const step = String(apiProject?.currentStep || apiProject?.current_step || data.current_step || data.step || "questions").toLowerCase();
+  if(status === "published" || status === "unpublished") return "mes-autodiagnostics.html";
+  if(step === "validation") return "validation.html" + id;
+  if(step === "campagne") return "campagne.html" + id;
+  if(step === "parametrage") return "parametrage.html" + id;
+  return "questions.html" + id;
+}
+
+async function openLatestProject(){
+  if(latestVisibleProject && typeof itsStoreProjectLocally === "function") itsStoreProjectLocally(latestVisibleProject);
+  window.location.href = latestVisibleProject ? getProjectResumeUrl(latestVisibleProject) : "index.html";
+}
+
+function renderApiProject(apiProject){
+  const title = getProjectTitle(apiProject);
+  const theme = getProjectTheme(apiProject);
+  const qCount = getProjectQuestionCount(apiProject);
+  const status = getEffectiveStatus(apiProject);
+  latestVisibleProject = apiProject;
+  const heading = document.getElementById("current-project-heading");
+  if(heading){
+    heading.textContent = status === "unpublished" ? "Autodiagnostic dépublié" : status === "published" ? "Autodiagnostic publié" : status === "sent" ? "Autodiagnostic transmis" : "Brouillon en cours";
+  }
+
+  const miniAction = document.getElementById("mini-action");
+  const deleteBtn = document.getElementById("delete-draft-btn");
+  const resumeBtn = document.getElementById("resume-draft-btn");
+  const settingsBtn = document.getElementById("settings-draft-btn");
+  const libraryBtn = document.getElementById("draft-library-btn");
+  const blankBtn = document.getElementById("draft-blank-btn");
+
+  document.getElementById("mini-project").textContent = title;
+  document.getElementById("draft-title").textContent = title;
+  document.getElementById("draft-theme").textContent = theme;
+  document.getElementById("draft-questions").textContent = qCount + " question" + (qCount > 1 ? "s" : "");
+
+  if(status === "unpublished"){
+    document.getElementById("mini-progress").textContent = "Dépublié";
+    document.getElementById("mini-next").textContent = "Consulter les résultats";
+    document.getElementById("draft-status").textContent = "Dépublié";
+    document.getElementById("draft-step").textContent = "Campagne terminée";
+  } else if(status === "published"){
+    document.getElementById("mini-progress").textContent = "Publié";
+    document.getElementById("mini-next").textContent = "Consulter";
+    document.getElementById("draft-status").textContent = "Publié";
+    document.getElementById("draft-step").textContent = "Publié";
+  } else if(status === "sent"){
+    document.getElementById("mini-progress").textContent = "En attente de publication";
+    document.getElementById("mini-next").textContent = "Validation Into The Shift";
+    document.getElementById("draft-status").textContent = "Transmis";
+    document.getElementById("draft-step").textContent = "Transmission effectuée";
+  } else {
+    document.getElementById("mini-progress").textContent = "Brouillon";
+    document.getElementById("mini-next").textContent = "Continuer";
+    document.getElementById("draft-status").textContent = "Brouillon en cours";
+    document.getElementById("draft-step").textContent = "Étape 2/5";
+  }
+
+  if(resumeBtn){
+    resumeBtn.style.display = "inline-flex";
+    resumeBtn.textContent = (status === "published" || status === "unpublished") ? "Voir le projet" : status === "sent" ? "Modifier le contenu" : "Reprendre la création";
+    resumeBtn.href = getProjectResumeUrl(apiProject);
+  }
+
+  if(settingsBtn){
+    settingsBtn.style.display = "inline-flex";
+    settingsBtn.textContent = (status === "published" || status === "unpublished") ? "Voir les paramètres" : status === "sent" ? "Modifier le paramétrage" : "Paramétrer";
+    settingsBtn.href = "parametrage.html" + (apiProject?.id ? "?projectId=" + encodeURIComponent(apiProject.id) : "");
+  }
+
+  if(deleteBtn){
+    deleteBtn.style.display = status === "draft" ? "inline-flex" : "none";
+  }
+
+  if(libraryBtn) libraryBtn.style.display = "none";
+  if(blankBtn) blankBtn.style.display = "none";
+
+  if(miniAction){
+    if(status === "published" || status === "unpublished"){
+      miniAction.textContent = status === "unpublished" ? "Voir les résultats" : "Voir le projet";
+      miniAction.href = "mes-autodiagnostics.html";
+    } else if(status === "sent"){
+      miniAction.textContent = "Modifier la configuration";
+      miniAction.href = getProjectResumeUrl(apiProject);
+    } else {
+      miniAction.textContent = "Continuer la création";
+      miniAction.href = getProjectResumeUrl(apiProject);
+    }
+  }
+
+  const previewBtn = document.getElementById("preview-link-card");
+  if(previewBtn) previewBtn.textContent = "Voir côté répondant";
+}
+
+document.addEventListener("DOMContentLoaded", async function(){
+  const firstname = localStorage.getItem("its_user_firstname") || "";
+  const firstnameInline = document.getElementById("user-firstname-inline");
+
+  if(firstnameInline && firstname.trim()){
+    firstnameInline.textContent = " " + firstname.trim() + ",";
+  }
+
+  let state = {};
+  try{
+    state = typeof itsLoad === "function" ? itsLoad() : {};
+  }catch(e){
+    state = {};
+  }
+
+  const apiProject = await loadLatestApiProject();
+
+  if(apiProject){
+    renderApiProject(apiProject);
+  } else {
+    renderLocalDraft(state);
+  }
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      closeDeleteDraftModal();
+      closePreviewModal();
+    }
+  });
+
+  const modal = document.getElementById("deleteDraftModal");
+  if(modal){
+    modal.addEventListener("click", function(e){
+      if(e.target === this) closeDeleteDraftModal();
+    });
+  }
+
+  const previewModal = document.getElementById("previewModal");
+  if(previewModal){
+    previewModal.addEventListener("click", function(e){
+      if(e.target === this) closePreviewModal();
+    });
+  }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  function getToken(){
+    return (
+      localStorage.getItem("its_token") ||
+      localStorage.getItem("token") ||
+      localStorage.getItem("auth_token") ||
+      ""
+    );
+  }
+
+  function decodeToken(){
+    const token = getToken();
+    if(!token || !token.includes(".")) return null;
+
+    try{
+      return JSON.parse(
+        atob(
+          token
+            .split(".")[1]
+            .replace(/-/g, "+")
+            .replace(/_/g, "/")
+        )
+      );
+    }catch(e){
+      return null;
+    }
+  }
+
+  function getRole(){
+    const storedRole =
+      localStorage.getItem("its_user_role") ||
+      localStorage.getItem("role");
+
+    if(storedRole) return storedRole;
+
+    try{
+      const rawUser = localStorage.getItem("its_user");
+      if(rawUser){
+        const user = JSON.parse(rawUser);
+        if(user.role || user.user_role){
+          return user.role || user.user_role;
+        }
+      }
+    }catch(e){}
+
+    const tokenData = decodeToken();
+    if(tokenData && tokenData.role) return tokenData.role;
+
+    return "client";
+  }
+
+  const role = getRole();
+
+  document.querySelectorAll(".client-only").forEach(function(el){
+    el.style.display = role === "client" ? "inline-flex" : "none";
+  });
+});
+</script>
+  
+</body>
+</html>
+
