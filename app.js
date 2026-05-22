@@ -31,12 +31,21 @@ function itsGetStorageKey() {
 }
 
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
-const ITS_API_BASE =
-  window.ITS_API_BASE ||
-  localStorage.getItem("its_api_base") ||
-  (window.location.hostname === "localhost"
+function itsResolveApiBase(){
+  const host = window.location.hostname;
+  const path = window.location.pathname;
+  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
+  if (forced) return forced;
+  const isStaging =
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host.startsWith("staging.") ||
+    path.startsWith("/staging");
+  return isStaging
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
+    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+}
+const ITS_API_BASE = itsResolveApiBase();
 
 let itsSaveTimer = null;
 let itsIsRestoringProject = false;
