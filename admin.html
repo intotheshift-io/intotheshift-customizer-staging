@@ -62,6 +62,9 @@ td:nth-child(9){width:125px}
 .badge-sent{background:#e6f7ef;color:#20784b}
 .badge-draft{background:#fff2d8;color:#996700}
 .badge-status{background:#edf2f7;color:#506477}
+.badge-user-active{background:#e6f7ef;color:#20784b}
+.badge-user-disabled{background:#fff2d8;color:#996700}
+.badge-user-deleted{background:#fff0f0;color:#a32b2b;border:1px solid #ffd1d1}
 .badge-published{background:#eaf3f8;color:#0d4c72}
 .badge-results{background:#efe9ff;color:#5b3bbd}.badge-unpublished{background:#eef2f6;color:#64748b}
 .empty,.loading{padding:22px;text-align:center;color:#718497}
@@ -138,8 +141,164 @@ td:nth-child(9){width:125px}
 .publication-save-feedback{grid-column:1/-1;display:none;background:#eefbf3;border:1px solid #bee8cd;color:#176239;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800}
 .publication-save-feedback.on{display:block}
 
-.org-quota-panel{display:grid;grid-template-columns:1fr 1fr 170px auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
+.org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
+.quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+
+/* Cartes comptes utilisateurs — styles isolés admin */
+.accounts-card-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:14px;
+  align-items:start;
+}
+.account-card{
+  background:#fff;
+  border:1px solid #dfe8ef;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 22px rgba(13,76,114,.05);
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.account-card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+}
+.account-identity{min-width:0;flex:1}
+.account-name{
+  color:#0d4c72;
+  font-size:18px;
+  line-height:1.2;
+  font-weight:900;
+  margin-bottom:3px;
+}
+.account-email{
+  color:#60758a;
+  font-size:13px;
+  font-weight:700;
+  word-break:break-word;
+}
+.account-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-end;
+  flex-shrink:0;
+}
+.account-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+.account-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:#f6f9fb;
+  border:1px solid #e2ebf2;
+  color:#244b63;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:12px;
+  font-weight:800;
+  max-width:100%;
+}
+.account-chip.empty{
+  background:#fbfdfe;
+  color:#7b8c9a;
+  font-weight:700;
+}
+.account-meta-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.account-info-box{
+  background:#f6f9fb;
+  border:1px solid #e2ebf2;
+  border-radius:14px;
+  padding:11px;
+  min-width:0;
+}
+.account-info-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#74899a;
+  font-weight:900;
+  margin-bottom:5px;
+}
+.account-info-value{
+  font-size:13px;
+  color:#18375d;
+  font-weight:900;
+  word-break:break-word;
+  line-height:1.3;
+}
+.account-logo-box{min-height:28px;display:flex;align-items:center}
+.account-edit-panel,
+.account-attach-panel{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:end;
+  background:#fbfdfe;
+  border:1px solid #e2ebf2;
+  border-radius:16px;
+  padding:12px;
+}
+.account-edit-panel .admin-input,
+.account-edit-panel .admin-select,
+.account-attach-panel .admin-select{
+  width:100%;
+  min-width:0;
+}
+.account-profile-panel{grid-template-columns:repeat(3,minmax(0,1fr)) auto}
+.account-card-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  border-top:1px solid #edf2f6;
+  padding-top:12px;
+}
+.account-role-edit{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.account-protected{
+  color:#9d2b2b;
+  font-size:12px;
+  margin-top:5px;
+  text-align:right;
+}
+
+@media(max-width:1200px){
+  .accounts-card-grid{grid-template-columns:1fr}
+  .account-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .account-card-head,
+  .account-card-actions{flex-direction:column;align-items:stretch}
+  .account-badges{justify-content:flex-start}
+  .account-meta-grid,
+  .account-edit-panel,
+  .account-attach-panel,
+  .account-profile-panel{grid-template-columns:1fr}
+  .account-edit-panel .mini-btn,
+  .account-attach-panel .mini-btn{width:100%;justify-content:center}
+}
+
 @media(max-width:1100px){.project-publication{grid-template-columns:1fr 1fr}.project-publication button{grid-column:auto}.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.global-cards,.info-grid,.org-quota-panel{grid-template-columns:1fr}.org-card-head,.project-card-head{flex-direction:column}.org-quota-panel button{grid-column:auto}}
 
@@ -158,7 +317,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
   <section class="admin-hero">
     <div>
       <h1>Espace admin Into The Shift</h1>
-      <p>Supervisez les comptes, les partners, les clients finaux, les quotas de passations et les autodiagnostics créés dans Shift Studio.</p>
+      <p>Supervisez les comptes, les partners, les cockpit clients, les quotas de passations et les autodiagnostics créés dans Shift Studio.</p>
     </div>
     <div class="admin-actions">
       <button class="admin-btn secondary" onclick="window.location.href='dashboard.html'">Dashboard</button>
@@ -172,7 +331,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
   <section class="admin-grid" id="overview">
     <div class="kpi-card"><div class="kpi-label">Utilisateurs</div><div id="kpiUsers" class="kpi-value">—</div><div class="kpi-note">Tous comptes confondus</div></div>
     <div class="kpi-card"><div class="kpi-label">Partners</div><div id="kpiPartners" class="kpi-value">—</div><div class="kpi-note">Organismes / cabinets</div></div>
-    <div class="kpi-card"><div class="kpi-label">Clients finaux</div><div id="kpiOrganizations" class="kpi-value">—</div><div class="kpi-note">Dossiers clients</div></div>
+    <div class="kpi-card"><div class="kpi-label">Cockpit clients</div><div id="kpiOrganizations" class="kpi-value">—</div><div class="kpi-note">Dossiers clients</div></div>
     <div class="kpi-card"><div class="kpi-label">Autodiags</div><div id="kpiProjects" class="kpi-value">—</div><div class="kpi-note">Configurations créées</div></div>
   </section>
 
@@ -183,7 +342,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
       <a class="side-link" data-tab="create" onclick="showTab('create')"><span class="side-left"><span class="side-ico">➕</span>Créer un compte</span></a>
       <a class="side-link" data-tab="accounts" onclick="showTab('accounts')"><span class="side-left"><span class="side-ico">👤</span>Comptes</span><span id="sideUsers" class="side-count">—</span></a>
       <a class="side-link" data-tab="partners" onclick="showTab('partners')"><span class="side-left"><span class="side-ico">🤝</span>Partners</span><span id="sidePartners" class="side-count">—</span></a>
-      <a class="side-link" data-tab="organizations" onclick="showTab('organizations')"><span class="side-left"><span class="side-ico">🏢</span>Clients finaux</span><span id="sideOrganizations" class="side-count">—</span></a>
+      <a class="side-link" data-tab="organizations" onclick="showTab('organizations')"><span class="side-left"><span class="side-ico">🏢</span>Cockpit clients</span><span id="sideOrganizations" class="side-count">—</span></a>
       <a class="side-link" data-tab="projects" onclick="showTab('projects')"><span class="side-left"><span class="side-ico">🧩</span>Autodiags</span><span id="sideProjects" class="side-count">—</span></a>
       <div class="side-small">Le quota est porté par le partner, sauf client direct Into The Shift avec pack propre.</div>
     </aside>
@@ -197,7 +356,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           </div>
         </div>
         <div class="notice">
-          Règle métier : un <strong>partner</strong> possède un quota global. Ses clients finaux consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
+          Règle métier : un <strong>partner</strong> possède un quota global. Ses clients consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
         </div>
         <div class="global-cards">
           <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
@@ -216,6 +375,44 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <input id="newLastname" class="admin-input" placeholder="Nom" autocomplete="off">
           <input id="newEmail" class="admin-input" type="email" placeholder="email@entreprise.com" autocomplete="new-email" required>
           <input id="newCompany" class="admin-input" placeholder="Entreprise / organisme" autocomplete="off">
+          <select id="newJobTitle" class="admin-select" autocomplete="off">
+            <option value="">Fonction / poste</option>
+            <option>CEO / Direction générale</option>
+            <option>COO / Direction des opérations</option>
+            <option>DAF / Direction financière</option>
+            <option>DSI / Direction des systèmes d’information</option>
+            <option>Direction RH / DRH</option>
+            <option>Responsable formation</option>
+            <option>Responsable D&I / Diversité & Inclusion</option>
+            <option>Responsable RSE / Développement durable</option>
+            <option>QVT / Santé au travail / Prévention</option>
+            <option>Compliance / Éthique / Risques</option>
+            <option>Communication interne / Engagement</option>
+            <option>Manager / Direction métier</option>
+            <option>Consultant·e / organisme de formation</option>
+            <option>Autre</option>
+          </select>
+          <select id="newSector" class="admin-select" autocomplete="off">
+            <option value="">Secteur d’activité</option>
+            <option>Agriculture / Agroalimentaire</option>
+            <option>Banque / Assurance</option>
+            <option>BTP / Construction / Immobilier</option>
+            <option>Conseil / Audit / Services professionnels</option>
+            <option>Éducation / Formation</option>
+            <option>Énergie / Environnement</option>
+            <option>Industrie</option>
+            <option>Luxe / Mode / Cosmétiques</option>
+            <option>Médias / Communication / Culture</option>
+            <option>Retail / Distribution</option>
+            <option>Santé / Médico-social</option>
+            <option>Secteur public / Collectivités</option>
+            <option>Services</option>
+            <option>Tech / Numérique / Télécoms</option>
+            <option>Transport / Logistique</option>
+            <option>Tourisme / Hôtellerie / Restauration</option>
+            <option>Association / ESS</option>
+            <option>Autre</option>
+          </select>
           <select id="newRole" class="admin-select" autocomplete="off">
             <option value="client">client</option>
             <option value="partner">partner</option>
@@ -247,27 +444,16 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
               <option value="client">Client</option>
               <option value="partner">Partner</option>
             </select>
+            <select id="userStatusFilter" class="admin-select" onchange="renderAccounts()">
+              <option value="active" selected>Actifs uniquement</option>
+              <option value="disabled">Désactivés</option>
+              <option value="deleted">Supprimés</option>
+              <option value="all">Tous les statuts</option>
+            </select>
           </div>
         </div>
         <div id="clientsLoading" class="loading">Chargement des comptes...</div>
-        <div class="table-wrap">
-          <table id="accountsTable" style="display:none">
-            <thead>
-              <tr>
-                <th>Compte</th>
-                <th>Email</th>
-                <th>Entreprise / organisme</th>
-                <th>Logo organisation</th>
-                <th>Rôle</th>
-                <th>Changer rôle</th>
-                <th>Projets</th>
-                <th>Statut</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="accountsBody"></tbody>
-          </table>
-        </div>
+        <div id="accountsCards" class="accounts-card-grid" style="display:none"></div>
         <div id="accountsEmpty" class="empty" style="display:none">Aucun compte trouvé.</div>
       </section>
 
@@ -281,7 +467,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <input id="partnerSearch" class="admin-input" placeholder="Rechercher partner..." oninput="renderPartners()">
           </div>
         </div>
-        <div class="notice">Chaque partner dispose d’un quota global. Ses clients finaux n’ont pas de pack propre par défaut.</div>
+        <div class="notice">Chaque partner dispose d’un quota global. Ses cockpits clients n’ont pas de pack propre par défaut.</div>
         <div id="partnersLoading" class="loading">Chargement des partners...</div>
         <div id="partnersGrid" class="partner-card-grid"></div>
         <div id="partnersEmpty" class="empty" style="display:none">Aucun partner trouvé.</div>
@@ -290,16 +476,16 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
       <section id="tab-organizations" class="admin-section">
         <div class="section-head">
           <div>
-            <h2>Clients finaux</h2>
-            <div class="section-sub">Dossiers clients finaux, rattachés à un partner ou directs Into The Shift.</div>
+            <h2>Cockpit clients</h2>
+            <div class="section-sub">Dossiers cockpit clients, rattachés à un partner ou directs Into The Shift.</div>
           </div>
           <div class="section-tools">
-            <input id="orgSearch" class="admin-input" placeholder="Rechercher client final, partenaire..." oninput="renderOrganizations()">
+            <input id="orgSearch" class="admin-input" placeholder="Rechercher client, partenaire..." oninput="renderOrganizations()">
           </div>
         </div>
-        <div id="orgsLoading" class="loading">Chargement des clients finaux...</div>
+        <div id="orgsLoading" class="loading">Chargement du cockpit clients...</div>
         <div id="orgCards" class="card-list"></div>
-        <div id="orgsEmpty" class="empty" style="display:none">Aucun client final trouvé.</div>
+        <div id="orgsEmpty" class="empty" style="display:none">Aucun client trouvé.</div>
       </section>
 
       <section id="tab-projects" class="admin-section">
@@ -328,22 +514,57 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
 </main>
 
 <script>
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-}
-const API_BASE_URL = itsResolveApiBase();
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 let adminState = { summary:{}, clients:[], projects:[], organizations:[] };
+const ADMIN_JOB_OPTIONS = [
+  'CEO / Direction générale',
+  'COO / Direction des opérations',
+  'DAF / Direction financière',
+  'DSI / Direction des systèmes d’information',
+  'Direction RH / DRH',
+  'Responsable formation',
+  'Responsable D&I / Diversité & Inclusion',
+  'Responsable RSE / Développement durable',
+  'QVT / Santé au travail / Prévention',
+  'Compliance / Éthique / Risques',
+  'Communication interne / Engagement',
+  'Manager / Direction métier',
+  'Consultant·e / organisme de formation',
+  'Autre'
+];
+const ADMIN_SECTOR_OPTIONS = [
+  'Agriculture / Agroalimentaire',
+  'Banque / Assurance',
+  'BTP / Construction / Immobilier',
+  'Conseil / Audit / Services professionnels',
+  'Éducation / Formation',
+  'Énergie / Environnement',
+  'Industrie',
+  'Luxe / Mode / Cosmétiques',
+  'Médias / Communication / Culture',
+  'Retail / Distribution',
+  'Santé / Médico-social',
+  'Secteur public / Collectivités',
+  'Services',
+  'Tech / Numérique / Télécoms',
+  'Transport / Logistique',
+  'Tourisme / Hôtellerie / Restauration',
+  'Association / ESS',
+  'Autre'
+];
+
+function optionsHtml(options, currentValue, placeholder){
+  const current = String(currentValue || "").trim();
+  const base = `<option value="">${escapeHtml(placeholder || "Sélectionner")}</option>`;
+  const known = new Set(options.map(v => String(v)));
+  const custom = current && !known.has(current) ? `<option selected>${escapeHtml(current)}</option>` : "";
+  return base + custom + options.map(option => {
+    const selected = String(option) === current ? " selected" : "";
+    return `<option${selected}>${escapeHtml(option)}</option>`;
+  }).join("");
+}
 
 function getToken(){return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";}
 function decodeJwt(token){try{const payload=token.split(".")[1];return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return null;}}
@@ -377,12 +598,44 @@ async function apiDelete(path){const res=await fetch(API_BASE_URL+path,{method:"
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}
 function formatNumber(v){return num(v).toLocaleString("fr-FR");}
+function clampRemaining(value, quota){
+  const q=Number(quota||0);
+  const r=Number(value||0);
+  if(!Number.isFinite(r)) return 0;
+  if(q>0) return Math.max(0, Math.min(q, r));
+  return Math.max(0, r);
+}
+function remainingToUsed(remaining, quota){
+  const q=Number(quota||0);
+  const r=clampRemaining(remaining, q);
+  return Math.max(0, q-r);
+}
+function getPackQuotaValue(pack, currentQuota=0){
+  const quotas={"50":50,"100":100,"200":200,"500":500,"700":700,"1200":1200,"1500":1500,"1700":1700,"2000":2000,"2500":2500,"3000":3000,"4000":4000,"5000":5000,"7000":7000};
+  if(Object.prototype.hasOwnProperty.call(quotas,String(pack))) return quotas[String(pack)];
+  if(String(pack)==="illimite") return Number(currentQuota||0);
+  if(String(pack)==="existing") return Number(currentQuota||0);
+  return Number(currentQuota||0);
+}
+function formatPackLabel(pack, quota=0){
+  const p=String(pack||"");
+  if(p==="illimite") return "Illimité";
+  if(p==="existing") return "J’ai déjà un pack";
+  if(p) return formatNumber(p);
+  return quota ? formatNumber(quota) : "Non renseigné";
+}
 function formatDate(value){if(!value)return"—";const d=new Date(value);if(isNaN(d.getTime()))return value;return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function escapeHtml(str){return String(str??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
 function escapeAttr(str){return escapeHtml(str).replace(/`/g,"&#096;");}
+function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
-function statusBadge(status){const s=String(status||"brouillon").toLowerCase();if(s.includes("dépub")||s.includes("depub")||s.includes("unpublished"))return`<span class="badge badge-unpublished">Dépublié</span>`;if(s.includes("publi")||s.includes("published"))return`<span class="badge badge-published">Publié</span>`;if(s.includes("transmis")||s.includes("sent")||s.includes("submitted"))return`<span class="badge badge-sent">${escapeHtml(status||"transmis")}</span>`;if(s.includes("brouillon")||s.includes("draft"))return`<span class="badge badge-draft">${escapeHtml(status||"brouillon")}</span>`;return`<span class="badge badge-status">${escapeHtml(status||"actif")}</span>`;}
+function statusBadge(status){
+  const s=String(status||"active").toLowerCase();
+  if(s==="disabled"||s==="inactive"||s==="inactif"||s==="désactivé"||s==="desactive")return`<span class="badge badge-user-disabled">Désactivé</span>`;
+  if(s==="deleted"||s==="supprimé"||s==="supprime")return`<span class="badge badge-user-deleted">Supprimé</span>`;
+  return`<span class="badge badge-user-active">Actif</span>`;
+}
 function isConfigSent(project){const sent=val(project,["config_transmise","configSent","submitted","is_submitted"],false);const status=String(val(project,["status","statut"],"")).toLowerCase();return sent===true||sent==="true"||status.includes("transmis")||status.includes("submitted");}
 function getCompany(c){return val(c,["companyName","company_name","company","organization","organisation","entreprise"],"");}
 function getUserName(c){return (val(c,["firstName","first_name"],"") + " " + val(c,["lastName","last_name"],"")).trim() || val(c,["name","full_name"],"—");}
@@ -459,7 +712,7 @@ function getDirectOrganizations(){
     const creatorId = getOrgCreatorId(o);
     const creator = getUserById(creatorId);
 
-    // On garde uniquement les clients finaux créés par un compte client ITS direct.
+    // On garde uniquement les cockpit clients créés par un compte client ITS direct.
     // On exclut les dossiers créés par un partner ou devenus orphelins après suppression.
     return creator && !isPartnerUser(creator);
   });
@@ -543,8 +796,10 @@ function goToAccounts(search=""){
   showTab("accounts");
   const clientSearch=document.getElementById("clientSearch");
   const roleFilter=document.getElementById("roleFilter");
+  const userStatusFilter=document.getElementById("userStatusFilter");
   if(clientSearch)clientSearch.value=search||"";
   if(roleFilter)roleFilter.value="";
+  if(userStatusFilter)userStatusFilter.value="active";
   renderAccounts();
   document.getElementById("tab-accounts")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
@@ -553,8 +808,10 @@ function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
   const statusFilter=document.getElementById("statusFilter");
+  const userStatusFilter=document.getElementById("userStatusFilter");
   if(roleFilter)roleFilter.value="";
   if(statusFilter)statusFilter.value="";
+  if(userStatusFilter)userStatusFilter.value="active";
 }
 
 async function loadAdminData(){
@@ -588,8 +845,12 @@ function renderAll(){
   renderProjects();
 }
 
+function getUserStatus(c){return String(val(c,["status","statut"],"active")).toLowerCase();}
+function isActiveUser(c){return getUserStatus(c)==="active";}
+
 function renderKpis(){
-  const partners=adminState.clients.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner");
+  const visibleUsers=adminState.clients.filter(c=>getUserStatus(c)!=="deleted");
+  const partners=visibleUsers.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner");
   const partnerQuota=partners.reduce((sum,p)=>sum+num(val(p,["passationsQuota","passations_quota"],0)),0);
   const partnerUsed=partners.reduce((sum,p)=>sum+num(val(p,["passationsUsed","passations_used"],0)),0);
   const finalOrgs=getFinalOrganizations();
@@ -600,9 +861,9 @@ function renderKpis(){
   const sentNoShare=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="sent"&&!getProjectShareUrl(p)).length;
   const noShare=adminState.projects.filter(p=>["sent","published","unpublished"].includes(getProjectEffectiveStatus(p))&&!getProjectShareUrl(p)).length;
   const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="unpublished").length;
-  const noCompany=adminState.clients.filter(c=>!getCompany(c)).length;
+  const noCompany=visibleUsers.filter(c=>isActiveUser(c)&&!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
-  document.getElementById("kpiUsers").textContent=val(adminState.summary,["users","usersCount","totalUsers"],adminState.clients.length);
+  document.getElementById("kpiUsers").textContent=visibleUsers.length;
   document.getElementById("kpiPartners").textContent=partners.length;
   document.getElementById("kpiOrganizations").textContent=directOrgs;
   document.getElementById("kpiProjects").textContent=adminState.projects.length;  document.getElementById("kpiPartnerUsed").textContent=formatNumber(partnerUsed);
@@ -612,71 +873,142 @@ function renderKpis(){
   set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalUnpublished",statusCounts.unpublished||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
   set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
-  document.getElementById("sideUsers").textContent=adminState.clients.length;
+  document.getElementById("sideUsers").textContent=visibleUsers.length;
   document.getElementById("sidePartners").textContent=partners.length;
   document.getElementById("sideOrganizations").textContent=directOrgs;
   document.getElementById("sideProjects").textContent=adminState.projects.length;
 }
 
+function organizationOptionsForAccount(currentOrgId){
+  const orgs=getDirectOrganizations();
+  const current=String(currentOrgId||"");
+  return '<option value="">Choisir un cockpit client</option>'+orgs.map(o=>{
+    const id=String(val(o,["id"],""));
+    return `<option value="${escapeAttr(id)}" ${id===current?"selected":""}>${escapeHtml(getOrgName(o))}</option>`;
+  }).join("");
+}
+
+async function attachUserToOrganization(userId){
+  const select=document.getElementById("attach-org-"+String(userId));
+  const organizationId=select?.value || "";
+  if(!organizationId){showError("Choisis d’abord un cockpit client à rattacher.");return;}
+  try{
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
+      organizationId,
+      role:"member"
+    });
+    showSuccess("Utilisateur rattaché au cockpit client.");
+    await loadAdminData();
+  }catch(err){
+    console.error(err);
+    showError("Rattachement impossible. Détail : "+err.message);
+  }
+}
+
 function renderAccounts(){
   const q=(document.getElementById("clientSearch")?.value||"").toLowerCase().trim();
   const rf=document.getElementById("roleFilter")?.value||"";
+  const sf=document.getElementById("userStatusFilter")?.value||"active";
   const currentUserId=String(decodeJwt(getToken())?.id||"");
   const rows=adminState.clients.filter(c=>{
     const role=String(val(c,["role"],"client")).toLowerCase();
+    const userStatus=getUserStatus(c);
     const text=JSON.stringify(c).toLowerCase();
-    const specialNoCompany=q==="sans entreprise";return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(!specialNoCompany||!getCompany(c));
+    const specialNoCompany=q==="sans entreprise";
+    return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(sf==="all"||userStatus===sf)&&(!specialNoCompany||!getCompany(c));
   });
 
-  const body=document.getElementById("accountsBody");
-  body.innerHTML=rows.map(c=>{
+  const grid=document.getElementById("accountsCards");
+  if(!grid) return;
+
+  grid.innerHTML=rows.map(c=>{
     const id=val(c,["id","user_id"],"");
     const name=getUserName(c);
     const email=val(c,["email"],"—");
     const company=getCompany(c);
+    const jobTitle=val(c,["jobTitle","job_title"],"");
+    const sector=val(c,["sector"],"");
     const role=String(val(c,["role"],"client")).toLowerCase();
-    const status=val(c,["status","statut"],"actif");
+    const status=val(c,["status","statut"],"active");
     const logos=getUserLogos(c);
+    const organizationId=val(c,["organizationId","organization_id"],"");
+    const organizationName=val(c,["organizationName","organization_name"],"");
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
-    const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Supprimer ce compte";
+    const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
+    const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
+    const canAttach=role==="client";
 
-    return`<tr>
-      <td><div class="cell-title">${escapeHtml(name)}</div><div class="muted">ID ${escapeHtml(id)}</div></td>
-      <td>${escapeHtml(email)}</td>
-      <td>
-        <div class="company-edit">
-          <input id="company-${escapeAttr(id)}" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
-          <button class="mini-btn light" onclick="saveUserCompany('${escapeAttr(id)}')">Enregistrer</button>
+    return`<article class="account-card">
+      <div class="account-card-head">
+        <div class="account-identity">
+          <div class="account-name">${escapeHtml(name)}</div>
+          <div class="account-email">${escapeHtml(email)}</div>
+          <div class="account-chip-row">
+            <span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>
+            <span class="account-chip ${jobTitle?"":"empty"}">💼 ${escapeHtml(jobTitle || "Fonction non renseignée")}</span>
+            <span class="account-chip ${sector?"":"empty"}">🌐 ${escapeHtml(sector || "Secteur non renseigné")}</span>
+          </div>
         </div>
-      </td>
-      <td>
-        <div class="admin-logo-actions">
-          ${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo organisation</span>`}
+        <div class="account-badges">
+          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
+          ${statusBadge(status)}
         </div>
-      </td>
-      <td id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</td>
-      <td>
-        <select class="role-select" id="role-${escapeAttr(id)}">
-          <option value="client" ${role==="client"?"selected":""}>client</option>
-          <option value="partner" ${role==="partner"?"selected":""}>partner</option>
-          <option value="admin" ${role==="admin"?"selected":""}>admin</option>
-        </select>
-        <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">OK</button>
-      </td>
-      <td>${projectCount}</td>
-      <td>${statusBadge(status)}</td>
-      <td>
-        <div class="actions-cell">
+      </div>
+
+      <div class="account-meta-grid">
+        <div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>
+        <div class="account-info-box"><div class="account-info-label">Projets</div><div class="account-info-value">${escapeHtml(projectCount)} autodiag${Number(projectCount)>1?"s":""}</div></div>
+        <div class="account-info-box"><div class="account-info-label">ID compte</div><div class="account-info-value">${escapeHtml(id)}</div></div>
+        <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
+      </div>
+
+      <div class="account-edit-panel account-profile-panel">
+        <div>
+          <div class="account-info-label">Entreprise / organisme</div>
+          <input id="company-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
+        </div>
+        <div>
+          <div class="account-info-label">Fonction / poste</div>
+          <select id="job-${escapeAttr(id)}" class="admin-select">${optionsHtml(ADMIN_JOB_OPTIONS, jobTitle, "Fonction / poste")}</select>
+        </div>
+        <div>
+          <div class="account-info-label">Secteur</div>
+          <select id="sector-${escapeAttr(id)}" class="admin-select">${optionsHtml(ADMIN_SECTOR_OPTIONS, sector, "Secteur d’activité")}</select>
+        </div>
+        <button class="mini-btn light" onclick="saveUserProfile('${escapeAttr(id)}')">Enregistrer</button>
+      </div>
+
+      ${canAttach?`<div class="account-attach-panel">
+        <div>
+          <div class="account-info-label">Rattachement cockpit client</div>
+          <select id="attach-org-${escapeAttr(id)}" class="admin-select">${organizationOptionsForAccount(organizationId)}</select>
+        </div>
+        <button class="mini-btn" onclick="attachUserToOrganization('${escapeAttr(id)}')">Rattacher</button>
+      </div>`:""}
+
+      <div class="account-card-actions">
+        <div class="account-role-edit">
+          <select class="role-select" id="role-${escapeAttr(id)}">
+            <option value="client" ${role==="client"?"selected":""}>client</option>
+            <option value="partner" ${role==="partner"?"selected":""}>partner</option>
+            <option value="admin" ${role==="admin"?"selected":""}>admin</option>
+          </select>
+          <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">Changer rôle</button>
           ${role==="partner"?`<button class="mini-btn light" onclick="openPartnerFolder('${escapeAttr(id)}')">Dossier partner</button>`:""}
-          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
         </div>
-        ${disableDelete?'<div class="warning-text">Protégé</div>':''}
-      </td>
-    </tr>`;
+        <div class="account-role-edit" style="justify-content:flex-end">
+          ${status==="active" && !disableDelete?`<button class="mini-btn light" onclick="changeUserStatus('${escapeAttr(id)}','disabled')">Désactiver</button>`:""}
+          ${status==="disabled"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Réactiver</button>`:""}
+          ${status==="deleted"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Restaurer</button>`:""}
+          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete||status==="deleted"?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
+          ${disableDelete?'<div class="account-protected">Protégé</div>':''}
+        </div>
+      </div>
+    </article>`;
   }).join("");
 
-  document.getElementById("accountsTable").style.display=rows.length?"table":"none";
+  grid.style.display=rows.length?"grid":"none";
   document.getElementById("accountsEmpty").style.display=rows.length?"none":"block";
 }
 
@@ -699,13 +1031,13 @@ function renderPartners(){
       <h3>${escapeHtml(name || "Partner sans nom")}</h3>
       <div class="partner-meta">
         ${escapeHtml(email)}<br>
-        ${orgs.length} client${orgs.length>1?"s":""} final${orgs.length>1?"s":""} · ${projectCount} AD
+        ${orgs.length} cockpit${orgs.length>1?"s":""} client${orgs.length>1?"s":""} · ${projectCount} AD
       </div>
 
       <div class="partner-quota">
         <div class="partner-mini"><strong>${formatNumber(quota)}</strong><span>Achetées</span></div>
-        <div class="partner-mini"><strong>${formatNumber(used)}</strong><span>Utilisées</span></div>
         <div class="partner-mini"><strong>${formatNumber(remaining)}</strong><span>Restantes</span></div>
+        <div class="partner-mini"><strong>${formatNumber(used)}</strong><span>Utilisées calculées</span></div>
       </div>
 
       <div class="quota-edit">
@@ -714,10 +1046,10 @@ function renderPartners(){
           <input id="quota-${escapeAttr(id)}" type="number" min="0" value="${quota}">
         </div>
         <div class="quota-field">
-          <label>Utilisées</label>
-          <input id="used-${escapeAttr(id)}" type="number" min="0" value="${used}">
+          <label>Restantes</label>
+          <input id="remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}">
         </div>
-        <div class="quota-rest">Restantes calculées : ${formatNumber(remaining)}</div>
+        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">Saisissez ici le solde restant visible dans le moteur Me&YouToo.</span></div>
         <button class="mini-btn light quota-action" onclick="saveUserPassations('${escapeAttr(id)}')">Enregistrer le quota</button>
       </div>
 
@@ -750,15 +1082,15 @@ function renderOrganizations(){
     return`<article class="org-card">
       <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
       <div class="info-grid">
-        <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(ownerCompany || ownerName || "—")}</div><div class="muted">${escapeHtml(ownerEmail)}</div></div>
-        <div class="info-box"><div class="info-label">Contact dossier</div><div class="info-value">${escapeHtml(contactName)}</div><div class="muted">${escapeHtml(contactEmail)}</div></div>
+        <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
+        <div class="info-box"><div class="info-label">Contact dossier</div><div class="info-value">${escapeHtml(contactName)}</div><div class="muted">${escapeHtml(contactEmail)}</div></div>
       </div>
       <div class="org-quota-panel">
-        <div class="quota-field"><label>Achetées</label><input id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
-        <div class="quota-field"><label>Utilisées</label><input id="org-used-${escapeAttr(id)}" type="number" min="0" value="${used}"></div>
-        <div class="quota-field"><label>Pack</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select></div>
-        <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer quota</button>
+        <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
+        <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
+        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
+        <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
       <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
     </article>`;
@@ -857,7 +1189,7 @@ function renderProjects(){
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
-    const title=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre"));
+    const rawTitle=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre")); const title=cleanAdTitle(rawTitle);
     const organization=val(p,["organizationName","organization_name"],"—");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
@@ -868,7 +1200,7 @@ function renderProjects(){
     return`<article class="project-card">
       <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
       <div class="info-grid">
-        <div class="info-box"><div class="info-label">Client final</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
+        <div class="info-box"><div class="info-label">Client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
         <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>
         <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
         <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
@@ -1028,27 +1360,30 @@ async function confirmDeleteProject(){
 }
 async function saveProjectStatus(projectId){return saveProjectPublication(projectId);}
 
-async function saveUserCompany(userId){
+async function saveUserProfile(userId){
   const companyName=document.getElementById("company-"+String(userId))?.value || "";
+  const jobTitle=document.getElementById("job-"+String(userId))?.value || "";
+  const sector=document.getElementById("sector-"+String(userId))?.value || "";
   try{
-    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/company`,{companyName});
-    showSuccess("Entreprise / organisme mis à jour.");
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/profile`,{companyName,jobTitle,sector});
+    showSuccess("Profil utilisateur mis à jour.");
     await loadAdminData();
   }catch(err){
     console.error(err);
-    showError("Mise à jour entreprise impossible. Il faut ajouter la route backend /api/admin/users/:id/company. Détail : "+err.message);
+    showError("Mise à jour profil impossible. Détail : "+err.message);
   }
 }
 
 async function saveUserPassations(userId){
-  const quota=document.getElementById("quota-"+String(userId))?.value || 0;
-  const used=document.getElementById("used-"+String(userId))?.value || 0;
+  const quota=Number(document.getElementById("quota-"+String(userId))?.value || 0);
+  const remaining=clampRemaining(document.getElementById("remaining-"+String(userId))?.value || 0, quota);
+  const used=remainingToUsed(remaining, quota);
   try{
     await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/passations`,{
-      passationsQuota:Number(quota||0),
-      passationsUsed:Number(used||0)
+      passationsQuota:quota,
+      passationsUsed:used
     });
-    showSuccess("Quota partner mis à jour.");
+    showSuccess("Quota partner mis à jour : "+formatNumber(remaining)+" passations restantes.");
     await loadAdminData();
   }catch(err){
     console.error(err);
@@ -1056,21 +1391,36 @@ async function saveUserPassations(userId){
   }
 }
 
+function syncOrganizationPackQuota(orgId){
+  const packEl=document.getElementById("org-pack-"+String(orgId));
+  const quotaEl=document.getElementById("org-quota-"+String(orgId));
+  const remainingEl=document.getElementById("org-remaining-"+String(orgId));
+  if(!packEl || !quotaEl)return;
+  const currentQuota=Number(quotaEl.value||0);
+  const pack=packEl.value || "";
+  if(pack && pack!=="existing" && pack!=="illimite"){
+    const nextQuota=getPackQuotaValue(pack,currentQuota);
+    quotaEl.value=nextQuota;
+    if(remainingEl) remainingEl.value=nextQuota;
+  }
+}
+
 async function saveOrganizationPassations(orgId){
   const passationsPack=document.getElementById("org-pack-"+String(orgId))?.value || "";
-  const passationsQuota=document.getElementById("org-quota-"+String(orgId))?.value || 0;
-  const passationsUsed=document.getElementById("org-used-"+String(orgId))?.value || 0;
+  const passationsQuota=Number(document.getElementById("org-quota-"+String(orgId))?.value || 0);
+  const passationsRemaining=clampRemaining(document.getElementById("org-remaining-"+String(orgId))?.value || 0, passationsQuota);
+  const passationsUsed=remainingToUsed(passationsRemaining, passationsQuota);
   try{
     await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/passations`,{
       passationsPack,
-      passationsQuota:Number(passationsQuota||0),
-      passationsUsed:Number(passationsUsed||0)
+      passationsQuota,
+      passationsUsed
     });
-    showSuccess("Pack et passations du client direct mis à jour.");
+    showSuccess("Pack client mis à jour : "+formatNumber(passationsRemaining)+" passations restantes.");
     await loadAdminData();
   }catch(err){
     console.error(err);
-    showError("Mise à jour client final impossible. Détail : "+err.message);
+    showError("Mise à jour client impossible. Détail : "+err.message);
   }
 }
 
@@ -1095,6 +1445,8 @@ async function createUser(){
     lastName:document.getElementById("newLastname").value.trim(),
     email:document.getElementById("newEmail").value.trim(),
     companyName:document.getElementById("newCompany").value.trim(),
+    jobTitle:document.getElementById("newJobTitle").value.trim(),
+    sector:document.getElementById("newSector").value.trim(),
     role:document.getElementById("newRole").value,
     password:document.getElementById("newPassword").value
   };
@@ -1103,7 +1455,7 @@ async function createUser(){
     const created=await apiPost("/api/admin/users",payload);
     const emailInfo=created?.emailSent?" L’email d’accès a bien été envoyé.":" Attention : l’email automatique n’a pas été confirmé.";
     document.getElementById("createMsg").textContent="Compte créé. Le client sera invité à choisir son propre mot de passe à la première connexion."+emailInfo;
-    ["newFirstname","newLastname","newEmail","newCompany","newPassword"].forEach(id=>document.getElementById(id).value="");
+    ["newFirstname","newLastname","newEmail","newCompany","newJobTitle","newSector","newPassword"].forEach(id=>document.getElementById(id).value="");
     document.getElementById("newRole").value="client";
     showSuccess("Compte créé avec succès.");
     await loadAdminData();
@@ -1137,6 +1489,17 @@ async function changeRole(userId){
   }
 }
 
+async function changeUserStatus(userId,status){
+  try{
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/status`,{status});
+    showSuccess(status==="active"?"Compte réactivé.":status==="disabled"?"Compte désactivé.":"Compte supprimé.");
+    await loadAdminData();
+  }catch(err){
+    console.error(err);
+    showError("Changement de statut impossible. Détail : "+err.message);
+  }
+}
+
 let userToDelete = null;
 
 function deleteUser(userId, email){
@@ -1166,7 +1529,7 @@ async function confirmDeleteUser(){
   try{
     await apiDelete(`/api/admin/users/${encodeURIComponent(userToDelete.id)}`);
     closeDeleteUserModal();
-    showSuccess("Compte supprimé.");
+    showSuccess("Compte marqué comme supprimé.");
     await loadAdminData();
   }catch(err){
     console.error(err);
@@ -1200,7 +1563,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteProjectTitle"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;">
       <button class="mini-btn light" onclick="closeDeleteProjectModal()">Annuler</button>
-      <button class="mini-btn danger" onclick="confirmDeleteProject()">Supprimer définitivement</button>
+      <button class="mini-btn danger" onclick="confirmDeleteProject()">Supprimer le compte</button>
     </div>
   </div>
 </div>
@@ -1208,12 +1571,12 @@ document.addEventListener("DOMContentLoaded",()=>{
   <div style="background:#fff;border-radius:24px;padding:24px;max-width:520px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
     <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer ce compte ?</h3>
     <p style="margin:0 0 18px;color:#60758a;line-height:1.45;">
-      Cette action est définitive. Si ce compte est un partner, son dossier partner sera aussi supprimé.
+      Le compte sera masqué des listes actives et ne pourra plus se connecter. Ses données et projets sont conservés.
     </p>
     <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteUserEmail"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;">
       <button class="mini-btn light" onclick="closeDeleteUserModal()">Annuler</button>
-      <button class="mini-btn danger" onclick="confirmDeleteUser()">Supprimer définitivement</button>
+      <button class="mini-btn danger" onclick="confirmDeleteUser()">Supprimer le compte</button>
     </div>
   </div>
 </div>

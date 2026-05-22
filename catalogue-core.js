@@ -616,12 +616,46 @@
 
   function makeChapters(prefix, domain, chapters, tags) {
     return chapters.map(function (c, i) {
+      var questions = makeQuestions(prefix, domain, i, tags);
+
+      // Profils spécifiques : si CUSTOM_QUESTIONS contient des profils
+      // sur la première question du chapitre, on les utilise.
+      // Sinon on tombe sur makeProfiles (profils génériques).
+      var cq = window.CUSTOM_QUESTIONS;
+      var customProfiles = null;
+      if (cq[prefix] && cq[prefix][i] && cq[prefix][i][0] && cq[prefix][i][0].profiles) {
+        var p = cq[prefix][i][0].profiles;
+        customProfiles = [
+          {
+            level:       p.bas.label  || "Repères à consolider",
+            min: 0, max: 0.66,
+            title:       p.bas.titre  || p.bas.label,
+            summary:     p.bas.titre  || "",
+            description: p.bas.desc   || ""
+          },
+          {
+            level:       p.moyen.label || "Pratiques en développement",
+            min: 0.66, max: 1.32,
+            title:       p.moyen.titre || p.moyen.label,
+            summary:     p.moyen.titre || "",
+            description: p.moyen.desc  || ""
+          },
+          {
+            level:       p.haut.label  || "Réflexes installés",
+            min: 1.32, max: 2,
+            title:       p.haut.titre  || p.haut.label,
+            summary:     p.haut.titre  || "",
+            description: p.haut.desc   || ""
+          }
+        ];
+      }
+
       return {
         id:          prefix + "-chap-" + (i + 1),
         title:       c[0],
         description: c[1],
-        questions:   makeQuestions(prefix, domain, i, tags),
-        profiles:    makeProfiles(c[0])
+        questions:   questions,
+        profiles:    customProfiles || makeProfiles(c[0])
       };
     });
   }

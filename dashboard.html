@@ -507,6 +507,37 @@ body{
   .preview-modal-overlay{padding:10px}
   .preview-modal{height:94vh;border-radius:18px}
 }
+
+/* ── Pack passations client — design premium aligné Mes AD ───────────────────── */
+.quota-wrap{margin:0 0 18px}
+.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
+.its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
+.its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
+.its-quota-card>*{position:relative;z-index:1}
+.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}
+.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}
+.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}
+.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
+.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}
+.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}
+.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}
+.its-quota-box:nth-child(1) span::before{content:"🛒"}
+.its-quota-box:nth-child(2) span::before{content:"✅"}
+.its-quota-box:nth-child(3) span::before{content:"🚀"}
+.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}
+.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}
+.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}
+.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}
+.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}
+.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
+.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}
+.its-quota-inline strong{color:#007883}
+.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
+@media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
+
+
 </style>
 </head>
 
@@ -541,6 +572,10 @@ body{
       <div class="dash-mini-row"><span>Prochaine étape</span><span id="mini-next">Choisir une base</span></div>
       <a href="index.html" class="btn btn-primary dash-mini-btn" id="mini-action">Commencer un autodiag</a>
     </aside>
+  </section>
+
+  <section class="dash-section" id="dashboard-quota-section" style="margin-top:18px;display:none">
+    <div id="dashboard-quota-card"></div>
   </section>
 
   <section class="dash-section">
@@ -719,22 +754,120 @@ body{
 </div>
 
 <script>
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-}
-const API_BASE_URL = itsResolveApiBase();
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 let latestVisibleProject = null;
+
+function itsFormatQuotaNumber(v){
+  const n=Number(v||0);
+  return Number.isFinite(n)?n.toLocaleString('fr-FR'):'0';
+}
+function itsReadQuotaFromObject(obj){
+  if(!obj||typeof obj!=='object') return null;
+  const quota = obj.passationsQuota ?? obj.passations_quota ?? obj.quota ?? obj.passations_total ?? obj.passationsTotal ?? obj.passations_achetees ?? obj.passationsAchetees;
+  const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
+  const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
+  const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+  if(quota===undefined && remainingRaw===undefined && !pack) return null;
+  const q=Number(quota||0), u=Number(used||0);
+  const r=remainingRaw!==undefined && remainingRaw!==null && remainingRaw!=='' ? Number(remainingRaw) : Math.max(q-u,0);
+  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack||'')};
+}
+function itsPickQuotaPayload(data){
+  const candidates=[data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.account,data?.user,data?.partner,data];
+  for(const c of candidates){const q=itsReadQuotaFromObject(c); if(q) return q;}
+  if(Array.isArray(data?.organizations)){for(const c of data.organizations){const q=itsReadQuotaFromObject(c); if(q) return q;}}
+  return {quota:0,used:0,remaining:0,pack:''};
+}
+async function itsLoadClientQuota(){
+  const token=(localStorage.getItem('its_token')||localStorage.getItem('token')||localStorage.getItem('auth_token')||'');
+  const role=(localStorage.getItem('its_user_role')||'').toLowerCase();
+  const base=(typeof API_BASE_URL!=='undefined'?API_BASE_URL:(typeof API_BASE!=='undefined'?API_BASE:(typeof API_URL!=='undefined'?API_URL:'https://into-the-shift-studio-api.osc-fr1.scalingo.io')));
+  async function get(path){const r=await fetch(base+path,{headers:{Authorization:'Bearer '+token}}); if(!r.ok) throw new Error(path+' '+r.status); return await r.json();}
+  try{
+    if(role==='partner'){
+      const data=await get('/api/partner/me');
+      return itsPickQuotaPayload(data);
+    }
+
+    // Même source que Mes autodiagnostics : pack au niveau organisation.
+    try{
+      const data=await get('/api/me/organization-quota');
+      const quota=itsPickQuotaPayload(data);
+      if(quota && (quota.pack || quota.quota || quota.remaining)) return quota;
+    }catch(e){
+      console.warn('Quota organisation client non disponible, fallback user', e);
+    }
+
+    const data=await get('/api/me');
+    return itsPickQuotaPayload(data);
+  }catch(e){
+    console.warn('Pack passations non chargé', e);
+    return {quota:0,used:0,remaining:0,pack:''};
+  }
+}
+function itsQuotaLabel(q){
+  if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
+  if(String(q.pack)==='illimite') return 'Pack illimité';
+  if(String(q.pack)==='existing') return 'Pack en cours';
+  const n=Number(q.pack||q.quota||0);
+  return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
+}
+function itsQuotaNudge(q){
+  if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
+  const ratio=q.quota? q.remaining/q.quota : 0;
+  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
+  if(ratio<=0) return 'Votre solde est épuisé : contactez Into The Shift pour recharger votre pack avant une nouvelle campagne.';
+  if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
+  return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
+}
+function itsQuotaCardHTML(q,compact=false){
+  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
+  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
+  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
+  return `<div class="its-quota-card ${cls}">
+    <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+    <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
+    <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
+    <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
+  </div>`;
+}
+function itsQuotaInlineHTML(q){
+  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
+}
+
+function getDashboardRole(){
+  const storedRole=(localStorage.getItem('its_user_role')||localStorage.getItem('role')||'').toLowerCase();
+  if(storedRole) return storedRole;
+  const token=(localStorage.getItem('its_token')||localStorage.getItem('token')||localStorage.getItem('auth_token')||'');
+  if(token && token.includes('.')){
+    try{
+      const payload=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+      return String(payload.role||'').toLowerCase();
+    }catch(e){}
+  }
+  return 'client';
+}
+
+async function renderDashboardQuota(){
+  const section=document.getElementById('dashboard-quota-section');
+  const target=document.getElementById('dashboard-quota-card');
+  if(!section||!target) return;
+
+  // Admin Into The Shift : pas de pack affiché, car l'admin ne crée pas d'AD à son nom.
+  // Client/partner : affichage inchangé.
+  if(getDashboardRole()==='admin'){
+    section.style.display='none';
+    target.innerHTML='';
+    return;
+  }
+
+  const q=await itsLoadClientQuota();
+  target.innerHTML=itsQuotaCardHTML(q);
+  section.style.display='block';
+}
+
 
 function getToken(){
   return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
@@ -1017,7 +1150,7 @@ function renderLocalDraft(state){
 
   if(miniAction){
     miniAction.textContent = "Continuer la création";
-    miniAction.href = getProjectResumeUrl(apiProject);
+    miniAction.href = "questions.html";
   }
 
   if(resumeBtn) resumeBtn.style.display = "inline-flex";
@@ -1128,6 +1261,7 @@ function renderApiProject(apiProject){
 }
 
 document.addEventListener("DOMContentLoaded", async function(){
+  renderDashboardQuota();
   const firstname = localStorage.getItem("its_user_firstname") || "";
   const firstnameInline = document.getElementById("user-firstname-inline");
 

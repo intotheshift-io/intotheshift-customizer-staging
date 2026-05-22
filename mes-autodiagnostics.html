@@ -10,29 +10,31 @@
 
   <style>
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Asap',sans-serif;background:#f5f7fb;color:#18375d}
+    body{margin:0;font-family:'Asap',sans-serif;background:radial-gradient(circle at 8% 0%,rgba(255,192,0,.16),transparent 28%),radial-gradient(circle at 92% 10%,rgba(0,120,131,.14),transparent 30%),#f5f7fb;color:#18375d}
     .page{max-width:1180px;margin:0 auto;padding:28px 20px 48px}
-    .hero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px}
-    .hero h1{font-size:28px;margin:0 0 8px;color:#18375d}
-    .hero p{margin:0;color:#64748b;font-size:15px;line-height:1.5;max-width:720px}
-    .btn-primary{background:#eb6366;color:#fff;border:none;border-radius:10px;padding:12px 18px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap}
-    .btn-primary:hover{background:#d94f52}
+    .hero{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px;background:linear-gradient(135deg,#18375d 0%,#0d4c72 55%,#007883 100%);border-radius:26px;padding:26px 28px;box-shadow:0 18px 45px rgba(24,55,93,.18);color:#fff;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:999px;background:rgba(255,255,255,.13)}.hero>*{position:relative;z-index:1}
+    .hero h1{font-size:31px;margin:0 0 8px;color:#fff;letter-spacing:-.4px}
+    .hero p{margin:0;color:rgba(255,255,255,.82);font-size:15px;line-height:1.5;max-width:740px}
+    .btn-primary{background:#ffc744;color:#18375d;border:none;border-radius:14px;padding:13px 18px;font-weight:900;font-size:14px;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.12)}
+    .btn-primary:hover{background:#ffd86c;transform:translateY(-1px)}
+    .quick-note{background:#fff8e6;border:1px solid #ffe0a3;color:#735100;border-radius:18px;padding:13px 16px;margin:0 0 16px;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;box-shadow:0 10px 24px rgba(24,55,93,.05)}
+    .quick-note span{font-size:18px;line-height:1}
 
     .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
-    .stat{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:16px}
+    .stat{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:16px;box-shadow:0 10px 24px rgba(24,55,93,.06);position:relative;overflow:hidden}.stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#007883}.stat:nth-child(2)::before{background:#94a3b8}.stat:nth-child(3)::before{background:#ffc744}.stat:nth-child(4)::before{background:#007883}.stat:nth-child(5)::before{background:#64748b}
     .stat strong{display:block;font-size:24px;color:#18375d;margin-bottom:4px}
     .stat span{font-size:13px;color:#64748b}
 
-    .toolbar{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:14px;display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
+    .toolbar{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border:1px solid #d8e0ea;border-radius:18px;padding:14px;display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;box-shadow:0 10px 25px rgba(24,55,93,.05)}
     .tabs{display:flex;gap:8px;flex-wrap:wrap}
     .tab{border:1px solid #d8e0ea;background:#fff;color:#64748b;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif}
     .tab.active{background:#18375d;color:#fff;border-color:#18375d}
     .search{min-width:250px;flex:1;max-width:360px}
     .search input{width:100%;border:1px solid #d8e0ea;border-radius:10px;padding:10px 12px;font-family:'Asap',sans-serif;font-size:14px}
 
-    .list{display:flex;flex-direction:column;gap:10px}
-    .card{background:#fff;border:1px solid #d8e0ea;border-radius:16px;padding:16px;display:grid;grid-template-columns:5px 1fr auto;gap:14px;align-items:center;position:relative}
-    .bar{width:5px;height:100%;min-height:76px;border-radius:8px;background:#c5ccd5}
+    .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .card{background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);border:1px solid #d8e0ea;border-radius:22px;padding:18px;display:grid;grid-template-columns:6px 1fr;gap:14px;align-items:stretch;position:relative;box-shadow:0 14px 34px rgba(24,55,93,.07);transition:transform .15s ease,box-shadow .15s ease}.card:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(24,55,93,.11)}
+    .bar{width:6px;height:100%;min-height:92px;border-radius:999px;background:#c5ccd5}
     .bar.draft{background:#94a3b8}
     .bar.submitted{background:#ffc744}
     .bar.published{background:#007883}
@@ -40,10 +42,10 @@
     .bar.archived{background:#cbd5e1}
     .bar.unpublished{background:#94a3b8}
 
-    .title{font-size:16px;font-weight:800;color:#18375d;margin-bottom:5px}
+    .title{font-size:17px;font-weight:900;color:#18375d;margin-bottom:5px;display:flex;align-items:center;gap:8px}.title::before{content:"🧩";font-size:18px}
     .meta{font-size:13px;color:#64748b;line-height:1.5}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-    .tag{font-size:12px;font-weight:700;border-radius:999px;background:#edf1f7;color:#18375d;border:1px solid #d0d8e8;padding:4px 9px}
+    .tag{font-size:12px;font-weight:800;border-radius:999px;background:#edf1f7;color:#18375d;border:1px solid #d0d8e8;padding:5px 10px}
     .status{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
     .status.draft{background:#edf1f7;color:#475569}
     .status.submitted{background:#fff4d5;color:#9a6700}
@@ -52,9 +54,9 @@
     .status.archived{background:#f1f4f8;color:#94a3b8}
     .status.unpublished{background:#eef2f6;color:#64748b}
 
-    .actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
-    .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-    .btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:9px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif}
+    .actions{grid-column:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:4px}
+    .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-start}
+    .btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px}
     .btn:hover{background:#f7f9fc}
     .btn-blue{background:#18375d;color:#fff;border-color:#18375d}
     .btn-blue:hover{background:#122a47}
@@ -64,6 +66,13 @@
     .contact-note{font-size:12px;color:#64748b;line-height:1.35;text-align:right;max-width:280px}
     .contact-note a{color:#18375d;font-weight:800;text-decoration:none}
     .contact-note a:hover{text-decoration:underline}
+    .url-lines{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+    .url-line{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:center;background:#f7f9fc;border:1px solid #e1e8f0;border-radius:12px;padding:7px 8px;font-size:12px;color:#64748b}
+    .url-line strong{color:#18375d;white-space:nowrap}
+    .url-short{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#0d4c72;font-weight:800;text-decoration:none}
+    .url-short:hover{text-decoration:underline}
+    .copy-btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:9px;padding:6px 8px;font-size:12px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap}
+    .copy-btn:hover{background:#eef6fb;border-color:#b8dfe0}
 
     .empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
     .empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
@@ -88,6 +97,47 @@
     .modal-btn:hover{background:#f7f9fc}
     .modal-btn.danger{background:#eb6366;border-color:#eb6366;color:#fff}
     .modal-btn.danger:hover{background:#d94f52}
+
+
+
+    /* Pack passations — repris depuis Mon compte */
+    .quota-wrap{margin:0 0 18px}
+    .its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
+    .its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
+    .its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
+    .its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}.its-quota-box:nth-child(1) span::before{content:"🛒"}.its-quota-box:nth-child(2) span::before{content:"✅"}.its-quota-box:nth-child(3) span::before{content:"🚀"}.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
+
+
+    /* Présentation cockpit client — Mes AD */
+    .panel{background:#fff;border:1px solid #e1e8f0;border-radius:26px;padding:22px;box-shadow:0 12px 28px rgba(15,45,80,.06);margin-top:18px}
+    .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+    .panel h2{margin:0 0 4px;font-size:23px;color:#17375d}
+    .panel-sub{font-size:14px;color:#61738a;line-height:1.45}
+    .watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
+    .watch-card{border-radius:20px;padding:14px 15px;border:1px solid #e4edf5;background:#f9fbfd;display:flex;gap:11px;align-items:flex-start;min-height:86px;cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .watch-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,45,80,.08)}
+    .watch-card.active{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
+    .watch-ico{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto}
+    .watch-card.orange{background:#fff8ec;border-color:#ffd9a3}.watch-card.orange .watch-ico{background:#ffe9c7}
+    .watch-card.blue{background:#eef6ff;border-color:#cfe3ff}.watch-card.blue .watch-ico{background:#dcecff}
+    .watch-card.green{background:#eefbf3;border-color:#c8ebd4}.watch-card.green .watch-ico{background:#d9f4e3}
+    .watch-title{font-size:13px;font-weight:900;color:#17375d;margin-bottom:3px}
+    .watch-text{font-size:12px;color:#61738a;line-height:1.35}
+    .filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900;margin-left:6px}
+    .tab.active .filter-count{background:rgba(255,255,255,.22);color:#fff}
+    .alert-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+    .alert-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;border:1px solid}
+    .alert-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#a06400}
+    .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+    .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
+    .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .card.draft-card{border-color:#d8e2ec}
+    .card.published-card{border-color:#b8dfe0}
+    .card.submitted-card{border-color:#ffdf8a}
+    .card.unpublished-card{border-color:#d8e2ec}
+    .btn-danger-soft{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+    .btn-danger-soft:hover{background:#ffe4e6}
+    @media(max-width:900px){.watch-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.search{max-width:none;width:100%}.list{grid-template-columns:1fr}.url-line{grid-template-columns:1fr auto}.url-line strong{grid-column:1/-1}}
 
     @media(max-width:850px){
       .hero{flex-direction:column}
@@ -116,60 +166,62 @@
       <button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button>
     </section>
 
-    <section class="stats">
-      <div class="stat"><strong id="countAll">0</strong><span>Total</span></div>
-      <div class="stat"><strong id="countDraft">0</strong><span>Brouillons</span></div>
-      <div class="stat"><strong id="countSubmitted">0</strong><span>Transmis</span></div>
-      <div class="stat"><strong id="countPublished">0</strong><span>Publiés</span></div>
-      <div class="stat"><strong id="countUnpublished">0</strong><span>Dépubliés</span></div>
+    <section class="quick-note" aria-label="Information espace client">
+      <span>✨</span> Vous pouvez suivre l’avancement de vos autodiagnostics ici. Les brouillons peuvent être supprimés directement depuis cette page. Les campagnes publiées restent verrouillées pour éviter toute modification accidentelle.
     </section>
 
-    <section class="toolbar">
-      <div class="tabs">
-        <button class="tab active" data-filter="all">Tous</button>
-        <button class="tab" data-filter="draft">Brouillons</button>
-        <button class="tab" data-filter="submitted">Transmis</button>
-        <button class="tab" data-filter="published">Publiés</button>
-        <button class="tab" data-filter="unpublished">Dépubliés</button>
-      </div>
-      <div class="search">
-        <input id="searchInput" type="search" placeholder="Rechercher un autodiagnostic..." />
-      </div>
+    <section class="quota-wrap" id="mesAdQuotaWrap" style="display:none">
+      <div id="mesAdQuotaCard"></div>
     </section>
 
-    <section class="list" id="adList"></section>
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Autodiagnostics</h2>
+          <div class="panel-sub">Vos brouillons, configurations transmises, campagnes publiées et liens disponibles.</div>
+        </div>
+      </div>
+
+      <div id="watchList" class="watch-grid"></div>
+
+      <section class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-filter="all">✨ Tous <span class="filter-count" id="countAll">0</span></button>
+          <button class="tab" data-filter="endingSoon">🔴 Fin proche <span class="filter-count" id="countEndingSoon">0</span></button>
+          <button class="tab" data-filter="submitted">🚀 Transmis <span class="filter-count" id="countSubmitted">0</span></button>
+          <button class="tab" data-filter="results">📊 Résultats dispo <span class="filter-count" id="countResults">0</span></button>
+          <button class="tab" data-filter="draft">✏️ Brouillons <span class="filter-count" id="countDraft">0</span></button>
+          <button class="tab" data-filter="published">🟢 Publiés <span class="filter-count" id="countPublished">0</span></button>
+          <button class="tab" data-filter="unpublished">🛑 Dépubliés <span class="filter-count" id="countUnpublished">0</span></button>
+        </div>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="🔎 Rechercher un autodiagnostic..." />
+        </div>
+      </section>
+
+      <section class="list" id="adList"></section>
+    </section>
   </main>
 
 
 
   <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
-      <div class="modal-icon">🗄️</div>
-      <h2 id="archiveModalTitle">Archiver cet autodiagnostic ?</h2>
-      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.</p>
+      <div class="modal-icon">🗑️</div>
+      <h2 id="archiveModalTitle">Supprimer ce brouillon ?</h2>
+      <p>Cette action supprimera définitivement le brouillon de votre espace. Elle ne concerne que les autodiagnostics encore au statut brouillon.</p>
       <div class="modal-actions">
         <button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button>
-        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>
+        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Supprimer</button>
       </div>
     </div>
   </div>
 
   <script>
-    function itsResolveApiBase(){
-      const host = window.location.hostname;
-      const path = window.location.pathname;
-      const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-      if (forced) return forced;
-      const isStaging =
-        host === "localhost" ||
-        host === "127.0.0.1" ||
-        host.startsWith("staging.") ||
-        path.startsWith("/staging");
-      return isStaging
-        ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-        : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-    }
-    const API_BASE = itsResolveApiBase();
+    const API_BASE =
+      window.ITS_API_BASE ||
+      localStorage.getItem("its_api_base") ||
+      "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
     let projects = [];
     let currentFilter = "all";
@@ -178,6 +230,88 @@
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
     }
+
+    function quotaFormatNumber(v){
+      const n = Number(v || 0);
+      return Number.isFinite(n) ? n.toLocaleString('fr-FR') : '0';
+    }
+
+    function quotaFromObject(obj){
+      if(!obj || typeof obj !== 'object') return null;
+      const quota = obj.passationsQuota ?? obj.passations_quota ?? obj.quota ?? obj.passations_total ?? obj.passationsTotal ?? obj.passations_achetees ?? obj.passationsAchetees;
+      const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
+      const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
+      const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+      if(quota === undefined && remainingRaw === undefined && !pack) return null;
+      const q = Number(quota || 0);
+      const u = Number(used || 0);
+      const r = remainingRaw !== undefined && remainingRaw !== null && remainingRaw !== '' ? Number(remainingRaw) : Math.max(q - u, 0);
+      return { quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack || '') };
+    }
+
+    function pickQuotaPayload(data){
+      const candidates = [data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.account,data?.user,data?.partner,data];
+      for(const c of candidates){ const q = quotaFromObject(c); if(q) return q; }
+      if(Array.isArray(data?.organizations)){ for(const c of data.organizations){ const q = quotaFromObject(c); if(q) return q; } }
+      return {quota:0,used:0,remaining:0,pack:''};
+    }
+
+    function quotaLabel(q){
+      if(!q || (!q.pack && !q.quota)) return 'Pack non renseigné';
+      if(String(q.pack) === 'illimite') return 'Pack illimité';
+      if(String(q.pack) === 'existing') return 'Pack en cours';
+      const n = Number(q.pack || q.quota || 0);
+      return n ? ('Pack ' + n.toLocaleString('fr-FR')) : 'Pack en cours';
+    }
+
+    function quotaNudge(q){
+      if(!q || !q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
+      const ratio = q.quota ? q.remaining / q.quota : 0;
+      if(String(q.pack) === 'illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
+      if(ratio <= 0) return 'Votre solde est épuisé : contactez Into The Shift pour recharger votre pack avant une nouvelle campagne.';
+      if(ratio < .2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
+      return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
+    }
+
+    function quotaCardHTML(q){
+      const quota = Number(q?.quota || 0);
+      const used = Number(q?.used || 0);
+      const remaining = String(q?.pack) === 'illimite' ? '∞' : Number(q?.remaining ?? Math.max(quota - used, 0));
+      const pct = quota ? Math.max(0, Math.min(100, Math.round((Number(q.remaining || 0) / quota) * 100))) : 0;
+      const cls = !quota && !q?.pack ? 'empty' : (pct < 20 && String(q?.pack) !== 'illimite' ? 'warn' : 'ok');
+      return `<div class="its-quota-card ${cls}">
+        <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${quotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+        <div class="its-quota-main"><div class="its-quota-box"><strong>${quotaFormatNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${quotaFormatNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':quotaFormatNumber(remaining)}</strong><span>Restantes</span></div></div>
+        <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
+        <div class="its-quota-nudge">${quotaNudge(q)}</div>
+      </div>`;
+    }
+
+    function currentRole(){
+      try{
+        const raw = localStorage.getItem('its_user') || localStorage.getItem('user') || localStorage.getItem('auth_user');
+        if(raw){ const u = JSON.parse(raw); if(u?.role) return String(u.role).toLowerCase(); if(u?.user?.role) return String(u.user.role).toLowerCase(); }
+      }catch(e){}
+      return String(localStorage.getItem('its_user_role') || '').toLowerCase();
+    }
+
+    async function loadQuotaCard(){
+      const wrap = document.getElementById('mesAdQuotaWrap');
+      const target = document.getElementById('mesAdQuotaCard');
+      if(!wrap || !target || !token()) return;
+      const role = currentRole();
+      const path = role === 'partner' ? '/api/partner/me' : '/api/me/organization-quota';
+      try{
+        const res = await fetch(`${API_BASE}${path}`, { headers:{ Authorization:`Bearer ${token()}` } });
+        if(!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        target.innerHTML = quotaCardHTML(pickQuotaPayload(data));
+        wrap.style.display = '';
+      }catch(e){
+        console.warn('Pack passations non chargé', e);
+      }
+    }
+
 
     function normalizeStatus(project) {
       const raw = String(project.status || project.project_status || "").toLowerCase();
@@ -292,6 +426,88 @@
       return `Campagne : ${formatDate(start)} → ${formatDate(end)}`;
     }
 
+    function getCampaignStartDate(p){
+      const data = getProjectData(p);
+      const param = data.parametrage || {};
+      return p.campaign_start_date || p.campaignStartDate || p.start_date || data.campaign_start_date || data.campaignStartDate || data.date_lancement || param.date_lancement || "";
+    }
+
+    function getCampaignEndDate(p){
+      const data = getProjectData(p);
+      const param = data.parametrage || {};
+      return p.campaign_end_date || p.campaignEndDate || p.end_date || data.campaign_end_date || data.campaignEndDate || data.date_cloture || param.date_cloture || "";
+    }
+
+    function normalizeDateInputValue(value){
+      if(!value) return "";
+      const s = String(value).trim();
+      if(!s) return "";
+      if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+      const d = new Date(s);
+      if(Number.isNaN(d.getTime())) return "";
+      return d.toISOString().slice(0,10);
+    }
+
+    function getDaysUntil(dateValue){
+      const iso = normalizeDateInputValue(dateValue);
+      if(!iso) return null;
+      const [y,m,d] = iso.split("-").map(Number);
+      const target = new Date(y, m - 1, d);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      if(Number.isNaN(target.getTime())) return null;
+      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    }
+
+    function hasResultsAvailable(p){
+      const status = normalizeStatus(p);
+      const data = getProjectData(p);
+      const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
+      return (status === "published" || status === "unpublished") && Boolean(resultsUrl);
+    }
+
+    function isMonitorableCampaign(p){
+      const status = normalizeStatus(p);
+      return status === "published" || (status === "unpublished" && hasResultsAvailable(p));
+    }
+
+    function getCampaignTiming(p){
+      const daysLeft = getDaysUntil(getCampaignEndDate(p));
+      if(daysLeft === null) return null;
+      if(daysLeft < 0) return {key:"ended", kind:"neutral", icon:"⚫", label:"Campagne terminée", daysLeft};
+      if(daysLeft < 7) return {key:"imminent", kind:"warn", icon:"🟠", label:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      if(daysLeft < 14) return {key:"endingSoon", kind:"warn", icon:"🔴", label:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      return null;
+    }
+
+    function isEndingSoon(p){
+      if(!isMonitorableCampaign(p)) return false;
+      const timing = getCampaignTiming(p);
+      return Boolean(timing && (timing.key === "endingSoon" || timing.key === "imminent"));
+    }
+
+    function getAlertBadges(p){
+      const status = normalizeStatus(p);
+      const data = getProjectData(p);
+      const shareUrl = p.shareUrl || p.share_url || p.ad_url || p.public_url || data.shareUrl || data.share_url || "";
+      const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
+      const alerts = [];
+      if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
+      const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
+      if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
+      if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
+      if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
+      if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
+      return alerts;
+    }
+
+    function renderAlertBadges(p){
+      const alerts = getAlertBadges(p);
+      if(!alerts.length) return "";
+      return `<div class="alert-badges">${alerts.map(a => `<span class="alert-badge ${a.kind}">${a.icon} ${escapeHtml(a.text)}</span>`).join("")}</div>`;
+    }
+
     function getProjectData(project) {
       const raw = project?.data || project?.payload || project?.configuration || {};
       if (typeof raw === "string") {
@@ -312,54 +528,84 @@
       ).toLowerCase();
     }
 
-    function resumeLabel(project) {
-      const status = normalizeStatus(project);
-      if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
-
-      const step = getProjectStep(project);
-      if (step.includes("validation")) return "Reprendre la transmission";
-      if (step.includes("campagne")) return "Reprendre la campagne";
-      if (step.includes("param")) return "Reprendre le paramétrage";
-      return "Reprendre la création";
+    function getProjectId(project) {
+      return String(project?.id || project?.project_id || project?.projectId || project?.data?.project_id || project?.data?.projectId || "");
     }
+
+    function resumeLabel(project) {
+  const status = normalizeStatus(project);
+
+  if (status === "submitted") return "En attente de publication";
+  if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+
+  const step = getProjectStep(project);
+  if (step.includes("validation")) return "Transmettre";
+  if (step.includes("campagne")) return "Reprendre le paramétrage";
+  if (step.includes("param")) return "Reprendre le paramétrage";
+  return "Reprendre la création";
+}
 
     function resumeUrl(project) {
       const status = normalizeStatus(project);
-      const id = project.id || project.project_id || "";
+      const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
       if (status === "published" || status === "unpublished" || status === "archived") return "validation.html" + suffix;
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
-      if (step.includes("campagne")) return "campagne.html" + suffix;
+      if (step.includes("campagne")) return "parametrage.html" + suffix;
       if (step.includes("param")) return "parametrage.html" + suffix;
       return "questions.html" + suffix;
     }
 
-    function restoreProjectLocally(project) {
-      const data = getProjectData(project);
-      if (!data || typeof data !== "object") return false;
-
-      if (typeof itsRestoreProject === "function") {
-        return itsRestoreProject(project);
-      }
-
-      localStorage.setItem("its_current_project_id", String(project.id || project.project_id || ""));
-      localStorage.setItem("its_current_ad_id", String(project.id || project.project_id || ""));
-      localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(data));
+    function setCurrentProjectPointer(project) {
+      const projectId = getProjectId(project);
+      if (!projectId) return false;
+      localStorage.setItem("its_current_project_id", projectId);
+      localStorage.setItem("its_current_ad_id", projectId);
       return true;
     }
 
-    function resumeProjectByIndex(index) {
-      const project = projects[index];
+    async function fetchFreshProject(projectId) {
+      if (!projectId || !token()) return null;
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}`, {
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+        if (!res.ok) return null;
+        const json = await res.json();
+        return json.project || json.data || json;
+      } catch(e) {
+        return null;
+      }
+    }
+
+    async function resumeProjectById(projectId) {
+      let project = projects.find(p => getProjectId(p) === String(projectId));
       if (!project) return alert("Projet introuvable.");
-      restoreProjectLocally(project);
-      window.location.href = resumeUrl(project);
+
+      const fresh = await fetchFreshProject(projectId);
+      if (fresh) project = fresh;
+
+      if (!setCurrentProjectPointer(project)) return alert("Projet introuvable.");
+      window.location.assign(resumeUrl(project));
     }
 
     function canCloneProject(project) {
       return ["submitted", "published", "unpublished"].includes(normalizeStatus(project));
+    }
+
+    function shortUrl(url) {
+      if (!url) return "";
+      try {
+        const parsed = new URL(url);
+        const path = (parsed.pathname || "").replace(/\/$/, "");
+        const compactPath = path.length > 34 ? path.slice(0, 34) + "…" : path;
+        return `${parsed.hostname}${compactPath}`;
+      } catch(e) {
+        return String(url).length > 46 ? String(url).slice(0, 46) + "…" : String(url);
+      }
     }
 
     function openExternal(url) {
@@ -374,14 +620,60 @@
     }
 
     function renderStats() {
-      const counts = { draft:0, submitted:0, published:0, unpublished:0 };
-      projects.forEach(p => counts[normalizeStatus(p)] = (counts[normalizeStatus(p)] || 0) + 1);
+      const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
+      projects.forEach(p => {
+        const status = normalizeStatus(p);
+        counts[status] = (counts[status] || 0) + 1;
+        if(isEndingSoon(p)) counts.endingSoon += 1;
+        if(hasResultsAvailable(p)) counts.results += 1;
+      });
 
-      document.getElementById("countAll").textContent = projects.length;
-      document.getElementById("countDraft").textContent = counts.draft || 0;
-      document.getElementById("countSubmitted").textContent = counts.submitted || 0;
-      document.getElementById("countPublished").textContent = counts.published || 0;
-      document.getElementById("countUnpublished").textContent = counts.unpublished || 0;
+      const setCount = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = value;
+      };
+
+      setCount("countAll", projects.length);
+      setCount("countDraft", counts.draft || 0);
+      setCount("countSubmitted", counts.submitted || 0);
+      setCount("countPublished", counts.published || 0);
+      setCount("countUnpublished", counts.unpublished || 0);
+      setCount("countEndingSoon", counts.endingSoon || 0);
+      setCount("countResults", counts.results || 0);
+      renderWatchList(counts);
+    }
+
+    function renderWatchList(counts){
+      const el = document.getElementById("watchList");
+      if(!el) return;
+      el.innerHTML = `
+        <div class="watch-card orange ${currentFilter==='endingSoon'?'active':''}" onclick="setFilterFromCard('endingSoon')">
+          <div class="watch-ico">🔴</div>
+          <div><div class="watch-title">${counts.endingSoon || 0} campagne${(counts.endingSoon||0)>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture.</div></div>
+        </div>
+        <div class="watch-card blue ${currentFilter==='submitted'?'active':''}" onclick="setFilterFromCard('submitted')">
+          <div class="watch-ico">🚀</div>
+          <div><div class="watch-title">${counts.submitted || 0} AD transmis</div><div class="watch-text">En attente de traitement ou publication par Into The Shift.</div></div>
+        </div>
+        <div class="watch-card green ${currentFilter==='results'?'active':''}" onclick="setFilterFromCard('results')">
+          <div class="watch-ico">📊</div>
+          <div><div class="watch-title">${counts.results || 0} résultat${(counts.results||0)>1?'s':''} disponible${(counts.results||0)>1?'s':''}</div><div class="watch-text">Liens résultats disponibles dans les cartes concernées.</div></div>
+        </div>
+      `;
+    }
+
+    function setFilterFromCard(filter){
+      currentFilter = currentFilter === filter ? "all" : filter;
+      document.querySelectorAll(".tab").forEach(t => {
+        t.classList.toggle("active", t.dataset.filter === currentFilter);
+      });
+      const active = document.querySelector(`.tab[data-filter="${currentFilter}"]`);
+      if(!active){
+        const all = document.querySelector('.tab[data-filter="all"]');
+        if(all) all.classList.add("active");
+      }
+      renderStats();
+      renderProjects();
     }
 
     function renderProjects() {
@@ -391,7 +683,12 @@
       const filtered = projects.filter(p => {
         const status = normalizeStatus(p);
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
-        return (currentFilter === "all" || status === currentFilter) && (!q || text.includes(q));
+        const filterOk =
+          currentFilter === "all" ||
+          status === currentFilter ||
+          (currentFilter === "endingSoon" && isEndingSoon(p)) ||
+          (currentFilter === "results" && hasResultsAvailable(p));
+        return filterOk && (!q || text.includes(q));
       });
 
       if (!filtered.length) {
@@ -415,9 +712,10 @@
         const hasShare = status === "published" && Boolean(shareUrl);
         const hasResults = (status === "published" || status === "unpublished") && Boolean(resultsUrl);
         const canClone = canCloneProject(p);
+        const projectId = getProjectId(p);
 
         return `
-          <article class="card">
+          <article class="card ${status}-card">
             <div class="bar ${status}"></div>
 
             <div>
@@ -428,9 +726,10 @@
                 Lien de diffusion : ${hasShare ? "disponible" : "en attente admin"} ·
                 Résultats : ${hasResults ? "disponibles" : "non disponibles"}
               </div>
+              ${renderAlertBadges(p)}
               <div class="url-lines">
-                ${hasShare ? `<div class="url-line"><strong>URL diffusion :</strong> <a href="${escapeAttr(shareUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(shareUrl)}</a></div>` : ""}
-                ${hasResults ? `<div class="url-line"><strong>URL résultats :</strong> <a href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resultsUrl)}</a></div>` : ""}
+                ${hasShare ? `<div class="url-line"><strong>URL diffusion</strong><a class="url-short" href="${escapeAttr(shareUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr(shareUrl)}">${escapeHtml(shortUrl(shareUrl))}</a><button class="copy-btn" type="button" onclick="copyText('${escapeAttr(shareUrl)}')">Copier</button></div>` : ""}
+                ${hasResults ? `<div class="url-line"><strong>URL résultats</strong><a class="url-short" href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr(resultsUrl)}">${escapeHtml(shortUrl(resultsUrl))}</a><button class="copy-btn" type="button" onclick="copyText('${escapeAttr(resultsUrl)}')">Copier</button></div>` : ""}
               </div>
               <div class="tags">
                 <span class="tag">${escapeHtml(theme)}</span>
@@ -441,33 +740,23 @@
             <div class="actions">
               <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
-                <button class="btn btn-blue" onclick="resumeProjectByIndex(${index})">
+                <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
                   ${resumeLabel(p)}
                 </button>
-                ${hasShare ? `
-                  <button class="btn btn-green" onclick="openExternal('${escapeAttr(shareUrl)}')">
-                    Voir l’AD
-                  </button>
-                ` : ""}
                 ${hasResults ? `
                   <button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">
                     Résultats
                   </button>
                 ` : ""}
-                ${canClone ? `
-                  <button class="btn" onclick="duplicateProject('${p.id || p.project_id || ""}')">
-                    Cloner
+                ${status === "draft" ? `
+                  <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
+                    🗑️ Supprimer
                   </button>
                 ` : ""}
-                ${status === "draft" ? `<button class="btn" onclick="toggleMenu(${index})">···</button>` : ""}
               </div>
             </div>
 
-            ${status === "draft" ? `
-              <div class="menu" id="menu-${index}">
-                <button class="danger" onclick="archiveProject('${p.id || p.project_id || ""}')">Archiver</button>
-              </div>
-            ` : ""}
+            ${""}
           </article>
         `;
       }).join("");
@@ -491,6 +780,7 @@
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
         currentFilter = tab.dataset.filter;
+        renderStats();
         renderProjects();
       });
     });
@@ -532,7 +822,7 @@
 
         const cloned = data.project;
         if (cloned) {
-          restoreProjectLocally(cloned);
+          setCurrentProjectPointer(cloned);
           window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
           return;
         }
@@ -543,12 +833,21 @@
       }
     }
 
-    function archiveProject(id) {
+    function deleteDraftProject(id) {
       if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project || normalizeStatus(project) !== "draft") {
+        return alert("Seuls les brouillons peuvent être supprimés depuis cet espace.");
+      }
+
       pendingArchiveProjectId = String(id);
-      document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       const modal = document.getElementById("archiveModal");
       if (modal) {
+        const title = getTitle(project);
+        modal.querySelector(".modal-icon").textContent = "🗑️";
+        modal.querySelector("#archiveModalTitle").textContent = "Supprimer ce brouillon ?";
+        modal.querySelector("p").innerHTML = `Vous allez supprimer définitivement :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Cette action ne concerne que ce brouillon et ne peut pas être annulée.`;
+        modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Supprimer</button>';
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");
       }
@@ -563,31 +862,31 @@
       }
     }
 
-    function confirmArchiveProject() {
+    async function confirmArchiveProject() {
       if (!pendingArchiveProjectId) return closeArchiveModal();
-      closeArchiveModal();
-      showArchiveNotice();
-    }
+      const projectId = pendingArchiveProjectId;
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if (!project || normalizeStatus(project) !== "draft") {
+        closeArchiveModal();
+        return alert("Seuls les brouillons peuvent être supprimés depuis cet espace.");
+      }
 
-    function showArchiveNotice() {
-      const modal = document.getElementById("archiveModal");
-      if (!modal) return alert("Cette action n’est pas encore disponible dans votre espace.");
-      modal.querySelector(".modal-icon").textContent = "ℹ️";
-      modal.querySelector("#archiveModalTitle").textContent = "Archivage indisponible pour le moment";
-      modal.querySelector("p").textContent = "Cette action n’est pas encore disponible dans votre espace. Aucun changement n’a été appliqué pour le moment.";
-      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn danger" type="button" onclick="resetArchiveModal()">Compris</button>';
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-    }
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
 
-    function resetArchiveModal() {
-      const modal = document.getElementById("archiveModal");
-      if (!modal) return;
-      modal.querySelector(".modal-icon").textContent = "🗄️";
-      modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.";
-      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>';
-      closeArchiveModal();
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Suppression impossible");
+
+        projects = projects.filter(p => getProjectId(p) !== String(projectId));
+        closeArchiveModal();
+        renderStats();
+        renderProjects();
+      } catch(e) {
+        alert(e.message || "Suppression impossible pour le moment.");
+      }
     }
 
     function escapeHtml(str) {
@@ -603,6 +902,7 @@
       return escapeHtml(str).replaceAll("`", "");
     }
 
+    loadQuotaCard();
     loadProjects();
   </script>
 </body>

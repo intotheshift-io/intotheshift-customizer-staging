@@ -421,9 +421,17 @@ body{
             <label class="form-label">Fonction</label>
             <select id="jobTitle" class="select">
               <option value="">Sélectionner</option>
-              <option>Direction RH</option>
+              <option>CEO / Direction générale</option>
+              <option>COO / Direction des opérations</option>
+              <option>DAF / Direction financière</option>
+              <option>DSI / Direction des systèmes d’information</option>
+              <option>Direction RH / DRH</option>
               <option>Responsable formation</option>
-              <option>Responsable D&I / RSE</option>
+              <option>Responsable D&I / Diversité & Inclusion</option>
+              <option>Responsable RSE / Développement durable</option>
+              <option>QVT / Santé au travail / Prévention</option>
+              <option>Compliance / Éthique / Risques</option>
+              <option>Communication interne / Engagement</option>
               <option>Manager / Direction métier</option>
               <option>Consultant·e / organisme de formation</option>
               <option>Autre</option>
@@ -434,14 +442,22 @@ body{
             <label class="form-label">Secteur</label>
             <select id="sector" class="select">
               <option value="">Sélectionner</option>
+              <option>Agriculture / Agroalimentaire</option>
               <option>Banque / Assurance</option>
-              <option>Industrie</option>
-              <option>Services</option>
-              <option>Santé / Médico-social</option>
-              <option>Secteur public</option>
+              <option>BTP / Construction / Immobilier</option>
+              <option>Conseil / Audit / Services professionnels</option>
               <option>Éducation / Formation</option>
-              <option>Tech / Numérique</option>
+              <option>Énergie / Environnement</option>
+              <option>Industrie</option>
+              <option>Luxe / Mode / Cosmétiques</option>
+              <option>Médias / Communication / Culture</option>
               <option>Retail / Distribution</option>
+              <option>Santé / Médico-social</option>
+              <option>Secteur public / Collectivités</option>
+              <option>Services</option>
+              <option>Tech / Numérique / Télécoms</option>
+              <option>Transport / Logistique</option>
+              <option>Tourisme / Hôtellerie / Restauration</option>
               <option>Association / ESS</option>
               <option>Autre</option>
             </select>
@@ -478,21 +494,9 @@ body{
 
 
 <script>
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-}
-const API_BASE_URL = itsResolveApiBase();
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
 function showRegisterError(message){
   const box = document.getElementById("register-error");
@@ -546,13 +550,14 @@ document.getElementById("register-form").addEventListener("submit", async functi
       throw new Error(data.error || "Impossible de créer le compte pour le moment.");
     }
 
+    // On ne stocke plus l’objet utilisateur complet dans le navigateur.
+    // Les informations du compte sont la source serveur via /api/me.
     localStorage.setItem("its_token", data.token);
-    localStorage.setItem("its_user", JSON.stringify(data.user));
     localStorage.setItem("its_logged_in", "true");
-    localStorage.setItem("its_user_firstname", data.user?.firstName || payload.firstName || "Mon espace");
     localStorage.setItem("its_user_role", data.user?.role || "client");
+    localStorage.setItem("its_user_firstname", data.user?.firstName || payload.firstName || "Mon espace");
 
-    window.location.href = "dashboard.html";
+    window.location.href = "account.html";
   }catch(error){
     showRegisterError(error.message || "Erreur de connexion à l’API.");
     submitBtn.disabled = false;

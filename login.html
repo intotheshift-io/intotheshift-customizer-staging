@@ -451,21 +451,9 @@ body{
 
 
 <script>
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-}
-const API_BASE_URL = itsResolveApiBase();
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
 
 function toggleLoginPassword(){
@@ -518,15 +506,53 @@ document.getElementById("login-form").addEventListener("submit", async function(
       throw new Error(data.error || "Identifiants incorrects.");
     }
 
-    localStorage.setItem("its_token", data.token);
-    localStorage.setItem("its_user", JSON.stringify(data.user));
-    localStorage.setItem("its_logged_in", "true");
-    localStorage.setItem("its_user_id", data.user?.id || "");
-    localStorage.setItem("its_user_email", data.user?.email || "");
-    localStorage.setItem("its_user_firstname", data.user?.firstName || "Mon espace");
-    localStorage.setItem("its_user_lastname", data.user?.lastName || "");
-    localStorage.setItem("its_user_company", data.user?.companyName || "");
-    localStorage.setItem("its_user_role", data.user?.role || "client");
+    const userForStorage = { ...(data.user || {}) };
+    delete userForStorage.organizationLogoDataUrl;
+    delete userForStorage.passationLogoDataUrl;
+    delete userForStorage.organization_logo_data_url;
+    delete userForStorage.passation_logo_data_url;
+
+    try {
+      if (typeof window.itsResetProjectContextForUserSwitch === "function") {
+        window.itsResetProjectContextForUserSwitch(data.user || {});
+      }
+      localStorage.removeItem("its_user");
+      localStorage.removeItem("its_user_logo");
+      localStorage.removeItem("its_organization_logo");
+      localStorage.removeItem("its_passation_logo");
+      localStorage.removeItem("organizationLogoDataUrl");
+      localStorage.removeItem("passationLogoDataUrl");
+      localStorage.setItem("its_token", data.token || "");
+      localStorage.setItem("its_user", JSON.stringify(userForStorage));
+      localStorage.setItem("its_logged_in", "true");
+      localStorage.setItem("its_user_id", data.user?.id || "");
+      localStorage.setItem("its_user_email", data.user?.email || "");
+      localStorage.setItem("its_user_firstname", data.user?.firstName || "Mon espace");
+      localStorage.setItem("its_user_lastname", data.user?.lastName || "");
+      localStorage.setItem("its_user_company", data.user?.companyName || "");
+      localStorage.setItem("its_user_role", data.user?.role || "client");
+    } catch(storageError) {
+      try {
+        [
+          "its_user",
+          "its_user_logo",
+          "its_organization_logo",
+          "its_passation_logo",
+          "organizationLogoDataUrl",
+          "passationLogoDataUrl"
+        ].forEach(key => localStorage.removeItem(key));
+        localStorage.setItem("its_token", data.token || "");
+        localStorage.setItem("its_logged_in", "true");
+        localStorage.setItem("its_user_id", data.user?.id || "");
+        localStorage.setItem("its_user_email", data.user?.email || "");
+        localStorage.setItem("its_user_firstname", data.user?.firstName || "Mon espace");
+        localStorage.setItem("its_user_lastname", data.user?.lastName || "");
+        localStorage.setItem("its_user_company", data.user?.companyName || "");
+        localStorage.setItem("its_user_role", data.user?.role || "client");
+      } catch(secondStorageError) {
+        throw new Error("Connexion réussie, mais le stockage local du navigateur est saturé. Supprime les anciennes données du site puis reconnecte-toi.");
+      }
+    }
 
     const forcedRedirect = localStorage.getItem("its_after_login_redirect");
     localStorage.removeItem("its_after_login_redirect");

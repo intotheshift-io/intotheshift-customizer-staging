@@ -58,6 +58,9 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .cni:not(.on) .cni-head:hover{background:#eef1f6;border-radius:9px 9px 0 0}
 .cni-lbl{font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em}
 .cni-name{font-size:13px;font-weight:600;color:#18375d;line-height:1.3}
+.cni-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.cni-delete{width:24px;height:24px;border-radius:8px;border:1px solid #ffd1d1;background:#fff6f6;color:#eb6366;cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s}
+.cni-delete:hover{background:#fceaea;border-color:#eb6366;color:#c53030}
 .cni-meta{display:flex;align-items:center;gap:5px;margin-top:3px}
 .cni-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .cni-qcount{font-size:11px;color:#64748b;font-family:'Asap',sans-serif}
@@ -425,7 +428,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
       <div class="sb-total" id="sb-total"></div>
-      <div class="btn-save-hint" id="btn-save-hint">4 questions min. par chapitre</div>
+      <div class="btn-save-hint" id="btn-save-hint">5 questions min. par chapitre</div>
       <button class="btn-save" id="btn-save" onclick="trySave()">Enregistrer le thème</button>
     </div>
   </div>
@@ -464,7 +467,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>4 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
+    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -476,9 +479,33 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Complétez d’abord les questions</h3>
-    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>4 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
+    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-feature-soon">
+  <div class="modal" style="max-width:440px;text-align:left">
+    <div style="width:48px;height:48px;border-radius:16px;background:#e5f4f5;color:#007883;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px">✨</div>
+    <h3 id="feature-soon-title">Fonctionnalité bientôt disponible</h3>
+    <p id="feature-soon-text">Cette option sera disponible prochainement pour les chapitres créés librement. Pour le moment, ajoutez vos questions manuellement afin de garder une cohérence avec votre nouveau chapitre.</p>
+    <div class="modal-acts">
+      <button class="btn-confirm" style="background:#18375d" onclick="closeFeatureSoonModal()">Compris</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="modal-delete-chapter">
+  <div class="modal" style="max-width:440px;text-align:left">
+    <div style="width:48px;height:48px;border-radius:16px;background:#fceaea;color:#eb6366;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px">🗑️</div>
+    <h3 id="delete-chapter-title">Supprimer ce chapitre ?</h3>
+    <p id="delete-chapter-text">Les questions et profils de ce chapitre seront supprimés définitivement de ce brouillon.</p>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="closeDeleteChapterModal()">Annuler</button>
+      <button class="btn-confirm" onclick="confirmDeleteChapter()">Supprimer</button>
     </div>
   </div>
 </div>
@@ -526,7 +553,136 @@ function makeBlankDiagnosticState(){
   };
 }
 
-let state = (typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}');
+function questionsApiBase(){
+  return window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+}
+
+function questionsToken(){
+  return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+}
+
+function questionsExplicitProjectIdFromUrl(){
+  return urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id') || '';
+}
+
+function questionsProjectIdFromUrl(){
+  if(isBlankMode) return questionsExplicitProjectIdFromUrl();
+  return questionsExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+}
+
+function questionsClearStaleProject(projectId){
+  try{
+    if(String(localStorage.getItem('its_current_project_id') || '') === String(projectId || '') ||
+       String(localStorage.getItem('its_current_ad_id') || '') === String(projectId || '')){
+      if(typeof itsClearProjectContextOnly === 'function') itsClearProjectContextOnly();
+      else {
+        localStorage.removeItem('its_current_project_id');
+        localStorage.removeItem('its_current_ad_id');
+        localStorage.removeItem('its_state');
+        localStorage.removeItem('intotheshift_customizer_state_v1');
+      }
+    }
+    sessionStorage.removeItem('its_project_cache_' + projectId);
+  }catch(e){}
+}
+
+function questionsExtractProjectState(project){
+  if(!project || typeof project !== 'object') return null;
+  const raw = project.data || project.payload || project.configuration || project.state || project;
+  let data = raw;
+  if(typeof data === 'string'){
+    try{ data = JSON.parse(data); }catch(e){ data = {}; }
+  }
+  if(data && data.state && typeof data.state === 'object') data = data.state;
+  if(!data || typeof data !== 'object') data = {};
+
+  const title = project.title || project.name || project.project_name || project.ad_title || data.title || data.name || '';
+  const status = project.status || project.project_status || data.status || 'draft';
+  const step = project.currentStep || project.current_step || data.currentStep || data.current_step || data.step || 'questions';
+  const id = project.id || project.project_id || project.projectId || data.project_id || data.projectId || questionsProjectIdFromUrl();
+
+  const merged = { ...data };
+  if(title && !merged.title) merged.title = title;
+  merged.status = status;
+  merged.step = step;
+  merged.current_step = step;
+  if(id){
+    merged.projectId = id;
+    merged.project_id = id;
+    merged.currentAdId = id;
+  }
+  return merged;
+}
+
+function questionsReadLocalStateFallback(){
+  const keys = [
+    'its_state',
+    'intotheshift_customizer_state_v1',
+    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
+  ].filter(Boolean);
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
+      if(!raw) continue;
+      let data = JSON.parse(raw);
+      if(data && data.state && typeof data.state === 'object') data = data.state;
+      if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+    }catch(e){}
+  }
+  return null;
+}
+
+function questionsFetchProjectStateSync(projectId){
+  if(!projectId || !questionsToken()) return null;
+  try{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `${questionsApiBase()}/api/projects/${encodeURIComponent(projectId)}`, false);
+    xhr.setRequestHeader('Authorization', `Bearer ${questionsToken()}`);
+    xhr.send(null);
+    if(xhr.status < 200 || xhr.status >= 300){
+      if(xhr.status === 403 || xhr.status === 404){
+        window.ITS_PROJECT_LOAD_FORBIDDEN = true;
+        questionsClearStaleProject(projectId);
+      }
+      return null;
+    }
+    const json = JSON.parse(xhr.responseText || '{}');
+    const project = json.project || json.data || json;
+    if(typeof itsProjectBelongsToCurrentFrontendUser === 'function' && !itsProjectBelongsToCurrentFrontendUser(project)){
+      window.ITS_PROJECT_LOAD_FORBIDDEN = true;
+      questionsClearStaleProject(projectId);
+      return null;
+    }
+    const extracted = questionsExtractProjectState(project);
+    if(extracted && Array.isArray(extracted.chapters) && extracted.chapters.length){
+      localStorage.setItem('its_current_project_id', String(projectId));
+      localStorage.setItem('its_current_ad_id', String(projectId));
+      return extracted;
+    }
+  }catch(e){
+    console.warn('Projet non chargé depuis le serveur', e);
+  }
+  return null;
+}
+
+const requestedProjectId = questionsProjectIdFromUrl();
+const fetchedProjectState = requestedProjectId ? questionsFetchProjectStateSync(requestedProjectId) : null;
+if(requestedProjectId && window.ITS_PROJECT_LOAD_FORBIDDEN){
+  window.location.href = 'mes-autodiagnostics.html';
+  throw new Error('Projet non autorisé pour ce compte');
+}
+let state = requestedProjectId
+  ? (fetchedProjectState || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
+  : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
+
+if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
+  state.projectId = state.projectId || requestedProjectId;
+  state.project_id = state.project_id || requestedProjectId;
+  state.currentAdId = state.currentAdId || requestedProjectId;
+}
+
 
 // Sécurité reprise projet : si une ancienne sauvegarde contient { state: {...} },
 // on récupère le vrai contenu de l'autodiagnostic avant de tester les chapitres.
@@ -541,6 +697,7 @@ if (state && state.state && typeof state.state === 'object') {
   };
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
+  persistQuestionsStateForNextStep();
 }
 
 if (isBlankMode) {
@@ -556,7 +713,7 @@ if (isBlankMode) {
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
 } else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
-  const hasProjectId = typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId();
+  const hasProjectId = requestedProjectId || (typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId());
   if(hasProjectId && typeof itsBootstrapProjectFromUrl === 'function'){
     document.body.innerHTML = '<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d">Chargement du projet…</div>';
 
@@ -578,7 +735,7 @@ if (isBlankMode) {
       document.body.innerHTML = `<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d;max-width:760px">
         <h2 style="margin:0 0 10px;font-size:20px">Projet non chargé</h2>
         <p style="font-size:14px;line-height:1.6;color:#64748b">La page n’a pas réussi à récupérer le contenu du projet${projectId ? ` <strong>${projectId}</strong>` : ''}. Retournez au dashboard puis ouvrez le projet avec le bouton “Reprendre” ou “Modifier le contenu”.</p>
-        <button onclick="window.location.href='admin.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour admin</button>
+        <button onclick="window.location.href='mes-autodiagnostics.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour à mes autodiagnostics</button>
       </div>`;
     });
     throw new Error('Chargement projet en cours');
@@ -597,6 +754,10 @@ const profils_config = [
   {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'En progression'},
   {couleur:'#77cd8a', bgHead:'#f0fbf2', borderHead:'#b8e8c0', textColor:'#27823a', nom:'Ancré'}
 ];
+
+const MIN_QUESTIONS_PER_CHAPTER = 5;
+const DEFAULT_GENERATED_QUESTIONS = 5;
+const MAX_QUESTIONS_PER_CHAPTER = 10;
 
 function esc(v){
   return String(v ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
@@ -711,12 +872,31 @@ function normalizeAnswers(q){
 }
 
 function normalizeChaptersFromState(){
+  // Quand un thème catalogue contient plus de questions, on démarre l'éditeur avec 5 questions par chapitre.
+  // Ensuite, l'utilisateur peut en ajouter jusqu'au maximum autorisé.
+  if (!state.initialQuestionsLimitedToFive && Array.isArray(state.chapters) && !isBlankMode) {
+    let changed = false;
+    state.chapters = state.chapters.map(c => {
+      if (Array.isArray(c.questions) && c.questions.length > DEFAULT_GENERATED_QUESTIONS) {
+        changed = true;
+        return { ...c, questions: c.questions.slice(0, DEFAULT_GENERATED_QUESTIONS) };
+      }
+      return c;
+    });
+    if (changed) {
+      state.initialQuestionsLimitedToFive = true;
+      if (typeof itsSave === 'function') itsSave(state);
+      else localStorage.setItem('its_state', JSON.stringify(state));
+    }
+  }
+
   return state.chapters.map((c, i) => {
     const profiles = c.profiles || c.profils || [];
     return {
       id: i + 1,
-      name: c.name || c.title || `Chapitre ${i+1}`,
+      name: c.name || c.title || '',
       desc: c.desc || c.description || '',
+      isCustomChapter: c.isCustomChapter === true || i >= 4,
       questions: (c.questions || []).map((q, qi) => ({
         id: q.id || `q${i+1}_${qi+1}_${Date.now()}`,
         type: q.type === 'likert' ? 'likert' : 'choix',
@@ -742,10 +922,36 @@ function normalizeChaptersFromState(){
   });
 }
 
+function persistQuestionsStateForNextStep(){
+  // Stockage volontairement limité au brouillon courant : pas de cache de liste, pas d'image, pas de fichier lourd.
+  // parametrage.html dépend encore de l'état courant côté navigateur ; le backend reste la source de vérité pour la reprise par projectId.
+  try{
+    const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+    if(projectId){
+      localStorage.setItem('its_current_project_id', String(projectId));
+      localStorage.setItem('its_current_ad_id', String(projectId));
+    }
+    const lightState = { ...state };
+    delete lightState.organizationLogoDataUrl;
+    delete lightState.organization_logo_data_url;
+    delete lightState.passationLogoDataUrl;
+    delete lightState.passation_logo_data_url;
+    const serialized = JSON.stringify(lightState);
+    localStorage.setItem('its_state', serialized);
+    localStorage.setItem('intotheshift_customizer_state_v1', serialized);
+    sessionStorage.setItem('its_state', serialized);
+    sessionStorage.setItem('intotheshift_customizer_state_v1', serialized);
+    if(typeof itsGetStorageKey === 'function') localStorage.setItem(itsGetStorageKey(), serialized);
+  }catch(e){
+    console.warn('État courant non persisté pour le paramétrage', e);
+  }
+}
+
 function syncToState(){
   state.chapters = chapters.map(c => ({
     title: c.name,
     description: c.desc,
+    isCustomChapter: c.isCustomChapter === true,
     questions: c.questions.map(q => ({
       id: q.id,
       type: q.type,
@@ -773,6 +979,7 @@ function syncToState(){
 
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
+  persistQuestionsStateForNextStep();
 }
 
 function saveState(){ syncToState(); }
@@ -865,7 +1072,7 @@ function questionHasValidScoring(q){
 }
 
 function chapterQuestionsReady(c){
-  return c && Array.isArray(c.questions) && c.questions.length >= 4 && c.questions.every(questionHasValidScoring);
+  return c && Array.isArray(c.questions) && c.questions.length >= MIN_QUESTIONS_PER_CHAPTER && c.questions.every(questionHasValidScoring);
 }
 
 function openProfilesLockedModal(){
@@ -945,8 +1152,9 @@ function makeEmptyChapter(index){
   const subject = getCurrentSubject();
   return {
     id: index + 1,
-    name: `Chapitre ${index + 1}`,
+    name: '',
     desc: subject ? `À préciser — ${subject}` : 'À préciser',
+    isCustomChapter: true,
     questions: [],
     profils: [0,1,2].map(i => ({
       niveau: i + 1,
@@ -1065,8 +1273,9 @@ function completeBlankSetup(){
   state.chapterNames = chapterNamesRaw;
   state.blankSetupDone = true;
   state.chapters = Array.from({length: count}, (_, i) => ({
-    title: names[i] || `Chapitre ${i+1}`,
+    title: names[i] || '',
     description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${subject}`,
+    isCustomChapter: !names[i],
     questions: [],
     profiles: makeBlankProfiles()
   }));
@@ -1076,6 +1285,55 @@ function completeBlankSetup(){
   activeTab = 'questions';
   openCards = {};
   syncToState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+let chapterDeleteIndex = null;
+
+function canDeleteChapter(index){
+  return Number(index) >= 4;
+}
+
+function openDeleteChapterModal(index){
+  if(!canDeleteChapter(index)){
+    openFeatureSoonModal('Chapitre non supprimable', 'Les 4 chapitres de base de l’autodiagnostic ne sont pas supprimables. Vous pouvez modifier leur titre, leur description et leurs questions.');
+    return;
+  }
+  chapterDeleteIndex = index;
+  const chapter = chapters[index] || {};
+  const label = chapter.name ? `« ${chapter.name} »` : `Chapitre ${index + 1}`;
+  const title = document.getElementById('delete-chapter-title');
+  const text = document.getElementById('delete-chapter-text');
+  if(title) title.textContent = `Supprimer ${label} ?`;
+  if(text) text.textContent = 'Les questions et profils de ce chapitre seront supprimés définitivement de ce brouillon.';
+  document.getElementById('modal-delete-chapter')?.classList.add('on');
+}
+
+function closeDeleteChapterModal(){
+  chapterDeleteIndex = null;
+  document.getElementById('modal-delete-chapter')?.classList.remove('on');
+}
+
+function confirmDeleteChapter(){
+  const index = chapterDeleteIndex;
+  if(index === null || index === undefined || !canDeleteChapter(index)){
+    closeDeleteChapterModal();
+    return;
+  }
+
+  chapters.splice(index, 1);
+  chapters = chapters.map((c, i) => ({ ...c, id: i + 1, isCustomChapter: c.isCustomChapter === true || i >= 4 }));
+
+  if(activeChap >= chapters.length) activeChap = Math.max(0, chapters.length - 1);
+  else if(activeChap > index) activeChap = activeChap - 1;
+  activeTab = 'questions';
+  openCards = {};
+
+  state.chapterCount = chapters.length;
+  saveState();
+  closeDeleteChapterModal();
   renderNav();
   renderMain();
   updateSaveButton();
@@ -1094,7 +1352,7 @@ function renderNav() {
   chapters.forEach((c, i) => {
     const n = c.questions.length;
     const nProfils = c.profils.filter(p => String(p.titre).trim() && String(p.phrase).trim() && stripHtml(p.description).trim()).length;
-    const dotColorQ = n >= 4 ? '#77cd8a' : n > 0 ? '#ffc744' : '#d8e0ea';
+    const dotColorQ = n >= MIN_QUESTIONS_PER_CHAPTER ? '#77cd8a' : n > 0 ? '#ffc744' : '#d8e0ea';
     const dotColorP = nProfils === 3 ? '#77cd8a' : nProfils > 0 ? '#ffc744' : '#d8e0ea';
 
     const div = document.createElement('div');
@@ -1102,7 +1360,10 @@ function renderNav() {
     div.innerHTML = `
       <div class="cni-head" onclick="selectChap(${i})">
         <div class="cni-lbl">Chapitre ${i+1}</div>
-        <div class="cni-name">${esc(c.name)}</div>
+        <div class="cni-title-row">
+          <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'}</div>
+          ${canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
+        </div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorQ}"></span><span class="cni-qcount">${n}/10 questions</span></div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorP}"></span><span class="cni-qcount">${nProfils}/3 profils</span></div>
       </div>
@@ -1161,7 +1422,8 @@ function updateBreadcrumb(label){
 
 function renderMain() {
   const ch = chapters[activeChap];
-  updateBreadcrumb(activeTab === 'questions' ? `Questions — ${ch.name}` : `Profils — ${ch.name}`);
+  const chapterLabel = ch.name || `Chapitre ${activeChap + 1}`;
+  updateBreadcrumb(activeTab === 'questions' ? `Questions — ${chapterLabel}` : `Profils — ${chapterLabel}`);
   if (activeTab === 'questions') renderQuestions(ch);
   else renderProfils(ch);
 }
@@ -1212,6 +1474,38 @@ function aiActionText(){
   return "L’IA propose un brouillon à partir du sujet et du chapitre. Il doit être adapté, relu et validé avant diffusion.";
 }
 
+function chapterHasCatalogueQuestions(){
+  const all = bibliothequeQuestions();
+  return all.some(q => libraryMatchesContext(q));
+}
+
+function chapterUsesCatalogueSupport(){
+  const ch = chapters[activeChap];
+  if(!ch) return false;
+  if(ch.isCustomChapter === true) return false;
+  return chapterHasCatalogueQuestions();
+}
+
+function openFeatureSoonModal(title, text){
+  const t = document.getElementById('feature-soon-title');
+  const p = document.getElementById('feature-soon-text');
+  if(t) t.textContent = title || 'Fonctionnalité bientôt disponible';
+  if(p) p.textContent = text || 'Cette option sera disponible prochainement pour les chapitres créés librement. Pour le moment, ajoutez vos questions manuellement afin de garder une cohérence avec votre nouveau chapitre.';
+  document.getElementById('modal-feature-soon')?.classList.add('on');
+}
+
+function closeFeatureSoonModal(){
+  document.getElementById('modal-feature-soon')?.classList.remove('on');
+}
+
+function openLibrarySoon(){
+  openFeatureSoonModal('Bibliothèque bientôt disponible pour ce chapitre', 'Ce chapitre a été ajouté librement et ne correspond pas encore à une partie du catalogue. Pour éviter d’importer des questions hors sujet, ajoutez les questions manuellement pour le moment.');
+}
+
+function openAiSoon(){
+  openFeatureSoonModal('Aide IA indisponible pour ce chapitre', 'L’aide IA est désactivée sur les chapitres ajoutés librement afin d’éviter de générer des questions qui correspondent à d’autres chapitres du catalogue.');
+}
+
 function emptyActionCard(title, text, onclick, primary, disabled){
   const bg = primary ? 'linear-gradient(135deg,#18375d 0%,#007883 100%)' : '#fff';
   const color = primary ? '#fff' : '#18375d';
@@ -1228,41 +1522,42 @@ function emptyActionCard(title, text, onclick, primary, disabled){
 
 function renderQuestions(ch) {
   const n = ch.questions.length;
-  const pct = Math.min(100, Math.round((n / 10) * 100));
+  const pct = Math.min(100, Math.round((n / MAX_QUESTIONS_PER_CHAPTER) * 100));
   const isEmpty = n === 0;
+  const catalogueSupport = chapterUsesCatalogueSupport();
+  const aiAllowed = aiHelpAvailable() && catalogueSupport;
+  const libraryClick = catalogueSupport ? 'openPanel()' : 'openLibrarySoon()';
 
   const header = `
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
         <div style="display:flex;align-items:center;gap:6px">
-          <input class="chap-name-inp" value="${esc(ch.name)}" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
           <span title="Cliquez sur le titre pour le modifier" style="color:#c5ccd5;font-size:13px;cursor:default;flex-shrink:0">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
-        <button class="btn-regen-all" onclick="askRegen()" ${!aiHelpAvailable() ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button>
-        <button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque</button>
+        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque</button>` : ''}
         <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement</button>
       </div>` : ''}
     </div>`;
 
-  const aiAllowed = aiHelpAvailable();
   const emptyState = `
     <div style="padding:12px 0 0">
       ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, false)}
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+      ${catalogueSupport ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
         ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, false)}
         ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, !aiAllowed)}
-      </div>
+      </div>` : ''}
     </div>`;
 
   const qHTML = isEmpty ? emptyState : ch.questions.map((q, qi) => renderCard(q, qi)).join('');
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 4, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
@@ -1429,7 +1724,7 @@ function renderProfils(ch) {
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
         <div style="display:flex;align-items:center;gap:6px">
-          <input class="chap-name-inp" value="${esc(ch.name)}" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
           <span style="color:#c5ccd5;font-size:13px">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
@@ -1461,6 +1756,7 @@ function deleteQ(id) {
 }
 
 function regenOne(id, btn) {
+  if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const ch = chapters[activeChap];
   const idx = ch.questions.findIndex(q => q.id === id);
   if (idx > -1) ch.questions[idx] = makeAIQuestion(id);
@@ -1541,7 +1837,7 @@ function makeAIQuestion(id){
 }
 
 function addManual() {
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
 
   const id = 'q' + Date.now();
   chapters[activeChap].questions.push({
@@ -1566,8 +1862,8 @@ function addManual() {
 }
 
 function addOneAI() {
-  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
   const q = makeAIQuestion('q' + Date.now());
   chapters[activeChap].questions.push(q);
   openCards[q.id] = true;
@@ -1595,7 +1891,7 @@ function addTag(qid) {
 }
 
 function askRegen() {
-  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
+  if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const n = chapters[activeChap].questions.length;
   document.getElementById('modal-q-count').textContent = `${n} question${n!==1?'s':''}`;
   document.getElementById('modal-regen').classList.add('on');
@@ -1606,15 +1902,9 @@ function closeRegenModal() {
 }
 
 function confirmRegen() {
-  if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
+  if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   closeRegenModal();
-  chapters[activeChap].questions = [
-    makeAIQuestion('qr1'),
-    makeAIQuestion('qr2'),
-    makeAIQuestion('qr3'),
-    makeAIQuestion('qr4'),
-    makeAIQuestion('qr5')
-  ];
+  chapters[activeChap].questions = Array.from({length: DEFAULT_GENERATED_QUESTIONS}, (_, i) => makeAIQuestion('qr' + (i + 1)));
   refreshThresholdsAfterQuestionChange();
   saveState();
   openCards = {};
@@ -1705,6 +1995,7 @@ function libraryMatchesContext(q){
 }
 
 function openPanel() {
+  if(!chapterUsesCatalogueSupport()){ openLibrarySoon(); return; }
   activeFilterTag = '';
   document.getElementById('panel-search-inp').value = '';
   document.getElementById('overlay').classList.add('on');
@@ -1826,7 +2117,7 @@ function markLibraryAdded(qid){
 }
 
 function addFromLib(qid) {
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
 
   const existing = currentQuestionKeys();
   const bq = bibliothequeQuestions().find(q => q.id === qid);
@@ -1877,8 +2168,8 @@ function addFromLib(qid) {
 function chapProblems(c) {
   const problems = [];
 
-  if(c.questions.length < 4) {
-    problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 4 requises`, tab:'questions'});
+  if(c.questions.length < MIN_QUESTIONS_PER_CHAPTER) {
+    problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 5 requises`, tab:'questions'});
   } else {
     const badQ = c.questions.filter(q => !q.answers || q.answers.length < 3 || q.answers.some(a => isNaN(Number(a.s)) || Number(a.s)<0 || Number(a.s)>2));
     if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — min 3 réponses, scores entre 0 et 2 requis`, tab:'questions'});
@@ -1904,7 +2195,7 @@ function updateSaveButton() {
   btn.disabled = allProblems.length > 0;
   hint.classList.toggle('visible', allProblems.length > 0);
 
-  if(allProblems.length) hint.textContent = 'Questions et/ou profils incomplets sur certains chapitres';
+  if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
 }
 
 function trySave() {
@@ -1915,7 +2206,7 @@ function trySave() {
     const list = document.getElementById('modal-save-list');
     list.innerHTML = allProblems.map(({c,problems}) => problems.map(p => `<div style="display:flex;align-items:center;justify-content:space-between;background:#fafbfc;border:1px solid #e8edf4;border-radius:8px;padding:9px 14px;gap:10px">
       <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(c.name)}</div>
+        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(c.name || 'Nommer le chapitre')}</div>
         <div style="font-size:11px;color:#94a3b8;font-family:Asap,sans-serif;margin-top:2px;line-height:1.4">${p.msg}</div>
       </div>
       <button onclick="closeSaveModal();setTab(${c.id-1},'${p.tab}')" style="background:#eb6366;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:Asap,sans-serif;flex-shrink:0">Compléter →</button>
@@ -1925,7 +2216,13 @@ function trySave() {
     return;
   }
 
-  window.location.href = 'parametrage.html';
+  state.current_step = 'parametrage';
+  state.step = 'parametrage';
+  syncToState();
+  persistQuestionsStateForNextStep();
+
+  const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+  window.location.href = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
 }
 
 function closeSaveModal() {

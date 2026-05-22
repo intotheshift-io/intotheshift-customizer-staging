@@ -1,20 +1,46 @@
+function itsDecodeJwtPayloadForStorage() {
+  const token =
+    localStorage.getItem("its_token") ||
+    localStorage.getItem("token") ||
+    localStorage.getItem("auth_token") ||
+    "";
+
+  if (!token || !token.includes(".")) return null;
+
+  try {
+    const payload = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(payload));
+  } catch(e) {
+    return null;
+  }
+}
+
 function itsGetCurrentUserKey() {
+  const tokenUser = itsDecodeJwtPayloadForStorage();
+
   const userId =
     localStorage.getItem("its_user_id") ||
     localStorage.getItem("user_id") ||
-    localStorage.getItem("id");
+    localStorage.getItem("id") ||
+    tokenUser?.id ||
+    tokenUser?.user_id ||
+    "";
 
   const email =
     localStorage.getItem("its_user_email") ||
     localStorage.getItem("user_email") ||
-    localStorage.getItem("email");
+    localStorage.getItem("email") ||
+    tokenUser?.email ||
+    "";
 
   const role =
     localStorage.getItem("its_user_role") ||
     localStorage.getItem("user_role") ||
-    localStorage.getItem("role");
+    localStorage.getItem("role") ||
+    tokenUser?.role ||
+    "";
 
-  if (userId) return "user_" + userId;
+  if (userId) return "user_" + String(userId);
   if (email) return "email_" + String(email).toLowerCase().trim();
 
   return role ? "role_" + role : "anonymous";
@@ -30,22 +56,95 @@ function itsGetStorageKey() {
   return projectId ? base + "_project_" + String(projectId) : base;
 }
 
-const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+
+function itsGetCurrentUserSignature() {
+  const tokenUser = itsDecodeJwtPayloadForStorage() || {};
+  const userId =
+    localStorage.getItem("its_user_id") ||
+    localStorage.getItem("user_id") ||
+    tokenUser.id ||
+    tokenUser.user_id ||
+    "";
+  const email =
+    localStorage.getItem("its_user_email") ||
+    localStorage.getItem("user_email") ||
+    tokenUser.email ||
+    "";
+  if (userId) return "user_" + String(userId);
+  if (email) return "email_" + String(email).toLowerCase().trim();
+  return "";
 }
-const ITS_API_BASE = itsResolveApiBase();
+
+function itsGetUserSignatureFromObject(user) {
+  if (!user || typeof user !== "object") return "";
+  const userId = user.id || user.user_id || user.userId || "";
+  const email = user.email || user.mail || "";
+  if (userId) return "user_" + String(userId);
+  if (email) return "email_" + String(email).toLowerCase().trim();
+  return "";
+}
+
+function itsClearProjectContextOnly() {
+  const currentProjectId = itsGetCurrentProjectId();
+  try {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+    localStorage.removeItem("its_current_project");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem(ITS_LEGACY_KEY);
+    Object.keys(localStorage)
+      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
+      .forEach(key => localStorage.removeItem(key));
+    sessionStorage.removeItem("its_state");
+    sessionStorage.removeItem(ITS_LEGACY_KEY);
+    if (currentProjectId) sessionStorage.removeItem("its_project_cache_" + currentProjectId);
+    Object.keys(sessionStorage)
+      .filter(key => key.indexOf("its_project_cache_") === 0)
+      .forEach(key => sessionStorage.removeItem(key));
+  } catch(e) {}
+  window.ITS_CURRENT_PROJECT_STATE = null;
+}
+
+function itsResetProjectContextForUserSwitch(nextUser) {
+  const before = itsGetCurrentUserSignature();
+  const after = itsGetUserSignatureFromObject(nextUser);
+  if (before && after && before !== after) {
+    itsClearProjectContextOnly();
+  }
+}
+
+function itsProjectBelongsToCurrentFrontendUser(project) {
+  const role = String(localStorage.getItem("its_user_role") || "").toLowerCase();
+  if (role === "admin" || role === "partner") return true;
+
+  const currentUserId = String(
+    localStorage.getItem("its_user_id") ||
+    localStorage.getItem("user_id") ||
+    itsDecodeJwtPayloadForStorage()?.id ||
+    ""
+  );
+  if (!currentUserId) return true;
+
+  const projectUserId = String(project?.user_id || project?.userId || project?.client?.id || "");
+  const createdBy = String(project?.created_by || project?.createdBy || "");
+
+  if (projectUserId && projectUserId !== currentUserId) return false;
+  if (!projectUserId && createdBy && createdBy !== currentUserId) return false;
+  return true;
+}
+
+const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
+const ITS_IS_STAGING =
+  window.location.hostname === "localhost" ||
+  window.location.pathname.startsWith("/staging/") ||
+  window.location.pathname === "/staging";
+
+const ITS_API_BASE =
+  window.ITS_API_BASE ||
+  localStorage.getItem("its_api_base") ||
+  (ITS_IS_STAGING
+    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
 
 let itsSaveTimer = null;
 let itsIsRestoringProject = false;
@@ -135,6 +234,8 @@ function itsSetCurrentProjectId(id) {
 function itsClearCurrentProjectId() {
   localStorage.removeItem("its_current_project_id");
   localStorage.removeItem("its_current_ad_id");
+  localStorage.removeItem("its_current_project");
+  window.ITS_CURRENT_PROJECT_STATE = null;
 }
 
 function itsParseMaybeJson(value) {
@@ -202,8 +303,70 @@ function itsProjectTitleFromState(state) {
   );
 }
 
+function itsCompactStateForLocalStorage(value) {
+  if (!value || typeof value !== "object") return value || {};
+  const cloned = JSON.parse(JSON.stringify(value));
+
+  function walk(obj) {
+    if (!obj || typeof obj !== "object") return;
+    Object.keys(obj).forEach((key) => {
+      const v = obj[key];
+      const lowerKey = String(key).toLowerCase();
+      const isHeavyImageKey = lowerKey.includes("dataurl") || lowerKey.includes("data_url") || lowerKey.includes("base64");
+      const isHeavyValue = typeof v === "string" && (v.startsWith("data:image/") || v.length > 250000);
+
+      const isGeneratedAttachmentKey =
+        lowerKey === "payload" ||
+        lowerKey === "excel_html" ||
+        lowerKey === "pdf_html" ||
+        lowerKey === "data" ||
+        lowerKey === "attachments" ||
+        lowerKey === "excel" ||
+        lowerKey === "recap";
+
+      if (isGeneratedAttachmentKey) {
+        obj[key] = "";
+        return;
+      }
+
+      if (isHeavyImageKey || isHeavyValue) {
+        obj[key] = "";
+        return;
+      }
+
+      if (v && typeof v === "object") walk(v);
+    });
+  }
+
+  walk(cloned);
+  cloned.localStorageCompacted = true;
+  cloned.localStorageCompactedAt = new Date().toISOString();
+  return cloned;
+}
+
+function itsSafeSetLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (err) {
+    if (err && err.name === "QuotaExceededError") {
+      try {
+        const compact = itsCompactStateForLocalStorage(value);
+        localStorage.setItem(key, JSON.stringify(compact));
+        console.warn("État local allégé : images/base64 retirées pour éviter le quota localStorage.");
+        return true;
+      } catch (err2) {
+        console.warn("Sauvegarde locale impossible même après allègement. Navigation non bloquée.", err2);
+        return false;
+      }
+    }
+    console.warn("Sauvegarde locale impossible. Navigation non bloquée.", err);
+    return false;
+  }
+}
+
 function itsSave(state) {
-  const safeState = itsCanonicalizeCampaignDates(itsUnwrapProjectData(state || {}));
+  const safeState = itsCanonicalizeCampaignDates(itsCompactStateForLocalStorage(itsUnwrapProjectData(state || {})));
   const step = safeState.current_step || safeState.currentStep || safeState.step || itsInferCurrentStep();
 
   if (step) {
@@ -211,14 +374,19 @@ function itsSave(state) {
     safeState.step = step;
   }
 
-  const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || itsGetCurrentProjectId();
+  const isExplicitNewProject =
+    safeState.mode === "blank" ||
+    safeState.source === "blank" ||
+    Boolean(safeState.selectedAdId && !safeState.currentAdId && !safeState.project_id && !safeState.projectId);
+
+  const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || (isExplicitNewProject ? "" : itsGetCurrentProjectId());
   if (projectId) {
     safeState.currentAdId = projectId;
     safeState.project_id = projectId;
     itsSetCurrentProjectId(projectId);
   }
 
-  localStorage.setItem(itsGetStorageKey(), JSON.stringify(safeState));
+  itsSafeSetLocalStorage(itsGetStorageKey(), safeState);
 
   if (!itsIsRestoringProject) {
     itsScheduleProjectSync(safeState);
@@ -267,7 +435,27 @@ async function itsSyncProjectToApi(state) {
       body: JSON.stringify(body)
     });
 
-    if (!res.ok) return;
+    if (!res.ok) {
+      let errorPayload = {};
+      try { errorPayload = await res.json(); } catch(e) {}
+
+      if (res.status === 404 && errorPayload?.code === "PROJECT_NOT_FOUND_NO_RECREATE") {
+        const staleProjectId = String(projectId || "");
+
+        try {
+          localStorage.removeItem(itsGetStorageKey());
+          if (staleProjectId) {
+            localStorage.removeItem("intotheshift_customizer_state_v1_" + itsGetCurrentUserKey() + "_project_" + staleProjectId);
+            sessionStorage.removeItem("its_project_cache_" + staleProjectId);
+          }
+        } catch(e) {}
+
+        itsClearCurrentProjectId();
+        console.warn("Projet supprimé côté API : sauvegarde locale nettoyée", staleProjectId);
+      }
+
+      return;
+    }
 
     const json = await res.json();
     const savedId = json?.project?.id || json?.id || json?.project_id;
@@ -278,7 +466,7 @@ async function itsSyncProjectToApi(state) {
         latest.project_id = savedId;
         latest.projectId = savedId;
         itsSetCurrentProjectId(savedId);
-        localStorage.setItem(itsGetStorageKey(), JSON.stringify(latest));
+        itsSafeSetLocalStorage(itsGetStorageKey(), latest);
       } catch(e) {
         itsSetCurrentProjectId(savedId);
       }
@@ -313,6 +501,10 @@ function itsRestoreProject(project) {
   const data = itsCanonicalizeCampaignDates(itsUnwrapProjectData(rawData));
 
   if (!data || typeof data !== "object") return false;
+
+  // Source de vérité immédiate en mémoire : la navigation avec ?projectId=
+  // ne doit pas dépendre du localStorage, qui peut être plein sur de gros projets.
+  window.ITS_CURRENT_PROJECT_STATE = data;
 
   if (projectId) {
     data.currentAdId = projectId;
@@ -382,11 +574,22 @@ function itsRestoreProject(project) {
   itsCanonicalizeCampaignDates(data);
 
   itsIsRestoringProject = true;
-  localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
+  itsSafeSetLocalStorage(itsGetStorageKey(), itsCompactStateForLocalStorage(data));
+
   if (projectId) {
-    sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(realProject));
+    try {
+      const compactProject = {
+        ...realProject,
+        data: itsCompactStateForLocalStorage(data)
+      };
+      sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(compactProject));
+    } catch(e) {
+      console.warn("Cache session projet non enregistré. Navigation non bloquée.", e);
+    }
   }
+
   itsIsRestoringProject = false;
+  window.ITS_CURRENT_PROJECT_STATE = data;
 
   return true;
 }
@@ -409,7 +612,7 @@ function itsResumeUrlForProject(project) {
   }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
-  if (rawStep.includes("campagne")) return "campagne.html" + suffix;
+  if (rawStep.includes("campagne")) return "parametrage.html" + suffix;
   if (rawStep.includes("param")) return "parametrage.html" + suffix;
   return "questions.html" + suffix;
 }
@@ -443,6 +646,9 @@ function itsStartFromCatalogue(adId) {
   if (!ad) return null;
 
   itsClearCurrentProjectId();
+  try {
+    localStorage.removeItem("intotheshift_customizer_state_v1_" + itsGetCurrentUserKey());
+  } catch(e) {}
 
   const state = {
     selectedAdId: ad.id,
@@ -487,6 +693,7 @@ function itsStartFromCatalogue(adId) {
     ],
     resources: [],
     status: "draft",
+    createdAt: new Date().toISOString(),
     step: "questions",
     current_step: "questions"
   };
@@ -522,13 +729,19 @@ function itsNormalizeProjectStatus(projectOrState) {
   if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
   if (raw.includes("archiv")) return "archived";
   if (raw.includes("publish") || raw.includes("publi") || raw.includes("ligne") || raw.includes("result")) return "published";
-  if (raw.includes("sent") || raw.includes("submitted") || raw.includes("transmis") || sentFlag) return "sent";
+  if (
+    raw === "sent" ||
+    raw === "submitted" ||
+    raw === "transmitted" ||
+    raw === "transmis" ||
+    sentFlag
+  ) return "sent";
   return "draft";
 }
 
 function itsIsProjectReadOnly(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived";
+  return status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted";
 }
 
 async function itsFetchProjectById(projectId) {
@@ -545,15 +758,25 @@ async function itsFetchProjectById(projectId) {
       }
     );
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      if (res.status === 403 || res.status === 404) {
+        const currentProjectId = itsGetCurrentProjectId();
+        if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+      }
+      return null;
+    }
 
     const json = await res.json();
+    const project = json.project || json.data || json;
 
-    return (
-      json.project ||
-      json.data ||
-      json
-    );
+    if (!itsProjectBelongsToCurrentFrontendUser(project)) {
+      console.warn("Projet ignoré : il n'appartient pas au compte client connecté", { projectId });
+      const currentProjectId = itsGetCurrentProjectId();
+      if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+      return null;
+    }
+
+    return project;
   } catch(e) {
     console.warn("Chargement projet API impossible", e);
     return null;
@@ -562,28 +785,29 @@ async function itsFetchProjectById(projectId) {
 
 async function itsBootstrapProjectFromUrl() {
   const projectId = itsGetCurrentProjectId();
-  if (!projectId) return itsLoad();
+  if (!projectId) return window.ITS_CURRENT_PROJECT_STATE || itsLoad();
+
+  // Priorité au backend : cela évite qu'un ancien localStorage sans dates
+  // écrase les dates enregistrées dans le projet après Paramétrage.
+  const project = await itsFetchProjectById(projectId);
+  if (project) {
+    itsRestoreProject(project);
+    return window.ITS_CURRENT_PROJECT_STATE || itsUnwrapProjectData(project.data || project.payload || project.configuration || project) || {};
+  }
 
   try {
     const cached = sessionStorage.getItem("its_project_cache_" + projectId);
     if (cached) {
-      itsRestoreProject(JSON.parse(cached));
-      return itsLoad();
+      const cachedProject = JSON.parse(cached);
+      if (itsProjectBelongsToCurrentFrontendUser(cachedProject)) {
+        itsRestoreProject(cachedProject);
+        return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
+      }
     }
   } catch(e) {}
 
-  const local = itsLoad();
-  if (local && Array.isArray(local.chapters) && local.chapters.length) {
-    return local;
-  }
-
-  const project = await itsFetchProjectById(projectId);
-  if (project) {
-    itsRestoreProject(project);
-    return itsLoad();
-  }
-
-  return local || {};
+  itsClearProjectContextOnly();
+  return {};
 }
 
 function itsInjectReadOnlyBanner(message) {
@@ -603,7 +827,7 @@ function itsInjectReadOnlyBanner(message) {
 }
 
 function itsApplyReadOnlyMode(options = {}) {
-  const state = itsLoad();
+  const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
 
   document.body.classList.add("its-readonly-mode");

@@ -22,6 +22,8 @@
     .hero .btn{background:#fff;color:#0d4c72}
     .btn.light{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
     .btn.publish,.small-btn.publish{background:#16774a;color:#fff;border-color:#16774a}
+    .small-btn.unpublish{background:#eef2f6;color:#475569;border-color:#cbd5e1}
+    .small-btn.archive{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
     .btn:disabled,.small-btn:disabled{opacity:.55;cursor:not-allowed}
 
     .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 22px}
@@ -30,7 +32,7 @@
     .kpi span{font-size:13px;color:#61738a}
 
     .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-    .tab{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .tab{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
     .tab.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
     .panel{background:#fff;border:1px solid #e1e8f0;border-radius:26px;padding:22px;box-shadow:0 12px 28px rgba(15,45,80,.06)}
     .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
@@ -56,6 +58,14 @@
     .info-value{font-size:14px;color:#17375d;font-weight:800;word-break:break-word}
     .url-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
     .url-line code{background:#eef6fb;color:#0d4c72;border-radius:10px;padding:7px 9px;font-size:12px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+    .campaign-editor{display:grid;gap:10px;margin-top:12px;background:#fff;border:1px solid #e4edf5;border-radius:18px;padding:14px}
+    .campaign-editor .modal-form-grid{margin:0}
+    .campaign-link-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:end}
+    .campaign-link-row .modal-field{min-width:0}
+    .campaign-link-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .small-btn.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+    .small-btn.danger:hover{background:#ffe4e6}
+    @media(max-width:760px){.campaign-link-row{grid-template-columns:1fr}.campaign-link-actions .small-btn{width:100%;justify-content:center}}
 
     .modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
     .modal-backdrop.open{display:flex}
@@ -66,6 +76,13 @@
     .modal-close{border:none;background:rgba(255,255,255,.16);color:#fff;width:34px;height:34px;border-radius:999px;font-size:20px;cursor:pointer;flex:0 0 auto}
     .modal-body{padding:22px 24px;color:#60758a;line-height:1.45}
     .modal-highlight{background:#eef6fb;border:1px solid #d7e8f1;color:#0d4c72;border-radius:14px;padding:12px;margin-top:14px;font-weight:800}
+    .modal-form{display:grid;gap:12px;margin-top:14px}
+    .modal-field label{display:block;font-size:12px;font-weight:900;color:#17375d;margin-bottom:6px}
+    .modal-field input{width:100%;border:1px solid #d8e2ec;border-radius:14px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#17375d;outline:none;background:#fff}
+    .modal-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
+    .modal-field small{display:block;margin-top:5px;color:#74899a;font-size:11px;line-height:1.35}
+    .modal-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    @media(max-width:620px){.modal-form-grid{grid-template-columns:1fr}}
     .modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
     .success-inline{display:none;margin-top:12px;background:#eefbf3;color:#176239;border:1px solid #bee8cd;border-radius:14px;padding:11px 12px;font-weight:800;font-size:13px}
     .success-inline.on{display:block}
@@ -84,6 +101,9 @@
     /* V1 cockpit AD : filtres, nudges et alertes */
     .watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
     .watch-card{border-radius:20px;padding:14px 15px;border:1px solid #e4edf5;background:#f9fbfd;display:flex;gap:11px;align-items:flex-start;min-height:86px}
+    .watch-card.clickable{cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .watch-card.clickable:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,45,80,.08)}
+    .watch-card.active{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
     .watch-ico{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto}
     .watch-card.orange{background:#fff8ec;border-color:#ffd9a3}.watch-card.orange .watch-ico{background:#ffe9c7}
     .watch-card.blue{background:#eef6ff;border-color:#cfe3ff}.watch-card.blue .watch-ico{background:#dcecff}
@@ -113,6 +133,29 @@
     .resource-cat h3{margin:0 0 4px;font-size:15px;color:#17375d}
     .resource-cat p{margin:0;color:#61738a;font-size:12px;line-height:1.4}
     .resource-cat small{display:block;margin-top:8px;color:#0d4c72;font-weight:900;font-size:11px}
+
+
+
+    /* Modale de confirmation cockpit client */
+    .confirm-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.58);z-index:10001;display:none;align-items:center;justify-content:center;padding:20px;font-family:'Asap',sans-serif}
+    .confirm-backdrop.open{display:flex}
+    .confirm-modal{width:min(540px,100%);background:#fff;border-radius:26px;box-shadow:0 26px 80px rgba(0,0,0,.28);overflow:hidden;border:1px solid #d8e2ec}
+    .confirm-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:#f8fafc;border-bottom:1px solid #e4edf5}
+    .confirm-icon{width:44px;height:44px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;background:#eef6fb;color:#0d4c72}
+    .confirm-icon.danger{background:#fff1f2;color:#be123c}
+    .confirm-icon.warn{background:#fff7ed;color:#9a3412}
+    .confirm-title{margin:0 0 5px;color:#17375d;font-size:21px;line-height:1.15;font-weight:900}
+    .confirm-sub{margin:0;color:#61738a;font-size:13px;line-height:1.45;font-weight:700}
+    .confirm-body{padding:20px 24px;color:#60758a;font-size:14px;line-height:1.5}
+    .confirm-project{margin-top:12px;background:#eef6fb;border:1px solid #d7e8f1;border-radius:16px;padding:12px 13px;color:#0d4c72;font-weight:900}
+    .confirm-warning{margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:16px;padding:12px 13px;color:#9a5b00;font-weight:800;font-size:13px;line-height:1.45}
+    .confirm-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
+    .confirm-btn{border:none;border-radius:999px;padding:11px 17px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+    .confirm-btn.secondary{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
+    .confirm-btn.primary{background:#0d4c72;color:#fff}
+    .confirm-btn.danger{background:#be123c;color:#fff}
+    .confirm-btn.warn{background:#9a3412;color:#fff}
+    @media(max-width:620px){.confirm-footer .confirm-btn{width:100%}.confirm-head{padding:20px}.confirm-body{padding:18px 20px}.confirm-footer{padding:0 20px 20px}}
 
     @media(max-width:900px){.watch-grid,.resource-cats{grid-template-columns:1fr}.ads-toolbar{align-items:stretch}.ad-search{max-width:none;width:100%}}
 
@@ -149,7 +192,6 @@
     <section class="tabs">
       <button class="tab active" onclick="showTab('ads', this)">Autodiagnostics</button>
       <button class="tab" onclick="showTab('campaigns', this)">Campagnes</button>
-      <button class="tab" onclick="showTab('results', this)">Résultats</button>
       <button class="tab" onclick="showTab('resources', this)">Ressources</button>
     </section>
 
@@ -215,6 +257,30 @@
       <div class="modal-body">
         Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift.
         <div id="publishProjectTitle" class="modal-highlight"></div>
+
+        <div class="modal-form">
+          <div class="modal-field">
+            <label for="publishShareUrl">URL de diffusion</label>
+            <input id="publishShareUrl" type="url" placeholder="https://selfdiag-mayt.meandyoutoo.app/...">
+            <small>Lien que le client partage aux répondants.</small>
+          </div>
+          <div class="modal-field">
+            <label for="publishResultsUrl">URL résultats</label>
+            <input id="publishResultsUrl" type="url" placeholder="https://...">
+            <small>Lien du tableau de bord ou de restitution des résultats.</small>
+          </div>
+          <div class="modal-form-grid">
+            <div class="modal-field">
+              <label for="publishStartDate">Date de début</label>
+              <input id="publishStartDate" type="date">
+            </div>
+            <div class="modal-field">
+              <label for="publishEndDate">Date de fin</label>
+              <input id="publishEndDate" type="date">
+            </div>
+          </div>
+        </div>
+
         <div id="publishSuccess" class="success-inline">✓ Autodiagnostic publié.</div>
       </div>
       <div class="modal-footer">
@@ -224,26 +290,37 @@
     </div>
   </div>
 
+
+
+  <div id="confirmModal" class="confirm-backdrop" aria-hidden="true">
+    <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+      <div class="confirm-head">
+        <div id="confirmModalIcon" class="confirm-icon">⚠️</div>
+        <div>
+          <h3 id="confirmModalTitle" class="confirm-title">Confirmer l’action</h3>
+          <p id="confirmModalSubtitle" class="confirm-sub">Cette action va modifier le cockpit client.</p>
+        </div>
+      </div>
+      <div class="confirm-body">
+        <div id="confirmModalText"></div>
+        <div id="confirmModalProject" class="confirm-project" style="display:none"></div>
+        <div id="confirmModalWarning" class="confirm-warning" style="display:none"></div>
+      </div>
+      <div class="confirm-footer">
+        <button id="confirmCancelBtn" class="confirm-btn secondary" type="button" onclick="closeConfirmModal(false)">Annuler</button>
+        <button id="confirmOkBtn" class="confirm-btn primary" type="button" onclick="closeConfirmModal(true)">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
   <script src="header.js"></script>
   <input id="projectLogoInput" type="file" accept="image/*" hidden onchange="uploadProjectLogo(event)">
   <div id="clientFolderToast" class="toast" aria-live="polite"></div>
 
   <script>
-    function itsResolveApiBase(){
-      const host = window.location.hostname;
-      const path = window.location.pathname;
-      const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-      if (forced) return forced;
-      const isStaging =
-        host === "localhost" ||
-        host === "127.0.0.1" ||
-        host.startsWith("staging.") ||
-        path.startsWith("/staging");
-      return isStaging
-        ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-        : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
-    }
-    const API_URL = itsResolveApiBase();
+    const API_URL = window.location.hostname === 'localhost'
+      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
     let currentClient = null;
     let projectToPublish = null;
@@ -255,7 +332,10 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if(event.key === "Escape") closePublishModal();
+      if(event.key === "Escape"){
+        closePublishModal();
+        closeConfirmModal(false);
+      }
     });
 
     function getToken(){
@@ -348,11 +428,13 @@
       return Object.assign({}, data, state, payload);
     }
 
-    function getProjectTitle(project){
+    function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
+
+function getProjectTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
       const param = payload.parametrage || data.parametrage || {};
-      return (
+      return cleanAdTitle(
         payload.titre_autodiag ||
         payload.autodiagTitle ||
         payload.title ||
@@ -633,11 +715,71 @@
     function getDaysUntil(dateValue){
       const iso = normalizeDateInputValue(dateValue);
       if(!iso) return null;
+
+      // Comparaison locale jour par jour pour éviter les décalages UTC.
+      const [y,m,d] = iso.split("-").map(Number);
+      const target = new Date(y, m - 1, d);
       const today = new Date();
       today.setHours(0,0,0,0);
-      const target = new Date(iso + "T00:00:00");
+
       if(Number.isNaN(target.getTime())) return null;
-      return Math.ceil((target - today) / 86400000);
+      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    }
+
+    function isMonitorableCampaign(project){
+      const status = normalizeStatus(project.status);
+      const hasResults = Boolean(getProjectResultsUrl(project));
+
+      // On surveille uniquement les campagnes réellement actives côté client :
+      // publiées, ou dépubliées lorsque les résultats restent accessibles.
+      return status === "published" || (status === "unpublished" && hasResults);
+    }
+
+    function getCampaignTiming(project){
+      const daysLeft = getDaysUntil(getProjectEndDate(project));
+      if(daysLeft === null) return null;
+      if(daysLeft < 0) return {key:"ended", kind:"neutral", icon:"⚫", label:"Campagne terminée", daysLeft};
+      if(daysLeft < 7) return {key:"imminent", kind:"warn", icon:"🟠", label:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      if(daysLeft < 14) return {key:"endingSoon", kind:"warn", icon:"🔴", label:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      return null;
+    }
+
+    function projectHasResultsAvailable(project){
+      return ["published","unpublished"].includes(normalizeStatus(project.status)) && Boolean(getProjectResultsUrl(project));
+    }
+
+    function projectIsEndingSoon(project){
+      if(!isMonitorableCampaign(project)) return false;
+      const timing = getCampaignTiming(project);
+      return Boolean(timing && (timing.key === "endingSoon" || timing.key === "imminent"));
+    }
+
+    function projectMatchesCurrentFilter(project){
+      const status = normalizeStatus(project.status);
+      if(currentAdFilter === "all") return true;
+      if(currentAdFilter === "endingSoon") return projectIsEndingSoon(project);
+      if(currentAdFilter === "results") return projectHasResultsAvailable(project);
+      return status === currentAdFilter;
+    }
+
+    function getProjectCampaignKey(project){
+      return String(
+        getProjectShareUrl(project) ||
+        getProjectResultsUrl(project) ||
+        project?.id ||
+        getProjectTitle(project)
+      ).trim().toLowerCase();
+    }
+
+    function uniqueCampaignProjects(projects){
+      const seen = new Set();
+      return (projects || []).filter(project => {
+        const key = getProjectCampaignKey(project);
+        if(!key) return true;
+        if(seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
     }
 
     function getProjectAlerts(project){
@@ -649,7 +791,8 @@
       const alerts = [];
 
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
-      if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 7) alerts.push({kind:"warn", icon:"⏳", text:`Clôture dans ${daysLeft} jour${daysLeft>1?'s':''}`});
+      const timing = isMonitorableCampaign(project) ? getCampaignTiming(project) : null;
+      if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
       if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
@@ -666,10 +809,12 @@
     }
 
     function getAdFilterCounts(projects){
-      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0};
+      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
       projects.forEach(project => {
         const s = normalizeStatus(project.status);
         counts[s] = (counts[s] || 0) + 1;
+        if(projectIsEndingSoon(project)) counts.endingSoon += 1;
+        if(projectHasResultsAvailable(project)) counts.results += 1;
       });
       return counts;
     }
@@ -680,8 +825,10 @@
       const counts = getAdFilterCounts(projects);
       const filters = [
         ["all","✨ Tous"],
-        ["draft","✏️ Brouillons"],
+        ["endingSoon","🔴 Fin proche"],
         ["sent","🚀 Transmis"],
+        ["results","📊 Résultats dispo"],
+        ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
         ["unpublished","🛑 Dépubliés"],
         ["archived","📦 Archivés"]
@@ -701,13 +848,26 @@
     function renderWatchList(projects){
       const el = document.getElementById("watchList");
       if(!el) return;
-      const endingSoon = projects.filter(p => normalizeStatus(p.status)==="published" && getDaysUntil(getProjectEndDate(p)) !== null && getDaysUntil(getProjectEndDate(p)) >= 0 && getDaysUntil(getProjectEndDate(p)) <= 7).length;
+
+      const monitored = uniqueCampaignProjects((projects || []).filter(isMonitorableCampaign));
+      const endingSoon = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days >= 0 && days < 14;
+      }).length;
+      const endingImminent = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days >= 0 && days < 7;
+      }).length;
+      const ended = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days < 0;
+      }).length;
       const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
-        <div class="watch-card orange"><div class="watch-ico">⏳</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">À surveiller pour relances, clôture ou dépublication.</div></div></div>
-        <div class="watch-card blue"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">À publier dès que les URLs de diffusion et résultats sont prêtes.</div></div></div>
-        <div class="watch-card green"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Accès directs disponibles dans l’onglet Résultats.</div></div></div>
+        <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
+        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
+        <div class="watch-card green clickable ${currentAdFilter==='results'?'active':''}" onclick="setAdFilter('results')"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Cliquez pour n’afficher que les AD avec lien résultats.</div></div></div>
       `;
     }
 
@@ -723,9 +883,9 @@
 
       const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
       const filtered = projects.filter(project => {
-        const statusOk = currentAdFilter === "all" || normalizeStatus(project.status) === currentAdFilter;
+        const filterOk = projectMatchesCurrentFilter(project);
         const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
-        return statusOk && (!search || text.includes(search));
+        return filterOk && (!search || text.includes(search));
       });
 
       if(!filtered.length){
@@ -752,14 +912,25 @@
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
+              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
                 : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
               }
+              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">Marquer comme publié</button>`
+                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
+                  : ""
+              }
+              ${
+                normalizedStatus === "published" && isAdmin()
+                  ? `<button class="small-btn unpublish" onclick="changeProjectStatus('${escapeAttr(project.id)}','unpublished','dépublier')">🛑 Dépublier</button>`
+                  : ""
+              }
+              ${
+                ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
+                  ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
                   : ""
               }
             </div>
@@ -781,37 +952,59 @@
         const title = getProjectTitle(project);
         const share = getProjectShareUrl(project);
         const results = getProjectResultsUrl(project);
+        const startDate = getProjectStartDate(project);
+        const endDate = getProjectEndDate(project);
+        const pid = escapeAttr(project.id);
 
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderAlertBadges(project)}
             <div class="card-meta">
-              Début : ${formatDate(getProjectStartDate(project))}<br>
-              Fin : ${formatDate(getProjectEndDate(project))}
+              Début : ${formatDate(startDate)}<br>
+              Fin : ${formatDate(endDate)}
             </div>
 
-            <div style="display:grid;gap:10px;margin-top:10px">
-              <div>
-                <div class="info-label">URL de diffusion</div>
-                ${share
-                  ? `<div class="url-line"><code>${escapeHtml(share)}</code><a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a><button class="small-btn" onclick="copyText('${escapeAttr(share)}')">Copier</button></div>`
-                  : `<div class="empty" style="padding:14px;text-align:left">URL de diffusion non renseignée dans l’onglet AD de l’admin.</div>`
-                }
+            <div class="campaign-editor">
+              <div class="campaign-link-row">
+                <div class="modal-field">
+                  <label for="campaignShare_${pid}">URL de diffusion</label>
+                  <input id="campaignShare_${pid}" type="url" value="${escapeAttr(share)}" placeholder="https://selfdiag-mayt.meandyoutoo.app/...">
+                  <small>Lien visible côté client pour la diffusion aux répondants.</small>
+                </div>
+                <div class="campaign-link-actions">
+                  ${share ? `<a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a><button class="small-btn" onclick="copyText('${escapeAttr(share)}')">Copier</button>` : ``}
+                </div>
               </div>
 
-              <div>
-                <div class="info-label">URL résultats</div>
-                ${results
-                  ? `<div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a><button class="small-btn" onclick="copyText('${escapeAttr(results)}')">Copier</button></div>`
-                  : `<div class="empty" style="padding:14px;text-align:left">URL résultats non renseignée dans l’onglet AD de l’admin.</div>`
-                }
+              <div class="campaign-link-row">
+                <div class="modal-field">
+                  <label for="campaignResults_${pid}">URL résultats</label>
+                  <input id="campaignResults_${pid}" type="url" value="${escapeAttr(results)}" placeholder="https://...">
+                  <small>Lien du Dashboard statistiques ou de restitution.</small>
+                </div>
+                <div class="campaign-link-actions">
+                  ${results ? `<a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a><button class="small-btn" onclick="copyText('${escapeAttr(results)}')">Copier</button>` : ``}
+                </div>
               </div>
-            </div>
 
-            <div class="card-actions">
-              <button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>
+              <div class="modal-form-grid">
+                <div class="modal-field">
+                  <label for="campaignStart_${pid}">Date de début</label>
+                  <input id="campaignStart_${pid}" type="date" value="${escapeAttr(startDate)}">
+                </div>
+                <div class="modal-field">
+                  <label for="campaignEnd_${pid}">Date de fin</label>
+                  <input id="campaignEnd_${pid}" type="date" value="${escapeAttr(endDate)}">
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
+                <button class="small-btn" onclick="openCampaignPage('${pid}')">Voir campagne</button>
+              </div>
             </div>
           </article>
         `;
@@ -820,28 +1013,13 @@
 
     function renderResults(projects){
       const list = document.getElementById("resultsList");
-      const resultProjects = projects.filter(p => {
-        const status = normalizeStatus(p.status);
-        return ["published","unpublished"].includes(status) && !!getProjectResultsUrl(p);
-      });
-
-      if(!resultProjects.length){
-        list.innerHTML = `<div class="empty">Aucun résultat disponible pour le moment. Les liens résultats apparaîtront uniquement pour les AD publiés ou dépubliés avec une URL résultats renseignée.</div>`;
-        return;
-      }
-
-      list.innerHTML = resultProjects.map(project => {
-        const title = getProjectTitle(project);
-        const results = getProjectResultsUrl(project);
-        return `
-          <article class="card">
-            <h3>${escapeHtml(title)}</h3>
-            ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
-            <div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>
-          </article>
-        `;
-      }).join("");
+      const resultProjects = projects.filter(projectHasResultsAvailable);
+      list.innerHTML = `
+        <div class="empty" style="text-align:left">
+          <strong style="display:block;color:#17375d;margin-bottom:6px">Les résultats sont maintenant centralisés dans l’onglet Campagnes.</strong>
+          Les liens résultats restent affichés et modifiables au même endroit que les URLs de diffusion, pour éviter les doublons. ${resultProjects.length ? `${resultProjects.length} AD dispose${resultProjects.length>1?'nt':''} actuellement d’un lien résultats.` : `Aucun lien résultats n’est encore renseigné.`}
+        </div>
+      `;
     }
 
     function renderResources(projects){
@@ -888,7 +1066,7 @@
 
     function showTabByName(tabName){
       const buttons = Array.from(document.querySelectorAll(".tab"));
-      const index = ["ads","campaigns","results","resources"].indexOf(tabName);
+      const index = ["ads","campaigns","resources"].indexOf(tabName);
       showTab(tabName, buttons[index] || null);
     }
 
@@ -946,6 +1124,14 @@
 
       document.getElementById("publishProjectTitle").textContent = projectToPublish.title;
       document.getElementById("publishSuccess").classList.remove("on");
+      const shareInput = document.getElementById("publishShareUrl");
+      const resultsInput = document.getElementById("publishResultsUrl");
+      const startInput = document.getElementById("publishStartDate");
+      const endInput = document.getElementById("publishEndDate");
+      if(shareInput) shareInput.value = projectToPublish.shareUrl || "";
+      if(resultsInput) resultsInput.value = projectToPublish.resultsUrl || "";
+      if(startInput) startInput.value = projectToPublish.campaignStartDate || "";
+      if(endInput) endInput.value = projectToPublish.campaignEndDate || "";
       document.getElementById("publishModal").classList.add("open");
       document.getElementById("publishModal").setAttribute("aria-hidden", "false");
     }
@@ -965,8 +1151,17 @@
       try{
         if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
 
-        if(!projectToPublish.shareUrl || !projectToPublish.resultsUrl){
-          throw new Error("Renseigne d’abord l’URL de diffusion et l’URL résultats dans Admin > Autodiags, puis enregistre l’AD comme publié.");
+        const shareUrl = String(document.getElementById("publishShareUrl")?.value || "").trim();
+        const resultsUrl = String(document.getElementById("publishResultsUrl")?.value || "").trim();
+        const startDate = String(document.getElementById("publishStartDate")?.value || "").trim();
+        const endDate = String(document.getElementById("publishEndDate")?.value || "").trim();
+
+        if(!shareUrl || !resultsUrl){
+          throw new Error("Renseigne l’URL de diffusion et l’URL résultats avant de publier.");
+        }
+
+        if(startDate && endDate && startDate > endDate){
+          throw new Error("La date de début ne peut pas être postérieure à la date de fin.");
         }
 
         const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/publication`, {
@@ -977,10 +1172,10 @@
           },
           body: JSON.stringify({
             status: "published",
-            share_url: projectToPublish.shareUrl,
-            results_url: projectToPublish.resultsUrl,
-            campaign_start_date: projectToPublish.campaignStartDate || null,
-            campaign_end_date: projectToPublish.campaignEndDate || null
+            share_url: shareUrl,
+            results_url: resultsUrl,
+            campaign_start_date: startDate || null,
+            campaign_end_date: endDate || null
           })
         });
 
@@ -999,6 +1194,194 @@
         alert(err.message || "Impossible de publier cet autodiagnostic.");
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
+      }
+    }
+
+    async function changeProjectStatus(projectId, nextStatus, actionLabel){
+      if(!projectId || !nextStatus) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const isArchive = nextStatus === "archived";
+      const isUnpublish = nextStatus === "unpublished";
+      const ok = await openConfirmModal({
+        tone: isArchive ? "warn" : "primary",
+        icon: isArchive ? "📦" : "🛑",
+        title: isArchive ? "Archiver cet autodiagnostic ?" : "Dépublier cet autodiagnostic ?",
+        subtitle: isArchive ? "L’AD sera retiré de la vue active du cockpit client." : "La campagne ne sera plus considérée comme publiée.",
+        text: isArchive ? "Confirmez-vous l’archivage de cet autodiagnostic ?" : "Confirmez-vous la dépublication de cet autodiagnostic ?",
+        project: title,
+        warning: isUnpublish ? "Les liens de résultats peuvent rester visibles si l’URL résultats est renseignée." : "Cette action ne supprime pas définitivement le contenu, mais le classe en archive.",
+        confirmText: isArchive ? "Archiver" : "Dépublier"
+      });
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`
+          },
+          body: JSON.stringify({
+            status: nextStatus,
+            share_url: project ? (getProjectShareUrl(project) || null) : null,
+            results_url: project ? (getProjectResultsUrl(project) || null) : null,
+            campaign_start_date: project ? (getProjectStartDate(project) || null) : null,
+            campaign_end_date: project ? (getProjectEndDate(project) || null) : null
+          })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur changement de statut");
+
+        showToast(nextStatus === "unpublished" ? "AD dépublié" : "AD archivé");
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de changer le statut de cet autodiagnostic.");
+      }
+    }
+
+    async function saveCampaignLinks(projectId){
+      const project = getCurrentProjectById(projectId);
+      if(!project) return;
+
+      const shareUrl = String(document.getElementById(`campaignShare_${projectId}`)?.value || "").trim();
+      const resultsUrl = String(document.getElementById(`campaignResults_${projectId}`)?.value || "").trim();
+      const startDate = String(document.getElementById(`campaignStart_${projectId}`)?.value || "").trim();
+      const endDate = String(document.getElementById(`campaignEnd_${projectId}`)?.value || "").trim();
+
+      if(startDate && endDate && startDate > endDate){
+        alert("La date de début ne peut pas être postérieure à la date de fin.");
+        return;
+      }
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${getToken()}`
+          },
+          body:JSON.stringify({
+            status: normalizeStatus(project.status),
+            share_url: shareUrl || null,
+            results_url: resultsUrl || null,
+            campaign_start_date: startDate || null,
+            campaign_end_date: endDate || null
+          })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur enregistrement des liens");
+        showToast("Liens campagne enregistrés");
+        await loadClientFolder();
+        showTabByName("campaigns");
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible d’enregistrer les liens de campagne.");
+      }
+    }
+
+    async function deleteProjectFromFolder(projectId){
+      if(!projectId) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const status = project ? normalizeStatus(project.status) : "";
+      const ok = await openConfirmModal({
+        tone: "danger",
+        icon: "🗑️",
+        title: "Supprimer définitivement cet autodiagnostic ?",
+        subtitle: status === "published" ? "Attention : cet AD est publié." : "Cette action retirera l’AD du cockpit client.",
+        text: "Confirmez-vous la suppression définitive de cet autodiagnostic ?",
+        project: title,
+        warning: status === "published" ? "La campagne associée sera aussi retirée du cockpit client. Cette action est définitive." : "Cette action est définitive.",
+        confirmText: "Supprimer"
+      });
+      if(!ok) return;
+
+      const urls = isAdmin()
+        ? [`${API_URL}/api/admin/projects/${encodeURIComponent(projectId)}`, `${API_URL}/api/projects/${encodeURIComponent(projectId)}`]
+        : [`${API_URL}/api/projects/${encodeURIComponent(projectId)}`];
+
+      let lastError = null;
+      for(const url of urls){
+        try{
+          const response = await fetch(url, { method:"DELETE", headers:{ Authorization:`Bearer ${getToken()}` } });
+          const data = await response.json().catch(() => ({}));
+          if(response.ok){
+            showToast("Autodiagnostic supprimé");
+            await loadClientFolder();
+            return;
+          }
+          lastError = data.error || `Erreur ${response.status}`;
+        }catch(err){
+          lastError = err.message;
+        }
+      }
+      alert(lastError || "Impossible de supprimer cet autodiagnostic depuis ce dossier.");
+    }
+
+
+    let confirmModalResolver = null;
+
+    function openConfirmModal(options = {}){
+      const modal = document.getElementById("confirmModal");
+      const icon = document.getElementById("confirmModalIcon");
+      const title = document.getElementById("confirmModalTitle");
+      const subtitle = document.getElementById("confirmModalSubtitle");
+      const text = document.getElementById("confirmModalText");
+      const project = document.getElementById("confirmModalProject");
+      const warning = document.getElementById("confirmModalWarning");
+      const okBtn = document.getElementById("confirmOkBtn");
+
+      if(!modal || !title || !text || !okBtn){
+        return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
+      }
+
+      const tone = options.tone || "primary";
+      icon.className = "confirm-icon " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "");
+      icon.textContent = options.icon || (tone === "danger" ? "🗑️" : tone === "warn" ? "⚠️" : "ℹ️");
+      title.textContent = options.title || "Confirmer l’action";
+      subtitle.textContent = options.subtitle || "Cette action va modifier le cockpit client.";
+      text.innerHTML = escapeHtml(options.text || "Confirmez-vous cette action ?");
+
+      if(options.project){
+        project.style.display = "block";
+        project.textContent = options.project;
+      }else{
+        project.style.display = "none";
+        project.textContent = "";
+      }
+
+      if(options.warning){
+        warning.style.display = "block";
+        warning.textContent = options.warning;
+      }else{
+        warning.style.display = "none";
+        warning.textContent = "";
+      }
+
+      okBtn.textContent = options.confirmText || "Confirmer";
+      okBtn.className = "confirm-btn " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "primary");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+
+      return new Promise(resolve => {
+        confirmModalResolver = resolve;
+      });
+    }
+
+    function closeConfirmModal(result){
+      const modal = document.getElementById("confirmModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+      if(confirmModalResolver){
+        const resolve = confirmModalResolver;
+        confirmModalResolver = null;
+        resolve(Boolean(result));
       }
     }
 

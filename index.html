@@ -123,15 +123,15 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 <div id="header"></div>
 <script src="header.js"></script>
 <script src="app.js"></script>
-<script src="catalogue-core.js?v=2"></script>
-<script src="catalogue-cyber.js?v=2"></script>
-<script src="catalogue-securite.js?v=2"></script>
-<script src="catalogue-qvt.js?v=2"></script>
-<script src="catalogue-transfo.js?v=2"></script>
-<script src="catalogue-rse.js?v=2"></script>
-<script src="catalogue-ethique.js?v=2"></script>
-<script src="catalogue-custom.js?v=2"></script>
-<script src="catalogue-init.js?v=2"></script>
+<script src="catalogue-core.js?v=5"></script>
+<script src="catalogue-cyber.js?v=5"></script>
+<script src="catalogue-securite.js?v=6"></script>
+<script src="catalogue-qvt.js?v=5"></script>
+<script src="catalogue-transfo.js?v=5"></script>
+<script src="catalogue-rse.js?v=5"></script>
+<script src="catalogue-ethique.js?v=5"></script>
+<script src="catalogue-custom.js?v=5"></script>
+<script src="catalogue-init.js?v=5"></script>
 
 <div class="page-wrap">
 
@@ -388,17 +388,34 @@ function startBlankDiagnostic(){
 
   const blankState = buildBlankState();
 
+  if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
+  else {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+  }
+
   if(typeof itsSave === "function") itsSave(blankState);
   else localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(blankState));
-
-  localStorage.removeItem("its_current_ad_id");
 
   window.location.assign("questions.html?mode=blank");
 }
 
 function useAd(id){
-  if(typeof window.itsStartFromCatalogue === "function") window.itsStartFromCatalogue(id);
-  else localStorage.setItem("its_current_ad_id", id);
+
+  if(typeof itsClearProjectContextOnly === "function"){
+    itsClearProjectContextOnly();
+  } else {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+  }
+
+  if(typeof window.itsStartFromCatalogue === "function"){
+    window.itsStartFromCatalogue(id);
+  } else {
+    localStorage.setItem("its_current_ad_id", id);
+  }
 
   if(!isLoggedIn()){
     redirectToLogin("questions.html");

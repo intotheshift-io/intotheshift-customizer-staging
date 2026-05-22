@@ -122,6 +122,22 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .transmit-modal-btn{border:none;border-radius:9px;padding:10px 16px;background:#18375d;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
 .transmit-modal-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}
 
+
+/* Modal champs manquants */
+.missing-modal-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px}
+.missing-modal-overlay.on{display:flex}
+.missing-modal{width:min(500px,92vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:26px 28px}
+.missing-modal-icon{width:52px;height:52px;border-radius:18px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}
+.missing-modal-title{font-size:19px;font-weight:900;color:#18375d;margin-bottom:7px}
+.missing-modal-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}
+.missing-list{display:flex;flex-direction:column;gap:7px;margin:12px 0 18px}
+.missing-item{display:flex;align-items:flex-start;gap:8px;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:9px 11px;color:#8a6408;font-size:12px;font-weight:800;line-height:1.35}
+.missing-modal-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.missing-modal-btn{border:none;border-radius:10px;padding:10px 15px;background:#18375d;color:#fff;font-size:13px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif}
+.missing-modal-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}
+.btn-main.not-ready{background:#f5c0c1;color:#fff;cursor:pointer}
+.btn-main.not-ready:hover{background:#efaaaB}
+
 </style>
 </head>
 <body>
@@ -153,7 +169,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   <h1 class="page-title">Transmettre votre autodiagnostic pour mise en ligne</h1>
   <p class="page-sub" id="default-page-sub">
     Votre autodiagnostic est prêt à être finalisé. Une fois transmis, l’équipe Into The Shift vérifiera les derniers éléments,
-    configurera la mise en ligne et vous recevrez un récapitulatif PDF des choix renseignés.
+    configurera la mise en ligne et vous recevrez un récapitulatif des choix renseignés.
   </p>
   <div id="already-transmitted-box" class="locked-transmission hidden">
     <strong>Configuration déjà transmise à Into The Shift.</strong>
@@ -293,12 +309,67 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   </div>
 </div>
 
+<div class="missing-modal-overlay" id="missing-modal" aria-hidden="true" onclick="closeMissingModal()">
+  <div class="missing-modal" role="dialog" aria-modal="true" aria-labelledby="missing-modal-title" onclick="event.stopPropagation()">
+    <div class="missing-modal-icon">⚠️</div>
+    <div class="missing-modal-title" id="missing-modal-title">Quelques informations sont encore nécessaires</div>
+    <div class="missing-modal-text">Pour transmettre votre autodiagnostic à Into The Shift, complétez les éléments manquants ci-dessous.</div>
+    <div class="missing-list" id="missing-modal-list"></div>
+    <div class="missing-modal-actions">
+      <button class="missing-modal-btn secondary pass-close" type="button" onclick="closeMissingModal()">Fermer</button>
+      <button class="missing-modal-btn preview-close" type="button" onclick="focusFirstMissingField()">Compléter maintenant</button>
+    </div>
+  </div>
+</div>
+
 <script>
+function validationProjectIdFromUrl(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('projectId') || params.get('projectid') || params.get('id') || '';
+}
+function validationLoadProjectFromServerSync(projectId){
+  const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+  if(!projectId || !token) return null;
+  const apiBase = window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+  try{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', apiBase + '/api/projects/' + encodeURIComponent(projectId), false);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    xhr.send(null);
+    if(xhr.status < 200 || xhr.status >= 300){
+      if(xhr.status === 403 || xhr.status === 404){
+        if(typeof itsClearProjectContextOnly === 'function') itsClearProjectContextOnly();
+        else { localStorage.removeItem('its_current_project_id'); localStorage.removeItem('its_current_ad_id'); }
+        window.location.href = 'mes-autodiagnostics.html';
+        throw new Error('Projet non autorisé pour ce compte');
+      }
+      return null;
+    }
+    const json = JSON.parse(xhr.responseText || '{}');
+    const project = json.project || json.data || json;
+    if(typeof itsProjectBelongsToCurrentFrontendUser === 'function' && !itsProjectBelongsToCurrentFrontendUser(project)){
+      if(typeof itsClearProjectContextOnly === 'function') itsClearProjectContextOnly();
+      else { localStorage.removeItem('its_current_project_id'); localStorage.removeItem('its_current_ad_id'); }
+      window.location.href = 'mes-autodiagnostics.html';
+      throw new Error('Projet non autorisé pour ce compte');
+    }
+    if(typeof itsRestoreProject === 'function') itsRestoreProject(project);
+    return typeof itsUnwrapProjectData === 'function' ? itsUnwrapProjectData(project.data || project.payload || project.configuration || project) : (project.data || project);
+  }catch(e){
+    if(String(e.message || '').includes('non autorisé')) throw e;
+    console.warn('Projet validation non chargé depuis le serveur', e);
+    return null;
+  }
+}
+
 let state = {};
 try {
-  state = typeof itsLoad === 'function' ? itsLoad() : (JSON.parse(localStorage.getItem('its_state') || '{}') || {});
+  const projectIdFromUrl = validationProjectIdFromUrl();
+  state = validationLoadProjectFromServerSync(projectIdFromUrl) || (typeof itsLoad === 'function' ? itsLoad() : (JSON.parse(localStorage.getItem('its_state') || '{}') || {}));
 } catch(e) {
-  state = {};
+  throw e;
 }
 
 function esc(s){
@@ -309,25 +380,70 @@ function slugify(text){
     .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     .replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
+function normalizeDateOnly(value){
+  if(!value) return '';
+  const s = String(value).trim();
+  if(!s) return '';
+  const match = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(match) return `${match[1]}-${match[2]}-${match[3]}`;
+  const d = new Date(s);
+  if(Number.isNaN(d.getTime())) return s;
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
 function formatDateFr(s){
-  if(!s) return '—';
-  const p = String(s).split('-');
-  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : s;
+  const normalized = normalizeDateOnly(s);
+  if(!normalized) return '—';
+  const p = normalized.split('-');
+  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : normalized;
+}
+function getCampaignStartDate(){
+  const param = getParam();
+  return normalizeDateOnly(
+    param.date_lancement || param.dateLancement ||
+    state.campaignStartDate || state.campaign_start_date || state.startDate || state.start_date ||
+    state.meta?.date_lancement || state.meta?.dateLancement || ''
+  );
+}
+function getCampaignEndDate(){
+  const param = getParam();
+  return normalizeDateOnly(
+    param.date_cloture || param.dateCloture ||
+    state.campaignEndDate || state.campaign_end_date || state.endDate || state.end_date ||
+    state.meta?.date_cloture || state.meta?.dateCloture || ''
+  );
+}
+function syncCampaignDatesForValidation(){
+  const param = getParam();
+  const start = getCampaignStartDate();
+  const end = getCampaignEndDate();
+  param.date_lancement = start;
+  param.dateLancement = start;
+  param.date_cloture = end;
+  param.dateCloture = end;
+  state.campaignStartDate = start;
+  state.campaign_start_date = start;
+  state.startDate = start;
+  state.start_date = start;
+  state.campaignEndDate = end;
+  state.campaign_end_date = end;
+  state.endDate = end;
+  state.end_date = end;
 }
 function formatPack(pack){
   if(!pack) return '—';
-  if(typeof pack === 'string' || typeof pack === 'number') return String(pack);
-  if(typeof pack === 'object'){
-    const val = pack.value || pack.label || pack.nom || pack.name || pack.pack || pack.nb || pack.nombre || '';
-    if(val) return String(val);
-    try {
-      const values = Object.values(pack).filter(v => typeof v === 'string' || typeof v === 'number');
-      return values.length ? String(values[0]) : '—';
-    } catch(e) {
-      return '—';
-    }
-  }
-  return String(pack);
+  const raw = (typeof pack === 'object')
+    ? (pack.value || pack.label || pack.nom || pack.name || pack.pack || pack.nb || pack.nombre || '')
+    : pack;
+  const v = String(raw || '').trim();
+  if(!v) return '—';
+  if(v === 'current_pack' || v === 'existing') return 'Pack déjà en cours';
+  if(v === 'illimite') return 'Illimité';
+  const n = Number(v);
+  if(Number.isFinite(n) && n > 0) return n.toLocaleString('fr-FR') + ' passations';
+  return v;
 }
 
 function pickFirstDefined(values){
@@ -409,6 +525,7 @@ function profileMin(ch,p,i){ return p.min ?? (ch.seuils?.[i]?.min ?? ''); }
 function profileMax(ch,p,i){ return p.max ?? (ch.seuils?.[i]?.max ?? ''); }
 
 function buildExcelHtml(){
+  syncCampaignDatesForValidation();
   const chapters = getChapters();
   const param = getParam();
   const client = getClientInfo();
@@ -598,6 +715,115 @@ function getClientInfo(){
     commentaire: byId('client-comment')
   };
 }
+
+function getStoredUser(){
+  const keys = ['its_user','user','auth_user'];
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const parsed = JSON.parse(raw);
+      return parsed.user || parsed;
+    }catch(e){}
+  }
+  return {};
+}
+function getAccountCompanyFromObject(obj){
+  if(!obj || typeof obj !== 'object') return '';
+  return obj.company_name || obj.companyName || obj.organizationName || obj.organization_name || obj.enterpriseName || obj.enterprise_name || obj.entreprise || obj.company || obj.organization || obj.organisation || '';
+}
+
+function getAccountUserField(obj, keys){
+  if(!obj || typeof obj !== 'object') return '';
+  for(const key of keys){
+    const value = obj[key];
+    if(value !== undefined && value !== null && String(value).trim() !== '') return String(value).trim();
+  }
+  return '';
+}
+function applyAccountUserToForm(user){
+  if(!user || typeof user !== 'object') return;
+  const mappings = {
+    'client-company': getAccountCompanyFromObject(user),
+    'client-firstname': getAccountUserField(user, ['firstName','first_name','prenom','first_name']),
+    'client-lastname': getAccountUserField(user, ['lastName','last_name','nom']),
+    'client-email': getAccountUserField(user, ['email','mail']),
+    'client-role': getAccountUserField(user, ['jobTitle','job_title','fonction','roleTitle','title'])
+  };
+
+  Object.entries(mappings).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if(el && value && !String(el.value || '').trim()) el.value = value;
+  });
+}
+function getAccountCompanyFallback(){
+  const u = getStoredUser();
+  return getAccountCompanyFromObject(u) || getAccountCompanyFromObject(state.user) || getAccountCompanyFromObject(state.account) || '';
+}
+async function loadAccountUser(){
+  const token =
+    localStorage.getItem('its_token') ||
+    localStorage.getItem('token') ||
+    localStorage.getItem('auth_token') ||
+    '';
+  if(!token) return getStoredUser();
+
+  try{
+    const response = await fetch(getApiBaseUrl() + '/api/me', {
+      headers:{ Authorization:'Bearer ' + token }
+    });
+    if(!response.ok) throw new Error('api/me ' + response.status);
+    const data = await response.json();
+    return data.user || data.account || data || {};
+  }catch(e){
+    console.warn('Compte non récupéré, fallback local', e);
+    return getStoredUser();
+  }
+}
+
+async function loadAccountCompany(){
+  const token =
+    localStorage.getItem('its_token') ||
+    localStorage.getItem('token') ||
+    localStorage.getItem('auth_token') ||
+    '';
+  if(!token) return getAccountCompanyFallback();
+
+  try{
+    const response = await fetch(getApiBaseUrl() + '/api/me', {
+      headers:{ Authorization:'Bearer ' + token }
+    });
+    if(!response.ok) throw new Error('api/me ' + response.status);
+    const data = await response.json();
+    const user = data.user || data.account || data;
+    const company =
+      getAccountCompanyFromObject(user) ||
+      getAccountCompanyFromObject(data.organization) ||
+      getAccountCompanyFromObject(data.organisation) ||
+      getAccountCompanyFromObject(data);
+    if(company) return String(company).trim();
+  }catch(e){
+    console.warn('Entreprise compte non récupérée, fallback local', e);
+  }
+  return getAccountCompanyFallback();
+}
+async function applyAccountCompany(){
+  const user = await loadAccountUser();
+  applyAccountUserToForm(user);
+
+  const company = getAccountCompanyFromObject(user) || getAccountCompanyFallback();
+  if(company){
+    const input = document.getElementById('client-company');
+    if(input && !String(input.value || '').trim()) input.value = company;
+    const sum = document.getElementById('sum-company');
+    if(sum) sum.textContent = input?.value || company;
+  }
+
+  state.clientInfo = Object.assign({}, state.clientInfo || {}, getClientInfo());
+  state.transmission = state.transmission || {};
+  state.transmission.clientInfo = Object.assign({}, state.transmission.clientInfo || {}, getClientInfo());
+  updateReady();
+}
 function isValidEmail(email){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
 }
@@ -619,7 +845,7 @@ function validateClientInfo(showErrors){
 function restoreClientInfo(){
   const info = state.clientInfo || state.transmission?.clientInfo || {};
   const map = {
-    'client-company': info.entreprise || getParam().entreprise || getParam().company || state.company || '',
+    'client-company': info.entreprise || getAccountCompanyFallback() || '',
     'client-firstname': info.prenom || '',
     'client-lastname': info.nom || '',
     'client-email': info.email || '',
@@ -883,8 +1109,9 @@ function refresh(){
   const pCount = chapters.reduce((a,c)=>a+(c.profiles||[]).length,0);
   const title = getThemeTitle();
   const company = getCompany();
-  const launch = param.date_lancement || param.dateLancement || '';
-  const close = param.date_cloture || param.dateCloture || '';
+  syncCampaignDatesForValidation();
+  const launch = getCampaignStartDate();
+  const close = getCampaignEndDate();
   const pack = formatPack(getPackChoice());
   const url = getUrl();
 
@@ -905,6 +1132,75 @@ function refresh(){
   updateReady();
 }
 
+function getMissingValidationItems(){
+  const info = getClientInfo();
+  const items = [];
+  if(!info.entreprise) items.push({ label:'Entreprise commanditaire', fieldId:'client-company' });
+  if(!info.prenom) items.push({ label:'Prénom', fieldId:'client-firstname' });
+  if(!info.nom) items.push({ label:'Nom', fieldId:'client-lastname' });
+  if(!isValidEmail(info.email)) items.push({ label:'Email professionnel valide', fieldId:'client-email' });
+  if(!info.fonction) items.push({ label:'Fonction', fieldId:'client-role' });
+
+  const unchecked = Array.from(document.querySelectorAll('.check-row input')).filter(b => !b.checked);
+  unchecked.forEach((box) => {
+    const title = box.closest('.check-row')?.querySelector('.check-title')?.textContent?.trim() || 'Point de validation';
+    items.push({ label:title, fieldId:null, checkbox:box });
+  });
+
+  return items;
+}
+
+function showMissingModal(){
+  validateClientInfo(true);
+  const items = getMissingValidationItems();
+  const list = document.getElementById('missing-modal-list');
+  if(list){
+    list.innerHTML = items.length
+      ? items.map(item => `<div class="missing-item"><span>•</span><span>${esc(item.label)}</span></div>`).join('')
+      : '<div class="missing-item"><span>✓</span><span>Tout est complété. Vous pouvez transmettre.</span></div>';
+  }
+
+  const modal = document.getElementById('missing-modal');
+  if(modal){
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+    modal.querySelectorAll('button').forEach(btn => {
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = 'pointer';
+    });
+  }
+}
+
+function closeMissingModal(){
+  const modal = document.getElementById('missing-modal');
+  if(modal){
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+  }
+}
+
+function focusFirstMissingField(){
+  const items = getMissingValidationItems();
+  closeMissingModal();
+  const first = items[0];
+  if(!first) return;
+
+  if(first.fieldId){
+    const el = document.getElementById(first.fieldId);
+    if(el){
+      el.scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(() => el.focus(), 250);
+    }
+    return;
+  }
+
+  if(first.checkbox){
+    first.checkbox.closest('.check-row')?.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(() => first.checkbox.focus(), 250);
+  }
+}
+
 function updateReady(){
   const boxes = Array.from(document.querySelectorAll('.check-row input'));
   const checked = boxes.filter(b => b.checked).length;
@@ -916,7 +1212,12 @@ function updateReady(){
   document.getElementById('check-pill').className = 'pill ' + (checksOk ? 'pill-ok' : '');
   document.getElementById('check-progress').style.width = Math.round((checked/total)*100) + '%';
   document.getElementById('check-hint').textContent = ok ? 'Tout est validé : vous pouvez transmettre.' : 'Transmission en attente des informations obligatoires et de la validation finale.';
-  document.getElementById('btn-transmit').disabled = !ok;
+  const btn = document.getElementById('btn-transmit');
+  if(btn){
+    btn.disabled = false;
+    btn.dataset.ready = ok ? '1' : '0';
+    btn.classList.toggle('not-ready', !ok);
+  }
   document.getElementById('missing-alert').classList.toggle('hidden', ok);
 }
 
@@ -942,55 +1243,44 @@ function closeTransmitModal(){
 }
 
 
-function itsResolveApiBase(){
-  const host = window.location.hostname;
-  const path = window.location.pathname;
-  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
-  if (forced) return forced;
-  const isStaging =
-    host === "localhost" ||
-    host === "127.0.0.1" ||
-    host.startsWith("staging.") ||
-    path.startsWith("/staging");
-  return isStaging
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+function getApiBaseUrl(){
+  return window.ITS_API_BASE ||
+    localStorage.getItem('its_api_base') ||
+    (window.location.hostname === 'localhost'
+      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
 }
 
-async function sendClientRecapEmail(payload, token){
+async function sendTransmissionEmails(payload, token){
   const email = payload?.client_info?.email || "";
   if(!email){
-    console.warn("Email récap client non envoyé : email client manquant.");
+    console.warn("Transmission email non envoyée : email client manquant.");
     return { ok:false, reason:"MISSING_CLIENT_EMAIL" };
   }
 
   try{
-    const response = await fetch(itsResolveApiBase() + "/api/transmissions/client-recap", {
+    const response = await fetch(getApiBaseUrl() + "/api/transmissions/submit", {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
         "Authorization":"Bearer " + token
       },
-      body: JSON.stringify({
-        client_info: payload.client_info,
-        entreprise: payload.entreprise,
-        titre_autodiag: payload.titre_autodiag,
-        titre_repondants: payload.titre_repondants,
-        pdf_html: payload.pdf_html,
-        recap_html: payload.pdf_html,
-        subject: "Récapitulatif de votre configuration Shift Studio — " + (payload.titre_repondants || payload.titre_autodiag || "autodiagnostic")
-      })
+      body: JSON.stringify(payload)
     });
 
     const json = await response.json().catch(() => ({}));
     if(!response.ok || json.ok === false){
-      console.warn("Email récap client non confirmé", response.status, json);
-      return { ok:false, reason:json.emailStatus || json.error || "SEND_FAILED" };
+      console.warn("Transmission email non confirmée", response.status, json);
+      return {
+        ok:false,
+        reason:json.error || json.emailStatus || json.adminEmailStatus || json.clientEmailStatus || "SEND_FAILED",
+        details: json
+      };
     }
 
-    return { ok:true };
+    return { ok:true, details: json };
   }catch(e){
-    console.warn("Erreur envoi email récap client", e);
+    console.warn("Erreur transmission email backend", e);
     return { ok:false, reason:"REQUEST_FAILED" };
   }
 }
@@ -1003,9 +1293,9 @@ function getCurrentProjectIdForSave(){
     '';
 }
 async function transmit(){
-  if(!validateClientInfo(true)){
+  if(getMissingValidationItems().length){
     document.getElementById('missing-alert').classList.remove('hidden');
-    document.getElementById('missing-alert').scrollIntoView({behavior:'smooth',block:'center'});
+    showMissingModal();
     return;
   }
   const payload = buildPayload();
@@ -1016,7 +1306,12 @@ async function transmit(){
   state.transmission.clientInfo = state.clientInfo;
   state.transmission.status = 'ready_to_send';
   state.transmission.submitted_at = payload.submitted_at;
-  state.transmission.payload = payload;
+  state.status = 'sent';
+  state.configTransmise = true;
+  state.config_transmise = true;
+  state.submitted = true;
+  state.current_step = 'validation';
+  state.step = 'validation';
 
   try {
     if (typeof itsSave === 'function') itsSave(state);
@@ -1029,7 +1324,7 @@ async function transmit(){
   "";
 
  try {
-  const projectResponse = await fetch(itsResolveApiBase() + "/api/projects", {
+  const projectResponse = await fetch(getApiBaseUrl() + "/api/projects", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -1057,9 +1352,14 @@ async function transmit(){
         step: 'validation',
         current_step: 'validation',
         status: 'sent',
+        clientInfo: getClientInfo(),
+        transmission: Object.assign({}, state.transmission || {}, {
+          clientInfo: getClientInfo(),
+          status: 'ready_to_send',
+          submitted_at: payload.submitted_at
+        }),
         passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
-        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
-        payload
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
       })
     })
   });
@@ -1081,34 +1381,16 @@ async function transmit(){
 } catch(e) {
   console.error("Erreur sauvegarde projet", e);
 }
-  let sentOk = false;
-  const webhook = 'https://hook.eu1.make.com/cs7ho799lf6mzkfurl1dcp9ai2pn1led';
-  if (webhook) {
-    try {
-      const makeResponse = await fetch(webhook, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
-      });
+  const transmissionResult = await sendTransmissionEmails(payload, token);
+  const sentOk = transmissionResult.ok === true;
 
-      if(!makeResponse.ok){
-        const makeErrorText = await makeResponse.text().catch(() => '');
-        throw new Error('Make webhook error ' + makeResponse.status + ' ' + makeErrorText);
-      }
-
-      state.transmission.status = 'sent';
-      sentOk = true;
-      if (typeof itsSave === 'function') itsSave(state);
-    } catch(e) {
-      state.transmission.status = 'send_error';
-      sentOk = false;
-      if (typeof itsSave === 'function') itsSave(state);
-    }
-  }
-
-  const clientRecapResult = await sendClientRecapEmail(payload, token);
-  state.transmission.client_recap_email_sent = clientRecapResult.ok === true;
-  state.transmission.client_recap_email_status = clientRecapResult.reason || (clientRecapResult.ok ? 'SENT' : 'NOT_SENT');
+  state.transmission.backend_submit_sent = sentOk;
+  state.transmission.backend_submit_status = transmissionResult.reason || (sentOk ? 'SENT' : 'NOT_SENT');
+  state.transmission.backend_submit_details = transmissionResult.details ? { ok: true } : null;
+  state.transmission.client_recap_email_sent = !!transmissionResult.details?.clientEmailSent;
+  state.transmission.client_recap_email_status = transmissionResult.details?.clientEmailStatus || state.transmission.backend_submit_status;
+  state.transmission.admin_excel_email_sent = !!transmissionResult.details?.adminEmailSent;
+  state.transmission.admin_excel_email_status = transmissionResult.details?.adminEmailStatus || state.transmission.backend_submit_status;
   if (typeof itsSave === 'function') itsSave(state);
 
   if(sentOk){
@@ -1119,14 +1401,21 @@ async function transmit(){
     state.transmission.status = 'sent';
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
-    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Un récapitulatif vient d’être envoyé à l’email renseigné. Pour tout changement, contactez contact@intotheshift.io.');
+    showTransmitModal(
+      'success',
+      'Configuration transmise',
+      'Votre autodiagnostic a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.'
+    );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
-    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement. Vérifiez votre email et transférez nous le document si nécessaire.');
+    state.transmission.status = 'send_error';
+    if (typeof itsSave === 'function') itsSave(state);
+    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement par le backend. Vérifiez la configuration email serveur ou contactez contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = false;
   }
 }
+
 
 function isAlreadyTransmitted(){
   return state?.status === 'sent' ||
@@ -1160,9 +1449,32 @@ function applyTransmittedView(){
   }
 }
 
-restoreClientInfo();
-refresh();
-applyTransmittedView();
+async function initValidationPage(){
+  if(typeof itsBootstrapProjectFromUrl === 'function'){
+    try {
+      state = await itsBootstrapProjectFromUrl();
+    } catch(e) {
+      console.warn('Chargement projet validation impossible', e);
+    }
+  }
+
+  restoreClientInfo();
+  refresh();
+  await applyAccountCompany();
+  refresh();
+  applyTransmittedView();
+
+  if(typeof itsApplyReadOnlyMode === 'function'){
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
+  }
+}
+
+
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeMissingModal();
+});
+
+initValidationPage();
 </script>
 </body>
 </html>
