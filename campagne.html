@@ -294,7 +294,7 @@ async function persistProjectDraft(step, status){
   const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
   if(!token) return;
   try{
-    const response = await fetch('https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/projects', {
+    const response = await fetch('https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io/api/projects', {
       method:'POST',
       headers:{'Content-Type':'application/json', 'Authorization':'Bearer ' + token},
       body: JSON.stringify({
@@ -325,9 +325,7 @@ async function persistProjectDraft(step, status){
 
 
 function apiBase(){
-  return window.location.hostname === 'localhost'
-    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
-    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
+  return 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io';
 }
 function getToken(){
   return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';

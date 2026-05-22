@@ -136,6 +136,7 @@ function itsProjectBelongsToCurrentFrontendUser(project) {
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
 const ITS_IS_STAGING =
   window.location.hostname === "localhost" ||
+  window.location.hostname.startsWith("staging.") ||
   window.location.pathname.startsWith("/staging/") ||
   window.location.pathname === "/staging";
 

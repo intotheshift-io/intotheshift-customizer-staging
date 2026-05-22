@@ -494,9 +494,24 @@ body{
 
 
 <script>
-const API_BASE_URL = window.location.hostname === 'localhost' 
-  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+function itsResolveApiBase(){
+  const host = window.location.hostname;
+  const path = window.location.pathname;
+  const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
+  if (forced) return forced;
+
+  const isStaging =
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host.startsWith("staging.") ||
+    path.startsWith("/staging");
+
+  return isStaging
+    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+}
+
+const API_BASE_URL = itsResolveApiBase();
 
 function showRegisterError(message){
   const box = document.getElementById("register-error");
