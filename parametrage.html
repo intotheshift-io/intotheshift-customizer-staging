@@ -66,6 +66,130 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   .step-circle{width:24px;height:24px;font-size:11px;}
   .step-connector{margin:0 7px;min-width:12px;}
 }
+
+.param-modal-overlay{position:fixed;inset:0;background:rgba(15,30,55,.48);z-index:9999;display:none;align-items:center;justify-content:center;padding:22px}
+.param-modal-overlay.on{display:flex}
+.param-modal{width:min(520px,94vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.26);padding:26px 28px;color:#18375d}
+.param-modal-icon{width:48px;height:48px;border-radius:16px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.param-modal h3{font-size:20px;margin:0 0 8px;color:#18375d}
+.param-modal p{font-size:13px;line-height:1.55;color:#64748b;margin:0 0 14px}
+.param-modal-list{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;margin:12px 0 18px;color:#18375d;font-size:13px;line-height:1.7}
+.param-modal-actions{display:flex;justify-content:flex-end;gap:10px}
+.param-modal-btn{border:none;border-radius:10px;background:#18375d;color:#fff;padding:10px 16px;font-size:13px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer}
+.btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
+
+
+/* ── Pack passations client ───────────────────── */
+.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18375d 0%,#007883 100%);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px;color:#fff;box-shadow:0 18px 45px rgba(24,55,93,.18)}
+.its-quota-card::after{content:"";position:absolute;right:-50px;top:-60px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.13)}
+.its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;opacity:.75;margin-bottom:4px}.its-quota-title{font-size:20px;font-weight:900;line-height:1.15}.its-quota-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;white-space:nowrap}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}.its-quota-box{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;text-align:center}.its-quota-box strong{display:block;font-size:25px;line-height:1;color:#fff}.its-quota-box span{display:block;font-size:11px;margin-top:5px;opacity:.82}.its-quota-bar{height:9px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:12px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc744;width:0%;transition:width .4s ease}.its-quota-note{font-size:12px;line-height:1.45;opacity:.88;margin-top:10px}.its-quota-nudge{background:#fff;color:#18375d;border-radius:14px;padding:10px 12px;margin-top:12px;font-size:12px;line-height:1.45;font-weight:700}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
+.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
+@media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
+
+.pack-tarifs-card{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:15px;margin-top:12px;box-shadow:0 10px 26px rgba(24,55,93,.07)}
+.pack-tarifs-title{font-size:13px;font-weight:900;color:#18375d;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.pack-tarifs-sub{font-size:11px;color:#64748b;line-height:1.45;margin-bottom:11px}
+.pack-tarifs-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
+.pack-tarif-chip{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:8px 9px;font-size:12px;font-weight:900;color:#18375d;text-align:center}
+.pack-tarif-chip span{display:block;font-size:9px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.pack-tarifs-contact{display:flex;align-items:center;justify-content:center;gap:6px;background:#f0f8f7;border:1px solid #b8dfe0;border-radius:10px;padding:9px 10px;color:#007883;text-decoration:none;font-size:12px;font-weight:900}
+.pack-selected-inline{background:#fff;border:1px solid #d8e0ea;border-left:5px solid #007883;border-radius:16px;padding:13px 14px;margin:10px 0;color:#18375d;box-shadow:0 8px 22px rgba(24,55,93,.06)}
+.pack-selected-inline .pack-selected-title{font-size:13px;font-weight:900;color:#18375d;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.pack-selected-inline .pack-selected-mini{font-size:12px;color:#64748b;line-height:1.45}
+.pack-selected-inline .pack-selected-mini strong{color:#007883}
+
+
+
+/* ── Tarifs packs — encart visible sous le choix du pack ───────── */
+.pack-tarifs-inline{margin:4px 0 18px;background:linear-gradient(135deg,#ffffff 0%,#f8fbfd 100%);border:1px solid #cfe4ea;border-radius:18px;padding:16px;box-shadow:0 12px 30px rgba(24,55,93,.08)}
+.pack-tarifs-title{font-size:14px;font-weight:900;color:#18375d;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.pack-tarifs-sub{font-size:12px;color:#64748b;line-height:1.45;margin-bottom:12px}
+.pack-tarifs-grid-full{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:0}
+.pack-tarif-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:10px 9px;text-align:left;min-height:92px;box-shadow:0 5px 14px rgba(24,55,93,.04)}
+.pack-tarif-chip strong{display:block;font-size:17px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}
+.pack-tarif-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}
+.pack-tarif-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}
+.pack-tarif-chip b{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:950;border-radius:999px;padding:3px 7px;margin-bottom:7px;background:#fff;color:#8a5a00;border:1px solid rgba(255,199,68,.65)}
+.pack-tarif-chip.popular{background:linear-gradient(135deg,#fff9e9 0%,#fff1bd 100%);border-color:#ffc744;box-shadow:0 8px 20px rgba(255,199,68,.18)}
+.pack-tarif-chip.popular strong,.pack-tarif-chip.popular em{color:#8a5a00}
+.pack-tarif-chip.entreprise{background:linear-gradient(135deg,#eef9fb 0%,#dff2f5 100%);border-color:#9fd0e0;box-shadow:0 8px 20px rgba(0,120,131,.12)}
+.pack-tarif-chip.entreprise b{color:#0d4c72;border-color:#9fd0e0;background:#fff}
+.pack-tarif-chip.entreprise strong,.pack-tarif-chip.entreprise em{color:#0d4c72}
+.pack-tarif-chip.illimite{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-color:#18375d}
+.pack-tarif-chip.illimite strong,.pack-tarif-chip.illimite em,.pack-tarif-chip.illimite span{color:#fff}
+.pack-selected-inline{background:linear-gradient(135deg,#ffffff,#f7fbfd);border:1px solid #cfe4ea;border-left:6px solid #007883;border-radius:16px;padding:13px 14px;margin:10px 0;color:#18375d;box-shadow:0 10px 24px rgba(24,55,93,.08)}
+.pack-selected-inline .pack-selected-title{font-size:13px;font-weight:950;color:#18375d;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pack-selected-inline .pack-selected-mini{font-size:12px;color:#64748b;line-height:1.45}
+.pack-selected-inline .pack-selected-mini strong{color:#007883}
+.pack-selected-inline.popular{border-left-color:#ffc744;background:linear-gradient(135deg,#fffdf6,#fff4cf)}
+.pack-selected-inline.entreprise{border-left-color:#0d4c72;background:linear-gradient(135deg,#f8fdff,#eef9fb)}
+.pack-selected-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:950;background:#f0f8f7;color:#007883;border:1px solid #b8dfe0}
+.pack-selected-inline.popular .pack-selected-badge{background:#fff4cf;color:#8a5a00;border-color:#ffc744}
+.pack-selected-inline.entreprise .pack-selected-badge{background:#eef9fb;color:#0d4c72;border-color:#9fd0e0}
+@media(max-width:980px){.pack-tarifs-grid-full{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.pack-tarifs-grid-full{grid-template-columns:repeat(2,minmax(0,1fr))}.pack-tarif-chip{min-height:84px}}
+
+/* ── Correctif affichage carte pack en colonne droite ───────── */
+.sidebar .its-quota-card{
+  width:100%;
+  max-width:100%;
+  padding:18px;
+  border-radius:24px;
+}
+.sidebar .its-quota-top{
+  gap:8px;
+  margin-bottom:12px;
+}
+.sidebar .its-quota-title{
+  font-size:19px;
+  line-height:1.15;
+  word-break:normal;
+}
+.sidebar .its-quota-title::before{
+  width:30px;
+  height:30px;
+  margin-right:8px;
+  border-radius:12px;
+  font-size:15px;
+}
+.sidebar .its-quota-pill{
+  padding:7px 10px;
+  font-size:11px;
+  flex-shrink:0;
+}
+.sidebar .its-quota-main{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin:14px 0;
+}
+.sidebar .its-quota-box{
+  min-width:0;
+  padding:11px 8px;
+  min-height:78px;
+  text-align:center;
+}
+.sidebar .its-quota-box strong{
+  font-size:25px;
+  white-space:nowrap;
+}
+.sidebar .its-quota-box span{
+  justify-content:center;
+  font-size:9px;
+  line-height:1.15;
+  gap:3px;
+}
+.sidebar .its-quota-nudge{
+  font-size:12px;
+  padding:11px 12px;
+}
+.sidebar .its-quota-card *{
+  max-width:100%;
+}
+select option[value="current_pack"]{
+  font-weight:900;
+  color:#18375d;
+}
+
 </style>
 </head>
 <body>
@@ -95,7 +219,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
 <div class="page-wrap">
   <h1 class="page-title">Paramétrer l'autodiagnostic</h1>
-  <p class="page-sub">Définissez ce que verront les répondants avant l'autodiagnostic, les données socio-démo utiles à l'analyse, et l'URL de passation.</p>
+  <p class="page-sub">Paramétrez votre autodiagnostic, sa date de lancement et de fin, les données socio-démo utiles à l'analyse, et l'URL de passation en renseignant le nom de l'organisation.</p>
 
   <div class="two-col">
     <div>
@@ -109,12 +233,34 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="field"><label>Description interne</label><input class="inp" id="desc" type="text" oninput="updateParam('desc',this.value)"></div>
         <div class="inp-row">
           <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Écrivez ce nom sans espace, tout attaché. Il sera intégré dans l’URL de passation.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
-          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
+          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
+        </div>
+        <div id="paramQuotaInline" class="partner-hide"></div>
+        <div class="pack-tarifs-card pack-tarifs-inline partner-hide">
+          <div class="pack-tarifs-title">💶 Tarifs des packs de passations</div>
+          <div class="pack-tarifs-sub">Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Le pack 500 est recommandé pour un déploiement PME ; le pack 1 200 pour les grands comptes ou cabinets.</div>
+          <div class="pack-tarifs-grid pack-tarifs-grid-full">
+            <div class="pack-tarif-chip"><strong>50</strong><em>250 € HT</em><span>Découverte</span></div>
+            <div class="pack-tarif-chip"><strong>100</strong><em>450 € HT</em><span>Mini équipe</span></div>
+            <div class="pack-tarif-chip"><strong>200</strong><em>700 € HT</em><span>Test</span></div>
+            <div class="pack-tarif-chip popular"><b>⭐ Le plus populaire</b><strong>500</strong><em>1 500 € HT</em><span>Déploiement PME</span></div>
+            <div class="pack-tarif-chip"><strong>700</strong><em>1 900 € HT</em><span>Multi-BU</span></div>
+            <div class="pack-tarif-chip entreprise"><b>🏢 Entreprise</b><strong>1 200</strong><em>3 000 € HT</em><span>Grand compte / cabinet</span></div>
+            <div class="pack-tarif-chip"><strong>1 500</strong><em>3 500 € HT</em><span>Grand déploiement</span></div>
+            <div class="pack-tarif-chip"><strong>1 700</strong><em>3 800 € HT</em><span>Organisation étendue</span></div>
+            <div class="pack-tarif-chip"><strong>2 000</strong><em>4 000 € HT</em><span>Groupe</span></div>
+            <div class="pack-tarif-chip"><strong>2 500</strong><em>4 800 € HT</em><span>Groupe +</span></div>
+            <div class="pack-tarif-chip"><strong>3 000</strong><em>5 400 € HT</em><span>Déploiement large</span></div>
+            <div class="pack-tarif-chip"><strong>4 000</strong><em>6 600 € HT</em><span>Large volume</span></div>
+            <div class="pack-tarif-chip"><strong>5 000</strong><em>7 500 € HT</em><span>Très grand compte</span></div>
+            <div class="pack-tarif-chip"><strong>7 000</strong><em>9 100 € HT</em><span>Très large diffusion</span></div>
+            <div class="pack-tarif-chip illimite"><strong>Illimité</strong><em>15 000 € HT</em><span>Usage intensif</span></div>
+          </div>
         </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
-          <div class="field"><label>Date de clôture</label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar()"></div>
+          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
         </div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
@@ -154,7 +300,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
       <div class="block">
         <div class="block-title">Ressources complémentaires</div>
-        <div class="block-sub">Ajoutez uniquement les ressources affichées après les résultats individuels du répondant. Le message de fin n’est pas paramétré ici, car il n’est pas codé dans l’app de passation.</div>
+        <div class="block-sub">Ajoutez ici des liens vers votre intranet, ou tout type de sites intégrant des informations et documents que vous souhaitez partager à vos collaborateurs. Ces boutons seront affichés sur la page de fin de l'autodiagnostic. Si vous avez des documents mais que vous n'avez pas de site pour les héberger, contactez-nous !</div>
         <div id="resources-list"></div>
         <button type="button" class="btn-add" onclick="addResource()" style="margin-top:4px">+ Ajouter une ressource</button>
         <div class="block-divider"></div>
@@ -183,7 +329,22 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         </div>
       </div>
 
-      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
+      <div id="paramQuotaCardSide" class="partner-hide" style="margin-bottom:12px"></div>
+
+      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@intotheshift.io?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="param-modal-overlay" id="paramMissingModal" aria-hidden="true">
+  <div class="param-modal" role="dialog" aria-modal="true" aria-labelledby="paramMissingTitle">
+    <div class="param-modal-icon">⚠️</div>
+    <h3 id="paramMissingTitle">Paramétrage incomplet</h3>
+    <p>Complétez les éléments obligatoires avant de passer à la préparation de campagne.</p>
+    <div class="param-modal-list" id="paramMissingList"></div>
+    <div class="param-modal-actions">
+      <button type="button" class="param-modal-btn" onclick="closeMissingParametrageModal()">Compris</button>
     </div>
   </div>
 </div>
@@ -194,22 +355,285 @@ function itsResolveApiBase(){
   const path = window.location.pathname;
   const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
   if (forced) return forced;
+
   const isStaging =
     host === "localhost" ||
     host === "127.0.0.1" ||
     host.startsWith("staging.") ||
     path.startsWith("/staging");
+
   return isStaging
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 }
+
 const API_URL = itsResolveApiBase();
 
 let state = {};
 
+function paramProjectIdFromUrl(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    return params.get('projectId') || params.get('projectid') || params.get('id') || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+  }catch(e){
+    return localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+  }
+}
+
+function paramUnwrapState(raw){
+  if(!raw) return {};
+  let data = raw;
+  if(typeof data === 'string'){
+    try{ data = JSON.parse(data); }catch(e){ return {}; }
+  }
+  if(data && data.project && typeof data.project === 'object') data = data.project;
+  const projectId = data?.id || data?.project_id || data?.projectId || paramProjectIdFromUrl();
+  let content = data?.data || data?.payload || data?.configuration || data?.state || data;
+  if(typeof content === 'string'){
+    try{ content = JSON.parse(content); }catch(e){ content = {}; }
+  }
+  if(content && content.state && typeof content.state === 'object'){
+    content = Object.assign({}, content.state, {
+      current_step: content.current_step || content.step || content.state.current_step || content.state.step || 'parametrage',
+      step: content.step || content.current_step || content.state.step || content.state.current_step || 'parametrage',
+      status: content.status || content.state.status || 'draft'
+    });
+  }
+  if(!content || typeof content !== 'object') content = {};
+  if(projectId){
+    content.projectId = content.projectId || projectId;
+    content.project_id = content.project_id || projectId;
+    content.currentAdId = content.currentAdId || projectId;
+    localStorage.setItem('its_current_project_id', String(projectId));
+    localStorage.setItem('its_current_ad_id', String(projectId));
+  }
+  return content;
+}
+
+function paramReadLocalStateFallback(){
+  const keys = [
+    'its_state',
+    'intotheshift_customizer_state_v1',
+    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
+  ].filter(Boolean);
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
+      const data = paramUnwrapState(raw);
+      if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+    }catch(e){}
+  }
+  return {};
+}
+
+function paramPersistLightStateForBridge(nextState){
+  try{
+    if(!nextState || typeof nextState !== 'object') return;
+    const light = JSON.parse(JSON.stringify(nextState));
+    function stripHeavy(obj){
+      if(!obj || typeof obj !== 'object') return;
+      Object.keys(obj).forEach(key => {
+        const value = obj[key];
+        const lk = String(key).toLowerCase();
+        if(lk.includes('dataurl') || lk.includes('data_url') || lk.includes('base64') || (typeof value === 'string' && value.startsWith('data:image/'))){
+          obj[key] = '';
+        } else if(value && typeof value === 'object') stripHeavy(value);
+      });
+    }
+    stripHeavy(light);
+    const serialized = JSON.stringify(light);
+    localStorage.setItem('its_state', serialized);
+    sessionStorage.setItem('its_state', serialized);
+    localStorage.setItem('intotheshift_customizer_state_v1', serialized);
+    sessionStorage.setItem('intotheshift_customizer_state_v1', serialized);
+  }catch(e){
+    console.warn('Bridge local minimal non enregistré', e);
+  }
+}
+
+function paramFetchProjectStateSync(projectId){
+  if(!projectId || !getToken()) return null;
+  try{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `${API_URL}/api/projects/${encodeURIComponent(projectId)}`, false);
+    xhr.setRequestHeader('Authorization', `Bearer ${getToken()}`);
+    xhr.send(null);
+    if(xhr.status < 200 || xhr.status >= 300) return null;
+    const json = JSON.parse(xhr.responseText || '{}');
+    const data = paramUnwrapState(json.project || json.data || json);
+    if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+  }catch(e){
+    console.warn('Projet non chargé en lecture directe', e);
+  }
+  return null;
+}
+
 function getToken(){
   return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
 }
+
+function itsFormatQuotaNumber(v){
+  const n=Number(v||0);
+  return Number.isFinite(n)?n.toLocaleString('fr-FR'):'0';
+}
+function itsReadQuotaFromObject(obj){
+  if(!obj||typeof obj!=='object') return null;
+  const quota = obj.passationsQuota ?? obj.passations_quota ?? obj.quota ?? obj.passations_total ?? obj.passationsTotal ?? obj.passations_achetees ?? obj.passationsAchetees;
+  const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
+  const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
+  const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+  if(quota===undefined && remainingRaw===undefined && !pack) return null;
+  const q=Number(quota||0), u=Number(used||0);
+  const r=remainingRaw!==undefined && remainingRaw!==null && remainingRaw!=='' ? Number(remainingRaw) : Math.max(q-u,0);
+  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack||'')};
+}
+function itsPickQuotaPayload(data){
+  const candidates=[data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.account,data?.user,data?.partner,data];
+  for(const c of candidates){const q=itsReadQuotaFromObject(c); if(q) return q;}
+  if(Array.isArray(data?.organizations)){for(const c of data.organizations){const q=itsReadQuotaFromObject(c); if(q) return q;}}
+  return {quota:0,used:0,remaining:0,pack:''};
+}
+async function itsLoadClientQuota(){
+  const token=(localStorage.getItem('its_token')||localStorage.getItem('token')||localStorage.getItem('auth_token')||'');
+  const role=(localStorage.getItem('its_user_role')||'').toLowerCase();
+  const base=(typeof API_BASE_URL!=='undefined'?API_BASE_URL:(typeof API_BASE!=='undefined'?API_BASE:(typeof API_URL!=='undefined'?API_URL:'https://into-the-shift-studio-api.osc-fr1.scalingo.io')));
+  async function get(path){const r=await fetch(base+path,{headers:{Authorization:'Bearer '+token}}); if(!r.ok) throw new Error(path+' '+r.status); return await r.json();}
+  try{
+    if(role==='partner'){
+      const data=await get('/api/partner/me');
+      return itsPickQuotaPayload(data);
+    }
+
+    // Priorité au quota de l'organisation réellement liée à l'AD courant.
+    // C'est ce que l'admin modifie dans l'onglet Cockpit clients.
+    const currentProjectId = paramProjectIdFromUrl();
+    if(currentProjectId){
+      try{
+        const projectData = await get('/api/projects/' + encodeURIComponent(currentProjectId));
+        const project = projectData?.project || projectData || {};
+        const projectQuota = itsReadQuotaFromObject({
+          passationsPack: project.organizationPassationsPack,
+          passationsQuota: project.organizationPassationsQuota,
+          passationsUsed: project.organizationPassationsUsed,
+          passationsRemaining: project.organizationPassationsRemaining
+        });
+        if(projectQuota && (projectQuota.pack || projectQuota.quota || projectQuota.remaining)) return projectQuota;
+      }catch(e){
+        console.warn('Quota organisation du projet non disponible, fallback compte client', e);
+      }
+    }
+
+    // Fallback normal : quota de l'organisation du compte client.
+    try{
+      const data=await get('/api/me/organization-quota');
+      const quota=itsPickQuotaPayload(data);
+      if(quota && (quota.pack || quota.quota || quota.remaining)) return quota;
+    }catch(e){
+      console.warn('Quota organisation client non disponible, fallback user', e);
+    }
+
+    const data=await get('/api/me');
+    return itsPickQuotaPayload(data);
+  }catch(e){
+    return {quota:0,used:0,remaining:0,pack:''};
+  }
+}
+function itsQuotaLabel(q){
+  if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
+  if(String(q.pack)==='illimite') return 'Pack illimité';
+  if(String(q.pack)==='existing' || String(q.pack)==='current_pack') return 'Pack en cours';
+  const n=Number(q.pack||q.quota||0);
+  return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
+}
+function itsQuotaNudge(q){
+  if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
+  const ratio=q.quota? q.remaining/q.quota : 0;
+  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
+  if(ratio<=0) return 'Votre solde est épuisé : contactez Into The Shift pour recharger votre pack avant une nouvelle campagne.';
+  if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
+  return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
+}
+function itsQuotaCardHTML(q,compact=false){
+  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
+  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
+  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
+  return `<div class="its-quota-card ${cls}">
+    <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+    <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
+    <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
+    <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
+  </div>`;
+}
+function itsQuotaInlineHTML(q){
+  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
+}
+
+
+const PACK_TARIFFS = {
+  "50": { price:"250 € HT", label:"Découverte" },
+  "100": { price:"450 € HT", label:"Mini équipe" },
+  "200": { price:"700 € HT", label:"Test" },
+  "500": { price:"1 500 € HT", label:"Déploiement PME", badge:"⭐ Le plus populaire", cls:"popular" },
+  "700": { price:"1 900 € HT", label:"Multi-BU" },
+  "1200": { price:"3 000 € HT", label:"Grand compte / cabinet", badge:"🏢 Entreprise", cls:"entreprise" },
+  "1500": { price:"3 500 € HT", label:"Grand déploiement" },
+  "1700": { price:"3 800 € HT", label:"Organisation étendue" },
+  "2000": { price:"4 000 € HT", label:"Groupe" },
+  "2500": { price:"4 800 € HT", label:"Groupe +" },
+  "3000": { price:"5 400 € HT", label:"Déploiement large" },
+  "4000": { price:"6 600 € HT", label:"Large volume" },
+  "5000": { price:"7 500 € HT", label:"Très grand compte" },
+  "7000": { price:"9 100 € HT", label:"Très large diffusion" },
+  "illimite": { price:"15 000 € HT", label:"Usage intensif" }
+};
+function packQuotaFromSelectedValue(value){
+  const selected = String(value || '').trim();
+  if(!selected || selected === 'current_pack') return null;
+  if(selected === 'illimite') return {quota:0, used:0, remaining:0, pack:'illimite', selected:true};
+  const n = Number(selected || 0);
+  if(!Number.isFinite(n) || n <= 0) return null;
+  return {quota:n, used:0, remaining:n, pack:selected, selected:true};
+}
+function getDisplayQuota(){
+  const selected = state?.parametrage?.pack_choisi || '';
+  return packQuotaFromSelectedValue(selected) || itsCurrentClientQuota || {quota:0,used:0,remaining:0,pack:''};
+}
+function packSelectedInlineHTML(q){
+  const selected = state?.parametrage?.pack_choisi || '';
+  if(!selected || selected === 'current_pack') return itsQuotaInlineHTML(q);
+
+  const tariff = PACK_TARIFFS[selected] || {};
+  const label = selected === 'illimite' ? 'Pack illimité' : Number(selected).toLocaleString('fr-FR') + ' passations';
+  const cssClass = tariff.cls || '';
+  const badge = tariff.badge ? '<span class="pack-selected-badge">' + tariff.badge + '</span>' : '';
+  const price = tariff.price ? ' · <strong>' + tariff.price + '</strong>' : '';
+  const usage = tariff.label ? ' · ' + tariff.label : '';
+  const mini = selected === 'illimite'
+    ? 'Vous avez sélectionné le pack illimité · <strong>' + (tariff.price || '15 000 € HT') + '</strong> · usage intensif.'
+    : '<strong>' + Number(selected).toLocaleString('fr-FR') + '</strong> passations prévues' + price + usage + '. Ce choix sera repris dans le récapitulatif.';
+
+  return '<div class="pack-selected-inline '+cssClass+'"><div class="pack-selected-title">✓ Pack sélectionné : '+label+' '+badge+'</div><div class="pack-selected-mini">'+mini+'</div></div>';
+}
+function refreshPackDisplay(){
+  const displayQuota = getDisplayQuota();
+  const inline=document.getElementById('paramQuotaInline');
+  const side=document.getElementById('paramQuotaCardSide');
+  if(inline) inline.innerHTML=packSelectedInlineHTML(displayQuota);
+  if(side) side.innerHTML=itsQuotaCardHTML(displayQuota,true);
+}
+
+let itsCurrentClientQuota = null;
+async function renderParamQuota(){
+  if(isPartnerMode()) return;
+  itsCurrentClientQuota = await itsLoadClientQuota();
+  const p=state.parametrage||{};
+  if(itsCurrentClientQuota && (itsCurrentClientQuota.quota || itsCurrentClientQuota.pack)){
+    if(!p.pack_choisi){ updatePack('current_pack', true); return; }
+  }
+  refreshPackDisplay();
+  checkContinue();
+}
+
 function getRoleFromToken(){
   const token = getToken();
   if(!token || !token.includes(".")) return null;
@@ -283,7 +707,21 @@ async function loadPartnerQuota(){
 
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function slugify(text){return String(text||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
-function formatDateFr(d){if(!d)return ''; const p=d.split('-'); return p.length===3 ? p[2]+'/'+p[1]+'/'+p[0] : d}
+function formatDateFr(d){
+  if(!d) return '';
+  const value = String(d).trim();
+
+  const isoDate = value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(isoDate) return isoDate[3] + '/' + isoDate[2] + '/' + isoDate[1];
+
+  const compactWithTime = value.match(/^(\d{4})T.*?(\d{2})(\d{2})(\d{4})$/);
+  if(compactWithTime) return compactWithTime[2] + '/' + compactWithTime[3] + '/' + compactWithTime[4];
+
+  const alreadyFr = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if(alreadyFr) return value;
+
+  return value;
+}
 function themeTitle(){return state.themeTitle || state.title || state.name || state.selectedTheme?.title || state.selectedTheme?.name || 'Nouveau thème'}
 function ensureDefaults(){
   const p = state.parametrage;
@@ -299,7 +737,15 @@ function ensureDefaults(){
   if(!p.nb_repondants) p.nb_repondants = 120;
   if(!Array.isArray(p.resources)) p.resources = [];
 }
-function save(){ itsSave(state); }
+function save(){
+  try{
+    if(typeof itsSave === 'function') itsSave(state);
+    paramPersistLightStateForBridge(state);
+  }catch(e){
+    console.warn('Sauvegarde locale impossible, navigation non bloquée', e);
+    paramPersistLightStateForBridge(state);
+  }
+}
 function normalizeCampaignDatesInState(){
   const start = state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.campaignStartDate || state.campaign_start_date || '';
   const end = state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.campaignEndDate || state.campaign_end_date || '';
@@ -367,6 +813,7 @@ async function init(){
   checkAnonymity();
   checkContinue();
   loadPartnerQuota();
+  renderParamQuota();
 }
 function buildPassationUrl(){ const company=slugify(state.parametrage.entreprise || document.getElementById('entreprise')?.value || 'nomdelentreprise'); const slug=slugify(state.parametrage.slug || document.getElementById('slug')?.value || 'mon-autodiagnostic'); return 'https://selfdiag-mayt.meandyoutoo.app/' + company + '/' + slug; }
 function updateCompany(v){ state.parametrage.entreprise = slugify(v||'nomdelentreprise'); const el=document.getElementById('entreprise'); if(el) el.value = state.parametrage.entreprise; updateSlug(state.parametrage.slug); }
@@ -378,14 +825,15 @@ function updatePack(v, shouldSave=true){
     return;
   }
   state.parametrage.pack_choisi=v||'';
-  const label=!state.parametrage.pack_choisi?'':(state.parametrage.pack_choisi==='illimite'?'Illimité':Number(state.parametrage.pack_choisi).toLocaleString('fr-FR')+' passations');
+  const label=!state.parametrage.pack_choisi?'':(state.parametrage.pack_choisi==='current_pack'?'J’ai déjà un pack':(state.parametrage.pack_choisi==='illimite'?'Illimité':Number(state.parametrage.pack_choisi).toLocaleString('fr-FR')+' passations'));
   const title=document.getElementById('pack-title');
   if(title) title.textContent=label?'Pack choisi : '+label:'Pack à choisir';
   const a=document.getElementById('pack_choisi'), b=document.getElementById('pack_choisi_sidebar');
   if(a) a.value=state.parametrage.pack_choisi;
   if(b) b.value=state.parametrage.pack_choisi;
   const bar=document.getElementById('pack-bar');
-  if(bar){ const map={200:12,500:20,1200:35,2000:48,3000:60,5000:75,7000:88,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
+  if(bar){ const map={current_pack:8,50:6,100:10,200:16,500:28,700:36,1200:48,1500:56,1700:62,2000:68,2500:74,3000:80,4000:88,5000:94,7000:98,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
+  refreshPackDisplay();
   if(shouldSave) save();
 }
 function updateSidebar(){ const p=state.parametrage; document.getElementById('sb-theme').textContent=themeTitle(); document.getElementById('sb-chap').textContent=(state.chapters||[]).length; document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.questions||[]).length),0); document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.profiles||c.profils||[]).length),0); document.getElementById('sb-lancement').textContent=p.date_lancement?formatDateFr(p.date_lancement):'À renseigner'; document.getElementById('sb-cloture').textContent=p.date_cloture?formatDateFr(p.date_cloture):'—'; }
@@ -481,14 +929,101 @@ function clearPassationLogo(){
   if(input) input.value = "";
 }
 
-function checkContinue(){
-  const p=state.parametrage;
-  const baseOk=(p.nom||'').trim()&&(p.titre||'').trim()&&(p.slug||'').trim()&&(p.intro||'').trim()&&(p.date_lancement||'').trim()&&(p.entreprise||'').trim()&&(p.sociodemo||[]).length>0;
-  const packOk = isPartnerMode() ? Number(p.volume_prevu || 0) > 0 : (p.pack_choisi||'').trim();
-  const ok = baseOk && packOk;
-  document.getElementById('btn-continue').disabled=!ok;
+function getFieldValue(id){
+  const el = document.getElementById(id);
+  return String((el && el.value !== undefined ? el.value : '') || '').trim();
 }
 
+function markFieldMissing(id, missing){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.toggle('missing', Boolean(missing));
+  el.style.borderColor = missing ? '#ffd490' : '';
+  el.style.background = missing ? '#fff8ec' : '';
+}
+
+function clearMissingFields(){
+  ['nom','titre','entreprise','pack_choisi','volume_prevu','date_lancement','date_cloture','slug','intro','nb_repondants'].forEach(id => markFieldMissing(id, false));
+}
+
+function getMissingParametrageFields(){
+  const p = state.parametrage || {};
+  const missing = [];
+
+  const nom = getFieldValue('nom') || p.nom || '';
+  const titre = getFieldValue('titre') || p.titre || '';
+  const entreprise = getFieldValue('entreprise') || p.entreprise || '';
+  const slug = getFieldValue('slug') || p.slug || '';
+  const intro = getFieldValue('intro') || p.intro || '';
+  const lancement = getFieldValue('date_lancement') || p.date_lancement || p.dateLancement || '';
+  const cloture = getFieldValue('date_cloture') || p.date_cloture || p.dateCloture || '';
+  const nbRepondants = Number(getFieldValue('nb_repondants') || p.nb_repondants || 0);
+  const socio = Array.isArray(p.sociodemo) ? p.sociodemo : [];
+
+  if(!String(nom).trim()) missing.push({ id:'nom', label:"Nom de l'autodiagnostic" });
+  if(!String(titre).trim()) missing.push({ id:'titre', label:"Titre visible par les répondants" });
+  if(!String(entreprise).trim()) missing.push({ id:'entreprise', label:"Nom de l'entreprise / espace client" });
+  if(!String(slug).trim()) missing.push({ id:'slug', label:"Slug de l'URL" });
+  if(!String(lancement).trim()) missing.push({ id:'date_lancement', label:"Date de lancement souhaitée" });
+  if(!String(cloture).trim()) missing.push({ id:'date_cloture', label:"Date de clôture" });
+  if(lancement && cloture && String(lancement) > String(cloture)) missing.push({ id:'date_cloture', label:"Date de clôture postérieure à la date de lancement" });
+  if(!String(intro).trim()) missing.push({ id:'intro', label:"Texte d'introduction" });
+  if(!nbRepondants || nbRepondants < 1) missing.push({ id:'nb_repondants', label:"Nombre total de répondants estimé" });
+  if(!socio.length) missing.push({ id:'socio-list', label:"Au moins une donnée socio-démo" });
+
+  if(isPartnerMode()){
+    const volume = Number(getFieldValue('volume_prevu') || p.volume_prevu || 0);
+    if(!volume || volume < 1) missing.push({ id:'volume_prevu', label:"Volume prévu pour cette campagne" });
+  } else {
+    const pack = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || p.pack_choisi || '';
+    if(!String(pack).trim()) missing.push({ id:'pack_choisi', label:"Pack choisi" });
+  }
+
+  return missing;
+}
+
+function closeMissingParametrageModal(){
+  const modal = document.getElementById('paramMissingModal');
+  if(modal){
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+  }
+}
+
+function showMissingParametrageAlert(missing){
+  if(!missing || !missing.length) return;
+  clearMissingFields();
+  missing.forEach(item => markFieldMissing(item.id, true));
+
+  const list = document.getElementById('paramMissingList');
+  if(list){
+    list.innerHTML = missing.map(item => '• ' + item.label).join('<br>');
+  }
+
+  const modal = document.getElementById('paramMissingModal');
+  if(modal){
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  const first = document.getElementById(missing[0].id);
+  if(first && typeof first.scrollIntoView === 'function'){
+    setTimeout(() => {
+      first.scrollIntoView({ behavior:'smooth', block:'center' });
+      if(typeof first.focus === 'function') first.focus();
+    }, 180);
+  }
+}
+
+function checkContinue(){
+  const btn = document.getElementById('btn-continue');
+  if(!btn) return false;
+  const missing = getMissingParametrageFields();
+  btn.disabled = false;
+  btn.classList.toggle('blocked', missing.length > 0);
+  btn.title = missing.length ? "Cliquez pour voir les champs à compléter." : "Continuer vers la campagne";
+  return missing.length === 0;
+}
 
 function getCurrentProjectIdForSave(){
   return state.currentAdId || state.project_id || state.projectId ||
@@ -500,12 +1035,16 @@ async function persistProjectDraft(step, status){
   save();
   state.status = status || state.status || 'draft';
   state.current_step = step || 'parametrage';
+  state.step = step || 'parametrage';
   save();
   const token = getToken();
-  if(!token) return;
+  if(!token) return getCurrentProjectIdForSave();
   try{
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2500);
     const response = await fetch(`${API_URL}/api/projects`, {
       method:'POST',
+      signal: controller.signal,
       headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
       body: JSON.stringify({
         projectId: getCurrentProjectIdForSave() || undefined,
@@ -533,10 +1072,20 @@ async function persistProjectDraft(step, status){
         })
       })
     });
+    clearTimeout(timeout);
     const saved = await response.json().catch(()=>({}));
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){ state.currentAdId = id; state.project_id = id; state.projectId = id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); save(); }
+    if(id){
+      state.currentAdId = id;
+      state.project_id = id;
+      state.projectId = id;
+      localStorage.setItem('its_current_project_id', String(id));
+      localStorage.setItem('its_current_ad_id', String(id));
+      save();
+      return String(id);
+    }
   }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
+  return getCurrentProjectIdForSave();
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
@@ -546,25 +1095,87 @@ async function goNext(){
     state.parametrage.mode_quota = "partner";
     state.parametrage.partner_client_id = localStorage.getItem("its_selected_partner_client_id") || "";
   }
-  state.parametrage.done=true;
-  save();
-  await persistProjectDraft('parametrage','draft');
-  window.location.href='campagne.html';
-}
-async function bootParametragePage(){
-  if(typeof itsBootstrapProjectFromUrl === "function"){
-    state = await itsBootstrapProjectFromUrl();
+
+  state.parametrage.nom = getFieldValue('nom') || state.parametrage.nom || '';
+  state.parametrage.titre = getFieldValue('titre') || state.parametrage.titre || '';
+  state.parametrage.desc = getFieldValue('desc') || state.parametrage.desc || '';
+  state.parametrage.entreprise = getFieldValue('entreprise') || state.parametrage.entreprise || '';
+  state.parametrage.slug = getFieldValue('slug') || state.parametrage.slug || '';
+  state.parametrage.intro = getFieldValue('intro') || state.parametrage.intro || '';
+  state.parametrage.date_lancement = getFieldValue('date_lancement') || state.parametrage.date_lancement || '';
+  state.parametrage.dateLancement = state.parametrage.date_lancement;
+  state.parametrage.date_cloture = getFieldValue('date_cloture') || state.parametrage.date_cloture || '';
+  state.parametrage.dateCloture = state.parametrage.date_cloture;
+  state.parametrage.nb_repondants = Number(getFieldValue('nb_repondants') || state.parametrage.nb_repondants || 0);
+
+  if(!isPartnerMode()){
+    state.parametrage.pack_choisi = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || state.parametrage.pack_choisi || '';
   } else {
-    state = itsLoad();
+    state.parametrage.volume_prevu = Number(getFieldValue('volume_prevu') || state.parametrage.volume_prevu || 0);
   }
 
-  if(!state || !state.chapters){
+  normalizeCampaignDatesInState();
+
+  const missing = getMissingParametrageFields();
+  if(missing.length){
+    showMissingParametrageAlert(missing);
+    checkContinue();
+    save();
+    return;
+  }
+
+  clearMissingFields();
+  state.parametrage.done=true;
+  state.current_step = 'campagne';
+  state.step = 'campagne';
+  save();
+
+  const btn = document.getElementById('btn-continue');
+  if(btn){
+    btn.textContent = 'Ouverture de la campagne…';
+    btn.disabled = true;
+  }
+
+  let targetId = getCurrentProjectIdForSave();
+  const fallbackUrl = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
+
+  // On ne bloque plus la navigation sur la réponse du backend.
+  // Si l'API est lente ou indisponible, le client avance quand même avec la sauvegarde locale.
+  const navigationTimer = setTimeout(() => {
+    window.location.href = fallbackUrl;
+  }, 350);
+
+  try{
+    const savedProjectId = await persistProjectDraft('campagne','draft');
+    if(savedProjectId) targetId = savedProjectId;
+  }catch(e){
+    console.error('Erreur passage campagne', e);
+  }
+
+  clearTimeout(navigationTimer);
+  window.location.href = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
+}
+async function bootParametragePage(){
+  const projectId = paramProjectIdFromUrl();
+  state = paramFetchProjectStateSync(projectId) || {};
+
+  if((!state || !Array.isArray(state.chapters) || !state.chapters.length) && typeof itsBootstrapProjectFromUrl === "function"){
+    try{ state = await itsBootstrapProjectFromUrl(); }catch(e){ state = {}; }
+  }
+
+  if(!state || !Array.isArray(state.chapters) || !state.chapters.length){
+    state = paramReadLocalStateFallback();
+  }
+
+  if(!state || !Array.isArray(state.chapters) || !state.chapters.length){
     window.location.href = 'index.html';
     return;
   }
 
-  if(!state.parametrage) state.parametrage = {};
+  state = paramUnwrapState(state);
+  state.parametrage = state.parametrage || {};
   if(!state.parametrage.sociodemo) state.parametrage.sociodemo = [{q:"À quelle catégorie appartenez-vous ?",opts:["Collaborateur·rice","Manager","Direction"],min_groupe:25}];
+  paramPersistLightStateForBridge(state);
 
   init();
 
