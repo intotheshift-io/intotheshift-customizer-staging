@@ -123,7 +123,7 @@
         const id=projectId(p);
         const restoreButton = isAdmin()
           ? `<button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">↩️ Restaurer</button>`
-          : `<button class="btn primary" onclick="requestRestore('${escapeAttr(id)}')">Contacter Into The Shift</button>`;
+          : `<button class="btn primary" onclick="requestRestore('${escapeAttr(id)}')">Restaurer ?</button>`;
         return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button>${restoreButton}</div></article>`;
       }).join("");
     }
