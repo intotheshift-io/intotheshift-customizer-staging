@@ -106,6 +106,13 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .pack-tarifs-sub{font-size:12px;color:#64748b;line-height:1.45;margin-bottom:12px}
 .pack-tarifs-grid-full{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:0}
 .pack-tarif-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:10px 9px;text-align:left;min-height:92px;box-shadow:0 5px 14px rgba(24,55,93,.04)}
+.pack-tarif-chip{cursor:pointer;transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease}
+.pack-tarif-chip:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(24,55,93,.10);border-color:#007883}
+.pack-tarif-chip.selected{border-color:#007883;box-shadow:0 0 0 3px rgba(0,120,131,.14),0 10px 22px rgba(24,55,93,.10)}
+.pack-tarif-chip.selected::after{content:"✓";position:absolute;right:9px;top:9px;width:22px;height:22px;border-radius:999px;background:#007883;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:950}
+.pack-tarif-chip.illimite.selected{box-shadow:0 0 0 3px rgba(24,55,93,.16),0 10px 22px rgba(24,55,93,.14)}
+.pack-tarif-chip.illimite.selected::after{background:#ffc744;color:#18375d}
+
 .pack-tarif-chip strong{display:block;font-size:17px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}
 .pack-tarif-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}
 .pack-tarif-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}
@@ -241,21 +248,21 @@ select option[value="current_pack"]{
           <div class="pack-tarifs-title">💶 Tarifs des packs de passations</div>
           <div class="pack-tarifs-sub">Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Le pack 500 est recommandé pour un déploiement PME ; le pack 1 200 pour les grands comptes ou cabinets.</div>
           <div class="pack-tarifs-grid pack-tarifs-grid-full">
-            <div class="pack-tarif-chip"><strong>50</strong><em>250 € HT</em><span>Découverte</span></div>
-            <div class="pack-tarif-chip"><strong>100</strong><em>450 € HT</em><span>Mini équipe</span></div>
-            <div class="pack-tarif-chip"><strong>200</strong><em>700 € HT</em><span>Test</span></div>
-            <div class="pack-tarif-chip popular"><b>⭐ Le plus populaire</b><strong>500</strong><em>1 500 € HT</em><span>Déploiement PME</span></div>
-            <div class="pack-tarif-chip"><strong>700</strong><em>1 900 € HT</em><span>Multi-BU</span></div>
-            <div class="pack-tarif-chip entreprise"><b>🏢 Entreprise</b><strong>1 200</strong><em>3 000 € HT</em><span>Grand compte / cabinet</span></div>
-            <div class="pack-tarif-chip"><strong>1 500</strong><em>3 500 € HT</em><span>Grand déploiement</span></div>
-            <div class="pack-tarif-chip"><strong>1 700</strong><em>3 800 € HT</em><span>Organisation étendue</span></div>
-            <div class="pack-tarif-chip"><strong>2 000</strong><em>4 000 € HT</em><span>Groupe</span></div>
-            <div class="pack-tarif-chip"><strong>2 500</strong><em>4 800 € HT</em><span>Groupe +</span></div>
-            <div class="pack-tarif-chip"><strong>3 000</strong><em>5 400 € HT</em><span>Déploiement large</span></div>
-            <div class="pack-tarif-chip"><strong>4 000</strong><em>6 600 € HT</em><span>Large volume</span></div>
-            <div class="pack-tarif-chip"><strong>5 000</strong><em>7 500 € HT</em><span>Très grand compte</span></div>
-            <div class="pack-tarif-chip"><strong>7 000</strong><em>9 100 € HT</em><span>Très large diffusion</span></div>
-            <div class="pack-tarif-chip illimite"><strong>Illimité</strong><em>15 000 € HT</em><span>Usage intensif</span></div>
+            <div class="pack-tarif-chip" data-pack="50" role="button" tabindex="0" onclick="selectPackFromTariff('50')" onkeydown="handlePackTariffKey(event,'50')"><strong>50</strong><em>250 € HT</em><span>Découverte</span></div>
+            <div class="pack-tarif-chip" data-pack="100" role="button" tabindex="0" onclick="selectPackFromTariff('100')" onkeydown="handlePackTariffKey(event,'100')"><strong>100</strong><em>450 € HT</em><span>Mini équipe</span></div>
+            <div class="pack-tarif-chip" data-pack="200" role="button" tabindex="0" onclick="selectPackFromTariff('200')" onkeydown="handlePackTariffKey(event,'200')"><strong>200</strong><em>700 € HT</em><span>Test</span></div>
+            <div class="pack-tarif-chip popular" data-pack="500" role="button" tabindex="0" onclick="selectPackFromTariff('500')" onkeydown="handlePackTariffKey(event,'500')"><b>⭐ Le plus populaire</b><strong>500</strong><em>1 500 € HT</em><span>Déploiement PME</span></div>
+            <div class="pack-tarif-chip" data-pack="700" role="button" tabindex="0" onclick="selectPackFromTariff('700')" onkeydown="handlePackTariffKey(event,'700')"><strong>700</strong><em>1 900 € HT</em><span>Multi-BU</span></div>
+            <div class="pack-tarif-chip entreprise" data-pack="1200" role="button" tabindex="0" onclick="selectPackFromTariff('1200')" onkeydown="handlePackTariffKey(event,'1200')"><b>🏢 Entreprise</b><strong>1 200</strong><em>3 000 € HT</em><span>Grand compte / cabinet</span></div>
+            <div class="pack-tarif-chip" data-pack="1500" role="button" tabindex="0" onclick="selectPackFromTariff('1500')" onkeydown="handlePackTariffKey(event,'1500')"><strong>1 500</strong><em>3 500 € HT</em><span>Grand déploiement</span></div>
+            <div class="pack-tarif-chip" data-pack="1700" role="button" tabindex="0" onclick="selectPackFromTariff('1700')" onkeydown="handlePackTariffKey(event,'1700')"><strong>1 700</strong><em>3 800 € HT</em><span>Organisation étendue</span></div>
+            <div class="pack-tarif-chip" data-pack="2000" role="button" tabindex="0" onclick="selectPackFromTariff('2000')" onkeydown="handlePackTariffKey(event,'2000')"><strong>2 000</strong><em>4 000 € HT</em><span>Groupe</span></div>
+            <div class="pack-tarif-chip" data-pack="2500" role="button" tabindex="0" onclick="selectPackFromTariff('2500')" onkeydown="handlePackTariffKey(event,'2500')"><strong>2 500</strong><em>4 800 € HT</em><span>Groupe +</span></div>
+            <div class="pack-tarif-chip" data-pack="3000" role="button" tabindex="0" onclick="selectPackFromTariff('3000')" onkeydown="handlePackTariffKey(event,'3000')"><strong>3 000</strong><em>5 400 € HT</em><span>Déploiement large</span></div>
+            <div class="pack-tarif-chip" data-pack="4000" role="button" tabindex="0" onclick="selectPackFromTariff('4000')" onkeydown="handlePackTariffKey(event,'4000')"><strong>4 000</strong><em>6 600 € HT</em><span>Large volume</span></div>
+            <div class="pack-tarif-chip" data-pack="5000" role="button" tabindex="0" onclick="selectPackFromTariff('5000')" onkeydown="handlePackTariffKey(event,'5000')"><strong>5 000</strong><em>7 500 € HT</em><span>Très grand compte</span></div>
+            <div class="pack-tarif-chip" data-pack="7000" role="button" tabindex="0" onclick="selectPackFromTariff('7000')" onkeydown="handlePackTariffKey(event,'7000')"><strong>7 000</strong><em>9 100 € HT</em><span>Très large diffusion</span></div>
+            <div class="pack-tarif-chip illimite" data-pack="illimite" role="button" tabindex="0" onclick="selectPackFromTariff('illimite')" onkeydown="handlePackTariffKey(event,'illimite')"><strong>Illimité</strong><em>15 000 € HT</em><span>Usage intensif</span></div>
           </div>
         </div>
         <div class="inp-row">
@@ -620,6 +627,27 @@ function refreshPackDisplay(){
   const side=document.getElementById('paramQuotaCardSide');
   if(inline) inline.innerHTML=packSelectedInlineHTML(displayQuota);
   if(side) side.innerHTML=itsQuotaCardHTML(displayQuota,true);
+  refreshTariffSelection();
+}
+
+function refreshTariffSelection(){
+  const selected = String(state?.parametrage?.pack_choisi || '');
+  document.querySelectorAll('.pack-tarif-chip[data-pack]').forEach(chip => {
+    const isSelected = selected && chip.dataset.pack === selected;
+    chip.classList.toggle('selected', Boolean(isSelected));
+    chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+  });
+}
+function selectPackFromTariff(value){
+  if(!value || isPartnerMode()) return;
+  updatePack(value, true);
+  checkContinue();
+}
+function handlePackTariffKey(event, value){
+  if(event.key === 'Enter' || event.key === ' '){
+    event.preventDefault();
+    selectPackFromTariff(value);
+  }
 }
 
 let itsCurrentClientQuota = null;
@@ -848,6 +876,7 @@ function updatePack(v, shouldSave=true){
   const bar=document.getElementById('pack-bar');
   if(bar){ const map={current_pack:8,50:6,100:10,200:16,500:28,700:36,1200:48,1500:56,1700:62,2000:68,2500:74,3000:80,4000:88,5000:94,7000:98,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
   refreshPackDisplay();
+  refreshTariffSelection();
   if(shouldSave) save();
 }
 function updateSidebar(){ const p=state.parametrage; document.getElementById('sb-theme').textContent=themeTitle(); document.getElementById('sb-chap').textContent=(state.chapters||[]).length; document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.questions||[]).length),0); document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.profiles||c.profils||[]).length),0); document.getElementById('sb-lancement').textContent=p.date_lancement?formatDateFr(p.date_lancement):'À renseigner'; document.getElementById('sb-cloture').textContent=p.date_cloture?formatDateFr(p.date_cloture):'—'; }
