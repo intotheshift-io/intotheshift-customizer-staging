@@ -591,7 +591,7 @@
     }
 
     function canCloneProject(project) {
-      return ["submitted", "sent", "published", "unpublished"].includes(normalizeStatus(project));
+      return ["submitted", "sent", "published", "unpublished", "archived"].includes(normalizeStatus(project));
     }
 
     function shortUrl(url) {
@@ -756,7 +756,12 @@
                     🗑️ Supprimer
                   </button>
                 ` : ""}
-                ${["published","unpublished"].includes(status) ? `
+                ${canClone ? `
+                  <button class="btn" onclick="duplicateProject('${escapeAttr(projectId)}')">
+                    🧬 Cloner
+                  </button>
+                ` : ""}
+                ${status === "unpublished" ? `
                   <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}')">
                     📦 Archiver
                   </button>
@@ -846,8 +851,8 @@
       const project = projects.find(p => getProjectId(p) === String(id));
       if (!project) return alert("Projet introuvable.");
       const status = normalizeStatus(project);
-      if (!["published", "unpublished"].includes(status)) {
-        return alert("Seuls les projets publiés ou dépubliés peuvent être archivés depuis cet espace.");
+      if (status !== "unpublished") {
+        return alert("Un projet doit d’abord être dépublié avant d’être archivé.");
       }
 
       pendingArchiveProjectId = String(id);
@@ -856,7 +861,7 @@
         const title = getTitle(project);
         modal.querySelector(".modal-icon").textContent = "📦";
         modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le restaurer depuis les archives.`;
+        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le restaurer depuis les archives.`;
         modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveActiveProject()">Archiver</button>';
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");

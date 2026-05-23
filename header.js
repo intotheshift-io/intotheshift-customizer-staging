@@ -168,9 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ? `<a class="nav-link ${active("account.html")}" href="account.html">Mon compte</a>`
     : "";
 
-  const archivesLink = logged
-    ? `<a class="nav-link ${active("archives.html")}" href="archives.html">Archives</a>`
-    : "";
 
   const libraryLink = `
     <a class="nav-link ${active("index.html")}" href="index.html">
@@ -235,8 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ${libraryLink}
 
         ${creationLinks}
-
-        ${archivesLink}
 
         ${accountLink}
 

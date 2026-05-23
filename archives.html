@@ -19,7 +19,7 @@
         <h1>Archives</h1>
         <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables et restaurables.</p>
       </div>
-      <a class="btn primary" href="mes-autodiagnostics.html">← Retour aux autodiagnostics</a>
+      <a id="backLink" class="btn primary" href="mes-autodiagnostics.html">← Retour</a>
     </section>
     <section class="toolbar">
       <div><strong id="archiveCount">—</strong> projet(s) archivé(s)</div>
@@ -30,7 +30,13 @@
   <script>
     const API_BASE = window.ITS_API_BASE || localStorage.getItem("its_api_base") || (location.hostname === "localhost" || location.hostname.startsWith("staging.") ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io" : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
     let archives = [];
+    const params = new URLSearchParams(location.search);
+    const clientId = params.get("clientId") || "";
     function token(){return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";}
+    function decodeJwt(){try{const t=token(); return JSON.parse(atob(t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return {}}}
+    function role(){return localStorage.getItem("its_user_role") || decodeJwt().role || "client";}
+    function isAdmin(){return role()==="admin";}
+    function setupBackLink(){const a=document.getElementById("backLink"); if(!a)return; if(clientId){a.href=`client-folder.html?id=${encodeURIComponent(clientId)}`; a.textContent="← Retour au dossier client";}else{a.href="mes-autodiagnostics.html"; a.textContent="← Retour aux autodiagnostics";}}
     function escapeHtml(str){return String(str||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
     function escapeAttr(str){return escapeHtml(str).replace(/`/g,"");}
     function getData(p){const raw=p?.data||{}; if(typeof raw==="string"){try{return JSON.parse(raw)||{}}catch(e){return {}}} return raw&&typeof raw==="object"?raw:{}}
@@ -40,11 +46,16 @@
     async function loadArchives(){
       if(!token()){ location.href="login.html?redirect=archives.html"; return; }
       try{
-        const res = await fetch(`${API_BASE}/api/projects`, {headers:{Authorization:`Bearer ${token()}`}});
+        setupBackLink();
+        const endpoint = isAdmin() ? `${API_BASE}/api/admin/projects` : `${API_BASE}/api/projects`;
+        const res = await fetch(endpoint, {headers:{Authorization:`Bearer ${token()}`}});
         const data = await res.json().catch(()=>({}));
         if(!res.ok) throw new Error(data.error || "Chargement impossible");
         const all = Array.isArray(data) ? data : (data.projects || data.items || []);
         archives = all.filter(p => String(p.status||"").toLowerCase().includes("archiv"));
+        if(clientId){
+          archives = archives.filter(p => String(p.organizationId || p.organization_id || p.orgId || p.org_id || "") === String(clientId));
+        }
         renderArchives();
       }catch(e){
         document.getElementById("archiveList").innerHTML = `<div class="empty"><strong>Archives indisponibles</strong>${escapeHtml(e.message || "Impossible de charger les archives.")}</div>`;
@@ -58,13 +69,13 @@
       if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
       list.innerHTML=rows.map(p=>{
         const id=projectId(p);
-        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">Restaurer</button></div></article>`;
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button><button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">Restaurer</button></div></article>`;
       }).join("");
     }
     function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
     async function restoreProject(id){
       if(!id)return;
-      if(!confirm("Restaurer cet autodiagnostic dans la vue active ?"))return;
+      if(!confirm("Restaurer cet autodiagnostic en statut dépublié dans la vue active ?"))return;
       try{
         const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/restore`,{method:"PATCH",headers:{Authorization:`Bearer ${token()}`}});
         const data=await res.json().catch(()=>({}));
@@ -73,6 +84,18 @@
         renderArchives();
       }catch(e){alert(e.message || "Restauration impossible pour le moment.");}
     }
+    async function cloneProject(id){
+      if(!id)return;
+      if(!confirm("Créer une copie brouillon de cet autodiagnostic archivé ?"))return;
+      try{
+        const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`,{method:"POST",headers:{Authorization:`Bearer ${token()}`}});
+        const data=await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Clonage impossible");
+        if(data.project?.id){ location.href=`questions.html?projectId=${encodeURIComponent(data.project.id)}`; return; }
+        alert("Autodiagnostic cloné.");
+      }catch(e){alert(e.message || "Clonage impossible pour le moment.");}
+    }
+    setupBackLink();
     loadArchives();
   </script>
 </body>

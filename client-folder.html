@@ -178,6 +178,7 @@
         </div>
         <div class="hero-actions">
           <button class="btn" onclick="createAdForThisClient()">Créer un AD pour ce client</button>
+          <button class="btn" onclick="openClientArchives()">📦 Archives</button>
         </div>
       </div>
     </section>
@@ -249,13 +250,13 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="publishModalTitle">
       <div class="modal-header">
         <div>
-          <h3 id="publishModalTitle">Publier cet autodiagnostic ?</h3>
-          <p>Le statut passera en publié dans le cockpit client.</p>
+          <h3 id="publishModalTitle">🟢 Publier cet autodiagnostic ?</h3>
+          <p>Le client verra les liens de diffusion et de résultats dans son cockpit.</p>
         </div>
         <button class="modal-close" type="button" onclick="closePublishModal()" aria-label="Fermer">×</button>
       </div>
       <div class="modal-body">
-        Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift.
+        Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift et si les deux URLs sont définitives.
         <div id="publishProjectTitle" class="modal-highlight"></div>
 
         <div class="modal-form">
@@ -808,7 +809,7 @@ function getProjectTitle(project){
 
     function getAdFilterCounts(projects){
       const activeProjects = projects.filter(p => normalizeStatus(p.status) !== "archived");
-      const counts = {all:activeProjects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
+      const counts = {all:activeProjects.length,draft:0,sent:0,published:0,unpublished:0,endingSoon:0,results:0};
       activeProjects.forEach(project => {
         const s = normalizeStatus(project.status);
         counts[s] = (counts[s] || 0) + 1;
@@ -829,8 +830,7 @@ function getProjectTitle(project){
         ["results","📊 Résultats dispo"],
         ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
-        ["unpublished","🛑 Dépubliés"],
-        ["archived","📦 Archivés"]
+        ["unpublished","🛑 Dépubliés"]
       ];
       wrap.innerHTML = filters.map(([key,label]) => `
         <button class="ad-filter ${currentAdFilter===key?'active':''}" type="button" onclick="setAdFilter('${key}')">
@@ -911,12 +911,12 @@ function getProjectTitle(project){
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
+              ${normalizedStatus === "draft" ? `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>` : ""}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
                 : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
               }
-              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
+              ${normalizedStatus === "draft" ? `<button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>` : ""}
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
@@ -928,7 +928,12 @@ function getProjectTitle(project){
                   : ""
               }
               ${
-                ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
+                ["sent","published","unpublished","archived"].includes(normalizedStatus) && isAdmin()
+                  ? `<button class="small-btn" onclick="cloneProjectFromFolder('${escapeAttr(project.id)}')">🧬 Cloner</button>`
+                  : ""
+              }
+              ${
+                normalizedStatus === "unpublished" && isAdmin()
                   ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
                   : ""
               }
@@ -1075,6 +1080,11 @@ function getProjectTitle(project){
       window.location.href = "index.html";
     }
 
+    function openClientArchives(){
+      const clientId = getClientId();
+      window.location.href = clientId ? `archives.html?clientId=${encodeURIComponent(clientId)}` : "archives.html";
+    }
+
     function editProject(projectId){
       if(projectId) localStorage.setItem("its_current_project_id", projectId);
       localStorage.setItem("its_selected_partner_client_id", getClientId());
@@ -1141,6 +1151,12 @@ function getProjectTitle(project){
       document.getElementById("publishModal").setAttribute("aria-hidden", "true");
     }
 
+    function isValidHttpsUrl(value){
+      const url = String(value || "").trim();
+      if(!url.startsWith("https://")) return false;
+      try{ new URL(url); return true; }catch(e){ return false; }
+    }
+
     async function confirmPublishProject(){
       if(!projectToPublish?.id) return;
 
@@ -1157,6 +1173,10 @@ function getProjectTitle(project){
 
         if(!shareUrl || !resultsUrl){
           throw new Error("Renseigne l’URL de diffusion et l’URL résultats avant de publier.");
+        }
+
+        if(!isValidHttpsUrl(shareUrl) || !isValidHttpsUrl(resultsUrl)){
+          throw new Error("Les URLs doivent être complètes et commencer par https://");
         }
 
         if(startDate && endDate && startDate > endDate){
@@ -1200,6 +1220,11 @@ function getProjectTitle(project){
       if(!projectId || !nextStatus) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const currentStatus = project ? normalizeStatus(project.status) : "";
+      if(nextStatus === "archived" && currentStatus !== "unpublished"){
+        alert("Un projet doit d’abord être dépublié avant d’être archivé.");
+        return;
+      }
       const isArchive = nextStatus === "archived";
       const isUnpublish = nextStatus === "unpublished";
       const ok = await openConfirmModal({
@@ -1241,6 +1266,46 @@ function getProjectTitle(project){
       }
     }
 
+    async function cloneProjectFromFolder(projectId){
+      if(!projectId) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const ok = await openConfirmModal({
+        tone: "primary",
+        icon: "🧬",
+        title: "Cloner cet autodiagnostic ?",
+        subtitle: "Une nouvelle copie sera créée en brouillon.",
+        text: "Le clone reprendra le contenu, les profils et le paramétrage, mais pas les URLs de diffusion/résultats ni les dates de campagne.",
+        project: title,
+        confirmText: "Cloner"
+      });
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/projects/${encodeURIComponent(projectId)}/clone`, {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${getToken()}`
+          }
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Clonage impossible");
+        const cloned = data.project;
+        showToast("Autodiagnostic cloné");
+        if(cloned?.id){
+          localStorage.setItem("its_current_project_id", cloned.id);
+          localStorage.setItem("its_selected_partner_client_id", getClientId());
+          window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
+          return;
+        }
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de cloner cet autodiagnostic.");
+      }
+    }
+
     async function saveCampaignLinks(projectId){
       const project = getCurrentProjectById(projectId);
       if(!project) return;
@@ -1249,6 +1314,11 @@ function getProjectTitle(project){
       const resultsUrl = String(document.getElementById(`campaignResults_${projectId}`)?.value || "").trim();
       const startDate = String(document.getElementById(`campaignStart_${projectId}`)?.value || "").trim();
       const endDate = String(document.getElementById(`campaignEnd_${projectId}`)?.value || "").trim();
+
+      if((shareUrl && !isValidHttpsUrl(shareUrl)) || (resultsUrl && !isValidHttpsUrl(resultsUrl))){
+        alert("Les URLs doivent être complètes et commencer par https://");
+        return;
+      }
 
       if(startDate && endDate && startDate > endDate){
         alert("La date de début ne peut pas être postérieure à la date de fin.");
@@ -1287,6 +1357,10 @@ function getProjectTitle(project){
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const status = project ? normalizeStatus(project.status) : "";
+      if(status !== "draft"){
+        alert("Seuls les brouillons peuvent être supprimés. Pour un projet publié, il faut le dépublier puis l’archiver.");
+        return;
+      }
       const ok = await openConfirmModal({
         tone: "danger",
         icon: "🗑️",
