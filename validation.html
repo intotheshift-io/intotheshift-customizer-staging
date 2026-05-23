@@ -330,9 +330,7 @@ function validationProjectIdFromUrl(){
 function validationLoadProjectFromServerSync(projectId){
   const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
   if(!projectId || !token) return null;
-  const apiBase = window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
-    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
-    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+  const apiBase = "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
   try{
     const xhr = new XMLHttpRequest();
     xhr.open('GET', apiBase + '/api/projects/' + encodeURIComponent(projectId), false);
@@ -1244,11 +1242,7 @@ function closeTransmitModal(){
 
 
 function getApiBaseUrl(){
-  return window.ITS_API_BASE ||
-    localStorage.getItem('its_api_base') ||
-    (window.location.hostname === 'localhost'
-      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
+  return "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
 }
 
 async function sendTransmissionEmails(payload, token){
