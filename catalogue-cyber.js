@@ -2010,6 +2010,673 @@
 
   },
 
+  "comportements-risque-mobilite": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous êtes dans un aéroport et vous posez votre ordinateur portable sur la tablette du scanner de sécurité. Une fois de l'autre côté, vous êtes sollicité·e pour ouvrir votre sac. Votre ordinateur est dans le bac sur le tapis roulant.",
+        tags: ["mobilité", "verrouillage"],
+        answers: [
+          { text: "Je réponds au contrôleur — l'ordinateur est dans le bac et personne n'y touchera.", score: 0 },
+          { text: "Je demande à récupérer mon ordinateur du bac avant de m'arrêter pour ouvrir mon sac.", score: 2 },
+          { text: "Je garde un œil sur le bac pendant que je réponds.", score: 0.5 },
+          { text: "Je demande à quelqu'un de confiance autour de moi de surveiller mon ordinateur.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez dans le train sur des documents RH confidentiels. Le siège à côté de vous est libre mais la personne derrière vous peut voir votre écran.",
+        tags: ["mobilité", "écran"],
+        answers: [
+          { text: "Je continue — je suis concentré·e sur mon travail et je ne regarde pas ce que font les autres.", score: 0 },
+          { text: "Je bascule sur des tâches non confidentielles ou j'installe un filtre de confidentialité.", score: 2 },
+          { text: "Je me penche légèrement en avant pour réduire l'angle de vision de la personne derrière.", score: 0.5 },
+          { text: "Je travaille uniquement sur des documents que je peux refermer rapidement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En déplacement, vous ne travaillez pas sur des documents confidentiels dans des espaces où votre écran peut être vu par des personnes extérieures.",
+        tags: ["mobilité", "visibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez en arrivant à votre hôtel que votre téléphone professionnel n'est plus dans votre poche. Vous l'avez peut-être laissé dans le taxi.",
+        tags: ["mobilité", "perte"],
+        answers: [
+          { text: "Je rappelle le taxi et j'attends de voir s'il a mon téléphone avant de prendre d'autres mesures.", score: 0 },
+          { text: "Je contacte immédiatement mon équipe informatique pour déclencher la procédure de perte et de blocage à distance.", score: 2 },
+          { text: "Je bloque mon téléphone à distance via le service MDM et je le signale ensuite.", score: 1.5 },
+          { text: "Je contacte mon responsable et je reviens sur mes pas pour le chercher.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous revenez d'un salon professionnel avec plusieurs clés USB offertes par des exposants. Vous voulez regarder les informations dessus.",
+        tags: ["mobilité", "stockage"],
+        answers: [
+          { text: "Je les branche sur mon ordinateur professionnel — ce sont des supports officiels de prestataires du secteur.", score: 0 },
+          { text: "Je les remets à l'équipe informatique sans les brancher.", score: 2 },
+          { text: "Je les branche sur un ordinateur déconnecté du réseau pour vérifier leur contenu.", score: 0.5 },
+          { text: "Je les jette directement — les clés USB inconnues ne sont jamais sûres.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne branchez jamais une clé USB ou un support externe dont vous ne connaissez pas l'origine sur vos appareils professionnels.",
+        tags: ["mobilité", "supports externes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez transporter un disque dur externe contenant des données clients pour une présentation chez un client. Le disque n'est pas chiffré.",
+        tags: ["mobilité", "chiffrement"],
+        answers: [
+          { text: "Je l'emporte — la présentation est demain matin et le chiffrement prendrait trop de temps.", score: 0 },
+          { text: "Je demande à l'équipe informatique un disque chiffré ou je transfert les données sur un support approuvé.", score: 2 },
+          { text: "Je chiffre le disque avant de partir — c'est une précaution rapide à prendre.", score: 2 },
+          { text: "Je garde le disque dur dans mon sac tout le temps pour éviter qu'il soit volé.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partez en déplacement professionnel dans un pays étranger. À la douane, un agent vous demande d'ouvrir votre ordinateur et de lui montrer les fichiers que vous transportez.",
+        tags: ["mobilité", "douanes"],
+        answers: [
+          { text: "Je montre les fichiers demandés — refuser un agent de douane est risqué.", score: 0.5 },
+          { text: "Je contacte immédiatement mon responsable juridique ou mon responsable avant d'ouvrir quoi que ce soit.", score: 2 },
+          { text: "Je coopère avec les douanes tout en essayant de limiter l'exposition des données confidentielles.", score: 1 },
+          { text: "Je documente ce qui est demandé et je signale l'incident à mon retour.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant un déplacement professionnel à l'étranger, vous vous renseignez sur les précautions à prendre dans le pays de destination concernant la sécurité de vos données.",
+        tags: ["mobilité", "voyage professionnel"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous utilisez votre téléphone personnel pour accéder aux mails professionnels. Votre fils de 12 ans vous demande d'utiliser votre téléphone pour jouer à un jeu pendant le dîner.",
+        tags: ["mobilité", "BYOD"],
+        answers: [
+          { text: "Je lui prête mon téléphone — il ne touchera pas aux mails professionnels.", score: 0 },
+          { text: "Je lui prête uniquement si mes comptes professionnels sont protégés par un code PIN séparé.", score: 0.5 },
+          { text: "Je lui prête mon téléphone personnel uniquement si j'ai un profil séparé pour le usage pro.", score: 1 },
+          { text: "Je ne prête pas un appareil qui accède à mes données professionnelles.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos appareils en déplacement sont exposés — visibilité de l'écran, supports inconnus, appareils non chiffrés", desc: "Laisser son ordinateur dans le bac du scanner aéroport, travailler sur des RH dans le train avec quelqu'un derrière soi, brancher une clé USB reçue sur un salon, emporter un disque dur non chiffré : le déplacement multiplie les opportunités d'exposition. Un appareil perdu non chiffré, une clé USB piégée, un écran visible dans le train — chacun de ces vecteurs peut compromettre des données sensibles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez vos appareils dans les situations évidentes mais des habitudes pratiques persistent en déplacement", desc: "Vous verrouillez votre ordinateur, vous ne branchez pas n'importe quelle clé USB. Mais la clé USB d'un exposant sur un salon reconnu, le disque non chiffré pour une présentation urgente, l'appareil laissé sans surveillance le temps d'aller chercher un café : ces situations créent encore des expositions. L'enjeu est d'appliquer le même niveau de rigueur dans les situations de mobilité que dans les situations ordinaires." },
+          haut: { label: "Réflexes installés", titre: "Vos appareils en déplacement sont protégés — chiffrés, verrouillés, et vous ne branchez que ce que vous maîtrisez", desc: "Vous récupérez votre ordinateur du bac avant de vous arrêter aux douanes. Vous ne branchez pas les clés USB des salons. Vous chiffrez les supports avant de les emporter. Vous bloquez votre téléphone avant de le prêter à votre enfant. Cette protection constante des appareils — qui suppose parfois de ralentir ou de refuser — est ce qui fait que la mobilité ne crée pas de brèches dans votre sécurité." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous êtes dans un café et vous devez envoyer un devis urgent à un client. Le wifi du café est disponible et votre VPN professionnel est installé mais vous ne l'avez pas encore activé.",
+        tags: ["réseau", "wifi public"],
+        answers: [
+          { text: "J'envoie rapidement le devis — c'est urgent et je serai sur le VPN pour la suite.", score: 0 },
+          { text: "J'active mon VPN avant d'envoyer quoi que ce soit via le wifi public.", score: 2 },
+          { text: "J'envoie via la 4G de mon téléphone pour éviter le wifi public.", score: 1.5 },
+          { text: "Je vérifie que le wifi du café est sécurisé avant de me connecter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous activez votre VPN professionnel avant de vous connecter à un réseau wifi que vous ne maîtrisez pas.",
+        tags: ["réseau", "VPN"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes dans un hôtel et vous vous connectez au wifi 'Hotel_Guest_Free'. Une fenêtre s'ouvre pour vous demander de saisir votre mail pour accéder à internet. Une fois connecté, vous accédez aux systèmes de votre entreprise sans activer le VPN.",
+        tags: ["réseau", "wifi hôtel"],
+        answers: [
+          { text: "Je suis connecté au wifi officiel de l'hôtel — c'est suffisamment sécurisé.", score: 0 },
+          { text: "J'active mon VPN immédiatement après la connexion avant d'accéder à quoi que ce soit.", score: 2 },
+          { text: "Je vérifie d'abord que le réseau est bien celui de l'hôtel et pas un réseau imposteur.", score: 1 },
+          { text: "J'utilise uniquement mon téléphone en partage de connexion depuis l'hôtel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans un aéroport, vous voyez deux réseaux wifi disponibles : 'Airport_Free_WiFi' et 'AirportFreeWifi'. Vous n'êtes pas sûr·e lequel est officiel.",
+        tags: ["réseau", "réseau malveillant"],
+        answers: [
+          { text: "Je me connecte au plus connu des deux — 'Airport_Free_WiFi' ressemble plus à un nom officiel.", score: 0 },
+          { text: "Je n'utilise ni l'un ni l'autre et j'utilise le partage de connexion de mon téléphone.", score: 2 },
+          { text: "Je demande au personnel de l'aéroport quel est le réseau officiel.", score: 1.5 },
+          { text: "Je me connecte à l'un des deux avec le VPN activé pour me protéger.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez le Bluetooth activé sur votre ordinateur professionnel en permanence pour votre casque audio. Vous travaillez régulièrement dans des espaces publics.",
+        tags: ["réseau", "Bluetooth"],
+        answers: [
+          { text: "Je laisse le Bluetooth activé — mon casque en a besoin et les attaques Bluetooth sont rares.", score: 0 },
+          { text: "Je désactive le Bluetooth quand je ne l'utilise pas, surtout dans les espaces publics.", score: 2 },
+          { text: "Je passe en mode 'non détectable' dans les espaces publics.", score: 1.5 },
+          { text: "Je désactive uniquement si je suis dans un lieu avec beaucoup de monde.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En déplacement, vous désactivez le wifi, le Bluetooth et les interfaces sans fil que vous n'utilisez pas activement.",
+        tags: ["réseau", "interfaces sans fil"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez partager votre connexion 4G avec votre ordinateur lors d'un déplacement. Vous créez un point d'accès WiFi avec votre prénom et sans mot de passe pour vous y connecter facilement.",
+        tags: ["réseau", "partage connexion"],
+        answers: [
+          { text: "C'est pratique et le partage est temporaire — pas la peine de mettre un mot de passe.", score: 0 },
+          { text: "Je mets un mot de passe fort sur mon point d'accès même pour une connexion temporaire.", score: 2 },
+          { text: "Je mets un mot de passe simple que je changerai ensuite.", score: 0.5 },
+          { text: "J'utilise un nom de réseau neutre sans mon prénom.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre téléphone professionnel est presque à plat dans un aéroport. Vous voyez une borne de charge USB publique.",
+        tags: ["réseau", "charge publique"],
+        answers: [
+          { text: "Je branche mon téléphone — j'ai besoin de batterie et les bornes publiques sont pratiques.", score: 0 },
+          { text: "Je n'utilise pas les bornes USB publiques et j'utilise une prise électrique standard avec mon propre câble.", score: 2 },
+          { text: "Je branche avec mon propre câble — le câble officiel protège contre les injections de données.", score: 0.5 },
+          { text: "J'active le mode 'charge seulement' sur mon téléphone avant de brancher.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez pas les bornes de charge USB publiques pour vos appareils professionnels.",
+        tags: ["réseau", "charge USB"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En télétravail depuis votre domicile, votre box internet tombe en panne. Votre voisin vous propose d'utiliser son wifi pour finir votre journée de travail.",
+        tags: ["réseau", "connexion à distance"],
+        answers: [
+          { text: "J'accepte — je connais mon voisin et j'activerai le VPN.", score: 0.5 },
+          { text: "Je partage la connexion de mon téléphone plutôt que d'utiliser un réseau que je ne maîtrise pas.", score: 2 },
+          { text: "J'accepte uniquement pour les tâches non sensibles.", score: 0.5 },
+          { text: "J'accepte avec le VPN activé en permanence.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez les réseaux disponibles sans appliquer systématiquement le VPN", desc: "Se connecter au wifi de l'hôtel sans VPN parce que 'c'est le wifi officiel', utiliser une borne USB publique pour recharger, créer un hotspot sans mot de passe : les réseaux publics et partagés sont des environnements non maîtrisés. Ce qui transite dessus sans VPN peut être intercepté. La règle est simple : VPN avant tout accès professionnel, jamais de USB public." },
+          moyen: { label: "Pratiques en développement", titre: "Vous activez le VPN sur les réseaux clairement non sécurisés mais pas encore systématiquement", desc: "Vous activez le VPN quand le réseau vous semble clairement risqué. Mais le wifi de l'hôtel qui semble 'officiel', la connexion chez le voisin avec le VPN, la borne de charge USB avec votre propre câble : des raccourcis subsistent. L'enjeu est de traiter tout réseau non maîtrisé de la même façon, indépendamment de son apparence de légitimité." },
+          haut: { label: "Réflexes installés", titre: "Vous activez le VPN avant tout accès professionnel sur un réseau non maîtrisé, sans exception", desc: "Vous activez le VPN avant d'envoyer quoi que ce soit depuis un café, un hôtel ou un coworking. Vous ne branchez pas de borne USB publique. Vous ne connectez pas votre téléphone à la TV de l'hôtel. Vous désactivez le wifi et le Bluetooth quand vous ne les utilisez pas. Cette discipline sur les réseaux en mobilité — qui s'applique même quand tout semble normal — est ce qui empêche l'interception de vos données." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous êtes en réunion client et vous laissez votre ordinateur ouvert sur la table pendant la pause café. Des personnes extérieures à la réunion circulent dans la salle.",
+        tags: ["accès mobilité", "session non surveillée"],
+        answers: [
+          { text: "Je laisse ouvert — la réunion reprend dans 5 minutes et les personnes qui passent ne toucheront pas à mon ordinateur.", score: 0 },
+          { text: "Je verrouille mon ordinateur avant de quitter mon poste, même pour 5 minutes.", score: 2 },
+          { text: "Je minimise toutes les fenêtres avant de partir.", score: 0.5 },
+          { text: "Je demande à un collègue de rester près de mon ordinateur.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous verrouillez votre poste dès que vous le quittez, même brièvement, y compris en déplacement chez un client.",
+        tags: ["accès mobilité", "verrouillage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez accéder à votre espace RH pour consulter une information sensible depuis la salle d'attente d'un client. Plusieurs personnes attendent autour de vous.",
+        tags: ["accès mobilité", "connexion lieu public"],
+        answers: [
+          { text: "Je me connecte rapidement — j'en ai pour moins d'une minute.", score: 0 },
+          { text: "J'attends d'être dans un espace privé ou je me déplace dans un coin isolé.", score: 2 },
+          { text: "Je me connecte en orientant mon écran pour que personne ne voie.", score: 0.5 },
+          { text: "J'utilise mon téléphone plutôt que mon ordinateur pour limiter la visibilité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous utilisez un ordinateur mis à disposition dans l'espace de coworking que vous partagez ce jour-là. Vous devez accéder à vos mails professionnels.",
+        tags: ["accès mobilité", "connexion partagée"],
+        answers: [
+          { text: "J'accède à mes mails directement depuis le navigateur de l'ordinateur partagé.", score: 0 },
+          { text: "Je n'utilise que mon propre appareil pour accéder à mes comptes professionnels.", score: 2 },
+          { text: "J'accède en navigation privée pour éviter d'enregistrer mes identifiants.", score: 0.5 },
+          { text: "J'accède avec le VPN activé sur l'ordinateur partagé.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre ordinateur portable professionnel est volé lors d'un déplacement. Il était verrouillé mais le disque dur n'était pas chiffré.",
+        tags: ["accès mobilité", "appareil volé"],
+        answers: [
+          { text: "Je signale le vol à la police et j'en informe mon responsable à mon retour.", score: 0 },
+          { text: "Je contacte immédiatement l'équipe informatique et le DPO pour déclencher la procédure — les données non chiffrées sont potentiellement exposées.", score: 2 },
+          { text: "Je bloque l'accès à mes comptes depuis cet appareil et je le signale à l'équipe informatique.", score: 1.5 },
+          { text: "Je signale le vol à la police et à l'équipe informatique dans la journée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'accédez jamais à vos comptes professionnels depuis un appareil partagé ou dont vous n'avez pas la maîtrise.",
+        tags: ["accès mobilité", "appareils partagés"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes à l'étranger et vous avez un problème de réception SMS pour votre code 2FA. Vous demandez au support IT de désactiver temporairement le 2FA sur votre compte.",
+        tags: ["accès mobilité", "MFA en déplacement"],
+        answers: [
+          { text: "Je demande la désactivation — sans le 2FA, je ne peux pas travailler.", score: 0 },
+          { text: "Je demande au support IT une solution alternative — application d'authentification, code de secours — sans désactiver le 2FA.", score: 2 },
+          { text: "Je désactive uniquement pour les applications non critiques.", score: 0 },
+          { text: "Je contacte mon responsable pour qu'il arbitre.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous revenez dans les locaux d'un client après une pause. Un inconnu arrive en même temps que vous et se glisse derrière vous pour entrer sans badge.",
+        tags: ["accès mobilité", "tailgating"],
+        answers: [
+          { text: "Je le laisse entrer — il était peut-être en train de chercher son badge.", score: 0 },
+          { text: "Je ne lui tiens pas la porte et je l'oriente vers l'accueil.", score: 2 },
+          { text: "Je lui demande s'il a son badge avant de décider.", score: 1.5 },
+          { text: "Je laisse entrer et je préviens l'accueil après.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En déplacement chez un client ou dans des locaux extérieurs, vous ne circulez que dans les zones où vous êtes autorisé·e.",
+        tags: ["accès mobilité", "zones sensibles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous quittez un hôtel après deux jours de déplacement. Vous avez accédé aux systèmes de votre entreprise depuis le wifi de l'hôtel. Vous partez rapidement.",
+        tags: ["accès mobilité", "déconnexion"],
+        answers: [
+          { text: "Je pars sans faire de manipulation particulière — mes sessions se déconnectent automatiquement.", score: 0 },
+          { text: "Je vérifie que toutes mes sessions sont fermées et que je suis bien déconnecté·e du VPN avant de partir.", score: 2 },
+          { text: "Je ferme mon ordinateur — la mise en veille ferme les applications.", score: 0 },
+          { text: "Je change mon mot de passe à mon retour au bureau par précaution.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès en déplacement restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser son ordinateur ouvert pendant la pause café chez un client, accéder à l'espace RH depuis la salle d'attente d'un client, se connecter à ses mails depuis un ordinateur partagé : les accès en déplacement sont plus exposés qu'au bureau. Verrouiller en partant, ne jamais utiliser un appareil non maîtrisé, déconnecter avant de quitter un lieu — ces réflexes sont aussi importants en mobilité qu'au bureau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais votre gestion des accès en mobilité reste perfectible", desc: "Vous verrouillez en partant. Mais accéder à l'espace RH depuis la salle d'attente cliente, laisser les sessions ouvertes en quittant l'hôtel rapidement, désactiver le 2FA parce que les SMS ne passent pas à l'étranger : ces situations créent des accès non sécurisés que vous ne gérez pas encore avec la même rigueur. L'enjeu est de trouver des solutions alternatives plutôt que de contourner les protections." },
+          haut: { label: "Réflexes installés", titre: "Vous verrouillez systématiquement et vous ne créez pas d'accès de contournement même pour des cas particuliers", desc: "Vous verrouillez en quittant une salle de réunion cliente. Vous n'accédez pas à des données sensibles depuis la salle d'attente. Vous ne vous connectez que depuis vos propres appareils. Vous cherchez une solution alternative plutôt que de désactiver le 2FA. Vous vous déconnectez avant de quitter l'hôtel. Cette gestion rigoureuse des accès en mobilité — sans exception pour les cas pratiques — est ce qui rend vos sessions vraiment sécurisées." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous êtes dans un ascenseur avec des personnes extérieures et vous continuez une conversation téléphonique professionnelle sur un sujet stratégique commencée avant d'entrer.",
+        tags: ["réflexes mobilité", "conversation"],
+        answers: [
+          { text: "Je continue — la conversation sera courte et les gens dans l'ascenseur ne font pas attention.", score: 0 },
+          { text: "Je dis à mon interlocuteur que je rappelle dans deux minutes et je coupe.", score: 2 },
+          { text: "Je baisse la voix et je reste vague sur les détails jusqu'à sortir de l'ascenseur.", score: 0.5 },
+          { text: "Je continue en choisissant mes mots pour ne pas révéler d'informations confidentielles.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous interrompez les conversations professionnelles confidentielles lorsque vous entrez dans des espaces partagés ou accessibles au public.",
+        tags: ["réflexes mobilité", "conversations"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous envoyez un document confidentiel à l'imprimante d'un client pour l'utiliser en réunion. Vous n'êtes pas encore dans la salle d'impression.",
+        tags: ["réflexes mobilité", "imprimante distante"],
+        answers: [
+          { text: "Je lance l'impression — la salle d'impression est proche et je serai là rapidement.", score: 0 },
+          { text: "J'attends d'être devant l'imprimante avant de lancer l'impression.", score: 2 },
+          { text: "Je lance l'impression en me déplaçant immédiatement vers l'imprimante.", score: 1 },
+          { text: "Je demande à quelqu'un sur place de récupérer le document pour moi.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous enregistrez votre visage sur votre téléphone professionnel pour déverrouiller l'écran plus rapidement. C'est un appareil que vous utilisez aussi bien au bureau qu'en déplacement.",
+        tags: ["réflexes mobilité", "reconnaissance faciale"],
+        answers: [
+          { text: "C'est plus rapide que le code PIN et tout aussi sécurisé.", score: 0.5 },
+          { text: "Je conserve un code PIN long en plus de la reconnaissance faciale — la biométrie seule peut être contournée physiquement.", score: 2 },
+          { text: "Je désactive la reconnaissance faciale pour les déplacements à l'étranger.", score: 1.5 },
+          { text: "Je préfère un code PIN — la biométrie présente des risques spécifiques en déplacement.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après une réunion chez un client, vous oubliez des copies papier de votre présentation dans la salle de réunion. Elle contient des données internes.",
+        tags: ["réflexes mobilité", "documents papier"],
+        answers: [
+          { text: "Je les laisse — ce sont des copies que j'avais de toute façon prévu de donner au client.", score: 0 },
+          { text: "Je retourne les chercher ou je contacte le client pour lui demander de les détruire.", score: 2 },
+          { text: "Je contacte mon interlocuteur client pour lui demander de les récupérer pour moi.", score: 1.5 },
+          { text: "Je note l'incident et j'évalue si les informations étaient suffisamment sensibles pour agir.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En déplacement, vous récupérez systématiquement tous vos documents papier après chaque réunion, sans en laisser dans les salles extérieures.",
+        tags: ["réflexes mobilité", "documents papier"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous participez à un salon professionnel et plusieurs personnes vous posent des questions sur votre organisation, vos clients et vos technologies. L'ambiance est conviviale.",
+        tags: ["réflexes mobilité", "informations sensibles"],
+        answers: [
+          { text: "Je réponds ouvertement — c'est un salon professionnel et les échanges sont la norme.", score: 0 },
+          { text: "Je parle de mes domaines d'expertise et de mes offres sans détailler l'organisation interne ni les clients.", score: 2 },
+          { text: "Je réponds sur ce qui est déjà public et je reste vague sur le reste.", score: 1.5 },
+          { text: "Je donne des informations générales sur le secteur sans parler de mon entreprise spécifiquement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre hôtel propose de connecter votre téléphone à la télévision via une application pour avoir un meilleur écran. Vous l'utilisez parfois pour travailler.",
+        tags: ["réflexes mobilité", "objets connectés"],
+        answers: [
+          { text: "Je connecte mon téléphone — c'est pratique pour travailler depuis la chambre d'hôtel.", score: 0 },
+          { text: "Je ne connecte pas mon téléphone professionnel à des équipements non maîtrisés.", score: 2 },
+          { text: "Je connecte uniquement pour des contenus personnels, jamais pour le travail.", score: 1 },
+          { text: "Je vérifie d'abord que la connexion est locale et ne passe pas par internet.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En déplacement, vous ne connectez pas vos appareils professionnels à des équipements dont vous n'avez pas la maîtrise — TV, bornes, systèmes audio.",
+        tags: ["réflexes mobilité", "équipements tiers"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "De retour de déplacement, vous réalisez que votre ordinateur a été allumé dans votre chambre d'hôtel pendant votre absence — les applications que vous aviez fermées sont ouvertes.",
+        tags: ["réflexes mobilité", "signalement incident"],
+        answers: [
+          { text: "Je note l'incident mais je ne le signale pas — il n'y a peut-être pas eu accès aux données.", score: 0 },
+          { text: "Je contacte immédiatement l'équipe informatique en leur décrivant la situation.", score: 2 },
+          { text: "Je change tous mes mots de passe et j'active le 2FA si ce n'est pas déjà fait.", score: 1 },
+          { text: "Je vérifie les journaux d'activité de mon compte pour voir si quelque chose a été consulté.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre vigilance informationnelle baisse dans les espaces informels de déplacement", desc: "Continuer une conversation stratégique dans l'ascenseur, répondre ouvertement aux questions d'un salon sur son organisation interne, oublier des documents dans une salle de réunion cliente : les espaces informels du déplacement sont des environnements d'intelligence économique. Ce qui est dit ou laissé peut être utilisé." },
+          moyen: { label: "Pratiques en développement", titre: "Votre vigilance informationnelle est présente dans les situations formelles mais peut baisser dans les contextes informels", desc: "Vous évitez les informations confidentielles dans les conversations formelles. Mais l'ascenseur où vous continuez un appel en baissant juste la voix, le salon professionnel où la convivialité fait baisser la garde, l'ordinateur allumé dans la chambre d'hôtel qu'on ne signale pas : ces situations informelles restent encore dans vos angles morts. L'enjeu est d'étendre votre vigilance aux contextes non formels." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance informationnelle s'applique dans tous les contextes de déplacement, formels ou informels", desc: "Vous interrompez les appels stratégiques dans l'ascenseur. Vous récupérez tous vos documents en quittant une salle cliente. Vous restez vague sur votre organisation interne dans les conversations de salon. Vous signalez l'ordinateur qui a été allumé dans votre chambre. Cette vigilance étendue aux contextes informels est ce qui évite que les espaces de déplacement deviennent des espaces d'intelligence économique." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -2017,29 +2684,42 @@
     ["phishing-manipulation", "Phishing, arnaques et tentatives de manipulation", "Tous publics",
       "Reconnaître les tentatives, réagir correctement et résister aux prétextes élaborés.",
       { domain: "cyber", chapters: [
-        ["Reconnaître les tentatives de manipulation",  "Détecter les signaux d'alerte même dans les messages bien construits."],
-        ["Réagir correctement face à une tentative",    "Signaler immédiatement, déconnecter, changer ses identifiants — sans attendre."],
-        ["Résister à la pression et aux prétextes",     "Maintenir la vérification indépendante même face à une autorité apparente."],
-        ["Adopter les bons réflexes au quotidien",      "Discrétion sur les informations indirectes et signalement du doute."]
-      ]}],
+        ["Reconnaître les tentatives de manipulation", "Détecter les signaux d'alerte même dans les messages bien construits."],
+        ["Réagir correctement face à une tentative", "Signaler immédiatement, déconnecter, changer ses identifiants — sans attendre."],
+        ["Résister à la pression et aux prétextes", "Maintenir la vérification indépendante même face à une autorité apparente."],
+        ["Adopter les bons réflexes au quotidien", "Discrétion sur les informations indirectes et signalement du doute."],
+      ]}
+    ],
 
     ["mots-de-passe-acces", "Mots de passe et authentification", "Tous publics",
       "Créer des mots de passe solides, activer le 2FA et gérer ses accès selon le principe de moindre privilège.",
       { domain: "cyber", chapters: [
-        ["Créer et gérer des mots de passe solides",      "Unicité, complexité, gestionnaire — sans exception ni contournement."],
-        ["Utiliser l'authentification à deux facteurs",   "Activer partout, ne jamais partager ses codes, réagir aux notifications non initiées."],
-        ["Gérer les accès et les sessions",                "Verrouiller, révoquer, appliquer le principe de moindre privilège."],
-        ["Réagir à une compromission d'accès",            "Signaler vite, déconnecter, coopérer — sans attendre la certitude."]
-      ]}],
+        ["Créer et gérer des mots de passe solides", "Unicité, complexité, gestionnaire — sans exception ni contournement."],
+        ["Utiliser l'authentification à deux facteurs", "Activer partout, ne jamais partager ses codes, réagir aux notifications non initiées."],
+        ["Gérer les accès et les sessions", "Verrouiller, révoquer, appliquer le principe de moindre privilège."],
+        ["Réagir à une compromission d'accès", "Signaler vite, déconnecter, coopérer — sans attendre la certitude."],
+      ]}
+    ],
 
     ["donnees-confidentialite", "Données et confidentialité", "Tous publics",
       "Identifier, protéger et partager les données professionnelles de façon sécurisée et conforme au RGPD.",
       { domain: "cyber", chapters: [
-        ["Identifier et protéger les données sensibles",  "Reconnaître les données sensibles et les protéger quel que soit le support."],
-        ["Partager les données de façon sécurisée",       "Vérifier destinataires, canaux et droits avant tout partage."],
-        ["Respecter le RGPD au quotidien",                "Consentement, minimisation, durées de conservation — en pratique."],
-        ["Gérer les incidents liés aux données",          "Signaler vite, coopérer pleinement, ne rien emporter en partant."]
-      ]}],
+        ["Identifier et protéger les données sensibles", "Reconnaître les données sensibles et les protéger quel que soit le support."],
+        ["Partager les données de façon sécurisée", "Vérifier destinataires, canaux et droits avant tout partage."],
+        ["Respecter le RGPD au quotidien", "Consentement, minimisation, durées de conservation — en pratique."],
+        ["Gérer les incidents liés aux données", "Signaler vite, coopérer pleinement, ne rien emporter en partant."],
+      ]}
+    ],
+
+    ["comportements-risque-mobilite", "Comportements à risque en mobilité", "Tous publics",
+      "Protéger ses appareils, sécuriser ses connexions et maintenir sa vigilance en déplacement.",
+      { domain: "cyber", chapters: [
+        ["Sécuriser ses appareils en déplacement", "Chiffrement, verrouillage, supports externes — même vigilance qu'au bureau."],
+        ["Utiliser les réseaux en déplacement", "VPN systématique, pas de USB public, interfaces sans fil désactivées."],
+        ["Gérer les accès en déplacement", "Verrouiller, ne pas utiliser d'appareils partagés, déconnecter en partant."],
+        ["Adopter les bons réflexes partout", "Conversations, documents papier, équipements tiers — vigilance dans tous les contextes."],
+      ]}
+    ],
 
   ]);
 
