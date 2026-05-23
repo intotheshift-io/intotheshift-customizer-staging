@@ -662,6 +662,13 @@ function getProjectTitle(project){
       const project = isObject ? projectOrStatus : null;
       const data = project ? getProjectData(project) : {};
       const s = String(project ? (project.status || project.project_status || data.status || data.project_status || "") : (projectOrStatus || "")).toLowerCase();
+
+      const isArchived =
+        s === "archived" ||
+        s.includes("archiv") ||
+        Boolean(project?.archived_at || project?.archivedAt || data.archived_at || data.archivedAt);
+      if(isArchived) return "archived";
+
       const sentFlag = Boolean(
         project?.configTransmise === true ||
         project?.config_transmise === true ||
@@ -673,7 +680,7 @@ function getProjectTitle(project){
         data.transmission?.submitted_at ||
         data.submitted_at
       );
-      if(s === "archived" || s.includes("archiv")) return "archived";
+
       if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
       if(s === "sent" || s === "transmis" || s === "submitted" || s === "transmitted" || sentFlag) return "sent";
       if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
@@ -920,7 +927,7 @@ function getProjectTitle(project){
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <span class="status ${getStatusClass(project)}">${getStatusLabel(project)}</span>
             ${renderAlertBadges(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
@@ -982,7 +989,7 @@ function getProjectTitle(project){
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <span class="status ${getStatusClass(project)}">${getStatusLabel(project)}</span>
             ${renderAlertBadges(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>

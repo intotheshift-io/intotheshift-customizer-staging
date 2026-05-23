@@ -311,19 +311,27 @@
 
 
     function normalizeStatus(project) {
-      const raw = String(project.status || project.project_status || "").toLowerCase();
+      const raw = String(project?.status || project?.project_status || "").toLowerCase();
       const data = getProjectData(project);
+      const isArchived =
+        raw === "archived" ||
+        raw.includes("archiv") ||
+        Boolean(project?.archived_at || project?.archivedAt || data.archived_at || data.archivedAt);
+      if (isArchived) return "archived";
+
       const sentFlag =
-        project.configTransmise === true ||
-        project.config_transmise === true ||
+        project?.configTransmise === true ||
+        project?.config_transmise === true ||
+        project?.submitted === true ||
         data.configTransmise === true ||
         data.config_transmise === true ||
-        data.submitted === true;
+        data.submitted === true ||
+        data.transmission?.status === "sent" ||
+        Boolean(data.transmission?.submitted_at || data.submitted_at);
 
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
-      if (raw.includes("publi")) return "published";
-      if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
-      if (raw.includes("archiv")) return "archived";
+      if (raw === "published" || raw.includes("publi")) return "published";
+      if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || raw.includes("transmitted") || sentFlag) return "submitted";
       return "draft";
     }
 
