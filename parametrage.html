@@ -192,6 +192,52 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .sidebar .its-quota-card *{
   max-width:100%;
 }
+
+/* ── Dates campagne : visibilité + délai de livraison ───────── */
+.date-field-strong{
+  background:linear-gradient(135deg,#fffdf6,#fff8ec);
+  border:1px solid #ffd490;
+  border-radius:16px;
+  padding:13px 14px;
+  box-shadow:0 8px 22px rgba(183,132,10,.10);
+}
+.date-field-strong label{
+  color:#8a5a00;
+  font-size:11px;
+}
+.date-field-strong .inp[type="date"]{
+  border:2px solid #ffc744;
+  background:#fff;
+  color:#18375d;
+  font-weight:900;
+  font-size:15px;
+  min-height:44px;
+}
+.date-field-strong .inp[type="date"]:focus{
+  border-color:#eb6366;
+  box-shadow:0 0 0 4px rgba(235,99,102,.12);
+}
+.date-help{
+  margin-top:7px;
+  font-size:11px;
+  line-height:1.35;
+  color:#8a5a00;
+  font-weight:700;
+}
+.date-alert-inline{
+  display:none;
+  margin:8px 0 14px;
+  background:#fff8ec;
+  border:1px solid #ffd490;
+  color:#8a5a00;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:12px;
+  line-height:1.45;
+  font-weight:800;
+}
+.date-alert-inline.on{display:block}
+
 select option[value="current_pack"]{
   font-weight:900;
   color:#18375d;
@@ -266,9 +312,10 @@ select option[value="current_pack"]{
           </div>
         </div>
         <div class="inp-row">
-          <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
-          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
+          <div class="field date-field-strong"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateCampaignDate('date_lancement',this.value);updateSidebar();checkContinue()"><div class="date-help" id="dateStartHelp">La date de lancement doit être au minimum à J+5 pour laisser le temps de préparer et livrer la campagne.</div></div>
+          <div class="field date-field-strong"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateCampaignDate('date_cloture',this.value);updateSidebar();checkContinue()"><div class="date-help">La date de clôture doit être postérieure à la date de lancement.</div></div>
         </div>
+        <div id="dateParamAlert" class="date-alert-inline"></div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
         <div class="field" style="margin-bottom:0">
@@ -818,6 +865,70 @@ function save(){
     paramPersistLightStateForBridge(state);
   }
 }
+
+function dateToISO(date){
+  if(!(date instanceof Date) || Number.isNaN(date.getTime())) return '';
+  const y = date.getFullYear();
+  const m = String(date.getMonth()+1).padStart(2,'0');
+  const d = String(date.getDate()).padStart(2,'0');
+  return `${y}-${m}-${d}`;
+}
+function addDaysISO(days){
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + Number(days || 0));
+  return dateToISO(d);
+}
+function getMinLaunchDate(){
+  return addDaysISO(5);
+}
+function ensureCampaignDateConstraints(){
+  const startEl = document.getElementById('date_lancement');
+  const endEl = document.getElementById('date_cloture');
+  const alertEl = document.getElementById('dateParamAlert');
+  const minLaunch = getMinLaunchDate();
+
+  if(startEl){
+    startEl.min = minLaunch;
+    if(!startEl.value && !state.parametrage?.date_lancement){
+      startEl.placeholder = minLaunch;
+    }
+  }
+  if(endEl){
+    endEl.min = startEl?.value || minLaunch;
+  }
+
+  let message = '';
+  if(startEl && startEl.value && startEl.value < minLaunch){
+    startEl.value = minLaunch;
+    state.parametrage.date_lancement = minLaunch;
+    state.parametrage.dateLancement = minLaunch;
+    message = `La date de lancement a été ajustée au ${formatDateFr(minLaunch)} : le lancement doit être prévu au minimum 5 jours après aujourd’hui.`;
+  }
+
+  if(endEl && startEl && endEl.value && startEl.value && endEl.value < startEl.value){
+    endEl.value = startEl.value;
+    state.parametrage.date_cloture = startEl.value;
+    state.parametrage.dateCloture = startEl.value;
+    message = `La date de clôture a été ajustée : elle ne peut pas être antérieure à la date de lancement.`;
+  }
+
+  if(alertEl){
+    alertEl.textContent = message;
+    alertEl.classList.toggle('on', Boolean(message));
+  }
+
+  normalizeCampaignDatesInState();
+}
+function updateCampaignDate(key, value){
+  state.parametrage = state.parametrage || {};
+  state.parametrage[key] = value || '';
+  if(key === 'date_lancement') state.parametrage.dateLancement = state.parametrage.date_lancement;
+  if(key === 'date_cloture') state.parametrage.dateCloture = state.parametrage.date_cloture;
+  ensureCampaignDateConstraints();
+  save();
+}
+
 function normalizeCampaignDatesInState(){
   const start = state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.campaignStartDate || state.campaign_start_date || '';
   const end = state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.campaignEndDate || state.campaign_end_date || '';
@@ -891,6 +1002,7 @@ async function init(){
   if(ps) ps.value=p.pack_choisi||'';
   updateSlug(p.slug);
   updatePack(p.pack_choisi||'', false);
+  ensureCampaignDateConstraints();
   renderSociodemo();
   renderResources();
   renderPassationLogo();
@@ -1051,7 +1163,9 @@ function getMissingParametrageFields(){
   if(!String(titre).trim()) missing.push({ id:'titre', label:"Titre visible par les répondants" });
   if(!String(entreprise).trim()) missing.push({ id:'entreprise', label:"Nom de l'entreprise / espace client" });
   if(!String(slug).trim()) missing.push({ id:'slug', label:"Slug de l'URL" });
+  const minLaunch = getMinLaunchDate();
   if(!String(lancement).trim()) missing.push({ id:'date_lancement', label:"Date de lancement souhaitée" });
+  if(lancement && String(lancement) < minLaunch) missing.push({ id:'date_lancement', label:"Date de lancement au minimum à J+5" });
   if(!String(cloture).trim()) missing.push({ id:'date_cloture', label:"Date de clôture" });
   if(lancement && cloture && String(lancement) > String(cloture)) missing.push({ id:'date_cloture', label:"Date de clôture postérieure à la date de lancement" });
   if(!String(intro).trim()) missing.push({ id:'intro', label:"Texte d'introduction" });
@@ -1194,6 +1308,7 @@ async function goNext(){
   state.parametrage.dateLancement = state.parametrage.date_lancement;
   state.parametrage.date_cloture = getFieldValue('date_cloture') || state.parametrage.date_cloture || '';
   state.parametrage.dateCloture = state.parametrage.date_cloture;
+  ensureCampaignDateConstraints();
   state.parametrage.nb_repondants = Number(getFieldValue('nb_repondants') || state.parametrage.nb_repondants || 0);
 
   if(!isPartnerMode()){
