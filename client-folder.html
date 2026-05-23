@@ -65,6 +65,11 @@
     .campaign-link-actions{display:flex;gap:6px;flex-wrap:wrap}
     .small-btn.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
     .small-btn.danger:hover{background:#ffe4e6}
+    .pack-upgrade-box{background:#fff8ec;border:1px solid #ffd9a3;color:#8a5a00;border-radius:16px;padding:12px 13px;margin:12px 0;font-size:13px;line-height:1.45}
+    .pack-upgrade-box strong{color:#17375d}
+    .pack-upgrade-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .small-btn.approve-pack{background:#16774a;color:#fff;border-color:#16774a}
+    .small-btn.reject-pack{background:#fff;color:#9a3412;border-color:#fed7aa}
     @media(max-width:760px){.campaign-link-row{grid-template-columns:1fr}.campaign-link-actions .small-btn{width:100%;justify-content:center}}
 
     .modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
@@ -178,7 +183,6 @@
         </div>
         <div class="hero-actions">
           <button class="btn" onclick="createAdForThisClient()">Créer un AD pour ce client</button>
-          <button class="btn" onclick="openClientArchives()">📦 Archives <span id="clientArchivesCount" style="margin-left:6px;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:2px 7px;font-size:12px">0</span></button>
         </div>
       </div>
     </section>
@@ -250,13 +254,13 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="publishModalTitle">
       <div class="modal-header">
         <div>
-          <h3 id="publishModalTitle">🟢 Publier cet autodiagnostic ?</h3>
-          <p>Le client verra les liens de diffusion et de résultats dans son cockpit.</p>
+          <h3 id="publishModalTitle">Publier cet autodiagnostic ?</h3>
+          <p>Le statut passera en publié dans le cockpit client.</p>
         </div>
         <button class="modal-close" type="button" onclick="closePublishModal()" aria-label="Fermer">×</button>
       </div>
       <div class="modal-body">
-        Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift et si les deux URLs sont définitives.
+        Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift.
         <div id="publishProjectTitle" class="modal-highlight"></div>
 
         <div class="modal-form">
@@ -427,62 +431,23 @@
       return Object.assign({}, data, state, payload);
     }
 
-    function cleanAdTitle(title){
-      const cleaned = String(title || "")
-        .replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i, "")
-        .replace(/^\s*Autodiag\s*[-–—:]?\s*/i, "")
-        .trim();
-      if(!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) return "Projet sans titre";
-      return cleaned;
-    }
-
-    function pickProjectTitle(...values){
-      for(const value of values){
-        const cleaned = cleanAdTitle(value);
-        if(cleaned && cleaned !== "Projet sans titre") return cleaned;
-      }
-      return "Projet sans titre";
-    }
+    function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 
 function getProjectTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
-      const state = data.state && typeof data.state === "object" ? data.state : {};
-      const param = payload.parametrage || state.parametrage || data.parametrage || {};
-      return pickProjectTitle(
-        project?.displayTitle,
-        project?.display_title,
-        project?.titre_repondants,
-        project?.titreRespondants,
-        param.titre_repondants,
-        param.titreRespondants,
-        param.titre_visible_repondants,
-        param.titreVisibleRepondants,
-        param.titre_visible,
-        param.titreVisible,
-        param.titre,
-        payload.titre_repondants,
-        payload.titreRespondants,
-        payload.titre_autodiag,
-        payload.autodiagTitle,
-        payload.displayTitle,
-        payload.display_title,
-        payload.title,
-        payload.titre,
-        state.titre_repondants,
-        state.titreRespondants,
-        state.autodiagTitle,
-        state.displayTitle,
-        state.display_title,
-        state.title,
-        data.titre_repondants,
-        data.titreRespondants,
-        data.autodiagTitle,
-        data.displayTitle,
-        data.display_title,
-        data.title,
-        project.title,
-        param.nom
+      const param = payload.parametrage || data.parametrage || {};
+      return cleanAdTitle(
+        payload.titre_autodiag ||
+        payload.autodiagTitle ||
+        payload.title ||
+        payload.titre ||
+        param.nom ||
+        param.titre ||
+        data.autodiagTitle ||
+        data.title ||
+        project.title ||
+        "Autodiag sans titre"
       );
     }
 
@@ -552,6 +517,82 @@ function getProjectTitle(project){
       const comment = getProjectComment(project);
       if(!comment) return "";
       return `<div class="card-meta" style="background:#fff;border:1px solid #e4edf5;border-radius:14px;padding:10px 12px;margin-top:10px"><strong>Commentaire client :</strong><br>${escapeHtml(comment)}</div>`;
+    }
+
+    function getPackUpgradeRequest(project){
+      const data = getProjectData(project);
+      const param = data.parametrage || {};
+      const choice = String(
+        param.pack_choisi ||
+        param.packChoisi ||
+        param.selectedPack ||
+        data.pack_choisi ||
+        data.packChoisi ||
+        data.selectedPack ||
+        ""
+      ).trim();
+
+      const status = String(
+        data.pack_upgrade_status ||
+        data.packUpgradeStatus ||
+        param.pack_upgrade_status ||
+        param.packUpgradeStatus ||
+        ""
+      ).toLowerCase();
+
+      if(!choice || choice === "current_pack" || choice === "existing") return { requested:false, status, choice };
+
+      const orgPack = String(project.organizationPassationsPack || project.organization_passations_pack || "").toLowerCase();
+      if(orgPack === "illimite" && choice !== "illimite") return { requested:false, status:"not_required", choice };
+
+      const quota = Number(project.organizationPassationsQuota || project.organization_passations_quota || 0);
+      const used = Number(project.organizationPassationsUsed || project.organization_passations_used || 0);
+      const amount = choice === "illimite" ? null : Number(choice || 0);
+      if(choice !== "illimite" && (!Number.isFinite(amount) || amount <= 0)) return { requested:false, status, choice };
+
+      return {
+        requested:true,
+        status: status || "pending",
+        choice,
+        amount,
+        unlimited: choice === "illimite",
+        currentQuota: quota,
+        currentUsed: used,
+        currentRemaining: orgPack === "illimite" ? null : Math.max(0, quota - used),
+        totalAfter: choice === "illimite" ? null : quota + amount
+      };
+    }
+
+    function renderPackUpgradeBox(project){
+      const request = getPackUpgradeRequest(project);
+      if(!request.requested) return "";
+
+      const isPending = request.status === "pending";
+      const isApproved = request.status === "approved";
+      const isRejected = request.status === "rejected";
+      const label = request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`;
+      const after = request.unlimited ? "Pack illimité" : `${Number(request.totalAfter || 0).toLocaleString("fr-FR")} passations au total`;
+
+      if(isApproved){
+        return `<div class="pack-upgrade-box">✅ <strong>Recharge pack validée</strong><br>${escapeHtml(label)} · ${escapeHtml(after)}</div>`;
+      }
+
+      if(isRejected){
+        return `<div class="pack-upgrade-box">↩️ <strong>Recharge pack refusée</strong><br>${escapeHtml(label)}</div>`;
+      }
+
+      return `
+        <div class="pack-upgrade-box">
+          📦 <strong>Recharge pack demandée</strong><br>
+          ${escapeHtml(label)} · après validation : ${escapeHtml(after)}
+          ${isAdmin() ? `
+            <div class="pack-upgrade-actions">
+              <button class="small-btn approve-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','approve')">✅ Valider recharge</button>
+              <button class="small-btn reject-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','reject')">Refuser</button>
+            </div>
+          ` : ""}
+        </div>
+      `;
     }
 
     function getProjectLogoData(project){
@@ -696,35 +737,12 @@ function getProjectTitle(project){
       }
     }
 
-    function normalizeStatus(projectOrStatus){
-      const isObject = projectOrStatus && typeof projectOrStatus === "object";
-      const project = isObject ? projectOrStatus : null;
-      const data = project ? getProjectData(project) : {};
-      const s = String(project ? (project.status || project.project_status || data.status || data.project_status || "") : (projectOrStatus || "")).toLowerCase();
-
-      const isArchived =
-        s === "archived" ||
-        s.includes("archiv") ||
-        Boolean(project?.archived_at || project?.archivedAt || data.archived_at || data.archivedAt);
-      if(isArchived) return "archived";
-
-      const sentFlag = Boolean(
-        project?.configTransmise === true ||
-        project?.config_transmise === true ||
-        project?.submitted === true ||
-        data.configTransmise === true ||
-        data.config_transmise === true ||
-        data.submitted === true ||
-        data.transmission?.status === "sent" ||
-        data.transmission?.submitted_at ||
-        data.submitted_at
-      );
-
+    function normalizeStatus(status){
+      const s = String(status || "").toLowerCase();
+      if(s === "archived" || s.includes("archiv")) return "archived";
       if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
-      // Important : un projet publié conserve souvent data.configTransmise=true.
-      // Le statut SQL reste la source prioritaire pour éviter qu'un publié soit affiché en transmis.
+      if(s === "sent" || s === "transmis" || s === "submitted") return "sent";
       if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
-      if(s === "sent" || s === "transmis" || s === "submitted" || s === "transmitted" || sentFlag) return "sent";
       return "draft";
     }
 
@@ -748,10 +766,8 @@ function getProjectTitle(project){
 
     function renderClient(){
       const projects = currentClient.projects || [];
-      const activeProjects = projects.filter(p => normalizeStatus(p) !== "archived");
-      const archivedCount = projects.filter(p => normalizeStatus(p) === "archived").length;
-      const sentCount = activeProjects.filter(p => normalizeStatus(p) === "sent").length;
-      const publishedCount = activeProjects.filter(p => normalizeStatus(p) === "published").length;
+      const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
+      const publishedCount = projects.filter(p => normalizeStatus(p.status) === "published").length;
       const remaining = val(currentClient,["passationsRemaining","passations_remaining"],"—");
 
       document.getElementById("loadingState").style.display = "none";
@@ -764,9 +780,7 @@ function getProjectTitle(project){
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
       `;
 
-      document.getElementById("kpiAds").textContent = activeProjects.length;
-      const archiveCountEl = document.getElementById("clientArchivesCount");
-      if(archiveCountEl) archiveCountEl.textContent = archivedCount;
+      document.getElementById("kpiAds").textContent = projects.length;
       document.getElementById("kpiSent").textContent = sentCount;
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
@@ -792,7 +806,7 @@ function getProjectTitle(project){
     }
 
     function isMonitorableCampaign(project){
-      const status = normalizeStatus(project);
+      const status = normalizeStatus(project.status);
       const hasResults = Boolean(getProjectResultsUrl(project));
 
       // On surveille uniquement les campagnes réellement actives côté client :
@@ -810,7 +824,7 @@ function getProjectTitle(project){
     }
 
     function projectHasResultsAvailable(project){
-      return ["published","unpublished"].includes(normalizeStatus(project)) && Boolean(getProjectResultsUrl(project));
+      return ["published","unpublished"].includes(normalizeStatus(project.status)) && Boolean(getProjectResultsUrl(project));
     }
 
     function projectIsEndingSoon(project){
@@ -820,7 +834,7 @@ function getProjectTitle(project){
     }
 
     function projectMatchesCurrentFilter(project){
-      const status = normalizeStatus(project);
+      const status = normalizeStatus(project.status);
       if(currentAdFilter === "all") return true;
       if(currentAdFilter === "endingSoon") return projectIsEndingSoon(project);
       if(currentAdFilter === "results") return projectHasResultsAvailable(project);
@@ -848,7 +862,7 @@ function getProjectTitle(project){
     }
 
     function getProjectAlerts(project){
-      const status = normalizeStatus(project);
+      const status = normalizeStatus(project.status);
       const endDate = getProjectEndDate(project);
       const daysLeft = getDaysUntil(endDate);
       const share = getProjectShareUrl(project);
@@ -874,10 +888,9 @@ function getProjectTitle(project){
     }
 
     function getAdFilterCounts(projects){
-      const activeProjects = projects.filter(p => normalizeStatus(p) !== "archived");
-      const counts = {all:activeProjects.length,draft:0,sent:0,published:0,unpublished:0,endingSoon:0,results:0};
-      activeProjects.forEach(project => {
-        const s = normalizeStatus(project);
+      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
+      projects.forEach(project => {
+        const s = normalizeStatus(project.status);
         counts[s] = (counts[s] || 0) + 1;
         if(projectIsEndingSoon(project)) counts.endingSoon += 1;
         if(projectHasResultsAvailable(project)) counts.results += 1;
@@ -896,7 +909,8 @@ function getProjectTitle(project){
         ["results","📊 Résultats dispo"],
         ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
-        ["unpublished","🛑 Dépubliés"]
+        ["unpublished","🛑 Dépubliés"],
+        ["archived","📦 Archivés"]
       ];
       wrap.innerHTML = filters.map(([key,label]) => `
         <button class="ad-filter ${currentAdFilter===key?'active':''}" type="button" onclick="setAdFilter('${key}')">
@@ -927,8 +941,8 @@ function getProjectTitle(project){
         const days = getDaysUntil(getProjectEndDate(p));
         return days !== null && days < 0;
       }).length;
-      const toPublish = projects.filter(p => normalizeStatus(p)==="sent").length;
-      const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p)) && getProjectResultsUrl(p)).length;
+      const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
+      const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
         <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
         <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
@@ -947,7 +961,7 @@ function getProjectTitle(project){
       }
 
       const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
-      const filtered = projects.filter(project => normalizeStatus(project) !== "archived").filter(project => {
+      const filtered = projects.filter(project => {
         const filterOk = projectMatchesCurrentFilter(project);
         const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
         return filterOk && (!search || text.includes(search));
@@ -959,17 +973,19 @@ function getProjectTitle(project){
       }
 
       adsList.innerHTML = filtered.map(project => {
-        const normalizedStatus = normalizeStatus(project);
+        const normalizedStatus = normalizeStatus(project.status);
         const projectTitle = getProjectTitle(project);
         const startDate = getProjectStartDate(project);
         const endDate = getProjectEndDate(project);
+        const packUpgrade = getPackUpgradeRequest(project);
 
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project)}">${getStatusLabel(project)}</span>
+            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
+            ${renderPackUpgradeBox(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -977,15 +993,17 @@ function getProjectTitle(project){
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              ${normalizedStatus === "draft" ? `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>` : ""}
+              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
                 : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
               }
-              ${normalizedStatus === "draft" ? `<button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>` : ""}
+              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
+                  ? (packUpgrade.requested && packUpgrade.status === "pending"
+                    ? `<button class="small-btn publish" onclick="alert('Validez d’abord la recharge pack avant de publier.')">✅ Publier</button>`
+                    : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
                   : ""
               }
               ${
@@ -994,12 +1012,7 @@ function getProjectTitle(project){
                   : ""
               }
               ${
-                ["sent","published","unpublished","archived"].includes(normalizedStatus) && isAdmin()
-                  ? `<button class="small-btn" onclick="cloneProjectFromFolder('${escapeAttr(project.id)}')">🧬 Cloner</button>`
-                  : ""
-              }
-              ${
-                normalizedStatus === "unpublished" && isAdmin()
+                ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
                   ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
                   : ""
               }
@@ -1011,7 +1024,7 @@ function getProjectTitle(project){
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => normalizeStatus(p) !== "archived").filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
+      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
 
       if(!campaignProjects.length){
         list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
@@ -1030,7 +1043,7 @@ function getProjectTitle(project){
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project)}">${getStatusLabel(project)}</span>
+            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -1095,8 +1108,8 @@ function getProjectTitle(project){
     function renderResources(projects){
       const list = document.getElementById("resourcesList");
 
-      const transmitted = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p))).length;
-      const published = projects.filter(p => normalizeStatus(p) === "published").length;
+      const transmitted = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status))).length;
+      const published = projects.filter(p => normalizeStatus(p.status) === "published").length;
       const results = projects.filter(p => getProjectResultsUrl(p)).length;
 
       list.innerHTML = `
@@ -1140,20 +1153,10 @@ function getProjectTitle(project){
       showTab(tabName, buttons[index] || null);
     }
 
-    function openClientArchives(){
-      const clientId = getClientId();
-      window.location.href = clientId ? `archives.html?clientId=${encodeURIComponent(clientId)}` : "archives.html";
-    }
-
     function createAdForThisClient(){
       const clientId = getClientId();
       localStorage.setItem("its_selected_partner_client_id", clientId);
       window.location.href = "index.html";
-    }
-
-    function openClientArchives(){
-      const clientId = getClientId();
-      window.location.href = clientId ? `archives.html?clientId=${encodeURIComponent(clientId)}` : "archives.html";
     }
 
     function editProject(projectId){
@@ -1222,12 +1225,6 @@ function getProjectTitle(project){
       document.getElementById("publishModal").setAttribute("aria-hidden", "true");
     }
 
-    function isValidHttpsUrl(value){
-      const url = String(value || "").trim();
-      if(!url.startsWith("https://")) return false;
-      try{ new URL(url); return true; }catch(e){ return false; }
-    }
-
     async function confirmPublishProject(){
       if(!projectToPublish?.id) return;
 
@@ -1244,10 +1241,6 @@ function getProjectTitle(project){
 
         if(!shareUrl || !resultsUrl){
           throw new Error("Renseigne l’URL de diffusion et l’URL résultats avant de publier.");
-        }
-
-        if(!isValidHttpsUrl(shareUrl) || !isValidHttpsUrl(resultsUrl)){
-          throw new Error("Les URLs doivent être complètes et commencer par https://");
         }
 
         if(startDate && endDate && startDate > endDate){
@@ -1287,15 +1280,45 @@ function getProjectTitle(project){
       }
     }
 
+    async function handlePackUpgrade(projectId, action){
+      if(!projectId || !["approve","reject"].includes(action)) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const ok = await openConfirmModal({
+        tone: action === "approve" ? "primary" : "warn",
+        icon: action === "approve" ? "✅" : "↩️",
+        title: action === "approve" ? "Valider cette recharge pack ?" : "Refuser cette recharge pack ?",
+        subtitle: action === "approve" ? "Le quota réel du cockpit client sera mis à jour." : "La demande restera visible comme refusée.",
+        text: action === "approve" ? "Confirmez-vous la validation commerciale de cette recharge ?" : "Confirmez-vous le refus de cette demande de recharge ?",
+        project: title,
+        warning: action === "approve" ? "Après validation, les passations restantes seront mises à jour dans les vues client et admin." : "",
+        confirmText: action === "approve" ? "Valider la recharge" : "Refuser"
+      });
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/pack-upgrade`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`
+          },
+          body: JSON.stringify({ action })
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur validation recharge pack");
+        showToast(action === "approve" ? "Recharge pack validée." : "Recharge pack refusée.");
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de traiter la recharge pack.");
+      }
+    }
+
     async function changeProjectStatus(projectId, nextStatus, actionLabel){
       if(!projectId || !nextStatus) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const currentStatus = project ? normalizeStatus(project) : "";
-      if(nextStatus === "archived" && currentStatus !== "unpublished"){
-        alert("Un projet doit d’abord être dépublié avant d’être archivé.");
-        return;
-      }
       const isArchive = nextStatus === "archived";
       const isUnpublish = nextStatus === "unpublished";
       const ok = await openConfirmModal({
@@ -1337,46 +1360,6 @@ function getProjectTitle(project){
       }
     }
 
-    async function cloneProjectFromFolder(projectId){
-      if(!projectId) return;
-      const project = getCurrentProjectById(projectId);
-      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const ok = await openConfirmModal({
-        tone: "primary",
-        icon: "🧬",
-        title: "Cloner cet autodiagnostic ?",
-        subtitle: "Une nouvelle copie sera créée en brouillon.",
-        text: "Le clone reprendra le contenu, les profils et le paramétrage, mais pas les URLs de diffusion/résultats ni les dates de campagne.",
-        project: title,
-        confirmText: "Cloner"
-      });
-      if(!ok) return;
-
-      try{
-        const response = await fetch(`${API_URL}/api/projects/${encodeURIComponent(projectId)}/clone`, {
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json",
-            Authorization:`Bearer ${getToken()}`
-          }
-        });
-        const data = await response.json().catch(() => ({}));
-        if(!response.ok) throw new Error(data.error || "Clonage impossible");
-        const cloned = data.project;
-        showToast("Autodiagnostic cloné");
-        if(cloned?.id){
-          localStorage.setItem("its_current_project_id", cloned.id);
-          localStorage.setItem("its_selected_partner_client_id", getClientId());
-          window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
-          return;
-        }
-        await loadClientFolder();
-      }catch(err){
-        console.error(err);
-        alert(err.message || "Impossible de cloner cet autodiagnostic.");
-      }
-    }
-
     async function saveCampaignLinks(projectId){
       const project = getCurrentProjectById(projectId);
       if(!project) return;
@@ -1385,11 +1368,6 @@ function getProjectTitle(project){
       const resultsUrl = String(document.getElementById(`campaignResults_${projectId}`)?.value || "").trim();
       const startDate = String(document.getElementById(`campaignStart_${projectId}`)?.value || "").trim();
       const endDate = String(document.getElementById(`campaignEnd_${projectId}`)?.value || "").trim();
-
-      if((shareUrl && !isValidHttpsUrl(shareUrl)) || (resultsUrl && !isValidHttpsUrl(resultsUrl))){
-        alert("Les URLs doivent être complètes et commencer par https://");
-        return;
-      }
 
       if(startDate && endDate && startDate > endDate){
         alert("La date de début ne peut pas être postérieure à la date de fin.");
@@ -1404,7 +1382,7 @@ function getProjectTitle(project){
             Authorization:`Bearer ${getToken()}`
           },
           body:JSON.stringify({
-            status: normalizeStatus(project),
+            status: normalizeStatus(project.status),
             share_url: shareUrl || null,
             results_url: resultsUrl || null,
             campaign_start_date: startDate || null,
@@ -1427,11 +1405,7 @@ function getProjectTitle(project){
       if(!projectId) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const status = project ? normalizeStatus(project) : "";
-      if(status !== "draft"){
-        alert("Seuls les brouillons peuvent être supprimés. Pour un projet publié, il faut le dépublier puis l’archiver.");
-        return;
-      }
+      const status = project ? normalizeStatus(project.status) : "";
       const ok = await openConfirmModal({
         tone: "danger",
         icon: "🗑️",
