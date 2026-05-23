@@ -657,11 +657,25 @@ function getProjectTitle(project){
       }
     }
 
-    function normalizeStatus(status){
-      const s = String(status || "").toLowerCase();
+    function normalizeStatus(projectOrStatus){
+      const isObject = projectOrStatus && typeof projectOrStatus === "object";
+      const project = isObject ? projectOrStatus : null;
+      const data = project ? getProjectData(project) : {};
+      const s = String(project ? (project.status || project.project_status || data.status || data.project_status || "") : (projectOrStatus || "")).toLowerCase();
+      const sentFlag = Boolean(
+        project?.configTransmise === true ||
+        project?.config_transmise === true ||
+        project?.submitted === true ||
+        data.configTransmise === true ||
+        data.config_transmise === true ||
+        data.submitted === true ||
+        data.transmission?.status === "sent" ||
+        data.transmission?.submitted_at ||
+        data.submitted_at
+      );
       if(s === "archived" || s.includes("archiv")) return "archived";
       if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
-      if(s === "sent" || s === "transmis" || s === "submitted") return "sent";
+      if(s === "sent" || s === "transmis" || s === "submitted" || s === "transmitted" || sentFlag) return "sent";
       if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
       return "draft";
     }
@@ -686,8 +700,10 @@ function getProjectTitle(project){
 
     function renderClient(){
       const projects = currentClient.projects || [];
-      const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
-      const publishedCount = projects.filter(p => normalizeStatus(p.status) === "published").length;
+      const activeProjects = projects.filter(p => normalizeStatus(p) !== "archived");
+      const archivedCount = projects.filter(p => normalizeStatus(p) === "archived").length;
+      const sentCount = activeProjects.filter(p => normalizeStatus(p) === "sent").length;
+      const publishedCount = activeProjects.filter(p => normalizeStatus(p) === "published").length;
       const remaining = val(currentClient,["passationsRemaining","passations_remaining"],"—");
 
       document.getElementById("loadingState").style.display = "none";
@@ -700,7 +716,9 @@ function getProjectTitle(project){
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
       `;
 
-      document.getElementById("kpiAds").textContent = projects.length;
+      document.getElementById("kpiAds").textContent = activeProjects.length;
+      const archiveCountEl = document.getElementById("clientArchivesCount");
+      if(archiveCountEl) archiveCountEl.textContent = archivedCount;
       document.getElementById("kpiSent").textContent = sentCount;
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
@@ -726,7 +744,7 @@ function getProjectTitle(project){
     }
 
     function isMonitorableCampaign(project){
-      const status = normalizeStatus(project.status);
+      const status = normalizeStatus(project);
       const hasResults = Boolean(getProjectResultsUrl(project));
 
       // On surveille uniquement les campagnes réellement actives côté client :
@@ -744,7 +762,7 @@ function getProjectTitle(project){
     }
 
     function projectHasResultsAvailable(project){
-      return ["published","unpublished"].includes(normalizeStatus(project.status)) && Boolean(getProjectResultsUrl(project));
+      return ["published","unpublished"].includes(normalizeStatus(project)) && Boolean(getProjectResultsUrl(project));
     }
 
     function projectIsEndingSoon(project){
@@ -754,7 +772,7 @@ function getProjectTitle(project){
     }
 
     function projectMatchesCurrentFilter(project){
-      const status = normalizeStatus(project.status);
+      const status = normalizeStatus(project);
       if(currentAdFilter === "all") return true;
       if(currentAdFilter === "endingSoon") return projectIsEndingSoon(project);
       if(currentAdFilter === "results") return projectHasResultsAvailable(project);
@@ -782,7 +800,7 @@ function getProjectTitle(project){
     }
 
     function getProjectAlerts(project){
-      const status = normalizeStatus(project.status);
+      const status = normalizeStatus(project);
       const endDate = getProjectEndDate(project);
       const daysLeft = getDaysUntil(endDate);
       const share = getProjectShareUrl(project);
@@ -808,10 +826,10 @@ function getProjectTitle(project){
     }
 
     function getAdFilterCounts(projects){
-      const activeProjects = projects.filter(p => normalizeStatus(p.status) !== "archived");
+      const activeProjects = projects.filter(p => normalizeStatus(p) !== "archived");
       const counts = {all:activeProjects.length,draft:0,sent:0,published:0,unpublished:0,endingSoon:0,results:0};
       activeProjects.forEach(project => {
-        const s = normalizeStatus(project.status);
+        const s = normalizeStatus(project);
         counts[s] = (counts[s] || 0) + 1;
         if(projectIsEndingSoon(project)) counts.endingSoon += 1;
         if(projectHasResultsAvailable(project)) counts.results += 1;
@@ -861,8 +879,8 @@ function getProjectTitle(project){
         const days = getDaysUntil(getProjectEndDate(p));
         return days !== null && days < 0;
       }).length;
-      const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
-      const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
+      const toPublish = projects.filter(p => normalizeStatus(p)==="sent").length;
+      const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
         <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
         <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
@@ -881,7 +899,7 @@ function getProjectTitle(project){
       }
 
       const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
-      const filtered = projects.filter(project => normalizeStatus(project.status) !== "archived").filter(project => {
+      const filtered = projects.filter(project => normalizeStatus(project) !== "archived").filter(project => {
         const filterOk = projectMatchesCurrentFilter(project);
         const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
         return filterOk && (!search || text.includes(search));
@@ -893,7 +911,7 @@ function getProjectTitle(project){
       }
 
       adsList.innerHTML = filtered.map(project => {
-        const normalizedStatus = normalizeStatus(project.status);
+        const normalizedStatus = normalizeStatus(project);
         const projectTitle = getProjectTitle(project);
         const startDate = getProjectStartDate(project);
         const endDate = getProjectEndDate(project);
@@ -945,7 +963,7 @@ function getProjectTitle(project){
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => normalizeStatus(p.status) !== "archived").filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
+      const campaignProjects = projects.filter(p => normalizeStatus(p) !== "archived").filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
 
       if(!campaignProjects.length){
         list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
@@ -1029,8 +1047,8 @@ function getProjectTitle(project){
     function renderResources(projects){
       const list = document.getElementById("resourcesList");
 
-      const transmitted = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status))).length;
-      const published = projects.filter(p => normalizeStatus(p.status) === "published").length;
+      const transmitted = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p))).length;
+      const published = projects.filter(p => normalizeStatus(p) === "published").length;
       const results = projects.filter(p => getProjectResultsUrl(p)).length;
 
       list.innerHTML = `
@@ -1072,6 +1090,11 @@ function getProjectTitle(project){
       const buttons = Array.from(document.querySelectorAll(".tab"));
       const index = ["ads","campaigns","resources"].indexOf(tabName);
       showTab(tabName, buttons[index] || null);
+    }
+
+    function openClientArchives(){
+      const clientId = getClientId();
+      window.location.href = clientId ? `archives.html?clientId=${encodeURIComponent(clientId)}` : "archives.html";
     }
 
     function createAdForThisClient(){
@@ -1220,7 +1243,7 @@ function getProjectTitle(project){
       if(!projectId || !nextStatus) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const currentStatus = project ? normalizeStatus(project.status) : "";
+      const currentStatus = project ? normalizeStatus(project) : "";
       if(nextStatus === "archived" && currentStatus !== "unpublished"){
         alert("Un projet doit d’abord être dépublié avant d’être archivé.");
         return;
@@ -1333,7 +1356,7 @@ function getProjectTitle(project){
             Authorization:`Bearer ${getToken()}`
           },
           body:JSON.stringify({
-            status: normalizeStatus(project.status),
+            status: normalizeStatus(project),
             share_url: shareUrl || null,
             results_url: resultsUrl || null,
             campaign_start_date: startDate || null,
@@ -1356,7 +1379,7 @@ function getProjectTitle(project){
       if(!projectId) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const status = project ? normalizeStatus(project.status) : "";
+      const status = project ? normalizeStatus(project) : "";
       if(status !== "draft"){
         alert("Seuls les brouillons peuvent être supprimés. Pour un projet publié, il faut le dépublier puis l’archiver.");
         return;

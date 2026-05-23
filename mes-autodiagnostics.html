@@ -163,7 +163,7 @@
           campagnes publiées, liens de diffusion et accès aux résultats.
         </p>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button><button class="btn-primary" style="background:#fff;color:#18375d" onclick="window.location.href='archives.html'">📦 Archives</button></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button><button id="archivesQuickBtn" class="btn-primary" style="background:#fff;color:#18375d" onclick="window.location.href='archives.html'">📦 Archives <span id="archiveQuickCount" style="margin-left:6px;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:2px 7px;font-size:12px">0</span></button></div>
     </section>
 
     <section class="quick-note" aria-label="Information espace client">
@@ -623,6 +623,9 @@
 
     function renderStats() {
       const activeProjects = getActiveProjects();
+      const archivedCount = projects.filter(p => normalizeStatus(p) === "archived").length;
+      const archiveQuickCount = document.getElementById("archiveQuickCount");
+      if(archiveQuickCount) archiveQuickCount.textContent = archivedCount;
       const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
       activeProjects.forEach(p => {
         const status = normalizeStatus(p);
