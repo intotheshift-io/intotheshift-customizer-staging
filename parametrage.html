@@ -1098,6 +1098,12 @@ async function goNext(){
 
   state.parametrage.nom = getFieldValue('nom') || state.parametrage.nom || '';
   state.parametrage.titre = getFieldValue('titre') || state.parametrage.titre || '';
+  state.parametrage.titre_repondants = state.parametrage.titre;
+  state.parametrage.titreRespondants = state.parametrage.titre;
+  state.parametrage.titre_visible_repondants = state.parametrage.titre;
+  state.parametrage.titreVisibleRepondants = state.parametrage.titre;
+  state.parametrage.titre_visible = state.parametrage.titre;
+  state.parametrage.titreVisible = state.parametrage.titre;
   state.parametrage.desc = getFieldValue('desc') || state.parametrage.desc || '';
   state.parametrage.entreprise = getFieldValue('entreprise') || state.parametrage.entreprise || '';
   state.parametrage.slug = getFieldValue('slug') || state.parametrage.slug || '';
