@@ -17,7 +17,7 @@
     <section class="hero">
       <div>
         <h1>Archives</h1>
-        <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables et restaurables.</p>
+        <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables. La restauration est réservée à l’équipe Into The Shift.</p>
       </div>
       <a id="backLink" class="btn primary" href="mes-autodiagnostics.html">← Retour</a>
     </section>
@@ -121,21 +121,52 @@
       if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
       list.innerHTML=rows.map(p=>{
         const id=projectId(p);
-        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button><button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">Restaurer</button></div></article>`;
+        const restoreButton = isAdmin()
+          ? `<button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">↩️ Restaurer</button>`
+          : `<button class="btn primary" onclick="requestRestore('${escapeAttr(id)}')">Contacter Into The Shift</button>`;
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button>${restoreButton}</div></article>`;
       }).join("");
     }
     function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
+    async function requestRestore(id){
+      if(!id)return;
+      const p = archives.find(item => projectId(item) === String(id));
+      const projectTitle = p ? title(p) : "Autodiagnostic archivé";
+      const ok = await openConfirmModal({
+        tone:"primary",
+        icon:"💬",
+        title:"Demander la restauration ?",
+        subtitle:"Cette action est gérée par l’équipe Into The Shift.",
+        text:"Cette campagne archivée n’est plus active. Pour demander sa restauration, contactez l’équipe Into The Shift.",
+        project: projectTitle,
+        warning:"La restauration peut nécessiter une vérification des dates, des liens de diffusion et des résultats avant toute remise en ligne.",
+        confirmText:"Contacter"
+      });
+      if(!ok)return;
+      const subject = encodeURIComponent("Demande de restauration d’un autodiagnostic archivé");
+      const body = encodeURIComponent(`Bonjour,
+
+Je souhaite demander la restauration de l’autodiagnostic archivé : ${projectTitle}.
+
+Merci.`);
+      window.location.href = `mailto:contact@intotheshift.io?subject=${subject}&body=${body}`;
+    }
+
     async function restoreProject(id){
       if(!id)return;
+      if(!isAdmin()){
+        requestRestore(id);
+        return;
+      }
       const p = archives.find(item => projectId(item) === String(id));
       const ok = await openConfirmModal({
         tone:"warn",
         icon:"↩️",
         title:"Restaurer cet autodiagnostic ?",
-        subtitle:"Il reviendra dans la vue active en statut dépublié.",
-        text:"La campagne ne sera pas republiée automatiquement. Vous pourrez la republier depuis le cockpit client.",
+        subtitle:"Il reviendra dans la vue active en brouillon restauré.",
+        text:"Le projet sera retiré des archives, renommé avec la mention “Restauré” et remis en brouillon pour pouvoir être vérifié avant une nouvelle publication.",
         project:p ? title(p) : "Autodiagnostic archivé",
-        warning:"Restaurer ne supprime pas l’historique : cela retire seulement l’AD des archives.",
+        warning:"Les anciennes URLs et dates de campagne seront vidées pour éviter de republier une ancienne campagne par erreur.",
         confirmText:"Restaurer"
       });
       if(!ok)return;
@@ -145,7 +176,7 @@
         if(!res.ok) throw new Error(data.error || "Restauration impossible");
         archives=archives.filter(p=>projectId(p)!==String(id));
         renderArchives();
-        showToast("Autodiagnostic restauré");
+        showToast("Autodiagnostic restauré en brouillon");
       }catch(e){alert(e.message || "Restauration impossible pour le moment.");}
     }
     async function cloneProject(id){
