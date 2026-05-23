@@ -717,6 +717,8 @@ function itsNormalizeProjectStatus(projectOrState) {
     ""
   ).toLowerCase();
 
+  if (raw === "archived" || raw.includes("archiv")) return "archived";
+
   const sentFlag =
     project.configTransmise === true ||
     project.config_transmise === true ||

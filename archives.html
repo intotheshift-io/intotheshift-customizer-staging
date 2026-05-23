@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives — Into The Shift</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{margin:0;font-family:'Asap',sans-serif;background:#f5f7fb;color:#18375d}.page{max-width:1180px;margin:0 auto;padding:28px 20px 60px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;background:linear-gradient(135deg,#18375d,#0d4c72);color:#fff;border-radius:26px;padding:26px 28px;box-shadow:0 18px 45px rgba(24,55,93,.18);margin-bottom:18px}.hero h1{margin:0 0 8px;color:#fff}.hero p{margin:0;color:rgba(255,255,255,.84);line-height:1.45}.btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:999px;padding:10px 14px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;gap:7px;align-items:center}.btn.primary{background:#ffc744;border-color:#ffc744;color:#18375d}.toolbar{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:14px;display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}.search{min-width:260px;flex:1;max-width:420px}.search input{width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 13px;font-family:'Asap',sans-serif}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #d8e0ea;border-radius:22px;padding:18px;box-shadow:0 12px 28px rgba(24,55,93,.06)}.card h2{font-size:18px;margin:0 0 7px}.meta{font-size:13px;color:#64748b;line-height:1.5}.badge{display:inline-flex;border-radius:999px;background:#f1f4f8;color:#64748b;padding:5px 10px;font-size:12px;font-weight:900;margin-bottom:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.empty{background:#fff;border:1px dashed #cbd5e1;border-radius:18px;padding:42px 20px;text-align:center;color:#64748b}.empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:7px}@media(max-width:850px){.list{grid-template-columns:1fr}.search{max-width:none}}
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <script src="header.js"></script>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Archives</h1>
+        <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables et restaurables.</p>
+      </div>
+      <a class="btn primary" href="mes-autodiagnostics.html">← Retour aux autodiagnostics</a>
+    </section>
+    <section class="toolbar">
+      <div><strong id="archiveCount">—</strong> projet(s) archivé(s)</div>
+      <div class="search"><input id="searchInput" type="search" placeholder="Rechercher dans les archives…" oninput="renderArchives()"></div>
+    </section>
+    <section id="archiveList" class="list"></section>
+  </main>
+  <script>
+    const API_BASE = window.ITS_API_BASE || localStorage.getItem("its_api_base") || (location.hostname === "localhost" || location.hostname.startsWith("staging.") ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io" : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
+    let archives = [];
+    function token(){return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";}
+    function escapeHtml(str){return String(str||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+    function escapeAttr(str){return escapeHtml(str).replace(/`/g,"");}
+    function getData(p){const raw=p?.data||{}; if(typeof raw==="string"){try{return JSON.parse(raw)||{}}catch(e){return {}}} return raw&&typeof raw==="object"?raw:{}}
+    function title(p){const d=getData(p); const param=d.parametrage||{}; return String(param.nom||param.titre||d.autodiagTitle||d.title||p.title||"Autodiag sans titre").replace(/^\s*Autodiagnostic\s+/i,"").trim()||"Autodiag sans titre";}
+    function formatDate(v){if(!v)return"—"; const d=new Date(v); return isNaN(d.getTime())?String(v):d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
+    function projectId(p){return String(p?.id||p?.project_id||p?.projectId||"");}
+    async function loadArchives(){
+      if(!token()){ location.href="login.html?redirect=archives.html"; return; }
+      try{
+        const res = await fetch(`${API_BASE}/api/projects`, {headers:{Authorization:`Bearer ${token()}`}});
+        const data = await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Chargement impossible");
+        const all = Array.isArray(data) ? data : (data.projects || data.items || []);
+        archives = all.filter(p => String(p.status||"").toLowerCase().includes("archiv"));
+        renderArchives();
+      }catch(e){
+        document.getElementById("archiveList").innerHTML = `<div class="empty"><strong>Archives indisponibles</strong>${escapeHtml(e.message || "Impossible de charger les archives.")}</div>`;
+      }
+    }
+    function renderArchives(){
+      const q=(document.getElementById("searchInput")?.value||"").toLowerCase().trim();
+      const rows=archives.filter(p => !q || JSON.stringify(p).toLowerCase().includes(q));
+      document.getElementById("archiveCount").textContent = rows.length;
+      const list=document.getElementById("archiveList");
+      if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
+      list.innerHTML=rows.map(p=>{
+        const id=projectId(p);
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">Restaurer</button></div></article>`;
+      }).join("");
+    }
+    function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
+    async function restoreProject(id){
+      if(!id)return;
+      if(!confirm("Restaurer cet autodiagnostic dans la vue active ?"))return;
+      try{
+        const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/restore`,{method:"PATCH",headers:{Authorization:`Bearer ${token()}`}});
+        const data=await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Restauration impossible");
+        archives=archives.filter(p=>projectId(p)!==String(id));
+        renderArchives();
+      }catch(e){alert(e.message || "Restauration impossible pour le moment.");}
+    }
+    loadArchives();
+  </script>
+</body>
+</html>

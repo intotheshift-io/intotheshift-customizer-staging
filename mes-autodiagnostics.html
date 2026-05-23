@@ -163,7 +163,7 @@
           campagnes publiées, liens de diffusion et accès aux résultats.
         </p>
       </div>
-      <button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button><button class="btn-primary" style="background:#fff;color:#18375d" onclick="window.location.href='archives.html'">📦 Archives</button></div>
     </section>
 
     <section class="quick-note" aria-label="Information espace client">
@@ -616,9 +616,14 @@
       alert("Lien copié.");
     }
 
+    function getActiveProjects(){
+      return projects.filter(p => normalizeStatus(p) !== "archived");
+    }
+
     function renderStats() {
+      const activeProjects = getActiveProjects();
       const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
-      projects.forEach(p => {
+      activeProjects.forEach(p => {
         const status = normalizeStatus(p);
         counts[status] = (counts[status] || 0) + 1;
         if(isEndingSoon(p)) counts.endingSoon += 1;
@@ -630,7 +635,7 @@
         if(el) el.textContent = value;
       };
 
-      setCount("countAll", projects.length);
+      setCount("countAll", activeProjects.length);
       setCount("countDraft", counts.draft || 0);
       setCount("countSubmitted", counts.submitted || 0);
       setCount("countPublished", counts.published || 0);
@@ -677,7 +682,7 @@
       const list = document.getElementById("adList");
       const q = document.getElementById("searchInput").value.trim().toLowerCase();
 
-      const filtered = projects.filter(p => {
+      const filtered = getActiveProjects().filter(p => {
         const status = normalizeStatus(p);
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
         const filterOk =
@@ -748,6 +753,11 @@
                 ${status === "draft" ? `
                   <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
                     🗑️ Supprimer
+                  </button>
+                ` : ""}
+                ${["published","unpublished"].includes(status) ? `
+                  <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}')">
+                    📦 Archiver
                   </button>
                 ` : ""}
               </div>
@@ -827,6 +837,50 @@
         await loadProjects();
       } catch (e) {
         alert(e.message || "Clonage impossible pour le moment.");
+      }
+    }
+
+    function archiveProject(id) {
+      if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+      const status = normalizeStatus(project);
+      if (!["published", "unpublished"].includes(status)) {
+        return alert("Seuls les projets publiés ou dépubliés peuvent être archivés depuis cet espace.");
+      }
+
+      pendingArchiveProjectId = String(id);
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        const title = getTitle(project);
+        modal.querySelector(".modal-icon").textContent = "📦";
+        modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
+        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le restaurer depuis les archives.`;
+        modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveActiveProject()">Archiver</button>';
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    async function confirmArchiveActiveProject() {
+      if (!pendingArchiveProjectId) return closeArchiveModal();
+      const projectId = pendingArchiveProjectId;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}/archive`, {
+          method: "PATCH",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Archivage impossible");
+
+        projects = projects.map(p => getProjectId(p) === String(projectId) ? Object.assign({}, p, {status:"archived", archived_at:new Date().toISOString()}) : p);
+        closeArchiveModal();
+        renderStats();
+        renderProjects();
+      } catch(e) {
+        alert(e.message || "Archivage impossible pour le moment.");
       }
     }
 

@@ -807,8 +807,9 @@ function getProjectTitle(project){
     }
 
     function getAdFilterCounts(projects){
-      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
-      projects.forEach(project => {
+      const activeProjects = projects.filter(p => normalizeStatus(p.status) !== "archived");
+      const counts = {all:activeProjects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
+      activeProjects.forEach(project => {
         const s = normalizeStatus(project.status);
         counts[s] = (counts[s] || 0) + 1;
         if(projectIsEndingSoon(project)) counts.endingSoon += 1;
@@ -880,7 +881,7 @@ function getProjectTitle(project){
       }
 
       const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
-      const filtered = projects.filter(project => {
+      const filtered = projects.filter(project => normalizeStatus(project.status) !== "archived").filter(project => {
         const filterOk = projectMatchesCurrentFilter(project);
         const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
         return filterOk && (!search || text.includes(search));
@@ -939,7 +940,7 @@ function getProjectTitle(project){
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
+      const campaignProjects = projects.filter(p => normalizeStatus(p.status) !== "archived").filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
 
       if(!campaignProjects.length){
         list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
