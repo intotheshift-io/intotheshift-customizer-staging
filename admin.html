@@ -502,7 +502,6 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
               <option value="sent">Transmis</option>
               <option value="published">Publié</option>
               <option value="unpublished">Dépublié</option>
-              <option value="archived">Archivé</option>
             </select>
           </div>
         </div>
@@ -626,7 +625,12 @@ function formatPackLabel(pack, quota=0){
 function formatDate(value){if(!value)return"—";const d=new Date(value);if(isNaN(d.getTime()))return value;return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function escapeHtml(str){return String(str??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
 function escapeAttr(str){return escapeHtml(str).replace(/`/g,"&#096;");}
-function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
+function cleanAdTitle(title){
+  const cleaned=String(title||"").replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i,"").replace(/^\s*Autodiag\s*[-–—:]?\s*/i,"").trim();
+  if(!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) return "Projet sans titre";
+  return cleaned;
+}
+function pickProjectTitle(...values){for(const value of values){const cleaned=cleanAdTitle(value); if(cleaned && cleaned!=="Projet sans titre") return cleaned;} return "Projet sans titre";}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
 function statusBadge(status){
@@ -855,7 +859,7 @@ function renderKpis(){
   const finalOrgs=getFinalOrganizations();
   const linkedOrgs=getLinkedOrganizations().length;
   const directOrgs=getDirectOrganizations().length;
-  const statusCounts={draft:0,sent:0,published:0,unpublished:0,archived:0};
+  const statusCounts={draft:0,sent:0,published:0,unpublished:0};
   adminState.projects.forEach(p=>{const st=getProjectEffectiveStatus(p);statusCounts[st]=(statusCounts[st]||0)+1;});
   const sentNoShare=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="sent"&&!getProjectShareUrl(p)).length;
   const noShare=adminState.projects.filter(p=>["sent","published","unpublished"].includes(getProjectEffectiveStatus(p))&&!getProjectShareUrl(p)).length;
@@ -1146,7 +1150,6 @@ function getCampaignEndDate(p){
 function getProjectEffectiveStatus(p){
   const raw = String(val(p,["status","statut"],"draft")).toLowerCase();
   const sentFlag = val(p,["config_transmise","configTransmise","configSent","submitted","is_submitted"],false);
-  if(raw === "archived" || raw.includes("archiv")) return "archived";
   if(raw === "unpublished" || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
   if(raw === "published" || raw.includes("publi") || raw.includes("ligne")) return "published";
   if(raw === "sent" || raw.includes("transmis") || raw.includes("submitted")) return "sent";
@@ -1156,7 +1159,6 @@ function getProjectEffectiveStatus(p){
 
 function getProjectStatusLabel(status){
   const s = String(status || "draft").toLowerCase();
-  if(s === "archived") return "Archivé";
   if(s === "unpublished") return "Dépublié";
   if(s === "published") return "Publié";
   if(s === "sent") return "Transmis";
@@ -1165,7 +1167,6 @@ function getProjectStatusLabel(status){
 
 function projectStatusBadge(status){
   const s = String(status || "draft").toLowerCase();
-  if(s === "archived") return `<span class="badge badge-status">Archivé</span>`;
   if(s === "unpublished") return `<span class="badge badge-unpublished">Dépublié</span>`;
   if(s === "published") return `<span class="badge badge-published">Publié</span>`;
   if(s === "sent") return `<span class="badge badge-sent">Transmis</span>`;
@@ -1191,7 +1192,12 @@ function renderProjects(){
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
-    const rawTitle=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre")); const title=cleanAdTitle(rawTitle);
+    const param = cfg.parametrage || cfg.params || cfg.settings || {};
+    const title=pickProjectTitle(
+      val(param,["titre_repondants","titreRespondants","titre_visible_repondants","titreVisibleRepondants","titre_visible","titreVisible","nom","titre"],""),
+      val(cfg,["titre_repondants","titreRespondants","autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],""),
+      val(p,["autodiag_title","project_title","title","name","project_name"],"")
+    );
     const organization=val(p,["organizationName","organization_name"],"—");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
@@ -1210,7 +1216,7 @@ function renderProjects(){
         ${logoHtml}
       </div>
       <div class="project-publication">
-        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option><option value="archived" ${status==="archived"?"selected":""}>Archivé</option></select></div>
+        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
         <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
         <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
         <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
@@ -1218,7 +1224,7 @@ function renderProjects(){
         <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
         <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
-        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":status==="archived"?"Projet archivé : retiré des vues actives, restaurable depuis Archives.":"Configuration de campagne."}</div>
+        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
     </article>`;
   }).join("");
@@ -1230,7 +1236,7 @@ function togglePublicationUrlFields(projectId){
   const shareWrap=document.getElementById("project-share-wrap-"+String(projectId));
   const resultsWrap=document.getElementById("project-results-wrap-"+String(projectId));
   if(shareWrap) shareWrap.style.display=status==="published"?"flex":"none";
-  if(resultsWrap) resultsWrap.style.display=(status==="published" || status==="unpublished" || status==="archived")?"flex":"none";
+  if(resultsWrap) resultsWrap.style.display=(status==="published" || status==="unpublished")?"flex":"none";
 }
 
 async function saveProjectPublication(projectId){

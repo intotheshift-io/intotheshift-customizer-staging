@@ -427,23 +427,52 @@
       return Object.assign({}, data, state, payload);
     }
 
-    function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
+    function cleanAdTitle(title){
+      const cleaned = String(title || "")
+        .replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i, "")
+        .replace(/^\s*Autodiag\s*[-–—:]?\s*/i, "")
+        .trim();
+      if(!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) return "Projet sans titre";
+      return cleaned;
+    }
+
+    function pickProjectTitle(...values){
+      for(const value of values){
+        const cleaned = cleanAdTitle(value);
+        if(cleaned && cleaned !== "Projet sans titre") return cleaned;
+      }
+      return "Projet sans titre";
+    }
 
 function getProjectTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
-      const param = payload.parametrage || data.parametrage || {};
-      return cleanAdTitle(
-        payload.titre_autodiag ||
-        payload.autodiagTitle ||
-        payload.title ||
-        payload.titre ||
-        param.nom ||
-        param.titre ||
-        data.autodiagTitle ||
-        data.title ||
-        project.title ||
-        "Autodiag sans titre"
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = payload.parametrage || state.parametrage || data.parametrage || {};
+      return pickProjectTitle(
+        param.titre_repondants,
+        param.titreRespondants,
+        param.titre_visible_repondants,
+        param.titreVisibleRepondants,
+        param.titre_visible,
+        param.titreVisible,
+        param.nom,
+        param.titre,
+        payload.titre_repondants,
+        payload.titreRespondants,
+        payload.titre_autodiag,
+        payload.autodiagTitle,
+        payload.title,
+        payload.titre,
+        state.titre_repondants,
+        state.titreRespondants,
+        state.autodiagTitle,
+        state.title,
+        data.titre_repondants,
+        data.titreRespondants,
+        data.autodiagTitle,
+        data.title,
+        project.title
       );
     }
 

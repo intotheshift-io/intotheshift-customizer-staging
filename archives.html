@@ -17,7 +17,7 @@
     <section class="hero">
       <div>
         <h1>Archives</h1>
-        <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables. La restauration est réservée à l’équipe Into The Shift.</p>
+        <p>Retrouvez les autodiagnostics archivés. Ils sont retirés des vues actives, mais restent consultables et restaurables.</p>
       </div>
       <a id="backLink" class="btn primary" href="mes-autodiagnostics.html">← Retour</a>
     </section>
@@ -62,7 +62,9 @@
     function escapeHtml(str){return String(str||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
     function escapeAttr(str){return escapeHtml(str).replace(/`/g,"");}
     function getData(p){const raw=p?.data||{}; if(typeof raw==="string"){try{return JSON.parse(raw)||{}}catch(e){return {}}} return raw&&typeof raw==="object"?raw:{}}
-    function title(p){const d=getData(p); const param=d.parametrage||{}; return String(param.nom||param.titre||d.autodiagTitle||d.title||p.title||"Autodiag sans titre").replace(/^\s*Autodiagnostic\s+/i,"").trim()||"Autodiag sans titre";}
+    function cleanAdTitle(value){const cleaned=String(value||"").replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i,"").replace(/^\s*Autodiag\s*[-–—:]?\s*/i,"").trim(); return (!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) ? "Projet sans titre" : cleaned;}
+    function pickTitle(...values){for(const value of values){const cleaned=cleanAdTitle(value); if(cleaned && cleaned!=="Projet sans titre") return cleaned;} return "Projet sans titre";}
+    function title(p){const d=getData(p); const payload=d.payload&&typeof d.payload==="object"?d.payload:{}; const state=d.state&&typeof d.state==="object"?d.state:{}; const param=d.parametrage||state.parametrage||payload.parametrage||{}; return pickTitle(param.titre_repondants,param.titreRespondants,param.titre_visible_repondants,param.titreVisibleRepondants,param.titre_visible,param.titreVisible,param.nom,param.titre,payload.titre_repondants,payload.titreRespondants,payload.autodiagTitle,payload.title,state.titre_repondants,state.titreRespondants,state.autodiagTitle,state.title,d.titre_repondants,d.titreRespondants,d.autodiagTitle,d.title,p.title,p.name,p.project_name,p.ad_title);}
     function formatDate(v){if(!v)return"—"; const d=new Date(v); return isNaN(d.getTime())?String(v):d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
     function projectId(p){return String(p?.id||p?.project_id||p?.projectId||"");}
 
@@ -121,52 +123,21 @@
       if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
       list.innerHTML=rows.map(p=>{
         const id=projectId(p);
-        const restoreButton = isAdmin()
-          ? `<button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">↩️ Restaurer</button>`
-          : `<button class="btn primary" onclick="requestRestore('${escapeAttr(id)}')">Restaurer ?</button>`;
-        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button>${restoreButton}</div></article>`;
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openProject('${escapeAttr(id)}')">Voir le projet</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')">🧬 Cloner</button><button class="btn primary" onclick="restoreProject('${escapeAttr(id)}')">Restaurer</button></div></article>`;
       }).join("");
     }
     function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
-    async function requestRestore(id){
-      if(!id)return;
-      const p = archives.find(item => projectId(item) === String(id));
-      const projectTitle = p ? title(p) : "Autodiagnostic archivé";
-      const ok = await openConfirmModal({
-        tone:"primary",
-        icon:"💬",
-        title:"Demander la restauration ?",
-        subtitle:"Cette action est gérée par l’équipe Into The Shift.",
-        text:"Cette campagne archivée n’est plus active. Pour demander sa restauration, contactez l’équipe Into The Shift.",
-        project: projectTitle,
-        warning:"La restauration peut nécessiter une vérification des dates, des liens de diffusion et des résultats avant toute remise en ligne.",
-        confirmText:"Contacter"
-      });
-      if(!ok)return;
-      const subject = encodeURIComponent("Demande de restauration d’un autodiagnostic archivé");
-      const body = encodeURIComponent(`Bonjour,
-
-Je souhaite demander la restauration de l’autodiagnostic archivé : ${projectTitle}.
-
-Merci.`);
-      window.location.href = `mailto:contact@intotheshift.io?subject=${subject}&body=${body}`;
-    }
-
     async function restoreProject(id){
       if(!id)return;
-      if(!isAdmin()){
-        requestRestore(id);
-        return;
-      }
       const p = archives.find(item => projectId(item) === String(id));
       const ok = await openConfirmModal({
         tone:"warn",
         icon:"↩️",
         title:"Restaurer cet autodiagnostic ?",
-        subtitle:"Il reviendra dans la vue active en brouillon restauré.",
-        text:"Le projet sera retiré des archives, renommé avec la mention “Restauré” et remis en brouillon pour pouvoir être vérifié avant une nouvelle publication.",
-        project:p ? title(p) : "Autodiagnostic archivé",
-        warning:"Les anciennes URLs et dates de campagne seront vidées pour éviter de republier une ancienne campagne par erreur.",
+        subtitle:"Il reviendra dans la vue active en statut dépublié.",
+        text:"La campagne ne sera pas republiée automatiquement. Vous pourrez la republier depuis le cockpit client.",
+        project:p ? title(p) : "Projet archivé",
+        warning:"Restaurer ne supprime pas l’historique : cela retire seulement l’AD des archives.",
         confirmText:"Restaurer"
       });
       if(!ok)return;
@@ -176,7 +147,7 @@ Merci.`);
         if(!res.ok) throw new Error(data.error || "Restauration impossible");
         archives=archives.filter(p=>projectId(p)!==String(id));
         renderArchives();
-        showToast("Autodiagnostic restauré en brouillon");
+        showToast("Autodiagnostic restauré");
       }catch(e){alert(e.message || "Restauration impossible pour le moment.");}
     }
     async function cloneProject(id){
@@ -188,7 +159,7 @@ Merci.`);
         title:"Cloner cet autodiagnostic ?",
         subtitle:"Une nouvelle copie sera créée en brouillon.",
         text:"Le clone reprend le contenu, les profils et le paramétrage, mais pas les URLs de diffusion/résultats ni les dates de campagne.",
-        project:p ? title(p) : "Autodiagnostic archivé",
+        project:p ? title(p) : "Projet archivé",
         confirmText:"Cloner"
       });
       if(!ok)return;
@@ -196,9 +167,9 @@ Merci.`);
         const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`,{method:"POST",headers:{Authorization:`Bearer ${token()}`}});
         const data=await res.json().catch(()=>({}));
         if(!res.ok) throw new Error(data.error || "Clonage impossible");
-        showToast("Autodiagnostic cloné");
+        showToast("Projet cloné");
         if(data.project?.id){ location.href=`questions.html?projectId=${encodeURIComponent(data.project.id)}`; return; }
-        alert("Autodiagnostic cloné.");
+        alert("Projet cloné.");
       }catch(e){alert(e.message || "Clonage impossible pour le moment.");}
     }
     setupBackLink();
