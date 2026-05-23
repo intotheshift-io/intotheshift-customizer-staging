@@ -294,10 +294,18 @@ function itsInferCurrentStep() {
 function itsProjectTitleFromState(state) {
   const p = state?.parametrage || state?.meta || {};
   return (
-    p.nom ||
+    p.titre_repondants ||
+    p.titreRespondants ||
+    p.titre_visible_repondants ||
+    p.titreVisibleRepondants ||
+    p.titre_visible ||
+    p.titreVisible ||
     p.titre ||
+    state?.titre_repondants ||
+    state?.titreRespondants ||
     state?.autodiagTitle ||
     state?.title ||
+    p.nom ||
     state?.subject ||
     state?.theme ||
     "Nouveau projet"

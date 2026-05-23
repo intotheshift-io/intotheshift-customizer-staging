@@ -758,8 +758,22 @@ function normalizeCampaignDatesInState(){
   state.campaignEndDate = end;
   state.campaign_end_date = end;
 }
+function syncRespondentTitleAliases(value){
+  state.parametrage = state.parametrage || {};
+  const title = String(value || state.parametrage.titre || '').trim();
+  state.parametrage.titre = title;
+  state.parametrage.titre_repondants = title;
+  state.parametrage.titreRespondants = title;
+  state.parametrage.titre_visible_repondants = title;
+  state.parametrage.titreVisibleRepondants = title;
+  state.parametrage.titre_visible = title;
+  state.parametrage.titreVisible = title;
+  state.titre_repondants = title;
+  state.titreRespondants = title;
+}
 function updateParam(k,v){
   state.parametrage[k]=v;
+  if(k === 'titre') syncRespondentTitleAliases(v);
   if(k === 'date_lancement' || k === 'dateLancement' || k === 'date_cloture' || k === 'dateCloture') normalizeCampaignDatesInState();
   save();
 }
@@ -1048,7 +1062,7 @@ async function persistProjectDraft(step, status){
       headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
       body: JSON.stringify({
         projectId: getCurrentProjectIdForSave() || undefined,
-        title: state.parametrage?.nom || state.themeTitle || state.title || 'Autodiagnostic',
+        title: state.parametrage?.titre_repondants || state.parametrage?.titreRespondants || state.parametrage?.titre_visible_repondants || state.parametrage?.titreVisibleRepondants || state.parametrage?.titre || state.parametrage?.nom || state.themeTitle || state.title || 'Autodiagnostic',
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
         status: status || state.status || 'draft',
         currentStep: step || 'parametrage',
@@ -1098,12 +1112,7 @@ async function goNext(){
 
   state.parametrage.nom = getFieldValue('nom') || state.parametrage.nom || '';
   state.parametrage.titre = getFieldValue('titre') || state.parametrage.titre || '';
-  state.parametrage.titre_repondants = state.parametrage.titre;
-  state.parametrage.titreRespondants = state.parametrage.titre;
-  state.parametrage.titre_visible_repondants = state.parametrage.titre;
-  state.parametrage.titreVisibleRepondants = state.parametrage.titre;
-  state.parametrage.titre_visible = state.parametrage.titre;
-  state.parametrage.titreVisible = state.parametrage.titre;
+  syncRespondentTitleAliases(state.parametrage.titre);
   state.parametrage.desc = getFieldValue('desc') || state.parametrage.desc || '';
   state.parametrage.entreprise = getFieldValue('entreprise') || state.parametrage.entreprise || '';
   state.parametrage.slug = getFieldValue('slug') || state.parametrage.slug || '';
