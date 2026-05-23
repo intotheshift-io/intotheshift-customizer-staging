@@ -1343,6 +1343,673 @@
 
   },
 
+  "donnees-confidentialite": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous préparez une présentation pour un client. Elle contient des projections financières internes et des données sur les marges de votre entreprise. Vous l'envoyez par mail via votre messagerie personnelle Gmail pour travailler depuis chez vous.",
+        tags: ["données", "classification"],
+        answers: [
+          { text: "C'est plus pratique pour accéder depuis mon domicile et les données restent dans ma boîte mail.", score: 0 },
+          { text: "J'utilise uniquement les outils professionnels approuvés pour transférer des données sensibles.", score: 2 },
+          { text: "J'utilise Gmail uniquement pour les fichiers non confidentiels.", score: 0.5 },
+          { text: "Je chiffre le fichier avant de l'envoyer via Gmail.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous trouvez un document marqué 'Confidentiel' sur l'imprimante partagée. Vous le reconnaissez comme appartenant à votre collègue Jonathan.",
+        tags: ["données", "classification"],
+        answers: [
+          { text: "Je le lis rapidement pour voir si c'est important et je le lui laisse.", score: 0 },
+          { text: "Je le retourne face contre la machine sans le lire et je préviens Jonathan.", score: 2 },
+          { text: "Je le laisse sur l'imprimante — ce n'est pas à moi de gérer.", score: 0 },
+          { text: "Je le mets dans un tiroir fermé et j'envoie un message à Jonathan.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant d'envoyer ou de partager un document, vous évaluez si son niveau de sensibilité est compatible avec le canal que vous allez utiliser.",
+        tags: ["données", "sensibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous prenez le train et vous passez un appel professionnel. Le wagon est occupé. La conversation porte sur les résultats financiers du trimestre, pas encore publiés.",
+        tags: ["données", "conversation"],
+        answers: [
+          { text: "Je continue l'appel en baissant la voix — les passagers n'écoutent probablement pas.", score: 0 },
+          { text: "Je reporte l'appel à un moment où je peux parler sans être entendu.", score: 2 },
+          { text: "Je continue mais sans citer de chiffres précis.", score: 0.5 },
+          { text: "Je passe dans le couloir pour parler avec moins de monde autour.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez imprimé un document contenant les salaires de votre équipe pour une réunion. La réunion est terminée. Les copies sont inutiles.",
+        tags: ["données", "destruction"],
+        answers: [
+          { text: "Je les froisse et je les jette dans la corbeille de bureau.", score: 0 },
+          { text: "Je les déchiquète ou je les mets dans le bac de destruction sécurisé.", score: 2 },
+          { text: "Je les garde dans mon bureau pour les détruire plus tard.", score: 0.5 },
+          { text: "Je les plie en quatre avant de les jeter pour qu'elles soient moins lisibles.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous détruisez correctement les documents confidentiels papier plutôt que de les jeter dans la corbeille ordinaire.",
+        tags: ["données", "destruction"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous trouvez une clé USB dans la salle de réunion après une réunion avec un client. Elle n'a pas d'indication d'appartenance.",
+        tags: ["données", "clé USB"],
+        answers: [
+          { text: "Je la branche sur mon poste pour identifier son propriétaire.", score: 0 },
+          { text: "Je la remets à l'accueil ou à l'équipe informatique sans la brancher.", score: 2 },
+          { text: "Je la pose sur un bureau en vue pour que quelqu'un la réclame.", score: 0 },
+          { text: "Je la garde le temps de trouver son propriétaire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez sur un dossier client sensible dans un open space. Un collègue d'un autre département s'arrête pour vous parler et peut voir votre écran.",
+        tags: ["données", "écran"],
+        answers: [
+          { text: "Je continue à travailler — mes collègues sont de confiance et sont soumis au même accord de confidentialité.", score: 0 },
+          { text: "Je minimise les fenêtres sensibles le temps de la conversation.", score: 2 },
+          { text: "Je me tourne légèrement pour que mon écran soit moins visible.", score: 1 },
+          { text: "Je lui demande gentiment de me donner un instant avant de le rejoindre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'accédez qu'aux données dont vous avez besoin pour votre travail, même quand vous avez techniquement accès à davantage.",
+        tags: ["données", "accès"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous gardez une copie de travail de dossiers clients sur une clé USB personnelle pour pouvoir y accéder facilement depuis n'importe quel poste.",
+        tags: ["données", "sauvegarde"],
+        answers: [
+          { text: "C'est pratique pour travailler de façon flexible sans dépendre du réseau de l'entreprise.", score: 0 },
+          { text: "Je supprime les copies locales et j'utilise uniquement les solutions de stockage approuvées par l'entreprise.", score: 2 },
+          { text: "Je chiffre la clé USB et je limite les données copiées aux strictement nécessaires.", score: 1 },
+          { text: "Je garde uniquement les documents sur lesquels je travaille activement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les données professionnelles avec les mêmes habitudes que vos données personnelles", desc: "Envoyer des fichiers via Gmail pour travailler de chez soi, garder des données sur une clé USB personnelle, parler de résultats non publiés dans le train : ces comportements semblent anodins mais créent des expositions réelles. Les données professionnelles sortent du périmètre sécurisé de l'entreprise dès qu'elles transitent par des outils ou supports personnels — même pour quelques minutes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les données sensibles dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous chiffrez les fichiers importants, vous verrouillez votre écran, vous détruisez les documents confidentiels. Mais la clé USB de secours pour travailler depuis n'importe où, le mail via Gmail pour accéder au fichier depuis chez soi, la conversation confidentielle dans le train en baissant juste la voix : ces habitudes créent des expositions que vous ne mesurez pas toujours. L'enjeu est d'appliquer le même niveau de vigilance à tous les vecteurs, pas seulement aux plus évidents." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les données professionnelles avec la même rigueur quel que soit le support ou le contexte", desc: "Vous n'envoyez pas de fichiers professionnels via des outils personnels. Vous ne stockez pas de données sur des supports non approuvés. Vous détruisez les documents confidentiels papier. Vous minimisez les fenêtres sensibles quand quelqu'un approche. Cette discipline constante — qui s'applique dans le bureau, dans le train, chez soi — est ce qui maintient réellement les données dans le périmètre sécurisé de l'entreprise." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous envoyez un fichier confidentiel par mail. Vous commencez à taper le prénom d'une collègue — Céline — et la saisie automatique propose deux adresses : celle de votre collègue interne et une adresse externe similaire. Vous cliquez sur la première.",
+        tags: ["partage", "destinataire"],
+        answers: [
+          { text: "Je fais confiance à la saisie automatique — c'est le système qui propose.", score: 0 },
+          { text: "Je vérifie toujours l'adresse complète avant d'envoyer un fichier sensible.", score: 2 },
+          { text: "Je vérifierai l'accusé de réception pour m'assurer qu'elle a bien reçu.", score: 0 },
+          { text: "Je lui envoie un message séparé pour confirmer qu'elle a bien reçu le fichier.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant d'envoyer un document confidentiel, vous vérifiez manuellement chaque adresse destinataire, même en cas de saisie automatique.",
+        tags: ["partage", "vérification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un partenaire externe vous demande d'envoyer un contrat non finalisé via WeTransfer car il dit que sa messagerie ne reçoit pas les pièces jointes volumineuses.",
+        tags: ["partage", "outil"],
+        answers: [
+          { text: "J'envoie via WeTransfer — c'est un outil connu et le contrat n'est pas finalisé.", score: 0 },
+          { text: "Je vérifie si notre entreprise dispose d'un outil de partage externe approuvé et je l'utilise.", score: 2 },
+          { text: "Je compresse et chiffre le fichier avant de l'envoyer via WeTransfer.", score: 0.5 },
+          { text: "Je contacte notre équipe informatique pour trouver une solution approuvée.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partagez un document sensible dans un canal Teams d'équipe. Vous réalisez ensuite que ce canal inclut des personnes extérieures à votre équipe.",
+        tags: ["partage", "groupe Teams"],
+        answers: [
+          { text: "Je laisse — les personnes dans ce Teams ont probablement été ajoutées pour une bonne raison.", score: 0 },
+          { text: "Je supprime le fichier du canal et je le partage uniquement avec les personnes concernées.", score: 2 },
+          { text: "Je vérifie la liste des membres et je supprime le fichier si des personnes non autorisées y ont accès.", score: 2 },
+          { text: "Je l'archive pour que seuls les membres actifs le voient.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue d'un autre service vous demande par mail la liste des adresses personnelles des employés de votre département pour envoyer des cartes de vœux.",
+        tags: ["partage", "données personnelles"],
+        answers: [
+          { text: "Je lui envoie la liste — c'est pour un usage bienveillant.", score: 0 },
+          { text: "Je lui dis que ce type de données ne peut pas être partagé sans autorisation RH et DPO.", score: 2 },
+          { text: "Je lui envoie uniquement les adresses des personnes qui m'ont donné leur accord.", score: 1 },
+          { text: "Je lui transmets la demande aux RH pour qu'elles gèrent.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne partagez jamais de données personnelles de collaborateurs (adresses, numéros, salaires) sans validation RH ou DPO, quelle que soit la demande.",
+        tags: ["partage", "données personnelles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous venez d'envoyer un mail avec une pièce jointe confidentielle au mauvais destinataire. Il n'est pas dans votre entreprise.",
+        tags: ["partage", "mauvais envoi"],
+        answers: [
+          { text: "Je lui envoie immédiatement un mail pour lui demander de supprimer le fichier.", score: 0.5 },
+          { text: "Je contacte immédiatement l'équipe informatique et le DPO pour qu'ils gèrent selon la procédure.", score: 2 },
+          { text: "J'envoie un mail de rappel et je note l'incident dans mon registre personnel.", score: 0 },
+          { text: "Je rappelle le destinataire pour lui demander de supprimer le fichier et j'en informe mon responsable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue vous demande par WhatsApp professionnel de lui envoyer le numéro de sécurité sociale d'un employé pour remplir un formulaire RH urgent.",
+        tags: ["partage", "messagerie instantanée"],
+        answers: [
+          { text: "Je lui envoie via WhatsApp — c'est urgent et c'est un collègue de confiance.", score: 0 },
+          { text: "Je lui dis de passer par les canaux sécurisés approuvés par l'entreprise pour ce type de donnée.", score: 2 },
+          { text: "Je lui envoie via la messagerie professionnelle chiffrée.", score: 1 },
+          { text: "Je lui donne le contact direct de la personne concernée pour qu'elle transmette elle-même.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez pas les messageries personnelles (WhatsApp, Gmail, etc.) pour transmettre des données professionnelles sensibles.",
+        tags: ["partage", "canal"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partagez un dossier SharePoint en lien public pour faciliter la collaboration avec un partenaire sur un projet confidentiel.",
+        tags: ["partage", "droits"],
+        answers: [
+          { text: "C'est pratique pour la collaboration externe et le lien n'est pas facile à trouver.", score: 0 },
+          { text: "Je configure des droits d'accès nominatifs pour le partenaire plutôt qu'un lien public.", score: 2 },
+          { text: "Je protège le lien par un mot de passe.", score: 0.5 },
+          { text: "Je vérifie avec l'équipe informatique si le lien public est acceptable pour ce type de projet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous partagez les données en privilégiant la praticité sur la sécurité", desc: "Cliquer sans vérifier l'adresse complète du destinataire, envoyer un document confidentiel via WeTransfer parce que c'est plus pratique, créer un lien public sur SharePoint pour faciliter la collaboration : la praticité et la sécurité sont souvent en tension. Dans tous ces cas, une erreur ou une mauvaise configuration crée une fuite de données réelle dont les conséquences peuvent être significatives." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les destinataires et les canaux dans la plupart des cas mais des raccourcis apparaissent sous pression", desc: "Vous vérifiez généralement les adresses avant d'envoyer, vous utilisez les outils approuvés pour les dossiers importants. Mais sous pression de délai, quand le partenaire insiste pour un outil non approuvé, quand le lien public semble la solution la plus rapide : des raccourcis apparaissent. L'enjeu est de maintenir la rigueur dans ces moments précis." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement destinataires et canaux avant tout partage de données sensibles", desc: "Vous vérifiez manuellement l'adresse destinataire de chaque mail sensible. Vous utilisez les outils de partage approuvés même quand le partenaire demande autre chose. Vous configurez des droits nominatifs plutôt que des liens publics. Vous signalez immédiatement un envoi erroné au DPO. Cette rigueur dans le partage — qui suppose d'accepter parfois de ralentir — est ce qui évite les fuites accidentelles qui représentent la majorité des incidents de données." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous organisez un événement client et vous voulez garder les contacts dans votre CRM personnel pour de futurs échanges. Les participants ont simplement assisté à l'événement sans signer de consentement explicite.",
+        tags: ["RGPD", "collecte"],
+        answers: [
+          { text: "Je les ajoute — ils ont participé à notre événement, c'est un contact légitime.", score: 0 },
+          { text: "Je ne les ajoute que si j'ai recueilli leur consentement pour des communications futures.", score: 2 },
+          { text: "Je les ajoute en limitant les communications aux seules informations liées à l'événement.", score: 0.5 },
+          { text: "Je les ajoute dans le CRM de l'entreprise uniquement, pas dans mon CRM personnel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant d'utiliser des données personnelles pour de la prospection ou de la communication, vous vérifiez que le consentement a bien été recueilli.",
+        tags: ["RGPD", "consentement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez des dossiers de candidats qui n'ont pas été retenus il y a trois ans. Ils sont toujours dans votre système RH.",
+        tags: ["RGPD", "durée conservation"],
+        answers: [
+          { text: "Je les garde — on ne sait jamais si un futur poste correspond à leur profil.", score: 0 },
+          { text: "Je les supprime — les données de candidature ont une durée de conservation limitée en droit français.", score: 2 },
+          { text: "Je les archive en lecture seule pour les garder sans les utiliser.", score: 0 },
+          { text: "Je contacte les candidats pour leur demander s'ils souhaitent rester dans notre base.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un ancien client vous demande par mail la liste des données personnelles que votre entreprise détient sur lui. Il invoque le RGPD.",
+        tags: ["RGPD", "droit d'accès"],
+        answers: [
+          { text: "Je lui réponds que je ne gère pas ce type de demande et je lui suggère de contacter notre service commercial.", score: 0 },
+          { text: "Je transmets la demande au DPO de l'entreprise pour traitement dans les délais légaux.", score: 2 },
+          { text: "Je lui réponds directement en lui envoyant les données que j'ai sur lui.", score: 0 },
+          { text: "Je lui demande de préciser sa demande avant de la transmettre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous créez un formulaire d'inscription en ligne pour un webinaire. Par habitude, vous demandez le nom, prénom, email, téléphone, taille de l'entreprise, secteur, budget et poste.",
+        tags: ["RGPD", "minimisation"],
+        answers: [
+          { text: "C'est utile pour qualifier les prospects — plus on a d'informations, mieux c'est.", score: 0 },
+          { text: "Je réduis aux données strictement nécessaires pour l'organisation du webinaire.", score: 2 },
+          { text: "Je garde les champs mais je rends certains optionnels.", score: 0.5 },
+          { text: "Je consulte notre DPO pour savoir quels champs sont légalement acceptables.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous collectez des données personnelles, vous limitez la collecte aux données réellement nécessaires à votre objectif.",
+        tags: ["RGPD", "minimisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que vous avez envoyé par erreur un fichier contenant des données personnelles de clients à un destinataire externe non autorisé.",
+        tags: ["RGPD", "violation"],
+        answers: [
+          { text: "Je lui envoie un mail pour lui demander de supprimer le fichier — c'est réglé.", score: 0 },
+          { text: "Je contacte immédiatement le DPO de l'entreprise — une violation de données personnelles doit être notifiée à la CNIL sous 72 heures.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il évalue si c'est grave.", score: 1 },
+          { text: "Je contacte le destinataire et je signale à mon responsable en espérant que le fichier ne soit pas utilisé.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous envisagez d'utiliser un outil SaaS gratuit pour analyser les données clients de votre entreprise. Cet outil n'est pas approuvé par votre DSI.",
+        tags: ["RGPD", "sous-traitant"],
+        answers: [
+          { text: "Je l'utilise — c'est un outil reconnu dans le secteur et les données sont en sécurité.", score: 0 },
+          { text: "Je consulte la DSI avant d'utiliser tout outil tiers avec des données clients.", score: 2 },
+          { text: "Je l'utilise uniquement avec des données anonymisées.", score: 0.5 },
+          { text: "Je vérifie la politique de confidentialité de l'outil avant de l'utiliser.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez pas d'outils non approuvés par votre DSI pour traiter des données personnelles, même si ces outils sont reconnus dans votre secteur.",
+        tags: ["RGPD", "outils"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur, Rayan, utilise un fichier Excel partagé en dehors du CRM pour suivre ses contacts prospects avec numéros de téléphone personnels et notes de conversations.",
+        tags: ["RGPD", "sensibilisation"],
+        answers: [
+          { text: "Je laisse — il est nouveau et c'est une pratique courante en commercial.", score: 0 },
+          { text: "Je lui explique les obligations RGPD et je l'oriente vers les outils approuvés de l'entreprise.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il recadre.", score: 1 },
+          { text: "Je lui envoie la politique de données de l'entreprise par mail.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le RGPD est encore perçu comme une contrainte administrative plutôt que comme une responsabilité réelle", desc: "Garder des données de candidats trois ans après le recrutement, ajouter des contacts d'un événement sans consentement, collecter plus de données que nécessaire dans un formulaire : ces comportements sont courants et souvent non intentionnels. Le RGPD n'est pas seulement une obligation légale — c'est une façon de traiter les données des personnes avec le respect qu'elles méritent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les principales obligations RGPD mais leur application systématique est encore incomplète", desc: "Vous respectez les grandes obligations RGPD — consentement, durée de conservation sur les sujets que vous maîtrisez. Mais la minimisation des données dans les formulaires, la notification de violation dans les 72h, les outils SaaS non approuvés avec des données clients : ces aspects sont encore insuffisamment intégrés. L'enjeu est de traiter le RGPD comme une pratique quotidienne, pas comme un sujet ponctuel." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez le RGPD comme une pratique quotidienne — consentement, minimisation, durées de conservation", desc: "Vous ne collectez que les données nécessaires. Vous vérifiez les consentements avant d'utiliser des contacts. Vous transmettez les demandes d'accès au DPO dans les délais. Vous supprimez les données de candidats dans les délais légaux. Vous consultez la DSI avant d'utiliser un outil tiers avec des données clients. Cette façon de traiter le RGPD comme une pratique quotidienne — pas comme un sujet ponctuel — est ce qui protège réellement les personnes dont vous traitez les données." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous perdez votre ordinateur portable professionnel dans les transports. Il contient des données clients non chiffrées.",
+        tags: ["incident données", "perte"],
+        answers: [
+          { text: "Je le signale à la police et j'attends de voir si on le retrouve avant de prévenir l'entreprise.", score: 0 },
+          { text: "Je contacte immédiatement mon équipe informatique et mon responsable pour déclencher la procédure d'incident.", score: 2 },
+          { text: "Je change les mots de passe de mes comptes professionnels et je signale la perte à mon responsable.", score: 1 },
+          { text: "Je le bloque à distance si possible et je le signale à l'équipe informatique dans la journée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Sur perte ou vol d'un support contenant des données professionnelles, vous contactez immédiatement l'équipe informatique et votre responsable — avant même de signaler à la police.",
+        tags: ["incident données", "réactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous utilisez depuis plusieurs mois un service cloud personnel pour stocker des données de travail. Vous réalisez que ce service a subi une fuite de données.",
+        tags: ["incident données", "shadow IT"],
+        answers: [
+          { text: "Je supprime les données du service et je n'en parle pas — la fuite concerne d'autres utilisateurs.", score: 0 },
+          { text: "Je signale immédiatement l'incident à l'équipe informatique en précisant quelles données étaient stockées.", score: 2 },
+          { text: "Je change le mot de passe du service et je déplace les données sur un outil approuvé.", score: 0.5 },
+          { text: "Je contacte le service cloud pour avoir des précisions sur la fuite avant de décider.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez qu'un grand volume de données a été téléchargé depuis votre compte la nuit dernière. Vous n'avez pas fait ces téléchargements.",
+        tags: ["incident données", "signalement"],
+        answers: [
+          { text: "Je vérifie s'il y a une explication logique — mise à jour automatique, synchronisation.", score: 0.5 },
+          { text: "Je contacte immédiatement l'équipe informatique en leur donnant les détails de l'activité suspecte.", score: 2 },
+          { text: "Je change mon mot de passe et j'active le 2FA avant de signaler.", score: 1 },
+          { text: "Je surveille encore 24 heures pour confirmer que c'était bien suspect.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous découvrez qu'un ancien collègue parti depuis trois mois a toujours accès aux dossiers partagés de votre équipe et a consulté des fichiers récemment.",
+        tags: ["incident données", "collègue"],
+        answers: [
+          { text: "Je le signale à mon responsable — il réglera la question des accès avec l'ex-collègue.", score: 0.5 },
+          { text: "Je contacte immédiatement l'équipe informatique pour que l'accès soit révoqué et l'incident documenté.", score: 2 },
+          { text: "Je contacte l'ex-collègue directement pour comprendre pourquoi il a consulté ces fichiers.", score: 0 },
+          { text: "Je lui retire l'accès moi-même depuis les paramètres du dossier partagé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez tout accès non autorisé ou anormal à des données, même si vous n'êtes pas certain·e de la gravité.",
+        tags: ["incident données", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez qu'un mail avec des données médicales de salariés a été envoyé par erreur à une liste de diffusion incluant des personnes extérieures à l'équipe RH.",
+        tags: ["incident données", "erreur envoi"],
+        answers: [
+          { text: "J'envoie un mail de rappel à toute la liste pour demander de supprimer le mail précédent.", score: 0 },
+          { text: "Je contacte immédiatement le DPO — les données de santé sont des données sensibles avec un régime particulier sous le RGPD.", score: 2 },
+          { text: "Je bloque l'envoi si je peux encore le faire et j'en parle à mon responsable.", score: 1 },
+          { text: "J'en parle à mon responsable et à l'équipe informatique pour évaluer l'impact.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partez de l'entreprise dans deux semaines. Vous copiez sur une clé USB personnelle des dossiers clients que vous avez construits pendant votre mission, 'au cas où'.",
+        tags: ["incident données", "exfiltration"],
+        answers: [
+          { text: "C'est mon travail — ces dossiers, c'est moi qui les ai construits.", score: 0 },
+          { text: "Je ne copie rien — les données clients appartiennent à l'entreprise, pas à moi.", score: 2 },
+          { text: "Je copie uniquement mes notes personnelles et mes modèles de documents génériques.", score: 1 },
+          { text: "Je demande à mon responsable s'il y a des éléments que je peux conserver.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En quittant un poste, vous ne copiez pas de données professionnelles sur des supports personnels, même celles que vous avez créées.",
+        tags: ["incident données", "départ"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'équipe informatique vous contacte dans le cadre d'une enquête sur une possible fuite de données. Elle vous demande les accès que vous avez effectués sur certains dossiers.",
+        tags: ["incident données", "enquête interne"],
+        answers: [
+          { text: "Je réponds uniquement aux questions strictement nécessaires — mieux vaut rester prudent.", score: 0 },
+          { text: "Je coopère pleinement en fournissant toutes les informations demandées.", score: 2 },
+          { text: "Je consulte d'abord un responsable RH avant de répondre.", score: 0.5 },
+          { text: "Je réponds honnêtement mais je demande pourquoi ces informations sont nécessaires.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction aux incidents de données tarde ou reste incomplète par peur des conséquences", desc: "Attendre de retrouver un ordinateur perdu avant de prévenir l'entreprise, ne pas signaler une fuite d'un outil non approuvé, envoyer un mail de rappel comme seule réponse à un envoi erroné de données médicales : ces réponses insuffisantes laissent des incidents se propager. Les délais légaux de notification (72h pour la CNIL) ne laissent pas de place à l'attentisme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents graves mais les situations ambiguës ou inconfortables restent encore sans réaction rapide", desc: "Vous signalez les pertes et vols d'appareils. Mais une fuite via un outil non approuvé que vous n'auriez pas dû utiliser, un envoi erroné de données médicales où un simple mail de rappel semble suffisant, un accès suspect d'un ex-collègue qu'on règle en interne : le réflexe de signalement auprès du DPO et de l'équipe informatique n'est pas encore automatique dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout incident de données et coopérez pleinement avec les équipes concernées", desc: "Sur perte d'un appareil, vous contactez l'équipe informatique avant même la police. Sur envoi erroné de données médicales, vous allez directement au DPO. Sur accès suspect d'un ex-collègue, vous déclenchez la procédure informatique. Sur fuite d'un outil non approuvé, vous signalez même si ça révèle un usage non conforme de votre part. Cette coopération sans réserve avec les équipes sécurité et conformité est ce qui permet de contenir les incidents." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -1354,8 +2021,7 @@
         ["Réagir correctement face à une tentative",    "Signaler immédiatement, déconnecter, changer ses identifiants — sans attendre."],
         ["Résister à la pression et aux prétextes",     "Maintenir la vérification indépendante même face à une autorité apparente."],
         ["Adopter les bons réflexes au quotidien",      "Discrétion sur les informations indirectes et signalement du doute."]
-      ]}
-    ],
+      ]}],
 
     ["mots-de-passe-acces", "Mots de passe et authentification", "Tous publics",
       "Créer des mots de passe solides, activer le 2FA et gérer ses accès selon le principe de moindre privilège.",
@@ -1364,8 +2030,16 @@
         ["Utiliser l'authentification à deux facteurs",   "Activer partout, ne jamais partager ses codes, réagir aux notifications non initiées."],
         ["Gérer les accès et les sessions",                "Verrouiller, révoquer, appliquer le principe de moindre privilège."],
         ["Réagir à une compromission d'accès",            "Signaler vite, déconnecter, coopérer — sans attendre la certitude."]
-      ]}
-    ],
+      ]}],
+
+    ["donnees-confidentialite", "Données et confidentialité", "Tous publics",
+      "Identifier, protéger et partager les données professionnelles de façon sécurisée et conforme au RGPD.",
+      { domain: "cyber", chapters: [
+        ["Identifier et protéger les données sensibles",  "Reconnaître les données sensibles et les protéger quel que soit le support."],
+        ["Partager les données de façon sécurisée",       "Vérifier destinataires, canaux et droits avant tout partage."],
+        ["Respecter le RGPD au quotidien",                "Consentement, minimisation, durées de conservation — en pratique."],
+        ["Gérer les incidents liés aux données",          "Signaler vite, coopérer pleinement, ne rien emporter en partant."]
+      ]}],
 
   ]);
 
