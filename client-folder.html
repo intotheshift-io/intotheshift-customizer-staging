@@ -178,7 +178,7 @@
         </div>
         <div class="hero-actions">
           <button class="btn" onclick="createAdForThisClient()">Créer un AD pour ce client</button>
-          <button class="btn" onclick="openClientArchives()">📦 Archives</button>
+          <button class="btn" onclick="openClientArchives()">📦 Archives <span id="clientArchivesCount" style="margin-left:6px;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:2px 7px;font-size:12px">0</span></button>
         </div>
       </div>
     </section>
@@ -682,8 +682,10 @@ function getProjectTitle(project){
       );
 
       if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
-      if(s === "sent" || s === "transmis" || s === "submitted" || s === "transmitted" || sentFlag) return "sent";
+      // Important : un projet publié conserve souvent data.configTransmise=true.
+      // Le statut SQL reste la source prioritaire pour éviter qu'un publié soit affiché en transmis.
       if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
+      if(s === "sent" || s === "transmis" || s === "submitted" || s === "transmitted" || sentFlag) return "sent";
       return "draft";
     }
 
