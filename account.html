@@ -410,6 +410,7 @@ function showPanel(id,btn){
   document.querySelectorAll(".side-btn").forEach(b=>b.classList.remove("on"));
   document.getElementById("panel-"+id)?.classList.add("on");
   btn?.classList.add("on");
+  if(id === "quota") renderAccountQuota();
 }
 
 function openPanelFromUrl(){
@@ -654,7 +655,8 @@ function hydrateAccount(forcedUser=null){
     if(navOrganisation)navOrganisation.hidden=true;
     if(navPassation)navPassation.hidden=true;
     if(navPartner)navPartner.hidden=true;
-    if(navQuota)navQuota.hidden=true;
+    // L'onglet Pack reste visible : utile pour vérifier le branchement quota en staging/prod.
+    if(navQuota)navQuota.hidden=false;
   }else if(role==="partner"){
     if(navOrganisation)navOrganisation.hidden=true;
     if(navPassation)navPassation.hidden=true;
