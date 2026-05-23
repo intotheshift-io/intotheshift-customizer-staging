@@ -322,7 +322,7 @@
 
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
       if (raw.includes("publi")) return "published";
-      if (raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
+      if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
       if (raw.includes("archiv")) return "archived";
       return "draft";
     }
@@ -331,6 +331,7 @@
       return {
         draft: "Brouillon",
         submitted: "Transmis à Into The Shift",
+        sent: "Transmis à Into The Shift",
         published: "Publié",
         unpublished: "Dépublié",
         archived: "Archivé"
@@ -532,7 +533,7 @@
     function resumeLabel(project) {
   const status = normalizeStatus(project);
 
-  if (status === "submitted") return "En attente de publication";
+  if (status === "submitted" || status === "sent") return "En attente de publication";
   if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
 
   const step = getProjectStep(project);
@@ -590,7 +591,7 @@
     }
 
     function canCloneProject(project) {
-      return ["submitted", "published", "unpublished"].includes(normalizeStatus(project));
+      return ["submitted", "sent", "published", "unpublished"].includes(normalizeStatus(project));
     }
 
     function shortUrl(url) {
@@ -687,7 +688,7 @@
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
         const filterOk =
           currentFilter === "all" ||
-          status === currentFilter ||
+          (status === currentFilter || (currentFilter === "submitted" && status === "sent")) ||
           (currentFilter === "endingSoon" && isEndingSoon(p)) ||
           (currentFilter === "results" && hasResultsAvailable(p));
         return filterOk && (!q || text.includes(q));
