@@ -47,6 +47,31 @@
 .campaign-locked input,.campaign-locked select,.campaign-locked textarea{background:#f6f8fb!important;color:#64748b!important}
 .help-dot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;margin-left:6px;cursor:help;position:relative}.help-dot:hover::after{content:attr(data-help);position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:260px;background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.35;text-transform:none;letter-spacing:0;z-index:20;box-shadow:0 12px 30px rgba(15,30,55,.22)}
 
+/* ── Dates campagne : visibilité + délai minimum J+5 ───────── */
+.date-edit{
+  border:2px solid #18375d!important;
+  background:#fff!important;
+  color:#18375d!important;
+  font-weight:900!important;
+  min-height:38px;
+  box-shadow:0 8px 18px rgba(24,55,93,.08);
+}
+.date-edit:focus{
+  border-color:#007883!important;
+  box-shadow:0 0 0 3px rgba(0,120,131,.14),0 8px 18px rgba(24,55,93,.08);
+}
+.campaign-date-note{
+  margin-top:7px;
+  padding:7px 9px;
+  border-radius:9px;
+  background:#fff8ec;
+  border:1px solid #ffd490;
+  color:#8a6408;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:700;
+}
+
 </style>
 </head>
 <body>
@@ -143,6 +168,80 @@ function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('U
 function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
 function normalizeDateInputValue(s){if(!s)return'';let str=String(s);if(/^\d{4}-\d{2}-\d{2}/.test(str))return str.slice(0,10);let d=new Date(str);return Number.isNaN(d.getTime())?str:d.toISOString().slice(0,10)}
+function campaignTodayISO(){
+  const d=new Date();
+  d.setHours(0,0,0,0);
+  return d.toISOString().slice(0,10);
+}
+function campaignAddDaysISO(baseISO,days){
+  const base=parseD(baseISO)||new Date();
+  base.setHours(0,0,0,0);
+  base.setDate(base.getDate()+Number(days||0));
+  return base.toISOString().slice(0,10);
+}
+function campaignMinLaunchDateISO(){
+  return campaignAddDaysISO(campaignTodayISO(),5);
+}
+function ensureCampaignDateNotes(){
+  const launch=document.getElementById('date-launch');
+  const close=document.getElementById('date-close');
+  if(launch && !document.getElementById('date-launch-note')){
+    const n=document.createElement('div');
+    n.id='date-launch-note';
+    n.className='campaign-date-note';
+    n.textContent='Délai minimum : la campagne ne peut pas démarrer avant J+5 pour laisser le temps de la préparer et de la livrer.';
+    launch.insertAdjacentElement('afterend',n);
+  }
+  if(close && !document.getElementById('date-close-note')){
+    const n=document.createElement('div');
+    n.id='date-close-note';
+    n.className='campaign-date-note';
+    n.textContent='La date de clôture doit être postérieure à la date de lancement.';
+    close.insertAdjacentElement('afterend',n);
+  }
+}
+function applyCampaignDateConstraints(){
+  const minLaunch=campaignMinLaunchDateISO();
+  const launch=document.getElementById('date-launch');
+  const close=document.getElementById('date-close');
+  if(launch) launch.min=minLaunch;
+  const currentLaunch=normalizeDateInputValue((launch&&launch.value)||p().date_lancement||'');
+  if(close) close.min=currentLaunch || minLaunch;
+}
+function validateAndNormalizeCampaignDates(showToastOnAdjust){
+  const minLaunch=campaignMinLaunchDateISO();
+  let start=normalizeDateInputValue(p().date_lancement || document.getElementById('date-launch')?.value || '');
+  let end=normalizeDateInputValue(p().date_cloture || document.getElementById('date-close')?.value || '');
+  let adjusted=false;
+
+  if(start && start < minLaunch){
+    start=minLaunch;
+    adjusted=true;
+  }
+  if(end && start && end <= start){
+    end=campaignAddDaysISO(start,1);
+    adjusted=true;
+  }
+
+  p().date_lancement=start;
+  p().dateLancement=start;
+  p().date_cloture=end;
+  p().dateCloture=end;
+  state.campaignStartDate=start;
+  state.campaign_start_date=start;
+  state.campaignEndDate=end;
+  state.campaign_end_date=end;
+
+  const launch=document.getElementById('date-launch');
+  const close=document.getElementById('date-close');
+  if(launch) launch.value=start;
+  if(close) close.value=end;
+  applyCampaignDateConstraints();
+
+  if(adjusted && showToastOnAdjust) showToast('Dates ajustées : lancement minimum J+5 et clôture après lancement.');
+  return {start,end,adjusted,minLaunch};
+}
+
 function formatDateFR(s){s=normalizeDateInputValue(s);if(!s)return'—';let a=s.split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:s}function parseD(s){let a=String(s||'').split('-');return a.length===3?new Date(+a[0],+a[1]-1,+a[2]):null}function diffDays(a,b){return(!a||!b)?null:Math.round((b-a)/(86400000))}
 const templates={launch:{title:'Email de lancement',meta:'Jour du lancement',body:`Bonjour à toutes et tous,\n\nNous lançons un autodiagnostic consacré à {{THEME}}.\n\nIl vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes, vos points d’appui et les sujets à renforcer collectivement.\n\nLa démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.\n\nLien de passation : {{URL}}\n\nMerci pour votre participation.`},managers:{title:'Email managers',meta:'Relais managers',body:`Bonjour,\n\nNous lançons la campagne {{THEME}}. Merci de relayer l’autodiagnostic auprès de vos équipes, sans orienter les réponses.\n\nLa démarche est anonyme et vise à mieux comprendre les réflexes du quotidien pour identifier des actions utiles collectivement.\n\nLien : {{URL}}`},reminder:{title:'Relance',meta:'Mi-campagne',body:`Bonjour,\n\nPetit rappel : l’autodiagnostic {{THEME}} est toujours ouvert.\n\nVotre participation est importante pour obtenir une vision utile des pratiques du quotidien.\n\nLien : {{URL}}`},last:{title:'Dernière chance',meta:'Avant clôture',body:`Bonjour,\n\nDernière chance pour participer à l’autodiagnostic avant la clôture de la campagne.\n\nLa démarche reste entièrement anonyme.\n\nLien : {{URL}}`},channels:{title:'Canaux internes',meta:'Teams / Slack',body:`📣 L’autodiagnostic {{THEME}} est ouvert.\n\n5 à 7 minutes, 100 % anonyme, sans login ni suivi individuel.\n\n👉 {{URL}}`},intranet:{title:'Post intranet',meta:'Intranet',body:`Nous lançons un autodiagnostic pour mieux comprendre les réflexes du quotidien autour de {{THEME}}.\n\nL’objectif n’est pas d’évaluer les personnes, mais d’identifier les leviers utiles pour progresser collectivement.\n\nAccéder à l’autodiagnostic : {{URL}}`},firstResults:{title:'Restitution premiers enseignements',meta:'Après clôture',body:`Merci pour votre participation à l’autodiagnostic.\n\nLes premiers enseignements permettent d’identifier les points d’appui et les sujets à approfondir collectivement.\n\nLes résultats seront partagés de manière agrégée.`},finalResults:{title:'Restitution finale',meta:'Après restitution',body:`Suite à l’autodiagnostic, nous partageons les principaux enseignements et les actions qui seront engagées.\n\nMerci encore pour votre contribution à cette démarche collective.`}};
 function showTemplate(k,btn){document.querySelectorAll('.comm-tab').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');let t=templates[k]||templates.launch;document.getElementById('tpl-title').textContent=t.title;document.getElementById('tpl-meta').textContent=t.meta;document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());c().activeTemplate=k;saveState()}
@@ -249,6 +348,9 @@ function normalizeCampaignDatesInState(){
 
 function forceInjectCampaignDatesUI(){
   normalizeCampaignDatesInState();
+  ensureCampaignDateNotes();
+  applyCampaignDateConstraints();
+  validateAndNormalizeCampaignDates(false);
   const start = p().date_lancement || '';
   const end = p().date_cloture || '';
   const launchInput = document.getElementById('date-launch');
@@ -259,14 +361,22 @@ function forceInjectCampaignDatesUI(){
   console.log('[ITS campagne] dates injectées UI', {start, end, stateStart: state.campaign_start_date, stateEnd: state.campaign_end_date});
 }
 
-function updateDatesFromInputs(){p().date_lancement=document.getElementById('date-launch').value;p().date_cloture=document.getElementById('date-close').value;normalizeCampaignDatesInState();updateDatesUI();updateChecklist();saveState()}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+function updateDatesFromInputs(){
+  p().date_lancement=document.getElementById('date-launch').value;
+  p().date_cloture=document.getElementById('date-close').value;
+  normalizeCampaignDatesInState();
+  validateAndNormalizeCampaignDates(true);
+  updateDatesUI();
+  updateChecklist();
+  saveState();
+}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){v=String(v||'');return !v?'Pack non renseigné':(v==='current_pack'||v==='existing'?'J’ai déjà un pack':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations'))}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const el=document.getElementById('pack-select');const v=el?el.value||'':(state.parametrage.pack_choisi||state.pack.volume||'');state.pack.volume=v;state.parametrage.pack_choisi=v;const pv=document.getElementById('pack-val');if(pv)pv.textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
   const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
   return role === 'admin' || role === 'partner';
 }
 
-function updateChecklist(){let cc=c();cc.checklist=cc.checklist||{};let boxes=[...document.querySelectorAll('.check-row input')];boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});if(!p().date_lancement)missing.push('Date de lancement');if(!p().date_cloture)missing.push('Date de clôture');if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');let ok=missing.length===0;document.getElementById('check-pill').textContent=checked+'/'+total;document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');document.getElementById('btn-launch').disabled=!ok;if(!isBackofficeViewingCampaign()){document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';}else{document.getElementById('sb-status').textContent=statusLabel();}let help=document.getElementById('publish-help');help.style.display=ok?'none':'block';help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':'Transmission bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.';saveState()}
+function updateChecklist(){let cc=c();cc.checklist=cc.checklist||{};let boxes=[...document.querySelectorAll('.check-row input')];boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});if(!p().date_lancement)missing.push('Date de lancement');if(!p().date_cloture)missing.push('Date de clôture');if(p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');let ok=missing.length===0;document.getElementById('check-pill').textContent=checked+'/'+total;document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');document.getElementById('btn-launch').disabled=!ok;if(!isBackofficeViewingCampaign()){document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';}else{document.getElementById('sb-status').textContent=statusLabel();}let help=document.getElementById('publish-help');help.style.display=ok?'none':'block';help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':'Transmission bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.';saveState()}
 const CFG=[{key:'bad',hex:'#ff847e',mk:'#fff0ef',text:'#c0392b'},{key:'mid',hex:'#ffc744',mk:'#fff9ec',text:'#b7840a'},{key:'good',hex:'#77cd8a',mk:'#f0fbf2',text:'#27823a'}];let PS={step:'home',chap:0,q:0,sel:null,socio:{},scores:{},chapScores:[],chapProfil:[],open:{}};
 function normAD(){let chapters=(state.chapters||[]).map((ch,i)=>({title:ch.title||ch.name||'Chapitre '+(i+1),questions:(ch.questions||[]).map(q=>{let ans=q.answers||q.opts||[];return{text:q.text||q.question||'Question',opts:ans.map(a=>a.text||a.l||a.label||String(a)),scores:ans.map(a=>Number(a.score??a.s??1))}}),profiles:(ch.profiles||ch.profils||[]).map((pr,j)=>({title:pr.title||pr.titre||'Profil',summary:pr.summary||pr.phrase||'',description:pr.description||pr.desc||'',keywords:pr.keywords||pr.motscles||pr.mots||[]})),seuils:ch.seuils||[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}));if(!chapters.length)chapters=[{title:'Chapitre 1',questions:[{text:'Première question de démonstration',opts:['Réponse A','Réponse B','Réponse C'],scores:[0,1,2]}],profiles:[{title:'Profil en progression',summary:'Votre profil apparaît ici.',description:'La description détaillée du profil sera affichée ici.',keywords:['Mot clé']}],seuils:[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}];return{title:cleanTheme(),intro:p().intro||'Bienvenue dans cet autodiagnostic. Il vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes. La démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.',socio:p().sociodemo||[{q:'À quelle catégorie appartenez-vous ?',opts:['Collaborateur·rice','Manager','Direction']}],chapters,resources:p().resources||state.resources||[]}}
 function pEsc(s){return esc(s)}function cleanProfileTitle(t){return String(t||'Profil').replace(/^(Pratiques en construction|Réflexes installés|Réflexes ancrés|En développement|En progression|Ancré|Mauvais|Moyen|Bon)\s*[—–-]\s*/i,'').trim()||'Profil'}function splitRadarLabel(t){let words=String(t||'').split(' '),lines=[''];words.forEach(w=>{let last=lines.length-1;if((lines[last]+' '+w).trim().length>18&&lines.length<3){lines.push(w)}else{lines[last]=(lines[last]+' '+w).trim()}});return lines}function pTotal(ad){return ad.chapters.reduce((a,ch)=>a+ch.questions.length,0)}function pDone(ad){return ad.chapters.slice(0,PS.chap).reduce((a,ch)=>a+ch.questions.length,0)+PS.q}function pCalc(ad,ci){let ch=ad.chapters[ci],t=0;for(let i=0;i<ch.questions.length;i++)t+=PS.scores[ci+'_'+i]||0;return t/ch.questions.length}function pIdx(score,seuils){let s=(seuils||[]).map(x=>x.max??x);return score<(s[0]??.7)?0:score<(s[1]??1.7)?1:2}
