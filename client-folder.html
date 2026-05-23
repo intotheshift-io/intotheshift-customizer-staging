@@ -450,29 +450,39 @@ function getProjectTitle(project){
       const state = data.state && typeof data.state === "object" ? data.state : {};
       const param = payload.parametrage || state.parametrage || data.parametrage || {};
       return pickProjectTitle(
+        project?.displayTitle,
+        project?.display_title,
+        project?.titre_repondants,
+        project?.titreRespondants,
         param.titre_repondants,
         param.titreRespondants,
         param.titre_visible_repondants,
         param.titreVisibleRepondants,
         param.titre_visible,
         param.titreVisible,
-        param.nom,
         param.titre,
         payload.titre_repondants,
         payload.titreRespondants,
         payload.titre_autodiag,
         payload.autodiagTitle,
+        payload.displayTitle,
+        payload.display_title,
         payload.title,
         payload.titre,
         state.titre_repondants,
         state.titreRespondants,
         state.autodiagTitle,
+        state.displayTitle,
+        state.display_title,
         state.title,
         data.titre_repondants,
         data.titreRespondants,
         data.autodiagTitle,
+        data.displayTitle,
+        data.display_title,
         data.title,
-        project.title
+        project.title,
+        param.nom
       );
     }
 
