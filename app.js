@@ -754,7 +754,7 @@ function itsNormalizeProjectStatus(projectOrState) {
 
 function itsIsProjectReadOnly(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted";
+  return status === "published" || status === "unpublished" || status === "archived";
 }
 
 async function itsFetchProjectById(projectId) {
