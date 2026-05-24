@@ -306,6 +306,15 @@ td:nth-child(9){width:125px}
 @media(max-width:1050px){.admin-form{grid-template-columns:1fr 1fr}.form-actions{grid-column:1 / -1}.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visible}.table-wrap{max-width:100%;overflow-x:auto}
 @media(max-width:620px){.partner-card-grid{grid-template-columns:1fr}.admin-form{grid-template-columns:1fr}.form-actions{grid-column:1}.admin-page{padding:14px}.admin-grid{grid-template-columns:1fr}.admin-hero{padding:22px;border-radius:22px}.admin-hero h1{font-size:26px}.section-head{flex-direction:column;align-items:flex-start}.admin-input,.admin-select{width:100%;min-width:0}}
+
+.id-debug-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 12px}
+.id-pill{background:#fff;border:1px dashed #bfd2df;color:#244b63;border-radius:12px;padding:8px 9px;font-size:12px;line-height:1.25;word-break:break-word}
+.id-pill strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;margin-bottom:3px}
+.id-pill.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}
+.id-pill.good{background:#eefbf3;border-color:#c8ebd4;color:#176239}
+.debug-note{background:#fff8ec;border:1px solid #ffd9a3;color:#8a5a00;border-radius:14px;padding:10px 12px;font-size:12px;font-weight:800;line-height:1.35;margin:8px 0}
+@media(max-width:900px){.id-debug-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.id-debug-grid{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -683,6 +692,60 @@ function cleanId(value){
   if(!id || id==="0" || id.toLowerCase()==="null" || id.toLowerCase()==="undefined" || id==="—") return "";
   return id;
 }
+function displayId(value){
+  const clean=cleanId(value);
+  return clean || "—";
+}
+function getProjectOrgId(p){
+  return cleanId(val(p,["organization_id","organizationId","org_id","orgId"],""));
+}
+function getProjectCreatorId(p){
+  return cleanId(val(p,["created_by","createdBy","creator_id","creatorId","user_id","userId","client_id","clientId"],""));
+}
+function getProjectOwnerId(p){
+  return cleanId(val(p,["owner_id","ownerId","partner_id","partnerId"],""));
+}
+function getProjectDebugGrid(p){
+  const projectId=displayId(val(p,["id"],""));
+  const orgId=displayId(getProjectOrgId(p));
+  const creatorId=displayId(getProjectCreatorId(p));
+  const ownerId=displayId(getProjectOwnerId(p));
+  const orgWarn = orgId === "—" ? " warn" : " good";
+  return `<div class="id-debug-grid">
+    <div class="id-pill good"><strong>ID AD / project.id</strong>${escapeHtml(projectId)}</div>
+    <div class="id-pill${orgWarn}"><strong>ID cockpit / organization_id</strong>${escapeHtml(orgId)}</div>
+    <div class="id-pill"><strong>ID créateur / created_by</strong>${escapeHtml(creatorId)}</div>
+    <div class="id-pill"><strong>ID owner/partner</strong>${escapeHtml(ownerId)}</div>
+  </div>`;
+}
+function logAdminMappings(){
+  try{
+    console.groupCollapsed("ITS DEBUG ADMIN — mappings users / organizations / projects");
+    console.table(adminState.clients.map(c=>({
+      user_id: val(c,["id","user_id"],""),
+      email: val(c,["email"],""),
+      role: val(c,["role"],""),
+      organization_id: val(c,["organization_id","organizationId"],""),
+      company: getCompany(c)
+    })));
+    console.table(adminState.organizations.map(o=>({
+      organization_id: val(o,["id"],""),
+      name: getOrgName(o),
+      created_by: getOrgCreatorId(o),
+      partner_parent_id: getPartnerIdFromOrg(o),
+      type: val(o,["type","organization_type","org_type"],"")
+    })));
+    console.table(adminState.projects.map(p=>({
+      project_id: val(p,["id"],""),
+      organization_id: getProjectOrgId(p),
+      created_by: getProjectCreatorId(p),
+      owner_or_partner_id: getProjectOwnerId(p),
+      status: val(p,["status","statut"],""),
+      title: pickProjectTitle(val(getProjectConfig(p)?.parametrage || {},["titre_repondants","titreRespondants","titre","nom"],""), val(getProjectConfig(p),["title","titre","autodiagTitle"],""), val(p,["title","name","project_name"],""))
+    })));
+    console.groupEnd();
+  }catch(e){console.warn("ITS DEBUG ADMIN impossible", e);}
+}
 function getOrgCreatorId(o){
   return cleanId(val(o,["created_by","createdBy","owner_id","ownerId","user_id","userId","createdByUserId","creator_id","creatorId"],""));
 }
@@ -831,6 +894,7 @@ async function loadAdminData(){
     adminState.clients=normalizeArray(clients,["clients","users","data"]);
     adminState.projects=normalizeArray(projects,["projects","autodiags","data"]);
     adminState.organizations=normalizeArray(organizations,["organizations","clients","data"]);
+    logAdminMappings();
     renderAll();
   }catch(err){
     console.error(err);
@@ -960,9 +1024,10 @@ function renderAccounts(){
       </div>
 
       <div class="account-meta-grid">
+        <div class="account-info-box"><div class="account-info-label">ID compte / user.id</div><div class="account-info-value">${escapeHtml(id || "—")}</div></div>
+        <div class="account-info-box"><div class="account-info-label">ID cockpit rattaché</div><div class="account-info-value">${escapeHtml(organizationId || "—")}</div></div>
         <div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>
         <div class="account-info-box"><div class="account-info-label">Projets</div><div class="account-info-value">${escapeHtml(projectCount)} autodiag${Number(projectCount)>1?"s":""}</div></div>
-        <div class="account-info-box"><div class="account-info-label">ID compte</div><div class="account-info-value">${escapeHtml(id)}</div></div>
         <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
       </div>
 
@@ -1032,6 +1097,7 @@ function renderPartners(){
 
     return`<article class="partner-card">
       <h3>${escapeHtml(name || "Partner sans nom")}</h3>
+      <div class="id-debug-grid" style="grid-template-columns:1fr"><div class="id-pill good"><strong>ID compte partner / user.id</strong>${escapeHtml(id || "—")}</div></div>
       <div class="partner-meta">
         ${escapeHtml(email)}<br>
         ${orgs.length} cockpit${orgs.length>1?"s":""} client${orgs.length>1?"s":""} · ${projectCount} AD
@@ -1082,8 +1148,16 @@ function renderOrganizations(){
     const used=num(val(o,["passationsUsed","passations_used"],0));
     const remaining=Math.max(0, quota-used);
     const projectsCount=getProjectsForOrg(o).length;
+    const orgCreatorId=getOrgCreatorId(o);
+    const parentId=cleanId(getPartnerIdFromOrg(o));
     return`<article class="org-card">
       <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
+      <div class="id-debug-grid">
+        <div class="id-pill good"><strong>ID cockpit / organization.id</strong>${escapeHtml(id || "—")}</div>
+        <div class="id-pill"><strong>ID créateur / created_by</strong>${escapeHtml(orgCreatorId || "—")}</div>
+        <div class="id-pill"><strong>ID parent/partner</strong>${escapeHtml(parentId || "—")}</div>
+        <div class="id-pill"><strong>AD liés par organization_id</strong>${escapeHtml(projectsCount)}</div>
+      </div>
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
@@ -1207,6 +1281,8 @@ function renderProjects(){
     const logoHtml = logo.data ? `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">${escapeHtml(logo.name || "Logo importé")}</div><button class="mini-btn light" style="margin-top:8px" onclick="downloadDataUrl('${escapeAttr(logo.data)}','${escapeAttr(logo.name || 'logo-passation.png')}')">Télécharger</button></div>` : `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">—</div><div class="muted">Aucun logo spécifique</div></div>`;
     return`<article class="project-card">
       <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
+      ${getProjectDebugGrid(p)}
+      ${!getProjectOrgId(p)?`<div class="debug-note">⚠️ Aucun organization_id lisible sur cet AD : rattachement client à vérifier en base.</div>`:""}
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
         <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>

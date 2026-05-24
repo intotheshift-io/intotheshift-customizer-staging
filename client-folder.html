@@ -166,6 +166,15 @@
 
     @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
     @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
+
+    .id-debug-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 12px}
+    .id-pill{background:#fff;border:1px dashed #bfd2df;color:#244b63;border-radius:12px;padding:8px 9px;font-size:12px;line-height:1.25;word-break:break-word}
+    .id-pill strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;margin-bottom:3px}
+    .id-pill.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}
+    .id-pill.good{background:#eefbf3;border-color:#c8ebd4;color:#176239}
+    .debug-note{background:#fff8ec;border:1px solid #ffd9a3;color:#8a5a00;border-radius:14px;padding:10px 12px;font-size:12px;font-weight:800;line-height:1.35;margin:8px 0}
+    @media(max-width:900px){.id-debug-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:620px){.id-debug-grid{grid-template-columns:1fr}}
   </style>
 </head>
 
@@ -401,6 +410,73 @@
         if(obj && obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
       }
       return fallback;
+    }
+
+    function cleanId(value){
+      const id = String(value || "").trim();
+      if(!id || id === "0" || id.toLowerCase() === "null" || id.toLowerCase() === "undefined") return "";
+      return id;
+    }
+
+    function displayId(value){
+      return cleanId(value) || "—";
+    }
+
+    function getProjectOrgId(project){
+      return cleanId(val(project,["organization_id","organizationId","org_id","orgId"],""));
+    }
+
+    function getProjectCreatorId(project){
+      return cleanId(val(project,["created_by","createdBy","creator_id","creatorId","user_id","userId","client_id","clientId"],""));
+    }
+
+    function getProjectOwnerId(project){
+      return cleanId(val(project,["owner_id","ownerId","partner_id","partnerId"],""));
+    }
+
+    function renderProjectIds(project){
+      const projectId = displayId(project?.id);
+      const orgId = displayId(getProjectOrgId(project));
+      const creatorId = displayId(getProjectCreatorId(project));
+      const ownerId = displayId(getProjectOwnerId(project));
+      const orgWarn = orgId === "—" ? " warn" : " good";
+      return `<div class="id-debug-grid">
+        <div class="id-pill good"><strong>ID AD / project.id</strong>${escapeHtml(projectId)}</div>
+        <div class="id-pill${orgWarn}"><strong>ID cockpit / organization_id</strong>${escapeHtml(orgId)}</div>
+        <div class="id-pill"><strong>ID créateur / created_by</strong>${escapeHtml(creatorId)}</div>
+        <div class="id-pill"><strong>ID owner/partner</strong>${escapeHtml(ownerId)}</div>
+      </div>`;
+    }
+
+    function logClientFolderMappings(clientId, organizations = [], projects = []){
+      try{
+        console.groupCollapsed("ITS DEBUG CLIENT-FOLDER — client / projects mappings");
+        console.log("CLIENT OUVERT", {
+          clientId,
+          currentClientId: currentClient?.id,
+          currentClientName: currentClient?.name,
+          ownerRole: getClientOwnerRole?.(),
+          ownerId: getClientOwnerId?.()
+        });
+        if(Array.isArray(organizations) && organizations.length){
+          console.table(organizations.map(o=>({
+            organization_id: o.id,
+            name: o.name || o.organizationName || o.clientName || o.company || o.company_name,
+            created_by: o.created_by || o.createdBy || o.owner_id || o.ownerId,
+            parent_id: o.parent_id || o.parentId || o.partner_id || o.partnerId,
+            type: o.type || o.organization_type || o.org_type
+          })));
+        }
+        console.table((projects || []).map(project => ({
+          project_id: project.id,
+          organization_id: getProjectOrgId(project),
+          created_by: getProjectCreatorId(project),
+          owner_or_partner_id: getProjectOwnerId(project),
+          status: project.status,
+          title: getProjectTitle(project)
+        })));
+        console.groupEnd();
+      }catch(e){console.warn("ITS DEBUG CLIENT-FOLDER impossible", e);}
     }
 
     function getContactName(client){
@@ -706,6 +782,7 @@ function getProjectTitle(project){
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
 
           currentClient = organizations.find(c => String(c.id) === String(clientId));
+          logClientFolderMappings(clientId, organizations, projects);
 
           if(currentClient){
             currentClient.projects = projects.filter(project =>
@@ -721,6 +798,7 @@ function getProjectTitle(project){
 
           if(!response.ok) throw new Error(data.error || "Erreur API");
           currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
+          logClientFolderMappings(clientId, data.clients || [], currentClient?.projects || []);
         }
 
         if(!currentClient){
@@ -777,6 +855,8 @@ function getProjectTitle(project){
       document.getElementById("clientMeta").innerHTML = `
         Contact : ${escapeHtml(getContactName(currentClient))}<br>
         Email : ${escapeHtml(getContactEmail(currentClient) || "—")}<br>
+        ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
+        ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
       `;
 
@@ -982,6 +1062,8 @@ function getProjectTitle(project){
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
+            ${renderProjectIds(project)}
+            ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
@@ -1042,6 +1124,8 @@ function getProjectTitle(project){
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
+            ${renderProjectIds(project)}
+            ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
@@ -1117,6 +1201,14 @@ function getProjectTitle(project){
           <div class="info-box">
             <div class="info-label">Dossier</div>
             <div class="info-value">${escapeHtml(currentClient.name || "—")}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">ID cockpit / organization.id</div>
+            <div class="info-value">${escapeHtml(displayId(currentClient.id))}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">ID créateur / owner</div>
+            <div class="info-value">${escapeHtml(displayId(getClientOwnerId()))}</div>
           </div>
           <div class="info-box">
             <div class="info-label">Contact</div>
