@@ -173,7 +173,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   </p>
   <div id="already-transmitted-box" class="locked-transmission hidden">
     <strong>Configuration déjà transmise à Into The Shift.</strong>
-    Votre demande est en cours de traitement. Pour tout changement, contactez
+    Votre simulateur comportemental est en attente de publication. Pour toute modification, contactez
     <a href="mailto:contact@intotheshift.io">contact@intotheshift.io</a>.
   </div>
 
@@ -257,7 +257,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
       </section>
 
       <div class="actions">
-        <button class="btn-back" onclick="const id=getCurrentProjectIdForSave(); window.location.href=id ? 'campagne.html?projectId=' + encodeURIComponent(id) : 'campagne.html';">← Retour à la campagne</button>
+        <button class="btn-back" onclick="window.location.href='campagne.html'">← Retour à la campagne</button>
         <button class="btn-main" id="btn-transmit" onclick="transmit()" disabled>Transmettre pour mise en ligne</button>
       </div>
     </main>
@@ -302,7 +302,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
     <div id="transmit-modal-spinner" class="transmit-modal-spinner"></div>
     <div class="transmit-modal-icon loading" id="transmit-modal-icon">⏳</div>
     <div class="transmit-modal-title" id="transmit-modal-title">Transmission en cours</div>
-    <div class="transmit-modal-text" id="transmit-modal-text">Nous préparons votre récapitulatif et transmettons votre configuration à l’équipe Into The Shift.</div>
+    <div class="transmit-modal-text" id="transmit-modal-text">Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.</div>
     <div class="transmit-modal-actions" id="transmit-modal-actions" style="display:none">
       <button class="transmit-modal-btn" type="button" onclick="closeTransmitModal()">Fermer</button>
     </div>
@@ -1292,30 +1292,18 @@ async function transmit(){
     showMissingModal();
     return;
   }
-
   const payload = buildPayload();
-  showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre fichier Excel interne et le récapitulatif PDF destiné au contact renseigné.');
-
-  const token =
-    localStorage.getItem("its_token") ||
-    localStorage.getItem("token") ||
-    localStorage.getItem("auth_token") ||
-    "";
-
-  const projectIdBeforeSave = getCurrentProjectIdForSave();
+  showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.');
 
   state.clientInfo = getClientInfo();
   state.transmission = state.transmission || {};
   state.transmission.clientInfo = state.clientInfo;
-  state.transmission.status = 'pending_send';
-  state.transmission.backend_submit_sent = false;
-  state.transmission.backend_submit_status = 'PENDING';
-  delete state.transmission.submitted_at;
-  delete state.submitted_at;
-  state.status = 'draft';
-  state.configTransmise = false;
-  state.config_transmise = false;
-  state.submitted = false;
+  state.transmission.status = 'ready_to_send';
+  state.transmission.submitted_at = payload.submitted_at;
+  state.status = 'sent';
+  state.configTransmise = true;
+  state.config_transmise = true;
+  state.submitted = true;
   state.current_step = 'validation';
   state.step = 'validation';
 
@@ -1323,75 +1311,70 @@ async function transmit(){
     if (typeof itsSave === 'function') itsSave(state);
     else localStorage.setItem('its_state', JSON.stringify(state));
   } catch(e) {}
+  const token =
+  localStorage.getItem("its_token") ||
+  localStorage.getItem("token") ||
+  localStorage.getItem("auth_token") ||
+  "";
 
-  async function saveProjectStatus(nextStatus, extraData){
-    const response = await fetch(getApiBaseUrl() + "/api/projects", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token
-      },
-      body: JSON.stringify({
-        projectId: getCurrentProjectIdForSave() || projectIdBeforeSave || undefined,
-        title: getThemeTitle(),
-        organizationId: getSelectedPartnerClientId(),
-        status: nextStatus,
-        currentStep: 'validation',
-        campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
-        campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
-        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || undefined,
-        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || undefined,
-        data: Object.assign({}, state, extraData || {}, {
-          autodiagTitle: getThemeTitle(),
-          campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || '',
-          campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || '',
-          campaign_start_date: getParam().date_lancement || state.campaign_start_date || state.campaignStartDate || '',
-          campaign_end_date: getParam().date_cloture || state.campaign_end_date || state.campaignEndDate || '',
-          step: 'validation',
-          current_step: 'validation',
-          status: nextStatus,
+ try {
+  const projectResponse = await fetch(getApiBaseUrl() + "/api/projects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      projectId: getCurrentProjectIdForSave() || undefined,
+      title: getThemeTitle(),
+      organizationId: getSelectedPartnerClientId(),
+      status: 'sent',
+      currentStep: 'validation',
+      campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
+      campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
+      passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || undefined,
+      passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || undefined,
+      data: Object.assign({}, state, {
+        autodiagTitle: getThemeTitle(),
+        campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || '',
+        campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || '',
+        campaign_start_date: getParam().date_lancement || state.campaign_start_date || state.campaignStartDate || '',
+        campaign_end_date: getParam().date_cloture || state.campaign_end_date || state.campaignEndDate || '',
+        configTransmise: true,
+        config_transmise: true,
+        submitted: true,
+        step: 'validation',
+        current_step: 'validation',
+        status: 'sent',
+        clientInfo: getClientInfo(),
+        transmission: Object.assign({}, state.transmission || {}, {
           clientInfo: getClientInfo(),
-          transmission: Object.assign({}, state.transmission || {}, (extraData && extraData.transmission) || {}, {
-            clientInfo: getClientInfo()
-          }),
-          passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
-          passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
-        })
+          status: 'ready_to_send',
+          submitted_at: payload.submitted_at
+        }),
+        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
       })
-    });
+    })
+  });
 
-    const saved = await response.json().catch(() => ({}));
-    if(!response.ok){
-      console.error("Erreur API sauvegarde projet", response.status, saved);
-      throw new Error(saved.error || "Erreur API sauvegarde projet");
-    }
-
+  if(!projectResponse.ok){
+    const err = await projectResponse.json().catch(() => ({}));
+    console.error("Erreur API sauvegarde projet", projectResponse.status, err);
+  } else {
+    const saved = await projectResponse.json().catch(() => ({}));
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
     if(id){
       state.currentAdId = id;
       state.project_id = id;
-      state.projectId = id;
       localStorage.setItem('its_current_project_id', String(id));
       localStorage.setItem('its_current_ad_id', String(id));
+      if (typeof itsSave === 'function') itsSave(state);
     }
-    return saved;
   }
-
-  try {
-    await saveProjectStatus('draft', {
-      configTransmise: false,
-      config_transmise: false,
-      submitted: false,
-      transmission: {
-        status: 'pending_send',
-        backend_submit_sent: false,
-        backend_submit_status: 'PENDING'
-      }
-    });
-  } catch(e) {
-    console.error("Erreur sauvegarde projet avant transmission", e);
-  }
-
+} catch(e) {
+  console.error("Erreur sauvegarde projet", e);
+}
   const transmissionResult = await sendTransmissionEmails(payload, token);
   const sentOk = transmissionResult.ok === true;
 
@@ -1402,73 +1385,40 @@ async function transmit(){
   state.transmission.client_recap_email_status = transmissionResult.details?.clientEmailStatus || state.transmission.backend_submit_status;
   state.transmission.admin_excel_email_sent = !!transmissionResult.details?.adminEmailSent;
   state.transmission.admin_excel_email_status = transmissionResult.details?.adminEmailStatus || state.transmission.backend_submit_status;
+  if (typeof itsSave === 'function') itsSave(state);
 
   if(sentOk){
     state.status = 'sent';
     state.configTransmise = true;
     state.config_transmise = true;
     state.submitted = true;
-    state.submitted_at = payload.submitted_at;
     state.transmission.status = 'sent';
-    state.transmission.submitted_at = payload.submitted_at;
-
-    try {
-      await saveProjectStatus('sent', {
-        configTransmise: true,
-        config_transmise: true,
-        submitted: true,
-        submitted_at: payload.submitted_at,
-        transmission: Object.assign({}, state.transmission || {}, {
-          status: 'sent',
-          submitted_at: payload.submitted_at
-        })
-      });
-    } catch(e) {
-      console.error("Email envoyé mais sauvegarde du statut transmis impossible", e);
-    }
-
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
       'success',
       'Configuration transmise',
-      'Votre autodiagnostic a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.'
+      'Votre simulateur comportemental a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.'
     );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
-    state.status = 'draft';
-    state.configTransmise = false;
-    state.config_transmise = false;
-    state.submitted = false;
     state.transmission.status = 'send_error';
-    delete state.transmission.submitted_at;
-    delete state.submitted_at;
-
-    try {
-      await saveProjectStatus('draft', {
-        configTransmise: false,
-        config_transmise: false,
-        submitted: false,
-        transmission: Object.assign({}, state.transmission || {}, {
-          status: 'send_error'
-        })
-      });
-    } catch(e) {
-      console.error("Erreur sauvegarde statut erreur transmission", e);
-    }
-
     if (typeof itsSave === 'function') itsSave(state);
     showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement par le backend. Vérifiez la configuration email serveur ou contactez contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = false;
   }
 }
 
+
 function isAlreadyTransmitted(){
-  return state?.transmission?.status === 'sent' ||
-    state?.transmission?.backend_submit_sent === true ||
-    state?.client_recap_email_sent === true ||
-    state?.admin_excel_email_sent === true;
+  return state?.status === 'sent' ||
+    state?.configTransmise === true ||
+    state?.config_transmise === true ||
+    state?.submitted === true ||
+    state?.transmission?.status === 'sent' ||
+    state?.transmission?.status === 'ready_to_send' ||
+    !!state?.transmission?.submitted_at;
 }
 
 function applyTransmittedView(){
@@ -1477,9 +1427,9 @@ function applyTransmittedView(){
   const box = document.getElementById('already-transmitted-box');
   if(box) box.classList.remove('hidden');
   const title = document.querySelector('.page-title');
-  if(title) title.textContent = 'Configuration transmise à Into The Shift';
+  if(title) title.textContent = 'Configuration transmise — en attente de publication';
   const sub = document.getElementById('default-page-sub');
-  if(sub) sub.textContent = 'Votre autodiagnostic a déjà été transmis. La page reste consultable, mais une nouvelle transmission n’est plus nécessaire.';
+  if(sub) sub.textContent = 'Votre simulateur comportemental est transmis à Into The Shift et en attente de publication. Cette page reste consultable en lecture seule. Pour toute modification, contactez contact@intotheshift.io.';
   document.querySelectorAll('.form-input,.form-textarea').forEach(el => { el.readOnly = true; });
   document.querySelectorAll('.check-row input').forEach(el => { el.checked = true; el.disabled = true; });
   const missing = document.getElementById('missing-alert');
@@ -1489,7 +1439,7 @@ function applyTransmittedView(){
   const btn = document.getElementById('btn-transmit');
   if(btn){
     btn.disabled = true;
-    btn.textContent = 'Configuration déjà transmise ✓';
+    btn.textContent = 'En attente de publication ✓';
   }
 }
 

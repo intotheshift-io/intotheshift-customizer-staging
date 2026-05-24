@@ -152,8 +152,7 @@ let itsIsRestoringProject = false;
 
 (function itsCaptureProjectIdFromUrl(){
   try {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("projectId") || params.get("projectid") || params.get("id");
+    const id = new URLSearchParams(window.location.search).get("projectId");
     if (id) itsSetCurrentProjectId(id);
   } catch(e) {}
 })();
@@ -519,7 +518,6 @@ function itsRestoreProject(project) {
   if (projectId) {
     data.currentAdId = projectId;
     data.project_id = projectId;
-    data.projectId = projectId;
     itsSetCurrentProjectId(projectId);
   }
 
@@ -752,9 +750,37 @@ function itsNormalizeProjectStatus(projectOrState) {
   return "draft";
 }
 
-function itsIsProjectReadOnly(state) {
+function itsGetFrontendUserRole() {
+  return String(
+    localStorage.getItem("its_user_role") ||
+    localStorage.getItem("user_role") ||
+    localStorage.getItem("role") ||
+    itsDecodeJwtPayloadForStorage()?.role ||
+    ""
+  ).toLowerCase();
+}
+
+function itsIsAdminLikeRole() {
+  const role = itsGetFrontendUserRole();
+  return role === "admin" || role === "partner";
+}
+
+function itsIsPendingPublicationStatus(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived";
+  return status === "sent" || status === "submitted";
+}
+
+function itsIsProjectReadOnly(state) {
+  const currentState = state || itsLoad();
+  const status = itsNormalizeProjectStatus(currentState);
+
+  if (status === "published" || status === "unpublished" || status === "archived") return true;
+
+  // Côté client, un projet transmis reste consultable mais non modifiable
+  // jusqu'à publication par Into The Shift. Admin et partner gardent la main.
+  if (itsIsPendingPublicationStatus(currentState) && !itsIsAdminLikeRole()) return true;
+
+  return false;
 }
 
 async function itsFetchProjectById(projectId) {
@@ -843,10 +869,29 @@ function itsApplyReadOnlyMode(options = {}) {
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
 
+  const status = itsNormalizeProjectStatus(state);
+  const isPendingPublication = (status === "sent" || status === "submitted") && !itsIsAdminLikeRole();
+  const message = options.message || (isPendingPublication
+    ? "Cet autodiagnostic a été transmis à Into The Shift et il est maintenant en attente de publication. Cette page est en lecture seule. Pour toute modification, contactez <a href=\"mailto:contact@intotheshift.io\" style=\"color:#0d4c72;font-weight:900;text-decoration:none\">contact@intotheshift.io</a>."
+    : "");
+
   document.body.classList.add("its-readonly-mode");
-  itsInjectReadOnlyBanner(options.message);
+  itsInjectReadOnlyBanner(message);
 
   document.querySelectorAll(".step-link").forEach(link => {
+    if (isPendingPublication) {
+      const projectId = itsGetCurrentProjectId();
+      const href = link.getAttribute("href") || "";
+      if (href && projectId && !href.includes("projectId=")) {
+        const separator = href.includes("?") ? "&" : "?";
+        link.setAttribute("href", href + separator + "projectId=" + encodeURIComponent(projectId));
+      }
+      link.style.pointerEvents = "";
+      link.style.opacity = ".85";
+      link.title = "Projet transmis : consultation en lecture seule";
+      return;
+    }
+
     link.removeAttribute("href");
     link.style.pointerEvents = "none";
     link.style.opacity = ".55";
