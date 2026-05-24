@@ -617,18 +617,49 @@ function questionsExtractProjectState(project){
 }
 
 function questionsReadLocalStateFallback(){
-  const keys = [
-    'its_state',
-    'intotheshift_customizer_state_v1',
-    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
-  ].filter(Boolean);
-  for(const key of keys){
+  const explicitProjectId = questionsExplicitProjectIdFromUrl();
+  const keys = [];
+
+  if(explicitProjectId){
+    try{
+      const cached = sessionStorage.getItem('its_project_cache_' + explicitProjectId);
+      if(cached){
+        const cachedState = questionsExtractProjectState(JSON.parse(cached));
+        if(cachedState && Array.isArray(cachedState.chapters) && cachedState.chapters.length){
+          cachedState.projectId = explicitProjectId;
+          cachedState.project_id = explicitProjectId;
+          cachedState.currentAdId = explicitProjectId;
+          return cachedState;
+        }
+      }
+    }catch(e){}
+
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+    keys.push('intotheshift_customizer_state_v1_' + (typeof itsGetCurrentUserKey === 'function' ? itsGetCurrentUserKey() : '') + '_project_' + explicitProjectId);
+  }
+
+  if(!explicitProjectId){
+    keys.push('its_state', 'intotheshift_customizer_state_v1');
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+  }
+
+  const seen = new Set();
+  for(const key of keys.filter(Boolean)){
+    if(seen.has(key)) continue;
+    seen.add(key);
     try{
       const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
       if(!raw) continue;
       let data = JSON.parse(raw);
       if(data && data.state && typeof data.state === 'object') data = data.state;
-      if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+      if(data && Array.isArray(data.chapters) && data.chapters.length){
+        if(explicitProjectId){
+          data.projectId = explicitProjectId;
+          data.project_id = explicitProjectId;
+          data.currentAdId = explicitProjectId;
+        }
+        return data;
+      }
     }catch(e){}
   }
   return null;
@@ -678,9 +709,11 @@ let state = requestedProjectId
   : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
 
 if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
-  state.projectId = state.projectId || requestedProjectId;
-  state.project_id = state.project_id || requestedProjectId;
-  state.currentAdId = state.currentAdId || requestedProjectId;
+  state.projectId = requestedProjectId;
+  state.project_id = requestedProjectId;
+  state.currentAdId = requestedProjectId;
+  localStorage.setItem('its_current_project_id', String(requestedProjectId));
+  localStorage.setItem('its_current_ad_id', String(requestedProjectId));
 }
 
 
@@ -2221,7 +2254,15 @@ function trySave() {
   syncToState();
   persistQuestionsStateForNextStep();
 
-  const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
+  if(projectId){
+    state.projectId = projectId;
+    state.project_id = projectId;
+    state.currentAdId = projectId;
+    localStorage.setItem('its_current_project_id', String(projectId));
+    localStorage.setItem('its_current_ad_id', String(projectId));
+    persistQuestionsStateForNextStep();
+  }
   window.location.href = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
 }
 

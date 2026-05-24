@@ -152,7 +152,8 @@ let itsIsRestoringProject = false;
 
 (function itsCaptureProjectIdFromUrl(){
   try {
-    const id = new URLSearchParams(window.location.search).get("projectId");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("projectId") || params.get("projectid") || params.get("id");
     if (id) itsSetCurrentProjectId(id);
   } catch(e) {}
 })();
@@ -518,6 +519,7 @@ function itsRestoreProject(project) {
   if (projectId) {
     data.currentAdId = projectId;
     data.project_id = projectId;
+    data.projectId = projectId;
     itsSetCurrentProjectId(projectId);
   }
 

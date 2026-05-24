@@ -378,13 +378,17 @@ const API_URL = itsResolveApiBase();
 
 let state = {};
 
-function paramProjectIdFromUrl(){
+function paramExplicitProjectIdFromUrl(){
   try{
     const params = new URLSearchParams(window.location.search);
-    return params.get('projectId') || params.get('projectid') || params.get('id') || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+    return params.get('projectId') || params.get('projectid') || params.get('id') || '';
   }catch(e){
-    return localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+    return '';
   }
+}
+
+function paramProjectIdFromUrl(){
+  return paramExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
 }
 
 function paramUnwrapState(raw){
@@ -394,7 +398,8 @@ function paramUnwrapState(raw){
     try{ data = JSON.parse(data); }catch(e){ return {}; }
   }
   if(data && data.project && typeof data.project === 'object') data = data.project;
-  const projectId = data?.id || data?.project_id || data?.projectId || paramProjectIdFromUrl();
+  const explicitProjectId = paramExplicitProjectIdFromUrl();
+  const projectId = explicitProjectId || data?.id || data?.project_id || data?.projectId || paramProjectIdFromUrl();
   let content = data?.data || data?.payload || data?.configuration || data?.state || data;
   if(typeof content === 'string'){
     try{ content = JSON.parse(content); }catch(e){ content = {}; }
@@ -408,9 +413,9 @@ function paramUnwrapState(raw){
   }
   if(!content || typeof content !== 'object') content = {};
   if(projectId){
-    content.projectId = content.projectId || projectId;
-    content.project_id = content.project_id || projectId;
-    content.currentAdId = content.currentAdId || projectId;
+    content.projectId = projectId;
+    content.project_id = projectId;
+    content.currentAdId = projectId;
     localStorage.setItem('its_current_project_id', String(projectId));
     localStorage.setItem('its_current_ad_id', String(projectId));
   }
@@ -418,12 +423,29 @@ function paramUnwrapState(raw){
 }
 
 function paramReadLocalStateFallback(){
-  const keys = [
-    'its_state',
-    'intotheshift_customizer_state_v1',
-    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
-  ].filter(Boolean);
-  for(const key of keys){
+  const explicitProjectId = paramExplicitProjectIdFromUrl();
+  const keys = [];
+
+  if(explicitProjectId){
+    try{
+      const cached = sessionStorage.getItem('its_project_cache_' + explicitProjectId);
+      if(cached){
+        const data = paramUnwrapState(cached);
+        if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+      }
+    }catch(e){}
+
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+    keys.push('intotheshift_customizer_state_v1_' + (typeof itsGetCurrentUserKey === 'function' ? itsGetCurrentUserKey() : '') + '_project_' + explicitProjectId);
+  }else{
+    keys.push('its_state', 'intotheshift_customizer_state_v1');
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+  }
+
+  const seen = new Set();
+  for(const key of keys.filter(Boolean)){
+    if(seen.has(key)) continue;
+    seen.add(key);
     try{
       const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
       const data = paramUnwrapState(raw);
@@ -1268,7 +1290,7 @@ async function persistProjectDraft(step, status){
   return getCurrentProjectIdForSave();
 }
 
-function goBack(){ save(); window.location.href='questions.html'; }
+function goBack(){ save(); const id=getCurrentProjectIdForSave(); window.location.href = id ? 'questions.html?projectId=' + encodeURIComponent(id) : 'questions.html'; }
 async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
@@ -1360,6 +1382,15 @@ async function bootParametragePage(){
   }
 
   state = paramUnwrapState(state);
+  const explicitProjectId = paramExplicitProjectIdFromUrl();
+  if(explicitProjectId){
+    state.projectId = explicitProjectId;
+    state.project_id = explicitProjectId;
+    state.currentAdId = explicitProjectId;
+    localStorage.setItem('its_current_project_id', String(explicitProjectId));
+    localStorage.setItem('its_current_ad_id', String(explicitProjectId));
+    console.log('ITS PARAM PROJECT LOCK', { projectId: explicitProjectId });
+  }
   state.parametrage = state.parametrage || {};
   if(!state.parametrage.sociodemo) state.parametrage.sociodemo = [{q:"À quelle catégorie appartenez-vous ?",opts:["Collaborateur·rice","Manager","Direction"],min_groupe:25}];
   paramPersistLightStateForBridge(state);

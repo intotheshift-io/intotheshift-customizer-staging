@@ -1251,38 +1251,37 @@ function getProjectTitle(project){
       window.location.href = "index.html";
     }
 
-    function editProject(projectId){
-      if(projectId) localStorage.setItem("its_current_project_id", projectId);
+    function setActiveProjectForNavigation(projectId){
+      const id = String(projectId || "").trim();
+      if(!id) return "";
+      localStorage.setItem("its_current_project_id", id);
+      localStorage.setItem("its_current_ad_id", id);
       localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = "questions.html";
+
+      const project = getCurrentProjectById(id);
+      if(project){
+        try{
+          sessionStorage.setItem("its_project_cache_" + id, JSON.stringify(project));
+        }catch(e){}
+      }
+
+      console.log("ITS NAV PROJECT", { projectId:id, clientId:getClientId(), title:project ? getProjectTitle(project) : "" });
+      return id;
+    }
+
+    function editProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `questions.html?projectId=${encodeURIComponent(id)}` : "questions.html";
     }
 
     function prepareCampaign(projectId){
-      if(projectId){
-        localStorage.setItem("its_current_project_id", projectId);
-        const project = getCurrentProjectById(projectId);
-        if(project){
-          try{
-            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
-          }catch(e){}
-        }
-      }
-      localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
     }
 
     function openCampaignPage(projectId){
-      if(projectId){
-        localStorage.setItem("its_current_project_id", projectId);
-        const project = getCurrentProjectById(projectId);
-        if(project){
-          try{
-            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
-          }catch(e){}
-        }
-      }
-      localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
     }
 
     function openPublishModal(projectId, projectTitle){
