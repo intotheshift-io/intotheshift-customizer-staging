@@ -93,7 +93,7 @@
 <section class="block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
 <section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
 <section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
-<div class="bottom-actions"><button class="btn-back" onclick="location.href='parametrage.html'">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
+<div class="bottom-actions"><button class="btn-back" onclick="goBackToParametrage()">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
 </main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
@@ -168,16 +168,23 @@ function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('U
 function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
 function normalizeDateInputValue(s){if(!s)return'';let str=String(s);if(/^\d{4}-\d{2}-\d{2}/.test(str))return str.slice(0,10);let d=new Date(str);return Number.isNaN(d.getTime())?str:d.toISOString().slice(0,10)}
+function campaignDateToISO(d){
+  if(!d || Number.isNaN(d.getTime())) return '';
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 function campaignTodayISO(){
   const d=new Date();
   d.setHours(0,0,0,0);
-  return d.toISOString().slice(0,10);
+  return campaignDateToISO(d);
 }
 function campaignAddDaysISO(baseISO,days){
   const base=parseD(baseISO)||new Date();
   base.setHours(0,0,0,0);
   base.setDate(base.getDate()+Number(days||0));
-  return base.toISOString().slice(0,10);
+  return campaignDateToISO(base);
 }
 function campaignMinLaunchDateISO(){
   return campaignAddDaysISO(campaignTodayISO(),5);
@@ -395,6 +402,11 @@ function getCurrentProjectIdForSave(){
     localStorage.getItem('its_current_project_id') ||
     localStorage.getItem('its_current_ad_id') ||
     '';
+}
+function goBackToParametrage(){
+  saveState();
+  const id = getCurrentProjectIdForSave();
+  location.href = id ? 'parametrage.html?projectId=' + encodeURIComponent(id) : 'parametrage.html';
 }
 async function persistProjectDraft(step, status){
   saveState();
@@ -871,19 +883,35 @@ bootCampagnePage();
     if(sub) sub.textContent = "Cette campagne est publiée. Elle est consultable en lecture seule. Vous pouvez copier les messages de communication ci-dessous.";
   }
 
+  function getCampaignStatusForLock(){
+    const s = String(
+      (window.backendProject && (window.backendProject.status || window.backendProject.project_status)) ||
+      (typeof backendProject !== "undefined" && backendProject && (backendProject.status || backendProject.project_status)) ||
+      (typeof state !== "undefined" && state && (state.status || state.project_status)) ||
+      ""
+    ).toLowerCase();
+    if(s.includes("unpublished") || s.includes("dépub") || s.includes("depub")) return "unpublished";
+    if(s.includes("published") || s.includes("publi")) return "published";
+    if(s.includes("archiv")) return "archived";
+    if(s === "sent" || s === "submitted" || s === "transmitted" || s === "transmis") return "sent";
+    return s || "draft";
+  }
+
   function applyCampaignMode(){
     const params = new URLSearchParams(window.location.search);
     const readonly = params.get("readonly") === "1";
-    const role = getUserRole();
+    const lockStatus = ["published","unpublished","archived","sent"].includes(getCampaignStatusForLock());
 
-    // Admin et partner : page verrouillée, mais sans message client “publié / lecture seule”.
+    // Admin / partner : on garde la campagne modifiable tant que l'AD est un brouillon
+    // ou prêt à transmettre. Le verrouillage ne s'applique qu'après transmission/publication
+    // ou en lecture seule explicite.
     if(isBackofficeRole()){
-      applyLockedCampaignMode();
+      if(readonly || lockStatus) applyLockedCampaignMode();
       return;
     }
 
-    // Client final : message de lecture seule uniquement si explicitement demandé.
-    if(readonly){
+    // Client final : lecture seule uniquement si explicitement demandé ou statut verrouillé.
+    if(readonly || lockStatus){
       applyClientReadonlyText();
       applyLockedCampaignMode();
     }
