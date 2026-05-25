@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.getElementById("header");
   if (!header) return;
 
+
+  const existingFavicon = document.querySelector("link[rel='icon']");
+  if (!existingFavicon) {
+    const favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.type = "image/png";
+    favicon.href = "favicon.png";
+    document.head.appendChild(favicon);
+  }
+
   const currentPage =
     window.location.pathname.split("/").pop() || "home.html";
 
