@@ -167,6 +167,14 @@
     @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
     @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
 
+    .attached-users-box{margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:13px 14px;max-width:760px}
+    .attached-users-title{font-size:13px;font-weight:900;margin-bottom:8px;color:#fff}
+    .attached-users-list{display:grid;gap:7px}
+    .attached-user-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;background:rgba(255,255,255,.12);border-radius:13px;padding:9px 10px}
+    .attached-user-name{font-weight:900;color:#fff}
+    .attached-user-email{font-size:12px;opacity:.88;word-break:break-word}
+    .attached-user-id{font-size:12px;font-weight:900;opacity:.9;white-space:nowrap}
+    @media(max-width:620px){.attached-user-row{flex-direction:column}.attached-user-id{white-space:normal}}
     .id-debug-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 12px}
     .id-pill{background:#fff;border:1px dashed #bfd2df;color:#244b63;border-radius:12px;padding:8px 9px;font-size:12px;line-height:1.25;word-break:break-word}
     .id-pill strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;margin-bottom:3px}
@@ -492,6 +500,49 @@
       return val(client,["contactEmail","contact_email","ownerEmail","owner_email","email"],"");
     }
 
+    function getClientAttachedUsers(){
+      const users = Array.isArray(currentClient?.users) ? currentClient.users : [];
+      return users.filter(user => String(val(user,["email"],"")).trim());
+    }
+
+    function getAttachedUserName(user){
+      return (
+        [val(user,["firstName","first_name"],""), val(user,["lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
+        val(user,["companyName","company_name"],"") ||
+        val(user,["email"],"Compte sans email")
+      );
+    }
+
+    function renderAttachedUsersBlock(){
+      const users = getClientAttachedUsers();
+
+      if(!users.length){
+        return `
+          <div class="attached-users-box">
+            <div class="attached-users-title">Comptes rattachés</div>
+            <div class="attached-user-email">Aucun compte utilisateur rattaché trouvé pour ce cockpit.</div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="attached-users-box">
+          <div class="attached-users-title">Comptes rattachés · ${users.length}</div>
+          <div class="attached-users-list">
+            ${users.map(user => `
+              <div class="attached-user-row">
+                <div>
+                  <div class="attached-user-name">${escapeHtml(getAttachedUserName(user))}</div>
+                  <div class="attached-user-email">${escapeHtml(val(user,["email"],"—"))}</div>
+                </div>
+                <div class="attached-user-id">ID #${escapeHtml(displayId(val(user,["id","user_id"],"")))}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
     function getProjectData(project){
       const raw = project?.data || project?.payload || project?.configuration || {};
       if(typeof raw === "string"){
@@ -767,24 +818,29 @@ function getProjectTitle(project){
 
       try{
         if(isAdmin()){
-          const [orgResponse, projectResponse] = await Promise.all([
+          const [orgResponse, projectResponse, usersResponse] = await Promise.all([
             fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
+            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+            fetch(`${API_URL}/api/admin/organizations/${encodeURIComponent(clientId)}/users`, { headers: { Authorization: `Bearer ${getToken()}` } })
           ]);
 
           const orgData = await orgResponse.json().catch(() => ({}));
           const projectData = await projectResponse.json().catch(() => ({}));
+          const usersData = await usersResponse.json().catch(() => ({}));
 
           if(!orgResponse.ok) throw new Error(orgData.error || "Erreur API organisations");
           if(!projectResponse.ok) throw new Error(projectData.error || "Erreur API projets");
+          if(!usersResponse.ok) throw new Error(usersData.error || "Erreur API utilisateurs cockpit");
 
           const organizations = orgData.organizations || orgData.clients || orgData.data || [];
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
+          const attachedUsers = usersData.users || usersData.clients || usersData.data || [];
 
           currentClient = organizations.find(c => String(c.id) === String(clientId));
           logClientFolderMappings(clientId, organizations, projects);
 
           if(currentClient){
+            currentClient.users = attachedUsers;
             currentClient.projects = projects.filter(project =>
               String(project.organizationId || project.organization_id || project.orgId || project.org_id || "") === String(clientId)
             );
@@ -798,6 +854,7 @@ function getProjectTitle(project){
 
           if(!response.ok) throw new Error(data.error || "Erreur API");
           currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
+          if(currentClient && !Array.isArray(currentClient.users)) currentClient.users = [];
           logClientFolderMappings(clientId, data.clients || [], currentClient?.projects || []);
         }
 
@@ -858,6 +915,7 @@ function getProjectTitle(project){
         ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
         ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
+        ${renderAttachedUsersBlock()}
       `;
 
       document.getElementById("kpiAds").textContent = projects.length;
