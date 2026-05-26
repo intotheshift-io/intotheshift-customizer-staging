@@ -132,6 +132,11 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .q-text{font-size:13px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif;line-height:1.4;margin-bottom:7px}
 .editable-q{outline:none;border-radius:6px;padding:2px 4px;margin-left:-4px;min-height:18px;cursor:text}
 .editable-q:focus{background:#edf1f7;box-shadow:0 0 0 1px #d8e0ea inset}
+.edit-hint{display:inline-flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;line-height:1;opacity:.72;flex-shrink:0;cursor:default}
+.editable-wrap{display:flex;align-items:flex-start;gap:6px;min-width:0}
+.editable-wrap .editable-q{flex:1}
+.editable-field-wrap{display:flex;align-items:center;gap:6px;min-width:0;flex:1}
+.editable-field-wrap input{min-width:0}
 .q-tags-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 
 /* Tags de provenance */
@@ -822,13 +827,12 @@ function normalizeProv(tags){
 }
 
 function complianceBadgesHTML(prov){
-  if (prov === 'COMPANY') return '';
-  return `<span class="tag-prov help">Aide à la rédaction</span><span class="tag-prov review">Relecture obligatoire</span>`;
+  // Affichage limité : 1 tag de provenance + 3 tags de contexte.
+  return '';
 }
 
 function complianceTagsForState(prov){
-  if (prov === 'COMPANY') return [];
-  return ['Aide à la rédaction', 'Relecture obligatoire'];
+  return [];
 }
 
 function normalizeTags(tags){
@@ -848,7 +852,7 @@ function normalizeTags(tags){
         && !x.includes('aide à la rédaction')
         && !x.includes('aide a la redaction');
     })
-    .slice(0,10)
+    .slice(0,3)
     .map(t => ({t:String(t), ai:String(t).toLowerCase().includes('ia')}));
 }
 
@@ -1049,7 +1053,7 @@ function getRawBibliotheque(){
             ...normalizeTags(ch.tags).map(t => t.t),
             ...normalizeTags(ad.tags).map(t => t.t),
             ...inferContentTags(q.text || '', ad.theme || ad.title || '', ch.title || '')
-          ]);
+          ]).slice(0,3);
 
           out.push({
             id: q.id,
@@ -1262,7 +1266,7 @@ function renderBlankSetup(){
           <div class="blank-field">
             <label for="blank-count">Nombre de chapitres</label>
             <select id="blank-count">
-              ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${Number(state.chapterCount || 4) === n ? 'selected' : ''}>${n} chapitre${n>1?'s':''}</option>`).join('')}
+              ${[3,4,5,6].map(n => `<option value="${n}" ${Number(state.chapterCount || 3) === n ? 'selected' : ''}>${n} chapitres</option>`).join('')}
             </select>
           </div>
           <div class="blank-field">
@@ -1284,7 +1288,7 @@ function completeBlankSetup(){
   const subject = document.getElementById('blank-subject').value.trim();
   const audience = document.getElementById('blank-audience').value.trim();
   const objective = document.getElementById('blank-objective').value.trim();
-  const count = Number(document.getElementById('blank-count').value || 4);
+  const count = Math.max(3, Number(document.getElementById('blank-count').value || 3));
   const chapterNamesRaw = document.getElementById('blank-chapters').value.trim();
   const err = document.getElementById('blank-error');
 
@@ -1326,12 +1330,12 @@ function completeBlankSetup(){
 let chapterDeleteIndex = null;
 
 function canDeleteChapter(index){
-  return Number(index) >= 4;
+  return Array.isArray(chapters) && chapters.length > 3;
 }
 
 function openDeleteChapterModal(index){
   if(!canDeleteChapter(index)){
-    openFeatureSoonModal('Chapitre non supprimable', 'Les 4 chapitres de base de l’autodiagnostic ne sont pas supprimables. Vous pouvez modifier leur titre, leur description et leurs questions.');
+    openFeatureSoonModal('Suppression impossible', 'Un autodiagnostic doit contenir au moins 3 chapitres. Vous pourrez supprimer ce chapitre si vous ajoutez ou conservez un chapitre supplémentaire.');
     return;
   }
   chapterDeleteIndex = index;
@@ -1351,13 +1355,13 @@ function closeDeleteChapterModal(){
 
 function confirmDeleteChapter(){
   const index = chapterDeleteIndex;
-  if(index === null || index === undefined || !canDeleteChapter(index)){
+  if(index === null || index === undefined || !canDeleteChapter(index) || chapters.length <= 3){
     closeDeleteChapterModal();
     return;
   }
 
   chapters.splice(index, 1);
-  chapters = chapters.map((c, i) => ({ ...c, id: i + 1, isCustomChapter: c.isCustomChapter === true || i >= 4 }));
+  chapters = chapters.map((c, i) => ({ ...c, id: i + 1 }));
 
   if(activeChap >= chapters.length) activeChap = Math.max(0, chapters.length - 1);
   else if(activeChap > index) activeChap = activeChap - 1;
@@ -1394,7 +1398,7 @@ function renderNav() {
       <div class="cni-head" onclick="selectChap(${i})">
         <div class="cni-lbl">Chapitre ${i+1}</div>
         <div class="cni-title-row">
-          <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'}</div>
+          <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'} <span class="edit-hint" title="Titre modifiable">✏️</span></div>
           ${canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
         </div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorQ}"></span><span class="cni-qcount">${n}/10 questions</span></div>
@@ -1622,15 +1626,15 @@ function renderCard(q, qi) {
   const open = openCards[q.id];
   const p = PROV[q.prov] || PROV.AI;
   const provHTML = `<span class="tag-prov ${p.cls}">${p.ico} ${p.label}</span>` + complianceBadgesHTML(q.prov);
-  const tagsHTML = (q.tags || []).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span></span>`).join('');
-  const addBtn = (q.tags || []).length < 6 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
+  const tagsHTML = (q.tags || []).slice(0,3).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span></span>`).join('');
+  const addBtn = (q.tags || []).length < 3 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
   let bodyHTML = '';
 
   if (open) {
     const isLikert = q.type === 'likert';
     const answersHTML = isLikert
-      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
-      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
+      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><div class="editable-field-wrap"><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
+      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><div class="editable-field-wrap"><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
 
     bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive</div>${answersHTML}</div>`;
   }
@@ -1639,7 +1643,10 @@ function renderCard(q, qi) {
     <div class="q-header" onclick="toggleCard('${q.id}')">
       <div class="q-num">${qi + 1}</div>
       <div class="q-main">
-        <div class="q-text editable-q" contenteditable="true" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+        <div class="editable-wrap">
+          <div class="q-text editable-q" contenteditable="true" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+          <span class="edit-hint" title="Question modifiable">✏️</span>
+        </div>
         <div class="q-tags-row">${provHTML}${tagsHTML}${addBtn}</div>
       </div>
       <div class="q-right" onclick="event.stopPropagation()">
@@ -1918,7 +1925,7 @@ function addTag(qid) {
   const t = prompt('Nom du tag :');
   if (!t) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
-  if (q && q.tags.length < 6) q.tags.push({t, ai:false});
+  if (q && q.tags.length < 3) q.tags.push({t, ai:false});
   saveState();
   renderMain();
 }
@@ -2184,6 +2191,7 @@ function addFromLib(qid) {
           && !x.includes('aide a la redaction')
           && !x.includes('contribution client');
       })
+      .slice(0,3)
       .map(t => ({t, ai:false})),
     answers: normalizeImportedAnswers(bq)
   });
