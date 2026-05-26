@@ -1343,6 +1343,673 @@
 
   },
 
+  "manager-engageant": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre équipe doit livrer un projet dont l'objectif final lui semble flou. Vous avez vous-même des questions sur la stratégie derrière. La livraison est dans trois semaines.",
+        tags: ["engagement", "sens"],
+        answers: [
+          { text: "Je leur demande de faire confiance à la direction — ce n'est pas toujours possible d'expliquer le sens global.", score: 0 },
+          { text: "Je cherche moi-même à comprendre le sens de ce projet avant de l'expliquer à mon équipe.", score: 2 },
+          { text: "Je leur explique ce que je sais et je nomme clairement ce que je ne sais pas encore.", score: 2 },
+          { text: "Je me concentre sur les tâches opérationnelles — le sens viendra avec les résultats.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez attribuer un nouveau dossier complexe. Lucas est le plus expérimenté mais il est déjà chargé. Sofia est moins expérimentée mais disponible et demandeuse de défis.",
+        tags: ["engagement", "autonomie"],
+        answers: [
+          { text: "Je donne le dossier à Lucas — l'efficacité prime sur le développement individuel.", score: 0 },
+          { text: "Je donne le dossier à Sofia avec un accompagnement adapté à son niveau.", score: 2 },
+          { text: "Je donne le dossier à Lucas en lui demandant d'impliquer Sofia.", score: 1 },
+          { text: "Je demande à chacun leur préférence avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous attribuez les missions en tenant compte à la fois des compétences actuelles et du développement potentiel de chaque collaborateur.",
+        tags: ["engagement", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur a fourni un effort remarquable sur une période tendue. Son travail n'a pas été visible en dehors de votre équipe. Aucun résultat spectaculaire n'en est sorti.",
+        tags: ["engagement", "reconnaissance"],
+        answers: [
+          { text: "Je le note pour son évaluation — la reconnaissance formelle est le bon canal.", score: 0.5 },
+          { text: "Je lui dis maintenant et en privé que j'ai vu son effort et ce qu'il a représenté.", score: 2 },
+          { text: "Je le mentionne en réunion d'équipe pour que tout le monde le sache.", score: 1 },
+          { text: "Je laisse — valoriser sans résultat visible risque de créer des attentes.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre agenda est saturé. Un collaborateur vous demande un entretien pour parler d'un sujet qui lui tient à cœur — pas urgents selon vous.",
+        tags: ["engagement", "présence"],
+        answers: [
+          { text: "Je lui dis de me faire un mail et qu'on verra selon les disponibilités.", score: 0 },
+          { text: "Je bloque un créneau cette semaine même si je dois décaler autre chose.", score: 2 },
+          { text: "Je lui propose un créneau la semaine prochaine.", score: 1 },
+          { text: "Je le vois rapidement entre deux réunions pour être disponible.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur demande à vous parler d'un sujet important pour lui, vous trouvez un créneau dans la semaine, même si votre agenda est chargé.",
+        tags: ["engagement", "disponibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a commis une erreur qui a eu un impact visible. Votre direction demande des comptes. Vous savez que l'erreur est due à une décision collective.",
+        tags: ["engagement", "erreur équipe"],
+        answers: [
+          { text: "J'assume l'erreur devant ma direction sans mettre en cause les individus.", score: 2 },
+          { text: "J'explique que c'est une erreur collective et que chacun y a sa part.", score: 1 },
+          { text: "J'identifie le collaborateur le plus responsable pour que la direction puisse comprendre.", score: 0 },
+          { text: "Je dis que je prends la responsabilité tout en précisant que c'était une décision d'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes manager d'une équipe qui travaille sur des tâches récurrentes et peu valorisantes. L'engagement est bas. Aucune évolution de poste n'est envisageable à court terme.",
+        tags: ["engagement", "vision"],
+        answers: [
+          { text: "Je les encourage à tenir — tout le monde a des tâches ingrates à un moment ou l'autre.", score: 0 },
+          { text: "Je cherche comment donner plus d'autonomie ou de variété dans les tâches existantes.", score: 2 },
+          { text: "Je remonte à ma direction le problème d'engagement pour qu'elle envisage des évolutions.", score: 1 },
+          { text: "Je valorise l'importance de leurs tâches dans la chaîne globale.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous cherchez activement à relier le travail quotidien de votre équipe à un impact plus large, même sur des tâches récurrentes.",
+        tags: ["engagement", "sens quotidien"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous propose une façon de traiter un dossier différente de votre méthode habituelle. Sa méthode vous semble moins bonne mais pas risquée.",
+        tags: ["engagement", "confiance"],
+        answers: [
+          { text: "Je lui demande d'utiliser ma méthode — l'homogénéité dans l'équipe est importante.", score: 0 },
+          { text: "Je lui laisse essayer sa méthode et je compare les résultats.", score: 2 },
+          { text: "Je lui explique pourquoi ma méthode est meilleure.", score: 0 },
+          { text: "Je lui demande de m'expliquer sa logique avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les conditions d'engagement que vous créez sont encore insuffisantes pour que chaque collaborateur se sente reconnu et porteur de sens", desc: "Répondre à une question sur le sens par 'faites confiance à la direction', donner le dossier complexe au plus expérimenté par efficacité, ne pas marquer un succès collectif avant de passer au suivant : ces comportements satisfont les exigences immédiates mais n'alimentent pas l'engagement dans la durée. L'engagement se nourrit de sens, de reconnaissance et de confiance — pas seulement de performance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
+          haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Un collaborateur jusqu'ici très impliqué est moins présent depuis quelques semaines — moins de questions, moins d'initiatives. Rien de flagrant.",
+        tags: ["durée", "signal faible"],
+        answers: [
+          { text: "J'attends qu'il vienne me parler — il sait que ma porte est ouverte.", score: 0 },
+          { text: "Je lui propose un moment d'échange informel pour prendre de ses nouvelles.", score: 2 },
+          { text: "Je lui demande directement si quelque chose ne va pas.", score: 1.5 },
+          { text: "J'observe encore quelques semaines pour confirmer la tendance.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous repérez les signaux faibles de désengagement dans votre équipe sans attendre que la situation soit évidente.",
+        tags: ["durée", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est compétente et autonome. Les réunions d'équipe sont devenues routinières. Tout tourne. Vous vous demandez si vous êtes encore utile.",
+        tags: ["durée", "routine"],
+        answers: [
+          { text: "Je maintiens le rythme actuel — si tout tourne, c'est que je fais bien mon travail.", score: 0.5 },
+          { text: "Je cherche de nouveaux leviers de développement collectif — projets transversaux, transmission de compétences, ambitions à plus long terme.", score: 2 },
+          { text: "Je propose des défis plus ambitieux pour sortir l'équipe de sa zone de confort.", score: 1.5 },
+          { text: "Je réduis ma présence pour laisser plus d'espace à leur autonomie.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, certains collaborateurs sont naturellement plus engageants que d'autres. Vous passez plus de temps avec eux. Les autres se sentent peut-être délaissés.",
+        tags: ["durée", "équité"],
+        answers: [
+          { text: "C'est naturel — je ne peux pas forcer une relation avec tout le monde également.", score: 0 },
+          { text: "Je vérifie que je consacre du temps de qualité à chaque membre, indépendamment de l'affinité.", score: 2 },
+          { text: "Je compense en incluant les membres moins engageants dans les projets importants.", score: 1 },
+          { text: "Je demande aux membres plus engagés d'inclure les autres dans leurs dynamiques.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous dit directement qu'il ne se sent plus engagé dans son travail. Il ne cherche pas à partir mais il a perdu la flamme.",
+        tags: ["durée", "désengagement déclaré"],
+        answers: [
+          { text: "Je lui rappelle ses responsabilités — l'engagement est aussi une posture professionnelle.", score: 0 },
+          { text: "Je cherche avec lui ce qui a changé et ce qui pourrait redonner du sens à son travail.", score: 2 },
+          { text: "Je lui propose un aménagement de poste ou de nouvelles missions.", score: 1.5 },
+          { text: "Je remonte la situation aux RH pour envisager une évolution.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur vous dit qu'il est désengagé, vous cherchez avec lui les causes et les leviers plutôt que de lui proposer directement des solutions.",
+        tags: ["durée", "co-construction"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est performante. Les indicateurs sont bons. Votre direction est satisfaite. L'engagement vous semble acquis.",
+        tags: ["durée", "bons résultats"],
+        answers: [
+          { text: "Je maintiens le cap sans intervention particulière — les bons résultats parlent d'eux-mêmes.", score: 0 },
+          { text: "Je continue à investir dans les leviers d'engagement même quand tout va bien.", score: 2 },
+          { text: "Je profite de cette période favorable pour préparer les défis à venir.", score: 1.5 },
+          { text: "Je laisse l'équipe souffler — elle le mérite après cette période de performance.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction vous met sous pression pour livrer plus vite. Vous sentez que ça commence à peser sur votre équipe. Certains signes d'épuisement apparaissent.",
+        tags: ["durée", "pression"],
+        answers: [
+          { text: "Je transmets la pression — l'équipe est capable de tenir et c'est temporaire.", score: 0 },
+          { text: "Je remonte à ma direction le risque que la pression fait peser sur l'équipe et je propose une priorisation.", score: 2 },
+          { text: "J'absorbe moi-même une partie de la pression pour protéger mon équipe.", score: 1 },
+          { text: "Je partage la pression avec mon équipe en étant transparent sur les contraintes.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand la pression de votre direction risque de désengager votre équipe, vous intervenez auprès de votre direction plutôt que de simplement la transmettre.",
+        tags: ["durée", "protection"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vient de terminer un projet difficile avec un bon résultat. Vous êtes déjà passé au projet suivant.",
+        tags: ["durée", "fête"],
+        answers: [
+          { text: "Je continue — dans le monde professionnel, un succès est vite oublié et il faut se projeter.", score: 0 },
+          { text: "Je marque le moment collectivement avant de passer à la suite.", score: 2 },
+          { text: "Je leur dis bravo en passant — l'essentiel est qu'ils le sachent.", score: 0.5 },
+          { text: "Je le mentionne dans le compte rendu de fin de projet.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre management de l'engagement dans la durée est réactif — vous intervenez quand c'est visible, pas avant", desc: "Attendre qu'un collaborateur vienne vous parler alors que les signaux étaient là depuis des semaines, maintenir le rythme quand tout tourne sans chercher de nouveau niveau de développement, transmettre la pression de la direction sans intermédiaire : ces comportements gèrent l'engagement comme un problème plutôt que comme un investissement continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
+          haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous déléguez une mission importante à votre collaboratrice Amandine. Deux jours après, vous vérifiez l'avancement sans qu'elle vous l'ait demandé.",
+        tags: ["responsabilisation", "délégation"],
+        answers: [
+          { text: "C'est normal — déléguer ne signifie pas abandonner, un suivi rapide est légitime.", score: 0.5 },
+          { text: "Je lui ai délégué la mission et je lui fais confiance pour me revenir si elle a besoin.", score: 2 },
+          { text: "Je lui demande où elle en est en précisant que je ne contrôle pas, juste que je suis disponible.", score: 1 },
+          { text: "Je vérifie les livrables partiels sans lui en parler directement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous déléguez une mission, vous attendez que le collaborateur revienne vers vous plutôt que de vérifier vous-même l'avancement.",
+        tags: ["responsabilisation", "confiance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous soumet une décision à prendre sur son périmètre. C'est clairement dans ses responsabilités mais il semble chercher votre validation.",
+        tags: ["responsabilisation", "décision"],
+        answers: [
+          { text: "Je valide sa solution — il est venu chercher mon avis et l'aider à décider fait partie de mon rôle.", score: 0 },
+          { text: "Je lui demande ce qu'il ferait s'il ne pouvait pas me demander.", score: 2 },
+          { text: "Je lui rappelle que c'est son périmètre et qu'il n'a pas besoin de ma validation.", score: 1.5 },
+          { text: "Je lui donne mon avis mais en précisant que la décision lui appartient.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur a pris une décision autonome qui s'est avérée mauvaise. Il vous en parle après coup.",
+        tags: ["responsabilisation", "erreur"],
+        answers: [
+          { text: "Je lui explique pourquoi sa décision était mauvaise pour qu'il ne recommence pas.", score: 0 },
+          { text: "Je lui demande ce qu'il a appris de cette situation et ce qu'il ferait différemment.", score: 2 },
+          { text: "Je lui dis que c'est bien d'avoir tenté mais que la prochaine fois il vaudrait mieux me consulter.", score: 0 },
+          { text: "Je prends acte et je gère les conséquences avec lui.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur Jérôme a pris une initiative utile mais qui débordait légèrement de son périmètre. Ça a bien fonctionné.",
+        tags: ["responsabilisation", "périmètre"],
+        answers: [
+          { text: "Je lui signale qu'il aurait dû me consulter avant — même si ça a marché.", score: 0 },
+          { text: "Je valorise l'initiative et j'explore avec lui si son périmètre devrait évoluer.", score: 2 },
+          { text: "Je le laisse faire — si c'est bon pour l'organisation, l'essentiel est là.", score: 0.5 },
+          { text: "Je lui rappelle les limites de son périmètre tout en reconnaissant l'utilité de l'initiative.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous encouragez et valorisez les initiatives de vos collaborateurs, même quand elles débordent légèrement de leur périmètre habituel.",
+        tags: ["responsabilisation", "initiatives"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaboratrice fait son travail de façon très différente de vous. Les résultats sont bons mais votre façon de faire vous semble meilleure.",
+        tags: ["responsabilisation", "résultat vs méthode"],
+        answers: [
+          { text: "Je lui montre ma méthode pour harmoniser les pratiques de l'équipe.", score: 0 },
+          { text: "Je laisse — si les résultats sont là, la méthode lui appartient.", score: 2 },
+          { text: "Je lui partage ma méthode comme une option, sans attendre qu'elle l'adopte.", score: 1.5 },
+          { text: "Je lui demande si elle a réfléchi à d'autres façons de faire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur vient vous voir avec un problème en vous demandant quoi faire. Il aurait les ressources pour le résoudre seul.",
+        tags: ["responsabilisation", "remontée problème"],
+        answers: [
+          { text: "Je lui donne la solution — c'est plus rapide et je vois bien ce qu'il faut faire.", score: 0 },
+          { text: "Je lui demande ce qu'il a déjà envisagé avant de l'aider.", score: 2 },
+          { text: "Je lui dis de chercher d'abord de son côté et de revenir si ça bloque.", score: 1 },
+          { text: "Je résous le problème avec lui pour lui montrer le raisonnement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur vient vous voir avec un problème qu'il pourrait résoudre seul, vous l'aidez à trouver sa propre solution plutôt que de lui donner la vôtre.",
+        tags: ["responsabilisation", "autonomie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur exprime une ambition professionnelle qui dépasse ce que vous pouvez lui offrir dans votre équipe actuelle.",
+        tags: ["responsabilisation", "ambition"],
+        answers: [
+          { text: "Je l'encourage à rester — il est précieux dans l'équipe et les opportunités viendront.", score: 0 },
+          { text: "Je l'aide à construire un plan pour atteindre son ambition, même si ça implique qu'il quitte l'équipe.", score: 2 },
+          { text: "Je remonte son ambition aux RH pour qu'ils cherchent une opportunité.", score: 1 },
+          { text: "Je lui explique les contraintes organisationnelles qui rendent son ambition difficile à satisfaire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre style de délégation laisse encore peu de place à l'autonomie réelle et à la prise d'initiative", desc: "Vérifier l'avancement deux jours après avoir délégué, donner la solution quand un collaborateur vient avec un problème qu'il pourrait résoudre seul, signaler à Jérôme qu'il aurait dû consulter même si son initiative a bien fonctionné : ces comportements limitent l'autonomie des collaborateurs au moment précis où ils pourraient la développer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Un collaborateur traverse une période personnelle difficile. Sa performance baisse légèrement. Il vous demande régulièrement un soutien émotionnel.",
+        tags: ["soutien", "limites"],
+        answers: [
+          { text: "Je suis disponible autant qu'il le demande — c'est mon rôle de manager de soutenir.", score: 0 },
+          { text: "Je soutiens avec empathie tout en l'orientant vers des ressources professionnelles adaptées.", score: 2 },
+          { text: "Je lui signale que sa performance baisse et que je dois en tenir compte.", score: 0 },
+          { text: "Je suis disponible une fois par semaine et je m'y tiens.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur a besoin d'un soutien qui dépasse votre rôle de manager, vous l'orientez vers les ressources adaptées sans vous substituer à elles.",
+        tags: ["soutien", "orientation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur compétent vous demande votre avis sur pratiquement toutes ses décisions depuis plusieurs mois. Il ne prend plus rien sans vous consulter.",
+        tags: ["soutien", "dépendance"],
+        answers: [
+          { text: "Je reste disponible — ma disponibilité est un atout managérial.", score: 0 },
+          { text: "Je lui parle de cette dynamique et je lui propose de formaliser les décisions qui nécessitent vraiment ma validation.", score: 2 },
+          { text: "Je commence à être moins disponible pour forcer l'autonomie.", score: 0.5 },
+          { text: "Je lui fais confiance en signalant que ses décisions sont bonnes et qu'il peut avancer seul.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous accompagnez un collaborateur sur une montée en compétences depuis six mois. Il progresse mais ne prend pas encore d'initiatives sans votre encouragement explicite.",
+        tags: ["soutien", "accompagnement"],
+        answers: [
+          { text: "Je continue l'accompagnement à ce rythme — la progression est là.", score: 0.5 },
+          { text: "J'ajuste ma façon d'accompagner pour l'inciter à initier lui-même les échanges.", score: 2 },
+          { text: "Je lui signale que mon soutien doit diminuer pour qu'il développe son autonomie.", score: 1.5 },
+          { text: "Je lui demande directement ce qui l'empêche de prendre des initiatives.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur exprime des signes de souffrance au travail. Il vous dit qu'il ne veut pas en parler aux RH ou à un professionnel de santé.",
+        tags: ["soutien", "mal-être"],
+        answers: [
+          { text: "Je respecte son choix — l'imposer renforcerait son sentiment de perte de contrôle.", score: 0 },
+          { text: "Je l'écoute avec empathie et je lui dis clairement que mon soutien a des limites et qu'un professionnel pourrait l'aider davantage.", score: 2 },
+          { text: "Je signale la situation aux RH en confidentialité pour qu'ils soient en alerte.", score: 1 },
+          { text: "Je le soutiens moi-même — faire appel à des tiers serait trahir sa confiance.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes clair·e sur les limites de votre rôle de soutien managérial et vous les communiquez à vos collaborateurs avec bienveillance.",
+        tags: ["soutien", "limites rôle"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous quittez votre poste dans deux mois. Un collaborateur que vous avez beaucoup soutenu est inquiet de votre départ.",
+        tags: ["soutien", "transmission"],
+        answers: [
+          { text: "Je le rassure — votre successeur sera aussi disponible.", score: 0 },
+          { text: "Je prépare activement son autonomie en lui montrant qu'il peut se passer de moi.", score: 2 },
+          { text: "Je l'aide à nouer des relations avec d'autres soutiens dans l'organisation.", score: 1.5 },
+          { text: "Je lui dis que son inquiétude est normale et qu'elle passera.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous traversez vous-même une période difficile. Votre équipe perçoit votre état et certains collaborateurs vous demandent comment vous allez.",
+        tags: ["soutien", "propre ressources"],
+        answers: [
+          { text: "Je les rassure — un manager doit rester fort pour son équipe.", score: 0 },
+          { text: "Je suis honnête sur mon état sans les charger de mes difficultés.", score: 2 },
+          { text: "Je leur dis que tout va bien — les mettre dans la confidence serait inapproprié.", score: 0 },
+          { text: "Je leur dis que j'ai un passage difficile mais que ça ne doit pas affecter notre travail.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes capable de dire à votre équipe que vous traversez une période difficile, sans pour autant les mettre dans la position de vous soutenir.",
+        tags: ["soutien", "authenticité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vous sollicite sur des sujets qui devraient être résolus à leur niveau. Vous y répondez par réflexe. La dépendance collective s'est installée progressivement.",
+        tags: ["soutien", "limites équipe"],
+        answers: [
+          { text: "Je continue — ma disponibilité est valorisée par mon équipe.", score: 0 },
+          { text: "Je clarifie collectivement ce qui relève de mon niveau et ce qui relève du leur, et j'encourage les échanges directs entre collègues.", score: 2 },
+          { text: "Je commence à renvoyer les questions pour forcer l'autonomie.", score: 1 },
+          { text: "Je le mentionne en réunion d'équipe pour que chacun en soit conscient.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre soutien est généreux mais sans limite claire, ce qui peut créer de la dépendance plutôt que de l'autonomie", desc: "Rester disponible autant qu'un collaborateur le demande sur le plan émotionnel, soutenir sans jamais parler des limites de son rôle, ne pas préparer l'autonomie avant son propre départ : ces comportements bienveillants peuvent créer une dépendance qui dessert les collaborateurs à long terme. Le soutien managérial est utile quand il diminue progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
+          haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -1364,6 +2031,16 @@
         ["Recevoir un feedback sans se défendre", "Écoute active, séparation du fond et de la source, intégration réelle."],
         ["Créer une culture du feedback dans son équipe", "Exemplarité, facilitation, maintien de la qualité dans la durée."],
         ["Utiliser le feedback pour progresser", "Points forts, contradictions, travail en profondeur et dans la durée."],
+      ]}
+    ],
+
+    ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
+      "Questionner sa posture d'engagement, de responsabilisation et de soutien au collectif.",
+      { domain: "transformation", chapters: [
+        ["Créer les conditions de l'engagement", "Sens, reconnaissance, confiance, développement — pour chaque collaborateur."],
+        ["Maintenir l'engagement dans la durée", "Signaux faibles, bons résultats, pression — vigilance continue."],
+        ["Responsabiliser sans infantiliser", "Déléguer avec confiance, valoriser les initiatives, favoriser l'autonomie."],
+        ["Soutenir sans créer de dépendance", "Soutien empathique avec des limites claires, orienté vers l'autonomie."],
       ]}
     ],
 
