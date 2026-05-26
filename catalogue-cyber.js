@@ -5345,6 +5345,673 @@
 
   },
 
+  "manager-culture-cyber": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre équipe sait que vous utilisez le même mot de passe depuis deux ans sur plusieurs systèmes. Un collaborateur vous demande si c'est vraiment un problème.",
+        tags: ["exemplarité", "manager cyber"],
+        answers: [
+          { text: "Je lui dis que je maîtrise mon niveau de risque — je suis manager, pas opérateur.", score: 0 },
+          { text: "Je reconnais le problème, je change mes mots de passe et j'explique pourquoi c'est important.", score: 2 },
+          { text: "Je lui dis qu'il a raison sans changer mes pratiques pour l'instant.", score: 0 },
+          { text: "Je lui explique les règles sans mentionner mes propres pratiques.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez accéder à un dossier urgent depuis votre téléphone personnel pendant un déplacement. L'accès depuis des appareils personnels est déconseillé par votre politique de sécurité.",
+        tags: ["exemplarité", "règles"],
+        answers: [
+          { text: "J'accède depuis mon téléphone — c'est urgent et je suis manager, j'assume.", score: 0 },
+          { text: "Je trouve une alternative — je contacte un collaborateur qui peut accéder depuis un appareil approuvé.", score: 2 },
+          { text: "J'accède depuis mon téléphone mais je le signale à l'équipe sécurité après.", score: 0.5 },
+          { text: "Je reporte l'accès à mon retour au bureau.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos pratiques de cybersécurité sont identiques à celles que vous attendez de votre équipe — sans exception liée à votre statut de manager.",
+        tags: ["exemplarité", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vient d'être constituée. Certains membres viennent d'autres équipes avec des pratiques cyber très variables. Vous n'avez pas encore posé de cadre explicite.",
+        tags: ["exemplarité", "cadre"],
+        answers: [
+          { text: "Je laisse chacun travailler à sa façon — les règles de l'entreprise s'appliquent, pas besoin de les répéter.", score: 0 },
+          { text: "Je prends le temps d'expliquer les attentes cyber de l'équipe dès les premières semaines.", score: 2 },
+          { text: "Je corrige les mauvaises pratiques au fur et à mesure que je les observe.", score: 1 },
+          { text: "Je leur envoie la politique de sécurité de l'entreprise pour référence.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe propose d'utiliser un outil collaboratif non approuvé pour un projet. Tout le monde est enthousiaste. Vous l'utilisez vous-même à titre personnel.",
+        tags: ["exemplarité", "outils"],
+        answers: [
+          { text: "J'autorise — l'enthousiasme de l'équipe compte et je connais bien l'outil.", score: 0 },
+          { text: "Je refuse et je propose de travailler avec la DSI pour trouver un outil approuvé équivalent.", score: 2 },
+          { text: "J'autorise pour ce projet en attendant d'avoir un outil approuvé.", score: 0 },
+          { text: "Je leur explique pourquoi l'outil n'est pas approuvé et je les aide à faire une demande officielle.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'autorisez pas dans votre équipe des outils ou pratiques que vous n'appliquez pas vous-même.",
+        tags: ["exemplarité", "outils"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes victime d'une tentative de phishing sophistiquée. Vous avez failli cliquer avant de détecter. Vous ressentez de la gêne à en parler à votre équipe.",
+        tags: ["exemplarité", "incident personnel"],
+        answers: [
+          { text: "Je ne le partage pas — un manager ne montre pas ses failles à son équipe.", score: 0 },
+          { text: "Je le partage avec mon équipe — décrire comment j'ai presque été piégé et comment je l'ai détecté est plus utile que n'importe quelle formation.", score: 2 },
+          { text: "J'en parle uniquement à mes homologues managers.", score: 1 },
+          { text: "Je le mentionne de façon générale sans préciser que c'était moi.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une formation obligatoire sur la cybersécurité est déployée pour tous les collaborateurs. Plusieurs managers de votre niveau la passent en diagonale pour 'cocher la case'.",
+        tags: ["exemplarité", "formation"],
+        answers: [
+          { text: "Je la passe rapidement aussi — mon temps est plus utile ailleurs et je connais déjà les bases.", score: 0 },
+          { text: "Je la suis sérieusement — si je demande à mon équipe de le faire, je dois l'avoir fait moi-même.", score: 2 },
+          { text: "Je la fais sérieusement mais je ne la mentionne pas à mon équipe.", score: 1 },
+          { text: "Je la délègue à mon adjoint et je lui demande de me faire un résumé.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous participez aux formations et exercices de cybersécurité avec le même sérieux que vous en attendez de votre équipe.",
+        tags: ["exemplarité", "formation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction vous demande de déployer rapidement un nouveau processus en contournant la revue sécurité habituelle pour tenir un délai commercial.",
+        tags: ["exemplarité", "pression hiérarchique"],
+        answers: [
+          { text: "J'accepte — la direction a arbitré et le délai commercial est stratégique.", score: 0 },
+          { text: "Je maintiens la revue sécurité et j'explique à ma direction les risques d'un déploiement sans elle.", score: 2 },
+          { text: "Je fais une revue sécurité allégée pour trouver un compromis.", score: 0.5 },
+          { text: "Je demande à la direction de confirmer par écrit qu'elle assume la responsabilité du déploiement sans revue.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité cyber est insuffisante — vous n'appliquez pas vous-même ce que vous demandez à votre équipe", desc: "Utiliser le même mot de passe depuis deux ans, accéder aux systèmes depuis un appareil personnel parce que c'est urgent, passer les formations obligatoires en diagonale : votre équipe observe vos comportements bien plus qu'elle n'écoute vos discours. Un manager dont les pratiques cyber contredisent ses demandes crée une culture où les règles sont perçues comme optionnelles pour ceux qui ont du pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité cyber est globalement cohérente mais des exceptions apparaissent sous pression ou par commodité", desc: "Vos pratiques cyber sont généralement alignées sur ce que vous demandez à votre équipe. Mais l'accès urgent depuis un appareil personnel, la formation passée rapidement parce que vous connaissez déjà les bases, le déploiement sans revue sécurité pour tenir un délai commercial : sous pression, des exceptions peuvent apparaître. L'enjeu est de tenir votre exemplarité précisément dans ces moments — c'est là qu'elle compte le plus." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité cyber est absolue — vos pratiques et vos demandes à l'équipe sont parfaitement alignées", desc: "Vous changez vos mots de passe, vous suivez les formations sérieusement, vous partagez vos propres expériences de tentatives de phishing avec votre équipe, vous refusez de déployer sans revue sécurité même quand la direction pousse. Cette exemplarité absolue — qui suppose d'accepter des contraintes que vous pourriez vous épargner en tant que manager — est ce qui donne à vos demandes leur crédibilité." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre collaboratrice Anaïs vous dit qu'elle a cliqué sur un lien suspect ce matin. Elle est visiblement stressée à l'idée de vous le dire.",
+        tags: ["incidents", "réception"],
+        answers: [
+          { text: "Je la rassure d'abord, puis je lui demande les détails pour déclencher la procédure.", score: 2 },
+          { text: "Je lui demande immédiatement les détails pour évaluer la gravité.", score: 1 },
+          { text: "Je lui dis que ça arrive à tout le monde et que ce n'est pas grave.", score: 0.5 },
+          { text: "Je la remercie de me l'avoir dit et je la guide vers l'équipe sécurité.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un membre de votre équipe vous signale une erreur ou un incident cyber, votre première réaction est de le remercier de l'avoir signalé avant d'évaluer la situation.",
+        tags: ["incidents", "culture sans peur"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe a ouvert une pièce jointe malveillante. L'incident est géré par l'équipe sécurité. Vous devez en parler à votre équipe.",
+        tags: ["incidents", "traitement"],
+        answers: [
+          { text: "Je ne le mentionne pas pour ne pas exposer le collaborateur concerné.", score: 0.5 },
+          { text: "Je le partage avec l'équipe de façon anonymisée en insistant sur les enseignements, pas sur qui a fait l'erreur.", score: 2 },
+          { text: "Je le mentionne en précisant que tout le monde peut faire cette erreur.", score: 1 },
+          { text: "J'attends que l'incident soit complètement résolu avant d'en parler.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur de votre équipe a été victime de phishing trois fois en six mois. Les deux premières fois, vous avez géré sans conséquence. Ça vient de se reproduire.",
+        tags: ["incidents", "récidive"],
+        answers: [
+          { text: "Je le recadre formellement — trois fois c'est une négligence caractérisée.", score: 0 },
+          { text: "Je cherche à comprendre pourquoi il est particulièrement vulnérable et je propose un accompagnement adapté.", score: 2 },
+          { text: "Je lui demande de faire une formation supplémentaire.", score: 1 },
+          { text: "Je l'alerte sur la répétition et je surveillance ses activités plus étroitement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un incident dans votre équipe, votre direction vous demande de minimiser l'impact dans le rapport pour ne pas inquiéter les actionnaires.",
+        tags: ["incidents", "pression hiérarchique"],
+        answers: [
+          { text: "J'adapte le rapport — ma direction a sa vision des enjeux de communication.", score: 0 },
+          { text: "Je documente l'incident de façon complète et honnête — minimiser un incident cyber peut créer des obligations légales non respectées.", score: 2 },
+          { text: "Je rédige deux versions — une complète pour l'équipe sécurité et une allégée pour les actionnaires.", score: 1 },
+          { text: "Je contacte le RSSI pour qu'il arbitre entre les exigences de reporting et celles de la direction.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos rapports sur les incidents cyber de votre équipe sont complets et honnêtes, y compris quand les faits sont inconfortables pour votre direction.",
+        tags: ["incidents", "honnêteté reporting"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un incident résolu, votre équipe veut 'tourner la page'. Un REX est prévu mais plusieurs collaborateurs estiment qu'il est inutile puisque le problème est réglé.",
+        tags: ["incidents", "après l'incident"],
+        answers: [
+          { text: "Je leur laisse le choix — si l'équipe ne voit pas l'intérêt, forcer un REX sera contre-productif.", score: 0 },
+          { text: "Je maintiens le REX et j'explique que ce qui a été résolu aujourd'hui peut être évité demain.", score: 2 },
+          { text: "Je fais un REX allégé pour répondre à leurs attentes.", score: 0.5 },
+          { text: "Je fais le REX moi-même et je partage les conclusions sans réunion collective.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur Olivier a commis une erreur qui a conduit à un incident cyber. Certains collègues lui en veulent. Une culture de blâme commence à s'installer.",
+        tags: ["incidents", "protection"],
+        answers: [
+          { text: "Je laisse la dynamique se réguler naturellement — c'est entre collègues.", score: 0 },
+          { text: "J'interviens pour recadrer la dynamique — la culture du blâme empêche les prochains signalements.", score: 2 },
+          { text: "J'en parle à Olivier en privé pour lui dire de ne pas se laisser affecter.", score: 0.5 },
+          { text: "Je rappelle à l'équipe que tout le monde peut faire des erreurs.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez activement quand une culture de blâme s'installe suite à un incident cyber, parce qu'elle détruit la culture de signalement.",
+        tags: ["incidents", "culture blâme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise a organisé une simulation de phishing. 40% de votre équipe a cliqué. Votre direction s'attendait à moins de 10%.",
+        tags: ["incidents", "simulation"],
+        answers: [
+          { text: "Je me concentre sur les 60% qui n'ont pas cliqué — c'est déjà une bonne base.", score: 0.5 },
+          { text: "Je traite le résultat comme une information utile sur les lacunes de l'équipe et je construis un plan d'amélioration concret.", score: 2 },
+          { text: "Je cherche à comprendre pourquoi les 40% ont cliqué avant de décider des actions.", score: 1.5 },
+          { text: "Je rassure ma direction que les résultats s'amélioreront avec les formations.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les incidents dans votre équipe sont traités comme des fautes plutôt que comme des signaux à exploiter", desc: "Recadrer formellement un collaborateur après un troisième incident de phishing, laisser une culture de blâme s'installer après un incident, minimiser un rapport d'incident sur demande de la direction : ces comportements détruisent la culture de signalement. Un collaborateur qui craint les conséquences d'une erreur choisit le silence — et le silence est ce qui permet aux incidents de se propager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les incidents sans créer de blâme mais la culture de signalement n'est pas encore activement construite", desc: "Vous gérez les incidents sans créer de blâme et vous remontez les informations honnêtement. Mais partager votre propre expérience d'une tentative de phishing que vous avez presque ratée, intervenir activement quand une culture de blâme s'installe, maintenir les REX quand l'équipe veut tourner la page : ces comportements actifs de construction de la culture de signalement sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture de signalement — par l'exemple, la protection et la transmission", desc: "Vous remerciez Anaïs d'avoir signalé avant de lui demander les détails. Vous partagez les incidents de façon anonymisée pour en tirer des enseignements collectifs. Vous protégez Olivier quand la culture du blâme s'installe. Vous maintenez les REX quand l'équipe veut tourner la page. Cette construction active de la culture de signalement — qui suppose d'accepter d'aborder les erreurs comme des opportunités — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Votre équipe n'a eu aucun incident cyber significatif depuis 18 mois. Les sessions de sensibilisation sont de moins en moins suivies. L'équipe pense que 'le sujet est acquis'.",
+        tags: ["vigilance collective", "bon bilan"],
+        answers: [
+          { text: "Je valide — un bon bilan prouve que les pratiques sont intégrées.", score: 0 },
+          { text: "Je maintiens le niveau d'exigence et j'explique que l'absence d'incident n'est pas la preuve d'une immunité.", score: 2 },
+          { text: "Je réduis la fréquence des sensibilisations mais pas leur contenu.", score: 0.5 },
+          { text: "J'organise un exercice de simulation pour tester réellement le niveau de l'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez les exigences de cybersécurité de votre équipe même après une longue période sans incident.",
+        tags: ["vigilance collective", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre RSSI diffuse une alerte sur une nouvelle technique d'attaque qui cible votre secteur. Vous avez une réunion d'équipe dans deux jours.",
+        tags: ["vigilance collective", "nouvelles menaces"],
+        answers: [
+          { text: "Je mentionne l'alerte lors de la réunion — deux jours ne changent pas grand chose.", score: 0.5 },
+          { text: "Je la partage avec mon équipe immédiatement en expliquant concrètement ce qu'elle implique pour leurs pratiques.", score: 2 },
+          { text: "Je transfère l'alerte par mail à toute l'équipe.", score: 1 },
+          { text: "J'attends de voir si la menace se matérialise avant d'en parler.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe traverse une restructuration. L'attention est ailleurs et la vigilance cyber baisse. Ce n'est peut-être pas le bon moment pour insister.",
+        tags: ["vigilance collective", "période difficile"],
+        answers: [
+          { text: "J'attends la fin de la restructuration pour remettre la cybersécurité à l'ordre du jour.", score: 0 },
+          { text: "Je maintiens les exigences — les périodes de perturbation sont celles où la vigilance baisse et où les attaquants agissent.", score: 2 },
+          { text: "Je maintiens les standards sans en faire un sujet — l'équipe a assez de pression.", score: 1 },
+          { text: "Je renforce la vigilance sur les points les plus critiques et je relâche les autres.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau membre rejoint votre équipe. La formation cyber obligatoire de l'entreprise est planifiée dans six semaines. Entre-temps, il accède aux systèmes de l'équipe.",
+        tags: ["vigilance collective", "nouveaux arrivants"],
+        answers: [
+          { text: "J'attends la formation officielle — c'est le processus normal.", score: 0 },
+          { text: "Je lui fais un briefing cyber adapté à son rôle avant qu'il accède aux systèmes.", score: 2 },
+          { text: "Je lui demande de lire la politique de sécurité avant sa première connexion.", score: 1 },
+          { text: "Je limite ses accès aux systèmes non sensibles jusqu'à sa formation.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous assurez vous-même un briefing cyber adapté aux nouveaux membres de votre équipe, sans attendre uniquement la formation officielle.",
+        tags: ["vigilance collective", "nouveaux"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les points sécurité hebdomadaires de votre équipe sont devenus routiniers — mêmes sujets, peu de participation, personne n'apporte de nouveaux éléments.",
+        tags: ["vigilance collective", "routine"],
+        answers: [
+          { text: "Je les maintiens tels quels — la régularité est plus importante que le dynamisme.", score: 0.5 },
+          { text: "Je fais évoluer le format — cas réels récents, simulation courte, question ouverte — pour maintenir l'engagement.", score: 2 },
+          { text: "Je les réduis à quinzomadaires pour ne pas lasser l'équipe.", score: 0 },
+          { text: "Je demande à l'équipe comment elle souhaite faire évoluer ces points.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez que plusieurs membres de votre équipe ont progressivement adopté des pratiques qui s'écartent des règles — mots de passe partagés, outils non approuvés. Personne n'a signalé.",
+        tags: ["vigilance collective", "écarts"],
+        answers: [
+          { text: "Je corrige les comportements individuels au cas par cas.", score: 1 },
+          { text: "Je traite le problème collectivement — ce sont des dérives systémiques, pas des erreurs individuelles.", score: 2 },
+          { text: "Je renforce les contrôles pour rendre les contournements plus difficiles.", score: 0.5 },
+          { text: "Je remonte la situation à mon RSSI pour qu'il prenne des mesures.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez sur les dérives cyber collectives de votre équipe en traitant les causes plutôt qu'en corrigeant uniquement les comportements individuels.",
+        tags: ["vigilance collective", "dérives"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vient de suivre une formation de sensibilisation cyber. Vous voulez évaluer si les comportements changent réellement dans les semaines qui suivent.",
+        tags: ["vigilance collective", "retour formation"],
+        answers: [
+          { text: "Je laisse — si la formation était bonne, les comportements changeront naturellement.", score: 0 },
+          { text: "Je mets en place des points de suivi réguliers pour observer et consolider les changements de pratiques.", score: 2 },
+          { text: "J'envoie un questionnaire de satisfaction à chaud.", score: 0 },
+          { text: "Je demande à mon équipe lors de la prochaine réunion si elle a appris quelque chose d'utile.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La vigilance cyber de votre équipe s'érode avec le temps sans que vous interveniez sur les causes", desc: "Valider 18 mois sans incident comme preuve que 'le sujet est acquis', ne pas briefer un nouveau collaborateur en attendant la formation officielle dans six semaines, laisser les dérives collectives se corriger d'elles-mêmes : la vigilance cyber ne se maintient pas seule. Elle se dégrade progressivement sans action continue de la part du manager." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance cyber mais votre intervention sur les causes des dérives est encore insuffisante", desc: "Vous intervenez quand les dérives sont évidentes. Mais traiter une dérive systémique en cherchant ses causes plutôt qu'en corrigeant les comportements individuels, maintenir les exigences après 18 mois de bon bilan, faire évoluer le format des points sécurité quand ils deviennent routiniers : ces ajustements proactifs de la dynamique collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance collective dans la durée — constance, nouvelles menaces, dérives systémiques", desc: "Vous maintenez les exigences après 18 mois sans incident. Vous partagez les alertes du RSSI immédiatement plutôt qu'en réunion dans deux jours. Vous brieffez les nouveaux avant la formation officielle. Vous traitez les dérives systémiques en cherchant leurs causes. Vous faites évoluer le format des points sécurité pour maintenir l'engagement. Cette attention continue à la dynamique collective est ce qui évite que la culture cyber de votre équipe se dégrade progressivement." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Votre équipe lance un nouveau projet qui implique le traitement de données clients sensibles. La revue sécurité prend deux semaines. Le délai de lancement est dans une semaine.",
+        tags: ["décisions", "projet"],
+        answers: [
+          { text: "Je lance le projet et je fais la revue sécurité après — on régularisera ensuite.", score: 0 },
+          { text: "Je repousse le lancement d'une semaine pour intégrer la revue sécurité.", score: 2 },
+          { text: "Je lance une revue sécurité accélérée en parallèle du lancement.", score: 1 },
+          { text: "Je contacte le RSSI pour négocier un processus accéléré qui maintient le délai.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intégrez la revue sécurité dans le processus de lancement de tout projet qui implique des données sensibles, sans la traiter comme une contrainte optionnelle.",
+        tags: ["décisions", "sécurité by design"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recrutez un nouveau profil technique très compétent. Lors de l'entretien, il mentionne avoir contourné des politiques de sécurité dans son ancienne entreprise 'pour être plus efficace'. Il est le meilleur candidat sur les autres critères.",
+        tags: ["décisions", "recrutement"],
+        answers: [
+          { text: "Je le recrute — sa compétence technique prime et il s'adaptera à nos pratiques.", score: 0 },
+          { text: "Je creuse ce point lors de l'entretien — sa façon de parler de la sécurité est un indicateur important.", score: 2 },
+          { text: "Je le recrute et je m'assure qu'il suit la formation sécurité dès son arrivée.", score: 0 },
+          { text: "Je le mentionne dans mon évaluation sans que ce soit le critère éliminatoire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire externe propose une prestation très compétitive mais sa réponse aux questions sur la cybersécurité est évasive. Votre budget est contraint.",
+        tags: ["décisions", "prestataire"],
+        answers: [
+          { text: "J'accepte la prestation — le prix est décisif et je superviserai ses accès.", score: 0 },
+          { text: "Je refuse ou je demande des garanties formelles sur la sécurité avant de contractualiser.", score: 2 },
+          { text: "Je contractualise en limitant au maximum ses accès aux données sensibles.", score: 1 },
+          { text: "Je contacte le RSSI pour qu'il évalue les risques avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction vous demande de réduire de 20% le budget de votre équipe. Parmi les options, vous pouvez couper sur les formations cyber ou sur des projets fonctionnels.",
+        tags: ["décisions", "ressources"],
+        answers: [
+          { text: "Je coupe sur les formations cyber — les équipes connaissent déjà les bases.", score: 0 },
+          { text: "Je coupe sur les projets fonctionnels et je préserve les formations cyber.", score: 2 },
+          { text: "Je répartis la coupe de façon équilibrée — formations cyber allégées et projets différés.", score: 0.5 },
+          { text: "Je remonte à ma direction le risque lié à la réduction des formations cyber.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous défendez les ressources allouées à la sensibilisation et à la formation cyber de votre équipe, même sous pression budgétaire.",
+        tags: ["décisions", "budget"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous évaluez annuellement vos collaborateurs. La cybersécurité n'est pas dans les critères officiels d'évaluation. Un collaborateur a eu plusieurs incidents évitables cette année.",
+        tags: ["décisions", "évaluation"],
+        answers: [
+          { text: "Je n'en tiens pas compte — les critères officiels s'imposent et la cybersécurité n'en fait pas partie.", score: 0 },
+          { text: "J'inclus la maturité cyber dans mon évaluation et je remonte le besoin d'en faire un critère officiel.", score: 2 },
+          { text: "J'en parle lors de l'entretien sans l'intégrer formellement dans l'évaluation.", score: 1 },
+          { text: "Je contacte les RH pour savoir si je peux ajouter ce critère.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est sous forte pression pour livrer un projet. Un collaborateur propose de désactiver temporairement une contrainte de sécurité pour accélérer les tests. C'est une demande technique qui semble raisonnable.",
+        tags: ["décisions", "arbitrage"],
+        answers: [
+          { text: "J'autorise temporairement — c'est une phase de test et la contrainte sera réactivée.", score: 0 },
+          { text: "Je refuse — une contrainte de sécurité désactivée 'temporairement' peut rester désactivée après le rush.", score: 2 },
+          { text: "J'autorise en documentant la désactivation et en posant une date de réactivation obligatoire.", score: 0.5 },
+          { text: "Je contacte le RSSI pour évaluer si la désactivation est acceptable.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez d'autoriser des contournements de sécurité même quand la pression opérationnelle ou commerciale est forte et que la demande semble raisonnable.",
+        tags: ["décisions", "pression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre RSSI vous alerte sur une vulnérabilité qui concerne un outil utilisé par votre équipe. La correction nécessite deux jours d'indisponibilité. Votre planning est serré.",
+        tags: ["décisions", "RSSI"],
+        answers: [
+          { text: "Je reporte la correction après la livraison — deux jours d'indisponibilité maintenant sont plus coûteux.", score: 0 },
+          { text: "Je planifie la correction dans les délais recommandés par le RSSI, même si ça impacte le planning.", score: 2 },
+          { text: "Je négocie avec le RSSI un délai un peu plus long pour minimiser l'impact planning.", score: 1 },
+          { text: "Je cherche une mesure compensatoire temporaire pendant la correction.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité est encore traitée comme une contrainte externe plutôt qu'intégrée à vos décisions managériales", desc: "Lancer un projet sans revue sécurité pour tenir un délai, couper le budget formation cyber quand on doit arbitrer, autoriser la désactivation temporaire d'une contrainte de sécurité sous pression : ces décisions signalent à l'équipe que la cybersécurité est une contrainte à contourner quand c'est nécessaire — pas un engagement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la cybersécurité dans vos décisions mais certains arbitrages sous pression peuvent encore la reléguer", desc: "Vous intégrez la sécurité dans la plupart de vos décisions. Mais couper sur les formations cyber sous pression budgétaire, reporter une correction de vulnérabilité pour tenir un planning, autoriser un contournement technique temporaire sous pression de livraison : ces arbitrages sous pression peuvent encore reléguer la cybersécurité. L'enjeu est de tenir ces décisions précisément dans les situations difficiles." },
+          haut: { label: "Réflexes installés", titre: "La cybersécurité est intégrée à toutes vos décisions managériales, y compris sous pression", desc: "Vous repoussez un lancement plutôt que de lancer sans revue sécurité. Vous préservez le budget formation cyber quand vous devez arbitrer. Vous creusez les réflexes sécurité d'un candidat lors du recrutement. Vous refusez la désactivation temporaire d'une contrainte. Vous planifiez la correction de vulnérabilité dans les délais du RSSI. Cette intégration systématique de la cybersécurité dans vos décisions managériales — y compris quand c'est inconfortable — est ce qui fait que votre équipe comprend que la sécurité n'est pas négociable." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -5426,6 +6093,16 @@
         ["Gérer les supports et les accès physiques", "Vérification des supports, contrôle des accès à la salle de contrôle, sessions SCADA."],
         ["Détecter et réagir aux anomalies", "Signaler tout comportement inhabituel sur les équipements, même sans alarme ni dégradation visible."],
         ["Contribuer à la culture cyber industrielle", "Défendre les principes, former les nouveaux, exiger des prestataires, intégrer la cyber dans les REX."],
+      ]}
+    ],
+
+    ["manager-culture-cyber", "Manager la culture cyber de son équipe", "Managers",
+      "Donner l'exemple, traiter les incidents sans créer de peur et intégrer la cybersécurité dans les décisions managériales.",
+      { domain: "cyber", chapters: [
+        ["Donner l'exemple et poser le cadre", "Exemplarité absolue — vos pratiques et vos demandes sont parfaitement alignées."],
+        ["Traiter les incidents sans créer de peur", "Remercier, anonymiser, protéger — construire la culture de signalement."],
+        ["Maintenir la vigilance collective dans la durée", "Constance après un bon bilan, nouveaux arrivants, dérives systémiques."],
+        ["Intégrer la cybersécurité dans les décisions", "Projets, recrutement, budget, arbitrages — même sous pression."],
       ]}
     ],
 
