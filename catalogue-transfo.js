@@ -2010,6 +2010,673 @@
 
   },
 
+  "contribuer-projet": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous intégrez un projet transversal. Le périmètre de votre contribution n'est pas clairement défini lors du lancement. Tout le monde semble s'être compris sans que les rôles aient été explicitement discutés.",
+        tags: ["projet", "rôle"],
+        answers: [
+          { text: "Je commence à contribuer là où je pense être utile — le périmètre se clarifiera naturellement.", score: 0 },
+          { text: "Je demande à clarifier mon rôle et mes livrables attendus avant de démarrer.", score: 2 },
+          { text: "J'observe les premières semaines pour comprendre comment l'équipe fonctionne avant de me positionner.", score: 0.5 },
+          { text: "Je propose de rédiger une note de cadrage pour que tout le monde soit aligné.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La chef de projet vous confie une mission dont les contours sont flous. Vous avez votre propre interprétation de ce qui est attendu mais vous n'êtes pas sûr·e qu'elle corresponde à la sienne.",
+        tags: ["projet", "ambiguïté"],
+        answers: [
+          { text: "Je commence par ma propre interprétation — si ce n'est pas ça, elle me le dira.", score: 0 },
+          { text: "Je lui soumets mon interprétation pour validation avant de démarrer.", score: 2 },
+          { text: "Je lui pose des questions pour affiner sa demande avant de proposer mon interprétation.", score: 2 },
+          { text: "Je travaille en parallèle sur deux interprétations pour couvrir les deux cas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de démarrer une contribution sur un projet, vous clarifiez explicitement ce qu'on attend de vous et dans quel délai.",
+        tags: ["projet", "clarification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En travaillant sur votre contribution au projet, vous identifiez un problème important qui dépasse votre périmètre mais qui risque d'impacter le résultat global.",
+        tags: ["projet", "périmètre"],
+        answers: [
+          { text: "Je reste dans mon périmètre — ce qui dépasse ne me concerne pas.", score: 0 },
+          { text: "Je le remonte à la chef de projet pour qu'elle décide quoi en faire.", score: 2 },
+          { text: "Je le gère moi-même — attendre une décision ferait perdre du temps.", score: 0 },
+          { text: "J'en parle à la personne en charge de cette partie du projet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "On vous a attribué une tâche sur le projet qui est clairement en dessous de vos compétences. Vous pourriez apporter beaucoup plus ailleurs.",
+        tags: ["projet", "surqualifié"],
+        answers: [
+          { text: "Je fais la tâche sans commenter — l'organisation du projet n'est pas de mon ressort.", score: 0.5 },
+          { text: "Je fais la tâche avec soin et je propose à la chef de projet d'utiliser mes compétences sur un sujet plus adapté.", score: 2 },
+          { text: "Je délègue la tâche à quelqu'un de moins expérimenté et je me concentre sur ce qui est à ma mesure.", score: 0 },
+          { text: "Je signale à la chef de projet que cette tâche ne correspond pas à mon profil.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand votre contribution à un projet n'est pas à la hauteur de ce que vous pourriez apporter, vous le signalez et proposez un repositionnement.",
+        tags: ["projet", "valeur ajoutée"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre contribution dépend d'une livraison d'un autre membre de l'équipe. Cette livraison est en retard et commence à bloquer votre travail.",
+        tags: ["projet", "dépendances"],
+        answers: [
+          { text: "J'attends — ce n'est pas à moi de relancer un collègue.", score: 0 },
+          { text: "Je le contacte directement pour comprendre la situation et voir comment débloquer.", score: 2 },
+          { text: "Je remonte le blocage à la chef de projet pour qu'elle gère.", score: 1 },
+          { text: "Je travaille sur d'autres parties du projet en attendant que ça se débloque.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une réunion projet, une décision est sur le point d'être prise sur un sujet où vous avez une expertise pointue. Vous pensez que la décision envisagée est sous-optimale.",
+        tags: ["projet", "expertise"],
+        answers: [
+          { text: "Je laisse — la décision a l'air d'être déjà prise et l'intervenir maintenant serait malvenu.", score: 0 },
+          { text: "Je partage mon point de vue en précisant ma légitimité sur ce sujet.", score: 2 },
+          { text: "Je note ma réserve et j'en parle à la chef de projet après la réunion.", score: 1 },
+          { text: "Je pose une question pour amener le groupe à considérer l'angle que je vois.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous exprimez votre expertise lors des décisions projet qui relèvent de votre domaine, même quand le groupe semble déjà pencher vers une direction.",
+        tags: ["projet", "contribution"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre contribution principale au projet est terminée. La phase de déploiement commence. On ne vous sollicite plus directement mais votre implication serait utile.",
+        tags: ["projet", "fin de contribution"],
+        answers: [
+          { text: "Je me retire — ma contribution est terminée et l'équipe n'a plus besoin de moi.", score: 0 },
+          { text: "Je propose ma disponibilité pour la phase de déploiement si c'est utile.", score: 2 },
+          { text: "Je reste en veille et je réagis si je suis sollicité·e.", score: 0.5 },
+          { text: "Je demande à la chef de projet si elle a encore besoin de moi.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous contribuez au projet mais votre rôle et vos livrables restent encore souvent flous au démarrage", desc: "Commencer à contribuer sans clarifier les livrables attendus, travailler selon sa propre interprétation d'une mission floue, ne pas signaler quand son périmètre s'est élargi sans décision formelle : ces comportements créent des malentendus qui se découvrent souvent trop tard dans le projet. La clarté au démarrage est ce qui rend les contributions vraiment utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
+          haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous avez un désaccord technique avec un autre membre du projet sur la meilleure approche. Chacun pense avoir raison. La décision doit être prise cette semaine.",
+        tags: ["coopération", "différend"],
+        answers: [
+          { text: "Je cède pour éviter le conflit — l'ambiance dans l'équipe projet est plus importante qu'un détail technique.", score: 0 },
+          { text: "Je propose qu'on soumette les deux approches à la chef de projet ou à un tiers pour trancher.", score: 1.5 },
+          { text: "Je présente mes arguments de façon factuelle et je demande à mon collègue de présenter les siens.", score: 2 },
+          { text: "Je m'impose — j'ai plus d'expérience sur ce sujet.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à un désaccord technique dans un projet, vous défendez votre position avec des arguments factuels plutôt que de céder ou de vous imposer.",
+        tags: ["coopération", "désaccord"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue accapare la parole lors des réunions projet. Ses contributions sont bonnes mais les autres membres, dont vous, peinent à s'exprimer.",
+        tags: ["coopération", "visibilité"],
+        answers: [
+          { text: "Je laisse — il contribue bien et la réunion avance.", score: 0 },
+          { text: "Je prends la parole directement pour partager ma contribution.", score: 2 },
+          { text: "J'en parle à la chef de projet pour qu'elle gère la dynamique.", score: 1 },
+          { text: "Je lui en parle en tête-à-tête après la réunion.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez terminé votre livrable en avance. Un collègue est clairement en retard sur le sien et sa contribution est sur le chemin critique.",
+        tags: ["coopération", "aide"],
+        answers: [
+          { text: "Je passe à la prochaine étape de mon travail — son retard n'est pas de mon ressort.", score: 0 },
+          { text: "Je lui propose mon aide pour finir dans les temps.", score: 2 },
+          { text: "J'en informe la chef de projet pour qu'elle réorganise.", score: 1 },
+          { text: "Je l'aide discrètement sans en faire un sujet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous disposez d'une information utile pour un autre membre du projet mais elle ne vous concerne pas directement. La partager vous prendrait 10 minutes.",
+        tags: ["coopération", "information"],
+        answers: [
+          { text: "Je garde l'information pour moi — s'il en avait besoin, il me l'aurait demandée.", score: 0 },
+          { text: "Je lui transmets l'information spontanément.", score: 2 },
+          { text: "Je la mentionne en réunion d'équipe pour que tout le monde en profite.", score: 1.5 },
+          { text: "Je lui pose la question pour voir s'il est au courant avant de transmettre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous partagez proactivement les informations utiles à d'autres membres du projet, même quand elles ne vous ont pas été demandées.",
+        tags: ["coopération", "partage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'équipe projet a pris une décision avec laquelle vous n'étiez pas d'accord. Vous avez exprimé votre réserve mais la majorité a tranché autrement.",
+        tags: ["coopération", "décision collective"],
+        answers: [
+          { text: "Je la mets en œuvre à moitié — je fais semblant d'adhérer sans m'y engager vraiment.", score: 0 },
+          { text: "Je la mets en œuvre pleinement tout en gardant un œil sur les signes que mon réserve était fondée.", score: 2 },
+          { text: "Je demande à sortir de cette partie du projet.", score: 0 },
+          { text: "Je continue à argumenter pour faire évoluer la décision.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une tension s'est installée entre deux membres de votre équipe projet. Elle commence à ralentir les échanges. Vous n'êtes pas impliqué·e dans le conflit.",
+        tags: ["coopération", "conflit"],
+        answers: [
+          { text: "Je laisse — ce n'est pas mon rôle de gérer les conflits interpersonnels entre collègues.", score: 0 },
+          { text: "Je propose à la chef de projet d'aborder le sujet avant que ça impacte davantage le projet.", score: 2 },
+          { text: "Je parle séparément à chacun pour comprendre et aider à désamorcer.", score: 1.5 },
+          { text: "J'en parle en réunion d'équipe pour forcer un éclaircissement collectif.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand des tensions entre membres ralentissent un projet, vous intervenez pour aider à les résoudre plutôt qu'à attendre que ça se règle seul.",
+        tags: ["coopération", "tensions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin de projet, une rétrospective est organisée. Vous avez des observations sur des dysfonctionnements dans la coopération de l'équipe mais certaines impliquent des collègues présents.",
+        tags: ["coopération", "rétrospective"],
+        answers: [
+          { text: "Je garde mes observations pour moi — ce n'est pas le moment de créer des tensions.", score: 0 },
+          { text: "Je partage mes observations de façon factuelle — une rétrospective sans honnêteté ne sert à rien.", score: 2 },
+          { text: "Je partage uniquement les observations qui concernent le processus, pas les personnes.", score: 1 },
+          { text: "Je les partage avec la chef de projet en privé plutôt qu'en réunion collective.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coopération dans l'équipe projet est encore principalement centrée sur votre périmètre direct", desc: "Garder une information utile pour un collègue parce qu'il ne l'a pas demandée, laisser un collègue en retard sur le chemin critique sans proposer d'aide, ne pas réagir quand des tensions ralentissent l'équipe : ces comportements maintiennent votre contribution dans votre seul périmètre. Dans un projet transversal, la coopération proactive est aussi importante que la qualité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous réalisez que votre livrable ne sera pas prêt à temps. Il reste cinq jours. Vous pensez pouvoir rattraper en travaillant plus mais c'est incertain.",
+        tags: ["imprévus", "alerte"],
+        answers: [
+          { text: "Je ne dis rien pour l'instant — je vais essayer de rattraper avant d'alarmer.", score: 0 },
+          { text: "Je préviens la chef de projet maintenant avec un état des lieux honnête et mes options.", score: 2 },
+          { text: "Je demande de l'aide à un collègue sans en parler à la chef de projet.", score: 0.5 },
+          { text: "J'informe la chef de projet deux jours avant la deadline si je ne vois pas d'amélioration.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les risques de retard ou de dépassement le plus tôt possible, sans attendre d'être certain·e que le problème va se concrétiser.",
+        tags: ["imprévus", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pour tenir le délai, vous devez livrer un travail de qualité inférieure à ce que vous visez habituellement. La chef de projet a validé ce compromis.",
+        tags: ["imprévus", "qualité"],
+        answers: [
+          { text: "Je livre à la qualité habituelle même si ça prend plus de temps — c'est ma signature.", score: 0 },
+          { text: "Je livre selon le niveau de qualité convenu avec la chef de projet.", score: 2 },
+          { text: "Je livre dans les temps en précisant que la qualité est en dessous de mon standard.", score: 1.5 },
+          { text: "Je négocie un délai supplémentaire plutôt que de compromettre la qualité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Au fil du projet, votre périmètre s'est élargi progressivement sans décision formelle. Vous faites maintenant le double de ce qui était prévu initialement.",
+        tags: ["imprévus", "scope creep"],
+        answers: [
+          { text: "Je continue — c'est pour le bien du projet et j'absorberai la charge supplémentaire.", score: 0 },
+          { text: "Je remonte l'élargissement à la chef de projet pour une décision formelle sur les ressources et le planning.", score: 2 },
+          { text: "Je négocie directement avec les autres membres pour rééquilibrer les charges.", score: 1 },
+          { text: "Je finis ce qui est en cours puis je pose la question de l'élargissement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que vous avez commis une erreur qui va nécessiter de refaire une partie du travail. L'impact sur le planning est significatif.",
+        tags: ["imprévus", "erreur"],
+        answers: [
+          { text: "Je corrige discrètement et j'espère que ça n'aura pas d'impact visible sur le projet.", score: 0 },
+          { text: "Je le signale immédiatement à la chef de projet avec un plan de correction.", score: 2 },
+          { text: "Je corrige d'abord puis j'informe la chef de projet une fois la correction faite.", score: 0.5 },
+          { text: "Je l'informe de l'erreur en lui proposant des options pour limiter l'impact.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous faites une erreur avec un impact sur le projet, vous la signalez rapidement plutôt que d'essayer de la corriger discrètement.",
+        tags: ["imprévus", "transparence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En cours de projet, la direction décide de changer l'objectif principal. Votre travail des trois dernières semaines devient partiellement obsolète.",
+        tags: ["imprévus", "changement de cap"],
+        answers: [
+          { text: "Je m'énerve en réunion — trois semaines de travail perdues, c'est inacceptable.", score: 0 },
+          { text: "Je prends acte du changement et j'identifie ce qui peut être réutilisé dans la nouvelle direction.", score: 2 },
+          { text: "Je continue quand même mon travail initial en parallèle — peut-être que la décision va changer.", score: 0 },
+          { text: "Je remonte le coût du changement à la chef de projet pour que la direction le mesure.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez accepté trop de contributions simultanées sur plusieurs projets. Vous ne pouvez pas tenir tous vos engagements à temps.",
+        tags: ["imprévus", "surcharge"],
+        answers: [
+          { text: "J'essaie de tenir tous mes engagements en travaillant plus — c'est moi qui me suis mis·e dans cette situation.", score: 0 },
+          { text: "Je contacte les chefs de projet concernés pour revoir les priorités ensemble.", score: 2 },
+          { text: "Je priorise seul·e et je préviens uniquement ceux qui auront un impact visible.", score: 0.5 },
+          { text: "Je demande à mes responsables de m'arbitrer sur les priorités.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand votre charge projet dépasse ce que vous pouvez tenir, vous le signalez proactivement aux parties prenantes plutôt que d'essayer d'absorber seul·e.",
+        tags: ["imprévus", "gestion charge"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le projet se termine mais plusieurs points restent non résolus. L'équipe a tendance à les clore formellement sans les traiter vraiment.",
+        tags: ["imprévus", "fin de projet"],
+        answers: [
+          { text: "Je suis le mouvement — si tout le monde est prêt à clore, c'est que c'est acceptable.", score: 0 },
+          { text: "Je demande qu'on identifie explicitement ce qui reste ouvert et qui en est responsable après clôture.", score: 2 },
+          { text: "Je documente les points non résolus dans ma note personnelle.", score: 0.5 },
+          { text: "Je remonte les points non résolus à la chef de projet pour qu'elle décide.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les imprévus en les absorbant plutôt qu'en les signalant tôt aux bonnes personnes", desc: "Ne pas signaler un risque de retard en espérant rattraper, corriger une erreur discrètement sans en informer la chef de projet, essayer de tenir tous ses engagements en travaillant plus : ces comportements retardent les décisions qui permettraient de gérer les problèmes à temps. Plus le signal vient tôt, plus les options sont nombreuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Le projet est terminé. Un retour d'expérience est prévu mais personne ne semble très motivé à l'organiser. Vous avez des apprentissages importants.",
+        tags: ["capitalisation", "REX"],
+        answers: [
+          { text: "Je laisse — si personne n'est motivé, forcer un REX produira peu de valeur.", score: 0 },
+          { text: "Je prends l'initiative d'organiser le REX en proposant un format court et efficace.", score: 2 },
+          { text: "Je rédige mes apprentissages personnels sans les partager collectivement.", score: 0.5 },
+          { text: "Je propose à la chef de projet de décider si le REX est nécessaire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "À la fin d'un projet, vous prenez des initiatives pour que les apprentissages collectifs soient formalisés, même si personne ne le demande.",
+        tags: ["capitalisation", "initiative REX"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez développé une méthode efficace sur ce projet qui pourrait être utile aux prochaines équipes. La documentation prend une journée.",
+        tags: ["capitalisation", "transmission"],
+        answers: [
+          { text: "Je ne documente pas — les méthodes se transmettent mieux oralement.", score: 0 },
+          { text: "Je documente et je la partage dans l'espace commun de l'organisation.", score: 2 },
+          { text: "Je la transmets oralement aux personnes qui travailleront sur des sujets similaires.", score: 1 },
+          { text: "Je la documente pour moi mais je la partage uniquement si on me la demande.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Sur ce projet, vous avez réalisé que vous avez une lacune dans un domaine qui a ralenti votre contribution.",
+        tags: ["capitalisation", "apprentissages"],
+        answers: [
+          { text: "Je note la lacune mentalement et je me débrouille si ça se reproduit.", score: 0 },
+          { text: "J'intègre ce développement dans mon plan de formation et j'en parle à mon responsable.", score: 2 },
+          { text: "Je cherche à combler la lacune par moi-même dans les semaines qui suivent.", score: 1 },
+          { text: "J'en parle à mon responsable uniquement si la lacune est critique.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Ce projet vous a permis de travailler avec des personnes que vous ne connaissiez pas. Ces relations sont potentiellement utiles pour de futurs projets.",
+        tags: ["capitalisation", "relations"],
+        answers: [
+          { text: "Je laisse ces relations se désactiver naturellement — je les retrouverai si l'occasion se présente.", score: 0 },
+          { text: "Je prends le temps d'entretenir ces relations même en dehors d'un projet commun.", score: 2 },
+          { text: "Je les ajoute à mon réseau professionnel sans entretenir de lien spécifique.", score: 0.5 },
+          { text: "Je les contacte uniquement quand j'ai un besoin concret.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous entretenez activement les relations professionnelles nouées durant les projets, même en dehors d'un contexte de travail commun.",
+        tags: ["capitalisation", "réseau"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "À la fin du projet, vous avez envie de reconnaître la contribution de certains membres de l'équipe qui ont été particulièrement efficaces.",
+        tags: ["capitalisation", "reconnaissance"],
+        answers: [
+          { text: "Je laisse — la reconnaissance entre pairs peut paraître condescendante.", score: 0 },
+          { text: "Je leur dis directement ce que leur contribution a apporté au projet et à moi.", score: 2 },
+          { text: "Je le mentionne lors du REX pour que ça soit reconnu collectivement.", score: 1.5 },
+          { text: "J'en parle à la chef de projet pour qu'elle le mentionne dans son bilan.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "On vous propose de contribuer à un nouveau projet similaire au précédent. Vous avez des apprentissages très utiles du projet précédent.",
+        tags: ["capitalisation", "prochain projet"],
+        answers: [
+          { text: "J'accepte en apportant mes apprentissages comme une valeur ajoutée explicite.", score: 2 },
+          { text: "J'accepte sans mentionner mes apprentissages — je les intégrerai naturellement.", score: 1 },
+          { text: "Je propose d'abord de faire un point de transfert avec la nouvelle équipe.", score: 1.5 },
+          { text: "J'accepte mais je demande à être positionné·e sur un périmètre différent pour ne pas me répéter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "À la fin de chaque projet, vous formalisez vos apprentissages personnels — méthodes, lacunes identifiées, relations nouées — pour les utiliser dans les suivants.",
+        tags: ["capitalisation", "apprentissages continus"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue moins expérimenté intègre un projet similaire à celui que vous venez de terminer. Il pourrait bénéficier de votre expérience.",
+        tags: ["capitalisation", "mentor"],
+        answers: [
+          { text: "Je laisse — il apprendra mieux par lui-même qu'avec mes conseils.", score: 0 },
+          { text: "Je lui propose de partager mon expérience sans imposer ma façon de faire.", score: 2 },
+          { text: "Je lui transmets ma documentation et je reste disponible si besoin.", score: 1.5 },
+          { text: "Je le tiens informé de ce que j'ai vécu sur le projet précédent pendant notre travail commun.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La fin du projet marque aussi la fin de vos apprentissages — vous capitalisez peu au-delà du projet lui-même", desc: "Ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, laisser se désactiver les relations nouées pendant le projet : ces comportements limitent la valeur du projet à son résultat immédiat. La capitalisation transforme chaque projet en investissement pour les suivants." },
+          moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -2017,30 +2684,40 @@
     ["changer-sans-se-crisper", "Changer sans se crisper", "Tous publics",
       "Comprendre ses réflexes face aux changements de méthode, d'outil ou d'organisation.",
       { domain: "transformation", chapters: [
-        ["Comprendre ses réflexes face au changement", "Identifier son mode de réaction habituel et passer de la protection à l'exploration."],
-        ["Traverser la période de transition", "Signaler les difficultés, demander de l'aide et soutenir ses collègues."],
-        ["Contribuer positivement à la dynamique", "Quick wins, retours terrain, influence sur le collectif."],
-        ["Développer sa flexibilité dans la durée", "Traiter les transformations continues comme des opportunités de développement."],
+        ["Comprendre ses réflexes face au changement", "Passer de la protection à l'exploration."],
+        ["Traverser la période de transition", "Signaler, demander de l'aide et soutenir."],
+        ["Contribuer positivement à la dynamique", "Quick wins, retours terrain, influence collective."],
+        ["Développer sa flexibilité dans la durée", "Transformations continues comme opportunités."],
       ]}
     ],
 
     ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
       "Installer des échanges réguliers, factuels et mobilisables sans créer de posture défensive.",
       { domain: "transformation", chapters: [
-        ["Donner un feedback factuel et utile", "Précision, timing, courage — sans diluer le fond pour ménager la relation."],
-        ["Recevoir un feedback sans se défendre", "Écoute active, séparation du fond et de la source, intégration réelle."],
-        ["Créer une culture du feedback dans son équipe", "Exemplarité, facilitation, maintien de la qualité dans la durée."],
-        ["Utiliser le feedback pour progresser", "Points forts, contradictions, travail en profondeur et dans la durée."],
+        ["Donner un feedback factuel et utile", "Précision, timing, courage — sans diluer le fond."],
+        ["Recevoir un feedback sans se défendre", "Écoute active, séparation fond/source, intégration."],
+        ["Créer une culture du feedback", "Exemplarité, facilitation, maintien de la qualité."],
+        ["Utiliser le feedback pour progresser", "Points forts, contradictions, travail en profondeur."],
       ]}
     ],
 
     ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
       "Questionner sa posture d'engagement, de responsabilisation et de soutien au collectif.",
       { domain: "transformation", chapters: [
-        ["Créer les conditions de l'engagement", "Sens, reconnaissance, confiance, développement — pour chaque collaborateur."],
-        ["Maintenir l'engagement dans la durée", "Signaux faibles, bons résultats, pression — vigilance continue."],
-        ["Responsabiliser sans infantiliser", "Déléguer avec confiance, valoriser les initiatives, favoriser l'autonomie."],
-        ["Soutenir sans créer de dépendance", "Soutien empathique avec des limites claires, orienté vers l'autonomie."],
+        ["Créer les conditions de l'engagement", "Sens, reconnaissance, confiance, développement."],
+        ["Maintenir l'engagement dans la durée", "Signaux faibles, bons résultats, protection."],
+        ["Responsabiliser sans infantiliser", "Déléguer, valoriser les initiatives, favoriser l'autonomie."],
+        ["Soutenir sans créer de dépendance", "Empathie avec limites claires, orienté autonomie."],
+      ]}
+    ],
+
+    ["contribuer-projet", "Contribuer efficacement à un projet", "Collaborateurs",
+      "Clarifier les rôles, gérer les imprévus et coopérer dans un cadre mouvant.",
+      { domain: "transformation", chapters: [
+        ["Clarifier son rôle et ses contributions", "Livrables, dépendances, périmètre — clarté au démarrage."],
+        ["Coopérer dans une équipe projet", "Information proactive, aide spontanée, décisions collectives."],
+        ["Gérer les imprévus et les tensions", "Alerter tôt, signaler les erreurs, gérer sa charge collectivement."],
+        ["Capitaliser et transmettre", "REX, documentation, relations, transmission aux moins expérimentés."],
       ]}
     ],
 
