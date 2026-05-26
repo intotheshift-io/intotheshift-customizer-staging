@@ -891,16 +891,47 @@ function organizationOptionsForAccount(currentOrgId){
   }).join("");
 }
 
+let pendingAttachTransfer = null;
+
+function openAttachTransferModal(userId, organizationId){
+  pendingAttachTransfer = { userId, organizationId };
+  const modal = document.getElementById("attachTransferModal");
+  if(modal) modal.style.display = "flex";
+}
+
+function closeAttachTransferModal(){
+  pendingAttachTransfer = null;
+  const modal = document.getElementById("attachTransferModal");
+  if(modal) modal.style.display = "none";
+}
+
+async function confirmAttachTransfer(){
+  if(!pendingAttachTransfer) return;
+
+  const { userId, organizationId } = pendingAttachTransfer;
+  closeAttachTransferModal();
+
+  await executeAttachUserToOrganization(userId, organizationId, true);
+}
+
 async function attachUserToOrganization(userId, transferProjects=false){
   const select=document.getElementById("attach-org-"+String(userId));
   const organizationId=select?.value || "";
-  if(!organizationId){showError("Choisis d’abord un cockpit client à rattacher.");return;}
 
-  if(transferProjects){
-    const confirmed=window.confirm("Rattacher ce compte au cockpit sélectionné et transférer tous ses autodiagnostics vers ce cockpit ?");
-    if(!confirmed)return;
+  if(!organizationId){
+    showError("Choisis d’abord un cockpit client à rattacher.");
+    return;
   }
 
+  if(transferProjects){
+    openAttachTransferModal(userId, organizationId);
+    return;
+  }
+
+  await executeAttachUserToOrganization(userId, organizationId, false);
+}
+
+async function executeAttachUserToOrganization(userId, organizationId, transferProjects=false){
   try{
     const result=await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
       organizationId,
@@ -1574,6 +1605,54 @@ document.addEventListener("DOMContentLoaded",()=>{
   if(requireAdmin())loadAdminData();
 });
 </script>
+
+<div id="attachTransferModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.62);z-index:9999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);">
+  <div style="background:#fff;border-radius:28px;padding:28px;max-width:560px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.28);position:relative;overflow:hidden;">
+    
+    <div style="position:absolute;top:0;left:0;right:0;height:7px;background:linear-gradient(90deg,#0d4c72,#12a3b8);"></div>
+
+    <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;">
+      <div style="width:62px;height:62px;border-radius:18px;background:#eef6fb;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;">
+        🔄
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 8px;color:#0d4c72;font-size:24px;line-height:1.2;">
+          Transférer les autodiagnostics ?
+        </h3>
+
+        <p style="margin:0;color:#60758a;line-height:1.6;font-size:15px;">
+          Le compte sera rattaché au cockpit sélectionné et tous ses autodiagnostics seront déplacés vers ce cockpit client.
+        </p>
+      </div>
+    </div>
+
+    <div style="background:#f6fbfe;border:1px solid #d7e8f1;border-radius:18px;padding:16px;margin-bottom:18px;">
+      <div style="font-weight:900;color:#0d4c72;margin-bottom:6px;">
+        Ce qui va se passer :
+      </div>
+
+      <ul style="margin:0;padding-left:20px;color:#60758a;line-height:1.7;">
+        <li>Le compte sera relié au cockpit choisi</li>
+        <li>Les AD existants seront transférés</li>
+        <li>Les autres cockpits ne seront pas fusionnés</li>
+        <li>Les données existantes resteront conservées</li>
+      </ul>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;">
+      <button class="mini-btn light" onclick="closeAttachTransferModal()">
+        Annuler
+      </button>
+
+      <button class="mini-btn" style="padding:10px 16px;" onclick="confirmAttachTransfer()">
+        Confirmer le transfert
+      </button>
+    </div>
+  </div>
+</div>
+
+
 <div id="deleteProjectModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
   <div style="background:#fff;border-radius:24px;padding:24px;max-width:520px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
     <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer cet autodiag ?</h3>
