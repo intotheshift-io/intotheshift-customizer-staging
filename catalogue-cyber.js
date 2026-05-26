@@ -2677,6 +2677,673 @@
 
   },
 
+  "signalement-incidents-cyber": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous recevez un mail de phishing évident. Vous ne cliquez pas, vous le supprimez. Votre journée continue normalement.",
+        tags: ["signalement", "seuil"],
+        answers: [
+          { text: "Je l'ai supprimé — il n'y a pas eu d'incident, rien à signaler.", score: 0 },
+          { text: "Je le transfère à l'équipe sécurité avant de le supprimer — même sans clic, les tentatives en circulation sont utiles à connaître.", score: 2 },
+          { text: "Je le signale uniquement si je reçois plusieurs mails similaires dans la journée.", score: 0.5 },
+          { text: "Je le mets en quarantaine dans un dossier dédié au cas où.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre ordinateur est inhabituellement lent depuis ce matin. Plusieurs applications s'ouvrent plus lentement que d'habitude. Vous n'avez rien installé de nouveau.",
+        tags: ["signalement", "anomalie"],
+        answers: [
+          { text: "J'attends quelques heures — les lenteurs sont courantes et ça va probablement passer.", score: 0 },
+          { text: "Je le signale à l'équipe informatique en décrivant ce que j'observe depuis quand.", score: 2 },
+          { text: "Je redémarre mon poste et je ne le signale que si ça persiste.", score: 0.5 },
+          { text: "Je fais une analyse antivirus avant de décider si c'est à signaler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les comportements anormaux de vos appareils ou de vos comptes même quand vous n'êtes pas certain·e qu'il s'agit d'un incident de sécurité.",
+        tags: ["signalement", "seuil bas"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous tentez d'accéder à un dossier habituel et vous obtenez un message d'erreur indiquant que vous n'avez plus les droits. Vos droits n'ont pas été modifiés à votre connaissance.",
+        tags: ["signalement", "droits inhabituels"],
+        answers: [
+          { text: "Je contacte l'équipe informatique pour qu'elle restaure mes droits.", score: 1 },
+          { text: "Je contacte l'équipe sécurité en signalant la modification inattendue de mes droits.", score: 2 },
+          { text: "J'attends quelques heures — ça peut être une maintenance en cours.", score: 0 },
+          { text: "J'en parle à mon responsable pour qu'il fasse la demande de restauration.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collègue Lucie vous envoie un mail avec un lien mais sans texte explicatif. Ce n'est pas dans ses habitudes. Vous lui avez posé la question et elle dit ne pas avoir envoyé ce mail.",
+        tags: ["signalement", "mail suspect reçu"],
+        answers: [
+          { text: "Je supprime le mail — Lucie a probablement été victime de phishing et je ne clique pas.", score: 0.5 },
+          { text: "Je signale immédiatement à l'équipe sécurité que le compte de Lucie est probablement compromis.", score: 2 },
+          { text: "Je préviens Lucie de changer son mot de passe et j'attends qu'elle règle ça.", score: 1 },
+          { text: "Je transfère le mail à l'équipe informatique pour qu'elle analyse le lien.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous détectez qu'un compte d'un·e collègue semble compromis, vous le signalez à l'équipe sécurité sans attendre que la personne concernée prenne les mesures elle-même.",
+        tags: ["signalement", "compte tiers"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En naviguant sur le web, vous tombez par hasard sur un document de votre entreprise indexé publiquement sur Google. Il contient des données clients.",
+        tags: ["signalement", "données exposées"],
+        answers: [
+          { text: "Je ferme la page — ce n'est probablement pas intentionnel et ça ne me concerne pas directement.", score: 0 },
+          { text: "Je note l'URL et je la signale immédiatement à l'équipe sécurité et au DPO.", score: 2 },
+          { text: "Je contacte l'équipe informatique pour qu'elle retire le document de l'index.", score: 1 },
+          { text: "Je le signale à mon responsable pour qu'il gère avec les équipes concernées.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre messagerie professionnelle vous indique que des mails ont été envoyés depuis votre compte à des destinataires inconnus, alors que vous ne les avez pas envoyés.",
+        tags: ["signalement", "comportement réseau"],
+        answers: [
+          { text: "Je change mon mot de passe et je surveille si ça continue.", score: 0.5 },
+          { text: "Je contacte immédiatement l'équipe sécurité, je change mon mot de passe et j'active le 2FA si ce n'est pas déjà fait.", score: 2 },
+          { text: "Je supprime les mails envoyés et je change mon mot de passe.", score: 0 },
+          { text: "Je contacte les destinataires pour m'excuser et expliquer que ce n'est pas moi.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Toute activité inhabituelle sur vos comptes — connexions, envois, modifications — déclenche chez vous un signalement immédiat à l'équipe sécurité.",
+        tags: ["signalement", "activité inhabituelle"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez ouvert une pièce jointe qui vous semblait normale mais qui a provoqué l'ouverture d'une fenêtre bizarre que vous avez immédiatement fermée. Votre ordinateur fonctionne normalement.",
+        tags: ["signalement", "pièce jointe ouverte"],
+        answers: [
+          { text: "Je ne signale pas — j'ai fermé la fenêtre rapidement et tout fonctionne normalement.", score: 0 },
+          { text: "Je contacte l'équipe sécurité immédiatement en décrivant la pièce jointe et la fenêtre.", score: 2 },
+          { text: "Je fais une analyse antivirus complète et je ne signale que si elle trouve quelque chose.", score: 0.5 },
+          { text: "Je redémarre mon poste pour voir si ça efface le problème potentiel.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez uniquement les incidents avérés — les signaux faibles et les tentatives passent sans signalement", desc: "Ne pas signaler un mail de phishing parce qu'on ne l'a pas ouvert, attendre que les lenteurs de l'ordinateur passent seules, gérer soi-même une situation suspecte sans le remonter : ces comportements laissent l'équipe sécurité aveugle sur ce qui se passe réellement. Un signalement sur un doute vaut toujours mieux qu'un silence sur une certitude." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents avérés mais le seuil de signalement sur les signaux faibles est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les comportements anormaux évidents. Mais le mail de phishing non ouvert qu'on supprime sans signaler, les lenteurs qu'on attend de voir passer, la fenêtre bizarre fermée rapidement sans suite : votre seuil de signalement est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque anomalie comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les tentatives, les anomalies et les doutes — pas seulement les incidents avérés", desc: "Vous transférez le mail de phishing à l'équipe sécurité avant de le supprimer. Vous signalez les lenteurs inexpliquées le jour même. Vous remontez le compte de Lucie qui semble compromis sans attendre qu'elle agisse. Vous contactez l'équipe sécurité après avoir ouvert une pièce jointe suspecte même si vous avez refermé la fenêtre rapidement. Ce seuil de signalement bas — qui suppose d'accepter de faire des 'faux positifs' — est ce qui permet à l'équipe sécurité de détecter les incidents avant qu'ils ne se propagent." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous avez cliqué sur un lien de phishing et vous avez peut-être saisi vos identifiants avant de réaliser. Vous hésitez à le signaler par crainte d'être perçu·e comme imprudent·e.",
+        tags: ["freins", "peur jugement"],
+        answers: [
+          { text: "Je ne signale pas — j'ai changé mon mot de passe et il ne s'est rien passé de visible.", score: 0 },
+          { text: "Je signale immédiatement — les conséquences d'un silence sont bien plus graves que d'avoir cliqué.", score: 2 },
+          { text: "Je surveille mon compte quelques jours avant de décider si c'est nécessaire de signaler.", score: 0 },
+          { text: "J'en parle d'abord à mon responsable pour qu'il décide si c'est à remonter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les incidents même quand ils résultent d'une erreur de votre part, sans attendre que les conséquences soient visibles.",
+        tags: ["freins", "honte"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez déjà fait plusieurs signalements dans le passé. Vous n'avez jamais reçu de retour sur ce qui a été fait. Un nouvel événement suspect se produit.",
+        tags: ["freins", "inutilité perçue"],
+        answers: [
+          { text: "Je ne signale plus — si rien ne change, c'est inutile.", score: 0 },
+          { text: "Je signale et je demande explicitement un retour sur ce signalement.", score: 2 },
+          { text: "Je signale en espérant que cette fois ça serve à quelque chose.", score: 1 },
+          { text: "Je contacte directement quelqu'un à l'informatique plutôt que par le canal habituel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose de suspect mais vous vous dites que 'c'est probablement rien' et que vous allez passer pour quelqu'un qui dramatise.",
+        tags: ["freins", "minimisation"],
+        answers: [
+          { text: "Je ne signale pas — si ce n'est rien, j'aurai dérangé l'équipe pour rien.", score: 0 },
+          { text: "Je signale en précisant que je n'en suis pas certain·e — un faux positif est toujours préférable à un silence.", score: 2 },
+          { text: "J'observe encore un peu pour voir si ça se confirme avant de signaler.", score: 0.5 },
+          { text: "J'en parle à un collègue pour avoir son avis avant de décider.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La procédure de signalement d'incident de votre entreprise implique de remplir un formulaire détaillé. Vous avez vu quelque chose de suspect mais le formulaire vous semble lourd pour ce que vous avez observé.",
+        tags: ["freins", "complexité"],
+        answers: [
+          { text: "Je ne le remplis pas — pour une observation mineure, le formulaire n'est pas proportionné.", score: 0 },
+          { text: "Je remplis le formulaire avec les éléments que j'ai, même si ce n'est pas exhaustif.", score: 2 },
+          { text: "J'envoie un mail informel à l'équipe sécurité plutôt que de remplir le formulaire.", score: 1.5 },
+          { text: "Je contacte directement un membre de l'équipe sécurité pour lui décrire ce que j'ai vu.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous utilisez les canaux de signalement officiels même quand ils vous semblent lourds — parce que la traçabilité compte.",
+        tags: ["freins", "procédure"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose de suspect il y a trois jours mais vous avez attendu de voir si ça évolue. La situation est toujours là.",
+        tags: ["freins", "délai"],
+        answers: [
+          { text: "Je ne signale plus — trop de temps a passé et la situation est peut-être déjà réglée.", score: 0 },
+          { text: "Je signale maintenant en indiquant quand j'ai observé le phénomène — le délai est une information utile.", score: 2 },
+          { text: "Je signale de façon anonyme pour éviter qu'on me demande pourquoi j'ai attendu.", score: 0.5 },
+          { text: "Je contacte l'équipe sécurité pour expliquer la situation et leur laisser évaluer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a tacitement décidé de ne pas signaler un incident interne pour 'ne pas faire de vagues'. On vous demande implicitement d'aller dans ce sens.",
+        tags: ["freins", "pression collective"],
+        answers: [
+          { text: "Je m'aligne — la cohésion d'équipe est importante et l'incident est peut-être gérable en interne.", score: 0 },
+          { text: "Je signale quand même — un incident cyber non signalé peut exposer toute l'organisation.", score: 2 },
+          { text: "Je laisse l'équipe gérer en interne et je signale uniquement si ça s'aggrave.", score: 0 },
+          { text: "J'en parle à mon responsable sans passer par le canal officiel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les incidents de sécurité même quand votre équipe ou votre responsable vous demande de ne pas le faire.",
+        tags: ["freins", "indépendance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez résolu vous-même une situation suspecte — vous avez changé votre mot de passe, désactivé un accès et nettoyé les fichiers concernés. Vous pensez que le problème est réglé.",
+        tags: ["freins", "auto-réparation"],
+        answers: [
+          { text: "Je ne signale pas — j'ai géré et le problème est résolu.", score: 0 },
+          { text: "Je signale quand même — l'équipe sécurité a besoin de savoir même si je pense avoir réglé le problème.", score: 2 },
+          { text: "Je signale uniquement si ça recommence — ma gestion a peut-être suffi.", score: 0 },
+          { text: "Je documente ce que j'ai fait et je l'envoie à l'équipe sécurité pour information.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur du jugement, inutilité perçue, gestion autonome — l'emportent encore souvent", desc: "Changer son mot de passe et ne pas signaler parce qu'on a 'géré', attendre que la situation se confirme, s'aligner sur une équipe qui préfère ne pas faire de vagues : ces comportements laissent des incidents se développer silencieusement. L'équipe sécurité ne peut protéger que ce qu'elle sait. Chaque heure de délai après une compromission donne du temps à l'attaquant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous surmontez les freins habituels mais les situations inconfortables ou à coût social élevé créent encore des hésitations", desc: "Vous signalez sans vous laisser influencer par la pression ordinaire. Mais quand signaler implique de reconnaître qu'on utilisait un outil non approuvé, quand l'équipe pousse à gérer en interne, quand vous avez déjà géré vous-même et pensez que c'est réglé : votre réflexe peut encore hésiter. L'enjeu est de maintenir le signalement précisément dans ces situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez même quand c'est inconfortable — erreur personnelle, outil non approuvé, pression collective", desc: "Vous signalez même quand ça implique de reconnaître que vous avez cliqué. Vous signalez même quand vous avez déjà géré vous-même et pensez que c'est réglé. Vous signalez même quand l'équipe préférerait ne pas faire de vagues. Vous signalez même quand vous n'avez aucun retour sur les signalements précédents — en demandant ce retour. Cette indépendance dans le signalement est ce qui rend un système de sécurité réellement fiable." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose de suspect et vous devez le signaler. Vous n'êtes pas sûr·e de tous les détails — heure exacte, URL complète, contenu du mail.",
+        tags: ["qualité signalement", "précision"],
+        answers: [
+          { text: "J'attends d'avoir tous les détails avant de signaler pour éviter de donner de fausses informations.", score: 0 },
+          { text: "Je signale avec ce que j'ai en précisant clairement ce qui est certain et ce qui est approximatif.", score: 2 },
+          { text: "Je reconstitue les détails manquants au mieux pour que mon signalement soit complet.", score: 0 },
+          { text: "Je signale les éléments dont je suis certain·e et j'indique que les autres me manquent.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos signalements distinguent clairement ce que vous avez observé avec certitude de ce que vous supposez.",
+        tags: ["qualité signalement", "honnêteté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez signaler un incident. En le rédigeant, vous réalisez que mentionner le contexte complet implique d'indiquer que vous aviez utilisé un outil non approuvé au moment de l'incident.",
+        tags: ["qualité signalement", "contexte"],
+        answers: [
+          { text: "Je décris l'incident sans mentionner l'outil non approuvé — ce n'est pas directement lié.", score: 0 },
+          { text: "Je mentionne le contexte complet, y compris l'outil non approuvé — c'est potentiellement la cause.", score: 2 },
+          { text: "Je décris l'incident sans entrer dans les détails du contexte.", score: 0 },
+          { text: "J'en parle d'abord à mon responsable avant de décider quoi inclure.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident s'est produit il y a deux heures. Vous pouvez soit faire un signalement rapide maintenant, soit attendre ce soir pour rédiger un signalement complet et détaillé.",
+        tags: ["qualité signalement", "délai"],
+        answers: [
+          { text: "J'attends ce soir — un signalement complet et bien rédigé sera plus utile.", score: 0 },
+          { text: "Je fais un signalement rapide maintenant avec les éléments disponibles — le délai compte.", score: 2 },
+          { text: "Je fais un signalement rapide maintenant et je complète ce soir avec les détails.", score: 2 },
+          { text: "J'envoie un message informel maintenant et je fais le signalement officiel ce soir.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez reçu un mail de phishing. Avant de le supprimer, vous devez décider quoi faire pour faciliter l'analyse de l'équipe sécurité.",
+        tags: ["qualité signalement", "pièces à conviction"],
+        answers: [
+          { text: "Je le supprime après avoir noté l'expéditeur et l'objet.", score: 0.5 },
+          { text: "Je le transfère à l'équipe sécurité avant de le supprimer — ils ont besoin des en-têtes complets.", score: 2 },
+          { text: "Je fais une capture d'écran avant de le supprimer.", score: 1 },
+          { text: "Je le déplace dans un dossier dédié pour que l'équipe sécurité puisse y accéder.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de supprimer ou de fermer un élément suspect, vous le transmettez ou le conservez pour l'équipe sécurité.",
+        tags: ["qualité signalement", "preuves"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'équipe sécurité vous demande de reconstituer la chronologie des événements avant et après l'incident. Vous n'avez pas tout noté sur le moment.",
+        tags: ["qualité signalement", "chronologie"],
+        answers: [
+          { text: "Je reconstitue au mieux en faisant attention à présenter mes approximations comme des certitudes.", score: 0 },
+          { text: "Je reconstitue au mieux en distinguant clairement ce dont je me souviens avec précision et ce qui est approximatif.", score: 2 },
+          { text: "Je ne donne que ce dont je suis sûr·e et j'indique clairement les lacunes.", score: 2 },
+          { text: "Je me concentre sur les faits les plus importants pour ne pas complexifier l'enquête.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous demande de 'simplifier' votre signalement avant de le transmettre à l'équipe sécurité — certains éléments lui semblent inutiles.",
+        tags: ["qualité signalement", "modification"],
+        answers: [
+          { text: "Je simplifie comme il demande — il a une meilleure vision d'ensemble.", score: 0 },
+          { text: "Je lui demande ce qui le gêne précisément avant de modifier quoi que ce soit.", score: 2 },
+          { text: "Je simplifie les éléments de mise en contexte en gardant les faits techniques.", score: 1 },
+          { text: "Je transmets les deux versions — la complète à l'équipe sécurité et la simplifiée à mon responsable.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne modifiez pas le contenu de vos signalements de sécurité à la demande de votre hiérarchie.",
+        tags: ["qualité signalement", "intégrité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez fait un signalement il y a dix jours. La situation que vous aviez signalée est toujours présente. Vous n'avez pas eu de retour.",
+        tags: ["qualité signalement", "suivi"],
+        answers: [
+          { text: "J'attends — l'équipe sécurité a ses délais et gère les priorités.", score: 0.5 },
+          { text: "Je relance l'équipe sécurité en rappelant mon signalement et en indiquant que la situation est toujours là.", score: 2 },
+          { text: "Je fais un nouveau signalement pour forcer la prise en compte.", score: 1 },
+          { text: "Je contacte mon responsable pour qu'il relance à ma place.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués pour éviter d'exposer le contexte réel", desc: "Omettre dans le signalement l'outil non approuvé qui était la cause probable, reconstituer des détails incertains comme des certitudes, accepter de simplifier un signalement à la demande du responsable : un signalement inexact ou incomplet est moins utile qu'un signalement honnête avec des lacunes assumées. Ce que l'équipe sécurité ne sait pas, elle ne peut pas l'analyser." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais les éléments qui vous impliquent restent encore sous-déclarés", desc: "Vos signalements sont généralement factuels et utiles. Mais mentionner l'outil non approuvé qui était potentiellement la cause, résister à une demande de simplification hiérarchique, distinguer avec précision ce qui est certain de ce qui est approximatif : ces zones restent encore insuffisamment développées. L'enjeu est d'aller jusqu'au bout de l'honnêteté dans le signalement." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent", desc: "Vos signalements incluent le contexte complet, y compris les éléments gênants comme l'outil non approuvé. Vous distinguez avec précision ce qui est certain de ce qui est approximatif. Vous conservez les preuves avant de supprimer. Vous résistez aux demandes de simplification hiérarchique. Vous relancez quand une situation signalée est toujours présente sans retour. Cette honnêteté dans le signalement est ce qui permet une analyse efficace des incidents." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Votre collègue Florian vous dit qu'il a reçu un mail bizarre mais qu'il ne veut pas le signaler pour ne pas 'faire de vagues'. Il n'a pas cliqué.",
+        tags: ["culture signalement", "pair"],
+        answers: [
+          { text: "Je respecte son choix — c'est à lui de décider s'il signale.", score: 0 },
+          { text: "Je lui explique que même sans clic, le signalement d'une tentative est utile pour protéger toute l'équipe.", score: 2 },
+          { text: "Je lui propose de signaler à sa place si ça l'arrange.", score: 1.5 },
+          { text: "Je lui dis de au moins mettre le mail en quarantaine.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous encouragez vos collègues à signaler les incidents et les tentatives, même mineures, sans minimiser leur expérience.",
+        tags: ["culture signalement", "encouragement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise organise une campagne de simulation de phishing. Vous recevez un faux mail de phishing et vous cliquez dessus. Vous êtes redirigé·e vers une page de sensibilisation.",
+        tags: ["culture signalement", "simulation"],
+        answers: [
+          { text: "Je ferme la page rapidement — c'est embarrassant et j'ai compris le message.", score: 0.5 },
+          { text: "Je lis attentivement la page et je signale aussi la tentative à l'équipe sécurité comme si c'était réel.", score: 2 },
+          { text: "Je lis la page et je note ce que j'aurais dû détecter.", score: 1 },
+          { text: "Je me plains auprès de mon responsable — ce type de test sans prévenir n'est pas correct.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, la culture est de 'gérer soi-même' les petits problèmes informatiques sans déranger l'équipe sécurité. Cette culture est valorisée.",
+        tags: ["culture signalement", "normalisation"],
+        answers: [
+          { text: "Je respecte cette culture — l'autonomie est une qualité et l'équipe sécurité est débordée.", score: 0 },
+          { text: "Je maintiens mon réflexe de signalement même si la culture pousse à l'autonomie — l'équipe sécurité ne peut pas protéger ce qu'elle ne voit pas.", score: 2 },
+          { text: "Je gère seul·e les cas vraiment mineurs et je signale les cas qui me semblent importants.", score: 0.5 },
+          { text: "J'essaie de faire évoluer la culture de l'équipe sur ce sujet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'équipe sécurité vous informe que plusieurs incidents récents dans l'entreprise auraient pu être évités si des signalements avaient été faits plus tôt. Elle vous demande comment améliorer la culture de signalement.",
+        tags: ["culture signalement", "retour expérience"],
+        answers: [
+          { text: "Je propose de meilleures campagnes de sensibilisation pour que les gens sachent quoi signaler.", score: 1 },
+          { text: "Je propose aussi de simplifier le processus de signalement et d'améliorer les retours sur les signalements faits.", score: 2 },
+          { text: "Je propose des sanctions pour ceux qui ne signalent pas.", score: 0 },
+          { text: "Je dis que c'est une question de culture qui prend du temps à changer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous contribuez à améliorer les processus de signalement de votre organisation en remontant ce qui freine les signalements.",
+        tags: ["culture signalement", "amélioration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez été victime d'une tentative de phishing sophistiquée que vous avez réussi à détecter. Vos collègues pourraient bénéficier de votre expérience.",
+        tags: ["culture signalement", "partage"],
+        answers: [
+          { text: "Je garde ça pour moi — partager ça reviendrait à avouer que j'ai failli cliquer.", score: 0 },
+          { text: "Je partage l'expérience avec mon équipe — décrire comment j'ai détecté la tentative renforce la vigilance collective.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il décide si c'est utile de partager.", score: 0.5 },
+          { text: "Je le mentionne en réunion d'équipe sans entrer dans les détails.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une nouvelle collègue, Yasmine, arrive dans l'équipe. Elle vous dit qu'elle ne sait pas vraiment quoi signaler ni comment — dans son ancienne entreprise, personne ne signalait rien.",
+        tags: ["culture signalement", "nouveau"],
+        answers: [
+          { text: "Je lui dis de faire comme dans l'ancien poste — les pratiques varient d'une entreprise à l'autre.", score: 0 },
+          { text: "Je lui explique ce qui doit être signalé, comment le faire et pourquoi c'est important.", score: 2 },
+          { text: "Je lui dis de contacter l'équipe sécurité directement si elle a un doute.", score: 1 },
+          { text: "Je lui envoie la politique sécurité de l'entreprise pour qu'elle se forme.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous transmettez activement les bonnes pratiques de signalement aux nouveaux arrivants dans votre équipe.",
+        tags: ["culture signalement", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a passé un mois sans incident signalé. Votre responsable considère que 'tout va bien'. Vous pensez que l'absence de signalement peut aussi refléter une culture de non-signalement.",
+        tags: ["culture signalement", "bilan"],
+        answers: [
+          { text: "Je valide — pas d'incident signalé, c'est une bonne nouvelle.", score: 0 },
+          { text: "Je soulève la question : est-ce vraiment l'absence d'incidents ou l'absence de signalements ?", score: 2 },
+          { text: "Je surveille discrètement pour voir si des incidents passent sous le radar.", score: 1 },
+          { text: "Je propose à l'équipe sécurité de faire un audit pour vérifier.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture de signalement dans votre équipe reste un sujet que vous n'influencez pas encore", desc: "Laisser Florian décider seul de ne pas signaler, valider un mois sans signalement comme un bonne nouvelle sans se poser de questions, ne pas transmettre les bonnes pratiques à Yasmine qui arrive : la culture de signalement d'une équipe se construit à travers chaque interaction. Ne pas l'influencer, c'est laisser une culture de non-signalement s'installer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous encouragez le signalement dans votre équipe mais votre influence sur la culture collective reste limitée", desc: "Vous encouragez vos collègues à signaler quand l'occasion se présente. Mais interpeller Florian qui hésite, questionner un mois sans signalement comme un possible non-signalement, transmettre activement à Yasmine les pratiques de l'équipe : ces comportements d'influence active sur la culture collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de signalement de votre équipe par l'exemple et la transmission", desc: "Vous expliquez à Florian pourquoi signaler même sans clic. Vous questionnez un mois sans signalement comme un possible non-signalement. Vous transmettez les pratiques de l'équipe à Yasmine dès son arrivée. Vous partagez vos propres expériences de détection de tentatives pour renforcer la vigilance collective. Cette contribution active à la culture de signalement — qui suppose parfois d'aller contre la culture ambiante — est ce qui fait qu'une équipe signale naturellement." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -2718,6 +3385,16 @@
         ["Utiliser les réseaux en déplacement", "VPN systématique, pas de USB public, interfaces sans fil désactivées."],
         ["Gérer les accès en déplacement", "Verrouiller, ne pas utiliser d'appareils partagés, déconnecter en partant."],
         ["Adopter les bons réflexes partout", "Conversations, documents papier, équipements tiers — vigilance dans tous les contextes."],
+      ]}
+    ],
+
+    ["signalement-incidents-cyber", "Signaler les incidents de sécurité", "Tous publics",
+      "Reconnaître ce qui doit être signalé, surmonter les freins et contribuer à la culture de signalement.",
+      { domain: "cyber", chapters: [
+        ["Reconnaître ce qui doit être signalé", "Signaler tentatives, anomalies et doutes — pas seulement les incidents avérés."],
+        ["Surmonter les freins au signalement", "Signaler même quand c'est inconfortable, même sans retour visible."],
+        ["Transmettre un signalement utile", "Faits, contexte complet, preuves conservées — honnêteté sur les incertitudes."],
+        ["Contribuer à la culture de signalement", "Encourager, transmettre, questionner l'absence de signalement."],
       ]}
     ],
 
