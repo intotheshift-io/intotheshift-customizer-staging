@@ -4678,6 +4678,673 @@
 
   },
 
+  "cyber-environnement-industriel": {
+    0: [
+      {
+        type: "choix",
+        text: "Un technicien informatique de votre DSI demande à accéder à votre réseau OT pour effectuer une mise à jour de sécurité sur les postes de supervision. C'est la première fois qu'il intervient sur ce réseau.",
+        tags: ["OT/IT", "convergence"],
+        answers: [
+          { text: "Je le laisse intervenir — il est de la DSI et les mises à jour sont nécessaires.", score: 0 },
+          { text: "Je vérifie qu'il a les habilitations spécifiques OT requises et qu'une procédure d'intervention est établie avant de lui donner accès.", score: 2 },
+          { text: "Je l'accompagne pendant toute son intervention pour surveiller ce qu'il fait.", score: 1 },
+          { text: "Je contacte mon responsable pour valider l'accès avant de l'autoriser.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pour gagner du temps, un opérateur connecte directement son ordinateur portable personnel au réseau de supervision SCADA pour transférer des données de production.",
+        tags: ["OT/IT", "isolation"],
+        answers: [
+          { text: "Je laisse — c'est un opérateur expérimenté et c'est plus rapide.", score: 0 },
+          { text: "J'interviens immédiatement — connecter un appareil non approuvé au réseau SCADA est une violation grave.", score: 2 },
+          { text: "Je lui signale que c'est risqué et je lui propose d'utiliser les canaux approuvés.", score: 1.5 },
+          { text: "Je surveille ce qu'il transfère pour m'assurer qu'il ne prend pas de données sensibles.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez que les appareils connectés au réseau industriel sont bien des appareils approuvés et listés, pas des appareils personnels ou non autorisés.",
+        tags: ["OT/IT", "séparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une mise à jour d'un automate, la procédure prévoit une fenêtre de maintenance de 4 heures avec arrêt de la production. Le responsable de production propose de faire la mise à jour à chaud pour éviter l'arrêt.",
+        tags: ["OT/IT", "disponibilité"],
+        answers: [
+          { text: "J'accepte — les équipements modernes supportent les mises à jour à chaud et 4 heures d'arrêt coûtent cher.", score: 0 },
+          { text: "Je maintiens la procédure — une mise à jour à chaud sur un automate peut avoir des conséquences imprévisibles sur le processus.", score: 2 },
+          { text: "Je consulte le fournisseur de l'automate pour savoir si c'est techniquement faisable.", score: 1 },
+          { text: "Je fais la mise à jour à chaud en surveillant les paramètres du processus en continu.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous apprenez qu'un incident cyber a causé le déréglage d'un capteur de température dans une installation similaire à la vôtre. Le capteur affichait des valeurs normales mais ne mesurait plus correctement.",
+        tags: ["OT/IT", "conséquences physiques"],
+        answers: [
+          { text: "Je prends note — c'est intéressant mais ce type d'incident reste rare.", score: 0 },
+          { text: "Je remonte l'information à mon responsable et à l'équipe sécurité pour qu'on évalue si nos capteurs sont exposés à un risque similaire.", score: 2 },
+          { text: "Je surveille mes propres capteurs de façon plus attentive pendant quelques semaines.", score: 1 },
+          { text: "J'en parle à mon équipe lors du prochain briefing.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous remontez les incidents cyber survenus dans des installations similaires à la vôtre, même s'ils ne vous concernent pas directement.",
+        tags: ["OT/IT", "veille"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un fournisseur d'équipement demande un accès à distance permanent à votre système de supervision pour assurer la maintenance préventive de son équipement.",
+        tags: ["OT/IT", "accès distant"],
+        answers: [
+          { text: "J'accepte — le fournisseur a besoin de cet accès pour garantir la disponibilité de l'équipement.", score: 0 },
+          { text: "Je refuse un accès permanent — je propose un accès ponctuel sur demande, validé et tracé à chaque intervention.", score: 2 },
+          { text: "J'accepte en limitant l'accès à l'équipement concerné.", score: 1 },
+          { text: "Je contacte notre équipe sécurité pour qu'elle configure l'accès de façon sécurisée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un automate de votre ligne de production tourne sur un système d'exploitation qui n'est plus maintenu par son éditeur depuis deux ans. Il fonctionne parfaitement.",
+        tags: ["OT/IT", "anciens systèmes"],
+        answers: [
+          { text: "Je laisse — s'il fonctionne bien, mieux vaut ne pas toucher à une installation qui marche.", score: 0 },
+          { text: "Je remonte la situation à mon responsable et à l'équipe sécurité — un OS non maintenu est une vulnérabilité significative.", score: 2 },
+          { text: "Je m'assure que cet automate est bien isolé du reste du réseau.", score: 1 },
+          { text: "Je contacte le fournisseur pour savoir s'il propose une migration.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les équipements et systèmes industriels qui fonctionnent sur des logiciels non maintenus ou obsolètes, même s'ils fonctionnent correctement.",
+        tags: ["OT/IT", "systèmes obsolètes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pour faciliter le reporting, un opérateur a configuré un accès direct entre le réseau de supervision et le réseau bureautique. C'est plus pratique pour exporter les données de production.",
+        tags: ["OT/IT", "cloisonnement"],
+        answers: [
+          { text: "Je laisse — c'est une configuration pratique et l'opérateur sait ce qu'il fait.", score: 0 },
+          { text: "Je le signale à l'équipe sécurité — une connexion directe entre les réseaux OT et IT est une faille majeure.", score: 2 },
+          { text: "Je demande à l'opérateur de passer par un système de transfert unidirectionnel approuvé.", score: 1.5 },
+          { text: "Je surveille les données qui transitent pour m'assurer qu'il n'y a pas d'anomalie.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La spécificité cyber des environnements industriels n'est pas encore intégrée dans vos réflexes quotidiens", desc: "Autoriser un technicien IT sans habilitation OT sur le réseau de supervision, laisser un opérateur connecter son laptop personnel au SCADA pour gagner du temps, accepter un accès distant permanent d'un fournisseur : les réseaux industriels ont des exigences de sécurité spécifiques parce que leurs compromissions ont des conséquences physiques. Ce qui est acceptable sur un réseau IT peut arrêter une production ou créer un danger physique sur un réseau OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les spécificités cyber industrielles mais certaines situations de pression opérationnelle créent encore des exceptions", desc: "Vous vérifiez les habilitations avant d'autoriser un accès au réseau OT. Vous signalez les systèmes sur des OS non maintenus. Mais sous pression d'une panne urgente, face à un fournisseur de confiance qui demande un accès permanent, quand la mise à jour à chaud semble techniquement faisable : vos réflexes peuvent encore céder. L'enjeu est de tenir précisément dans ces situations de pression opérationnelle." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les spécificités cyber industrielles sans exception, y compris sous pression opérationnelle", desc: "Vous vérifiez les habilitations OT d'un technicien DSI avant de lui donner accès. Vous maintenez la fenêtre de maintenance même face au responsable de production. Vous refusez l'accès distant permanent du fournisseur et proposez un accès ponctuel tracé. Vous signalez le laptop personnel connecté au SCADA immédiatement. Cette rigueur sans exception — qui suppose d'assumer des tensions opérationnelles — est ce qui protège réellement les installations industrielles." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Un technicien de maintenance arrive avec une clé USB pour mettre à jour le firmware d'un automate. La clé vient de chez le fournisseur mais n'a pas été vérifiée par votre équipe sécurité.",
+        tags: ["supports", "clé USB"],
+        answers: [
+          { text: "Je l'autorise — c'est une clé du fournisseur officiel pour une mise à jour légitime.", score: 0 },
+          { text: "Je demande que la clé soit vérifiée par notre équipe sécurité avant d'être utilisée sur l'automate.", score: 2 },
+          { text: "Je laisse le technicien intervenir en restant présent pour surveiller.", score: 0.5 },
+          { text: "Je demande au technicien de me fournir le numéro de série de la clé pour vérification.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Tout support externe — clé USB, disque dur, laptop — est soumis à une vérification avant d'être connecté à un équipement industriel.",
+        tags: ["supports", "vérification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un visiteur accrédité circule seul dans votre salle de contrôle pendant que vous êtes en réunion. Il a badgé à l'entrée.",
+        tags: ["supports", "accès physique"],
+        answers: [
+          { text: "C'est correct — il est accrédité et a badgé.", score: 0 },
+          { text: "Je demande à un collègue de l'accompagner — un accès accrédité à la zone ne signifie pas que la personne peut circuler seule dans la salle de contrôle.", score: 2 },
+          { text: "Je m'assure que les postes de supervision sont verrouillés avant de le laisser seul.", score: 1 },
+          { text: "Je contacte l'accueil pour qu'un agent de sécurité prenne le relais.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un ingénieur process souhaite se connecter depuis son ordinateur portable aux automates pour récupérer des données de diagnostic. Ce n'est pas son ordinateur habituel.",
+        tags: ["supports", "ingénierie"],
+        answers: [
+          { text: "J'autorise — c'est un ingénieur process qui a légitimement besoin de ces données.", score: 0 },
+          { text: "Je lui demande d'utiliser uniquement les postes approuvés pour se connecter aux automates.", score: 2 },
+          { text: "Je l'accompagne pendant sa session de diagnostic.", score: 1 },
+          { text: "Je vérifie que son ordinateur est à jour et sécurisé avant de l'autoriser.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La console d'un opérateur est restée connectée au système SCADA pendant toute la nuit — l'opérateur est parti sans verrouiller sa session.",
+        tags: ["supports", "console opérateur"],
+        answers: [
+          { text: "Je laisse jusqu'à son retour — déconnecter la session pourrait perturber un processus en cours.", score: 0 },
+          { text: "Je verrouille ou déconnecte la session après vérification que ce n'est pas une session active liée à un processus en cours.", score: 2 },
+          { text: "Je préviens l'opérateur de venir verrouiller sa session.", score: 1 },
+          { text: "Je signale la situation à mon responsable pour qu'il décide quoi faire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous veillez à ce que les sessions de supervision soient verrouillées ou déconnectées quand les postes ne sont pas utilisés.",
+        tags: ["supports", "sessions SCADA"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un fournisseur demande un accès à distance pour diagnostiquer une panne en urgence. L'accès n'est pas pré-approuvé dans votre procédure habituelle.",
+        tags: ["supports", "accès distant maintenance"],
+        answers: [
+          { text: "J'ouvre l'accès — la panne est urgente et le fournisseur doit intervenir.", score: 0 },
+          { text: "Je contacte mon responsable sécurité pour une autorisation d'urgence avant d'ouvrir l'accès.", score: 2 },
+          { text: "J'ouvre un accès limité en durée et en périmètre, et je trace la session.", score: 1.5 },
+          { text: "Je demande au fournisseur de se déplacer physiquement plutôt que d'intervenir à distance.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous trouvez un badge d'accès à la zone de supervision dans le couloir. Il porte le nom d'un prestataire régulier.",
+        tags: ["supports", "badge"],
+        answers: [
+          { text: "Je le dépose à l'accueil pour que le prestataire le récupère.", score: 0.5 },
+          { text: "Je le remets à la sécurité et je signale l'incident — un badge perdu en zone industrielle doit être désactivé.", score: 2 },
+          { text: "Je le garde jusqu'à ce que le prestataire vienne me le récupérer.", score: 0 },
+          { text: "Je le dépose à l'accueil et je préviens le prestataire par mail.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Un badge d'accès trouvé en zone industrielle est systématiquement remis à la sécurité pour désactivation, pas simplement déposé à l'accueil.",
+        tags: ["supports", "badge perdu"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les schémas de votre architecture réseau industrielle sont stockés en clair dans un dossier partagé accessible à tous les employés du site.",
+        tags: ["supports", "documentation"],
+        answers: [
+          { text: "C'est pratique pour que tout le monde puisse y accéder en cas de besoin.", score: 0 },
+          { text: "Je le signale — les schémas d'architecture sont des informations sensibles qui doivent être protégées.", score: 2 },
+          { text: "Je vérifie que l'accès est limité aux personnes qui en ont besoin pour leur travail.", score: 1.5 },
+          { text: "Je chiffre les fichiers les plus sensibles dans le dossier partagé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les supports et accès physiques aux systèmes industriels ne sont pas encore contrôlés avec la rigueur requise", desc: "Laisser une session SCADA ouverte la nuit, autoriser une clé USB fournisseur sans vérification préalable, laisser un visiteur accrédité circuler seul dans la salle de contrôle : le contrôle physique des accès aux systèmes industriels est aussi important que le contrôle logique. Un accès physique non contrôlé contourne toutes les protections réseau." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès physiques dans les situations évidentes mais les situations moins fréquentes créent encore des angles morts", desc: "Vous vérifiez les supports externes et vous contrôlez les accès sur les points de contrôle habituels. Mais le badge trouvé dans le couloir qu'on dépose à l'accueil sans le faire désactiver, la session SCADA ouverte d'un collègue parti, les schémas d'architecture accessibles à tous : ces situations moins fréquentes créent encore des angles morts. L'enjeu est d'étendre votre rigueur à tous les vecteurs d'accès physique." },
+          haut: { label: "Réflexes installés", titre: "Vos contrôles physiques sur les accès aux systèmes industriels sont systématiques et couvrent tous les vecteurs", desc: "Vous vérifiez tout support externe avant connexion. Vous accompagnez le visiteur accrédité dans la salle de contrôle. Vous faites désactiver le badge trouvé, pas seulement le déposer. Vous veillez à ce que les sessions SCADA soient verrouillées en fin de poste. Vous signalez les schémas d'architecture accessibles à tous. Cette rigueur sur les accès physiques est ce qui empêche les attaques qui contournent les protections logiques." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Un automate de votre ligne envoie des commandes inhabituelles à intervalles réguliers. Les paramètres de production restent dans les normes. Cela dure depuis ce matin.",
+        tags: ["détection", "comportement anormal"],
+        answers: [
+          { text: "Je surveille — les paramètres sont normaux et ça peut être un comportement légitime que je ne connais pas.", score: 0 },
+          { text: "Je signale immédiatement à l'équipe sécurité et à mon responsable — un comportement inhabituel sur un automate est un signal d'alerte.", score: 2 },
+          { text: "J'analyse les logs de l'automate pour comprendre l'origine des commandes avant de signaler.", score: 1 },
+          { text: "Je contacte le fournisseur de l'automate pour qu'il évalue si c'est normal.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez tout comportement inhabituel d'un équipement industriel, même si les paramètres de production restent dans les normes.",
+        tags: ["détection", "anomalies"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une alarme inhabituelle se déclenche sur votre système SCADA. Elle ne correspond à aucun des codes d'alarme habituels que vous connaissez. L'installation semble fonctionner normalement.",
+        tags: ["détection", "alarme SCADA"],
+        answers: [
+          { text: "Je l'acquitte et je note qu'elle est inconnue — les alarmes inconnues arrivent parfois.", score: 0 },
+          { text: "Je ne l'acquitte pas et je contacte immédiatement l'équipe sécurité et le responsable maintenance.", score: 2 },
+          { text: "Je cherche dans la documentation ce que signifie ce code avant de décider quoi faire.", score: 1 },
+          { text: "Je contacte le fournisseur du SCADA pour identifier l'alarme.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous constatez qu'un paramètre de consigne sur un équipement a changé depuis hier. Vous n'avez pas fait cette modification et votre collègue Serge dit ne pas l'avoir faite non plus.",
+        tags: ["détection", "modification paramètre"],
+        answers: [
+          { text: "Je remets la valeur à ce qu'elle était — c'est probablement une erreur de manipulation.", score: 0 },
+          { text: "Je ne touche pas au paramètre et je contacte l'équipe sécurité — une modification non tracée est un signal d'alerte.", score: 2 },
+          { text: "Je remets la valeur et je consulte les journaux pour voir qui a fait la modification.", score: 0.5 },
+          { text: "Je contacte mon responsable pour qu'il identifie qui a fait la modification.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En arrivant le matin, plusieurs écrans de supervision affichent un message en anglais indiquant que les systèmes sont chiffrés. La production est à l'arrêt.",
+        tags: ["détection", "ransomware OT"],
+        answers: [
+          { text: "Je cherche comment payer la rançon — c'est le moyen le plus rapide de reprendre la production.", score: 0 },
+          { text: "Je déconnecte immédiatement tous les équipements encore connectés du réseau et je contacte l'équipe sécurité et la direction.", score: 2 },
+          { text: "J'éteins tous les équipements pour éviter la propagation et j'appelle le support informatique.", score: 1.5 },
+          { text: "J'essaie de restaurer les systèmes depuis les sauvegardes avant d'appeler à l'aide.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En cas d'incident cyber sur votre système industriel, votre premier réflexe est d'isoler les équipements affectés avant de chercher à comprendre ou à corriger.",
+        tags: ["détection", "réflexe incident"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre réseau industriel est inhabituellement lent depuis quelques heures. Les équipements fonctionnent mais les temps de réponse sont dégradés.",
+        tags: ["détection", "lenteur réseau"],
+        answers: [
+          { text: "J'attends — les lenteurs réseau arrivent parfois et ça va probablement se régler seul.", score: 0 },
+          { text: "Je le signale à l'équipe sécurité et réseau — une lenteur inhabituelle sur un réseau OT peut indiquer un balayage ou une activité malveillante.", score: 2 },
+          { text: "Je redémarre les équipements réseau pour voir si ça améliore les performances.", score: 0 },
+          { text: "Je contacte notre prestataire réseau pour un diagnostic.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En consultant les logs de votre système SCADA, vous remarquez des connexions à 3h du matin depuis un compte d'opérateur habituel. L'opérateur concerné dit ne pas être intervenu cette nuit.",
+        tags: ["détection", "accès hors horaire"],
+        answers: [
+          { text: "Je lui demande s'il est possible qu'il ait oublié une connexion.", score: 0 },
+          { text: "Je contacte immédiatement l'équipe sécurité — une connexion non reconnue sur un système SCADA est un incident majeur.", score: 2 },
+          { text: "Je désactive le compte de l'opérateur par précaution et je contacte l'équipe sécurité.", score: 2 },
+          { text: "Je surveille les prochaines connexions pour voir si ça se reproduit.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous consultez régulièrement les journaux d'activité de vos systèmes industriels pour détecter des anomalies.",
+        tags: ["détection", "logs"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Depuis trois semaines, la qualité de production se dégrade légèrement mais régulièrement. Aucune alarme ne s'est déclenchée et l'équipe maintenance n'a pas trouvé de cause mécanique.",
+        tags: ["détection", "dégradation progressive"],
+        answers: [
+          { text: "Je continue à chercher une cause mécanique ou process — la cybersécurité n'est pas la première hypothèse.", score: 0.5 },
+          { text: "Je remonte la situation à l'équipe sécurité en décrivant la dégradation progressive sans cause identifiée — c'est un pattern caractéristique de certaines attaques.", score: 2 },
+          { text: "Je fais appel à un expert process externe pour trouver la cause.", score: 1 },
+          { text: "Je contacte le fournisseur des équipements pour un diagnostic complet.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les anomalies sur vos équipements industriels sont encore traitées uniquement comme des problèmes techniques", desc: "Attendre que les paramètres sortent des normes avant de signaler un comportement inhabituel d'un automate, acquitter une alarme SCADA inconnue sans investigation, corriger soi-même une modification de paramètre non tracée : dans les environnements industriels, les anomalies qui 'semblent normales' sont souvent le signe d'une attaque en cours. La subtilité est précisément l'objectif des attaquants OT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les anomalies clairement suspectes mais les signaux plus subtils ne déclenchent pas encore systématiquement une alerte", desc: "Vous signalez les comportements clairement anormaux — commandes inhabituelles, alarme inconnue, connexion hors horaire. Mais la dégradation progressive de la qualité de production sans cause mécanique identifiée, les lenteurs réseau inhabituelles, un paramètre changé qu'on corrige soi-même sans signaler : ces signaux plus subtils ne déclenchent pas encore systématiquement une investigation cyber." },
+          haut: { label: "Réflexes installés", titre: "Tout comportement inhabituel sur vos équipements industriels déclenche un signalement immédiat, quelle que soit son apparente bénignité", desc: "Vous signalez les commandes inhabituelles d'un automate même si les paramètres sont normaux. Vous ne touchez pas au paramètre modifié sans trace et vous contactez la sécurité. Vous remontez la dégradation progressive de qualité sans cause mécanique identifiée comme un possible signal cyber. Vous alertez sur les lenteurs réseau inhabituelles. Cette sensibilité aux signaux faibles — qui suppose de considérer la cyber comme hypothèse en parallèle de la technique — est ce qui permet de détecter les attaques industrielles avant qu'elles n'aient causé de dommages irréversibles." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Pour simplifier les interventions de maintenance, un responsable propose de fusionner les réseaux OT et IT en un seul réseau unifié. Cela faciliterait la supervision depuis n'importe quel poste.",
+        tags: ["culture cyber OT", "cloisonnement"],
+        answers: [
+          { text: "J'accepte — la convergence OT/IT est une tendance inévitable et ça simplifierait vraiment le travail.", score: 0 },
+          { text: "Je remonte mes réserves — le cloisonnement OT/IT est un principe de sécurité fondamental et sa suppression expose l'ensemble de l'installation.", score: 2 },
+          { text: "J'accepte si des règles de filtrage strictes sont mises en place sur le réseau unifié.", score: 0.5 },
+          { text: "Je contacte l'équipe sécurité pour qu'elle évalue les risques avant que la décision soit prise.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous défendez les principes de sécurité industrielle — cloisonnement, moindre privilège, traçabilité des accès — même face à des demandes de simplification opérationnelle.",
+        tags: ["culture cyber OT", "principes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouvel opérateur arrive sur votre ligne de production. La formation prévue couvre les aspects process et sécurité physique mais pas la cybersécurité industrielle.",
+        tags: ["culture cyber OT", "formation"],
+        answers: [
+          { text: "Je laisse — la cybersécurité industrielle est un sujet trop technique pour les opérateurs.", score: 0 },
+          { text: "Je remonte le manque de formation cybersécurité industrielle pour qu'elle soit ajoutée au parcours d'intégration.", score: 2 },
+          { text: "Je lui explique moi-même les règles essentielles — ne pas brancher de USB, ne pas partager ses accès.", score: 1.5 },
+          { text: "Je lui remets la politique de cybersécurité industrielle de l'entreprise.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un incident cyber mineur, votre équipe sécurité demande un arrêt de 24 heures pour sécuriser et auditer les systèmes. Le responsable de production s'y oppose pour des raisons économiques.",
+        tags: ["culture cyber OT", "pression production"],
+        answers: [
+          { text: "Je me range à l'avis du responsable de production — il a la vision économique globale.", score: 0 },
+          { text: "Je soutiens la demande de l'équipe sécurité — un audit bâclé après un incident peut laisser une porte ouverte.", score: 2 },
+          { text: "Je propose un compromis — audit partiel en 8 heures pour limiter l'impact.", score: 0.5 },
+          { text: "Je remonte le dilemme à la direction pour qu'elle arbitre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un incident cyber industriel, un REX est organisé. Certains membres de l'équipe préfèrent minimiser l'aspect cyber pour éviter des contraintes supplémentaires.",
+        tags: ["culture cyber OT", "REX"],
+        answers: [
+          { text: "Je m'aligne — alourdir les procédures ne servira qu'à créer des résistances.", score: 0 },
+          { text: "Je décris les faits tels qu'ils se sont passés dans le REX, y compris les vecteurs cyber identifiés.", score: 2 },
+          { text: "Je mentionne l'aspect cyber dans mes observations personnelles sans le mettre au centre du REX.", score: 1 },
+          { text: "J'en parle à l'équipe sécurité en privé pour qu'elle fasse valoir la dimension cyber.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Dans les retours d'expérience sur les incidents industriels, vous incluez les aspects cybersécurité même quand l'équipe préfère se concentrer sur les aspects techniques ou process.",
+        tags: ["culture cyber OT", "REX"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez qu'un collègue utilise régulièrement le même mot de passe pour accéder à plusieurs systèmes de supervision différents. C'est contre la politique de sécurité.",
+        tags: ["culture cyber OT", "signalement"],
+        answers: [
+          { text: "Je ne dis rien — ce n'est pas mon affaire et il connaît les règles.", score: 0 },
+          { text: "Je lui en parle en privé pour lui expliquer les risques et lui proposer d'utiliser un gestionnaire de mots de passe.", score: 2 },
+          { text: "Je le signale à l'équipe sécurité sans en parler à mon collègue.", score: 1 },
+          { text: "Je soulève le sujet en réunion d'équipe sans le cibler nommément.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire intervenant régulièrement sur vos équipements a ses propres pratiques de cybersécurité que vous estimez insuffisantes — il partage ses accès entre collègues.",
+        tags: ["culture cyber OT", "tiers"],
+        answers: [
+          { text: "Je laisse — c'est sa responsabilité et il intervient depuis des années sans problème.", score: 0 },
+          { text: "Je remonte la pratique à mon responsable et à l'équipe sécurité pour que le contrat soit revu.", score: 2 },
+          { text: "Je lui signale que le partage d'accès est interdit sur notre site.", score: 1.5 },
+          { text: "Je contacte le responsable du prestataire pour lui signaler la pratique de ses techniciens.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les mêmes exigences de cybersécurité aux prestataires intervenant sur vos systèmes industriels qu'à vos propres équipes.",
+        tags: ["culture cyber OT", "prestataires"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous identifiez une procédure de sécurité industrielle qui pourrait être améliorée pour être à la fois plus sûre et plus pratique. La démarche pour la faire valider est longue.",
+        tags: ["culture cyber OT", "amélioration"],
+        answers: [
+          { text: "Je laisse — la procédure actuelle fonctionne et je ne vais pas créer du travail supplémentaire.", score: 0 },
+          { text: "Je la propose formellement même si le processus est long — une amélioration de procédure bénéficie à toute l'équipe.", score: 2 },
+          { text: "Je l'applique à mon niveau sans la formaliser.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour qu'il porte la proposition à ma place.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La cybersécurité industrielle reste un sujet spécialisé que vous laissez aux experts plutôt qu'une responsabilité partagée", desc: "S'aligner sur le responsable de production qui refuse l'arrêt demandé par l'équipe sécurité, minimiser l'aspect cyber dans un REX, ne pas former le nouvel opérateur sur la cybersécurité : la cybersécurité industrielle est une responsabilité collective. Les opérateurs, les techniciens et les responsables de production sont tous des acteurs de la défense cyber de leur installation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez à la culture cyber industrielle mais votre influence sur les pratiques collectives reste encore limitée", desc: "Vous incluez la dimension cyber dans les REX. Vous signalez les mauvaises pratiques des prestataires. Mais soutenir l'équipe sécurité face au responsable de production sur l'arrêt de 24h, remonter le manque de formation cyber du nouvel opérateur, défendre le cloisonnement OT/IT face à une demande de simplification : ces comportements de défense active des principes cyber sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez activement la culture cyber industrielle — principes, formation, prestataires, REX", desc: "Vous défendez le cloisonnement OT/IT face aux demandes de simplification. Vous soutenez l'arrêt demandé par la sécurité même face au responsable de production. Vous remontez le manque de formation cyber du nouvel opérateur. Vous signalez les pratiques insuffisantes des prestataires. Vous incluez la dimension cyber dans les REX même quand l'équipe minimise. Cette défense active des principes cyber industriels — qui suppose d'accepter d'être le porteur d'un sujet parfois impopulaire — est ce qui fait qu'une installation maintient son niveau de protection dans le temps." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -4749,6 +5416,16 @@
         ["Appliquer les droits des personnes", "Accès, suppression, opposition — délais légaux et précision dans le traitement."],
         ["Gérer les sous-traitants et les transferts", "DPA, transferts hors UE, incidents prestataires — la chaîne ne s'arrête pas à votre porte."],
         ["Intégrer la protection des données dans ses pratiques", "Privacy by design, AIPD, DPO en amont — pas après l'incident."],
+      ]}
+    ],
+
+    ["cyber-environnement-industriel", "Réflexes cyber en environnement industriel", "Équipes terrain — Industrie",
+      "Comprendre les spécificités OT/IT, contrôler les accès physiques et détecter les anomalies sur les systèmes industriels.",
+      { domain: "cyber", chapters: [
+        ["Comprendre les spécificités cyber industrielles", "Convergence OT/IT, cloisonnement, disponibilité — les enjeux spécifiques aux réseaux industriels."],
+        ["Gérer les supports et les accès physiques", "Vérification des supports, contrôle des accès à la salle de contrôle, sessions SCADA."],
+        ["Détecter et réagir aux anomalies", "Signaler tout comportement inhabituel sur les équipements, même sans alarme ni dégradation visible."],
+        ["Contribuer à la culture cyber industrielle", "Défendre les principes, former les nouveaux, exiger des prestataires, intégrer la cyber dans les REX."],
       ]}
     ],
 
