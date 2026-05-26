@@ -676,6 +676,673 @@
 
   },
 
+  "feedback-utile": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre collègue vient de faire une présentation client qui manquait de structure. Le client a posé beaucoup de questions de clarification. Vous êtes seuls après la réunion.",
+        tags: ["feedback", "factuels"],
+        answers: [
+          { text: "Je lui dis que la présentation était 'un peu confuse' — c'est déjà honnête.", score: 0.5 },
+          { text: "Je lui décris précisément ce que j'ai observé — les moments où le client a dû demander des clarifications et ce que ça signale.", score: 2 },
+          { text: "Je ne dis rien — ce n'est pas mon rôle de commenter la prestation d'un collègue.", score: 0 },
+          { text: "Je lui dis que 'pour la prochaine fois' il faudrait mieux préparer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une réunion d'équipe, vous observez qu'Hamid prend systématiquement la parole avant que les autres aient fini leur pensée. Le reste de l'équipe semble s'auto-censurer.",
+        tags: ["feedback", "timing"],
+        answers: [
+          { text: "Je lui fais la remarque devant tout le monde — le comportement se passe en groupe, le feedback peut l'être aussi.", score: 0 },
+          { text: "Je lui en parle en tête-à-tête après la réunion avec des exemples précis.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il gère la dynamique.", score: 1 },
+          { text: "Je laisse — ce n'est probablement pas intentionnel et il finira par le remarquer seul.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos feedbacks décrivent des comportements observables précis plutôt que des jugements sur la personne ou des impressions générales.",
+        tags: ["feedback", "précision"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe a géré une situation difficile avec un client de façon exemplaire. Vous trouvez les compliments un peu embarrassants à formuler.",
+        tags: ["feedback", "positif"],
+        answers: [
+          { text: "Je lui dis 'bien joué' en passant — c'est suffisant.", score: 0 },
+          { text: "Je lui décris précisément ce qu'il a fait et l'impact que ça a eu sur le client et l'équipe.", score: 2 },
+          { text: "Je le mentionne en réunion d'équipe pour valoriser devant le groupe.", score: 1 },
+          { text: "Je laisse — trop valoriser crée des attentes difficiles à tenir.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez donner un feedback à une collaboratrice sur une erreur répétée dans ses rapports. Elle est perfectionniste et prend les critiques très à cœur.",
+        tags: ["feedback", "impact"],
+        answers: [
+          { text: "Je l'adoucis tellement pour ne pas la blesser que le message principal se perd.", score: 0 },
+          { text: "Je lui donne le feedback factuel en adaptant ma façon de le formuler, sans atténuer le fond.", score: 2 },
+          { text: "Je lui envoie un mail pour qu'elle ait le temps d'y réfléchir avant d'en parler.", score: 1 },
+          { text: "Je laisse passer encore une fois — l'enjeu ne vaut pas le risque de la déstabiliser.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous donnez les feedbacks difficiles en face-à-face, sans les atténuer au point que le message devient flou.",
+        tags: ["feedback", "courage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En formulant un feedback à votre collègue Céline, vous réalisez que vous êtes agacé·e par elle depuis plusieurs semaines. Vous vous demandez si c'est le bon moment.",
+        tags: ["feedback", "intention"],
+        answers: [
+          { text: "Je lui donne quand même — le feedback est légitime même si je suis agacé·e.", score: 0 },
+          { text: "J'attends d'être dans un état émotionnel plus neutre avant de lui parler.", score: 2 },
+          { text: "Je lui donne en prenant soin de ne pas laisser transparaître mon agacement.", score: 0.5 },
+          { text: "Je lui envoie un message écrit pour éviter que mon ton trahisse mon état.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose d'utile à partager avec un collègue mais il ne vous a pas demandé votre avis. Vous vous interrogez sur la légitimité d'un feedback non sollicité.",
+        tags: ["feedback", "sans demande"],
+        answers: [
+          { text: "Je ne dis rien — un feedback non sollicité risque d'être mal reçu.", score: 0 },
+          { text: "Je lui demande s'il est ouvert à un retour avant de le lui donner.", score: 2 },
+          { text: "Je lui donne quand même — si c'est utile, c'est suffisant.", score: 0.5 },
+          { text: "Je cherche une ouverture naturelle dans la conversation pour l'amener.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de donner un feedback non sollicité, vous vérifiez que votre interlocuteur est disponible et ouvert à le recevoir.",
+        tags: ["feedback", "permission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez donné un feedback important à un collègue il y a trois semaines. Le comportement n'a pas changé. Vous ne l'avez pas suivi.",
+        tags: ["feedback", "suivi"],
+        answers: [
+          { text: "Je laisse — si le feedback était clair, c'est à lui de s'en emparer.", score: 0 },
+          { text: "Je reviens vers lui pour voir comment il a reçu le feedback et ce qui l'a empêché de changer.", score: 2 },
+          { text: "Je lui redonne le même feedback en espérant que cette fois il portera.", score: 0.5 },
+          { text: "J'en parle à notre responsable — si ça ne change pas après un feedback, c'est un sujet managérial.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos feedbacks sont encore vagues, tardifs ou atténués par peur de froisser", desc: "Dire que la présentation était 'un peu confuse', adoucir tellement le fond que le message se perd, laisser passer un comportement problématique pour ne pas froisser : ces comportements protègent la relation à court terme mais privent l'autre d'une information utile. Un feedback vague ou retardé est souvent moins utile qu'une absence de feedback — il crée une impression sans donner les moyens d'agir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre responsable vous donne un feedback sur votre façon de gérer les réunions — vous prenez trop de place et ne laissez pas assez les autres s'exprimer. Vous ne le voyez pas du tout ainsi.",
+        tags: ["recevoir", "écoute"],
+        answers: [
+          { text: "Je lui explique pourquoi je prends de la place — les réunions sont inefficaces quand personne ne structure.", score: 0 },
+          { text: "J'écoute jusqu'au bout, je pose des questions pour comprendre ce qu'il observe, puis je prends le temps de réfléchir.", score: 2 },
+          { text: "Je hoche la tête et j'acquiesce — il a peut-être raison, je verrai.", score: 0.5 },
+          { text: "Je lui demande des exemples précis pour évaluer si son observation est fondée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous recevez un feedback négatif, vous laissez votre interlocuteur aller jusqu'au bout avant de répondre.",
+        tags: ["recevoir", "écoute active"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un feedback que vous estimez partiellement injuste — les faits sont réels mais le contexte n'a pas été pris en compte.",
+        tags: ["recevoir", "désaccord"],
+        answers: [
+          { text: "Je m'explique immédiatement en donnant le contexte — le feedback est biaisé sans ça.", score: 0 },
+          { text: "Je commence par reconnaître ce qui est juste dans le feedback, puis j'ajoute le contexte que mon interlocuteur n'avait peut-être pas.", score: 2 },
+          { text: "J'accepte le feedback sans mentionner le contexte — m'expliquer ressemblerait à une excuse.", score: 0.5 },
+          { text: "Je lui demande s'il est ouvert à entendre ma version des faits avant de lui donner le contexte.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un feedback sévère en réunion de groupe sur votre dernier livrable. Vous sentez la colère monter.",
+        tags: ["recevoir", "émotionnel"],
+        answers: [
+          { text: "Je défends mon travail immédiatement — une erreur en réunion doit être corrigée sur le moment.", score: 0 },
+          { text: "Je prends note, je dis que j'ai besoin de temps pour y réfléchir et je propose d'en reparler en tête-à-tête.", score: 2 },
+          { text: "Je reste silencieux — mieux vaut ne rien dire que dire quelque chose que je regretterais.", score: 0.5 },
+          { text: "Je réponds calmement mais je montre que le mode de livraison du feedback est inapproprié.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un feedback d'un collègue avec qui vous avez des divergences régulières. Le fond vous semble juste mais vous suspectez une arrière-pensée.",
+        tags: ["recevoir", "biais"],
+        answers: [
+          { text: "Je rejette le feedback — la relation biaisée invalide le message.", score: 0 },
+          { text: "Je sépare le fond de la relation et je traite le message sur ses mérites propres.", score: 2 },
+          { text: "Je l'écoute mais je le vérifierai auprès d'une autre personne avant de le prendre en compte.", score: 1 },
+          { text: "Je lui demande directement s'il y a une arrière-pensée derrière son retour.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous recevez un feedback, vous prenez le temps de réfléchir à ce qu'il contient d'utile avant de décider si vous l'intégrez.",
+        tags: ["recevoir", "utilisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous dit que votre travail sur ce projet était excellent. Vous avez tendance à minimiser.",
+        tags: ["recevoir", "feedback positif"],
+        answers: [
+          { text: "Je réponds 'c'est l'équipe qui a bien travaillé' — partager le mérite est plus élégant.", score: 0.5 },
+          { text: "Je remercie et je lui demande ce qui a particulièrement fonctionné pour capitaliser dessus.", score: 2 },
+          { text: "Je remercie simplement.", score: 1.5 },
+          { text: "Je dis que ça aurait pu être encore mieux si on avait eu plus de temps.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous venez de terminer une mission importante. Votre responsable ne vous donne pas spontanément de retour.",
+        tags: ["recevoir", "demander"],
+        answers: [
+          { text: "J'attends — si mon travail avait été problématique, j'aurais entendu quelque chose.", score: 0 },
+          { text: "Je lui demande un moment pour avoir son retour sur la mission.", score: 2 },
+          { text: "Je lui envoie un mail de bilan de mission en espérant qu'il réagira.", score: 1 },
+          { text: "Je demande un retour lors de notre prochain entretien formel.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous demandez proactivement des feedbacks sur votre travail sans attendre les évaluations formelles.",
+        tags: ["recevoir", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez reçu le même feedback de trois personnes différentes sur un comportement que vous n'arrivez pas à changer malgré vos efforts.",
+        tags: ["recevoir", "intégration"],
+        answers: [
+          { text: "Je continue à essayer seul — les feedbacks répétés signifient que c'est un point important.", score: 0.5 },
+          { text: "Je cherche un accompagnement ciblé — un feedback répété sans changement signale que j'ai besoin de soutien pour progresser.", score: 2 },
+          { text: "Je remets en question la pertinence du feedback — si autant de personnes le voient, c'est peut-être eux qui ont un biais.", score: 0 },
+          { text: "J'accepte que ce comportement fait partie de qui je suis.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Recevoir un feedback déclenche encore une réaction défensive avant une écoute réelle", desc: "S'expliquer immédiatement sur le contexte, défendre son travail avant d'avoir entendu l'ensemble du retour, rejeter un feedback parce qu'il vient de quelqu'un avec qui on a des tensions : ces réflexes défensifs sont compréhensibles mais ils ferment l'accès à une information potentiellement précieuse. Le feedback le plus utile est souvent celui qui surprend." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
+          haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous souhaitez développer une culture du feedback dans votre équipe. Vous n'avez pas encore reçu de feedback de vos collaborateurs sur votre propre management.",
+        tags: ["culture feedback", "modèle"],
+        answers: [
+          { text: "Je lance un rituel de feedback en commençant par en donner à mes collaborateurs.", score: 0.5 },
+          { text: "Je commence par demander moi-même un feedback à mon équipe sur mon management avant de lancer le rituel.", score: 2 },
+          { text: "Je mets en place une boîte à feedback anonyme pour que tout le monde puisse s'exprimer librement.", score: 1 },
+          { text: "Je propose le feedback comme outil collectif sans le relier à moi-même dans un premier temps.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous demandez régulièrement des feedbacks sur votre propre façon de travailler ou de manager, pas seulement sur les projets.",
+        tags: ["culture feedback", "exemplarité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, personne ne se donne de feedback en dehors des évaluations formelles. Vous pensez que la peur de froisser bloque les échanges.",
+        tags: ["culture feedback", "peur"],
+        answers: [
+          { text: "Je laisse — forcer les feedbacks dans une équipe qui n'en a pas l'habitude crée plus de tension qu'autre chose.", score: 0 },
+          { text: "Je propose un format structuré et sécurisé pour commencer — un feedback par projet, sur des éléments précis.", score: 2 },
+          { text: "Je propose une formation sur le feedback pour lever les résistances.", score: 1 },
+          { text: "Je donne moi-même des feedbacks plus réguliers pour montrer l'exemple.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous donne un feedback sur votre communication en réunion. Il soulève un point que vous trouvez pertinent mais qui vous surprend.",
+        tags: ["culture feedback", "réaction"],
+        answers: [
+          { text: "Je le remercie et je prends note sans m'engager sur un changement que je n'ai pas encore réfléchi.", score: 2 },
+          { text: "Je m'explique immédiatement sur les raisons de mon comportement.", score: 0 },
+          { text: "Je le remercie chaleureusement et je lui annonce que je vais changer — pour l'encourager.", score: 0.5 },
+          { text: "Je lui demande comment il aurait préféré que je communique.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Deux collaborateurs de votre équipe ont une tension latente. Ni l'un ni l'autre ne se donne de feedback direct. La tension affecte l'ambiance.",
+        tags: ["culture feedback", "entre pairs"],
+        answers: [
+          { text: "Je les laisse gérer — les adultes peuvent régler leurs désaccords sans que je m'en mêle.", score: 0 },
+          { text: "Je leur propose un cadre pour qu'ils s'échangent un feedback structuré, en étant présent si nécessaire.", score: 2 },
+          { text: "J'en parle à chacun séparément pour comprendre la situation avant de décider comment intervenir.", score: 1.5 },
+          { text: "Je réunis les deux pour qu'ils s'expliquent — la transparence est la meilleure solution.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous créez activement des occasions d'échanges de feedback dans votre équipe, sans vous limiter aux évaluations formelles.",
+        tags: ["culture feedback", "facilitation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous donne un feedback que vous avez bien reçu et sur lequel vous avez changé votre comportement. Il ne l'a pas remarqué.",
+        tags: ["culture feedback", "reconnaissance"],
+        answers: [
+          { text: "Je laisse — si le changement est réel, il finira par le voir.", score: 0 },
+          { text: "Je lui signale que son feedback a eu un impact et que j'ai ajusté ma façon de faire.", score: 2 },
+          { text: "J'attends la prochaine occasion pour lui montrer concrètement que j'ai changé.", score: 1 },
+          { text: "Je ne dis rien — mentionner que j'ai changé grâce à lui serait trop démonstratif.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez mis en place un rituel de feedback post-projet dans votre équipe. Après quelques mois, les feedbacks sont devenus polis et superficiels.",
+        tags: ["culture feedback", "rituel"],
+        answers: [
+          { text: "Je laisse — avoir un rituel en place est déjà bien même s'il perd en qualité.", score: 0 },
+          { text: "Je fais évoluer le format — questions plus précises, feedback ciblé sur des comportements spécifiques.", score: 2 },
+          { text: "Je rappelle à l'équipe l'importance d'être sincère dans les feedbacks.", score: 0.5 },
+          { text: "Je remplace le rituel collectif par des feedbacks bilatéraux entre personnes qui ont travaillé ensemble.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand les échanges de feedback dans votre équipe perdent en qualité, vous intervenez pour les relancer plutôt que de maintenir la forme sans le fond.",
+        tags: ["culture feedback", "qualité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous demande de partager les feedbacks que vos collaborateurs vous ont donnés sur votre management. C'était une conversation privée.",
+        tags: ["culture feedback", "hiérarchie"],
+        answers: [
+          { text: "Je lui partage les feedbacks — il a la légitimité de savoir comment je suis perçu par mon équipe.", score: 0 },
+          { text: "Je lui partage les grandes thématiques sans attribuer les feedbacks à des personnes.", score: 2 },
+          { text: "Je lui dis que ces échanges sont confidentiels et je lui propose de lui partager mes propres apprentissages.", score: 2 },
+          { text: "Je lui partage uniquement les feedbacks positifs.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La culture du feedback dans votre équipe est encore absente ou superficielle", desc: "Ne pas donner de feedback en dehors des évaluations formelles, laisser les rituals de feedback devenir polis et superficiels, ne pas demander soi-même de retour sur son management : la culture du feedback ne se décrète pas, elle se construit par l'exemple et la cohérence dans la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous avez reçu plusieurs feedbacks convergents sur un même point fort toute l'année. Vous ne savez pas quoi en faire.",
+        tags: ["progression", "plan"],
+        answers: [
+          { text: "Je maintiens ce point fort — il est reconnu, pas besoin d'en faire plus.", score: 0.5 },
+          { text: "Je cherche comment capitaliser dessus plus largement — dans quelles situations nouvelles ce point fort serait utile.", score: 2 },
+          { text: "Je le mentionne dans mon bilan d'évaluation.", score: 0 },
+          { text: "Je me concentre plutôt sur mes axes d'amélioration.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous utilisez les feedbacks reçus pour identifier des opportunités de développement concrètes, pas seulement pour corriger des erreurs.",
+        tags: ["progression", "capitalisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez reçu trois feedbacks contradictoires sur la même situation. Vous ne savez pas lequel prendre en compte.",
+        tags: ["progression", "sélectivité"],
+        answers: [
+          { text: "Je prends la moyenne — la vérité est probablement au milieu.", score: 0 },
+          { text: "Je cherche à comprendre pourquoi ils divergent — ils viennent peut-être de personnes avec des cadres de référence très différents.", score: 2 },
+          { text: "Je prends celui qui vient de la personne la plus légitime sur le sujet.", score: 1.5 },
+          { text: "Je laisse tomber — des feedbacks contradictoires ne sont pas exploitables.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez travaillé sur un axe d'amélioration pendant six mois. Vous avez progressé dans les situations habituelles mais pas dans les situations nouvelles ou stressantes.",
+        tags: ["progression", "transfert"],
+        answers: [
+          { text: "Je considère que le travail est fait — j'ai progressé dans les situations habituelles.", score: 0 },
+          { text: "Je reconnais que le vrai test d'un changement, c'est les situations inhabituelles, et je continue le travail.", score: 2 },
+          { text: "Je cherche des situations nouvelles pour m'y entraîner délibérément.", score: 2 },
+          { text: "Je demande à mon responsable si mes progrès sont perceptibles depuis l'extérieur.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un feedback reçu il y a deux ans sur votre style de communication vous revient en mémoire. Vous n'y aviez pas vraiment travaillé à l'époque.",
+        tags: ["progression", "long terme"],
+        answers: [
+          { text: "Je le laisse de côté — deux ans après, c'est prescrit.", score: 0 },
+          { text: "Je reprends ce feedback à la lumière de ce que je sais maintenant sur moi-même.", score: 2 },
+          { text: "Je contacte la personne qui me l'avait donné pour lui demander si elle observe encore ce comportement.", score: 1.5 },
+          { text: "Je me demande si ce feedback est encore pertinent avec le recul.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous travaillez sur vos axes d'amélioration dans la durée, pas seulement dans les semaines qui suivent une évaluation.",
+        tags: ["progression", "durée"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez travaillé sur un point d'amélioration mais vous n'êtes pas sûr·e que les changements sont visibles de l'extérieur.",
+        tags: ["progression", "observable"],
+        answers: [
+          { text: "Je fais confiance — si j'ai travaillé dessus, ça se verra.", score: 0 },
+          { text: "Je demande explicitement à quelqu'un de confiance s'il observe une évolution.", score: 2 },
+          { text: "J'attends l'évaluation annuelle pour savoir si c'est perceptible.", score: 0.5 },
+          { text: "Je multiplie les occasions de mettre en pratique pour que le changement devienne plus visible.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez appris quelque chose d'important sur vous-même grâce à un feedback difficile à recevoir. Un collègue semble traverser la même situation.",
+        tags: ["progression", "partage"],
+        answers: [
+          { text: "Je ne lui en parle pas — mon expérience est personnelle et il trouvera sa propre façon.", score: 0 },
+          { text: "Je lui partage mon expérience en lui laissant décider ce qu'il en fait.", score: 2 },
+          { text: "Je lui suggère de demander des feedbacks à son équipe.", score: 1 },
+          { text: "Je lui donne directement le feedback que je pense qu'il devrait entendre.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous partagez vos apprentissages personnels issus de feedbacks difficiles quand c'est utile à un collègue.",
+        tags: ["progression", "partage apprentissage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Quelqu'un vous a donné un feedback de façon maladroite — le fond était juste mais la forme était dure. Vous ne savez pas si vous devez lui dire.",
+        tags: ["progression", "feedback sur le feedback"],
+        answers: [
+          { text: "Je ne dis rien — le fond compte plus que la forme et ça risque de créer une tension inutile.", score: 0.5 },
+          { text: "Je lui dis que son feedback m'a été utile et que la façon dont il était formulé m'a rendu difficile à recevoir.", score: 2 },
+          { text: "Je lui dis que j'ai trouvé son feedback dur sans préciser pourquoi.", score: 0 },
+          { text: "Je lui envoie un article sur les bonnes pratiques du feedback.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les feedbacks reçus restent des informations ponctuelles et non des leviers de développement continu", desc: "Ne pas savoir quoi faire d'un feedback positif, laisser tomber des feedbacks contradictoires, ne travailler sur un axe d'amélioration que dans les semaines qui suivent une évaluation : le feedback n'est utile que si on en fait quelque chose de délibéré. L'information sans travail sur soi reste une information." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -684,9 +1351,19 @@
       "Comprendre ses réflexes face aux changements de méthode, d'outil ou d'organisation.",
       { domain: "transformation", chapters: [
         ["Comprendre ses réflexes face au changement", "Identifier son mode de réaction habituel et passer de la protection à l'exploration."],
-        ["Traverser la période de transition",          "Signaler les difficultés, demander de l'aide et soutenir ses collègues."],
-        ["Contribuer positivement à la dynamique",      "Quick wins, retours terrain, influence sur le collectif."],
-        ["Développer sa flexibilité dans la durée",     "Traiter les transformations continues comme des opportunités de développement."]
+        ["Traverser la période de transition", "Signaler les difficultés, demander de l'aide et soutenir ses collègues."],
+        ["Contribuer positivement à la dynamique", "Quick wins, retours terrain, influence sur le collectif."],
+        ["Développer sa flexibilité dans la durée", "Traiter les transformations continues comme des opportunités de développement."],
+      ]}
+    ],
+
+    ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
+      "Installer des échanges réguliers, factuels et mobilisables sans créer de posture défensive.",
+      { domain: "transformation", chapters: [
+        ["Donner un feedback factuel et utile", "Précision, timing, courage — sans diluer le fond pour ménager la relation."],
+        ["Recevoir un feedback sans se défendre", "Écoute active, séparation du fond et de la source, intégration réelle."],
+        ["Créer une culture du feedback dans son équipe", "Exemplarité, facilitation, maintien de la qualité dans la durée."],
+        ["Utiliser le feedback pour progresser", "Points forts, contradictions, travail en profondeur et dans la durée."],
       ]}
     ],
 
