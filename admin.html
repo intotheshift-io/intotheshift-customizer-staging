@@ -588,10 +588,29 @@ async function handleApiError(res,path){
   try{const e=await res.json();if(e?.error)msg=e.error;if(e?.message)msg=e.message;}catch(_){}
   throw new Error(msg);
 }
-async function apiGet(path){const res=await fetch(API_BASE_URL+path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPatch(path, body){const res=await fetch(API_BASE_URL+path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPost(path, body){const res=await fetch(API_BASE_URL+path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiDelete(path){const res=await fetch(API_BASE_URL+path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json().catch(()=>({ok:true}));}
+function withTimeout(options = {}, timeoutMs = 15000){
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  return {
+    options: { ...options, signal: controller.signal },
+    done: () => clearTimeout(timer)
+  };
+}
+async function safeFetch(path, options = {}, timeoutMs = 15000){
+  const request = withTimeout(options, timeoutMs);
+  try{
+    return await fetch(API_BASE_URL + path, request.options);
+  }catch(err){
+    if(err?.name === "AbortError") throw new Error(path + " — délai dépassé");
+    throw err;
+  }finally{
+    request.done();
+  }
+}
+async function apiGet(path){const res=await safeFetch(path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json();}
+async function apiPatch(path, body){const res=await safeFetch(path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
+async function apiPost(path, body){const res=await safeFetch(path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
+async function apiDelete(path){const res=await safeFetch(path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json().catch(()=>({ok:true}));}
 
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}

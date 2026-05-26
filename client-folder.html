@@ -358,6 +358,18 @@
       }
     });
 
+
+    function fetchWithTimeout(url, options = {}, timeoutMs = 15000){
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      return fetch(url, { ...options, signal: controller.signal })
+        .catch(err => {
+          if(err?.name === "AbortError") throw new Error("Délai dépassé sur " + url);
+          throw err;
+        })
+        .finally(() => clearTimeout(timer));
+    }
+
     function getToken(){
       return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
     }
@@ -819,8 +831,8 @@ function getProjectTitle(project){
       try{
         if(isAdmin()){
           const [orgResponse, projectResponse] = await Promise.all([
-            fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
+            fetchWithTimeout(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+            fetchWithTimeout(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
           ]);
 
           const orgData = await orgResponse.json().catch(() => ({}));
@@ -836,7 +848,7 @@ function getProjectTitle(project){
           // Défensif : cette route est un complément d'affichage. Elle ne doit jamais
           // empêcher le cockpit client de s'ouvrir si le backend staging ne l'a pas encore.
           try{
-            const usersResponse = await fetch(`${API_URL}/api/admin/organizations/${encodeURIComponent(clientId)}/users`, {
+            const usersResponse = await fetchWithTimeout(`${API_URL}/api/admin/organizations/${encodeURIComponent(clientId)}/users`, {
               headers: { Authorization: `Bearer ${getToken()}` }
             });
             const usersData = await usersResponse.json().catch(() => ({}));
@@ -859,7 +871,7 @@ function getProjectTitle(project){
             );
           }
         }else{
-          const response = await fetch(`${API_URL}/api/partner/clients`, {
+          const response = await fetchWithTimeout(`${API_URL}/api/partner/clients`, {
             headers: { Authorization: `Bearer ${getToken()}` }
           });
 
@@ -1414,7 +1426,7 @@ function getProjectTitle(project){
           throw new Error("La date de début ne peut pas être postérieure à la date de fin.");
         }
 
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/publication`, {
+        const response = await fetchWithTimeout(`${API_URL}/api/admin/projects/${projectToPublish.id}/publication`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -1464,7 +1476,7 @@ function getProjectTitle(project){
       if(!ok) return;
 
       try{
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/pack-upgrade`, {
+        const response = await fetchWithTimeout(`${API_URL}/api/admin/projects/${projectId}/pack-upgrade`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -1501,7 +1513,7 @@ function getProjectTitle(project){
       if(!ok) return;
 
       try{
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+        const response = await fetchWithTimeout(`${API_URL}/api/admin/projects/${projectId}/publication`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -1542,7 +1554,7 @@ function getProjectTitle(project){
       }
 
       try{
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+        const response = await fetchWithTimeout(`${API_URL}/api/admin/projects/${projectId}/publication`, {
           method:"PATCH",
           headers:{
             "Content-Type":"application/json",
@@ -1592,7 +1604,7 @@ function getProjectTitle(project){
       let lastError = null;
       for(const url of urls){
         try{
-          const response = await fetch(url, { method:"DELETE", headers:{ Authorization:`Bearer ${getToken()}` } });
+          const response = await fetchWithTimeout(url, { method:"DELETE", headers:{ Authorization:`Bearer ${getToken()}` } });
           const data = await response.json().catch(() => ({}));
           if(response.ok){
             showToast("Autodiagnostic supprimé");
@@ -1694,7 +1706,7 @@ function getProjectTitle(project){
         };
 
         try{
-          const response = await fetch(`${API_URL}/api/admin/projects/${projectToLogo.id}/publication`, {
+          const response = await fetchWithTimeout(`${API_URL}/api/admin/projects/${projectToLogo.id}/publication`, {
             method:"PATCH",
             headers:{
               "Content-Type":"application/json",
