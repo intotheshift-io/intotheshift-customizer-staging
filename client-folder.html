@@ -818,23 +818,36 @@ function getProjectTitle(project){
 
       try{
         if(isAdmin()){
-          const [orgResponse, projectResponse, usersResponse] = await Promise.all([
+          const [orgResponse, projectResponse] = await Promise.all([
             fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/organizations/${encodeURIComponent(clientId)}/users`, { headers: { Authorization: `Bearer ${getToken()}` } })
+            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
           ]);
 
           const orgData = await orgResponse.json().catch(() => ({}));
           const projectData = await projectResponse.json().catch(() => ({}));
-          const usersData = await usersResponse.json().catch(() => ({}));
 
           if(!orgResponse.ok) throw new Error(orgData.error || "Erreur API organisations");
           if(!projectResponse.ok) throw new Error(projectData.error || "Erreur API projets");
-          if(!usersResponse.ok) throw new Error(usersData.error || "Erreur API utilisateurs cockpit");
 
           const organizations = orgData.organizations || orgData.clients || orgData.data || [];
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
-          const attachedUsers = usersData.users || usersData.clients || usersData.data || [];
+          let attachedUsers = [];
+
+          // Défensif : cette route est un complément d'affichage. Elle ne doit jamais
+          // empêcher le cockpit client de s'ouvrir si le backend staging ne l'a pas encore.
+          try{
+            const usersResponse = await fetch(`${API_URL}/api/admin/organizations/${encodeURIComponent(clientId)}/users`, {
+              headers: { Authorization: `Bearer ${getToken()}` }
+            });
+            const usersData = await usersResponse.json().catch(() => ({}));
+            if(usersResponse.ok){
+              attachedUsers = usersData.users || usersData.clients || usersData.data || [];
+            }else{
+              console.warn("Route utilisateurs cockpit indisponible", usersData.error || usersResponse.status);
+            }
+          }catch(usersErr){
+            console.warn("Impossible de charger les comptes rattachés, affichage du cockpit maintenu", usersErr);
+          }
 
           currentClient = organizations.find(c => String(c.id) === String(clientId));
           logClientFolderMappings(clientId, organizations, projects);
@@ -868,6 +881,11 @@ function getProjectTitle(project){
         updateBackLabel();
       }catch(err){
         console.error(err);
+        const loading = document.getElementById("loadingState");
+        if(loading){
+          loading.style.display = "block";
+          loading.innerHTML = `<div class="empty"><strong>Impossible de charger le cockpit client.</strong><br>${escapeHtml(err.message || "Erreur de chargement")}</div>`;
+        }
         alert("Impossible de charger le cockpit client.");
       }
     }
