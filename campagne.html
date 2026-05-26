@@ -410,7 +410,7 @@ function goBackToParametrage(){
 }
 async function persistProjectDraft(step, status){
   saveState();
-  state.status = status || state.status || 'ready_for_transmission';
+  state.status = status || state.status || 'draft';
   state.current_step = step || 'campagne';
   saveState();
   const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
@@ -423,7 +423,7 @@ async function persistProjectDraft(step, status){
         projectId: getCurrentProjectIdForSave() || undefined,
         title: (state.parametrage&&state.parametrage.nom) || state.themeTitle || state.title || 'Autodiagnostic',
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
-        status: status || state.status || 'ready_for_transmission',
+        status: status || state.status || 'draft',
         currentStep: step || 'campagne',
         campaignStartDate: p().date_lancement || undefined,
         campaignEndDate: p().date_cloture || undefined,
@@ -434,8 +434,11 @@ async function persistProjectDraft(step, status){
           campaign_end_date: p().date_cloture || '',
           step: step || 'campagne',
           current_step: step || 'campagne',
-          status: status || state.status || 'ready_for_transmission',
-          configTransmise:false
+          status: status || state.status || 'draft',
+          configTransmise:false,
+          config_transmise:false,
+          submitted:false,
+          transmission:Object.assign({}, state.transmission || {}, { status:'draft', submitted_at:'' })
         })
       })
     });
@@ -722,7 +725,7 @@ function init(){
     if(sbStatus)sbStatus.textContent=statusLabel();
   }
 }
-async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
+async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='draft';state.current_step='campagne';state.step='campagne';state.configTransmise=false;state.config_transmise=false;state.submitted=false;if(state.transmission&&state.transmission.status!=='sent'){state.transmission.status='draft';delete state.transmission.submitted_at;}saveState();await persistProjectDraft('campagne','draft');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
   const params=new URLSearchParams(window.location.search);
   const projectIdFromUrl=params.get('projectId') || params.get('project_id') || params.get('id') || '';
   const projectId=projectIdFromUrl ||
