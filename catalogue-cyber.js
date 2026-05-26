@@ -4011,6 +4011,673 @@
 
   },
 
+  "donnees-rgpd-quotidien": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous gérez une liste de prospects avec nom, entreprise, fonction et numéro de téléphone professionnel. Votre collègue vous dit que ces données ne sont pas des données personnelles puisqu'elles sont professionnelles.",
+        tags: ["RGPD", "définition"],
+        answers: [
+          { text: "Je suis d'accord — des coordonnées professionnelles ne sont pas des données personnelles.", score: 0 },
+          { text: "Je lui explique que les coordonnées professionnelles d'une personne physique sont bien des données personnelles au sens du RGPD.", score: 2 },
+          { text: "Je vérifie avec notre DPO si ces données sont soumises au RGPD.", score: 1.5 },
+          { text: "Je traite ces données avec précaution même si je ne suis pas sûr·e de leur statut.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans un tableau de suivi RH, vous avez une colonne 'remarques' où certains managers notent des informations sur la santé ou la vie familiale des collaborateurs pour justifier des aménagements.",
+        tags: ["RGPD", "données sensibles"],
+        answers: [
+          { text: "C'est utile pour le management — ces informations permettent d'adapter le soutien apporté.", score: 0 },
+          { text: "Je le signale au DPO — les données de santé sont des données sensibles à protection renforcée et ne peuvent pas être stockées ainsi.", score: 2 },
+          { text: "Je supprime les entrées concernées et j'en parle aux managers concernés.", score: 1.5 },
+          { text: "Je m'assure que le tableau n'est accessible qu'aux personnes qui ont besoin de ces informations.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous identifiez correctement les données personnelles dans les fichiers et outils que vous utilisez au quotidien.",
+        tags: ["RGPD", "reconnaissance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partagez un fichier d'analyse avec un prestataire. Il contient des données clients. Pour le rendre 'anonyme', vous remplacez les noms par des numéros comme 'Client_001'.",
+        tags: ["RGPD", "pseudonymisation"],
+        answers: [
+          { text: "Le fichier est anonymisé — les noms sont supprimés et le prestataire ne peut plus identifier les clients.", score: 0 },
+          { text: "Le fichier est pseudonymisé, pas anonymisé — si le prestataire peut relier les numéros aux clients, le RGPD s'applique toujours.", score: 2 },
+          { text: "Je vérifie avec notre DPO si ce niveau de pseudonymisation suffit pour ce partage.", score: 1.5 },
+          { text: "Je supprime aussi toutes les données qui pourraient permettre d'identifier les clients indirectement.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre système informatique enregistre automatiquement les actions de tous les utilisateurs — connexions, fichiers consultés, modifications. Ces journaux contiennent des données personnelles.",
+        tags: ["RGPD", "journaux"],
+        answers: [
+          { text: "Les journaux systèmes ne sont pas des données personnelles — ce sont des données techniques.", score: 0 },
+          { text: "Ces journaux contiennent bien des données personnelles et leur gestion doit respecter le RGPD.", score: 2 },
+          { text: "Ce sont des données personnelles uniquement si elles sont consultées pour surveiller un individu spécifique.", score: 0.5 },
+          { text: "Je consulte notre DPO pour savoir comment ces journaux doivent être gérés.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous considérez comme données personnelles non seulement les noms et adresses mais aussi les données qui permettent d'identifier indirectement une personne.",
+        tags: ["RGPD", "données indirectes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous souhaitez utiliser les données de vos clients pour leur envoyer une newsletter sur vos nouveaux produits. Vos clients ont signé un contrat avec vous mais pas explicitement consenti à la newsletter.",
+        tags: ["RGPD", "base légale"],
+        answers: [
+          { text: "J'envoie la newsletter — ils sont clients et ont une relation commerciale avec nous.", score: 0 },
+          { text: "Je ne l'envoie pas sans base légale valide — la relation commerciale ne suffit pas pour la prospection directe.", score: 2 },
+          { text: "Je l'envoie avec une option de désinscription claire.", score: 0.5 },
+          { text: "Je consulte notre DPO pour valider la base légale avant d'envoyer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez collecté les données de candidats pour un recrutement. Un autre département cherche des profils pour un nouveau poste. Il vous demande d'accéder à votre base de candidats.",
+        tags: ["RGPD", "finalité"],
+        answers: [
+          { text: "Je lui donne accès — ce sont des personnes qui cherchent un emploi et ce poste pourrait les intéresser.", score: 0 },
+          { text: "Je lui dis que les données ne peuvent être utilisées que pour la finalité pour laquelle elles ont été collectées — je dois vérifier si les candidats ont consenti à être contactés pour d'autres postes.", score: 2 },
+          { text: "Je partage uniquement les candidats dont les profils correspondent clairement au nouveau poste.", score: 0 },
+          { text: "Je contacte les candidats pour leur demander s'ils souhaitent être transmis à l'autre département.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez les données personnelles que pour la finalité pour laquelle elles ont été collectées, et vous vérifiez avant tout autre usage.",
+        tags: ["RGPD", "finalité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise tient un registre des traitements de données personnelles. Vous créez un nouveau fichier de suivi clients avec des données personnelles. Le registre n'est pas à jour.",
+        tags: ["RGPD", "registre"],
+        answers: [
+          { text: "Je crée le fichier — le registre est géré par le DPO, pas par moi.", score: 0.5 },
+          { text: "Je signale au DPO la création du nouveau traitement pour qu'il soit ajouté au registre.", score: 2 },
+          { text: "J'ajoute moi-même l'entrée dans le registre.", score: 1 },
+          { text: "Je crée le fichier et je le mentionne lors de la prochaine réunion avec le DPO.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre compréhension des données personnelles est encore partielle — coordonnées pro, pseudonymisation et finalité créent des angles morts", desc: "Considérer que les coordonnées professionnelles ne sont pas des données personnelles, penser qu'un fichier avec des numéros à la place des noms est 'anonyme', envoyer une newsletter à des clients sans base légale valide : ces erreurs de compréhension sont courantes et exposent l'entreprise. Le RGPD s'applique à toute information permettant d'identifier une personne, directement ou indirectement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez les données personnelles dans les cas courants mais certaines catégories particulières créent encore des angles morts", desc: "Vous identifiez les données personnelles évidentes — noms, emails, téléphones. Mais les données de santé dans un tableau RH, les journaux systèmes, la pseudonymisation partielle, la question de la finalité pour l'utilisation d'une base de candidats : ces situations créent encore des angles morts. L'enjeu est d'étendre votre vigilance aux catégories particulières et aux cas indirects." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez les données personnelles dans toutes leurs formes et vérifiez la base légale avant tout traitement", desc: "Vous expliquez à votre collègue que les coordonnées professionnelles sont des données personnelles. Vous signalez les données de santé dans le tableau RH au DPO. Vous vérifiez la base légale avant d'envoyer une newsletter. Vous remontez la création d'un nouveau traitement pour le registre. Cette compréhension étendue des données personnelles — qui couvre les cas indirects, les catégories sensibles et les finalités — est le fondement d'une pratique RGPD solide." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Un candidat que vous avez rencontré il y a six mois vous contacte par mail pour demander quelles données vous détenez sur lui. Il invoque le RGPD.",
+        tags: ["droits", "accès"],
+        answers: [
+          { text: "Je lui réponds directement en lui envoyant son CV et mes notes d'entretien.", score: 0 },
+          { text: "Je transmets la demande à notre DPO qui la traitera dans les délais légaux — un mois maximum.", score: 2 },
+          { text: "Je lui dis de contacter notre service client qui gère ces demandes.", score: 1 },
+          { text: "Je lui réponds que nous ne conservons ses données que pour le recrutement et qu'il peut demander leur suppression.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Toute demande d'exercice de droits RGPD (accès, rectification, suppression) que vous recevez est transmise au DPO dans la journée.",
+        tags: ["droits", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un ancien client vous demande de supprimer toutes ses données personnelles. Vous avez ses coordonnées dans votre CRM, vos mails archivés et vos factures.",
+        tags: ["droits", "suppression"],
+        answers: [
+          { text: "Je supprime tout ce que je peux et je considère que la demande est satisfaite.", score: 0.5 },
+          { text: "Je transmets la demande au DPO — certaines données peuvent être conservées pour des obligations légales comme les factures.", score: 2 },
+          { text: "Je lui dis que je vais supprimer ses données mais que certaines sont conservées pour des raisons légales.", score: 1 },
+          { text: "Je supprime ses données du CRM et de mes mails en lui confirmant la suppression.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous contacte pour vous dire que sa date de naissance enregistrée dans le système RH est incorrecte. Il vous envoie sa pièce d'identité par mail.",
+        tags: ["droits", "rectification"],
+        answers: [
+          { text: "Je rectifie directement dans le système — c'est une correction simple et légitime.", score: 0.5 },
+          { text: "Je transmets la demande aux RH qui gèrent les données du personnel et suivent la procédure appropriée.", score: 2 },
+          { text: "Je transmets la pièce d'identité aux RH pour qu'elles gèrent.", score: 1.5 },
+          { text: "Je lui demande d'utiliser le portail RH pour faire sa demande de rectification.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prospect vous demande de ne plus le contacter commercialement. Il n'exerce pas formellement son droit d'opposition mais son message est clair.",
+        tags: ["droits", "opposition"],
+        answers: [
+          { text: "J'attends qu'il exerce formellement son droit d'opposition par les canaux officiels avant d'agir.", score: 0 },
+          { text: "Je le retire immédiatement de mes listes de prospection et je le signale à notre DPO.", score: 2 },
+          { text: "Je cesse les contacts commerciaux mais je conserve ses données pour d'éventuels futurs contacts.", score: 0.5 },
+          { text: "Je lui envoie le formulaire d'opposition officiel et j'attends sa réponse.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une personne exprime clairement qu'elle ne veut plus être contactée, vous agissez immédiatement sans attendre une demande formelle.",
+        tags: ["droits", "réactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un client vous demande de lui transmettre toutes ses données dans un format réutilisable. Il souhaite les porter chez un concurrent.",
+        tags: ["droits", "portabilité"],
+        answers: [
+          { text: "Je lui explique que ce droit ne s'applique que dans certains contextes et je transmets au DPO.", score: 2 },
+          { text: "Je lui transmets ses données dans le format le plus pratique pour moi.", score: 0.5 },
+          { text: "Je refuse — faciliter le départ vers un concurrent n'est pas dans l'intérêt de l'entreprise.", score: 0 },
+          { text: "Je transmets la demande à notre équipe technique pour qu'elle génère l'export.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre application collecte des données d'utilisateurs. Vous réalisez qu'un utilisateur a déclaré avoir 16 ans lors de son inscription. Votre politique dit que l'application est réservée aux 18 ans et plus.",
+        tags: ["droits", "mineur"],
+        answers: [
+          { text: "Je ne fais rien — l'utilisateur a accepté les conditions et a déclaré 16 ans de lui-même.", score: 0 },
+          { text: "Je signale la situation au DPO pour que le compte soit traité conformément à notre politique et aux obligations RGPD sur les mineurs.", score: 2 },
+          { text: "Je supprime le compte immédiatement.", score: 1 },
+          { text: "Je lui envoie un mail lui demandant de confirmer son âge.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez le délai légal de réponse aux demandes d'exercice de droits RGPD et vous vous assurez qu'il est respecté dans votre organisation.",
+        tags: ["droits", "délai"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La famille d'un collaborateur décédé vous contacte pour demander la suppression de ses données de vos systèmes.",
+        tags: ["droits", "décès"],
+        answers: [
+          { text: "Je supprime les données immédiatement — la demande est légitime et humainement justifiée.", score: 0.5 },
+          { text: "Je transmets la demande au DPO et aux RH qui géreront le dossier conformément à la loi — certaines données doivent être conservées.", score: 2 },
+          { text: "Je leur explique que les données d'un salarié ne peuvent pas être supprimées immédiatement pour des raisons légales.", score: 1 },
+          { text: "Je supprime ce que je peux de mon côté et je transfère le reste aux RH.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les demandes d'exercice de droits RGPD ne sont pas encore traitées avec la rigueur et les délais requis", desc: "Répondre directement à une demande d'accès sans passer par le DPO, attendre une demande formelle avant de retirer quelqu'un d'une liste de prospection, ne pas transmettre au DPO dans la journée : le droit des personnes sur leurs données est un droit légalement encadré avec des délais stricts. Toute demande qui n'est pas traitée dans les délais légaux expose l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous transmettez les demandes de droits RGPD mais la réactivité et la précision restent encore insuffisantes", desc: "Vous transmettez les demandes d'exercice de droits au DPO. Mais agir immédiatement sur une désinscription informelle sans attendre la demande formelle, distinguer les données qui peuvent être supprimées de celles soumises à des obligations légales de conservation, gérer la demande d'un décès : ces situations nécessitent encore davantage de précision. L'enjeu est de maîtriser les subtilités du droit des personnes." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les demandes de droits avec réactivité et précision, en distinguant ce qui peut être fait immédiatement de ce qui nécessite un cadre", desc: "Vous transmettez au DPO dans la journée toute demande d'exercice de droits. Vous agissez immédiatement sur une désinscription même informelle. Vous distinguez ce qui peut être supprimé de ce qui doit être conservé pour des obligations légales. Cette précision dans le traitement des droits des personnes — qui suppose de connaître les règles et leurs exceptions — est ce qui protège réellement les personnes et l'organisation." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous contractualisez avec un nouveau prestataire qui aura accès aux données de vos clients. Il n'est pas question de protection des données dans le contrat.",
+        tags: ["sous-traitance", "DPA"],
+        answers: [
+          { text: "Je signe le contrat — si le prestataire est sérieux, il respecte naturellement la confidentialité.", score: 0 },
+          { text: "Je remonte la situation au DPO et aux juristes — un Data Processing Agreement (DPA) est obligatoire.", score: 2 },
+          { text: "J'ajoute une clause de confidentialité dans le contrat.", score: 0.5 },
+          { text: "Je demande au prestataire de me confirmer par mail qu'il respecte le RGPD.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de confier des données personnelles à un prestataire, vous vérifiez qu'un cadre contractuel adapté est en place.",
+        tags: ["sous-traitance", "vérification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous souhaitez utiliser un outil SaaS américain pour analyser les données de vos clients européens. L'éditeur n'est pas certifié EU-US Data Privacy Framework.",
+        tags: ["sous-traitance", "transfert hors UE"],
+        answers: [
+          { text: "J'utilise l'outil — les États-Unis ont des standards de sécurité élevés.", score: 0 },
+          { text: "Je consulte notre DPO avant d'utiliser cet outil — un transfert hors UE sans garanties adéquates est interdit.", score: 2 },
+          { text: "J'anonymise les données avant de les envoyer vers l'outil américain.", score: 0.5 },
+          { text: "Je vérifie si l'éditeur dispose de clauses contractuelles types (SCCs) avant d'utiliser.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire technique a demandé l'accès à l'ensemble de votre base de données clients pour effectuer une maintenance sur une fonctionnalité qui n'en concerne qu'une partie.",
+        tags: ["sous-traitance", "accès excessif"],
+        answers: [
+          { text: "Je lui donne l'accès complet — il est de confiance et l'accès total facilitera sa mission.", score: 0 },
+          { text: "Je lui donne accès uniquement aux données strictement nécessaires à sa mission.", score: 2 },
+          { text: "Je lui donne l'accès complet en lui demandant de ne consulter que ce dont il a besoin.", score: 0 },
+          { text: "Je contacte notre DPO pour valider le niveau d'accès approprié.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre prestataire vous informe qu'il a subi une cyberattaque et que des données de vos clients qu'il détenait ont peut-être été compromises.",
+        tags: ["sous-traitance", "incident prestataire"],
+        answers: [
+          { text: "J'attends le rapport d'analyse complet du prestataire avant d'agir.", score: 0 },
+          { text: "Je contacte immédiatement notre DPO — la notification à la CNIL doit se faire dans les 72 heures si c'est une violation.", score: 2 },
+          { text: "Je préviens les clients concernés directement.", score: 0.5 },
+          { text: "Je contacte notre DPO et notre responsable juridique pour évaluer nos obligations.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement à votre DPO toute violation de données chez un prestataire, sans attendre l'analyse complète de l'incident.",
+        tags: ["sous-traitance", "délai notification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre contrat avec un prestataire qui traitait des données personnelles se termine. Vous ne précisez pas ce qu'il doit faire des données.",
+        tags: ["sous-traitance", "fin de contrat"],
+        answers: [
+          { text: "Je laisse — le prestataire sait qu'il doit supprimer les données à la fin du contrat.", score: 0 },
+          { text: "Je m'assure que le DPA prévoit la restitution ou la destruction des données et j'en demande confirmation écrite.", score: 2 },
+          { text: "Je lui envoie un mail lui demandant de supprimer les données.", score: 1 },
+          { text: "Je contacte notre DPO pour gérer la clôture du traitement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe veut utiliser un outil collaboratif cloud pour gérer un projet incluant des données personnelles de clients. L'outil est populaire dans votre secteur.",
+        tags: ["sous-traitance", "cloud"],
+        answers: [
+          { text: "Je l'utilise — si c'est répandu dans le secteur, c'est que c'est conforme.", score: 0 },
+          { text: "Je vérifie d'abord avec la DSI et le DPO que cet outil est approuvé pour l'usage de données personnelles.", score: 2 },
+          { text: "Je l'utilise en m'assurant que les données sont chiffrées.", score: 0.5 },
+          { text: "Je consulte la politique de confidentialité de l'outil avant de l'utiliser.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez pas d'outil non approuvé pour traiter des données personnelles de clients ou de collaborateurs, même s'il est populaire dans votre secteur.",
+        tags: ["sous-traitance", "principe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre DPO vous informe qu'un prestataire avec lequel vous travaillez depuis trois ans n'a jamais été audité sur sa conformité RGPD.",
+        tags: ["sous-traitance", "audit"],
+        answers: [
+          { text: "Je laisse — on travaille avec eux depuis trois ans sans problème.", score: 0 },
+          { text: "Je participe à la démarche d'audit que le DPO va initier.", score: 2 },
+          { text: "Je demande au prestataire de m'envoyer sa certification ou sa politique de données.", score: 1 },
+          { text: "Je contacte notre responsable achats pour qu'il gère la relation avec le prestataire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La gestion des sous-traitants et des transferts de données se fait encore sans vérification systématique du cadre juridique", desc: "Contractualiser avec un prestataire qui accède à des données personnelles sans DPA, utiliser un outil SaaS américain sans vérifier les garanties de transfert, ne pas alerter le DPO lors d'un incident chez un prestataire : chaque prestataire qui accède à vos données personnelles étend votre responsabilité. Le RGPD suit les données, pas les frontières organisationnelles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez les cadres contractuels avec les prestataires principaux mais les situations nouvelles créent encore des hésitations", desc: "Vous vérifiez qu'un DPA est en place avec vos prestataires principaux. Mais les transferts hors UE sans certification adéquate, la fin de contrat et la destruction des données, l'utilisation d'un outil populaire non approuvé : ces situations créent encore des hésitations. L'enjeu est de systématiser la vérification du cadre juridique pour tout nouveau prestataire ou outil." },
+          haut: { label: "Réflexes installés", titre: "Vous vérifiez systématiquement le cadre juridique avec les sous-traitants et signalez immédiatement les incidents", desc: "Vous exigez un DPA avant de confier des données à un prestataire. Vous vérifiez les garanties de transfert hors UE. Vous limitez l'accès du prestataire aux données strictement nécessaires. Vous alertez le DPO immédiatement sur un incident chez un prestataire. Vous gérez la fin de contrat avec une confirmation de destruction des données. Cette rigueur dans la chaîne de sous-traitance est ce qui empêche vos obligations RGPD de 's'arrêter à la porte' de vos prestataires." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous concevez un nouveau formulaire de collecte de données clients. Par défaut, vous envisagez de cocher toutes les cases de consentement pour faciliter le remplissage.",
+        tags: ["privacy by design", "conception"],
+        answers: [
+          { text: "Je coche par défaut — ça simplifie l'expérience utilisateur et ils peuvent décocher.", score: 0 },
+          { text: "Je laisse toutes les cases décochées — le consentement doit être actif, pas passif.", score: 2 },
+          { text: "Je coche les cases pour les consentements légalement obligatoires uniquement.", score: 0.5 },
+          { text: "Je demande conseil au DPO sur la bonne pratique pour ce formulaire.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous créez un nouveau processus ou outil impliquant des données personnelles, vous intégrez la protection des données dès la conception.",
+        tags: ["privacy by design", "réflexe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous lancez un projet de collecte de données biométriques des collaborateurs pour contrôler les accès. Vous n'avez pas fait d'analyse d'impact.",
+        tags: ["privacy by design", "AIPD"],
+        answers: [
+          { text: "Je lance le projet — le contrôle d'accès biométrique est courant dans les entreprises.", score: 0 },
+          { text: "Je contacte le DPO avant de lancer — les données biométriques nécessitent une Analyse d'Impact relative à la Protection des Données (AIPD).", score: 2 },
+          { text: "Je m'assure que les données sont bien sécurisées et je lance le projet.", score: 0 },
+          { text: "Je vérifie si d'autres entreprises ont fait une AIPD pour ce type de projet.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe souhaite entraîner un modèle d'IA sur des données historiques de clients pour améliorer les recommandations. Ces données n'ont pas été collectées à cette fin.",
+        tags: ["privacy by design", "IA"],
+        answers: [
+          { text: "J'utilise les données — améliorer le service bénéficie aux clients.", score: 0 },
+          { text: "Je consulte le DPO avant tout usage — entraîner une IA est une nouvelle finalité qui nécessite une base légale.", score: 2 },
+          { text: "J'anonymise les données avant de les utiliser pour l'entraînement.", score: 0.5 },
+          { text: "Je demande une analyse juridique pour savoir si c'est compatible avec les finalités initiales.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise conserve tous les mails professionnels indéfiniment 'pour des raisons de traçabilité'. Ces mails contiennent des données personnelles de clients et de collaborateurs.",
+        tags: ["privacy by design", "durée"],
+        answers: [
+          { text: "C'est une bonne pratique — avoir un historique complet protège l'entreprise.", score: 0 },
+          { text: "Je remonte la question au DPO — la conservation indéfinie sans base légale est contraire au RGPD.", score: 2 },
+          { text: "Je conserve les mails liés à des dossiers actifs et je supprime les autres.", score: 0.5 },
+          { text: "Je contacte notre responsable juridique pour valider la durée de conservation.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez des durées de conservation définies pour les données personnelles que vous gérez et vous les supprimez une fois ces durées atteintes.",
+        tags: ["privacy by design", "durée"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur, Erwan, prend en charge la gestion de la base de données clients. Il n'a reçu aucune formation RGPD.",
+        tags: ["privacy by design", "sensibilisation"],
+        answers: [
+          { text: "Je le laisse prendre son poste — il apprendra les règles avec le temps.", score: 0 },
+          { text: "Je m'assure qu'il reçoit une formation RGPD avant d'accéder aux données clients.", score: 2 },
+          { text: "Je lui explique les règles essentielles et je lui remets la politique de données de l'entreprise.", score: 1.5 },
+          { text: "Je le mets en copie des mails du DPO pour qu'il s'imprègne des sujets.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous achetez une base de données de prospects à un prestataire externe. Le prestataire certifie que les données sont 'conformes RGPD'.",
+        tags: ["privacy by design", "prospection"],
+        answers: [
+          { text: "J'utilise la base — le prestataire certifie la conformité.", score: 0 },
+          { text: "Je vérifie avec notre DPO les conditions exactes de collecte et de consentement avant d'utiliser.", score: 2 },
+          { text: "Je teste la base sur un petit segment avant de l'utiliser en totalité.", score: 0 },
+          { text: "Je demande au prestataire de me fournir la documentation de conformité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous impliquez le DPO de votre organisation en amont des projets impliquant des données personnelles, pas uniquement en cas de problème.",
+        tags: ["privacy by design", "DPO"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que des données personnelles de clients ont été accessibles sans autorisation pendant deux semaines suite à une mauvaise configuration.",
+        tags: ["privacy by design", "incident"],
+        answers: [
+          { text: "Je corrige la configuration et je surveille si des données ont été utilisées.", score: 0 },
+          { text: "Je contacte immédiatement le DPO — une violation de données expose à une obligation de notification à la CNIL dans les 72h.", score: 2 },
+          { text: "Je corrige et j'en parle au DPO lors de notre prochain point.", score: 0 },
+          { text: "Je contacte l'équipe IT pour corriger et évaluer l'étendue de l'exposition.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La protection des données est encore traitée comme une contrainte ponctuelle plutôt qu'intégrée à vos pratiques", desc: "Pré-cocher les cases de consentement, lancer un projet biométrique sans AIPD, utiliser des données historiques pour entraîner une IA sans vérifier la base légale, conserver des mails indéfiniment : la protection des données n'est pas un sujet à gérer après coup — c'est un réflexe de conception qui doit intervenir en amont de chaque nouveau projet ou processus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez la protection des données dans vos pratiques courantes mais les nouveaux projets ne déclenchent pas encore systématiquement le réflexe DPO", desc: "Vous impliquez le DPO sur les sujets RGPD courants. Mais lancer un projet d'IA sur des données existantes, utiliser une base achetée parce que le prestataire 'certifie la conformité', démarrer un projet biométrique sans AIPD : ces nouveaux projets ne déclenchent pas encore automatiquement le réflexe de consultation en amont. L'enjeu est de traiter chaque nouveau traitement de données personnelles comme un signal à soumettre au DPO." },
+          haut: { label: "Réflexes installés", titre: "La protection des données est intégrée en amont de vos projets — vous consultez le DPO avant, pas après", desc: "Vous consultez le DPO avant de lancer un projet biométrique, avant d'utiliser des données historiques pour une IA, avant d'utiliser un outil SaaS non approuvé pour des données clients. Vous formez Erwan avant de lui donner accès aux données. Vous alertez le DPO dans les 72h sur une mauvaise configuration qui a exposé des données. Cette intégration en amont de la protection des données — qui transforme le RGPD d'une contrainte en réflexe — est ce qui distingue les organisations conformes de celles qui le découvrent par les incidents." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -4072,6 +4739,16 @@
         ["Gérer les outils et les accès à distance", "Outils approuvés uniquement, mises à jour, authentification sans contournement."],
         ["Gérer la frontière pro/perso", "Séparation stricte des usages, logiciels, données et notifications."],
         ["Maintenir les bonnes pratiques dans la durée", "Constance, signalement des incidents domestiques, transmission à l'équipe."],
+      ]}
+    ],
+
+    ["donnees-rgpd-quotidien", "Sécurité des données et RGPD au quotidien", "Tous publics",
+      "Comprendre les obligations RGPD, appliquer les droits des personnes et intégrer la protection des données en amont.",
+      { domain: "cyber", chapters: [
+        ["Comprendre ce que sont les données personnelles", "Catégories, finalités, base légale — au-delà des noms et adresses."],
+        ["Appliquer les droits des personnes", "Accès, suppression, opposition — délais légaux et précision dans le traitement."],
+        ["Gérer les sous-traitants et les transferts", "DPA, transferts hors UE, incidents prestataires — la chaîne ne s'arrête pas à votre porte."],
+        ["Intégrer la protection des données dans ses pratiques", "Privacy by design, AIPD, DPO en amont — pas après l'incident."],
       ]}
     ],
 
