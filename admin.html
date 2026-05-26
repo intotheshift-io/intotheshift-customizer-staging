@@ -588,29 +588,24 @@ async function handleApiError(res,path){
   try{const e=await res.json();if(e?.error)msg=e.error;if(e?.message)msg=e.message;}catch(_){}
   throw new Error(msg);
 }
-function withTimeout(options = {}, timeoutMs = 15000){
+async function apiFetch(path, options = {}, timeoutMs = 12000){
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  return {
-    options: { ...options, signal: controller.signal },
-    done: () => clearTimeout(timer)
-  };
-}
-async function safeFetch(path, options = {}, timeoutMs = 15000){
-  const request = withTimeout(options, timeoutMs);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try{
-    return await fetch(API_BASE_URL + path, request.options);
+    const res = await fetch(API_BASE_URL + path, { ...options, signal: controller.signal });
+    if(!res.ok) return await handleApiError(res, path);
+    return await res.json().catch(() => ({}));
   }catch(err){
-    if(err?.name === "AbortError") throw new Error(path + " — délai dépassé");
+    if(err.name === "AbortError") throw new Error(`${path} ne répond pas après ${Math.round(timeoutMs/1000)} secondes`);
     throw err;
   }finally{
-    request.done();
+    clearTimeout(timeout);
   }
 }
-async function apiGet(path){const res=await safeFetch(path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPatch(path, body){const res=await safeFetch(path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPost(path, body){const res=await safeFetch(path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiDelete(path){const res=await safeFetch(path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json().catch(()=>({ok:true}));}
+async function apiGet(path){return await apiFetch(path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});}
+async function apiPatch(path, body){return await apiFetch(path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});}
+async function apiPost(path, body){return await apiFetch(path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});}
+async function apiDelete(path){return await apiFetch(path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});}
 
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}
@@ -885,20 +880,22 @@ function renderKpis(){
   const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="unpublished").length;
   const noCompany=visibleUsers.filter(c=>isActiveUser(c)&&!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
-  document.getElementById("kpiUsers").textContent=visibleUsers.length;
-  document.getElementById("kpiPartners").textContent=partners.length;
-  document.getElementById("kpiOrganizations").textContent=directOrgs;
-  document.getElementById("kpiProjects").textContent=adminState.projects.length;  document.getElementById("kpiPartnerUsed").textContent=formatNumber(partnerUsed);
-  document.getElementById("kpiLinkedOrgs").textContent=linkedOrgs;
-  document.getElementById("kpiDirectOrgs").textContent=directOrgs;
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set("kpiUsers", visibleUsers.length);
+  set("kpiPartners", partners.length);
+  set("kpiOrganizations", directOrgs);
+  set("kpiProjects", adminState.projects.length);
+  set("kpiPartnerQuota", formatNumber(partnerQuota));
+  set("kpiPartnerUsed", formatNumber(partnerUsed));
+  set("kpiLinkedOrgs", linkedOrgs);
+  set("kpiDirectOrgs", directOrgs);
   set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalUnpublished",statusCounts.unpublished||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
   set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
-  document.getElementById("sideUsers").textContent=visibleUsers.length;
-  document.getElementById("sidePartners").textContent=partners.length;
-  document.getElementById("sideOrganizations").textContent=directOrgs;
-  document.getElementById("sideProjects").textContent=adminState.projects.length;
+  set("sideUsers", visibleUsers.length);
+  set("sidePartners", partners.length);
+  set("sideOrganizations", directOrgs);
+  set("sideProjects", adminState.projects.length);
 }
 
 function organizationOptionsForAccount(currentOrgId){
