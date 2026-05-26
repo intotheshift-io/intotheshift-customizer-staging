@@ -891,16 +891,47 @@ function organizationOptionsForAccount(currentOrgId){
   }).join("");
 }
 
+let pendingAttachTransfer = null;
+
+function openAttachTransferModal(userId, organizationId){
+  pendingAttachTransfer = { userId, organizationId };
+  const modal = document.getElementById("attachTransferModal");
+  if(modal) modal.style.display = "flex";
+}
+
+function closeAttachTransferModal(){
+  pendingAttachTransfer = null;
+  const modal = document.getElementById("attachTransferModal");
+  if(modal) modal.style.display = "none";
+}
+
+async function confirmAttachTransfer(){
+  if(!pendingAttachTransfer) return;
+
+  const { userId, organizationId } = pendingAttachTransfer;
+  closeAttachTransferModal();
+
+  await executeAttachUserToOrganization(userId, organizationId, true);
+}
+
 async function attachUserToOrganization(userId, transferProjects=false){
   const select=document.getElementById("attach-org-"+String(userId));
   const organizationId=select?.value || "";
-  if(!organizationId){showError("Choisis d’abord un cockpit client à rattacher.");return;}
 
-  if(transferProjects){
-    const confirmed=window.confirm("Rattacher ce compte au cockpit sélectionné et transférer tous ses autodiagnostics vers ce cockpit ?");
-    if(!confirmed)return;
+  if(!organizationId){
+    showError("Choisis d’abord un cockpit client à rattacher.");
+    return;
   }
 
+  if(transferProjects){
+    openAttachTransferModal(userId, organizationId);
+    return;
+  }
+
+  await executeAttachUserToOrganization(userId, organizationId, false);
+}
+
+async function executeAttachUserToOrganization(userId, organizationId, transferProjects=false){
   try{
     const result=await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
       organizationId,
@@ -1094,32 +1125,12 @@ function renderOrganizations(){
     const used=num(val(o,["passationsUsed","passations_used"],0));
     const remaining=Math.max(0, quota-used);
     const projectsCount=getProjectsForOrg(o).length;
-    const users=Array.isArray(o.users)?o.users:[];
-    const activeUsers=users.filter(u=>String(val(u,["email"],"")).trim());
-    const usersCount=activeUsers.length;
-    const usersHtml=usersCount
-      ? activeUsers.map(u=>{
-          const first=val(u,["firstName","first_name"],"");
-          const last=val(u,["lastName","last_name"],"");
-          const fullName=String((first+" "+last).trim() || val(u,["companyName","company_name"],"") || "Compte sans nom");
-          const email=val(u,["email"],"—");
-          const uid=val(u,["id","user_id"],"—");
-          const userRole=val(u,["role"],"member");
-          return `<div class="global-line"><span>${escapeHtml(fullName)}<br><small class="muted">${escapeHtml(email)}</small></span><strong>#${escapeHtml(uid)} · ${escapeHtml(userRole)}</strong></div>`;
-        }).join("")
-      : `<div class="muted">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
-    const canDeleteOrg=projectsCount===0 && usersCount===0;
     return`<article class="org-card">
-      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
+      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
         <div class="info-box"><div class="info-label">Contact dossier</div><div class="info-value">${escapeHtml(contactName)}</div><div class="muted">${escapeHtml(contactEmail)}</div></div>
-        <div class="info-box"><div class="info-label">Comptes rattachés</div><div class="info-value">${usersCount}</div><div class="muted">${canDeleteOrg?"Cockpit supprimable":"Suppression bloquée tant que le cockpit contient des comptes ou AD"}</div></div>
-      </div>
-      <div style="background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px">
-        <div class="info-label" style="margin-bottom:8px">Comptes utilisateurs rattachés à ce dossier</div>
-        ${usersHtml}
       </div>
       <div class="org-quota-panel">
         <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
@@ -1127,7 +1138,7 @@ function renderOrganizations(){
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
-      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg?"":"disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché""} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
@@ -1577,53 +1588,6 @@ async function confirmDeleteUser(){
   }
 }
 
-let organizationToDelete = null;
-
-function deleteOrganization(orgId, name){
-  if(!orgId)return;
-
-  organizationToDelete = { id: orgId, name: name || "cockpit sélectionné" };
-
-  const nameEl=document.getElementById("deleteOrganizationName");
-  const modal=document.getElementById("deleteOrganizationModal");
-  if(nameEl)nameEl.textContent = `#${organizationToDelete.id} — ${organizationToDelete.name}`;
-  if(modal)modal.style.display = "flex";
-}
-
-function closeDeleteOrganizationModal(){
-  organizationToDelete = null;
-  const modal=document.getElementById("deleteOrganizationModal");
-  if(modal)modal.style.display = "none";
-}
-
-async function confirmDeleteOrganization(){
-  if(!organizationToDelete?.id)return;
-
-  const modal=document.getElementById("deleteOrganizationModal");
-  const confirmBtn=modal ? modal.querySelector(".mini-btn.danger") : null;
-  const previousText=confirmBtn?.textContent || "Supprimer le cockpit";
-
-  try{
-    if(confirmBtn){
-      confirmBtn.disabled=true;
-      confirmBtn.textContent="Suppression...";
-    }
-
-    await apiDelete(`/api/admin/organizations/${encodeURIComponent(organizationToDelete.id)}`);
-    closeDeleteOrganizationModal();
-    showSuccess("Cockpit client supprimé.");
-    await loadAdminData();
-  }catch(err){
-    console.error(err);
-    showError("Suppression du cockpit impossible. Détail : "+err.message);
-  }finally{
-    if(confirmBtn){
-      confirmBtn.disabled=false;
-      confirmBtn.textContent=previousText;
-    }
-  }
-}
-
 function openPartnerFolder(partnerId){
   window.location.href=`partner-folder.html?id=${encodeURIComponent(partnerId)}`;
 }
@@ -1641,22 +1605,54 @@ document.addEventListener("DOMContentLoaded",()=>{
   if(requireAdmin())loadAdminData();
 });
 </script>
-<div id="deleteOrganizationModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:24px;padding:24px;max-width:560px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
-    <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer ce cockpit client ?</h3>
-    <p style="margin:0 0 12px;color:#60758a;line-height:1.45;">
-      Cette suppression est autorisée uniquement si le cockpit ne contient plus aucun autodiagnostic et aucun utilisateur rattaché.
-    </p>
-    <p style="margin:0 0 18px;color:#60758a;line-height:1.45;">
-      Les autres cockpits de la même entreprise ne seront pas modifiés.
-    </p>
-    <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteOrganizationName"></div>
-    <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
-      <button class="mini-btn light" onclick="closeDeleteOrganizationModal()">Annuler</button>
-      <button class="mini-btn danger" onclick="confirmDeleteOrganization()">Supprimer le cockpit</button>
+
+<div id="attachTransferModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.62);z-index:9999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);">
+  <div style="background:#fff;border-radius:28px;padding:28px;max-width:560px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.28);position:relative;overflow:hidden;">
+    
+    <div style="position:absolute;top:0;left:0;right:0;height:7px;background:linear-gradient(90deg,#0d4c72,#12a3b8);"></div>
+
+    <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;">
+      <div style="width:62px;height:62px;border-radius:18px;background:#eef6fb;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;">
+        🔄
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 8px;color:#0d4c72;font-size:24px;line-height:1.2;">
+          Transférer les autodiagnostics ?
+        </h3>
+
+        <p style="margin:0;color:#60758a;line-height:1.6;font-size:15px;">
+          Le compte sera rattaché au cockpit sélectionné et tous ses autodiagnostics seront déplacés vers ce cockpit client.
+        </p>
+      </div>
+    </div>
+
+    <div style="background:#f6fbfe;border:1px solid #d7e8f1;border-radius:18px;padding:16px;margin-bottom:18px;">
+      <div style="font-weight:900;color:#0d4c72;margin-bottom:6px;">
+        Ce qui va se passer :
+      </div>
+
+      <ul style="margin:0;padding-left:20px;color:#60758a;line-height:1.7;">
+        <li>Le compte sera relié au cockpit choisi</li>
+        <li>Les AD existants seront transférés</li>
+        <li>Les autres cockpits ne seront pas fusionnés</li>
+        <li>Les données existantes resteront conservées</li>
+      </ul>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;">
+      <button class="mini-btn light" onclick="closeAttachTransferModal()">
+        Annuler
+      </button>
+
+      <button class="mini-btn" style="padding:10px 16px;" onclick="confirmAttachTransfer()">
+        Confirmer le transfert
+      </button>
     </div>
   </div>
 </div>
+
+
 <div id="deleteProjectModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
   <div style="background:#fff;border-radius:24px;padding:24px;max-width:520px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
     <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer cet autodiag ?</h3>
