@@ -3344,6 +3344,673 @@
 
   },
 
+  "teletravail-securite-acces": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre box internet est configurée avec le mot de passe par défaut fourni par l'opérateur. Votre voisinage est dense. Vous travaillez régulièrement depuis chez vous.",
+        tags: ["télétravail", "réseau domestique"],
+        answers: [
+          { text: "Je laisse le mot de passe par défaut — c'est le mot de passe de mon opérateur, il est sécurisé.", score: 0 },
+          { text: "Je change le mot de passe par défaut de ma box et de mon réseau wifi.", score: 2 },
+          { text: "Je vérifie d'abord si le mot de passe par défaut est assez complexe avant de décider.", score: 0.5 },
+          { text: "J'active le VPN professionnel pour compenser — ça protège mes communications même sur un réseau peu sécurisé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre conjoint·e travaille à côté de vous en télétravail ce matin. Vous participez à une réunion en visio sur un sujet confidentiel — restructuration d'équipe.",
+        tags: ["télétravail", "espace de travail"],
+        answers: [
+          { text: "Je participe normalement — mon/ma conjoint·e est de confiance.", score: 0 },
+          { text: "Je me mets dans une pièce séparée ou j'utilise un casque et je baisse la voix.", score: 2 },
+          { text: "Je participe en mode écoute uniquement sans prendre la parole sur les sujets sensibles.", score: 1 },
+          { text: "Je préviens les autres participants que je suis en open space et qu'ils doivent faire attention.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En télétravail, vous gérez les réunions et documents confidentiels de façon à ce que les personnes présentes chez vous ne puissent pas les voir ni les entendre.",
+        tags: ["télétravail", "confidentialité physique"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre enfant de 10 ans vous demande d'utiliser votre ordinateur professionnel pour faire ses devoirs pendant votre pause déjeuner.",
+        tags: ["télétravail", "matériel partagé"],
+        answers: [
+          { text: "J'accepte — mon ordinateur est verrouillé par mon profil et mon enfant ne touchera pas à mon travail.", score: 0 },
+          { text: "Je refuse — l'ordinateur professionnel est réservé à l'usage professionnel.", score: 2 },
+          { text: "J'accepte mais je reste présent·e pour surveiller ce qu'il fait.", score: 0 },
+          { text: "J'accepte uniquement s'il utilise un compte invité séparé sur l'ordinateur.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous imprimez un document confidentiel sur votre imprimante personnelle en télétravail. Des membres de votre famille passent régulièrement dans la pièce.",
+        tags: ["télétravail", "imprimante"],
+        answers: [
+          { text: "Je récupère le document immédiatement à l'impression et je le range dans un endroit sécurisé.", score: 2 },
+          { text: "Je laisse le document sur l'imprimante — ma famille ne lira pas mes documents de travail.", score: 0 },
+          { text: "J'imprime uniquement quand je suis seul·e dans la pièce.", score: 1.5 },
+          { text: "J'imprime en mode recto-verso pour réduire le nombre de pages visibles.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre matériel professionnel — ordinateur, téléphone, supports — est utilisé exclusivement pour des activités professionnelles.",
+        tags: ["télétravail", "matériel professionnel"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous vous levez pour aller chercher un café. Votre écran affiche un document confidentiel. Votre famille circule dans la maison.",
+        tags: ["télétravail", "verrouillage"],
+        answers: [
+          { text: "Je laisse — je reviens dans deux minutes et ma famille ne s'intéresse pas à mes documents.", score: 0 },
+          { text: "Je verrouille mon poste même pour une absence de deux minutes.", score: 2 },
+          { text: "Je minimise la fenêtre du document confidentiel.", score: 0.5 },
+          { text: "Je met mon écran en veille.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise vous recommande de créer un réseau wifi dédié au télétravail, séparé de votre réseau familial. C'est une étape technique que vous n'avez pas encore faite.",
+        tags: ["télétravail", "réseau dédié"],
+        answers: [
+          { text: "Je laisse tout sur le même réseau — c'est plus simple et mon réseau est sécurisé.", score: 0 },
+          { text: "Je configure le réseau dédié — séparer les appareils professionnels des appareils personnels réduit les risques.", score: 2 },
+          { text: "Je demande à l'équipe informatique de le faire à distance.", score: 1 },
+          { text: "J'utilise le VPN professionnel pour compenser l'absence de réseau dédié.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre espace de télétravail est configuré pour protéger la confidentialité de votre travail — écran non visible, conversations privées, documents rangés.",
+        tags: ["télétravail", "sécurité physique"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre journée de télétravail se termine. Votre ordinateur professionnel reste allumé et connecté au VPN sur le bureau du salon.",
+        tags: ["télétravail", "fin de journée"],
+        answers: [
+          { text: "Je le laisse allumé — je reprends demain matin et ça me permet de recevoir des notifications.", score: 0 },
+          { text: "Je me déconnecte du VPN, je verrouille ou j'éteins mon poste et je range les documents papier.", score: 2 },
+          { text: "Je verrouille mon poste et je coupe le VPN.", score: 2 },
+          { text: "Je ferme uniquement les applications sensibles et je laisse le VPN connecté pour les mises à jour.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre environnement de télétravail n'est pas encore configuré pour protéger la confidentialité de votre travail", desc: "Participer à une réunion confidentielle sans s'isoler, laisser son ordinateur allumé et connecté en fin de journée, prêter son ordinateur professionnel à son enfant, laisser le mot de passe par défaut de la box : ces comportements transforment votre domicile en un espace moins sécurisé que le bureau. La sécurité physique et organisationnelle du télétravail est aussi importante que la sécurité technique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre environnement de télétravail dans les situations évidentes mais des habitudes pratiques persistent", desc: "Vous verrouillez votre poste, vous vous isolez pour les réunions sensibles, vous ne prêtez pas votre matériel professionnel. Mais le mot de passe par défaut de la box, l'ordinateur allumé la nuit, les documents imprimés laissés sans surveillance : ces points créent encore des expositions. L'enjeu est d'étendre votre rigueur à ces aspects moins visibles." },
+          haut: { label: "Réflexes installés", titre: "Votre environnement de télétravail est configuré pour protéger la confidentialité avec le même niveau que le bureau", desc: "Vous changez le mot de passe par défaut de votre box. Vous vous isolez pour les réunions confidentielles. Vous verrouillez votre poste même pour deux minutes. Vous éteignez ou verrouillez en fin de journée. Vous ne prêtez pas votre matériel professionnel. Cette configuration rigoureuse de votre espace de télétravail — qui demande un investissement initial mais peu de charge quotidienne — est ce qui rend le travail à domicile réellement sécurisé." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "L'outil de visioconférence approuvé par votre entreprise a des fonctionnalités limitées. Pour une réunion importante avec un client, vous proposez d'utiliser Zoom qui offre de meilleures options.",
+        tags: ["outils", "shadow IT"],
+        answers: [
+          { text: "J'utilise Zoom — c'est une solution reconnue et la réunion est importante.", score: 0 },
+          { text: "J'utilise l'outil approuvé et je remonte le besoin fonctionnel à la DSI pour qu'elle évalue des alternatives.", score: 2 },
+          { text: "J'utilise Zoom uniquement pour les réunions externes — les outils approuvés restent pour les réunions internes.", score: 0 },
+          { text: "Je demande une dérogation à la DSI avant d'utiliser Zoom.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous utilisez uniquement les outils approuvés par votre DSI pour les activités professionnelles, même quand des alternatives non approuvées vous semblent meilleures.",
+        tags: ["outils", "approbation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre ordinateur professionnel a un problème technique en télétravail. Pour le résoudre rapidement, vous envisagez d'activer les droits administrateur temporairement pour installer un correctif vous-même.",
+        tags: ["outils", "accès admin"],
+        answers: [
+          { text: "Je l'active — c'est ma machine et le problème est urgent.", score: 0 },
+          { text: "Je contacte le support informatique pour qu'il intervienne à distance sans modifier moi-même les droits.", score: 2 },
+          { text: "J'active les droits temporairement, je règle le problème et je les désactive immédiatement.", score: 0.5 },
+          { text: "Je reporte le problème à demain quand je serai au bureau.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez sur un fichier lourd depuis chez vous. La connexion VPN est lente. Pour contourner, vous enregistrez le fichier sur votre Google Drive personnel.",
+        tags: ["outils", "stockage cloud"],
+        answers: [
+          { text: "Je l'enregistre sur Google Drive — c'est temporaire et le fichier sera transféré demain.", score: 0 },
+          { text: "Je reste sur les outils approuvés même si c'est plus lent — les données professionnelles ne doivent pas quitter le périmètre de l'entreprise.", score: 2 },
+          { text: "Je contacte le support IT pour qu'il améliore la connexion VPN.", score: 1.5 },
+          { text: "Je travaille en local et je synchronise quand la connexion est meilleure.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue en télétravail vous demande d'accéder à un fichier depuis son compte car il n'a pas la connexion. Il vous demande ses identifiants par message.",
+        tags: ["outils", "accès partagé"],
+        answers: [
+          { text: "Je l'aide — il s'agit d'une urgence et c'est un collègue de confiance.", score: 0 },
+          { text: "Je lui dis que partager ses identifiants est interdit et je cherche une alternative — droits d'accès partagés, envoi du fichier.", score: 2 },
+          { text: "J'accède au fichier avec ses identifiants mais je lui conseille de les changer après.", score: 0 },
+          { text: "Je refuse et je contacte le support IT pour trouver une solution.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne partagez jamais vos identifiants et vous n'utilisez jamais les identifiants d'un·e collègue, même pour rendre service.",
+        tags: ["outils", "identifiants"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une notification vous demande de redémarrer votre ordinateur pour appliquer des mises à jour de sécurité. Vous êtes en plein travail et vous repoussez depuis trois jours.",
+        tags: ["outils", "mise à jour"],
+        answers: [
+          { text: "Je continue à repousser — je finirai d'abord ce que je fais et je le ferai ce soir.", score: 0 },
+          { text: "Je planifie la mise à jour pour la prochaine pause — les mises à jour de sécurité ne doivent pas attendre trop longtemps.", score: 2 },
+          { text: "Je l'applique maintenant quitte à perdre mon contexte de travail.", score: 2 },
+          { text: "Je la reporte jusqu'au week-end pour ne pas interrompre ma semaine.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous participez à une réunion en visioconférence depuis votre domicile. Votre arrière-plan montre votre salon avec des documents sur le mur.",
+        tags: ["outils", "visio"],
+        answers: [
+          { text: "Je laisse — ce sont des documents personnels et mes collègues ne les lisent pas.", score: 0 },
+          { text: "J'utilise un fond virtuel ou je nettoie mon arrière-plan — un document personnel peut contenir des informations inattendues.", score: 2 },
+          { text: "Je vérifie rapidement que les documents visibles ne sont pas sensibles.", score: 1 },
+          { text: "Je positionne ma caméra pour que les documents ne soient pas visibles.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les mises à jour de sécurité de vos appareils professionnels dans les 48 heures suivant leur disponibilité.",
+        tags: ["outils", "mises à jour"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise impose une authentification renforcée pour l'accès à distance. Ce matin, le processus d'authentification prend 3 minutes à cause d'un problème technique.",
+        tags: ["outils", "authentification"],
+        answers: [
+          { text: "Je cherche un moyen de contourner l'authentification pour commencer plus vite.", score: 0 },
+          { text: "Je patiente et je signale le problème d'authentification au support IT.", score: 2 },
+          { text: "Je me connecte depuis mon téléphone personnel pendant que j'attends.", score: 0 },
+          { text: "Je contacte le support IT pour qu'il accélère le processus.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La frontière entre outils approuvés et solutions pratiques non approuvées est encore poreuse", desc: "Utiliser Zoom parce que c'est mieux que l'outil approuvé, enregistrer un fichier lourd sur Google Drive parce que le VPN est lent, installer un logiciel utile sans validation DSI : ces contournements créent des brèches dans le périmètre de sécurité de l'entreprise. Les outils non approuvés ne sont pas couverts par les garanties de sécurité de votre organisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez les outils approuvés dans la plupart des cas mais des contournements apparaissent sous pression", desc: "Vous utilisez les outils approuvés pour les activités courantes. Mais quand le VPN est lent et qu'un fichier lourd doit passer, quand Zoom offre des fonctionnalités que l'outil officiel n'a pas, quand une mise à jour s'accumule depuis plusieurs jours : des contournements peuvent apparaître. L'enjeu est de traiter ces situations comme des signaux à remonter plutôt que des problèmes à contourner." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez uniquement les outils approuvés et vous remontez les besoins plutôt que de contourner", desc: "Vous utilisez l'outil approuvé même s'il est moins fonctionnel que l'alternative. Vous contactez l'IT pour un problème de VPN plutôt que de travailler sans. Vous appliquez les mises à jour dans les 48h. Vous ne partagez jamais les identifiants d'un·e collègue même pour dépanner. Cette discipline sur les outils et les accès — qui suppose d'accepter des contraintes fonctionnelles — est ce qui maintient le périmètre de sécurité de l'organisation." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Pendant votre journée de télétravail, vous utilisez votre ordinateur professionnel pour faire quelques achats personnels sur Amazon entre deux réunions.",
+        tags: ["frontière pro/perso", "navigation"],
+        answers: [
+          { text: "C'est une utilisation mineure et occasionnelle — tout le monde le fait.", score: 0 },
+          { text: "Je fais mes achats depuis mon téléphone ou un appareil personnel — l'ordinateur professionnel n'est pas un outil personnel.", score: 2 },
+          { text: "Je le fais depuis un profil navigateur séparé sur mon ordinateur professionnel.", score: 0.5 },
+          { text: "Je limite les usages personnels aux pauses et aux sites sans risque.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous effectuez toutes vos activités personnelles sur vos appareils personnels, pas sur vos appareils professionnels.",
+        tags: ["frontière pro/perso", "séparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre messagerie personnelle et votre messagerie professionnelle sont toutes les deux ouvertes sur votre ordinateur professionnel. Vous répondez à des mails personnels entre deux tâches.",
+        tags: ["frontière pro/perso", "messagerie"],
+        answers: [
+          { text: "C'est pratique d'avoir tout au même endroit et c'est une utilisation mineure.", score: 0 },
+          { text: "Je ferme ma messagerie personnelle sur mon ordinateur professionnel et j'y accède depuis mon téléphone.", score: 2 },
+          { text: "Je sépare les onglets et je fais attention à ne pas mélanger les contenus.", score: 0.5 },
+          { text: "Je réponds uniquement aux mails personnels urgents depuis mon poste professionnel.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous souhaitez installer un logiciel pratique pour la gestion de vos photos personnelles sur votre ordinateur professionnel. Ce logiciel est gratuit et reconnu.",
+        tags: ["frontière pro/perso", "téléchargement"],
+        answers: [
+          { text: "Je l'installe — c'est un logiciel reconnu et c'est mon poste de travail.", score: 0 },
+          { text: "Je ne l'installe pas — les logiciels personnels ne doivent pas être installés sur un poste professionnel sans validation de la DSI.", score: 2 },
+          { text: "Je vérifie d'abord si ce logiciel est sur la liste des logiciels autorisés.", score: 1.5 },
+          { text: "Je l'installe en créant un profil utilisateur séparé sur le même poste.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous publiez une photo de votre bureau à domicile pour montrer votre configuration de télétravail sur LinkedIn. Des documents de travail sont visibles sur votre bureau.",
+        tags: ["frontière pro/perso", "réseaux sociaux"],
+        answers: [
+          { text: "Je publie — les documents sont flous et personne ne peut les lire.", score: 0 },
+          { text: "Je nettoie mon bureau ou je recadre la photo avant de publier.", score: 2 },
+          { text: "Je publie après avoir vérifié qu'aucun document confidentiel n'est visible.", score: 1.5 },
+          { text: "Je mets la photo en accès restreint pour mes relations LinkedIn seulement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'installez aucun logiciel personnel sur votre poste professionnel sans validation préalable de la DSI.",
+        tags: ["frontière pro/perso", "logiciels"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partagez votre écran en réunion. Des notifications personnelles — messages de votre famille — apparaissent en bas de l'écran pendant la présentation.",
+        tags: ["frontière pro/perso", "partage d'écran"],
+        answers: [
+          { text: "Je continue la présentation — les notifications sont visibles mais c'est une situation normale.", score: 0 },
+          { text: "J'active le mode 'ne pas déranger' et je désactive les notifications personnelles avant de partager mon écran.", score: 2 },
+          { text: "Je minimise les notifications en les fermant rapidement pendant la réunion.", score: 0.5 },
+          { text: "Je partage uniquement la fenêtre de présentation plutôt que tout l'écran.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise n'a pas fourni de téléphone professionnel. Vous utilisez votre téléphone personnel pour accéder aux mails et aux applications professionnelles. Votre enfant utilise aussi ce téléphone.",
+        tags: ["frontière pro/perso", "BYOD"],
+        answers: [
+          { text: "Je laisse — mon enfant n'accédera pas aux applications professionnelles.", score: 0 },
+          { text: "Je crée un profil séparé sur le téléphone et je protège le profil professionnel par un code distinct.", score: 2 },
+          { text: "Je m'assure que les applications professionnelles sont protégées par un code PIN supplémentaire.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour obtenir un téléphone professionnel dédié.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de partager votre écran en réunion, vous désactivez les notifications personnelles pour éviter toute divulgation involontaire.",
+        tags: ["frontière pro/perso", "notifications"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre ordinateur professionnel contient des photos personnelles et vos fichiers de comptabilité familiale que vous avez stockés là par commodité.",
+        tags: ["frontière pro/perso", "données personnelles sur poste pro"],
+        answers: [
+          { text: "C'est pratique et ça ne gêne pas mon travail.", score: 0 },
+          { text: "Je les transfère sur un support personnel — les données personnelles n'ont pas leur place sur un poste professionnel.", score: 2 },
+          { text: "Je les mets dans un dossier clairement séparé des données professionnelles.", score: 0.5 },
+          { text: "Je les supprime du poste et je les archive sur un cloud personnel.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La séparation pro/perso sur vos appareils est insuffisante et crée des expositions régulières", desc: "Faire ses achats personnels sur l'ordinateur professionnel, avoir sa messagerie personnelle ouverte sur son poste de travail, laisser des données personnelles sur son poste pro, publier une photo LinkedIn avec des documents visibles : chaque usage personnel de vos appareils professionnels augmente la surface d'exposition. Un seul logiciel mal sécurisé ou un seul site malveillant peut compromettre l'ensemble." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez globalement la séparation pro/perso mais quelques usages croisés persistent", desc: "Vous séparez globalement vos usages pro et perso. Mais la messagerie personnelle ouverte sur le poste professionnel, les achats pendant une pause, quelques photos personnelles stockées par commodité : ces usages croisés persistent. L'enjeu est de traiter l'ordinateur professionnel comme un outil professionnel uniquement — sans exceptions pour les usages qui semblent mineurs." },
+          haut: { label: "Réflexes installés", titre: "La séparation pro/perso est stricte sur vos appareils — sans exceptions pour les usages qui semblent mineurs", desc: "Vous ne faites pas vos achats personnels sur votre ordinateur professionnel. Vous fermez votre messagerie personnelle sur votre poste de travail. Vous n'installez aucun logiciel sans validation DSI. Vous désactivez les notifications personnelles avant de partager votre écran. Cette séparation stricte — qui peut sembler excessive pour des usages mineurs — est ce qui évite que votre poste de travail devienne un vecteur de compromission via vos habitudes personnelles." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous êtes en télétravail depuis deux ans. Certaines précautions que vous appliquiez au début — verrouiller l'écran, ranger les documents — sont devenues moins systématiques avec le temps.",
+        tags: ["durée", "habitudes"],
+        answers: [
+          { text: "C'est normal — avec l'expérience on apprend ce qui est vraiment important et ce qui est superflu.", score: 0 },
+          { text: "Je me réimpose les standards complets — le relâchement progressif est exactement ce que les attaquants attendent.", score: 2 },
+          { text: "Je maintiens les précautions qui me semblent pertinentes dans mon contexte domestique.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour qu'il rappelle les bonnes pratiques à toute l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos pratiques de sécurité en télétravail sont les mêmes qu'au bureau — même niveau de vigilance, mêmes réflexes.",
+        tags: ["durée", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise a organisé une session de rappel des bonnes pratiques de sécurité en télétravail. Vous estimez bien connaître les règles.",
+        tags: ["durée", "audit personnel"],
+        answers: [
+          { text: "Je ne participe pas — je connais déjà les règles et c'est une perte de temps.", score: 0 },
+          { text: "Je participe — les pratiques évoluent et une session de rappel peut mettre en lumière des points que j'ai négligés.", score: 2 },
+          { text: "Je parcours le contenu rapidement pour voir s'il y a quelque chose de nouveau.", score: 0.5 },
+          { text: "Je participe uniquement si la session aborde des sujets que je ne maîtrise pas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En télétravail depuis plusieurs mois, vous remarquez que votre connexion VPN est parfois instable et que vous avez pris l'habitude de travailler sans VPN quand il bug.",
+        tags: ["durée", "signalement"],
+        answers: [
+          { text: "Je continue — les instabilités du VPN sont connues et travailler sans VPN reste raisonnable.", score: 0 },
+          { text: "Je signale le problème de stabilité du VPN à l'équipe IT et je n'utilise pas de données sensibles sans VPN.", score: 2 },
+          { text: "Je contacte le support IT uniquement si l'instabilité s'aggrave.", score: 0.5 },
+          { text: "Je redémarre le VPN et je ne l'utilise pas pour les tâches qui ne semblent pas sensibles.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau collègue en télétravail vous demande comment les gens dans l'équipe gèrent la frontière pro/perso sur leurs appareils. Vous savez que certains collègues prennent des libertés.",
+        tags: ["durée", "évolution équipe"],
+        answers: [
+          { text: "Je lui décris les pratiques réelles de l'équipe — c'est plus utile que la politique officielle.", score: 0 },
+          { text: "Je lui explique les règles officielles et je lui dis que les pratiques qui s'en écartent sont des risques.", score: 2 },
+          { text: "Je lui dis de regarder la politique de sécurité de l'entreprise pour se faire sa propre opinion.", score: 1 },
+          { text: "Je lui décris les pratiques officielles sans commenter ce que les collègues font.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous transmettez les bonnes pratiques de sécurité en télétravail aux nouveaux arrivants, pas seulement les pratiques réelles de l'équipe.",
+        tags: ["durée", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous demande d'évaluer les risques de sécurité liés au télétravail dans votre équipe. Vous savez que certaines pratiques ne sont pas conformes.",
+        tags: ["durée", "évaluation"],
+        answers: [
+          { text: "Je décris les risques théoriques sans mentionner les pratiques spécifiques de l'équipe.", score: 0 },
+          { text: "Je décris honnêtement les pratiques observées et les risques réels qui en découlent.", score: 2 },
+          { text: "J'en parle d'abord aux collègues concernés avant de les mentionner dans mon évaluation.", score: 1 },
+          { text: "Je remonte les risques sans nommer personne spécifiquement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre domicile a été cambriolé. Votre ordinateur professionnel se trouvait dans la pièce mais il ne semble pas avoir été pris. La maison est dans un état de désordre.",
+        tags: ["durée", "incident domicile"],
+        answers: [
+          { text: "Je vérifie que l'ordinateur est là et je reprends le travail dès que possible.", score: 0 },
+          { text: "Je contacte immédiatement l'équipe IT même si l'ordinateur est là — quelqu'un a peut-être eu accès à la pièce.", score: 2 },
+          { text: "Je contacte l'équipe IT uniquement si l'ordinateur montre des signes d'accès.", score: 0 },
+          { text: "Je contacte la police et j'informe mon responsable, l'équipe IT sera contactée si nécessaire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Tout événement à votre domicile susceptible d'avoir exposé votre matériel professionnel — cambriolage, accès par un tiers — est signalé à l'équipe IT.",
+        tags: ["durée", "incidents domicile"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous revenez au bureau après trois semaines de télétravail intensif. Vous avez pris quelques habitudes à domicile — ne pas verrouiller l'écran en partant pour un café — que vous reproduisez maintenant au bureau.",
+        tags: ["durée", "retour bureau"],
+        answers: [
+          { text: "Je laisse — au bureau avec des collègues de confiance, le risque est différent d'à la maison.", score: 0 },
+          { text: "Je me réimpose les réflexes de bureau — verrouillage à chaque départ, même pour deux minutes.", score: 2 },
+          { text: "Je fais attention uniquement dans les zones où des visiteurs externes peuvent accéder.", score: 0.5 },
+          { text: "Je demande à un collègue de me signaler si j'oublie de verrouiller.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les bonnes pratiques du télétravail se sont dégradées avec le temps ou ne sont pas transmises correctement", desc: "Relâcher progressivement les bonnes pratiques après deux ans de télétravail, décrire les pratiques réelles de l'équipe à un nouveau collègue comme si elles étaient la norme, ne pas signaler un cambriolage à l'équipe IT : ces comportements érodent la sécurité dans la durée. Les habitudes qui se sont installées progressivement sont souvent les plus difficiles à identifier et les plus dangereuses." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez de bonnes pratiques dans la durée mais votre influence sur la culture de l'équipe est encore limitée", desc: "Vous maintenez vos propres pratiques dans la durée. Mais transmettre les règles officielles à un nouveau collègue plutôt que les pratiques réelles de l'équipe, signaler un problème de stabilité VPN plutôt que de travailler sans, contacter l'IT après un cambriolage même si l'ordinateur est là : ces réflexes ne sont pas encore totalement automatiques. L'enjeu est d'étendre la rigueur à ces situations moins fréquentes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques dans la durée et vous contribuez à la culture sécurité de votre équipe", desc: "Vous vous réimposez les standards après deux ans de télétravail. Vous transmettez les règles officielles aux nouveaux, pas les pratiques déviantes de l'équipe. Vous signalez un cambriolage à l'IT même si l'ordinateur est là. Vous revenez aux réflexes de bureau après une longue période de télétravail. Cette constance dans la durée — et cette influence positive sur la culture collective — est ce qui distingue une équipe dont les pratiques de sécurité se maintiennent de celles qui se dégradent progressivement." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
@@ -3395,6 +4062,16 @@
         ["Surmonter les freins au signalement", "Signaler même quand c'est inconfortable, même sans retour visible."],
         ["Transmettre un signalement utile", "Faits, contexte complet, preuves conservées — honnêteté sur les incertitudes."],
         ["Contribuer à la culture de signalement", "Encourager, transmettre, questionner l'absence de signalement."],
+      ]}
+    ],
+
+    ["teletravail-securite-acces", "Télétravail et sécurité des accès", "Tous publics",
+      "Sécuriser son environnement domestique, respecter la frontière pro/perso et maintenir les bonnes pratiques dans la durée.",
+      { domain: "cyber", chapters: [
+        ["Sécuriser son environnement de télétravail", "Configuration réseau, confidentialité physique, matériel dédié."],
+        ["Gérer les outils et les accès à distance", "Outils approuvés uniquement, mises à jour, authentification sans contournement."],
+        ["Gérer la frontière pro/perso", "Séparation stricte des usages, logiciels, données et notifications."],
+        ["Maintenir les bonnes pratiques dans la durée", "Constance, signalement des incidents domestiques, transmission à l'équipe."],
       ]}
     ],
 
