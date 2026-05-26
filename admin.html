@@ -1143,7 +1143,7 @@ function renderOrganizations(){
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
-      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg?"":"disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché""} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
