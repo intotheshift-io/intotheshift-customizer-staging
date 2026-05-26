@@ -783,7 +783,6 @@ function getProjectTitle(project){
 
       try{
         if(isAdmin()){
-<<<<<<< HEAD
           const headers = { Authorization: `Bearer ${getToken()}` };
           const [orgData, projectData] = await Promise.all([
             apiFetch(`/api/admin/organizations`, { headers }),
@@ -797,18 +796,6 @@ function getProjectTitle(project){
           }catch(usersErr){
             console.warn("Comptes rattachés non chargés, cockpit maintenu", usersErr);
           }
-=======
-          const [orgResponse, projectResponse] = await Promise.all([
-            fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
-          ]);
-
-          const orgData = await orgResponse.json().catch(() => ({}));
-          const projectData = await projectResponse.json().catch(() => ({}));
-
-          if(!orgResponse.ok) throw new Error(orgData.error || "Erreur API organisations");
-          if(!projectResponse.ok) throw new Error(projectData.error || "Erreur API projets");
->>>>>>> parent of 9718ee3 (Update client-folder.html)
 
           const organizations = orgData.organizations || orgData.clients || orgData.data || [];
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
@@ -817,6 +804,7 @@ function getProjectTitle(project){
           logClientFolderMappings(clientId, organizations, projects);
 
           if(currentClient){
+            currentClient.users = attachedUsers;
             currentClient.projects = projects.filter(project =>
               String(project.organizationId || project.organization_id || project.orgId || project.org_id || "") === String(clientId)
             );
