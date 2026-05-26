@@ -2677,6 +2677,673 @@
 
   },
 
+  "accompagner-equipe-transformation": {
+    0: [
+      {
+        type: "choix",
+        text: "Lors d'une réunion d'équipe sur la transformation en cours, votre collaborateur Étienne exprime des craintes sur l'impact de la réorganisation sur son quotidien. Ses craintes vous semblent exagérées.",
+        tags: ["résistances", "écoute"],
+        answers: [
+          { text: "Je le rassure immédiatement — ses craintes ne sont pas fondées et ça le calmera.", score: 0 },
+          { text: "Je l'écoute jusqu'au bout avant de répondre, même si je ne partage pas ses craintes.", score: 2 },
+          { text: "Je lui demande de formuler des questions concrètes plutôt que des craintes générales.", score: 0.5 },
+          { text: "Je lui dis que ses craintes sont compréhensibles mais que la décision est prise.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Plusieurs membres de votre équipe ont des objections légitimes sur la façon dont la transformation est déployée. Vous êtes d'accord avec eux sur le fond.",
+        tags: ["résistances", "remontée"],
+        answers: [
+          { text: "Je leur dis de s'adapter — la décision vient d'en haut et je n'ai pas le pouvoir de la changer.", score: 0 },
+          { text: "Je remonte leurs objections à ma direction avec mes propres observations.", score: 2 },
+          { text: "Je cherche des solutions à leur niveau sans remonter — ça créerait des tensions inutiles.", score: 0.5 },
+          { text: "Je leur dis que je comprends mais que je ne peux pas grand chose.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand votre équipe a des objections légitimes sur une transformation, vous les remontez à votre direction même si vous n'avez pas le pouvoir de changer la décision.",
+        tags: ["résistances", "relai"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaboratrice Inès résiste à un changement de méthode. En creusant, vous réalisez qu'elle n'a pas peur du changement en lui-même mais qu'elle n'a pas les compétences pour l'appliquer.",
+        tags: ["résistances", "types"],
+        answers: [
+          { text: "Je la recadre — la résistance n'est pas acceptable quelle qu'en soit la raison.", score: 0 },
+          { text: "Je lui propose un accompagnement sur les compétences manquantes avant d'exiger l'application.", score: 2 },
+          { text: "Je lui donne plus de temps pour s'adapter.", score: 1 },
+          { text: "Je lui propose de commencer par les aspects du changement qui ne nécessitent pas ces compétences.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe très écouté par les autres exprime ouvertement son opposition à la transformation. Il influence négativement le reste du groupe.",
+        tags: ["résistances", "influenceurs"],
+        answers: [
+          { text: "Je le convoque pour lui demander de ne plus exprimer son opposition devant l'équipe.", score: 0 },
+          { text: "Je lui parle en tête-à-tête pour comprendre ses objections et voir comment les adresser.", score: 2 },
+          { text: "Je l'implique davantage dans la mise en œuvre pour le convertir.", score: 1.5 },
+          { text: "Je laisse — son opposition s'atténuera quand il verra les résultats.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à une résistance de votre équipe, vous cherchez d'abord à comprendre sa nature avant d'y répondre.",
+        tags: ["résistances", "compréhension"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous n'êtes vous-même pas convaincu·e par la transformation que vous devez accompagner. Votre équipe vous pose des questions directes sur votre avis.",
+        tags: ["résistances", "vos propres doutes"],
+        answers: [
+          { text: "Je défends la transformation avec enthousiasme — un manager doit porter le discours de sa direction.", score: 0 },
+          { text: "Je suis honnête sur mes réserves tout en m'engageant à mettre en œuvre la décision.", score: 2 },
+          { text: "Je reste neutre — ni pour ni contre, je laisse chacun se faire son opinion.", score: 0 },
+          { text: "Je défends les aspects auxquels je crois et je reconnais ceux qui me laissent dubitatif.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La résistance dans votre équipe est collective et silencieuse — personne ne s'exprime mais la mise en œuvre est molle.",
+        tags: ["résistances", "collectif"],
+        answers: [
+          { text: "Je renforce les injonctions à appliquer — la résistance passive doit être traitée comme un manque d'engagement.", score: 0 },
+          { text: "Je crée un espace d'expression pour que les réticences puissent s'exprimer et être traitées.", score: 2 },
+          { text: "Je cherche quelques alliés dans l'équipe pour créer une dynamique positive.", score: 1.5 },
+          { text: "J'attends que la mise en œuvre crée ses propres preuves — les résultats convaincront mieux que les discours.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous créez des espaces où votre équipe peut exprimer ses résistances sans conséquence, même quand la décision est irrévocable.",
+        tags: ["résistances", "espace expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après plusieurs semaines, certains membres de votre équipe n'ont toujours pas intégré le changement. Les autres commencent à s'en plaindre.",
+        tags: ["résistances", "acceptation"],
+        answers: [
+          { text: "Je laisse encore du temps — tout le monde s'adapte à son rythme.", score: 0 },
+          { text: "Je fais un point individuel avec chaque personne en difficulté pour comprendre et fixer un cap.", score: 2 },
+          { text: "Je gère collectivement en rappelant les attentes à toute l'équipe.", score: 0.5 },
+          { text: "J'en parle aux RH pour envisager des mesures adaptées.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les résistances de votre équipe mais sans chercher à en comprendre la nature ni à les remonter", desc: "Rassurer immédiatement les craintes sans les écouter, demander à Étienne de s'adapter sans chercher pourquoi il résiste, ne pas remonter les objections légitimes de l'équipe à la direction : ces comportements traitent la résistance comme un problème à éliminer plutôt qu'une information à exploiter. La résistance bien comprise est souvent la voie d'accès à un accompagnement efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "La direction a communiqué les décisions de transformation mais pas leurs raisons. Votre équipe vous demande pourquoi ces changements ont été décidés.",
+        tags: ["communication", "sens"],
+        answers: [
+          { text: "Je leur transmets ce que j'ai reçu — si la direction n'a pas expliqué, ce n'est pas à moi de le faire.", score: 0 },
+          { text: "Je cherche à comprendre les raisons avant de les expliquer à mon équipe.", score: 2 },
+          { text: "Je leur dis que je n'ai pas l'information et que je vais la chercher.", score: 1.5 },
+          { text: "Je leur propose mes hypothèses sur les raisons en précisant que ce sont des hypothèses.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de relayer une décision de transformation à votre équipe, vous cherchez à comprendre les raisons derrière pour pouvoir les expliquer.",
+        tags: ["communication", "sens"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vous pose des questions sur la suite de la transformation que vous n'êtes pas en mesure d'anticiper avec certitude.",
+        tags: ["communication", "incertitude"],
+        answers: [
+          { text: "Je rassure sur des points que je ne maîtrise pas — l'incertitude serait plus anxiogène.", score: 0 },
+          { text: "Je dis clairement ce que je sais, ce que je ne sais pas encore et quand j'aurai plus d'informations.", score: 2 },
+          { text: "Je renvoie toutes les questions à la direction — c'est à elle de communiquer.", score: 0 },
+          { text: "Je leur donne les informations que j'ai en précisant qu'elles sont susceptibles d'évoluer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La transformation avance bien dans votre équipe. Vous n'avez pas fait de point collectif depuis trois semaines. Il ne se passe rien de notable.",
+        tags: ["communication", "rythme"],
+        answers: [
+          { text: "Je laisse — pas d'actualité, pas de réunion inutile.", score: 0 },
+          { text: "Je fais quand même un point régulier pour maintenir la connexion et prévenir les rumeurs.", score: 2 },
+          { text: "Je réponds aux questions individuelles au fur et à mesure — c'est plus efficace.", score: 1 },
+          { text: "Je fais un point uniquement si des questions m'ont été remontées.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La transformation va avoir un impact plus négatif que prévu sur certains membres de votre équipe. Vous devez leur annoncer.",
+        tags: ["communication", "mauvaises nouvelles"],
+        answers: [
+          { text: "J'attends d'avoir toutes les informations avant d'annoncer — les informations partielles créent plus d'anxiété.", score: 0.5 },
+          { text: "J'annonce dès que j'ai les informations suffisantes, même si tout n'est pas finalisé, en précisant ce qui reste incertain.", score: 2 },
+          { text: "Je laisse la direction annoncer directement pour ne pas être le messager.", score: 0 },
+          { text: "Je prépare chaque personne individuellement avant l'annonce collective.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous annoncez les mauvaises nouvelles dès que vous avez les informations suffisantes, sans attendre qu'elles soient complètes.",
+        tags: ["communication", "mauvaises nouvelles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En réunion avec la direction, vous défendez la transformation. Avec votre équipe, vous la relativisez pour ménager les susceptibilités.",
+        tags: ["communication", "double discours"],
+        answers: [
+          { text: "C'est la bonne posture — adapter son discours au public est une compétence managériale.", score: 0 },
+          { text: "Je cherche à aligner mes deux discours — dire des choses différentes à ma direction et à mon équipe n'est pas tenable.", score: 2 },
+          { text: "Je reste factuel dans les deux contextes pour éviter tout double discours.", score: 1.5 },
+          { text: "C'est inévitable dans un contexte de transformation — les deux publics ont des besoins différents.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Des rumeurs circulent dans votre équipe sur des décisions qui n'ont pas encore été prises. Certains membres s'inquiètent.",
+        tags: ["communication", "rumeurs"],
+        answers: [
+          { text: "J'attends que les rumeurs s'éteignent — les démentir leur donne plus d'importance.", score: 0 },
+          { text: "Je les aborde directement en distinguant ce qui est décidé, ce qui est en discussion et ce qui est faux.", score: 2 },
+          { text: "Je remonte les rumeurs à ma direction pour qu'elle communique.", score: 1 },
+          { text: "Je rassure mon équipe en disant que je les informerai si quelque chose de majeur se décide.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous adressez les rumeurs dans votre équipe de façon directe plutôt que d'attendre qu'elles s'éteignent.",
+        tags: ["communication", "rumeurs"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La transformation produit ses premiers résultats positifs. Votre équipe ne l'a pas remarqué.",
+        tags: ["communication", "succès"],
+        answers: [
+          { text: "Les résultats parlent d'eux-mêmes — si mon équipe ne les voit pas, c'est qu'ils ne sont pas si marquants.", score: 0 },
+          { text: "Je les mets en lumière explicitement en faisant le lien avec les efforts fournis.", score: 2 },
+          { text: "Je les mentionne lors du prochain point d'équipe.", score: 1 },
+          { text: "Je les remonte à ma direction pour que la reconnaissance vienne d'en haut.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre communication pendant la transformation est réactive — vous attendez les questions plutôt que d'anticiper", desc: "Ne pas faire de point collectif s'il n'y a pas d'actualité notable, transmettre les décisions sans avoir cherché à en comprendre les raisons, attendre que les rumeurs s'éteignent plutôt que de les adresser : ces comportements laissent un vide que les rumeurs et l'anxiété remplissent. Dans une transformation, l'absence de communication est perçue comme une mauvaise nouvelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Six mois après le lancement de la transformation, les nouvelles pratiques sont appliquées mais de façon inconstante — certains jours elles tiennent, d'autres pas.",
+        tags: ["ancrage", "pratiques"],
+        answers: [
+          { text: "Je laisse — l'inconstance est normale au début, ça finira par se stabiliser.", score: 0 },
+          { text: "J'identifie les situations où les pratiques cèdent et je cherche pourquoi.", score: 2 },
+          { text: "Je renforce la supervision pour maintenir l'application constante.", score: 0.5 },
+          { text: "Je rappelle régulièrement les attentes lors des réunions d'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand les nouvelles pratiques s'appliquent de façon inconstante, vous cherchez les causes plutôt que de renforcer uniquement les injonctions.",
+        tags: ["ancrage", "analyse"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Sous pression de production, certains membres de votre équipe reviennent aux anciennes pratiques. Ça va plus vite et ça n'impacte pas les résultats immédiats.",
+        tags: ["ancrage", "retour en arrière"],
+        answers: [
+          { text: "Je tolère pendant la période de pression — on reviendra aux nouvelles pratiques après.", score: 0 },
+          { text: "Je maintiens les nouvelles pratiques même sous pression — les exceptions créent des précédents.", score: 2 },
+          { text: "J'identifie les nouvelles pratiques qui peuvent être allégées sous pression sans en perdre l'essentiel.", score: 1 },
+          { text: "Je remonte à ma direction que la pression de production met en danger l'ancrage des nouvelles pratiques.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Deux membres de votre équipe ont pleinement intégré les nouvelles pratiques. Les autres avancent plus lentement.",
+        tags: ["ancrage", "modèles"],
+        answers: [
+          { text: "Je les félicite discrètement pour ne pas créer de jalousie.", score: 0.5 },
+          { text: "Je les invite à partager leur façon de faire avec le reste de l'équipe.", score: 2 },
+          { text: "Je les utilise comme référents pour les questions des autres membres.", score: 1.5 },
+          { text: "Je ne les mets pas en avant — ça risque de braquer les autres.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous cherchez à créer des rituels qui ancrent les nouvelles pratiques dans le quotidien. Votre équipe trouve ça artificiel.",
+        tags: ["ancrage", "rituels"],
+        answers: [
+          { text: "Je renonce — forcer des rituels dans une équipe qui les rejette est contre-productif.", score: 0 },
+          { text: "J'explore avec l'équipe quels rituels correspondraient mieux à leur façon de travailler.", score: 2 },
+          { text: "J'impose les rituels le temps qu'ils deviennent naturels.", score: 0 },
+          { text: "Je leur explique pourquoi les rituels sont utiles pour ancrer les nouvelles pratiques.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous impliquez votre équipe dans la conception des rituels ou méthodes qui ancrent les nouvelles pratiques.",
+        tags: ["ancrage", "co-construction"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous intégrez les nouvelles pratiques dans les critères d'évaluation de votre équipe pour la prochaine période.",
+        tags: ["ancrage", "évaluation"],
+        answers: [
+          { text: "Je laisse les critères habituels — les nouvelles pratiques s'ancreront seules si elles sont utiles.", score: 0 },
+          { text: "J'intègre les nouvelles pratiques comme critères d'évaluation avec des indicateurs précis.", score: 2 },
+          { text: "J'en fais un critère qualitatif sans indicateur précis.", score: 0.5 },
+          { text: "Je le mentionne comme un objectif de développement sans en faire un critère d'évaluation.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les nouvelles pratiques imposées par la direction ne sont pas parfaitement adaptées aux spécificités de votre équipe. Vous pouvez les ajuster à la marge.",
+        tags: ["ancrage", "adaptation locale"],
+        answers: [
+          { text: "J'applique les pratiques telles quelles — l'adaptation locale crée des inégalités entre équipes.", score: 0.5 },
+          { text: "J'adapte à la marge en gardant l'esprit des nouvelles pratiques et en documentant mes ajustements.", score: 2 },
+          { text: "J'adapte sans documenter — si ça marche, l'adaptation parlera d'elle-même.", score: 0 },
+          { text: "Je demande l'autorisation à ma direction avant d'adapter quoi que ce soit.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous adaptez les nouvelles pratiques aux spécificités de votre équipe sans en perdre l'essentiel, en documentant vos ajustements.",
+        tags: ["ancrage", "adaptation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un an après la transformation, les nouvelles pratiques semblent acquises. Votre équipe pense qu'elle n'a plus besoin d'y prêter attention.",
+        tags: ["ancrage", "durée"],
+        answers: [
+          { text: "Je valide — si c'est acquis, c'est acquis.", score: 0 },
+          { text: "Je maintiens une vigilance douce — les pratiques acquises se perdent quand on cesse d'y prêter attention.", score: 2 },
+          { text: "Je réduis la fréquence des rappels tout en gardant un œil sur les glissements.", score: 1.5 },
+          { text: "Je laisse l'équipe gérer de façon autonome — elle est adulte.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'ancrage des nouvelles pratiques est laissé à la dynamique naturelle plutôt qu'activement soutenu", desc: "Tolérer les retours aux anciennes pratiques sous pression, laisser l'inconstance se réguler naturellement, ne pas intégrer les nouvelles pratiques dans les critères d'évaluation : ces comportements permettent à la transformation de s'éroder progressivement jusqu'à ce qu'il ne reste que les formes sans le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous accompagnez votre équipe dans une transformation que vous trouvez difficile à vivre vous-même. Votre équipe ne le sait pas.",
+        tags: ["soi", "double rôle"],
+        answers: [
+          { text: "Je garde ça pour moi — un manager n'exprime pas ses propres difficultés devant son équipe.", score: 0 },
+          { text: "Je suis honnête sur le fait que c'est difficile pour moi aussi, sans pour autant m'appesantir.", score: 2 },
+          { text: "Je cherche un espace en dehors de mon équipe pour exprimer mes propres difficultés.", score: 1.5 },
+          { text: "J'attends d'avoir traversé ma propre période difficile avant d'accompagner mon équipe.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes capable d'exprimer vos propres difficultés face à la transformation tout en continuant à accompagner votre équipe.",
+        tags: ["soi", "authenticité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Accompagner votre équipe dans une transformation longue commence à vous épuiser. Vous l'absorbez sans en parler.",
+        tags: ["soi", "ressources"],
+        answers: [
+          { text: "Je continue — les managers doivent tenir et l'équipe a besoin de moi.", score: 0 },
+          { text: "Je cherche un soutien externe — homologue, coach, hiérarchie — pour ne pas porter seul·e.", score: 2 },
+          { text: "Je signale la fatigue à ma hiérarchie pour qu'elle prenne conscience de la charge.", score: 1.5 },
+          { text: "Je prends quelques jours pour récupérer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre propre niveau d'adhésion à la transformation a évolué positivement au fil du temps. Au départ vous étiez réticent·e, maintenant vous y croyez.",
+        tags: ["soi", "cohérence"],
+        answers: [
+          { text: "Je ne le partage pas — ça montrerait que j'avais des doutes au départ.", score: 0 },
+          { text: "Je le partage avec mon équipe — mon parcours peut aider ceux qui sont encore réticents.", score: 2 },
+          { text: "Je l'intègre dans mon accompagnement sans le mettre en avant.", score: 1 },
+          { text: "Je le partage uniquement si quelqu'un me pose la question directement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez l'impression que l'accompagnement de votre équipe dans la transformation dépasse vos compétences actuelles.",
+        tags: ["soi", "limites"],
+        answers: [
+          { text: "Je fais au mieux sans en parler — avouer des limites fragilise la posture du manager.", score: 0 },
+          { text: "Je demande un soutien ou une formation spécifique à l'accompagnement du changement.", score: 2 },
+          { text: "Je délègue une partie de l'accompagnement à des collègues plus à l'aise.", score: 1 },
+          { text: "Je m'appuie sur des ressources externes — articles, podcasts — pour améliorer ma pratique.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous identifiez des lacunes dans votre posture d'accompagnement, vous cherchez activement à les combler plutôt qu'à les contourner.",
+        tags: ["soi", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La transformation est terminée. Vous avez accompagné votre équipe du mieux possible mais certains membres ont mal vécu la période.",
+        tags: ["soi", "bilan"],
+        answers: [
+          { text: "Je me concentre sur les résultats obtenus — l'accompagnement ne peut pas satisfaire tout le monde.", score: 0.5 },
+          { text: "Je prends le temps d'un bilan honnête — ce qui a bien fonctionné, ce que j'aurais fait différemment.", score: 2 },
+          { text: "Je demande un feedback à mon équipe sur la façon dont j'ai accompagné la transformation.", score: 2 },
+          { text: "Je passe rapidement à la suite — une trop longue rétrospective remet en surface des tensions inutiles.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue manager va devoir accompagner une transformation similaire à celle que vous venez de traverser. Il vous demande votre retour.",
+        tags: ["soi", "transmission"],
+        answers: [
+          { text: "Je lui dis que chaque transformation est différente — mon expérience ne sera pas forcément pertinente.", score: 0 },
+          { text: "Je lui partage honnêtement ce qui a marché et ce qui n'a pas marché dans mon accompagnement.", score: 2 },
+          { text: "Je lui donne les grandes lignes sans entrer dans les détails.", score: 0.5 },
+          { text: "Je lui transmets les outils et méthodes que j'ai utilisés.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous partagez votre expérience d'accompagnement de transformation avec vos pairs managers, y compris vos erreurs et vos hésitations.",
+        tags: ["soi", "partage expérience"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une nouvelle transformation s'annonce. Votre équipe est encore fatiguée de la précédente.",
+        tags: ["soi", "prochain changement"],
+        answers: [
+          { text: "Je cache la nouvelle le temps que l'équipe se remette — mieux vaut qu'elle soit en forme pour l'affronter.", score: 0 },
+          { text: "Je les informe dès que j'ai l'information et je reconnais la fatigue de la transformation précédente.", score: 2 },
+          { text: "Je leur annonce en mettant l'accent sur les aspects positifs pour ne pas les décourager.", score: 0.5 },
+          { text: "Je remonte à ma direction la fatigue de l'équipe avant de m'engager sur la nouvelle transformation.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous accompagnez votre équipe en absorbant votre propre vécu de la transformation, sans soutien externe", desc: "Continuer à accompagner son équipe en cachant sa propre fatigue, ne pas chercher de soutien quand l'accompagnement dépasse ses compétences, ne pas faire de bilan honnête à la fin : ces comportements épuisent le manager et privent ses pairs d'apprentissages utiles." },
+          moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -2717,7 +3384,17 @@
         ["Clarifier son rôle et ses contributions", "Livrables, dépendances, périmètre — clarté au démarrage."],
         ["Coopérer dans une équipe projet", "Information proactive, aide spontanée, décisions collectives."],
         ["Gérer les imprévus et les tensions", "Alerter tôt, signaler les erreurs, gérer sa charge collectivement."],
-        ["Capitaliser et transmettre", "REX, documentation, relations, transmission aux moins expérimentés."],
+        ["Capitaliser et transmettre", "REX, documentation, relations, transmission."],
+      ]}
+    ],
+
+    ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
+      "Comprendre les résistances, relayer les décisions et ancrer les nouvelles pratiques dans la durée.",
+      { domain: "transformation", chapters: [
+        ["Comprendre et relayer les résistances", "Écouter, distinguer les types de résistance, remonter les objections légitimes."],
+        ["Communiquer pendant la transformation", "Proactivité, cohérence, mauvaises nouvelles, rumeurs."],
+        ["Ancrer les nouvelles pratiques", "Analyse des glissements, co-construction, vigilance dans la durée."],
+        ["Prendre soin de soi pendant la transformation", "Double rôle, soutien externe, bilan et transmission aux pairs."],
       ]}
     ],
 
