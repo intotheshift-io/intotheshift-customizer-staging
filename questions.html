@@ -1118,7 +1118,7 @@ function getRawBibliotheque(){
           if (!norm(q.text || '') || seen.has(key)) return;
           seen.add(key);
 
-const contentTags = catalogueOrRawTags(q, q.tags || []).map(t => t.t);
+const contentTags = normalizeTags(q.tags || []).map(t => t.t);
 
           out.push({
             id: q.id,
@@ -1151,7 +1151,7 @@ function normalizeLibraryQuestion(q, i){
     adTitle: q.adTitle || '',
     chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
     text: q.text || q.question || q.title || 'Question de bibliothèque',
-tags: catalogueOrRawTags(q, Array.isArray(rawTags) ? rawTags : []).map(t => t.t),
+tags: normalizeTags(Array.isArray(rawTags) ? rawTags : []).map(t => t.t),
     answers: q.answers || q.reponses || null,
     type: q.type || 'choix',
     added: q.added || false
@@ -2243,7 +2243,7 @@ function addFromLib(qid) {
     type: bq.type === 'likert' ? 'likert' : 'choix',
     prov: bq.prov || 'AI',
     text: bq.text,
-tags: catalogueOrRawTags(bq, bq.tags || []).map(t => ({t:t.t, ai:false})),
+tags: normalizeTags(bq.tags || []).map(t => ({t:t.t, ai:false})),
     answers: normalizeImportedAnswers(bq)
   });
 
