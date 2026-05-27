@@ -997,7 +997,9 @@
           type:    q.type || "choix",
           text:    q.text,
           answers: q.answers,
-          tags:    base.concat([domain]).concat(ctags).concat(["Mise en situation"])
+          tags:    (Array.isArray(q.tags) && q.tags.length)
+                     ? q.tags
+                     : base.concat([domain]).concat(ctags).concat(["Mise en situation"])
         };
       });
     }
