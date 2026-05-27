@@ -561,17 +561,14 @@ function makeBlankDiagnosticState(){
 function questionsApiBase(){
   const host = String(window.location.hostname || '').toLowerCase();
   const forced = window.ITS_API_BASE || localStorage.getItem('its_api_base') || '';
+  if(forced) return forced;
+
   const isLocal = host === 'localhost' || host === '127.0.0.1';
   const isStaging = isLocal || host.includes('staging') || host.includes('github.io');
-  const stagingApi = 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io';
-  const prodApi = 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 
-  if(isStaging){
-    if(forced && forced.includes('staging')) return forced;
-    return stagingApi;
-  }
-
-  return forced || prodApi;
+  return isStaging
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 }
 
 function questionsToken(){
@@ -879,25 +876,87 @@ function uniqTags(tags){
     });
 }
 
-function inferContentTags(text, subject, chapter){
-  const hay = norm([text, subject, chapter].join(' '));
-  const tags = [];
+function catalogueQuestionTags(cq){
+  return normalizeTags(cq && cq.tags ? cq.tags : [])
+    .map(t => ({ t:t.t, ai:false }))
+    .slice(0,3);
+}
 
-  if(hay.includes('cyber') || hay.includes('securite numerique') || hay.includes('risque numerique') || hay.includes('email') || hay.includes('sms') || hay.includes('mot de passe') || hay.includes('piece jointe')) {
-    tags.push('Cybersécurité');
+function canonicalQuestionText(v){
+  return norm(v)
+    .replace(/[’']/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sameCatalogueQuestion(question, cq){
+  if(!question || !cq) return false;
+
+  const qid = String(question.id || question.catalogueId || question.catalogue_id || '').trim();
+  const cid = String(cq.id || cq.catalogueId || cq.catalogue_id || '').trim();
+  if(qid && cid && qid === cid) return true;
+
+  const qtext = canonicalQuestionText(question.text || question.question || question.title || '');
+  const ctext = canonicalQuestionText(cq.text || cq.question || cq.title || '');
+  if(!qtext || !ctext) return false;
+  if(qtext === ctext) return true;
+
+  if(qtext.length >= 80 && ctext.length >= 80 && (qtext.includes(ctext) || ctext.includes(qtext))) return true;
+
+  const qWords = qtext.split(' ').filter(w => w.length > 3);
+  const cWords = new Set(ctext.split(' ').filter(w => w.length > 3));
+  if(qWords.length < 8 || cWords.size < 8) return false;
+
+  const common = qWords.filter(w => cWords.has(w)).length;
+  const ratio = common / Math.max(qWords.length, cWords.size);
+  return ratio >= 0.72;
+}
+
+function findCatalogueQuestionTags(question){
+  if(!question) return [];
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    for(const ad of window.ITS_CATALOGUE){
+      for(const ch of (ad.chapters || [])){
+        for(const cq of (ch.questions || [])){
+          if(sameCatalogueQuestion(question, cq)){
+            const tags = catalogueQuestionTags(cq);
+            if(tags.length) return tags;
+          }
+        }
+      }
+    }
   }
-  if(hay.includes('email') || hay.includes('mail') || hay.includes('sms') || hay.includes('message')) tags.push('Message suspect');
-  if(hay.includes('lien') || hay.includes('url')) tags.push('Lien suspect');
-  if(hay.includes('mot de passe') || hay.includes('acces') || hay.includes('réinitialiser') || hay.includes('reinitialiser')) tags.push('Accès');
-  if(hay.includes('piece jointe') || hay.includes('document') || hay.includes('fichier')) tags.push('Document');
-  if(hay.includes('virement') || hay.includes('rib') || hay.includes('paiement')) tags.push('Fraude');
-  if(hay.includes('donnee') || hay.includes('confidentiel') || hay.includes('sensible') || hay.includes('comptabilite')) tags.push('Données sensibles');
-  if(hay.includes('signaler') || hay.includes('alerte') || hay.includes('doute')) tags.push('Signalement');
-  if(hay.includes('qvt') || hay.includes('rps') || hay.includes('charge de travail') || hay.includes('épuisement') || hay.includes('epuisement')) tags.push('QVT / RPS');
-  if(hay.includes('management') || hay.includes('manager') || hay.includes('équipe') || hay.includes('equipe')) tags.push('Management');
-  if(hay.includes('environnement') || hay.includes('sobriete') || hay.includes('empreinte')) tags.push('Environnement');
 
-  return tags;
+  if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
+    for(const themeKey of Object.keys(window.CUSTOM_QUESTIONS)){
+      const groups = window.CUSTOM_QUESTIONS[themeKey] || {};
+      for(const groupKey of Object.keys(groups)){
+        const list = Array.isArray(groups[groupKey]) ? groups[groupKey] : [];
+        for(const cq of list){
+          if(sameCatalogueQuestion(question, cq)){
+            const tags = catalogueQuestionTags(cq);
+            if(tags.length) return tags;
+          }
+        }
+      }
+    }
+  }
+
+  return [];
+}
+
+function catalogueOrRawTags(question, rawTags){
+  const catalogueTags = findCatalogueQuestionTags(question);
+  if(catalogueTags.length) return catalogueTags;
+  return normalizeTags(rawTags || []).map(t => ({ t:t.t, ai:false })).slice(0,3);
+}
+
+function inferContentTags(text, subject, chapter){
+  // Compatibilité : on ne génère plus de tags métier dans questions.html.
+  // La source de vérité est le tag déjà présent dans les catalogues.
+  return [];
 }
 
 function panelSearchHaystack(q){
@@ -949,9 +1008,7 @@ function normalizeChaptersFromState(){
         type: q.type === 'likert' ? 'likert' : 'choix',
         prov: q.prov || normalizeProv(q.tags),
         text: q.text || q.question || 'Nouvelle mise en situation',
-        tags: Array.isArray(q.tags) && q.tags.length && typeof q.tags[0] === 'object'
-          ? q.tags
-          : normalizeTags(q.tags),
+        tags: catalogueOrRawTags(q, q.tags),
         answers: normalizeAnswers(q)
       })),
       profils: [0,1,2].map(pi => {
@@ -1058,12 +1115,10 @@ function getRawBibliotheque(){
           if (!norm(q.text || '') || seen.has(key)) return;
           seen.add(key);
 
-          const contentTags = uniqTags([
-            ...normalizeTags(q.tags).map(t => t.t),
-            ...normalizeTags(ch.tags).map(t => t.t),
-            ...normalizeTags(ad.tags).map(t => t.t),
-            ...inferContentTags(q.text || '', ad.theme || ad.title || '', ch.title || '')
-          ]).slice(0,3);
+          const sourceTags = findCatalogueQuestionTags(q).map(t => t.t);
+          const contentTags = sourceTags.length
+            ? sourceTags
+            : normalizeTags(q.tags || []).map(t => t.t).slice(0,3);
 
           out.push({
             id: q.id,
@@ -1096,7 +1151,7 @@ function normalizeLibraryQuestion(q, i){
     adTitle: q.adTitle || '',
     chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
     text: q.text || q.question || q.title || 'Question de bibliothèque',
-    tags: Array.isArray(rawTags) ? rawTags.map(String) : [],
+    tags: catalogueOrRawTags(q, Array.isArray(rawTags) ? rawTags.map(String) : []).map(t => t.t),
     answers: q.answers || q.reponses || null,
     type: q.type || 'choix',
     added: q.added || false
@@ -2188,21 +2243,7 @@ function addFromLib(qid) {
     type: bq.type === 'likert' ? 'likert' : 'choix',
     prov: bq.prov || 'AI',
     text: bq.text,
-    tags:(bq.tags || [])
-      .filter(t => {
-        const x = String(t).toLowerCase();
-        return !x.includes('base assistée')
-          && !x.includes('base assistee')
-          && !x.includes('conçu par')
-          && !x.includes('concu par')
-          && !x.includes('validation obligatoire')
-          && !x.includes('relecture obligatoire')
-          && !x.includes('aide à la rédaction')
-          && !x.includes('aide a la redaction')
-          && !x.includes('contribution client');
-      })
-      .slice(0,3)
-      .map(t => ({t, ai:false})),
+    tags: catalogueOrRawTags(bq, bq.tags || []).map(t => ({t:t.t, ai:false})),
     answers: normalizeImportedAnswers(bq)
   });
 
