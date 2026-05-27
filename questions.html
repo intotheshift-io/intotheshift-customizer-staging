@@ -279,6 +279,15 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .filter-tag.on{background:#18375d;color:#fff;border-color:#18375d}
 .filter-tag:hover:not(.on){background:#edf1f7}
 .panel-list{flex:1;min-height:220px;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:6px;background:#fff}
+/* Correctif panneau bibliothèque : le drawer doit rester entièrement lisible et refermable,
+   même si un mode lecture seule global désactive des boutons ailleurs dans la page. */
+.panel-right{height:100dvh;max-height:100dvh;overflow:hidden;box-shadow:-18px 0 45px rgba(24,55,93,.18)}
+.panel-right.on{right:0!important}
+.panel-right .panel-head{flex-shrink:0;position:sticky;top:0;z-index:3;background:#fff;min-height:56px}
+.panel-right .panel-close{pointer-events:auto!important;opacity:1!important;cursor:pointer!important;flex:0 0 auto}
+.panel-right .panel-context,.panel-right .panel-search,.panel-right .panel-tags{flex-shrink:0}
+.panel-right .panel-list{min-height:0}
+.overlay.on{display:block!important}
 .panel-q{background:#fafbfc;border:1px solid #e8edf4;border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;transition:border-color 0.12s}
 .panel-q:hover{border-color:#b8c4d4}
 .panel-q-text{font-size:12px;color:#18375d;font-family:'Asap',sans-serif;font-weight:500;line-height:1.4;margin-bottom:4px}
@@ -447,7 +456,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <div class="panel-right" id="panel-right">
   <div class="panel-head">
     <span class="panel-title">Piocher dans la bibliothèque</span>
-    <button class="panel-close" onclick="closePanel()">✕</button>
+    <button class="panel-close" type="button" aria-label="Fermer la bibliothèque" onclick="closePanel();event.stopPropagation();">✕</button>
   </div>
   <div class="panel-context">
     <div class="panel-context-title">Pioche filtrée</div>
@@ -2093,17 +2102,29 @@ function openPanel() {
   if(!chapterUsesCatalogueSupport()){ openLibrarySoon(); return; }
   activeFilterTag = '';
   document.getElementById('panel-search-inp').value = '';
-  document.getElementById('overlay').classList.add('on');
-  document.getElementById('panel-right').classList.add('on');
+  const overlay = document.getElementById('overlay');
+  const panel = document.getElementById('panel-right');
+  const closeBtn = panel?.querySelector('.panel-close');
+  if(closeBtn){
+    closeBtn.disabled = false;
+    closeBtn.removeAttribute('disabled');
+    closeBtn.style.pointerEvents = 'auto';
+  }
+  overlay?.classList.add('on');
+  panel?.classList.add('on');
   updatePanelContext();
   renderPanelTags();
   renderPanelList('', '');
 }
 
 function closePanel() {
-  document.getElementById('overlay').classList.remove('on');
-  document.getElementById('panel-right').classList.remove('on');
+  document.getElementById('overlay')?.classList.remove('on');
+  document.getElementById('panel-right')?.classList.remove('on');
 }
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closePanel();
+});
 
 function updatePanelContext(){
   const ch = chapters[activeChap];
@@ -2367,12 +2388,22 @@ function restoreAdminQuestionNavigation(){
   });
 }
 
+function restorePanelCloseNavigation(){
+  document.querySelectorAll('.panel-close').forEach(btn => {
+    btn.disabled = false;
+    btn.removeAttribute('disabled');
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  });
+}
+
 if(typeof itsApplyReadOnlyMode === 'function'){
   setTimeout(() => {
     itsApplyReadOnlyMode();
     restoreAdminQuestionNavigation();
+    restorePanelCloseNavigation();
   }, 50);
-  setTimeout(restoreAdminQuestionNavigation, 250);
+  setTimeout(() => { restoreAdminQuestionNavigation(); restorePanelCloseNavigation(); }, 250);
 }
 </script>
 </body>
