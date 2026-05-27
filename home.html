@@ -91,7 +91,27 @@ body{font-family:'Asap',sans-serif;background:linear-gradient(180deg,#eef6fb 0%,
 .method-feature h3{font-size:26px;line-height:1.12;margin:0 0 10px;color:#fff}
 .method-feature p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.86);margin:0}
 .method-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.method-point{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:14px;font-size:13px;font-weight:800;color:#fff}
+.method-point{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.12);
+border-radius:14px;
+padding:13px 14px;
+font-size:13px;
+font-weight:800;
+color:#fff;
+display:flex;
+align-items:center;
+gap:8px;
+cursor:default;
+box-shadow:none
+}
+.method-point::before{
+content:"✓";
+color:#ffc000;
+font-weight:900;
+font-size:14px;
+flex-shrink:0
+}
 .method-feature .btn{margin-top:18px;background:#ffc000;color:#18375d;border:0;width:max-content}
 .usecases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .usecase-card{position:relative;overflow:hidden;background:#fff;border:1px solid #d8e0ea;border-radius:20px;padding:22px;box-shadow:0 10px 28px rgba(24,55,93,.06);text-decoration:none;color:#18375d;display:flex;flex-direction:column;min-height:225px;transition:.18s ease}
