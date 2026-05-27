@@ -7346,6 +7346,673 @@
 
   },
 
+  "travailler-mode-projet": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous pilotez un projet transversal. Un membre de l'équipe projet, qui ne vous rapporte pas, ne livre pas ce qui a été convenu. Son responsable hiérarchique est peu disponible.",
+        tags: ["transversal", "autorité"],
+        answers: [
+          { text: "J'attends que son responsable hiérarchique règle le problème — il est le seul à avoir l'autorité.", score: 0 },
+          { text: "Je lui parle directement en m'appuyant sur les engagements collectifs pris en début de projet.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il intervienne auprès du responsable de ce collaborateur.", score: 0.5 },
+          { text: "Je réorganise le projet pour me passer de sa contribution.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Au démarrage d'un projet transversal, vous n'avez pas formalisé les engagements de chaque participant. Les contributions sont floues et les malentendus s'accumulent.",
+        tags: ["transversal", "engagement"],
+        answers: [
+          { text: "Je clarifie au fur et à mesure — formaliser tout dès le départ ralentit le projet.", score: 0 },
+          { text: "Je prends le temps de formaliser maintenant les engagements de chacun, même tardivement.", score: 2 },
+          { text: "Je demande à chaque participant de me confirmer ses engagements par mail.", score: 1 },
+          { text: "Je reformule les engagements en réunion pour qu'ils soient entendus de tous.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Au démarrage d'un projet transversal, vous formalisez explicitement les engagements de chaque participant — livrables, délais, niveau d'implication.",
+        tags: ["transversal", "formalisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez besoin qu'une direction externe au projet priorise votre sujet. Vous n'avez aucune autorité sur elle.",
+        tags: ["transversal", "influence"],
+        answers: [
+          { text: "J'attends qu'elle priorise naturellement — je ne peux pas forcer sans autorité.", score: 0 },
+          { text: "Je prépare un argumentaire sur l'impact pour leur organisation et je sollicite un rendez-vous.", score: 2 },
+          { text: "Je passe par mon propre responsable pour qu'il influence la direction concernée.", score: 1 },
+          { text: "Je trouve un allié dans cette direction pour porter le sujet en interne.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux membres de votre équipe projet ont des positions opposées sur une décision importante. Le projet est bloqué. Vous n'avez pas l'autorité pour trancher.",
+        tags: ["transversal", "arbitrage"],
+        answers: [
+          { text: "Je laisse les deux positions coexister pour ne pas créer de perdant·e.", score: 0 },
+          { text: "Je facilite une discussion structurée pour trouver un accord ou je soumets la décision à un comité de pilotage.", score: 2 },
+          { text: "Je tranche moi-même en tant que chef de projet — c'est mon rôle.", score: 1 },
+          { text: "Je remonte le blocage au sponsor du projet pour qu'il arbitre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand des désaccords bloquent un projet transversal, vous facilitez la résolution plutôt que de la remonter systématiquement au sponsor.",
+        tags: ["transversal", "facilitation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Certains membres de votre équipe projet remettent en question votre légitimité à piloter le projet. Vous n'avez pas l'expertise technique qu'ils ont.",
+        tags: ["transversal", "légitimité"],
+        answers: [
+          { text: "Je défends ma légitimité en insistant sur ma nomination officielle au rôle.", score: 0 },
+          { text: "Je reconnais leur expertise et je montre que ma valeur ajoutée est la coordination et la vision d'ensemble.", score: 2 },
+          { text: "Je cherche à acquérir rapidement les compétences techniques pour être crédible.", score: 0 },
+          { text: "Je leur demande directement ce qui fonderait ma légitimité à leurs yeux.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre sponsor de projet est peu disponible et peu impliqué. Les décisions stratégiques s'accumulent sans être prises.",
+        tags: ["transversal", "sponsor"],
+        answers: [
+          { text: "Je prends les décisions moi-même — le projet ne peut pas attendre.", score: 0 },
+          { text: "Je structure les décisions qui nécessitent le sponsor et je les lui soumets de façon synthétique pour faciliter ses arbitrages.", score: 2 },
+          { text: "Je laisse les décisions en attente — prendre des décisions à sa place serait outrepasser mon rôle.", score: 0 },
+          { text: "Je le remplace par quelqu'un de plus disponible après en avoir discuté avec lui.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous facilitez la prise de décision de votre sponsor en lui présentant les arbitrages sous forme synthétique plutôt que d'attendre sa disponibilité.",
+        tags: ["transversal", "sponsor"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le projet transversal que vous pilotez a bien réussi. Votre contribution de coordination est invisible comparée aux contributions techniques de l'équipe.",
+        tags: ["transversal", "reconnaissance"],
+        answers: [
+          { text: "Je l'accepte — la coordination est une contribution de fond, pas de forme.", score: 0.5 },
+          { text: "Je rends visible la contribution de coordination en documentant les décisions prises, les blocages levés et les engagements tenus.", score: 2 },
+          { text: "Je laisse les membres de l'équipe me mentionner dans leurs bilans.", score: 0 },
+          { text: "Je mentionne mon rôle dans les réunions de bilan pour que ce soit su.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous pilotez encore en cherchant l'autorité hiérarchique plutôt qu'en développant votre influence transversale", desc: "Attendre que le responsable hiérarchique règle le problème du membre qui ne livre pas, ne pas formaliser les engagements au démarrage, remonter systématiquement les blocages au sponsor, ne pas savoir comment rendre visible la contribution de coordination : ces comportements cherchent l'autorité là où elle n'est pas. Piloter sans autorité hiérarchique est un métier d'influence, pas de pouvoir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous pilotez par l'influence dans les situations ordinaires mais les situations d'autorité faible ou de conflit créent encore des hésitations", desc: "Vous vous appuyez sur les engagements collectifs pour gérer les manquements sans remonter systématiquement à la hiérarchie. Mais faciliter un désaccord structurant entre deux membres sans l'autorité de trancher, gérer un sponsor peu disponible en lui soumettant les arbitrages de façon synthétique, rendre visible la contribution de coordination au bilan : ces situations de pilotage sans autorité forte créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez par l'influence et la facilitation — engagements formalisés, légitimité assumée, sponsor facilité", desc: "Vous formalisez les engagements dès le démarrage. Vous parlez directement au membre qui ne livre pas en vous appuyant sur les engagements collectifs. Vous préparez les arbitrages du sponsor sous forme synthétique pour faciliter ses décisions. Vous reconnaissez votre légitimité de coordination face aux membres qui contestent. Vous documentez les décisions de coordination pour les rendre visibles. Cette façon de piloter sans autorité hiérarchique — qui suppose d'assumer un rôle d'influence et non de pouvoir — est ce qui fait avancer les projets transversaux." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous démarrez un projet transversal impliquant cinq équipes différentes. Vous n'avez pas encore identifié qui a le plus d'influence sur le succès du projet.",
+        tags: ["parties prenantes", "cartographie"],
+        answers: [
+          { text: "Je traite toutes les parties prenantes de façon équitable — la cartographie est un outil de consultant.", score: 0 },
+          { text: "Je prends le temps de cartographier les parties prenantes par niveau d'influence et d'intérêt avant de démarrer.", score: 2 },
+          { text: "Je découvrirai les enjeux de chaque partie prenante en avançant.", score: 0 },
+          { text: "Je demande à un membre expérimenté de l'organisation de me briefer sur les parties prenantes.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant un projet transversal, vous identifiez explicitement les parties prenantes, leur niveau d'influence et leurs intérêts.",
+        tags: ["parties prenantes", "cartographie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une partie prenante clé est peu coopérative sur votre projet. Elle assiste aux réunions mais ne s'implique pas. Vous ne savez pas pourquoi.",
+        tags: ["parties prenantes", "résistance"],
+        answers: [
+          { text: "Je continue sans elle — si elle ne s'implique pas, le projet avancera quand même.", score: 0 },
+          { text: "Je lui demande un échange informel pour comprendre ses réserves ou contraintes.", score: 2 },
+          { text: "J'en parle à son responsable pour qu'il lui demande de s'impliquer.", score: 0.5 },
+          { text: "Je lui confie une responsabilité spécifique pour l'embarquer davantage.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous communiquez sur l'avancement du projet de la même façon à toutes les parties prenantes — un compte rendu hebdomadaire standard pour tous.",
+        tags: ["parties prenantes", "communication"],
+        answers: [
+          { text: "C'est plus simple et équitable — tout le monde a la même information.", score: 0 },
+          { text: "J'adapte ma communication selon les attentes et le niveau de détail utile à chaque partie prenante.", score: 2 },
+          { text: "Je fais un compte rendu général et des points bilatéraux avec les parties prenantes clés.", score: 1.5 },
+          { text: "Je communique uniquement quand il y a quelque chose de notable — les parties prenantes n'ont pas besoin d'être informées systématiquement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux parties prenantes du projet ont des objectifs divergents. En les satisfaisant toutes les deux, vous ne pouvez pas satisfaire l'une sans nuire à l'autre.",
+        tags: ["parties prenantes", "conflit intérêts"],
+        answers: [
+          { text: "Je satisfais la partie prenante la plus influente — c'est la priorité réelle.", score: 0 },
+          { text: "Je les réunis pour que le conflit d'intérêts soit explicite et cherche un arbitrage collectif.", score: 2 },
+          { text: "Je cherche une option qui minimise l'impact négatif sur l'une sans trop compromettre l'autre.", score: 1 },
+          { text: "Je remonte le conflit à mon sponsor pour qu'il tranche.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand deux parties prenantes ont des objectifs conflictuels, vous rendez le conflit explicite et cherchez un arbitrage plutôt que de le gérer implicitement.",
+        tags: ["parties prenantes", "conflits"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une partie prenante a des attentes sur le projet qui dépassent ce qui a été défini dans le périmètre initial. Elle ne le sait pas.",
+        tags: ["parties prenantes", "attentes"],
+        answers: [
+          { text: "Je livre ce qui a été défini — si elle voulait autre chose, elle l'aurait dit.", score: 0 },
+          { text: "Je clarifie avec elle ce qui est dans le périmètre avant de livrer pour éviter une déception.", score: 2 },
+          { text: "Je livrerai selon le périmètre et je gérerai la déception au moment de la livraison.", score: 0 },
+          { text: "J'évalue si certaines de ses attentes peuvent être intégrées sans trop d'impact.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une partie prenante initialement enthousiaste s'est progressivement désengagée du projet. Son désengagement commence à impacter l'avancement.",
+        tags: ["parties prenantes", "désengagement"],
+        answers: [
+          { text: "Je prends acte — si elle se désengage, c'est que le projet n'est plus une priorité pour elle.", score: 0 },
+          { text: "Je cherche à comprendre ce qui a changé pour elle et je revois avec elle son niveau d'implication.", score: 2 },
+          { text: "Je remonte le désengagement à son responsable pour qu'il arbitre.", score: 1 },
+          { text: "Je réorganise le projet pour réduire sa dépendance à cette partie prenante.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous gérez proactivement le désengagement des parties prenantes avant que son impact sur le projet soit visible.",
+        tags: ["parties prenantes", "engagement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le projet se termine. Certaines parties prenantes ont été insatisfaites par la façon dont leurs intérêts ont été gérés. Vous avancez vers le bilan sans en parler.",
+        tags: ["parties prenantes", "fin projet"],
+        answers: [
+          { text: "Je passe à la suite — ce qui est fait est fait et rouvrir des sujets n'apporte rien.", score: 0 },
+          { text: "Je prends le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan collectif.", score: 2 },
+          { text: "Je leur laisse l'espace pour s'exprimer lors du bilan collectif.", score: 1 },
+          { text: "J'en parle à mon sponsor pour qu'il gère les insatisfactions politiquement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre gestion des parties prenantes est réactive et peu différenciée", desc: "Ne pas cartographier les parties prenantes avant de démarrer, traiter toutes les parties prenantes de la même façon, ne pas comprendre pourquoi une partie prenante clé se désengage, éviter le conflit entre des parties prenantes aux objectifs divergents : ces comportements traitent les parties prenantes comme un groupe homogène alors que chacune a ses propres intérêts, contraintes et niveaux d'influence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous différenciez votre approche selon les parties prenantes mais votre gestion des conflits d'intérêts et des désengagements est encore insuffisante", desc: "Vous adaptez votre communication aux parties prenantes et vous clarifiez les attentes avant de livrer. Mais cartographier systématiquement les parties prenantes avant de démarrer, comprendre les raisons du désengagement d'une partie prenante enthousiaste au départ, gérer explicitement un conflit d'intérêts entre deux parties prenantes plutôt que de le contourner : ces aspects de la gestion des parties prenantes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les parties prenantes de façon différenciée et proactive — cartographie, désengagement, conflits explicités", desc: "Vous cartographiez les parties prenantes avant de démarrer. Vous vous demandez activement ce qui se passe quand une partie prenante clé ne s'implique plus. Vous clarifiez les attentes avant de livrer. Vous rendez les conflits d'intérêts entre parties prenantes explicites pour les résoudre collectivement. Vous prenez le temps d'un échange individuel avec les parties prenantes insatisfaites avant le bilan. Cette gestion différenciée et proactive des parties prenantes — qui suppose de les traiter comme des acteurs stratégiques — est ce qui maintient l'adhésion dans la durée." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Votre projet transversal génère beaucoup de réunions. L'équipe commence à s'en plaindre mais vous avez l'impression que c'est le seul moyen de maintenir la coordination.",
+        tags: ["coordination", "réunions"],
+        answers: [
+          { text: "Je maintiens les réunions — elles sont le seul canal fiable de coordination dans ce contexte.", score: 0 },
+          { text: "J'analyse quelles réunions sont vraiment nécessaires et je remplace les autres par des modes de coordination asynchrones.", score: 2 },
+          { text: "Je réduis la durée des réunions pour en diminuer l'impact sur l'agenda.", score: 1 },
+          { text: "Je demande à l'équipe quelles réunions elle juge utiles.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous utilisez des modes de coordination asynchrones quand ils sont plus efficaces que les réunions.",
+        tags: ["coordination", "asynchrone"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vos réunions projet dérapent régulièrement — sujets qui s'allongent, hors-sujets, décisions non prises. Vous repartez souvent avec un sentiment d'inefficacité.",
+        tags: ["coordination", "réunion efficace"],
+        answers: [
+          { text: "Je laisse — les réunions libres sont plus créatives que les réunions trop structurées.", score: 0 },
+          { text: "J'envoie un ordre du jour avec les décisions à prendre avant chaque réunion et je tiens le cadre en séance.", score: 2 },
+          { text: "Je raccourcis les réunions pour forcer la concentration.", score: 1 },
+          { text: "Je demande à quelqu'un d'autre d'animer pour voir si ça change quelque chose.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Les décisions prises en réunion projet ne sont pas systématiquement documentées. Deux semaines après, il y a des désaccords sur ce qui a été décidé.",
+        tags: ["coordination", "documentation"],
+        answers: [
+          { text: "Je laisse les participants se souvenir — documenter tout prend trop de temps.", score: 0 },
+          { text: "Je mets en place un format simple de compte rendu de décisions après chaque réunion.", score: 2 },
+          { text: "J'envoie un récapitulatif des points importants après les réunions clés.", score: 1.5 },
+          { text: "Je demande à chaque participant de noter les décisions qui le concernent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Des dépendances entre les livrables de différents membres ne sont pas visibles pour tous. Des blocages apparaissent par surprise.",
+        tags: ["coordination", "dépendances"],
+        answers: [
+          { text: "Je gère les dépendances bilatéralement au fur et à mesure — les afficher pour tous crée de la complexité inutile.", score: 0 },
+          { text: "Je rends les dépendances visibles pour toute l'équipe dans un outil partagé.", score: 2 },
+          { text: "Je tiens moi-même à jour la carte des dépendances et j'anticipe les blocages.", score: 1.5 },
+          { text: "Je demande à chaque membre d'identifier ses dépendances en début de sprint.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous rendez visibles les dépendances entre livrables pour toute l'équipe, pas seulement pour vous.",
+        tags: ["coordination", "visibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe projet manque de moments collectifs informels — tout est formel et orienté tâches. Le lien humain est faible.",
+        tags: ["coordination", "rituel"],
+        answers: [
+          { text: "Je laisse — les moments informels ne sont pas de la responsabilité du chef de projet.", score: 0 },
+          { text: "J'intègre des moments informels courts dans nos rituels — café virtuel, 5 minutes de check-in — pour créer le lien.", score: 2 },
+          { text: "J'organise un événement d'équipe une fois par mois.", score: 1 },
+          { text: "Je crée un canal de discussion informelle pour que les échanges non-projet aient un espace.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'avancement du projet est difficile à évaluer. Chaque membre dit que ça avance mais les jalons ne sont pas tenus.",
+        tags: ["coordination", "bilan avancement"],
+        answers: [
+          { text: "Je leur fais confiance — s'ils disent que ça avance, c'est que ça avance.", score: 0 },
+          { text: "Je mets en place des indicateurs d'avancement concrets et mesurables à chaque jalon.", score: 2 },
+          { text: "Je fais des points bilatéraux plus fréquents pour avoir une vraie vision.", score: 1 },
+          { text: "Je leur demande de me montrer ce qui est livré, pas de me dire où ils en sont.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous suivez l'avancement du projet sur des indicateurs concrets plutôt que sur des déclarations d'avancement.",
+        tags: ["coordination", "indicateurs"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous coordonnez tout — chaque échange entre membres du projet passe par vous. L'équipe ne communique plus directement entre elle.",
+        tags: ["coordination", "surcoordination"],
+        answers: [
+          { text: "Je maintiens — centraliser les échanges évite les malentendus et me permet de garder le fil.", score: 0 },
+          { text: "Je facilite les échanges directs entre membres pour ne pas être le goulot d'étranglement.", score: 2 },
+          { text: "Je continue pour l'instant et j'encourage les échanges directs quand l'équipe sera plus soudée.", score: 0.5 },
+          { text: "Je mets en place des sous-groupes thématiques qui peuvent fonctionner de façon autonome.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre coordination repose sur les réunions plutôt que sur des mécanismes adaptés", desc: "Maintenir des réunions inefficaces parce que c'est le seul mode de coordination connu, ne pas documenter les décisions, centraliser tous les échanges au lieu de faciliter les échanges directs, suivre l'avancement sur des déclarations plutôt que sur des indicateurs concrets : ces comportements font de la coordination un coût plutôt qu'un levier." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez des modes de coordination variés mais votre rigueur sur les indicateurs et la documentation reste perfectible", desc: "Vous utilisez des modes asynchrones et vous structurez vos réunions. Mais documenter systématiquement les décisions pour éviter les désaccords ultérieurs, rendre les dépendances visibles pour toute l'équipe, mesurer l'avancement sur des indicateurs concrets plutôt que des déclarations, éviter d'être le goulot d'étranglement en facilitant les échanges directs : ces aspects de coordination efficace sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre coordination est efficace et adaptée — asynchrone quand utile, indicateurs concrets, échanges directs facilités", desc: "Vous remplacez les réunions inutiles par des modes asynchrones. Vous envoyez un ordre du jour avec les décisions à prendre. Vous documentez systématiquement les décisions. Vous rendez les dépendances visibles pour tous. Vous mesurez l'avancement sur des livrables, pas des déclarations. Vous facilitez les échanges directs plutôt que de tout centraliser. Cette coordination légère et rigoureuse — qui suppose d'investir dans les outils et les rituels — est ce qui libère du temps pour le pilotage stratégique." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Le projet se termine dans une semaine. Tout le monde passe au projet suivant. Personne ne semble pressé d'organiser un bilan.",
+        tags: ["clôture", "bilan"],
+        answers: [
+          { text: "Je passe aussi à la suite — si personne n'est intéressé, forcer un bilan ne servira à rien.", score: 0 },
+          { text: "Je prends l'initiative d'organiser un bilan même court pour capturer les apprentissages avant que tout le monde passe à autre chose.", score: 2 },
+          { text: "Je fais un bilan personnel sans le partager collectivement.", score: 0.5 },
+          { text: "Je propose le bilan au sponsor pour qu'il décide si c'est utile.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "likert",
+        text: "À la fin d'un projet transversal, vous organisez un bilan collectif même quand tout le monde est déjà tourné vers la suite.",
+        tags: ["clôture", "REX"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le projet est terminé mais certains livrables secondaires sont à 80% et personne ne les finira — plus de temps, plus de budget. Vous êtes tenté·e de clore sans documenter les manques.",
+        tags: ["clôture", "livrables"],
+        answers: [
+          { text: "Je clôture sans documenter — ça ne changerait rien pour ce projet.", score: 0 },
+          { text: "Je documente explicitement ce qui est terminé, ce qui ne l'est pas et pourquoi, pour les prochains projets similaires.", score: 2 },
+          { text: "Je signale les livrables incomplets au sponsor pour qu'il décide.", score: 1 },
+          { text: "Je liste les livrables incomplets dans le bilan mais sans entrer dans les détails.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le projet a produit des résultats qui doivent être intégrés dans les pratiques de plusieurs équipes. Personne n'a clairement la charge de ce transfert.",
+        tags: ["clôture", "transfert"],
+        answers: [
+          { text: "Je laisse chaque équipe s'approprier les résultats à son rythme.", score: 0 },
+          { text: "Je clarifie qui est responsable du transfert dans chaque équipe avant de clore le projet.", score: 2 },
+          { text: "Je rédige une documentation complète que les équipes pourront consulter.", score: 1 },
+          { text: "Je propose un plan de déploiement des résultats au sponsor.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez travaillé six mois avec des personnes que vous ne recroiserez peut-être plus. Ces relations sont potentiellement utiles pour la suite.",
+        tags: ["clôture", "relations"],
+        answers: [
+          { text: "Je laisse les relations se désactiver naturellement — c'est le propre des projets transversaux.", score: 0 },
+          { text: "Je prends le temps de maintenir ces relations en dehors d'un projet commun.", score: 2 },
+          { text: "Je les ajoute à mon réseau professionnel sans action spécifique.", score: 0.5 },
+          { text: "Je les contacte si un sujet commun se présente.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous entretenez activement les relations construites pendant les projets transversaux, même après leur fin.",
+        tags: ["clôture", "réseau"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Sur ce projet, votre façon de piloter a créé des tensions inutiles avec certains membres. Vous ne savez pas exactement pourquoi.",
+        tags: ["clôture", "apprentissages pilotage"],
+        answers: [
+          { text: "Je l'accepte — les tensions dans un projet transversal sont inévitables.", score: 0 },
+          { text: "Je demande un feedback à quelques membres sur ma façon de piloter pour comprendre.", score: 2 },
+          { text: "Je l'intègre mentalement sans en faire un sujet formel.", score: 0.5 },
+          { text: "Je compare ma façon de piloter à d'autres chefs de projet pour identifier les différences.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez développé pendant ce projet une méthode de pilotage transversal qui a bien fonctionné. D'autres projets similaires vont démarrer dans l'organisation.",
+        tags: ["clôture", "méthode"],
+        answers: [
+          { text: "Je garde ma méthode pour mes propres projets — chaque chef de projet développe sa façon de faire.", score: 0 },
+          { text: "Je la documente et je la mets à disposition des autres chefs de projet.", score: 2 },
+          { text: "Je la partage informellement avec les chefs de projet que je connais.", score: 1 },
+          { text: "Je propose à ma direction de formaliser une méthodologie commune.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous documentez et partagez vos méthodes de pilotage transversal pour que d'autres projets en bénéficient.",
+        tags: ["clôture", "transmission méthode"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez piloté plusieurs projets transversaux. Vous n'avez jamais vraiment évalué ce que vous avez appris de chacun sur votre façon de piloter.",
+        tags: ["clôture", "évaluation personnelle"],
+        answers: [
+          { text: "Je laisse — l'expérience s'accumule naturellement sans avoir besoin d'être formalisée.", score: 0 },
+          { text: "Je prends le temps après chaque projet de noter ce que j'ai appris sur ma façon de piloter.", score: 2 },
+          { text: "Je le fais de façon informelle en fin de projet.", score: 1 },
+          { text: "Je le fais lors de mes entretiens annuels avec mon responsable.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La clôture du projet est traitée comme une formalité sans capitalisation ni transmission", desc: "Passer au projet suivant sans organiser de bilan, clore sans documenter les livrables incomplets, laisser les relations se désactiver naturellement, garder sa méthode de pilotage pour soi : ces comportements traitent chaque projet comme un événement isolé plutôt que comme un maillon d'un développement professionnel continu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous clôturez vos projets avec un bilan mais la capitalisation et la transmission restent encore superficielles", desc: "Vous organisez un bilan collectif à la fin de vos projets. Mais documenter explicitement les livrables incomplets et leurs raisons, clarifier le transfert des résultats dans les équipes avant de clore, demander un feedback sur votre façon de piloter pour comprendre les tensions, partager votre méthode avec d'autres chefs de projet : la profondeur de la capitalisation est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous capitalisez activement à chaque clôture — bilan, livrables, transfert, relations, méthode partagée", desc: "Vous organisez un bilan même quand personne n'est pressé. Vous documentez les livrables incomplets et leurs raisons. Vous clarifiez le transfert des résultats avant de clore. Vous maintenez les relations après la fin du projet. Vous demandez un feedback sur votre façon de piloter. Vous documentez votre méthode pour d'autres chefs de projet. Vous notez vos apprentissages sur votre façon de piloter après chaque projet. Cette capitalisation systématique est ce qui transforme chaque projet en investissement dans votre développement de pilote." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -7457,6 +8124,16 @@
         ["Identifier et gérer les sources de drain", "Tâches ingrates, réunions inutiles, perfectionnisme, multitâche."],
         ["Recharger ses ressources", "Rituels de recharge, signaux du corps, soutien avant l'épuisement."],
         ["Construire une organisation personnelle durable", "Planification, revue hebdomadaire, systèmes fiables, long terme."],
+      ]}
+    ],
+
+    ["travailler-mode-projet", "Travailler en mode projet transversal", "Tous publics",
+      "Piloter sans autorité hiérarchique, coordonner des parties prenantes multiples et capitaliser à la clôture.",
+      { domain: "transformation", chapters: [
+        ["Piloter sans autorité hiérarchique", "Influence, engagements formalisés, légitimité de coordination."],
+        ["Gérer des parties prenantes multiples", "Cartographie, communication différenciée, conflits explicités."],
+        ["Coordonner sans réunionner", "Asynchrone, indicateurs concrets, échanges directs facilités."],
+        ["Clôturer et capitaliser", "Bilan, transfert, relations entretenues, méthode partagée."],
       ]}
     ],
 
