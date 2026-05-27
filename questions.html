@@ -559,11 +559,6 @@ function makeBlankDiagnosticState(){
 }
 
 function questionsApiBase(){
-<<<<<<< HEAD
-  return window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
-    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
-    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
-=======
   const host = String(window.location.hostname || '').toLowerCase();
   const forced = window.ITS_API_BASE || localStorage.getItem('its_api_base') || '';
   if(forced) return forced;
@@ -574,7 +569,6 @@ function questionsApiBase(){
   return isStaging
     ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
     : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
->>>>>>> parent of a7bc9ec (Update questions.html)
 }
 
 function questionsToken(){
@@ -848,27 +842,6 @@ function complianceTagsForState(prov){
   return [];
 }
 
-function normalizeTags(tags){
-  return (tags || [])
-    .filter(Boolean)
-    .filter(t => {
-      const x = String(t).toLowerCase();
-      return !x.includes('base assistée')
-        && !x.includes('base assistee')
-        && !x.includes('conçu par')
-        && !x.includes('concu par')
-        && !x.includes('création entreprise')
-        && !x.includes('creation entreprise')
-        && !x.includes('contribution client')
-        && !x.includes('validation obligatoire')
-        && !x.includes('relecture obligatoire')
-        && !x.includes('aide à la rédaction')
-        && !x.includes('aide a la redaction');
-    })
-    .slice(0,3)
-    .map(t => ({t:String(t), ai:String(t).toLowerCase().includes('ia')}));
-}
-
 function uniqTags(tags){
   const seen = new Set();
   return (tags || [])
@@ -882,24 +855,37 @@ function uniqTags(tags){
     });
 }
 
-<<<<<<< HEAD
-function findCatalogueQuestionTags(question){
-  if(!question || !Array.isArray(window.ITS_CATALOGUE)) return [];
-  const qid = String(question.id || '');
-  const qtext = norm(question.text || question.question || question.title || '');
+function tagTextValue(tag){
+  if(tag && typeof tag === 'object') return String(tag.t || tag.label || tag.text || tag.name || '').trim();
+  return String(tag || '').trim();
+}
 
-  for(const ad of window.ITS_CATALOGUE){
-    for(const ch of (ad.chapters || [])){
-      for(const cq of (ch.questions || [])){
-        const sameId = qid && String(cq.id || '') === qid;
-        const sameText = qtext && norm(cq.text || cq.question || cq.title || '') === qtext;
-        if(sameId || sameText){
-          return normalizeTags(cq.tags || []).map(t => ({ t:t.t, ai:false }));
-=======
+function normalizeTags(tags){
+  const source = Array.isArray(tags) ? tags : [];
+  return source
+    .map(tagTextValue)
+    .filter(Boolean)
+    .filter(t => {
+      const x = t.toLowerCase();
+      return !x.includes('base assistée')
+        && !x.includes('base assistee')
+        && !x.includes('conçu par')
+        && !x.includes('concu par')
+        && !x.includes('création entreprise')
+        && !x.includes('creation entreprise')
+        && !x.includes('contribution client')
+        && !x.includes('validation obligatoire')
+        && !x.includes('relecture obligatoire')
+        && !x.includes('aide à la rédaction')
+        && !x.includes('aide a la redaction');
+    })
+    .filter((t, i, arr) => arr.findIndex(x => norm(x) === norm(t)) === i)
+    .slice(0,3)
+    .map(t => ({t:String(t), ai:false}));
+}
+
 function catalogueQuestionTags(cq){
-  return normalizeTags(cq && cq.tags ? cq.tags : [])
-    .map(t => ({ t:t.t, ai:false }))
-    .slice(0,3);
+  return normalizeTags(cq && cq.tags ? cq.tags : []);
 }
 
 function canonicalQuestionText(v){
@@ -923,14 +909,7 @@ function sameCatalogueQuestion(question, cq){
   if(qtext === ctext) return true;
 
   if(qtext.length >= 80 && ctext.length >= 80 && (qtext.includes(ctext) || ctext.includes(qtext))) return true;
-
-  const qWords = qtext.split(' ').filter(w => w.length > 3);
-  const cWords = new Set(ctext.split(' ').filter(w => w.length > 3));
-  if(qWords.length < 8 || cWords.size < 8) return false;
-
-  const common = qWords.filter(w => cWords.has(w)).length;
-  const ratio = common / Math.max(qWords.length, cWords.size);
-  return ratio >= 0.72;
+  return false;
 }
 
 function findCatalogueQuestionTags(question){
@@ -944,27 +923,16 @@ function findCatalogueQuestionTags(question){
             const tags = catalogueQuestionTags(cq);
             if(tags.length) return tags;
           }
->>>>>>> parent of a7bc9ec (Update questions.html)
         }
       }
     }
   }
-<<<<<<< HEAD
-  return [];
-}
-
-function contextualTags(text, rawTags, subject, chapter){
-  // Source de vérité : les tags écrits dans les catalogues.
-  // questions.html ne doit pas inventer de tags métier à partir du texte.
-  // Il nettoie seulement les tags de provenance/validation et limite l'affichage à 3 tags.
-  return normalizeTags(rawTags || []).map(t => ({ t:t.t, ai:false })).slice(0,3);
-=======
 
   if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
-    for(const themeKey of Object.keys(window.CUSTOM_QUESTIONS)){
-      const groups = window.CUSTOM_QUESTIONS[themeKey] || {};
-      for(const groupKey of Object.keys(groups)){
-        const list = Array.isArray(groups[groupKey]) ? groups[groupKey] : [];
+    for(const adKey of Object.keys(window.CUSTOM_QUESTIONS)){
+      const chaptersObj = window.CUSTOM_QUESTIONS[adKey] || {};
+      for(const chapterKey of Object.keys(chaptersObj)){
+        const list = Array.isArray(chaptersObj[chapterKey]) ? chaptersObj[chapterKey] : [];
         for(const cq of list){
           if(sameCatalogueQuestion(question, cq)){
             const tags = catalogueQuestionTags(cq);
@@ -981,14 +949,17 @@ function contextualTags(text, rawTags, subject, chapter){
 function catalogueOrRawTags(question, rawTags){
   const catalogueTags = findCatalogueQuestionTags(question);
   if(catalogueTags.length) return catalogueTags;
-  return normalizeTags(rawTags || []).map(t => ({ t:t.t, ai:false })).slice(0,3);
+  return normalizeTags(rawTags || []);
+}
+
+function contextualTags(text, rawTags, subject, chapter){
+  // Source de vérité : tags présents dans les catalogues ou dans la question importée.
+  // Aucune génération métier dans questions.html.
+  return catalogueOrRawTags({ text }, rawTags || []);
 }
 
 function inferContentTags(text, subject, chapter){
-  // Compatibilité : on ne génère plus de tags métier dans questions.html.
-  // La source de vérité est le tag déjà présent dans les catalogues.
   return [];
->>>>>>> parent of a7bc9ec (Update questions.html)
 }
 
 function panelSearchHaystack(q){
@@ -997,7 +968,7 @@ function panelSearchHaystack(q){
     q.subject,
     q.adTitle,
     q.chapter,
-    ...(q.tags || [])
+    ...(q.tags || []).map(tagTextValue)
   ].join(' '));
 }
 
@@ -1040,16 +1011,7 @@ function normalizeChaptersFromState(){
         type: q.type === 'likert' ? 'likert' : 'choix',
         prov: q.prov || normalizeProv(q.tags),
         text: q.text || q.question || 'Nouvelle mise en situation',
-<<<<<<< HEAD
-        tags: (() => {
-          const catalogueTags = findCatalogueQuestionTags(q);
-          if(catalogueTags.length) return catalogueTags;
-          if(Array.isArray(q.tags) && q.tags.length && typeof q.tags[0] === 'object') return q.tags.slice(0,3).map(t => ({ t:String(t.t || t.label || t.text || '').trim(), ai:Boolean(t.ai) })).filter(t => t.t);
-          return contextualTags(q.text || q.question || '', q.tags || [], state.theme || state.subject || state.title || '', c.title || c.name || '');
-        })(),
-=======
-        tags: catalogueOrRawTags(q, q.tags),
->>>>>>> parent of a7bc9ec (Update questions.html)
+tags: catalogueOrRawTags(q, q.tags),
         answers: normalizeAnswers(q)
       })),
       profils: [0,1,2].map(pi => {
@@ -1156,14 +1118,7 @@ function getRawBibliotheque(){
           if (!norm(q.text || '') || seen.has(key)) return;
           seen.add(key);
 
-<<<<<<< HEAD
-          const contentTags = contextualTags(q.text || '', q.tags || [], ad.theme || ad.title || '', ch.title || '').map(t => t.t);
-=======
-          const sourceTags = findCatalogueQuestionTags(q).map(t => t.t);
-          const contentTags = sourceTags.length
-            ? sourceTags
-            : normalizeTags(q.tags || []).map(t => t.t).slice(0,3);
->>>>>>> parent of a7bc9ec (Update questions.html)
+const contentTags = catalogueOrRawTags(q, q.tags || []).map(t => t.t);
 
           out.push({
             id: q.id,
@@ -1196,11 +1151,7 @@ function normalizeLibraryQuestion(q, i){
     adTitle: q.adTitle || '',
     chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
     text: q.text || q.question || q.title || 'Question de bibliothèque',
-<<<<<<< HEAD
-    tags: contextualTags(q.text || q.question || q.title || '', Array.isArray(rawTags) ? rawTags.map(String) : [], q.subject || q.sujet || q.theme || q.thematique || q.category || '', q.chapter || q.chapitre || q.partie || q.part || q.topic || '').map(t => t.t),
-=======
-    tags: catalogueOrRawTags(q, Array.isArray(rawTags) ? rawTags.map(String) : []).map(t => t.t),
->>>>>>> parent of a7bc9ec (Update questions.html)
+tags: catalogueOrRawTags(q, Array.isArray(rawTags) ? rawTags : []).map(t => t.t),
     answers: q.answers || q.reponses || null,
     type: q.type || 'choix',
     added: q.added || false
@@ -2292,11 +2243,7 @@ function addFromLib(qid) {
     type: bq.type === 'likert' ? 'likert' : 'choix',
     prov: bq.prov || 'AI',
     text: bq.text,
-<<<<<<< HEAD
-    tags: contextualTags(bq.text || '', bq.tags || [], bq.subject || '', bq.chapter || '').map(t => ({t:t.t, ai:t.ai})),
-=======
-    tags: catalogueOrRawTags(bq, bq.tags || []).map(t => ({t:t.t, ai:false})),
->>>>>>> parent of a7bc9ec (Update questions.html)
+tags: catalogueOrRawTags(bq, bq.tags || []).map(t => ({t:t.t, ai:false})),
     answers: normalizeImportedAnswers(bq)
   });
 
