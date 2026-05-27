@@ -806,7 +806,8 @@
   const status = normalizeStatus(project);
 
   if (status === "submitted" || status === "sent") return "En attente de publication";
-  if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+  if (status === "published") return "Communication";
+  if (status === "unpublished" || status === "archived") return "Voir le projet";
 
   const step = getProjectStep(project);
   if (step.includes("validation")) return "Transmettre";
@@ -821,7 +822,8 @@
       const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
-      if (status === "published" || status === "unpublished" || status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
+      if (status === "published") return "campagne.html" + suffix + "&readonly=1";
+      if (status === "unpublished" || status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
@@ -1023,11 +1025,6 @@
                 <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
                   ${resumeLabel(p)}
                 </button>
-                ${hasResults ? `
-                  <button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">
-                    Résultats
-                  </button>
-                ` : ""}
                 ${status === "draft" ? `
                   <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
                     🗑️ Supprimer
