@@ -3344,6 +3344,673 @@
 
   },
 
+  "responsabiliser-sans-controler": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous déléguez pour la première fois une mission importante à votre collaborateur Théo. Il est compétent mais n'a jamais eu cette responsabilité. Vous lui expliquez le quoi mais pas le pourquoi ni les limites de son autonomie.",
+        tags: ["délégation", "cadre"],
+        answers: [
+          { text: "Je lui explique ce qu'il doit faire — s'il est compétent, il saura comment s'y prendre.", score: 0 },
+          { text: "Je lui explique l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul.", score: 2 },
+          { text: "Je lui laisse carte blanche — trop de cadre inhibe l'initiative.", score: 0 },
+          { text: "Je lui donne un exemple de ce que j'aurais fait pour qu'il s'en inspire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez délégué une mission à une collaboratrice. Trois jours après, elle revient vous voir avec une question que vous pensez qu'elle aurait pu résoudre seule.",
+        tags: ["délégation", "niveau"],
+        answers: [
+          { text: "Je lui réponds — elle a besoin de sécurité au début et refuser de répondre serait brusque.", score: 0.5 },
+          { text: "Je lui demande ce qu'elle a déjà envisagé et ce qui l'a amenée à me consulter.", score: 2 },
+          { text: "Je lui dis qu'elle peut décider seule — c'est dans son périmètre.", score: 1 },
+          { text: "Je lui réponds mais je note que la délégation n'est peut-être pas encore au bon niveau.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous déléguez, vous clarifiez explicitement l'objectif, les résultats attendus, les contraintes et le niveau d'autonomie accordé.",
+        tags: ["délégation", "clarté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez déléguer une mission à deux collaborateurs de profils très différents — l'un est autonome et expérimenté, l'autre est junior et a besoin d'encadrement. Vous donnez le même cadre à tous les deux.",
+        tags: ["délégation", "profil"],
+        answers: [
+          { text: "C'est plus équitable d'avoir le même cadre pour tous.", score: 0 },
+          { text: "J'adapte le niveau de cadre et de suivi à chaque profil.", score: 2 },
+          { text: "Je donne un cadre minimal pour ne pas brider l'expérimenté.", score: 0.5 },
+          { text: "Je leur demande quel cadre ils préfèrent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaboratrice utilise une méthode différente de la vôtre pour réaliser une mission que vous lui avez déléguée. Les résultats intermédiaires sont bons.",
+        tags: ["délégation", "méthode"],
+        answers: [
+          { text: "Je lui demande de suivre ma méthode — c'est plus sécurisant d'homogénéiser les pratiques.", score: 0 },
+          { text: "Je la laisse utiliser sa méthode — ce qui compte c'est le résultat, pas la façon d'y arriver.", score: 2 },
+          { text: "Je lui fais part de ma méthode en lui laissant le choix.", score: 1.5 },
+          { text: "Je surveille de plus près pour m'assurer que sa méthode ne crée pas de risques.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous déléguez, vous évaluez les résultats obtenus plutôt que la façon dont ils ont été obtenus.",
+        tags: ["délégation", "résultat"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous déléguez une mission à un collaborateur junior. Vous pensez qu'il va probablement faire une erreur sur un point précis. L'erreur serait récupérable.",
+        tags: ["délégation", "erreur anticipée"],
+        answers: [
+          { text: "Je lui préviens de l'erreur probable avant qu'il commence pour l'éviter.", score: 0.5 },
+          { text: "Je le laisse faire et j'interviens uniquement si l'erreur se produit et dépasse le récupérable.", score: 2 },
+          { text: "Je supervise de près ce point précis pour intervenir si besoin.", score: 1 },
+          { text: "Je lui donne la mission avec un filet de sécurité sur ce point précis.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur a réussi brillamment la mission que vous lui aviez déléguée. Sa réussite est visible en dehors de votre équipe.",
+        tags: ["délégation", "reconnaissance"],
+        answers: [
+          { text: "Je le félicite en privé — mettre trop en avant un collaborateur crée de la jalousie.", score: 0 },
+          { text: "Je rends sa réussite visible auprès des personnes concernées en précisant que c'était sa mission.", score: 2 },
+          { text: "Je le mentionne dans notre réunion d'équipe.", score: 1 },
+          { text: "Je le félicite et je mentionne mon rôle dans son développement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur réussit une mission déléguée, vous rendez sa réussite visible au-delà de votre seul échange.",
+        tags: ["délégation", "visibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Six semaines après avoir délégué une mission longue, vous n'avez pas eu de nouvelles de votre collaborateur. Vous ne savez pas où il en est.",
+        tags: ["délégation", "retour"],
+        answers: [
+          { text: "Je lui fais confiance — s'il avait un problème, il serait venu me voir.", score: 0 },
+          { text: "Je lui propose un point rapide pour échanger sur son avancement, pas pour contrôler.", score: 2 },
+          { text: "Je lui envoie un mail pour qu'il me tienne au courant.", score: 1 },
+          { text: "J'attends la date de livraison — un point intermédiaire n'est pas nécessaire si je lui fais confiance.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre délégation est encore partielle — le cadre n'est pas assez clair et la méthode prime trop sur le résultat", desc: "Expliquer le quoi sans le pourquoi ni les limites d'autonomie, imposer sa méthode quand les résultats sont bons avec une autre, donner le même cadre à un junior et à un expérimenté : ces comportements délèguent la tâche sans déléguer la responsabilité. Une vraie délégation suppose de clarifier l'objectif, le résultat attendu, les contraintes et jusqu'où le collaborateur peut décider seul." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
+          haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous avez du mal à ne pas vérifier le travail de vos collaborateurs avant qu'ils le livrent. Vous vous dites que vous 'aidez' mais vous sentez que ça les agace.",
+        tags: ["confiance", "micro-management"],
+        answers: [
+          { text: "Je continue — la qualité du travail est ma responsabilité et je dois m'en assurer.", score: 0 },
+          { text: "Je nomme mon comportement avec mon équipe et je travaille à réduire mes vérifications.", score: 2 },
+          { text: "Je vérifie moins souvent mais je garde un droit de regard avant les livrables importants.", score: 0.5 },
+          { text: "Je fais confiance en surfaçant mon anxiété — si quelque chose se passe mal, je saurai.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes capable d'identifier quand votre besoin de contrôle dépasse ce qui est utile pour les collaborateurs.",
+        tags: ["confiance", "conscience"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous souhaitez savoir où en est un collaborateur sur une mission déléguée. Vous vous demandez comment faire sans que ça ressemble à du contrôle.",
+        tags: ["confiance", "point de suivi"],
+        answers: [
+          { text: "Je lui envoie un mail pour qu'il me fasse un point écrit.", score: 0 },
+          { text: "Je lui propose un échange court en lui précisant que c'est pour être disponible si besoin, pas pour contrôler.", score: 2 },
+          { text: "Je lui pose la question entre deux portes — moins formel, moins intrusif.", score: 0.5 },
+          { text: "Je n'interviens pas — s'il ne me dit rien, c'est que tout va bien.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez délégué une mission avec des indicateurs de suivi. Votre collaborateur commence à les remplir de façon à montrer des résultats positifs qui vous semblent optimistes.",
+        tags: ["confiance", "indicateurs"],
+        answers: [
+          { text: "Je lui fais confiance — ses indicateurs sont peut-être réalistes et je pourrais me tromper.", score: 0 },
+          { text: "Je lui pose des questions sur les indicateurs pour comprendre sa lecture de la situation.", score: 2 },
+          { text: "Je redéfinis les indicateurs pour qu'ils soient moins faciles à optimiser.", score: 0.5 },
+          { text: "Je l'observe de plus près pour voir si les résultats correspondent aux indicateurs.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur a fait une erreur sérieuse sur sa dernière mission. Vous lui en confiez une nouvelle. Vous avez du mal à ne pas surveiller de trop près.",
+        tags: ["confiance", "erreur passée"],
+        answers: [
+          { text: "Je le surveille de très près — une erreur passée justifie plus de contrôle.", score: 0 },
+          { text: "J'explore avec lui ce qu'il a appris de son erreur et je lui fais confiance pour la suite avec un cadre adapté.", score: 2 },
+          { text: "Je lui donne une mission moins importante pour reconstruire la confiance progressivement.", score: 1 },
+          { text: "Je lui délègue en lui disant que je surveille de près pour qu'il le sache et s'adapte.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Après une erreur d'un collaborateur, vous lui faites confiance pour la suite sans augmenter durablement votre niveau de contrôle.",
+        tags: ["confiance", "rebond"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaboratrice a pris une décision autonome que votre direction conteste. La décision était dans le périmètre que vous lui aviez délégué.",
+        tags: ["confiance", "défense"],
+        answers: [
+          { text: "Je laisse ma collaboratrice s'expliquer directement avec la direction — c'est sa décision.", score: 0 },
+          { text: "Je défends sa décision auprès de la direction puisqu'elle était dans son périmètre.", score: 2 },
+          { text: "Je lui demande de revoir sa décision pour limiter les frictions avec la direction.", score: 0 },
+          { text: "Je prends la décision à ma charge devant la direction tout en gardant le soutien à ma collaboratrice.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction vous demande un rapport détaillé sur le travail d'un collaborateur à qui vous avez délégué en toute confiance. Vous avez peu d'éléments de détail.",
+        tags: ["confiance", "pression externe"],
+        answers: [
+          { text: "Je demande à mon collaborateur un rapport d'activité complet pour répondre à la direction.", score: 0.5 },
+          { text: "Je propose un échange avec mon collaborateur et ma direction plutôt qu'un rapport de surveillance.", score: 2 },
+          { text: "Je fournis les informations dont je dispose et j'explique le niveau de délégation accordé.", score: 1.5 },
+          { text: "Je renforce le suivi pour éviter d'être pris de court à l'avenir.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand votre direction demande un compte rendu détaillé sur un collaborateur, vous résistez à l'envie de renforcer votre contrôle en retour.",
+        tags: ["confiance", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous managez une équipe en partie à distance. Vous avez du mal à faire confiance sans voir le travail en temps réel.",
+        tags: ["confiance", "distance"],
+        answers: [
+          { text: "Je mets en place des outils de suivi en temps réel pour pallier la distance.", score: 0 },
+          { text: "Je travaille sur ma façon de faire confiance à distance en clarifiant les attentes plutôt qu'en multipliant les points de contrôle.", score: 2 },
+          { text: "Je demande des comptes rendus quotidiens pour maintenir la visibilité.", score: 0 },
+          { text: "Je m'aligne sur le niveau de contrôle des autres managers de mon organisation.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre besoin de contrôle dépasse ce qui est utile et vous n'en êtes pas encore pleinement conscient·e", desc: "Continuer à vérifier parce que la qualité est votre responsabilité, regarder les indicateurs de façon suspicieuse, augmenter la supervision après une erreur : ces comportements envoient un message implicite que la délégation n'est pas réelle. Quand la confiance est conditionnelle, les collaborateurs apprennent à s'adapter au contrôle plutôt qu'à développer leur autonomie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
+          haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Votre collaborateur vient vous voir avec une difficulté sur sa mission déléguée. Il cherche une solution, pas que vous la lui donniez.",
+        tags: ["difficultés", "demande d'aide"],
+        answers: [
+          { text: "Je lui donne ma solution — c'est plus rapide et efficace.", score: 0 },
+          { text: "Je l'aide à explorer ses options sans lui imposer la mienne.", score: 2 },
+          { text: "Je lui pose des questions pour qu'il trouve lui-même la solution.", score: 2 },
+          { text: "Je lui dis de chercher de son côté et de revenir si ça ne se débloque pas.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur vient avec une difficulté, vous l'aidez à trouver sa propre solution plutôt que de lui donner directement la vôtre.",
+        tags: ["difficultés", "posture"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La mission déléguée est en difficulté. Les résultats ne sont pas au niveau attendu. Vous pourriez la faire vous-même en deux jours.",
+        tags: ["difficultés", "reprise de mission"],
+        answers: [
+          { text: "Je reprends la mission — la qualité prime sur le développement du collaborateur dans ce cas.", score: 0 },
+          { text: "Je cherche comment renforcer l'accompagnement plutôt que de reprendre la mission.", score: 2 },
+          { text: "Je reprends la partie en difficulté et je laisse le reste au collaborateur.", score: 0.5 },
+          { text: "Je fixe un délai court et je reprends la mission seulement si ça ne s'améliore pas.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur répète la même erreur pour la troisième fois sur des missions déléguées. Vous avez corrigé les deux premières fois.",
+        tags: ["difficultés", "erreur récurrente"],
+        answers: [
+          { text: "Je reprends en main les vérifications sur ce point — le collaborateur n'arrive pas à l'intégrer.", score: 0 },
+          { text: "Je cherche avec lui ce qui fait que l'erreur persiste malgré les corrections précédentes.", score: 2 },
+          { text: "Je lui explique une troisième fois en insistant davantage sur l'importance.", score: 0.5 },
+          { text: "Je lui propose un accompagnement spécifique sur ce point précis.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur est bloqué sur un problème depuis deux jours et n'a pas demandé d'aide. Il semble vouloir s'en sortir seul.",
+        tags: ["difficultés", "blocage"],
+        answers: [
+          { text: "Je le laisse — il a voulu s'en sortir seul, je respecte sa démarche.", score: 0 },
+          { text: "Je lui propose proactivement un échange sans attendre qu'il vienne me voir.", score: 2 },
+          { text: "Je lui demande s'il a besoin d'aide sans lui imposer une rencontre.", score: 1.5 },
+          { text: "J'interviens directement pour débloquer la situation — deux jours c'est suffisant.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur semble bloqué, vous lui proposez proactivement un soutien sans attendre qu'il vienne vous chercher.",
+        tags: ["difficultés", "intervention proactive"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La mission est terminée. Le résultat est bon mais la façon dont elle a été menée a créé des tensions avec d'autres équipes.",
+        tags: ["difficultés", "résultat final"],
+        answers: [
+          { text: "Je valide le résultat — si le livrable est bon, le chemin compte moins.", score: 0 },
+          { text: "Je fais un débriefing avec mon collaborateur sur le fond et sur la façon dont il a géré les relations.", score: 2 },
+          { text: "Je gère moi-même les tensions créées avec les autres équipes.", score: 0.5 },
+          { text: "Je lui dis que le résultat est bon mais que la prochaine fois il faudra faire attention aux relations.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collaborateur prend des initiatives qui dépassent clairement ses compétences actuelles. Il crée des risques sans s'en rendre compte.",
+        tags: ["difficultés", "ambition dépasse compétences"],
+        answers: [
+          { text: "Je recadre son périmètre d'autonomie.", score: 1 },
+          { text: "Je lui montre la limite atteinte avec des exemples factuels et je travaille avec lui à développer les compétences manquantes.", score: 2 },
+          { text: "Je lui retire les missions à risque pour l'instant.", score: 0 },
+          { text: "Je le laisse faire — apprendre par l'erreur est formateur.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un collaborateur prend des risques au-delà de ses compétences, vous intervenez en développant ses compétences plutôt qu'en réduisant son autonomie.",
+        tags: ["difficultés", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La mission a atteint ses objectifs mais votre collaborateur aurait pu faire beaucoup mieux avec un effort supplémentaire. Il est satisfait.",
+        tags: ["difficultés", "succès relatif"],
+        answers: [
+          { text: "Je valide — l'objectif est atteint, c'est l'essentiel.", score: 0.5 },
+          { text: "Je le félicite pour l'objectif atteint et j'explore avec lui ce qui aurait pu être encore meilleur.", score: 2 },
+          { text: "Je lui signale que le résultat aurait pu être meilleur pour calibrer ses prochaines ambitions.", score: 1 },
+          { text: "Je le laisse savourer sa réussite — pointer une marge de progression immédiatement serait contre-productif.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face aux difficultés sur les missions déléguées, votre réflexe est encore souvent de reprendre la main", desc: "Reprendre la mission qui est en difficulté parce que vous pourriez la faire plus vite, donner directement votre solution quand un collaborateur vient avec un problème, corriger deux fois la même erreur sans chercher pourquoi elle persiste : ces comportements privent les collaborateurs d'apprentissages importants. Les difficultés sont des moments de développement, pas des défaillances à corriger." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
+          haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Votre équipe vous consulte sur des décisions qui pourraient clairement être prises à son niveau. Vous répondez par réflexe.",
+        tags: ["autonomie collective", "décisions"],
+        answers: [
+          { text: "Je continue à répondre — ma disponibilité est un signe de leadership.", score: 0 },
+          { text: "Je clarifie collectivement le périmètre de décision de l'équipe pour réduire les consultations inutiles.", score: 2 },
+          { text: "Je renvoie les questions au fur et à mesure pour forcer l'autonomie.", score: 1 },
+          { text: "Je réponds mais j'explique à chaque fois pourquoi ils auraient pu décider seuls.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous clarifiez régulièrement avec votre équipe ce qui relève de son périmètre de décision et ce qui nécessite votre validation.",
+        tags: ["autonomie collective", "périmètre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vos collaborateurs se consultent peu entre eux et viennent tous vers vous. La dynamique est en étoile autour de vous.",
+        tags: ["autonomie collective", "entre pairs"],
+        answers: [
+          { text: "Je laisse — être le centre de l'information est dans la nature du rôle de manager.", score: 0 },
+          { text: "Je crée des occasions d'échanges directs entre collaborateurs pour changer la dynamique.", score: 2 },
+          { text: "Je leur demande de se consulter d'abord entre eux avant de venir me voir.", score: 1.5 },
+          { text: "Je multiplie les réunions d'équipe pour que les échanges se fassent collectivement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous partez deux semaines en congé. Votre équipe est capable de fonctionner seule mais vous avez l'habitude d'être disponible.",
+        tags: ["autonomie collective", "absence"],
+        answers: [
+          { text: "Je reste joignable pour les urgences — mon équipe est capable mais a besoin d'un filet.", score: 0 },
+          { text: "Je prépare mon absence avec mon équipe — qui prend quelles décisions, qui est le point de contact — puis je coupe vraiment.", score: 2 },
+          { text: "Je désigne un remplaçant sans préparer davantage.", score: 0.5 },
+          { text: "Je reste joignable par mail uniquement, pas par téléphone.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un problème nouveau se pose dans votre équipe. Plusieurs collaborateurs attendent votre analyse avant d'agir.",
+        tags: ["autonomie collective", "résolution de problèmes"],
+        answers: [
+          { text: "Je leur donne mon analyse — ils ont besoin de moi pour démarrer.", score: 0 },
+          { text: "Je leur demande d'abord leur analyse collective avant de partager la mienne.", score: 2 },
+          { text: "Je les guide par des questions pour qu'ils construisent leur propre analyse.", score: 2 },
+          { text: "Je leur donne quelques éléments de contexte et je les laisse travailler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à un problème collectif, vous demandez l'analyse de votre équipe avant de partager la vôtre.",
+        tags: ["autonomie collective", "analyse"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a le potentiel d'aller beaucoup plus loin dans son autonomie mais elle n'ose pas. La dynamique est confortable pour tout le monde.",
+        tags: ["autonomie collective", "ambition"],
+        answers: [
+          { text: "Je laisse — forcer une autonomie que l'équipe ne souhaite pas créerait de la tension.", score: 0 },
+          { text: "Je crée progressivement des opportunités où l'équipe peut exercer plus d'autonomie.", score: 2 },
+          { text: "Je leur dis directement que je veux qu'ils prennent plus d'autonomie.", score: 1 },
+          { text: "Je réduis ma disponibilité pour les pousser à décider seuls.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous souhaitez que votre équipe prenne plus d'autonomie sur les décisions stratégiques. Votre direction n'est pas habituée à ce modèle.",
+        tags: ["autonomie collective", "confiance déléguée"],
+        answers: [
+          { text: "Je renonce — sans le soutien de la direction, développer l'autonomie de l'équipe est trop risqué.", score: 0 },
+          { text: "Je discute avec ma direction pour lui expliquer le modèle et obtenir son soutien.", score: 2 },
+          { text: "Je développe l'autonomie de l'équipe discrètement sans en parler à la direction.", score: 0 },
+          { text: "Je teste sur des décisions moins visibles avant d'élargir.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous développez activement l'autonomie de votre équipe, même quand le modèle est confortable pour tout le monde.",
+        tags: ["autonomie collective", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous quittez ce poste dans trois mois. Votre équipe fonctionne bien mais dépend encore de vous sur plusieurs points.",
+        tags: ["autonomie collective", "transmission"],
+        answers: [
+          { text: "Je laisse à mon successeur le soin de construire son propre rapport à l'équipe.", score: 0 },
+          { text: "Je prépare activement l'autonomie de l'équipe pour qu'elle fonctionne sans moi.", score: 2 },
+          { text: "Je documente mes pratiques pour que mon successeur puisse s'en inspirer.", score: 1 },
+          { text: "Je prépare les points de dépendance les plus critiques et je laisse le reste.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'autonomie de votre équipe reste limitée par votre centralité — les décisions passent encore trop par vous", desc: "Répondre par réflexe aux questions que l'équipe pourrait résoudre seule, être le centre de toutes les consultations, rester joignable pendant ses congés par sécurité : ces comportements maintiennent l'équipe dans une dépendance qui lui coûte en autonomie et en développement. L'équipe autonome n'a pas besoin d'un manager disponible — elle a besoin d'un manager qui lui fait confiance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -3391,10 +4058,20 @@
     ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
       "Comprendre les résistances, relayer les décisions et ancrer les nouvelles pratiques dans la durée.",
       { domain: "transformation", chapters: [
-        ["Comprendre et relayer les résistances", "Écouter, distinguer les types de résistance, remonter les objections légitimes."],
+        ["Comprendre et relayer les résistances", "Écouter, distinguer les types, remonter les objections légitimes."],
         ["Communiquer pendant la transformation", "Proactivité, cohérence, mauvaises nouvelles, rumeurs."],
         ["Ancrer les nouvelles pratiques", "Analyse des glissements, co-construction, vigilance dans la durée."],
-        ["Prendre soin de soi pendant la transformation", "Double rôle, soutien externe, bilan et transmission aux pairs."],
+        ["Prendre soin de soi pendant la transformation", "Double rôle, soutien externe, bilan et transmission."],
+      ]}
+    ],
+
+    ["responsabiliser-sans-controler", "Responsabiliser sans contrôler", "Managers",
+      "Déléguer avec confiance, développer l'autonomie de décision et valoriser l'initiative sans créer de dépendance.",
+      { domain: "transformation", chapters: [
+        ["Déléguer avec clarté et confiance", "Cadre, profil, résultat — pas méthode, visibilité des réussites."],
+        ["Faire confiance sans perdre le fil", "Conscience du contrôle, points de suivi utiles, cohérence face à la direction."],
+        ["Traiter les difficultés sans reprendre la main", "Soutien, développement, apprentissage par l'erreur."],
+        ["Développer l'autonomie collective", "Périmètre de décision, pairs, absences, transition de poste."],
       ]}
     ],
 
