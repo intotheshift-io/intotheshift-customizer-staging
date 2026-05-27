@@ -4011,6 +4011,673 @@
 
   },
 
+  "cooperer-autres-equipes": {
+    0: [
+      {
+        type: "choix",
+        text: "L'équipe commerciale vous demande une livraison en urgence qui bouscule votre planning. Votre réflexe est de trouver ça déraisonnable.",
+        tags: ["coopération", "compréhension"],
+        answers: [
+          { text: "Je refuse — mon planning est structuré et les urgences répétées ne sont pas gérables.", score: 0 },
+          { text: "Je cherche d'abord à comprendre pourquoi c'est urgent avant de répondre.", score: 2 },
+          { text: "Je dis oui pour ne pas créer de friction et j'absorbe la charge.", score: 0 },
+          { text: "Je propose une alternative — pas dans ce délai mais dans deux jours.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes frustré·e par les délais de validation de l'équipe juridique. Ils semblent toujours bloquer à des moments critiques.",
+        tags: ["coopération", "contraintes"],
+        answers: [
+          { text: "Je les contourne sur les sujets peu risqués — attendre systématiquement le juridique ralentit trop.", score: 0 },
+          { text: "Je prends un temps pour comprendre leurs contraintes et leurs priorités avant de chercher à accélérer.", score: 2 },
+          { text: "Je remonte la situation à ma direction pour qu'elle presse le juridique.", score: 0.5 },
+          { text: "Je leur propose des réunions de cadrage en amont pour éviter les blocages en cours de projet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant de vous plaindre des délais ou contraintes d'une autre équipe, vous cherchez à comprendre leur logique de fonctionnement.",
+        tags: ["coopération", "empathie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est souvent citée négativement dans les discussions inter-équipes. Vous pensez que cette réputation est injuste.",
+        tags: ["coopération", "représentation"],
+        answers: [
+          { text: "Je l'ignore — les perceptions changent avec les résultats.", score: 0 },
+          { text: "Je cherche à comprendre d'où vient cette perception avant de la contester.", score: 2 },
+          { text: "Je défends ma position dans les instances où je suis présent·e.", score: 1 },
+          { text: "Je rencontre les équipes concernées pour comprendre leurs frustrations.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe et l'équipe RH ont des objectifs qui s'opposent sur un point précis — rapidité de recrutement pour vous, rigueur des processus pour eux.",
+        tags: ["coopération", "objectifs divergents"],
+        answers: [
+          { text: "Je laisse ma direction arbitrer — ce n'est pas mon niveau de résoudre un conflit d'objectifs.", score: 0.5 },
+          { text: "Je propose une réunion avec les RH pour trouver un compromis avant d'escalader.", score: 2 },
+          { text: "J'optimise mes processus pour contourner les contraintes RH sans les informer.", score: 0 },
+          { text: "Je leur explique pourquoi mes objectifs sont prioritaires.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vos objectifs entrent en tension avec ceux d'une autre équipe, vous cherchez un compromis direct avec elle avant d'escalader.",
+        tags: ["coopération", "négociation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous entendez souvent dans votre équipe des commentaires négatifs stéréotypés sur une autre équipe — 'les commerciaux ne pensent qu'aux chiffres', 'l'IT ne comprend pas le business'.",
+        tags: ["coopération", "préjugés"],
+        answers: [
+          { text: "Je laisse — les frictions inter-équipes font partie de la vie des organisations.", score: 0 },
+          { text: "J'interpelle ces commentaires et je rappelle la logique dans laquelle cette équipe opère.", score: 2 },
+          { text: "J'évite de les relayer sans pour autant les contester.", score: 0.5 },
+          { text: "Je cherche des opportunités de contacts directs entre les équipes pour dissoudre les stéréotypes.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous ne savez pas vraiment comment fonctionne l'équipe avec laquelle vous devez collaborer régulièrement. Votre lecture de leur travail est partielle.",
+        tags: ["coopération", "immersion"],
+        answers: [
+          { text: "Je travaille avec ce que je sais — on collabore bien sans tout comprendre.", score: 0 },
+          { text: "Je propose à un membre de leur équipe un échange informel pour mieux comprendre leur travail.", score: 2 },
+          { text: "Je leur pose des questions lors de nos réunions communes.", score: 1 },
+          { text: "Je lis leur documentation interne pour me documenter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous cherchez activement à comprendre comment fonctionnent les équipes avec lesquelles vous collaborez — leurs contraintes, leur culture, leur façon de travailler.",
+        tags: ["coopération", "curiosité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous découvrez qu'une autre équipe a développé une méthode de travail très efficace sur un sujet qui vous pose problème.",
+        tags: ["coopération", "bonne pratique"],
+        answers: [
+          { text: "Je laisse — chaque équipe a ses spécificités et leur méthode ne s'applique peut-être pas à nous.", score: 0 },
+          { text: "Je les contacte pour comprendre leur méthode et voir ce que je peux adapter.", score: 2 },
+          { text: "Je mentionne leur approche à mon responsable comme piste d'inspiration.", score: 1 },
+          { text: "Je reproduis leur méthode directement sans les contacter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous interagissez avec les autres équipes en fonction de vos besoins, sans chercher à comprendre leur logique", desc: "Trouver déraisonnable une demande urgente de l'équipe commerciale sans chercher pourquoi elle est urgente, contourner les délais du juridique sur les sujets 'peu risqués', laisser circuler des stéréotypes négatifs sur d'autres équipes : ces comportements ferment les portes avant qu'elles ne soient ouvertes. La compréhension de la logique de l'autre est le préalable à toute coopération efficace." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Une livraison que vous attendez d'une autre équipe est en retard. Cela va impacter votre propre planning. Vous ne savez pas pourquoi le retard se produit.",
+        tags: ["dépendances", "retard"],
+        answers: [
+          { text: "Je remonte le retard à ma direction pour qu'elle mette la pression.", score: 0 },
+          { text: "Je contacte directement le responsable de la livraison pour comprendre et chercher une solution.", score: 2 },
+          { text: "J'attends encore quelques jours — ils savent qu'ils sont en retard.", score: 0 },
+          { text: "Je prévois une solution de repli pour ne pas dépendre de leur livraison.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une dépendance entre votre équipe et une autre crée un problème, vous le gérez directement avec l'équipe concernée avant d'escalader.",
+        tags: ["dépendances", "contact direct"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La même friction se reproduit régulièrement avec la même équipe. Vous avez réglé les situations au cas par cas sans jamais traiter la cause.",
+        tags: ["dépendances", "friction récurrente"],
+        answers: [
+          { text: "Je continue à gérer au cas par cas — c'est plus rapide.", score: 0 },
+          { text: "Je propose une rencontre avec cette équipe pour traiter la cause structurelle.", score: 2 },
+          { text: "Je remonte le problème récurrent à ma direction.", score: 1 },
+          { text: "J'en parle à l'équipe concernée lors d'une friction suivante.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un projet en commun a échoué. Des deux côtés, on s'attribue mutuellement la responsabilité. La situation est tendue.",
+        tags: ["dépendances", "blame"],
+        answers: [
+          { text: "Je défends ma position — mon équipe n'est pas responsable de l'échec.", score: 0 },
+          { text: "Je propose un REX commun pour analyser les causes sans chercher de responsable.", score: 2 },
+          { text: "Je laisse la direction arbitrer sur les responsabilités.", score: 0.5 },
+          { text: "Je reconnais la part de responsabilité de mon équipe et je le dis à l'autre équipe.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe et une autre équipe se disputent une ressource partagée — un expert, un budget, du temps machine. La tension monte.",
+        tags: ["dépendances", "ressources"],
+        answers: [
+          { text: "Je défends les besoins de mon équipe — si je ne le fais pas, personne ne le fera.", score: 0 },
+          { text: "Je propose une réunion à trois avec la direction pour trouver un partage équitable.", score: 2 },
+          { text: "Je négocie directement avec l'autre équipe en cherchant un partage.", score: 1.5 },
+          { text: "J'optimise l'usage de la ressource de mon côté pour réduire la dépendance.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous êtes en compétition avec une autre équipe sur une ressource partagée, vous cherchez un compromis plutôt que de vous battre pour maximiser votre part.",
+        tags: ["dépendances", "ressources partagées"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que vous retenez parfois des informations utiles à d'autres équipes par crainte qu'elles vous concurrencent.",
+        tags: ["dépendances", "information"],
+        answers: [
+          { text: "Je continue — la rétention d'information est une façon normale de protéger son équipe.", score: 0 },
+          { text: "Je travaille à changer ce comportement — la rétention d'information nuit à l'organisation globale.", score: 2 },
+          { text: "Je partage les informations non stratégiques et je garde les sensibles.", score: 0.5 },
+          { text: "Je partage les informations quand on me les demande, pas spontanément.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une équipe partenaire n'a pas tenu un engagement qu'elle avait pris. Votre équipe en a pâti. Vous devez aborder le sujet.",
+        tags: ["dépendances", "engagement non tenu"],
+        answers: [
+          { text: "J'en parle à ma direction pour qu'elle gère la relation avec leur direction.", score: 0 },
+          { text: "Je l'aborde directement avec le responsable de l'équipe en décrivant l'impact concret.", score: 2 },
+          { text: "Je l'accepte cette fois mais je ne leur fais plus confiance pour les prochains engagements.", score: 0 },
+          { text: "Je leur en parle en réunion commune pour que ce soit acté collectivement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une équipe partenaire ne tient pas ses engagements, vous l'abordez directement avec elle plutôt que de le gérer en contournant ou en escaladant.",
+        tags: ["dépendances", "engagements"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez que votre organisation fonctionne en silos — les équipes ne se parlent pas spontanément et passent par la hiérarchie pour tout. Vous avez des relations directes avec plusieurs équipes.",
+        tags: ["dépendances", "silos"],
+        answers: [
+          { text: "Je m'adapte — si l'organisation fonctionne en silos, mes relations directes sont une exception à ne pas trop afficher.", score: 0 },
+          { text: "Je cultive et développe ces relations directes comme une valeur ajoutée pour l'organisation.", score: 2 },
+          { text: "Je continue mes pratiques sans les promouvoir — chacun s'organise comme il veut.", score: 0.5 },
+          { text: "Je propose à ma direction un modèle de fonctionnement plus transversal.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les frictions inter-équipes de façon réactive — au cas par cas, souvent par escalade", desc: "Remonter les retards à la direction plutôt que de les gérer directement, traiter les frictions récurrentes au cas par cas sans en traiter la cause, défendre sa position après un échec commun sans chercher une analyse partagée : ces comportements maintiennent les problèmes inter-équipes dans une logique d'escalade coûteuse pour tout le monde." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous n'avez pas de projet commun en cours avec une équipe avec laquelle vous collaborez régulièrement. Vous ne la contactez jamais hors projet.",
+        tags: ["relations durables", "investissement"],
+        answers: [
+          { text: "Je la contacte uniquement en cas de besoin — entretenir des relations sans objectif est une perte de temps.", score: 0 },
+          { text: "Je cherche des occasions d'échanges informels pour maintenir le lien même hors projet.", score: 2 },
+          { text: "Je participe aux événements d'équipe qui me permettent de croiser ces personnes.", score: 1 },
+          { text: "J'envoie de temps en temps des informations utiles pour maintenir le contact.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous entretenez des relations avec les équipes partenaires en dehors des projets communs.",
+        tags: ["relations durables", "entretien"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous aidez régulièrement une équipe partenaire mais vous avez l'impression que l'aide n'est pas réciproque.",
+        tags: ["relations durables", "réciprocité"],
+        answers: [
+          { text: "Je cesse d'aider — la réciprocité est la base d'une coopération saine.", score: 0 },
+          { text: "J'en parle directement à l'équipe pour comprendre et rééquilibrer.", score: 2 },
+          { text: "Je continue d'aider — la réciprocité se construit dans la durée.", score: 0.5 },
+          { text: "J'en parle à ma direction pour qu'elle formalise les échanges.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau responsable arrive dans une équipe avec laquelle vous travaillez fréquemment. Vous n'avez pas encore de relation avec lui.",
+        tags: ["relations durables", "nouvelle personne"],
+        answers: [
+          { text: "J'attends qu'un projet commun crée naturellement la relation.", score: 0 },
+          { text: "Je prends l'initiative de le rencontrer pour créer le lien avant que des problèmes émergent.", score: 2 },
+          { text: "Je me présente lors d'une prochaine réunion commune.", score: 1 },
+          { text: "Je lui envoie un mail de bienvenue avec un résumé de nos collaborations passées.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre relation avec une équipe partenaire a été marquée par un conflit passé. La relation est froide depuis. Vous devez retravailler ensemble.",
+        tags: ["relations durables", "conflit ancien"],
+        answers: [
+          { text: "Je gère la collaboration de façon professionnelle sans aborder l'historique.", score: 1 },
+          { text: "Je propose à l'autre responsable un échange pour clarifier l'historique avant de retravailler ensemble.", score: 2 },
+          { text: "J'attends de voir si la nouvelle collaboration repart bien sans traiter le passé.", score: 0.5 },
+          { text: "Je minimise les interactions avec cette équipe pour limiter les frictions.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une relation inter-équipes a été marquée par un conflit, vous prenez l'initiative de le traiter plutôt que de faire comme s'il n'avait pas existé.",
+        tags: ["relations durables", "historique"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe prend en charge une relation avec une équipe partenaire que vous gérez jusqu'ici. Vous avez construit cette relation sur plusieurs années.",
+        tags: ["relations durables", "transmission"],
+        answers: [
+          { text: "Je lui passe le relais sans briefing particulier — il construira sa propre relation.", score: 0 },
+          { text: "Je lui transmets le contexte de la relation, les personnes clés et les points de sensibilité.", score: 2 },
+          { text: "Je l'accompagne sur les premières réunions pour faciliter la transition.", score: 1.5 },
+          { text: "Je reste en copie des échanges pendant quelques mois pour assurer la continuité.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une équipe partenaire a fait un effort notable pour vous aider sur un sujet urgent. Personne ne le sait en dehors de vous.",
+        tags: ["relations durables", "reconnaissance"],
+        answers: [
+          { text: "Je les remercie en privé — c'est suffisant et ça évite de mettre les gens mal à l'aise.", score: 0.5 },
+          { text: "Je rends leur effort visible auprès des personnes pertinentes, y compris leurs responsables.", score: 2 },
+          { text: "Je les remercie lors de la prochaine réunion commune.", score: 1 },
+          { text: "Je cherche une occasion de leur rendre la pareille.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous rendez visibles les contributions des équipes partenaires à votre travail, même quand elles ne sont pas reconnues par défaut.",
+        tags: ["relations durables", "valorisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre réseau interne, votre équipe a une image positive. Vous avez une influence sur la façon dont les autres équipes perçoivent votre organisation.",
+        tags: ["relations durables", "ambassadeur"],
+        answers: [
+          { text: "Je m'en tiens à mon travail — ma réputation se construit avec les résultats.", score: 0 },
+          { text: "Je représente activement les valeurs et la façon de travailler de mon équipe dans mes interactions inter-équipes.", score: 2 },
+          { text: "Je profite de mon réseau pour positionner favorablement mon équipe sur les sujets stratégiques.", score: 1 },
+          { text: "Je cherche à créer des occasions de collaboration qui montrent notre façon de travailler.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos relations inter-équipes sont transactionnelles — elles existent quand il y a un projet, pas au-delà", desc: "Ne pas contacter une équipe partenaire hors projet, attendre qu'un projet crée naturellement la relation avec le nouveau responsable, remercier en privé l'équipe qui a fait un effort notable sans rendre leur contribution visible : ces comportements traitent les relations comme des outils. Les coopérations les plus efficaces s'appuient sur des relations construites en dehors des moments de besoin." },
+          moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Un projet implique plusieurs équipes avec des objectifs potentiellement divergents. Personne ne prend l'initiative de les aligner. La situation se dégrade.",
+        tags: ["silos", "objectif commun"],
+        answers: [
+          { text: "J'attends que la direction prenne en charge l'alignement — ce n'est pas mon rôle.", score: 0 },
+          { text: "Je prends l'initiative de réunir les équipes pour travailler sur un objectif commun.", score: 2 },
+          { text: "J'aligne mon équipe sur son objectif propre et je laisse les autres faire pareil.", score: 0 },
+          { text: "Je remonte le problème à ma direction pour qu'elle arbitre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un projet inter-équipes déraille faute d'alignement, vous prenez l'initiative de créer les conditions de cet alignement sans attendre la direction.",
+        tags: ["silos", "initiative"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une décision favorable à votre équipe aurait un impact négatif sur une autre équipe. Les deux options sont défendables.",
+        tags: ["silos", "intérêt collectif"],
+        answers: [
+          { text: "Je prends la décision favorable à mon équipe — c'est ma responsabilité.", score: 0 },
+          { text: "Je cherche une option qui prend en compte l'impact sur l'autre équipe.", score: 2 },
+          { text: "J'en parle à l'autre équipe pour voir si elle a une alternative à proposer.", score: 1.5 },
+          { text: "Je soumets les deux options à ma direction pour qu'elle arbitre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un projet inter-équipes réussit. Votre équipe a fourni la contribution la plus visible. D'autres équipes ont apporté des contributions moins visibles mais indispensables.",
+        tags: ["silos", "succès collectif"],
+        answers: [
+          { text: "Je revendique le succès au nom de mon équipe — c'est nous qui avons porté le projet.", score: 0 },
+          { text: "Je partage le crédit avec les équipes qui ont contribué, même si leur rôle est moins visible.", score: 2 },
+          { text: "Je mentionne les autres équipes sans détailler leur contribution.", score: 0.5 },
+          { text: "Je laisse chaque équipe valoriser sa contribution à sa façon.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe travaille sur un projet transversal et consacre beaucoup de temps à une autre équipe. Vous avez besoin de lui en interne.",
+        tags: ["silos", "double appartenance"],
+        answers: [
+          { text: "Je le récupère sur ses missions internes — mon équipe est prioritaire.", score: 0 },
+          { text: "Je cherche avec lui et le chef de projet transversal comment arbitrer sa disponibilité.", score: 2 },
+          { text: "Je lui demande de réduire sa contribution au projet transversal.", score: 0.5 },
+          { text: "Je remonte le sujet à ma direction pour qu'elle arbitre la priorité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un membre de votre équipe est partagé entre vos besoins et ceux d'un projet transversal, vous arbitrez avec lui et les parties prenantes concernées.",
+        tags: ["silos", "arbitrage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La culture de votre organisation valorise la performance individuelle des équipes plus que la coopération inter-équipes. Vous pensez que ça crée des silos.",
+        tags: ["silos", "culture"],
+        answers: [
+          { text: "Je m'adapte — si l'organisation valorise la performance individuelle, c'est son choix.", score: 0 },
+          { text: "Je maintiens mes pratiques de coopération et j'en fais un argument dans les discussions sur la culture.", score: 2 },
+          { text: "Je joue le jeu de la performance individuelle tout en coopérant discrètement.", score: 0.5 },
+          { text: "Je remonte mes observations à ma direction pour qu'elle fasse évoluer les indicateurs.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez un conflit d'intérêt réel avec une équipe partenaire — ce qui est bon pour vous l'est moins pour eux. Vous avez tendance à l'ignorer.",
+        tags: ["silos", "conflit d'intérêt"],
+        answers: [
+          { text: "Je continue à l'ignorer — tout conflit d'intérêt n'est pas forcément problématique.", score: 0 },
+          { text: "Je le nomme explicitement avec l'autre équipe pour trouver un mode de fonctionnement transparent.", score: 2 },
+          { text: "Je le gère au cas par cas en essayant de ne pas défavoriser l'autre équipe systématiquement.", score: 1 },
+          { text: "Je le remonte à ma direction pour qu'elle mette en place un arbitrage.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous nommez explicitement les conflits d'intérêt avec les équipes partenaires plutôt que de les gérer implicitement.",
+        tags: ["silos", "transparence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous incarnez dans votre organisation un modèle de coopération inter-équipes que vos collègues observent. Un homologue vous demande comment vous faites.",
+        tags: ["silos", "modèle"],
+        answers: [
+          { text: "Je lui explique mes pratiques sans les présenter comme un modèle — chacun trouve sa façon.", score: 0.5 },
+          { text: "Je partage concrètement mes pratiques et les raisons pour lesquelles je les ai développées.", score: 2 },
+          { text: "Je lui propose de le faire découvrir en l'impliquant dans une de mes coopérations.", score: 2 },
+          { text: "Je lui dis que c'est surtout une question de personnalité — pas forcément reproductible.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -4072,6 +4739,16 @@
         ["Faire confiance sans perdre le fil", "Conscience du contrôle, points de suivi utiles, cohérence face à la direction."],
         ["Traiter les difficultés sans reprendre la main", "Soutien, développement, apprentissage par l'erreur."],
         ["Développer l'autonomie collective", "Périmètre de décision, pairs, absences, transition de poste."],
+      ]}
+    ],
+
+    ["cooperer-autres-equipes", "Coopérer avec les autres équipes", "Tous publics",
+      "Identifier les frictions interéquipes, gérer les dépendances et dépasser les logiques de silos.",
+      { domain: "transformation", chapters: [
+        ["Comprendre les logiques des autres équipes", "Curiosité, empathie, négociation directe avant escalade."],
+        ["Gérer les dépendances et les frictions", "Contact direct, causes structurelles, partage d'information."],
+        ["Construire des relations de coopération durables", "Entretien hors projet, réciprocité, historique, valorisation."],
+        ["Dépasser les logiques de silos", "Initiative collective, partage du crédit, transparence sur les conflits."],
       ]}
     ],
 
