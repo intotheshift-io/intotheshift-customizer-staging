@@ -5345,6 +5345,673 @@
 
   },
 
+  "prioriser-arbitrer": {
+    0: [
+      {
+        type: "choix",
+        text: "Trois demandes arrivent en même temps ce matin — une de votre directrice, une d'un client stratégique et une d'un collègue pour un livrable interne. Toutes sont présentées comme urgentes.",
+        tags: ["priorisation", "urgence réelle"],
+        answers: [
+          { text: "Je commence par celle de ma directrice — la hiérarchie détermine la priorité.", score: 0 },
+          { text: "Je prends cinq minutes pour évaluer l'impact réel et le délai de chacune avant de décider.", score: 2 },
+          { text: "Je commence par celle du client — l'externe prime toujours sur l'interne.", score: 0.5 },
+          { text: "Je réponds aux trois que je vais prioriser et que je les tiens informés.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue vous envoie un message marqué 'URGENT' pour une information dont il a besoin pour une réunion demain matin. Il est 17h.",
+        tags: ["priorisation", "fausse urgence"],
+        answers: [
+          { text: "Je lui réponds immédiatement — le message urgent ne peut pas attendre.", score: 0 },
+          { text: "Je lui réponds maintenant si c'est rapide, ou je lui propose de le faire ce soir si c'est complexe.", score: 1.5 },
+          { text: "Je lui demande si c'est vraiment urgent ou s'il peut attendre demain matin.", score: 2 },
+          { text: "Je réponds demain matin — une réunion à 9h peut se préparer avant 9h.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant de traiter une demande marquée urgente, vous évaluez son impact réel et son délai réel plutôt que de réagir immédiatement.",
+        tags: ["priorisation", "évaluation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez une tâche stratégique importante mais sans deadline précise. Les urgences du quotidien la repoussent systématiquement depuis trois semaines.",
+        tags: ["priorisation", "importance vs urgence"],
+        answers: [
+          { text: "Je la traite quand les urgences s'arrêtent — l'important doit attendre l'urgent.", score: 0 },
+          { text: "Je bloque du temps fixe dans mon agenda pour cette tâche, protégé contre les urgences.", score: 2 },
+          { text: "Je la décompose en petites actions que je glisse dans les interstices de mon agenda.", score: 1.5 },
+          { text: "Je la délègue puisque je n'arrive pas à la traiter moi-même.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous êtes en train de travailler sur un dossier complexe. Un collègue vous interrompt pour une question qui 'prend deux minutes'. C'est la troisième fois ce matin.",
+        tags: ["priorisation", "interruptions"],
+        answers: [
+          { text: "Je réponds — refuser d'aider un collègue crée une mauvaise ambiance.", score: 0 },
+          { text: "Je lui dis que je suis sur un dossier complexe et que je reviens vers lui dans une heure.", score: 2 },
+          { text: "Je réponds rapidement puis je ferme ma porte pour éviter les prochaines interruptions.", score: 1 },
+          { text: "Je réponds mais je lui explique que les interruptions répétées me coûtent en productivité.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous protégez activement le temps alloué à vos sujets importants contre les interruptions et les urgences non critiques.",
+        tags: ["priorisation", "protection"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre charge de travail réelle dépasse structurellement votre capacité depuis plusieurs mois. Vous gérez en jonglant et en travaillant plus longtemps.",
+        tags: ["priorisation", "surcharge"],
+        answers: [
+          { text: "Je continue — les périodes de surcharge sont normales et temporaires.", score: 0 },
+          { text: "Je remonte la surcharge à mon responsable avec une analyse de la charge réelle et une demande d'arbitrage.", score: 2 },
+          { text: "Je priorise les sujets les plus visibles et je laisse tomber les moins visibles.", score: 0.5 },
+          { text: "Je cherche à optimiser mon organisation pour absorber la charge sans l'escalader.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous êtes débordé·e. Plusieurs tâches sur votre liste pourraient être faites par quelqu'un d'autre mais vous hésitez à déléguer.",
+        tags: ["priorisation", "délégation"],
+        answers: [
+          { text: "Je les garde — déléguer prend plus de temps que de les faire soi-même.", score: 0 },
+          { text: "Je les délègue même si c'est un investissement de temps à court terme.", score: 2 },
+          { text: "Je délègue les tâches les plus simples et garde les complexes.", score: 1 },
+          { text: "Je cherche qui dans mon équipe a la capacité de prendre ces tâches.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous êtes en surcharge, vous déléguez les tâches qui peuvent l'être plutôt que d'absorber seul·e.",
+        tags: ["priorisation", "délégation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous demande de prendre en charge un nouveau sujet alors que vous êtes déjà à pleine capacité. Refuser vous semble difficile.",
+        tags: ["priorisation", "refus"],
+        answers: [
+          { text: "J'accepte — dire non à son responsable ou à un collègue crée des tensions inutiles.", score: 0 },
+          { text: "Je dis que je peux prendre ce sujet en indiquant ce que ça implique de déprioritiser.", score: 2 },
+          { text: "J'accepte en sachant que quelque chose d'autre va en pâtir.", score: 0 },
+          { text: "Je demande à mon responsable de m'aider à arbitrer entre ce nouveau sujet et mes sujets actuels.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux urgences comme elles viennent sans évaluer leur impact réel ni protéger vos sujets importants", desc: "Commencer par la demande de la directrice parce qu'elle vient de la hiérarchie, répondre immédiatement à un message marqué urgent sans évaluer si c'est vraiment le cas, laisser le sujet stratégique se faire écraser par les urgences depuis trois semaines : ces comportements font de l'urgence le seul critère de priorisation. Ce qui est important mais non urgent ne trouvera jamais de place dans un agenda qui se laisse gouverner par les urgences." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez les urgences et protégez partiellement vos sujets importants mais des zones de réactivité excessive persistent", desc: "Vous prenez le temps d'évaluer les urgences avant de réagir et vous bloquez du temps pour vos sujets importants. Mais les interruptions répétées d'un collègue, la surcharge qui s'absorbe en travaillant plus longtemps, le sujet qui va devenir urgent dans deux semaines qu'on laisse pour plus tard : quelques zones de réactivité excessive persistent. L'enjeu est de protéger systématiquement l'important contre les urgences non critiques." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez les vraies urgences, protégez l'important et déléguez quand vous êtes en surcharge", desc: "Vous prenez cinq minutes pour évaluer l'impact réel de trois demandes simultanées avant de décider. Vous bloquez du temps fixe pour le sujet stratégique sans deadline. Vous dites à votre collègue que vous revenez dans une heure plutôt que de l'interrompre la troisième fois. Vous déléguez les tâches qui peuvent l'être même si c'est un investissement à court terme. Vous conditionnez votre 'oui' à une déprioritisation explicite. Ce rapport actif à la priorisation — qui suppose de résister à l'attraction des urgences — est ce qui permet aux sujets importants d'avancer." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre responsable vous demande de livrer un rapport pour vendredi. La même semaine, un client stratégique vous demande un livrable pour jeudi. Vous ne pouvez pas faire les deux.",
+        tags: ["arbitrage", "injonctions contradictoires"],
+        answers: [
+          { text: "Je priorise le client sans en parler à mon responsable — l'externe prime.", score: 0 },
+          { text: "J'informe mon responsable du conflit et je lui propose un arbitrage.", score: 2 },
+          { text: "Je travaille le soir pour tout faire — le conflit se résout par l'effort.", score: 0 },
+          { text: "Je négocie le délai avec le client — il est plus facile à déplacer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand deux demandes incompatibles arrivent, vous les exposez aux parties prenantes pour un arbitrage explicite plutôt que de décider seul·e.",
+        tags: ["arbitrage", "escalade"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Sous pression de temps, vous pouvez livrer un travail correct ou attendre deux jours pour livrer quelque chose d'excellent. Personne ne vous a dit ce qui était attendu.",
+        tags: ["arbitrage", "qualité"],
+        answers: [
+          { text: "Je livre dans les temps — le délai est plus sûr que la qualité dans le doute.", score: 0 },
+          { text: "Je demande à mon interlocuteur ce qui est prioritaire — délai ou qualité.", score: 2 },
+          { text: "Je livre dans les temps en signalant que la qualité pourrait être améliorée avec plus de temps.", score: 1.5 },
+          { text: "Je prends les deux jours — la qualité est mon standard et je ne le sacrifie pas.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue vous met sous pression émotionnelle pour que vous priorisiez son sujet — 'c'est vraiment important pour moi, tu es le seul qui peut m'aider'. Vous avez d'autres priorités.",
+        tags: ["arbitrage", "pression émotionnelle"],
+        answers: [
+          { text: "J'aide mon collègue — la relation prime sur les priorités formelles.", score: 0 },
+          { text: "Je lui explique que je vais regarder ce que je peux faire en tenant compte de mes autres priorités.", score: 2 },
+          { text: "Je l'aide rapidement pour me libérer — c'est plus vite réglé.", score: 0 },
+          { text: "Je lui dis non fermement — ma charge ne me le permet pas.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez arbitrer entre deux priorités et les deux sont légitimes. Il n'y a pas de bonne réponse — quelqu'un sera déçu quoi qu'il arrive.",
+        tags: ["arbitrage", "décision imparfaite"],
+        answers: [
+          { text: "J'hésite jusqu'à la dernière minute en espérant qu'une solution apparaisse.", score: 0 },
+          { text: "Je prends une décision, je la communique clairement et j'assume les conséquences.", score: 2 },
+          { text: "Je remonte la décision à mon responsable pour ne pas porter seul·e la déception.", score: 1 },
+          { text: "Je cherche un compromis même s'il est moins bon pour tout le monde.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand il n'y a pas de bonne décision, vous en prenez une et vous l'assumez plutôt que d'attendre ou de la déléguer vers le haut.",
+        tags: ["arbitrage", "décision"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez arbitrer entre plusieurs projets qui se disputent votre temps. Vous réalisez que vos critères de priorisation implicites sont flous et incohérents.",
+        tags: ["arbitrage", "critères"],
+        answers: [
+          { text: "Je continue à arbitrer au cas par cas — les critères formels ne correspondent jamais à la réalité.", score: 0 },
+          { text: "Je clarifie mes critères de priorisation explicitement pour les appliquer de façon cohérente.", score: 2 },
+          { text: "Je demande à mon responsable de me donner un cadre de priorisation.", score: 1 },
+          { text: "Je m'aligne sur les priorités affichées de l'organisation.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez priorisé un sujet et y avez consacré deux jours. Vous réalisez que ce n'était probablement pas la bonne priorité.",
+        tags: ["arbitrage", "changer de priorité"],
+        answers: [
+          { text: "Je continue — j'ai engagé du temps et changer maintenant ne ferait qu'aggraver le retard.", score: 0 },
+          { text: "Je bascule sur la bonne priorité — les deux jours passés ne changent pas ce qui est le plus important maintenant.", score: 2 },
+          { text: "Je finis ce que j'ai commencé puis je bascule — laisser un travail à moitié fait crée plus de problèmes.", score: 0.5 },
+          { text: "J'évalue si finir le sujet en cours ou basculer est le meilleur choix.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous réalisez que vous priorisez mal, vous corrigez sans hésitation même si vous avez déjà investi du temps.",
+        tags: ["arbitrage", "réajustement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez priorisé un sujet au détriment d'un autre. La personne concernée par le sujet déprioritisé ne le sait pas encore.",
+        tags: ["arbitrage", "transparence"],
+        answers: [
+          { text: "J'attends que ça devienne visible — expliquer à l'avance crée de l'anxiété inutile.", score: 0 },
+          { text: "Je lui dis maintenant en expliquant la raison et le délai révisé.", score: 2 },
+          { text: "Je lui dis quand j'ai un résultat concret à lui donner sur le sujet déprioritisé.", score: 0.5 },
+          { text: "Je lui envoie un message pour le prévenir sans entrer dans les détails.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sont flous, non communiqués et souvent cédés sous pression", desc: "Prioriser sans communiquer à la personne concernée, céder sur une priorité quand la pression se répète, livrer dans les temps sans demander si le délai prime sur la qualité : ces comportements rendent les arbitrages invisibles, incohérents et réversibles sous pression. Un arbitrage qui ne se tient pas n'en est pas un." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos arbitrages dans les situations évidentes mais votre tenue sous pression et vos critères manquent encore de cohérence", desc: "Vous communiquez vos arbitrages et vous tenez vos priorités dans les situations ordinaires. Mais céder quand la pression est forte et répétée, attendre qu'on vous pose la question pour expliquer les critères d'un arbitrage, dériver vers une déprioritisation tacite plutôt qu'explicite : ces comportements rendent vos arbitrages fragiles. L'enjeu est de les tenir et de les expliquer précisément dans ces moments difficiles." },
+          haut: { label: "Réflexes installés", titre: "Vos arbitrages sont clairs, tenus sous pression et communiqués avec des critères explicites", desc: "Vous informez immédiatement votre responsable quand deux demandes incompatibles arrivent. Vous demandez à votre interlocuteur ce qui prime entre délai et qualité. Vous tenez votre priorité face à la troisième relance en donnant une date précise. Vous clarifiez vos critères de priorisation pour les appliquer de façon cohérente. Vous corrigez votre priorisation sans hésitation quand vous réalisez qu'elle était mauvaise. Cette cohérence dans l'arbitrage — qui suppose d'assumer des déceptions et de résister à la pression — est ce qui rend votre organisation prévisible." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous avez priorisé un sujet stratégique. Un collègue revient pour la troisième fois cette semaine pour que vous traitiez son sujet en urgence. Il commence à s'impatienter.",
+        tags: ["durée", "pression répétée"],
+        answers: [
+          { text: "Je cède — sa persistance me montre que son sujet est vraiment important.", score: 0 },
+          { text: "Je lui réexplique ma priorité actuelle et je lui donne une date précise à laquelle je traiterai son sujet.", score: 2 },
+          { text: "Je traite rapidement son sujet pour qu'il me laisse travailler.", score: 0 },
+          { text: "Je remonte la situation à son responsable pour qu'il gère ses attentes.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous avez arbitré une priorité, vous la tenez face aux pressions répétées sans la justifier à chaque fois.",
+        tags: ["durée", "tenue"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez défini vos priorités de la semaine lundi matin. Le mercredi, deux nouvelles urgences sont arrivées et ont tout bouleversé. C'est récurrent.",
+        tags: ["durée", "revue priorités"],
+        answers: [
+          { text: "Je m'adapte — dans mon métier, les urgences sont inévitables et le plan de la semaine ne peut pas tenir.", score: 0 },
+          { text: "Je maintiens une revue de priorités courte en début de semaine tout en intégrant une marge pour les urgences.", score: 2 },
+          { text: "Je fais des plans de journée plutôt que de semaine — plus réaliste.", score: 1 },
+          { text: "Je remonte la récurrence des urgences à mon responsable pour qu'on traite la cause.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Certains sujets importants sont systématiquement reportés dans votre liste de priorités depuis deux mois. Vous les retrouvez chaque semaine sans les traiter.",
+        tags: ["durée", "sujets reportés"],
+        answers: [
+          { text: "Je continue à les reporter — s'ils n'avancent pas, c'est qu'ils ne sont pas vraiment prioritaires.", score: 0 },
+          { text: "Je les examine : soit je les traite enfin, soit je les supprime de ma liste, soit je les délègue.", score: 2 },
+          { text: "Je bloque une demi-journée spécifique pour m'y attaquer.", score: 1.5 },
+          { text: "Je les remonte à mon responsable pour qu'il m'aide à arbitrer leur réel niveau de priorité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre liste de priorités est structurellement trop longue pour être traitée par une seule personne. Vous faites tout mais rien à fond.",
+        tags: ["durée", "charge structurelle"],
+        answers: [
+          { text: "Je fais le maximum — c'est à moi de trouver les moyens de tout traiter.", score: 0 },
+          { text: "Je présente à mon responsable la liste complète avec l'impact de chaque choix et je demande un arbitrage.", score: 2 },
+          { text: "Je traite les priorités les plus visibles et j'espère que les autres ne se remarquent pas.", score: 0 },
+          { text: "Je supprime les sujets les moins importants sans en parler.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand votre charge est structurellement trop lourde, vous remontez le problème avec une analyse des impacts plutôt que d'absorber seul·e.",
+        tags: ["durée", "arbitrage structurel"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "En fin de semaine, vous réalisez que vous avez passé l'essentiel de votre temps sur des urgences et n'avez pas avancé sur vos priorités stratégiques.",
+        tags: ["durée", "bilan"],
+        answers: [
+          { text: "Je l'accepte — une semaine gérée en urgences est une semaine normale.", score: 0 },
+          { text: "J'analyse ce qui a généré ces urgences pour voir si certaines étaient évitables.", score: 2 },
+          { text: "Je me rattrape le weekend sur les sujets stratégiques.", score: 0 },
+          { text: "Je protège mieux mon temps la semaine suivante.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un sujet va devenir urgent dans deux semaines si vous n'y touchez pas maintenant. Vous êtes occupé·e par d'autres urgences aujourd'hui.",
+        tags: ["durée", "anticipation"],
+        answers: [
+          { text: "J'attends qu'il devienne urgent — si je commence maintenant, je travaille sur quelque chose qui ne l'est pas encore.", score: 0 },
+          { text: "Je lui consacre un temps limité maintenant pour éviter qu'il devienne une urgence.", score: 2 },
+          { text: "Je le planifie dans mon agenda pour dans une semaine — entre les deux.", score: 1.5 },
+          { text: "Je le délègue maintenant pour ne pas le perdre de vue.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous identifiez les sujets qui deviendront urgents dans deux semaines et vous y consacrez du temps avant qu'ils le soient.",
+        tags: ["durée", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe subit aussi les conséquences de la désorganisation des priorités — elle reçoit des demandes contradictoires et change de cap trop souvent.",
+        tags: ["durée", "équipe"],
+        answers: [
+          { text: "Je laisse — c'est la réalité du travail et mon équipe doit s'y adapter.", score: 0 },
+          { text: "Je clarifie collectivement les priorités de l'équipe pour réduire les changements de cap.", score: 2 },
+          { text: "Je filtre les demandes avant qu'elles arrivent à mon équipe.", score: 1.5 },
+          { text: "Je remonte le problème à ma direction pour qu'elle clarifie les priorités.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre charge structurelle est absorbée seul·e sans arbitrage ni anticipation", desc: "Continuer à tout faire en travaillant plus longtemps quand la charge dépasse la capacité, laisser les sujets importants se reporter indéfiniment sans les traiter, attendre qu'un sujet soit urgent avant de s'y attaquer : ces comportements épuisent sans produire plus. La surcharge structurelle n'est pas un problème d'organisation personnelle — c'est un problème qui nécessite un arbitrage avec sa hiérarchie." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges et anticipez partiellement mais pas encore de façon systématique", desc: "Vous signalez les surcharges structurelles à votre responsable. Vous revoyez vos priorités en début de semaine. Mais analyser systématiquement en fin de semaine ce qui a généré les urgences pour voir lesquelles étaient évitables, traiter ou supprimer les sujets qui se reportent depuis deux mois, remonter la récurrence des urgences à votre responsable pour en traiter la cause : ces comportements d'anticipation et d'analyse sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez votre charge structurellement — arbitrage hiérarchique, anticipation, revue régulière", desc: "Vous remontez la surcharge structurelle avec une analyse des impacts. Vous identifiez les urgences de mercredi comme évitables et vous en cherchez la cause. Vous traitez, supprimez ou déléguez les sujets reportés depuis deux mois. Vous consacrez un temps limité aux sujets qui deviendront urgents dans deux semaines. Vous clarifiez collectivement les priorités de votre équipe pour réduire les changements de cap. Cette façon de gérer la charge comme un problème collectif et structurel — pas seulement individuel — est ce qui rend le travail durable." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous devez dire à votre responsable que vous avez déprioritisé un de ses sujets pour traiter quelque chose de plus urgent. Elle ne le sait pas encore.",
+        tags: ["communication", "annonce déprioritisation"],
+        answers: [
+          { text: "Je ne lui dis rien — je rattraperai son sujet avant qu'elle le remarque.", score: 0 },
+          { text: "Je l'informe maintenant en expliquant ma logique et en lui proposant un délai révisé.", score: 2 },
+          { text: "Je lui dis que le sujet avance mais que ça prend un peu plus de temps que prévu.", score: 0 },
+          { text: "Je l'informe uniquement si elle pose la question.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous déprioritisez un sujet, vous en informez proactivement la personne concernée sans attendre qu'elle pose la question.",
+        tags: ["communication", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez arbitré en faveur d'un sujet. Un collègue dont le sujet a été déprioritisé vous demande des explications.",
+        tags: ["communication", "explication"],
+        answers: [
+          { text: "Je lui dis que c'est ma décision et que je n'ai pas à me justifier.", score: 0 },
+          { text: "Je lui explique les critères qui ont guidé mon arbitrage sans minimiser l'impact pour lui.", score: 2 },
+          { text: "Je lui dis que c'était difficile mais nécessaire.", score: 0.5 },
+          { text: "Je lui explique en détail tout le contexte de la décision.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un partenaire externe attend une livraison que vous avez dû décaler. Il commence à mettre la pression.",
+        tags: ["communication", "négociation délai"],
+        answers: [
+          { text: "J'absorbe la pression et j'essaie d'accélérer.", score: 0 },
+          { text: "Je lui explique la situation honnêtement et je lui propose le nouveau délai réaliste.", score: 2 },
+          { text: "Je lui donne une date optimiste pour calmer la pression et j'espère tenir.", score: 0 },
+          { text: "Je remonte la situation à mon responsable pour qu'il gère la relation client.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez expliqué vos priorités à votre équipe lundi. Le jeudi, vous changez d'avis sur une priorité importante. Votre équipe va devoir pivoter.",
+        tags: ["communication", "cohérence"],
+        answers: [
+          { text: "Je change en douceur sans l'annoncer formellement — ça évitera les questions.", score: 0 },
+          { text: "J'annonce le changement de priorité en expliquant ce qui a évolué et en reconnaissant l'impact sur leur travail.", score: 2 },
+          { text: "Je leur dis simplement que la priorité a changé sans entrer dans les détails.", score: 0.5 },
+          { text: "J'évite de changer les priorités en cours de semaine — ça nuit à la crédibilité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous changez une priorité déjà communiquée, vous l'annoncez explicitement avec une explication et une reconnaissance de l'impact.",
+        tags: ["communication", "changement priorité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre directeur vous demande d'intégrer un nouveau sujet prioritaire dans votre semaine déjà pleine. Il ne mesure probablement pas l'impact sur le reste.",
+        tags: ["communication", "dire non"],
+        answers: [
+          { text: "J'accepte — mon directeur a la vision globale et s'il dit que c'est prioritaire, ça l'est.", score: 0 },
+          { text: "J'accepte en lui expliquant ce que ça implique de déprioritiser et je lui laisse trancher.", score: 2 },
+          { text: "Je dis oui et je m'arrange comme je peux — c'est mon problème.", score: 0 },
+          { text: "Je lui demande de m'aider à choisir ce que je déprioritise en contrepartie.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un livrable que vous avez déprioritisé est maintenant en retard visible. Vous devez rendre des comptes.",
+        tags: ["communication", "retard assumé"],
+        answers: [
+          { text: "J'explique que j'ai été débordé·e par des urgences imprévues.", score: 0 },
+          { text: "J'explique l'arbitrage que j'ai fait et pourquoi j'ai priorisé autrement.", score: 2 },
+          { text: "Je minimise le retard pour en limiter l'impact perçu.", score: 0 },
+          { text: "J'assume le retard sans entrer dans les détails de mon arbitrage.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un livrable est en retard suite à un arbitrage de votre part, vous expliquez l'arbitrage plutôt que de l'habiller en 'débordement'.",
+        tags: ["communication", "arbitrage visible"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre organisation, tout est présenté comme urgent et la culture valorise ceux qui répondent immédiatement à tout. Vous sentez que cette culture vous nuit.",
+        tags: ["communication", "culture urgence"],
+        answers: [
+          { text: "Je m'y adapte — aller contre la culture organisationnelle est un combat perdu d'avance.", score: 0 },
+          { text: "J'incarne une posture différente par mes comportements et j'en parle quand l'occasion se présente.", score: 2 },
+          { text: "Je joue le jeu de la culture urgence tout en protégeant discrètement mon temps.", score: 0.5 },
+          { text: "Je remonte le problème à ma direction pour qu'elle fasse évoluer la culture.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne communiquez pas vos arbitrages de façon proactive et assumée", desc: "Attendre que le retard soit visible pour informer les parties prenantes, minimiser les retards comme des 'débordements', s'adapter à la culture de l'urgence sans la questionner : ces comportements privent les parties prenantes des informations dont elles ont besoin pour co-gérer les priorités. Un arbitrage non communiqué crée la frustration que l'arbitrage était censé éviter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous informez proactivement sur vos arbitrages dans la plupart des cas mais les situations inconfortables créent encore des évitements", desc: "Vous informez proactivement sur vos arbitrages. Mais expliquer clairement vos critères à un collègue qui demande des comptes, annoncer un changement de priorité avec une explication et une reconnaissance de l'impact, assumer explicitement un retard en l'expliquant comme un arbitrage plutôt qu'un débordement : ces situations d'explication assumée des arbitrages sont encore inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous communiquez vos arbitrages de façon proactive et assumée, y compris dans les situations inconfortables", desc: "Vous informez proactivement les parties prenantes dès que vous déprioritisez. Vous expliquez vos critères à votre collègue qui demande des comptes. Vous annoncez le changement de priorité avec une explication et une reconnaissance de l'impact. Vous assumez le retard en expliquant l'arbitrage, pas en l'habillant en débordement. Vous incarnez une posture différente de la culture d'urgence sans être moralisateur. Cette transparence sur les arbitrages — qui suppose d'accepter d'être en désaccord apparent avec la culture de l'urgence — est ce qui construit la confiance dans la durée." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -5426,6 +6093,16 @@
         ["Adopter une nouvelle méthode de travail", "Engagement sérieux, robustesse sous pression, remontée des observations."],
         ["Gérer l'inconfort numérique et technologique", "Expérimentation, compréhension, développement proactif, cadre."],
         ["Contribuer à l'adoption collective", "Référent, retours terrain, culture d'équipe, transmission."],
+      ]}
+    ],
+
+    ["prioriser-arbitrer", "Prioriser et arbitrer quand tout est urgent", "Managers / Encadrants",
+      "Hiérarchiser les demandes, gérer les injonctions contradictoires et tenir ses arbitrages dans la durée.",
+      { domain: "transformation", chapters: [
+        ["Clarifier ce qui est vraiment urgent", "Évaluer l'impact réel, protéger l'important, déléguer en surcharge."],
+        ["Arbitrer sous pression", "Critères explicites, qualité vs délai, décisions difficiles assumées."],
+        ["Tenir ses arbitrages dans la durée", "Tenue sous pression, revue régulière, anticipation, charge structurelle."],
+        ["Communiquer ses arbitrages", "Proactivité, explication des critères, arbitrages assumés publiquement."],
       ]}
     ],
 
