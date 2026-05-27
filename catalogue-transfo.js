@@ -6012,6 +6012,673 @@
 
   },
 
+  "prendre-sa-place": {
+    0: [
+      {
+        type: "choix",
+        text: "En réunion, votre responsable présente une conclusion que vous savez factuellemnt incorrecte. Plusieurs collègues acquiescent. Vous hésitez à intervenir.",
+        tags: ["assertivité", "désaccord"],
+        answers: [
+          { text: "Je me tais — contredire mon responsable devant tout le monde créerait une tension inutile.", score: 0 },
+          { text: "J'interviens en présentant les faits calmement.", score: 2 },
+          { text: "J'attends la fin de la réunion pour lui en parler en privé.", score: 1.5 },
+          { text: "J'attends de voir si quelqu'un d'autre soulève le point avant de prendre la parole.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez une idée que vous pensez bonne mais qui pourrait être mal reçue par certains membres de votre équipe. La réunion arrive.",
+        tags: ["assertivité", "idée"],
+        answers: [
+          { text: "Je ne la propose pas — une idée mal reçue nuit plus qu'elle n'aide.", score: 0 },
+          { text: "Je la présente clairement en expliquant mon raisonnement.", score: 2 },
+          { text: "Je la glisse dans la conversation de façon informelle pour tester la réaction.", score: 1 },
+          { text: "Je la partage d'abord avec un collègue de confiance pour évaluer si ça vaut la peine.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous prenez la parole en réunion même quand le groupe semble déjà aligné sur une position différente de la vôtre.",
+        tags: ["assertivité", "prise de parole"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez besoin d'une ressource ou d'un soutien pour avancer sur votre mission. Vous hésitez à le demander par crainte de déranger.",
+        tags: ["assertivité", "besoin"],
+        answers: [
+          { text: "Je me débrouille sans — demander c'est admettre qu'on n'y arrive pas seul.", score: 0 },
+          { text: "Je fais la demande directement en expliquant pourquoi j'en ai besoin.", score: 2 },
+          { text: "Je cherche d'abord à progresser seul avant de demander.", score: 0.5 },
+          { text: "Je mentionne le besoin indirectement dans une réunion pour voir si quelqu'un le capte.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "En réunion, vous vous faites régulièrement couper la parole avant d'avoir fini votre pensée. Vous abandonnez à chaque fois.",
+        tags: ["assertivité", "interruption"],
+        answers: [
+          { text: "Je laisse — insister serait agressif et la dynamique de la réunion prime.", score: 0 },
+          { text: "Je dis calmement 'je n'ai pas fini' et je continue ma pensée.", score: 2 },
+          { text: "Je parle plus vite pour finir avant d'être interrompu·e.", score: 0 },
+          { text: "J'écris mon point dans le chat ou le compte rendu.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous vous faites couper la parole, vous reprenez la parole plutôt que d'abandonner votre point.",
+        tags: ["assertivité", "espace"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous venez de terminer un travail dont vous êtes fier·e. Personne n'en a parlé dans l'équipe. Mettre votre réussite en avant vous semble prétentieux.",
+        tags: ["assertivité", "visibilité"],
+        answers: [
+          { text: "Je laisse — si c'est bien, ça se verra sans que j'aie besoin de le dire.", score: 0 },
+          { text: "Je le mentionne à mon responsable ou en réunion en présentant ce que ça apporte.", score: 2 },
+          { text: "J'envoie le résultat à mon responsable par mail sans commentaire particulier.", score: 0.5 },
+          { text: "Je le partage avec un collègue proche pour qu'il en parle à ma place.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous demande de prendre en charge une tâche qui ne relève pas de vos responsabilités. Vous savez le faire mais ce n'est pas votre rôle.",
+        tags: ["assertivité", "limite"],
+        answers: [
+          { text: "J'accepte — être serviable est une qualité appréciée.", score: 0 },
+          { text: "Je pose la question de qui devrait le faire et je propose de les aider à le trouver.", score: 2 },
+          { text: "Je le fais cette fois en précisant que ce n'est pas mon périmètre.", score: 1 },
+          { text: "Je refuse poliment sans entrer dans les détails.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand on vous demande de prendre en charge quelque chose qui n'est pas de votre ressort, vous le signalez clairement avant de décider si vous aidez.",
+        tags: ["assertivité", "périmètre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe vous reconnaît comme expert·e sur un sujet. On vous demande maintenant de contribuer à un domaine où vous êtes moins à l'aise. Vous pensez à décliner.",
+        tags: ["assertivité", "confort"],
+        answers: [
+          { text: "Je décline — contribuer hors de mon domaine d'expertise expose à l'erreur.", score: 0 },
+          { text: "J'accepte en nommant clairement ce que j'apporte et ce qui m'est moins familier.", score: 2 },
+          { text: "J'accepte sans mentionner mes limites — elles se révèleront si nécessaire.", score: 0 },
+          { text: "J'accepte uniquement si je peux être accompagné·e d'un·e expert·e du domaine.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous exprimez peu en groupe et abandonnez souvent vos points avant de les avoir pleinement défendus", desc: "Se taire plutôt que de contredire son responsable devant le groupe, ne pas reprendre la parole quand on se fait couper, ne pas mentionner un travail réussi parce que ça semble prétentieux, ne pas demander une ressource par peur de déranger : ces comportements rendent vos contributions invisibles et votre influence nulle. Prendre sa place n'est pas de l'arrogance — c'est la condition pour que votre valeur soit visible et utilisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez la parole et défendez vos points dans les situations confortables mais vous vous effacez encore dans les situations inconfortables", desc: "Vous prenez la parole et proposez vos idées dans les réunions habituelles. Mais contredire votre responsable sur une erreur factuelle devant le groupe, reprendre la parole après avoir été coupé·e, mentionner votre propre réussite sans attendre que quelqu'un d'autre le fasse : ces situations inconfortables créent encore de l'hésitation. L'enjeu est d'étendre votre prise de place aux contextes qui vous mettent mal à l'aise." },
+          haut: { label: "Réflexes installés", titre: "Vous vous exprimez dans tous les contextes — confortables ou non — et vous occupez l'espace qui vous revient", desc: "Vous intervenez quand votre responsable présente quelque chose d'incorrect, même en réunion. Vous reprenez la parole quand vous vous faites couper. Vous mentionnez un travail réussi en l'ancrant dans ce qu'il apporte. Vous faites la demande directement quand vous avez besoin d'une ressource. Vous acceptez des contributions hors de votre zone de confort en nommant clairement ce que vous apportez et ce qui vous est moins familier. Cette façon d'occuper l'espace qui vous revient — sans attendre qu'on vous le donne — est ce qui rend votre valeur visible." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous avez proposé une idée en réunion. Votre collègue Valérie la conteste avec des arguments. Votre premier réflexe est de renoncer pour éviter le conflit.",
+        tags: ["position", "arguments"],
+        answers: [
+          { text: "Je renonce — Valérie a peut-être raison et l'harmonie vaut mieux que d'insister.", score: 0 },
+          { text: "J'écoute ses arguments et je maintiens ou ajuste ma position selon leur pertinence.", score: 2 },
+          { text: "Je défends ma position avec la même énergie qu'elle conteste la sienne.", score: 0.5 },
+          { text: "Je dis que je vais y réfléchir et que je reviens dessus.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand votre position est contestée, vous l'évaluez à l'aune des arguments reçus plutôt que de la maintenir ou de la céder par réflexe.",
+        tags: ["position", "maintien"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Tout le groupe converge vers une décision que vous trouvez sous-optimale. Vous êtes le seul à avoir des réserves.",
+        tags: ["position", "pression groupe"],
+        answers: [
+          { text: "Je m'aligne — contre le groupe entier, mon point de vue pèse peu.", score: 0 },
+          { text: "Je présente ma réserve clairement même seul·e contre tous, puis j'accepte la décision collective.", score: 2 },
+          { text: "Je pose une question qui amène le groupe à reconsidérer sans me positionner directement.", score: 1.5 },
+          { text: "Je valide mais je consigne ma réserve pour la réutiliser si la décision s'avère mauvaise.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre responsable a pris une décision avec laquelle vous n'êtes pas d'accord. Il vous demande votre avis après coup.",
+        tags: ["position", "hiérarchie"],
+        answers: [
+          { text: "Je dis que je suis d'accord — il a décidé et mon avis n'est plus utile.", score: 0 },
+          { text: "Je lui dis honnêtement ce que je pense tout en précisant que je mettrai en œuvre la décision.", score: 2 },
+          { text: "Je lui donne un avis nuancé pour ne pas froisser.", score: 0 },
+          { text: "Je lui dis ce qu'il veut entendre — ce n'est pas le moment de créer une tension.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre domaine d'expertise, un interlocuteur plus senior remet en question votre analyse. Il a de l'autorité mais moins d'expertise que vous sur ce sujet.",
+        tags: ["position", "expertise"],
+        answers: [
+          { text: "Je cède — son niveau hiérarchique lui confère une légitimité que je ne peux pas contester.", score: 0 },
+          { text: "Je maintiens mon analyse en expliquant les éléments techniques qui la fondent.", score: 2 },
+          { text: "Je cherche un compromis entre nos deux lectures.", score: 0.5 },
+          { text: "Je propose de trouver un tiers expert pour arbitrer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous avez une expertise sur un sujet, vous maintenez votre analyse même face à quelqu'un de plus senior.",
+        tags: ["position", "légitimité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans une négociation, vous avez fait plusieurs concessions successives. On vous en demande une de plus. Vous sentez que vous cédez trop.",
+        tags: ["position", "concession"],
+        answers: [
+          { text: "Je fais la concession — l'important c'est de trouver un accord.", score: 0 },
+          { text: "Je dis clairement que j'ai atteint ma limite et que je ne peux pas aller plus loin.", score: 2 },
+          { text: "Je fais une dernière concession mineure pour clore la négociation.", score: 0 },
+          { text: "Je reviens sur une de mes concessions précédentes pour rééquilibrer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous demande votre avis sur un sujet où vous avez une position mais pas de certitude absolue.",
+        tags: ["position", "incertitude"],
+        answers: [
+          { text: "Je dis que je ne sais pas — exprimer un avis incertain ne sert à rien.", score: 0 },
+          { text: "Je donne mon avis en précisant le niveau de certitude que j'y accorde.", score: 2 },
+          { text: "Je donne mon avis sans préciser l'incertitude — nuancer fragilise la position.", score: 0 },
+          { text: "J'exprime mon avis avec précaution pour ne pas être pris au mot.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous exprimez votre avis même quand vous n'êtes pas certain·e à 100%, en précisant votre niveau de confiance.",
+        tags: ["position", "avis nuancé"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "En réunion, une idée que vous avez proposée la semaine dernière est reprise par quelqu'un d'autre sans mention de son origine. Tout le monde semble trouver ça bien.",
+        tags: ["position", "reconnaissance"],
+        answers: [
+          { text: "Je laisse — réclamer la paternité d'une idée c'est mesquin.", score: 0 },
+          { text: "Je mentionne calmement que j'avais proposé quelque chose de similaire la semaine dernière.", score: 2 },
+          { text: "Je le dis à mon responsable après la réunion sans le mentionner en public.", score: 1 },
+          { text: "Je note la situation pour ne plus partager mes idées avant qu'elles soient validées.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre position cède encore trop facilement — sous la pression du groupe, de la hiérarchie ou du conflit à éviter", desc: "Renoncer à une idée quand Valérie la conteste pour éviter le conflit, s'aligner sur le groupe entier quand on est le seul à avoir des réserves, céder à la hiérarchie sur un sujet où on a l'expertise : ces comportements confondent l'effacement avec la diplomatie. Une position abandonnée sous pression plutôt que sous argument n'est pas une position — c'est une capitulation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez votre position face aux arguments mais la pression hiérarchique et la pression de groupe créent encore des cessions non argumentées", desc: "Vous évaluez les arguments avant de changer de position. Mais vous aligner quand tout le groupe pense autrement, céder quand quelqu'un de plus senior conteste votre analyse dans votre domaine d'expertise, ne pas réclamer la paternité d'une idée reprise sans mention : la pression de conformité et de hiérarchie peut encore faire céder des positions légitimes." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos positions sur la base des arguments, pas de la pression sociale ou hiérarchique", desc: "Vous maintenez votre position face aux arguments de Valérie si vous les trouvez insuffisants. Vous présentez votre réserve même seul·e contre tout le groupe. Vous maintenez votre analyse technique face à un interlocuteur plus senior. Vous signalez quand vous avez atteint votre limite dans une négociation. Vous exprimez votre avis avec votre niveau de certitude réel. Vous réclamez la paternité d'une idée reprise sans mention. Cette rigueur dans le maintien des positions légitimes — qui suppose d'assumer le conflit ponctuel pour préserver l'intégrité à long terme — est ce qui construit une réputation d'interlocuteur fiable." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Un collègue vous demande de l'aider sur un projet urgent. Vous êtes vous-même en surcharge. Vous avez peur de dire non.",
+        tags: ["limites", "surcharge"],
+        answers: [
+          { text: "J'accepte — refuser d'aider un collègue dans le besoin nuit à la relation.", score: 0 },
+          { text: "Je lui dis que je ne suis pas disponible maintenant et je lui propose une alternative.", score: 2 },
+          { text: "Je l'aide mais je le signale à mon responsable pour que la surcharge soit visible.", score: 1 },
+          { text: "J'accepte en espérant trouver du temps.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous dites non à une demande qui dépasse votre capacité ou votre périmètre, sans en faire une longue justification.",
+        tags: ["limites", "refus"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous demande de livrer quelque chose dans un délai qui vous semble irréaliste. Vous êtes tenté·e d'accepter pour ne pas décevoir.",
+        tags: ["limites", "délai"],
+        answers: [
+          { text: "J'accepte — je ferai de mon mieux et si ça ne tient pas, on verra.", score: 0 },
+          { text: "Je propose un délai réaliste en expliquant ce qui me permettra de livrer un travail de qualité.", score: 2 },
+          { text: "J'accepte le délai en précisant que je ne garantis pas la qualité.", score: 0.5 },
+          { text: "Je demande ce qui peut être retiré du périmètre pour tenir le délai.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre responsable vous envoie régulièrement des messages professionnels le soir et le week-end. Il ne vous demande pas de répondre immédiatement mais vous sentez la pression.",
+        tags: ["limites", "sollicitations hors heures"],
+        answers: [
+          { text: "Je réponds dès que je vois les messages — être réactif est une forme de loyauté.", score: 0 },
+          { text: "Je lui parle de la pression que je ressens et je propose de clarifier ses attentes sur ma disponibilité.", score: 2 },
+          { text: "Je lis les messages sans répondre pour me tenir informé·e sans m'engager.", score: 1 },
+          { text: "Je coupe les notifications professionnelles le soir et je l'en informe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous confie régulièrement des tâches en dessous de vos compétences parce que vous les faites bien et rapidement. Vous n'en parlez pas.",
+        tags: ["limites", "tâches dévalorisantes"],
+        answers: [
+          { text: "Je les fais — l'organisation a besoin que quelqu'un les fasse et je suis efficace.", score: 0 },
+          { text: "Je le signale à mon responsable en proposant qu'elles soient confiées à quelqu'un de plus adapté.", score: 2 },
+          { text: "Je les fais mais je mets en avant des missions plus valorisantes en parallèle.", score: 1 },
+          { text: "Je les fais de moins en moins bien pour qu'on arrête de me les confier.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous faites régulièrement des tâches en dessous de vos compétences, vous le signalez plutôt que de les absorber silencieusement.",
+        tags: ["limites", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue vous parle régulièrement de façon condescendante devant d'autres personnes. Vous ne lui avez encore rien dit.",
+        tags: ["limites", "traitement"],
+        answers: [
+          { text: "Je laisse — signaler ce type de comportement crée plus de problèmes qu'ça n'en résout.", score: 0 },
+          { text: "Je lui en parle en privé en décrivant le comportement précis et son impact sur moi.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il gère.", score: 1 },
+          { text: "Je réponds à la condescendance par des piques subtiles pour montrer que je remarque.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez l'habitude de chercher la validation de votre responsable avant d'agir même quand vous avez toute la légitimité pour décider seul·e.",
+        tags: ["limites", "validation"],
+        answers: [
+          { text: "Je continue — s'assurer que mon responsable est aligné évite les mauvaises surprises.", score: 0 },
+          { text: "Je prends conscience de ce réflexe et je commence à décider seul·e sur les sujets qui relèvent clairement de mon périmètre.", score: 2 },
+          { text: "Je réduis progressivement les demandes de validation sur les petits sujets.", score: 1.5 },
+          { text: "Je demande à mon responsable de me signaler quand il préfère être consulté.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous prenez des décisions qui relèvent de votre périmètre sans chercher systématiquement la validation de votre responsable.",
+        tags: ["limites", "autonomie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Quelqu'un crée une urgence en vous demandant quelque chose 'pour dans une heure' alors qu'il avait l'information depuis une semaine.",
+        tags: ["limites", "urgence imposée"],
+        answers: [
+          { text: "Je m'adapte — l'urgence existe maintenant, peu importe son origine.", score: 0 },
+          { text: "Je lui réponds en précisant que je ferai au mieux dans ce délai mais qu'à l'avenir, plus d'anticipation serait utile.", score: 2 },
+          { text: "Je refuse — les urgences auto-générées ne méritent pas que je bouscule mon organisation.", score: 0.5 },
+          { text: "Je traite sans commenter pour éviter de créer une tension.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez des surcharges, des délais irréalistes et des tâches en dessous de vos compétences sans le signaler", desc: "Accepter d'aider quand on est en surcharge, dire oui à des délais irréalistes pour ne pas décevoir, absorber silencieusement des tâches en dessous de ses compétences, répondre aux messages du soir par peur de paraître peu impliqué·e : ces comportements construisent une réputation de serviabilité qui finit par éroder le développement professionnel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous posez des limites dans les situations évidentes mais certaines catégories de demandes passent encore sans résistance", desc: "Vous dites non aux demandes manifestement abusives. Mais accepter d'aider un collègue en surcharge parce que refuser vous semble déloyal, ne pas signaler les tâches en dessous de vos compétences parce que ça semble ingrat, accepter des délais irréalistes pour ne pas décevoir : ces limites moins évidentes passent encore sans être posées." },
+          haut: { label: "Réflexes installés", titre: "Vous posez des limites claires sur votre charge, vos délais et vos tâches sans sur-justifier", desc: "Vous dites à votre collègue que vous n'êtes pas disponible maintenant et vous proposez une alternative. Vous proposez un délai réaliste plutôt que d'accepter un délai irréaliste. Vous signalez les tâches en dessous de vos compétences. Vous parlez à votre responsable de la pression que vous ressentez sur les messages du soir. Vous reprenez la parole sur un traitement condescendant en privé. Vous commencez à décider seul·e sur les sujets qui relèvent clairement de votre périmètre. Ces limites posées sans sur-justification — claires, directes et bienveillantes — sont ce qui préserve votre énergie et signale votre maturité professionnelle." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Dans votre équipe, certains collègues ont une bien plus grande visibilité que vous malgré une contribution équivalente. Vous n'êtes pas sûr·e de comment changer ça.",
+        tags: ["affirmation", "visibilité"],
+        answers: [
+          { text: "Je laisse — la visibilité viendra avec les résultats.", score: 0 },
+          { text: "Je cherche des occasions de rendre ma contribution visible — présentations, comptes rendus, réunions.", score: 2 },
+          { text: "Je parle à mon responsable de mon manque de visibilité.", score: 1 },
+          { text: "Je demande à un collègue plus visible de me donner des conseils.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous cherchez activement des occasions de rendre votre contribution visible, sans attendre qu'elle soit remarquée spontanément.",
+        tags: ["affirmation", "présence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous souhaitez évoluer vers un rôle plus senior. Vous n'en avez pas encore parlé à votre responsable.",
+        tags: ["affirmation", "développement"],
+        answers: [
+          { text: "J'attends qu'il me le propose — exprimer ses ambitions peut paraître présomptueux.", score: 0 },
+          { text: "Je lui exprime mon ambition et je lui demande ce qui me manque pour y accéder.", score: 2 },
+          { text: "Je travaille à développer les compétences requises avant d'en parler.", score: 1 },
+          { text: "Je le mentionne lors de mon entretien annuel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un désaccord avec un collègue s'est installé. Vous l'évitez depuis deux semaines pour ne pas créer de friction. La situation se dégrade.",
+        tags: ["affirmation", "conflit"],
+        answers: [
+          { text: "Je continue à l'éviter — le temps règle souvent ces situations.", score: 0 },
+          { text: "Je lui propose un échange direct pour clarifier ce qui s'est passé.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il facilite une discussion.", score: 1 },
+          { text: "Je reprends une relation normale sans aborder le désaccord.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous n'aimez pas le networking mais vous réalisez que votre réseau interne est insuffisant pour accéder à certaines opportunités.",
+        tags: ["affirmation", "réseau"],
+        answers: [
+          { text: "Je laisse — mon travail doit parler pour moi.", score: 0 },
+          { text: "Je cherche une façon de développer mon réseau qui correspond à mon style — petits groupes, sujets concrets.", score: 2 },
+          { text: "Je force les interactions même si ça me met mal à l'aise.", score: 0.5 },
+          { text: "Je demande à quelqu'un de me mettre en relation avec les personnes clés.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous développez activement votre réseau interne, même si le networking ne vous vient pas naturellement.",
+        tags: ["affirmation", "réseau"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un·e dirigeant·e de votre organisation vous fait un compliment sincère sur votre travail devant d'autres personnes. Vous êtes gêné·e.",
+        tags: ["affirmation", "compliment"],
+        answers: [
+          { text: "Je minimise — 'c'est l'équipe', 'ça aurait pu être mieux'.", score: 0 },
+          { text: "Je remercie sincèrement et j'en profite pour mentionner ce qui m'a permis d'arriver à ce résultat.", score: 2 },
+          { text: "Je remercie simplement.", score: 1.5 },
+          { text: "Je détourne vers les collègues qui ont contribué.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors de votre entretien d'évaluation, votre responsable vous évalue plus bas que ce que vous pensez mériter sur un critère précis.",
+        tags: ["affirmation", "évaluation"],
+        answers: [
+          { text: "J'accepte — c'est lui le manager et son évaluation est légitime.", score: 0 },
+          { text: "Je lui présente des exemples concrets qui justifient une évaluation plus haute.", score: 2 },
+          { text: "Je lui demande ce que j'aurais dû faire différemment.", score: 1 },
+          { text: "Je note mon désaccord sans le formuler explicitement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous n'êtes pas d'accord avec une évaluation vous concernant, vous l'exprimez avec des exemples factuels.",
+        tags: ["affirmation", "évaluation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous observez qu'un nouveau collaborateur dans votre équipe s'efface systématiquement dans les discussions. Ça vous rappelle une phase que vous avez traversée.",
+        tags: ["affirmation", "modèle"],
+        answers: [
+          { text: "Je laisse — chacun trouve son rythme et ce n'est pas forcément un problème.", score: 0 },
+          { text: "Je lui partage mon expérience et je l'encourage à prendre davantage de place.", score: 2 },
+          { text: "Je l'inclus activement dans les discussions en lui posant des questions directement.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il l'accompagne.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre visibilité et votre développement restent passifs — vous attendez qu'on vous remarque ou qu'on vous propose", desc: "Attendre que son responsable propose une évolution plutôt que d'exprimer son ambition, espérer que son travail soit remarqué sans chercher à le rendre visible, éviter un collègue après un désaccord plutôt que de l'adresser : ces comportements passifs laissent les opportunités aux autres." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez à améliorer votre visibilité et votre développement mais votre démarche reste encore réactive", desc: "Vous parlez de vos ambitions à votre responsable. Vous cherchez des occasions de rendre votre contribution visible. Mais adresser directement un désaccord qui s'est installé avec un collègue, développer votre réseau interne même quand ça ne vous vient pas naturellement, contester une évaluation qui vous semble incorrecte avec des exemples : ces comportements d'affirmation active sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous gérez activement votre visibilité, votre développement et vos relations professionnelles", desc: "Vous exprimez votre ambition à votre responsable et vous demandez ce qui vous manque. Vous cherchez des occasions de rendre votre contribution visible. Vous adressez directement le désaccord avec le collègue que vous évitez depuis deux semaines. Vous développez votre réseau à votre façon. Vous remerciez un compliment en le recevant vraiment. Vous contestez une évaluation incorrecte avec des exemples. Vous encouragez le nouveau collaborateur qui s'efface à prendre plus de place. Cette gestion active de votre développement, de vos relations et de votre visibilité est ce qui fait que votre trajectoire professionnelle vous appartient." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -6103,6 +6770,16 @@
         ["Arbitrer sous pression", "Critères explicites, qualité vs délai, décisions difficiles assumées."],
         ["Tenir ses arbitrages dans la durée", "Tenue sous pression, revue régulière, anticipation, charge structurelle."],
         ["Communiquer ses arbitrages", "Proactivité, explication des critères, arbitrages assumés publiquement."],
+      ]}
+    ],
+
+    ["prendre-sa-place", "Prendre sa place sans s'effacer", "Collaborateurs",
+      "Développer son assertivité, défendre ses positions et gérer sa visibilité professionnelle.",
+      { domain: "transformation", chapters: [
+        ["S'exprimer même quand c'est inconfortable", "Prise de parole, visibilité des contributions, demandes directes."],
+        ["Défendre sa position sans s'imposer", "Arguments vs pression, légitimité d'expertise, concessions raisonnées."],
+        ["Poser des limites sans se justifier", "Refus clairs, délais réalistes, tâches en dessous de ses compétences."],
+        ["S'affirmer dans les relations de travail", "Visibilité, ambition, conflits adressés, évaluation contestée."],
       ]}
     ],
 
