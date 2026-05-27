@@ -559,9 +559,16 @@ function makeBlankDiagnosticState(){
 }
 
 function questionsApiBase(){
-  return window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
+  const host = String(window.location.hostname || '').toLowerCase();
+  const forced = window.ITS_API_BASE || localStorage.getItem('its_api_base') || '';
+  if(forced) return forced;
+
+  const isLocal = host === 'localhost' || host === '127.0.0.1';
+  const isStaging = isLocal || host.includes('staging') || host.includes('github.io');
+
+  return isStaging
     ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
-    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 }
 
 function questionsToken(){
@@ -869,30 +876,65 @@ function uniqTags(tags){
     });
 }
 
-function findCatalogueQuestionTags(question){
-  if(!question || !Array.isArray(window.ITS_CATALOGUE)) return [];
-  const qid = String(question.id || '');
-  const qtext = norm(question.text || question.question || question.title || '');
+function tagsFromCatalogueQuestion(cq){
+  return normalizeTags(cq && cq.tags ? cq.tags : [])
+    .map(t => ({ t:t.t, ai:false }))
+    .slice(0,3);
+}
 
-  for(const ad of window.ITS_CATALOGUE){
-    for(const ch of (ad.chapters || [])){
-      for(const cq of (ch.questions || [])){
-        const sameId = qid && String(cq.id || '') === qid;
-        const sameText = qtext && norm(cq.text || cq.question || cq.title || '') === qtext;
-        if(sameId || sameText){
-          return normalizeTags(cq.tags || []).map(t => ({ t:t.t, ai:false }));
+function sameCatalogueQuestion(question, cq){
+  if(!question || !cq) return false;
+  const qid = String(question.id || question.catalogueId || question.catalogue_id || '').trim();
+  const cid = String(cq.id || cq.catalogueId || cq.catalogue_id || '').trim();
+  const qtext = norm(question.text || question.question || question.title || '');
+  const ctext = norm(cq.text || cq.question || cq.title || '');
+  return Boolean((qid && cid && qid === cid) || (qtext && ctext && qtext === ctext));
+}
+
+function findCatalogueQuestionTags(question){
+  if(!question) return [];
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    for(const ad of window.ITS_CATALOGUE){
+      for(const ch of (ad.chapters || [])){
+        for(const cq of (ch.questions || [])){
+          if(sameCatalogueQuestion(question, cq)){
+            const tags = tagsFromCatalogueQuestion(cq);
+            if(tags.length) return tags;
+          }
         }
       }
     }
   }
+
+  if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
+    for(const themeKey of Object.keys(window.CUSTOM_QUESTIONS)){
+      const groups = window.CUSTOM_QUESTIONS[themeKey] || {};
+      for(const groupKey of Object.keys(groups)){
+        const list = Array.isArray(groups[groupKey]) ? groups[groupKey] : [];
+        for(const cq of list){
+          if(sameCatalogueQuestion(question, cq)){
+            const tags = tagsFromCatalogueQuestion(cq);
+            if(tags.length) return tags;
+          }
+        }
+      }
+    }
+  }
+
   return [];
 }
 
-function contextualTags(text, rawTags, subject, chapter){
-  // Source de vérité : les tags écrits dans les catalogues.
-  // questions.html ne doit pas inventer de tags métier à partir du texte.
-  // Il nettoie seulement les tags de provenance/validation et limite l'affichage à 3 tags.
+function catalogueOrRawTags(question, rawTags){
+  const catalogueTags = findCatalogueQuestionTags(question);
+  if(catalogueTags.length) return catalogueTags;
   return normalizeTags(rawTags || []).map(t => ({ t:t.t, ai:false })).slice(0,3);
+}
+
+function inferContentTags(text, subject, chapter){
+  // Conservé uniquement pour compatibilité : les tags doivent venir des catalogues,
+  // pas être inventés par la page questions.
+  return [];
 }
 
 function panelSearchHaystack(q){
@@ -944,12 +986,7 @@ function normalizeChaptersFromState(){
         type: q.type === 'likert' ? 'likert' : 'choix',
         prov: q.prov || normalizeProv(q.tags),
         text: q.text || q.question || 'Nouvelle mise en situation',
-        tags: (() => {
-          const catalogueTags = findCatalogueQuestionTags(q);
-          if(catalogueTags.length) return catalogueTags;
-          if(Array.isArray(q.tags) && q.tags.length && typeof q.tags[0] === 'object') return q.tags.slice(0,3).map(t => ({ t:String(t.t || t.label || t.text || '').trim(), ai:Boolean(t.ai) })).filter(t => t.t);
-          return contextualTags(q.text || q.question || '', q.tags || [], state.theme || state.subject || state.title || '', c.title || c.name || '');
-        })(),
+        tags: catalogueOrRawTags(q, q.tags),
         answers: normalizeAnswers(q)
       })),
       profils: [0,1,2].map(pi => {
@@ -1056,7 +1093,10 @@ function getRawBibliotheque(){
           if (!norm(q.text || '') || seen.has(key)) return;
           seen.add(key);
 
-          const contentTags = contextualTags(q.text || '', q.tags || [], ad.theme || ad.title || '', ch.title || '').map(t => t.t);
+          const sourceTags = findCatalogueQuestionTags(q).map(t => t.t);
+          const contentTags = sourceTags.length
+            ? sourceTags
+            : normalizeTags(q.tags || []).map(t => t.t).slice(0,3);
 
           out.push({
             id: q.id,
@@ -1089,7 +1129,7 @@ function normalizeLibraryQuestion(q, i){
     adTitle: q.adTitle || '',
     chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
     text: q.text || q.question || q.title || 'Question de bibliothèque',
-    tags: contextualTags(q.text || q.question || q.title || '', Array.isArray(rawTags) ? rawTags.map(String) : [], q.subject || q.sujet || q.theme || q.thematique || q.category || '', q.chapter || q.chapitre || q.partie || q.part || q.topic || '').map(t => t.t),
+    tags: catalogueOrRawTags(q, Array.isArray(rawTags) ? rawTags.map(String) : []).map(t => t.t),
     answers: q.answers || q.reponses || null,
     type: q.type || 'choix',
     added: q.added || false
@@ -2181,7 +2221,7 @@ function addFromLib(qid) {
     type: bq.type === 'likert' ? 'likert' : 'choix',
     prov: bq.prov || 'AI',
     text: bq.text,
-    tags: contextualTags(bq.text || '', bq.tags || [], bq.subject || '', bq.chapter || '').map(t => ({t:t.t, ai:t.ai})),
+    tags: catalogueOrRawTags(bq, bq.tags || []).map(t => ({t:t.t, ai:false})),
     answers: normalizeImportedAnswers(bq)
   });
 
