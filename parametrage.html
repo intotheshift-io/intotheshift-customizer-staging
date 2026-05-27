@@ -391,6 +391,14 @@ function paramProjectIdFromUrl(){
   return paramExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
 }
 
+function parametrageUrlWithProjectId(page){
+  const target = String(page || '').trim() || 'parametrage.html';
+  const projectId = paramProjectIdFromUrl();
+  if(!projectId) return target;
+  const separator = target.includes('?') ? '&' : '?';
+  return target + separator + 'projectId=' + encodeURIComponent(projectId);
+}
+
 function paramUnwrapState(raw){
   if(!raw) return {};
   let data = raw;
