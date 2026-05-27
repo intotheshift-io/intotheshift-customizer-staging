@@ -76,7 +76,8 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .param-modal-list{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;margin:12px 0 18px;color:#18375d;font-size:13px;line-height:1.7}
 .param-modal-actions{display:flex;justify-content:flex-end;gap:10px}
 .param-modal-btn{border:none;border-radius:10px;background:#18375d;color:#fff;padding:10px 16px;font-size:13px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer}
-.btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
+.btn-continue.blocked{background:#eb6366!important;color:#fff!important;cursor:pointer!important;opacity:1!important}
+.btn-continue.blocked:hover{background:#d4474a!important}
 
 
 /* ── Pack passations client ───────────────────── */
@@ -218,9 +219,9 @@ select option[value="current_pack"]{
   <div class="stepper">
     <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector done"></div>
     <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer</span></div><div class="step-connector todo"></div>
-    <div class="step"><div class="step-circle todo">4</div><span class="step-label todo">Campagne</span></div><div class="step-connector todo"></div>
-    <div class="step"><div class="step-circle todo">5</div><span class="step-label todo">Transmettre</span></div>
+    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer</span></div><div class="step-connector todo" id="param-step-connector-campaign"></div>
+    <div class="step" id="param-step-campaign"><div class="step-circle todo" id="param-step-campaign-circle">4</div><span class="step-label todo" id="param-step-campaign-label">Campagne</span></div><div class="step-connector todo" id="param-step-connector-validation"></div>
+    <div class="step" id="param-step-validation"><div class="step-circle todo" id="param-step-validation-circle">5</div><span class="step-label todo" id="param-step-validation-label">Transmettre</span></div>
   </div>
 </div>
 
@@ -1000,8 +1001,12 @@ async function loadDefaultClientLogoForPassation(){
 }
 async function init(){
   ensureDefaults();
-  state.current_step = 'parametrage';
-  state.step = 'parametrage';
+  const previousStep = String(state.current_step || state.currentStep || state.step || '').toLowerCase();
+  const previousRank = previousStep.includes('validation') ? 5 : (previousStep.includes('campagne') ? 4 : (previousStep.includes('param') ? 3 : 0));
+  if(previousRank < 3){
+    state.current_step = 'parametrage';
+    state.step = 'parametrage';
+  }
   normalizeCampaignDatesInState();
   applyDateRules(false);
   applyRoleMode();
@@ -1235,6 +1240,46 @@ function showMissingParametrageAlert(missing){
   }
 }
 
+function parametrageUrlWithProjectId(url){
+  const id = getCurrentProjectIdForSave();
+  if(!id) return url;
+  const separator = String(url).includes('?') ? '&' : '?';
+  return String(url).includes('projectId=') ? url : url + separator + 'projectId=' + encodeURIComponent(id);
+}
+function paramCurrentStepRank(){
+  const raw = String(state.current_step || state.currentStep || state.step || '').toLowerCase();
+  if(raw.includes('validation')) return 5;
+  if(raw.includes('campagne')) return 4;
+  if(raw.includes('param')) return 3;
+  if(raw.includes('question')) return 2;
+  return 3;
+}
+function updateParametrageStepper(){
+  const rank = paramCurrentStepRank();
+  const campaignStep = document.getElementById('param-step-campaign');
+  const campaignCircle = document.getElementById('param-step-campaign-circle');
+  const campaignLabel = document.getElementById('param-step-campaign-label');
+  const campaignConnector = document.getElementById('param-step-connector-campaign');
+  const validationStep = document.getElementById('param-step-validation');
+  const validationCircle = document.getElementById('param-step-validation-circle');
+  const validationLabel = document.getElementById('param-step-validation-label');
+  const validationConnector = document.getElementById('param-step-connector-validation');
+
+  if(rank >= 4 && campaignStep && campaignCircle && campaignLabel){
+    campaignCircle.className = 'step-circle done';
+    campaignCircle.textContent = '✓';
+    campaignLabel.outerHTML = '<a class="step-label done step-link" id="param-step-campaign-label" href="' + parametrageUrlWithProjectId('campagne.html') + '">Campagne</a>';
+    if(campaignConnector) campaignConnector.className = 'step-connector done';
+  }
+  if(rank >= 5 && validationStep && validationCircle && validationLabel){
+    validationCircle.className = 'step-circle done';
+    validationCircle.textContent = '✓';
+    validationLabel.outerHTML = '<a class="step-label done step-link" id="param-step-validation-label" href="' + parametrageUrlWithProjectId('validation.html') + '">Transmettre</a>';
+    if(validationConnector) validationConnector.className = 'step-connector done';
+  }
+  if(typeof itsApplyProjectIdToNavigationLinks === 'function') itsApplyProjectIdToNavigationLinks();
+}
+
 function checkContinue(){
   const btn = document.getElementById('btn-continue');
   if(!btn) return false;
@@ -1242,6 +1287,8 @@ function checkContinue(){
   btn.disabled = false;
   btn.classList.toggle('blocked', missing.length > 0);
   btn.title = missing.length ? "Cliquez pour voir les champs à compléter." : "Continuer vers la campagne";
+  if(!missing.length) clearMissingFields();
+  updateParametrageStepper();
   return missing.length === 0;
 }
 
@@ -1414,6 +1461,7 @@ async function bootParametragePage(){
   paramPersistLightStateForBridge(state);
 
   init();
+  updateParametrageStepper();
 
   if(typeof itsApplyReadOnlyMode === "function"){
     setTimeout(() => itsApplyReadOnlyMode(), 50);
