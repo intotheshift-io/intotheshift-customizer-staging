@@ -9347,147 +9347,824 @@
 
   },
 
+  "gerer-conflits-equipe": {
+    0: [
+      {
+        type: "choix",
+        text: "Deux membres de votre équipe échangent moins entre eux depuis trois semaines. Les réunions sont plus tendues quand ils sont tous les deux présents. Vous n'avez rien nommé.",
+        tags: ["détection", "signal"],
+        answers: [
+          { text: "J'attends que ça se règle seul — les tensions passagères font partie de la vie d'équipe.", score: 0 },
+          { text: "Je parle à chacun séparément pour comprendre ce qui se passe avant d'intervenir.", score: 2 },
+          { text: "Je l'aborde en réunion d'équipe pour que tout soit mis sur la table.", score: 0 },
+          { text: "J'observe encore quelques jours pour confirmer que c'est bien un conflit.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'ambiance dans votre équipe est devenue glaciale depuis un mois. Personne ne dit ouvertement qu'il y a un problème mais vous le sentez dans les interactions.",
+        tags: ["détection", "ambiance"],
+        answers: [
+          { text: "Je laisse — forcer une discussion sur l'ambiance crée souvent plus de tension.", score: 0 },
+          { text: "Je nomme ce que j'observe à l'équipe et j'ouvre un espace pour en parler.", score: 2 },
+          { text: "Je cherche la cause en interrogeant discrètement quelques membres de confiance.", score: 1 },
+          { text: "J'attends qu'un membre vienne me parler avant d'agir.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous intervenez sur les tensions dans votre équipe avant qu'elles deviennent des conflits déclarés.",
+        tags: ["détection", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux collaborateurs sont en désaccord persistant sur la méthode à utiliser pour un projet. Les deux ont des arguments valables mais ne cèdent pas.",
+        tags: ["détection", "type conflit"],
+        answers: [
+          { text: "Je tranche — c'est mon rôle de manager.", score: 1 },
+          { text: "Je cherche à comprendre si le désaccord est sur la méthode ou sur autre chose — relation, reconnaissance, charge.", score: 2 },
+          { text: "Je laisse le projet avancer avec les deux méthodes en parallèle pour voir laquelle fonctionne.", score: 0 },
+          { text: "Je leur demande de trouver un compromis entre eux.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous apprenez par un tiers qu'un conflit couvait dans votre équipe depuis des mois. Vous n'aviez rien remarqué.",
+        tags: ["détection", "conflit ancien"],
+        answers: [
+          { text: "Je prends acte et j'interviens maintenant — il n'est jamais trop tard.", score: 1.5 },
+          { text: "Je cherche à comprendre comment j'ai pu rater ce signal pendant si longtemps.", score: 2 },
+          { text: "Je laisse — si ça couvait sans éclater, c'est que les personnes le gèrent.", score: 0 },
+          { text: "Je convoque les personnes concernées pour en parler immédiatement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un conflit vous échappe, vous analysez ce qui vous a empêché de le détecter pour améliorer votre vigilance.",
+        tags: ["détection", "réflexivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une rumeur circule dans votre équipe sur un membre qui serait la cause de tous les problèmes. Vous n'avez pas de preuve mais la dynamique crée des clans.",
+        tags: ["détection", "rumeur"],
+        answers: [
+          { text: "J'observe pour voir si la rumeur a un fond de vérité avant d'intervenir.", score: 0 },
+          { text: "J'interviens sur la dynamique collective sans attendre — les clans sont plus dangereux que la cause supposée.", score: 2 },
+          { text: "Je parle directement à la personne visée pour lui dire ce qui circule.", score: 1.5 },
+          { text: "Je parle aux personnes qui relaient la rumeur pour leur demander d'arrêter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un bon collaborateur part de l'équipe. Dans sa conversation de départ, il mentionne une tension persistante avec un collègue que vous n'aviez pas perçue.",
+        tags: ["détection", "départ"],
+        answers: [
+          { text: "Je prends note — c'est une information utile pour l'avenir.", score: 0.5 },
+          { text: "Je traite cette information immédiatement — la tension existe toujours et d'autres membres la vivent peut-être.", score: 2 },
+          { text: "Je laisse — il est parti, le conflit s'est probablement réglé avec son départ.", score: 0 },
+          { text: "Je parle au collègue mentionné pour lui donner l'information.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous prenez au sérieux les informations sur des tensions que vous obtenez lors des départs ou des entretiens de bilan.",
+        tags: ["détection", "information sortante"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez que vous avez vous-même une tension non réglée avec un membre de votre équipe. Vous évitez le sujet.",
+        tags: ["détection", "conflit managérial"],
+        answers: [
+          { text: "Je laisse — la position asymétrique manager/collaborateur rend ces tensions difficiles à adresser.", score: 0 },
+          { text: "Je l'adresse directement avec le collaborateur — les tensions entre manager et collaborateur sont particulièrement coûteuses.", score: 2 },
+          { text: "J'en parle à mon propre responsable pour avoir un regard extérieur.", score: 1.5 },
+          { text: "J'essaie de normaliser la relation progressivement sans l'adresser directement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous détectez les conflits quand ils éclatent, pas avant — les signaux faibles vous échappent encore", desc: "Attendre que la tension entre deux membres se règle seule, ne pas nommer l'ambiance glaciale, ne pas analyser pourquoi un conflit vous a échappé pendant des mois, ne pas adresser une tension non réglée avec un de vos propres collaborateurs : ces comportements laissent les conflits se développer jusqu'à l'éclatement. Détecter tôt, c'est toujours moins coûteux qu'intervenir tard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les conflits avant l'éclatement mais les signaux très faibles et les conflits entre vous et vos collaborateurs restent des angles morts", desc: "Vous intervenez quand vous repérez une tension entre deux membres avant qu'elle éclate. Mais détecter le signal très faible d'un changement de comportement, analyser comment vous avez pu rater un conflit ancien, adresser une tension que vous avez vous-même avec un collaborateur : ces situations sont encore des angles morts. L'enjeu est d'étendre votre détection aux signaux les plus subtils et aux conflits qui vous impliquent." },
+          haut: { label: "Réflexes installés", titre: "Vous détectez les signaux faibles de conflit — y compris entre vous et vos collaborateurs — et vous intervenez avant l'éclatement", desc: "Vous parlez à chaque membre séparément quand deux collègues échangent moins depuis trois semaines. Vous nommez l'ambiance glaciale et vous ouvrez un espace pour en parler. Vous analysez ce qui vous a fait rater un conflit ancien. Vous intervenez sur les clans créés par une rumeur. Vous adressez directement la tension avec votre propre collaborateur. Cette détection précoce — qui suppose de chercher les signaux avant qu'ils soient visibles — est ce qui permet de traiter les conflits quand ils sont encore gérables." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous devez intervenir dans un conflit entre deux membres de votre équipe. L'un d'eux est proche de vous, l'autre moins.",
+        tags: ["intervention", "posture"],
+        answers: [
+          { text: "J'interviens en favorisant légèrement le membre dont je suis plus proche — c'est humain.", score: 0 },
+          { text: "Je pose une règle d'équité avant d'intervenir — je serai le même pour les deux.", score: 2 },
+          { text: "Je demande à un tiers de faciliter pour éviter le biais perçu.", score: 1.5 },
+          { text: "Je tente de rester neutre sans nommer la proximité différente.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous intervenez dans les conflits de votre équipe avec la même équité pour tous les membres, quels que soient vos affinités.",
+        tags: ["intervention", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous intervenez dans un conflit et vous avez l'impression, après avoir entendu les deux parties séparément, que l'une a clairement tort.",
+        tags: ["intervention", "écoute"],
+        answers: [
+          { text: "Je lui signale directement qu'il a tort — l'honnêteté est plus utile que la diplomatie.", score: 0.5 },
+          { text: "Je cherche ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure.", score: 2 },
+          { text: "Je dis à la partie qui a 'tort' que je comprends sa perspective mais que je ne la partage pas.", score: 1 },
+          { text: "Je cherche un médiateur pour que ce ne soit pas moi qui tranche.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le conflit entre deux membres de votre équipe dépasse vos compétences de médiation — les enjeux personnels sont profonds et la situation est complexe.",
+        tags: ["intervention", "limites"],
+        answers: [
+          { text: "Je continue à gérer seul — appeler un tiers signalerait que je ne maîtrise pas ma propre équipe.", score: 0 },
+          { text: "Je reconnais mes limites et je propose un accompagnement externe — RH, médiateur, coach.", score: 2 },
+          { text: "Je pose des limites claires sur les comportements sans essayer de résoudre le fond.", score: 1 },
+          { text: "J'en parle à mon responsable pour qu'il m'aide à gérer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un conflit vient d'éclater en réunion. Les deux personnes sont en état émotionnel élevé. Vous devez réagir maintenant.",
+        tags: ["intervention", "timing"],
+        answers: [
+          { text: "Je tranche immédiatement pour mettre fin à l'éclat — il faut reprendre le contrôle.", score: 0 },
+          { text: "Je marque une pause, je reviens à l'objectif de la réunion et je programme un échange séparé.", score: 2 },
+          { text: "Je laisse les personnes s'exprimer jusqu'au bout — les conflits exprimés sont mieux que les conflits contenus.", score: 0 },
+          { text: "Je prends à part les deux personnes pendant cinq minutes pour qu'elles se calment.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un conflit éclate à chaud, vous évitez de le traiter immédiatement et vous créez un espace de temps avant l'intervention.",
+        tags: ["intervention", "état émotionnel"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez contribué involontairement à créer le conflit — par une décision, une communication maladroite ou une inégalité de traitement.",
+        tags: ["intervention", "responsabilité"],
+        answers: [
+          { text: "Je n'en parle pas — reconnaître ma part de responsabilité fragiliserait ma position.", score: 0 },
+          { text: "Je reconnais ma contribution au conflit devant les parties concernées.", score: 2 },
+          { text: "Je le reconnais en privé sans le dire aux parties.", score: 0 },
+          { text: "Je l'intègre dans ma réflexion sur le conflit sans que ça oriente mon intervention.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un membre de votre équipe vous demande d'intervenir dans son conflit avec un collègue en vous demandant de prendre son parti.",
+        tags: ["intervention", "triangle"],
+        answers: [
+          { text: "J'écoute et je prends parti si son argument me semble juste — c'est mon rôle de trancher.", score: 0 },
+          { text: "J'écoute sa perspective mais je refuse de prendre parti sans entendre l'autre partie.", score: 2 },
+          { text: "Je lui dis que ce n'est pas mon rôle d'arbitrer des conflits interpersonnels.", score: 0.5 },
+          { text: "Je lui demande d'aller parler directement à l'autre avant de venir me voir.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un membre vous demande de prendre parti dans un conflit, vous refusez de le faire sans entendre les deux parties.",
+        tags: ["intervention", "triangulation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après votre intervention, le conflit semble résolu. Deux semaines après, la même tension réapparaît sous une forme différente.",
+        tags: ["intervention", "issue"],
+        answers: [
+          { text: "Je réinterviens — la résolution était fragile.", score: 0.5 },
+          { text: "Je cherche la cause profonde que l'intervention précédente n'a pas traitée.", score: 2 },
+          { text: "Je laisse les personnes gérer cette fois — ils savent maintenant comment faire.", score: 0 },
+          { text: "Je pose des règles de fonctionnement pour éviter les récidives.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture d'intervention dans les conflits est encore marquée par l'évitement ou le biais", desc: "Favoriser légèrement le membre dont on est proche, trancher immédiatement quand un conflit éclate à chaud, continuer à gérer seul quand la situation dépasse ses compétences, prendre le parti d'un membre sans entendre l'autre : ces comportements compromettent votre légitimité d'intervenant. Un manager qui intervient de façon biaisée ou précipitée aggrave souvent les conflits qu'il essaie de résoudre." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez de façon équitable dans les situations ordinaires mais les situations complexes ou impliquant votre propre biais créent encore des hésitations", desc: "Vous posez une règle d'équité avant d'intervenir et vous refusez de prendre parti sans entendre les deux parties. Mais reconnaître votre propre contribution au conflit, créer un cadre sécurisé pour la partie réticente à une réunion de face à face, nommer quand vous réalisez en cours de médiation que vous avez favorisé une partie : ces situations inconfortables créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez avec équité et humilité — posture neutre, écoute des deux parties, reconnaissance de votre contribution", desc: "Vous posez une règle d'équité avant d'intervenir quand vous êtes proche d'une des parties. Vous cherchez ce que chacun n'a pas compris dans la perspective de l'autre avant de conclure. Vous reconnaissez votre contribution au conflit devant les parties. Vous refusez de prendre parti sans entendre les deux. Vous revenez à l'objectif quand un conflit éclate à chaud. Vous reconnaissez et rééquilibrez en cours de médiation. Cette posture de neutralité active — qui suppose d'accepter ses propres biais et limites — est ce qui donne votre légitimité d'intervenant." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous préparez une rencontre entre deux membres en conflit. L'un d'eux dit qu'il ne veut pas participer à une réunion de confrontation.",
+        tags: ["résolution", "confrontation"],
+        answers: [
+          { text: "Je force la réunion — les conflits ne se règlent pas en évitant la confrontation.", score: 0 },
+          { text: "Je comprends sa réticence et j'explore comment créer un cadre qui lui semble sûr.", score: 2 },
+          { text: "Je lui dis que c'est obligatoire — ce conflit impacte l'équipe.", score: 0.5 },
+          { text: "Je laisse tomber la réunion — si elle ne veut pas y participer, ça ne servira à rien.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant de réunir deux personnes en conflit, vous créez un cadre qui donne à chacun les conditions pour s'exprimer en sécurité.",
+        tags: ["résolution", "cadre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors d'une réunion de médiation, l'un des membres répète ses arguments en haussant la voix. L'autre se ferme.",
+        tags: ["résolution", "compréhension"],
+        answers: [
+          { text: "Je laisse l'expression émotionnelle se faire — ça finira par se calmer.", score: 0 },
+          { text: "J'interromps et je reformule ce que j'entends pour ralentir la dynamique.", score: 2 },
+          { text: "Je demande à la personne qui se ferme de répondre.", score: 0.5 },
+          { text: "Je fais une pause de dix minutes.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après la médiation, les deux parties semblent réconciliées. Vous n'avez pas formalisé d'accord sur comment elles vont travailler ensemble à l'avenir.",
+        tags: ["résolution", "accord"],
+        answers: [
+          { text: "Je laisse — la réconciliation suffira, pas besoin de formaliser.", score: 0 },
+          { text: "Je formalise des engagements concrets sur la façon dont elles vont travailler ensemble.", score: 2 },
+          { text: "Je leur demande de me reconfirmer par mail ce qu'elles ont décidé.", score: 1 },
+          { text: "Je prévois un point de suivi dans deux semaines pour voir si ça tient.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'une des parties au conflit ne veut pas vraiment résoudre — elle préfère maintenir la tension. Vous le sentez.",
+        tags: ["résolution", "résistance résolution"],
+        answers: [
+          { text: "Je laisse — si elle ne veut pas résoudre, ce n'est pas possible de la forcer.", score: 0 },
+          { text: "Je nomme ce que j'observe et je lui pose la question directement.", score: 2 },
+          { text: "Je donne un ultimatum — soit elle s'engage dans la résolution, soit j'escalade.", score: 0.5 },
+          { text: "Je travaille sur la résolution avec la partie qui y est prête.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand une partie ne semble pas vouloir résoudre, vous le nommez directement plutôt que de continuer la médiation comme si de rien n'était.",
+        tags: ["résolution", "engagement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La résolution du conflit nécessite un compromis. L'une des parties refuse tout compromis en disant qu'elle est dans son droit.",
+        tags: ["résolution", "compromis"],
+        answers: [
+          { text: "Je lui donne raison — si elle est dans son droit, elle n'a pas à compromettre.", score: 0 },
+          { text: "Je lui explique que avoir raison et travailler ensemble sont deux enjeux distincts.", score: 2 },
+          { text: "Je tranche en sa faveur pour ne pas l'obliger à compromettre.", score: 0 },
+          { text: "Je leur demande ce que chacun est prêt à lâcher pour avancer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez après la médiation que vous avez involontairement favorisé une des parties. Le conflit semble résolu mais sur une base déséquilibrée.",
+        tags: ["résolution", "tiers"],
+        answers: [
+          { text: "Je laisse — l'essentiel est que le conflit soit résolu.", score: 0 },
+          { text: "Je le nomme et je propose de reprendre la conversation sur une base plus équilibrée.", score: 2 },
+          { text: "Je surveille pour voir si le déséquilibre crée de nouveaux problèmes.", score: 0.5 },
+          { text: "J'en parle à la partie défavorisée en privé pour valider qu'elle est à l'aise.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous réalisez en cours de médiation que vous avez favorisé une partie, vous le reconnaissez et rééquilibrez.",
+        tags: ["résolution", "intégrité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le conflit entre deux personnes a créé des clans dans toute l'équipe. Résoudre le conflit bilateral ne suffira pas.",
+        tags: ["résolution", "collective"],
+        answers: [
+          { text: "Je règle d'abord le conflit bilatéral — le reste se résoudra ensuite.", score: 0.5 },
+          { text: "Je traite le conflit bilateral ET la dynamique collective en parallèle.", score: 2 },
+          { text: "Je traite d'abord la dynamique collective pour créer le contexte favorable à la résolution bilatérale.", score: 1.5 },
+          { text: "Je demande à l'équipe de se réunir pour parler de ce qui se passe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre facilitation de la résolution s'arrête à la réconciliation sans formaliser les engagements ni traiter les causes", desc: "Laisser la réconciliation sans accord formalisé, ne pas chercher la cause profonde quand un conflit réapparaît, éviter la réunion face à face parce qu'une partie ne veut pas y participer, régler le conflit bilatéral sans traiter la dynamique de clan qui s'est installée : ces comportements règlent les symptômes sans toucher les causes. Un conflit résolu en surface réapparaît." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez la résolution jusqu'à l'accord mais le suivi de la durabilité et le traitement des causes profondes sont encore insuffisants", desc: "Vous formalisez des engagements concrets après la médiation et vous prévoyez un suivi. Mais chercher la cause profonde quand un conflit récidive sous une forme différente, nommer quand une partie ne veut pas vraiment résoudre, traiter la dynamique collective en parallèle du conflit bilatéral : ces aspects de la résolution en profondeur sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez une résolution durable — accord formalisé, causes traitées, dynamique collective prise en compte", desc: "Vous créez un cadre sécurisé avant de réunir deux parties en conflit. Vous formalisez des engagements concrets à la fin de la médiation. Vous cherchez la cause profonde quand un conflit récidive. Vous nommez quand une partie ne veut pas résoudre. Vous expliquez que avoir raison et travailler ensemble sont deux enjeux distincts. Vous traitez la dynamique collective en parallèle du conflit bilatéral. Cette résolution en profondeur — qui suppose de ne pas se contenter de la réconciliation apparente — est ce qui fait que les conflits ne reviennent pas." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Votre équipe manque de clarté sur les périmètres de chacun. Des conflits de territoire apparaissent régulièrement entre deux rôles.",
+        tags: ["prévention", "clarté"],
+        answers: [
+          { text: "Je gère les conflits au cas par cas — clarifier les périmètres pour tout le monde prendrait trop de temps.", score: 0 },
+          { text: "Je clarifie les périmètres de façon formelle pour supprimer la source des conflits.", score: 2 },
+          { text: "J'arbitre quand les conflits de territoire se produisent.", score: 0.5 },
+          { text: "Je demande aux personnes concernées de clarifier elles-mêmes leurs périmètres.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous clarifiez les périmètres et les rôles de votre équipe pour réduire les sources structurelles de conflits.",
+        tags: ["prévention", "clarté rôles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre équipe, les désaccords s'expriment rarement ouvertement. Tout le monde est toujours d'accord en réunion mais les tensions se manifestent en dehors.",
+        tags: ["prévention", "culture"],
+        answers: [
+          { text: "Je laisse — une équipe qui ne se dispute pas est une équipe qui fonctionne bien.", score: 0 },
+          { text: "Je crée des espaces sécurisés pour que les désaccords puissent s'exprimer en réunion.", score: 2 },
+          { text: "Je pose des questions provocatrices en réunion pour forcer les désaccords à la surface.", score: 1.5 },
+          { text: "J'en parle à quelques membres de confiance pour comprendre pourquoi les gens ne s'expriment pas.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un conflit important vient d'être résolu dans votre équipe. Vous repartez sans tirer de leçons formelles.",
+        tags: ["prévention", "bilan conflit"],
+        answers: [
+          { text: "Je passe à la suite — un conflit résolu est un conflit oublié.", score: 0 },
+          { text: "Je prends le temps d'analyser ce qui a créé le conflit et comment le prévenir à l'avenir.", score: 2 },
+          { text: "J'en parle à mon responsable pour l'informer de ce qui s'est passé.", score: 0.5 },
+          { text: "Je partage les apprentissages avec l'équipe en REX.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous savez que certaines de vos décisions — attribution de ressources, reconnaissance, missions valorisantes — génèrent des tensions dans l'équipe.",
+        tags: ["prévention", "décisions génératrices"],
+        answers: [
+          { text: "Je les prends quand même — les tensions font partie de la gestion d'une équipe.", score: 0 },
+          { text: "J'intègre le risque de tension dans ma façon de prendre et de communiquer ces décisions.", score: 2 },
+          { text: "Je consulte l'équipe sur ces décisions pour réduire les tensions.", score: 1.5 },
+          { text: "J'essaie de rendre ces décisions les plus équitables possibles pour réduire les tensions.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous anticipez l'impact de vos décisions sur la dynamique d'équipe et vous les communiquez de façon à réduire les sources de tensions.",
+        tags: ["prévention", "décisions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un désaccord productif émerge dans votre équipe — deux approches différentes, deux visions légitimes. Vous avez envie d'intervenir pour lisser.",
+        tags: ["prévention", "conflit sain"],
+        answers: [
+          { text: "J'interviens pour trouver un compromis rapidement — les désaccords coûtent du temps.", score: 0 },
+          { text: "Je protège le désaccord productif — il est source de qualité si bien géré.", score: 2 },
+          { text: "Je laisse faire sans intervenir — les adultes peuvent gérer leurs désaccords.", score: 1 },
+          { text: "J'interviens uniquement si ça risque de devenir personnel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un conflit entre deux membres de votre équipe a des racines dans un conflit entre deux directions de votre organisation. Vous ne pouvez pas résoudre la cause.",
+        tags: ["prévention", "managers pairs"],
+        answers: [
+          { text: "Je gère le conflit au niveau de mon équipe sans remonter — ce n'est pas mon niveau.", score: 0.5 },
+          { text: "Je gère l'impact sur mon équipe ET je remonte la dynamique organisationnelle à ma direction.", score: 2 },
+          { text: "Je laisse — si la cause est organisationnelle, le conflit reviendra de toute façon.", score: 0 },
+          { text: "Je cherche avec les autres managers concernés une façon de traiter la cause.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un conflit a des causes organisationnelles, vous le remontez à votre direction plutôt que de le gérer uniquement à votre niveau.",
+        tags: ["prévention", "causes systémiques"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous voulez construire une culture d'équipe où les désaccords sont exprimés et traités sans dégénérer en conflits. Vous ne savez pas par où commencer.",
+        tags: ["prévention", "modèle"],
+        answers: [
+          { text: "Je laisse la culture se construire naturellement — la forcer serait artificiel.", score: 0 },
+          { text: "Je commence par modéliser moi-même les comportements que je veux voir — exprimer mes désaccords, accueillir les critiques.", score: 2 },
+          { text: "Je propose une formation ou un atelier sur la gestion des conflits.", score: 1 },
+          { text: "Je pose des règles de communication explicites dans l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre équipe manque de clarté et de culture pour prévenir les conflits à la source", desc: "Gérer les conflits de territoire au cas par cas sans clarifier les périmètres, laisser les désaccords s'exprimer hors réunion plutôt qu'en réunion, intervenir pour lisser un désaccord productif, ne pas tirer de leçons formelles d'un conflit résolu : ces comportements créent les conditions des prochains conflits. La prévention est toujours moins coûteuse que la résolution." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez des mesures préventives dans les situations évidentes mais la culture de l'équipe et la remontée des causes systémiques sont encore insuffisantes", desc: "Vous clarifiez les périmètres de l'équipe et vous analysez vos décisions génératrices de tensions. Mais créer une culture où les désaccords s'expriment en réunion plutôt qu'en dehors, tirer des leçons formelles des conflits résolus, remonter à votre direction quand un conflit a des causes organisationnelles, protéger les désaccords productifs plutôt que de les lisser : ces comportements de prévention profonde sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prévenez activement les conflits — clarté des rôles, culture du désaccord, leçons tirées, causes systémiques remontées", desc: "Vous clarifiez formellement les périmètres pour supprimer les sources structurelles de conflits. Vous créez des espaces sécurisés pour que les désaccords s'expriment en réunion. Vous protégez les désaccords productifs. Vous tirez des leçons formelles des conflits résolus. Vous anticipez l'impact de vos décisions sur la dynamique d'équipe. Vous remontez les causes organisationnelles à votre direction. Vous commencez par vous-même pour construire une culture où les désaccords s'expriment. Cette prévention active — qui suppose d'investir dans les conditions qui font que les conflits n'éclatent pas — est ce qui fait la différence entre une équipe qui gère ses conflits et une équipe qui n'en a presque pas." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
 
     ["changer-sans-se-crisper", "Changer sans se crisper", "Tous publics",
-      "Comprendre ses réflexes face aux changements.",
+      "Réflexes face aux changements.",
       { domain: "transformation", chapters: [
-        ["Comprendre ses réflexes face au changement", "Protection à exploration."],
-        ["Traverser la période de transition", "Signaler, aider, soutenir."],
-        ["Contribuer positivement", "Quick wins, influence collective."],
-        ["Développer sa flexibilité", "Transformations comme opportunités."],
+        ["Réflexes", "Protection à exploration."],
+        ["Transition", "Signaler, aider."],
+        ["Contribution", "Quick wins."],
+        ["Flexibilité", "Opportunités."],
       ]}
     ],
 
     ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
-      "Installer des échanges factuels sans posture défensive.",
+      "Échanges factuels sans posture défensive.",
       { domain: "transformation", chapters: [
-        ["Donner un feedback factuel", "Précision, timing, courage."],
-        ["Recevoir sans se défendre", "Écoute, séparation fond/source."],
-        ["Créer une culture du feedback", "Exemplarité, facilitation."],
-        ["Utiliser pour progresser", "Points forts, profondeur."],
+        ["Donner", "Précision, courage."],
+        ["Recevoir", "Écoute, intégration."],
+        ["Culture", "Exemplarité."],
+        ["Progresser", "Profondeur."],
       ]}
     ],
 
     ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
-      "Posture d'engagement, responsabilisation, soutien.",
+      "Engagement, responsabilisation, soutien.",
       { domain: "transformation", chapters: [
-        ["Créer les conditions", "Sens, reconnaissance, confiance."],
-        ["Maintenir dans la durée", "Signaux faibles, protection."],
-        ["Responsabiliser sans infantiliser", "Déléguer, initiatives."],
-        ["Soutenir sans dépendance", "Limites claires, autonomie."],
+        ["Conditions", "Sens, reconnaissance."],
+        ["Durée", "Signaux faibles."],
+        ["Responsabiliser", "Déléguer."],
+        ["Soutenir", "Limites, autonomie."],
       ]}
     ],
 
     ["contribuer-projet", "Contribuer efficacement à un projet", "Collaborateurs",
-      "Rôles, imprévus, coopération dans un cadre mouvant.",
+      "Rôles, imprévus, coopération.",
       { domain: "transformation", chapters: [
-        ["Clarifier son rôle", "Livrables, dépendances, périmètre."],
-        ["Coopérer", "Information proactive, décisions collectives."],
-        ["Gérer les imprévus", "Alerter tôt, signaler, charge collective."],
-        ["Capitaliser", "REX, documentation, transmission."],
+        ["Rôle", "Livrables, périmètre."],
+        ["Coopérer", "Information, décisions."],
+        ["Imprévus", "Alerter, charge."],
+        ["Capitaliser", "REX, transmission."],
       ]}
     ],
 
     ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
-      "Résistances, relai des décisions, ancrage des pratiques.",
+      "Résistances, communication, ancrage.",
       { domain: "transformation", chapters: [
-        ["Comprendre les résistances", "Écouter, distinguer, remonter."],
-        ["Communiquer", "Proactivité, cohérence, rumeurs."],
-        ["Ancrer les pratiques", "Glissements, co-construction."],
-        ["Prendre soin de soi", "Double rôle, bilan, transmission."],
+        ["Résistances", "Écouter, remonter."],
+        ["Communication", "Proactivité, cohérence."],
+        ["Ancrage", "Glissements, co-construction."],
+        ["Soi", "Bilan, transmission."],
       ]}
     ],
 
     ["responsabiliser-sans-controler", "Responsabiliser sans contrôler", "Managers",
-      "Déléguer avec confiance, autonomie, initiative.",
+      "Déléguer, autonomie, initiative.",
       { domain: "transformation", chapters: [
-        ["Déléguer avec clarté", "Cadre, profil, résultat."],
-        ["Faire confiance", "Conscience du contrôle, cohérence."],
-        ["Traiter les difficultés", "Soutien, développement."],
-        ["Autonomie collective", "Périmètre, absences, transition."],
+        ["Déléguer", "Cadre, résultat."],
+        ["Confiance", "Conscience contrôle."],
+        ["Difficultés", "Développement."],
+        ["Autonomie collective", "Périmètre, transition."],
       ]}
     ],
 
     ["cooperer-autres-equipes", "Coopérer avec les autres équipes", "Tous publics",
-      "Frictions, dépendances, logiques de silos.",
+      "Frictions, dépendances, silos.",
       { domain: "transformation", chapters: [
-        ["Comprendre les autres équipes", "Curiosité, empathie."],
-        ["Gérer les frictions", "Contact direct, causes structurelles."],
-        ["Relations durables", "Entretien, réciprocité, valorisation."],
-        ["Dépasser les silos", "Initiative, crédit partagé, transparence."],
+        ["Comprendre", "Curiosité, empathie."],
+        ["Frictions", "Contact direct."],
+        ["Relations", "Entretien, valorisation."],
+        ["Silos", "Initiative, crédit."],
       ]}
     ],
 
     ["adapter-outils-methodes", "S'adapter aux nouveaux outils et méthodes", "Tous publics",
       "Posture face aux transformations numériques.",
       { domain: "transformation", chapters: [
-        ["Aborder un outil", "Exploration proactive, partage."],
-        ["Adopter une méthode", "Engagement, robustesse, observations."],
-        ["Inconfort numérique", "Expérimentation, développement."],
-        ["Adoption collective", "Référent, retours, culture."],
+        ["Outil", "Exploration, partage."],
+        ["Méthode", "Engagement, robustesse."],
+        ["Numérique", "Expérimentation."],
+        ["Adoption", "Référent, culture."],
       ]}
     ],
 
     ["prioriser-arbitrer", "Prioriser et arbitrer quand tout est urgent", "Managers / Encadrants",
-      "Hiérarchiser, injonctions contradictoires, tenir dans la durée.",
+      "Hiérarchiser, injonctions, tenir.",
       { domain: "transformation", chapters: [
-        ["Clarifier l'urgence", "Impact réel, protéger l'important."],
-        ["Arbitrer sous pression", "Critères, qualité vs délai."],
-        ["Tenir dans la durée", "Revue, anticipation, charge."],
-        ["Communiquer", "Proactivité, critères assumés."],
+        ["Urgence réelle", "Impact réel."],
+        ["Arbitrer", "Critères, décisions."],
+        ["Durée", "Revue, anticipation."],
+        ["Communiquer", "Critères assumés."],
       ]}
     ],
 
     ["prendre-sa-place", "Prendre sa place sans s'effacer", "Collaborateurs",
-      "Assertivité, positions, visibilité professionnelle.",
+      "Assertivité, positions, visibilité.",
       { domain: "transformation", chapters: [
-        ["S'exprimer", "Prise de parole, visibilité, demandes."],
-        ["Défendre sa position", "Arguments vs pression."],
-        ["Poser des limites", "Refus, délais, périmètre."],
-        ["S'affirmer", "Visibilité, ambition, évaluation."],
+        ["S'exprimer", "Prise de parole."],
+        ["Position", "Arguments vs pression."],
+        ["Limites", "Refus, périmètre."],
+        ["S'affirmer", "Visibilité, ambition."],
       ]}
     ],
 
     ["gerer-energie-priorites", "Gérer son énergie et ses priorités", "Tous publics",
-      "Rythmes, drain, récupération, organisation durable.",
+      "Rythmes, drain, récupération.",
       { domain: "transformation", chapters: [
-        ["Respecter ses rythmes", "Pics d'énergie, espace, déconnexion."],
-        ["Gérer les drains", "Réunions, perfectionnisme, multitâche."],
-        ["Recharger", "Rituels, signaux, soutien."],
-        ["Organisation durable", "Planification, revue, systèmes."],
+        ["Rythmes", "Pics d'énergie."],
+        ["Drains", "Réunions, perfectionnisme."],
+        ["Recharge", "Rituels, signaux."],
+        ["Organisation", "Planification, systèmes."],
       ]}
     ],
 
     ["travailler-mode-projet", "Travailler en mode projet transversal", "Tous publics",
-      "Piloter sans autorité, parties prenantes, capitalisation.",
+      "Piloter sans autorité, parties prenantes.",
       { domain: "transformation", chapters: [
-        ["Piloter sans autorité", "Influence, engagements, légitimité."],
-        ["Parties prenantes", "Cartographie, communication, conflits."],
-        ["Coordonner", "Asynchrone, indicateurs, échanges directs."],
-        ["Clôturer", "Bilan, transfert, relations, méthode."],
+        ["Piloter", "Influence, engagements."],
+        ["Parties prenantes", "Cartographie, conflits."],
+        ["Coordonner", "Asynchrone, indicateurs."],
+        ["Clôturer", "Bilan, transmission."],
       ]}
     ],
 
     ["conduire-reunion-utile", "Conduire une réunion utile", "Tous publics",
-      "Préparer, animer, conclure avec décisions et engagements.",
+      "Préparer, animer, conclure.",
       { domain: "transformation", chapters: [
-        ["Préparer", "Objectif, participants, durée calibrée."],
-        ["Animer", "Cadre, participation, décisions formulées."],
-        ["Conclure et suivre", "Actions, compte rendu, engagements."],
-        ["S'adapter", "Visio, hybride, conflit, créativité."],
+        ["Préparer", "Objectif, durée."],
+        ["Animer", "Cadre, décisions."],
+        ["Conclure", "Actions, suivi."],
+        ["S'adapter", "Visio, hybride, conflit."],
       ]}
     ],
 
     ["manager-distance-hybride", "Manager à distance et en hybride", "Managers",
-      "Équité présentiel/distance, performance, développement.",
+      "Équité, performance, développement.",
       { domain: "transformation", chapters: [
-        ["Maintenir le lien", "Équité, signaux faibles, rituels, isolement."],
-        ["Manager la performance", "Résultats, confiance, sous-performance."],
-        ["Organiser l'hybride", "Jours, opportunités, charte, équité."],
-        ["Développer à distance", "Apprentissage, promotion, feedback, culture."],
+        ["Lien", "Équité, signaux faibles."],
+        ["Performance", "Résultats, confiance."],
+        ["Hybride", "Jours, opportunités."],
+        ["Développement", "Apprentissage, promotion."],
+      ]}
+    ],
+
+    ["gerer-conflits-equipe", "Gérer les conflits dans l'équipe", "Managers",
+      "Détecter, intervenir, faciliter la résolution, prévenir.",
+      { domain: "transformation", chapters: [
+        ["Détecter tôt", "Signaux faibles, tensions cachées, conflits managériaux."],
+        ["Intervenir", "Équité, neutralité, reconnaissance de sa contribution."],
+        ["Faciliter la résolution", "Cadre sécurisé, accord formalisé, causes profondes."],
+        ["Prévenir", "Clarté des rôles, culture du désaccord, leçons tirées."],
       ]}
     ],
 
