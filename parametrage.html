@@ -904,7 +904,7 @@ function themeTitle(){return state.themeTitle || state.title || state.name || st
 function ensureDefaults(){
   const p = state.parametrage;
   const t = themeTitle();
-  if(!p.nom) p.nom = 'Autodiagnostic ' + t;
+  if(!p.nom) p.nom = t;
   if(p.titre == null) p.titre = '';
   if(!p.desc) p.desc = 'Campagne interne sur ' + t + '.';
   if(!p.slug) p.slug = slugify(t) || 'mon-autodiagnostic';
