@@ -45,19 +45,17 @@
 .toast-customizer{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:#18375d;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:800;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:9999;opacity:0;pointer-events:none;transition:all .18s ease}.toast-customizer.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .qr-download-btn{background:#007883!important;color:#fff!important;border-color:#007883!important;box-shadow:0 8px 18px rgba(0,120,131,.16);cursor:pointer!important}.qr-download-btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(0,120,131,.20)}
 .campaign-locked input,.campaign-locked select,.campaign-locked textarea{background:#f6f8fb!important;color:#64748b!important}
-.campaign-locked .comm-tabs button,
-.campaign-locked .template-card button{
+#campaign-communication-block,
+#campaign-communication-block *,
+.campaign-locked #campaign-communication-block,
+.campaign-locked #campaign-communication-block *,
+.its-readonly-mode #campaign-communication-block,
+.its-readonly-mode #campaign-communication-block *{
   pointer-events:auto!important;
-  opacity:1!important;
-  cursor:pointer!important;
 }
-.campaign-locked .comm-tabs button[disabled],
-.campaign-locked .template-card button[disabled],
-.its-readonly-mode .comm-tabs button,
-.its-readonly-mode .template-card button,
-.its-readonly-mode .comm-tabs button[disabled],
-.its-readonly-mode .template-card button[disabled]{
-  pointer-events:auto!important;
+
+.campaign-locked #campaign-communication-block button,
+.its-readonly-mode #campaign-communication-block button{
   opacity:1!important;
   cursor:pointer!important;
 }
@@ -106,7 +104,7 @@
 <div class="launch-grid"><main>
 <div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
 <section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary qr-download-btn" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
-<section class="block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
+<section class="block" id="campaign-communication-block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
 <section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
 <section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
 <div class="bottom-actions"><button class="btn-back" onclick="goBackToParametrage()">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
@@ -849,8 +847,7 @@ bootCampagnePage();
   function allowedButton(button){
     const onclick = String(button.getAttribute("onclick") || "");
     return (
-      button.classList.contains("comm-tab") ||
-      onclick.includes("copyTemplate") ||
+      button.closest("#campaign-communication-block") ||
       onclick.includes("copyUrl") ||
       onclick.includes("copyResultsUrl") ||
       onclick.includes("downloadQrCode") ||
@@ -859,62 +856,45 @@ bootCampagnePage();
     );
   }
 
-  function ensureCampaignCopyActionsAvailable(){
-    document.querySelectorAll("button").forEach(button => {
-      if(!allowedButton(button)) return;
+  function unlockCampaignCommunicationBlock(){
+    const block = document.getElementById("campaign-communication-block");
+    if(!block) return;
 
+    block.style.setProperty("pointer-events", "auto", "important");
+    block.style.setProperty("opacity", "1", "important");
+
+    block.querySelectorAll("button").forEach(button => {
       button.disabled = false;
       button.removeAttribute("disabled");
       button.removeAttribute("aria-disabled");
-
       button.style.setProperty("pointer-events", "auto", "important");
       button.style.setProperty("cursor", "pointer", "important");
       button.style.setProperty("opacity", "1", "important");
+    });
+  }
 
-      if(button.classList.contains("comm-tab")){
-        button.style.setProperty("background", button.classList.contains("on") ? "#18375d" : "#ffffff", "important");
-        button.style.setProperty("color", button.classList.contains("on") ? "#ffffff" : "#64748b", "important");
-        button.style.setProperty("border-color", button.classList.contains("on") ? "#18375d" : "#d8e0ea", "important");
-      }
-
-      if(String(button.getAttribute("onclick") || "").includes("copyTemplate")){
-        button.style.setProperty("background", "#007883", "important");
-        button.style.setProperty("color", "#ffffff", "important");
-        button.style.setProperty("border-color", "#007883", "important");
-      }
+  function ensureCampaignCopyActionsAvailable(){
+    document.querySelectorAll("button").forEach(button => {
+      if(!allowedButton(button)) return;
+      button.disabled = false;
+      button.removeAttribute("disabled");
+      button.removeAttribute("aria-disabled");
+      button.style.setProperty("pointer-events", "auto", "important");
+      button.style.setProperty("cursor", "pointer", "important");
+      button.style.setProperty("opacity", "1", "important");
     });
 
-    document.querySelectorAll(".comm-tabs, .template-card, .comm-tabs button, .template-card button").forEach(el => {
-      el.style.setProperty("pointer-events", "auto", "important");
-      el.style.setProperty("opacity", "1", "important");
-    });
+    unlockCampaignCommunicationBlock();
   }
 
   window.ensureCampaignCopyActionsAvailable = ensureCampaignCopyActionsAvailable;
 
-  let campaignCopyUnlockObserver = null;
   function startCampaignCopyUnlockWatch(){
     ensureCampaignCopyActionsAvailable();
-
-    if(campaignCopyUnlockObserver) return;
-
-    campaignCopyUnlockObserver = new MutationObserver(() => {
-      ensureCampaignCopyActionsAvailable();
-    });
-
-    campaignCopyUnlockObserver.observe(document.body, {
-      attributes: true,
-      subtree: true,
-      childList: true,
-      attributeFilter: ["disabled", "style", "class", "aria-disabled"]
-    });
-
-    let remaining = 30;
-    const timer = setInterval(() => {
-      ensureCampaignCopyActionsAvailable();
-      remaining -= 1;
-      if(remaining <= 0) clearInterval(timer);
-    }, 300);
+    setTimeout(ensureCampaignCopyActionsAvailable, 100);
+    setTimeout(ensureCampaignCopyActionsAvailable, 350);
+    setTimeout(ensureCampaignCopyActionsAvailable, 900);
+    setTimeout(ensureCampaignCopyActionsAvailable, 1600);
   }
 
   window.startCampaignCopyUnlockWatch = startCampaignCopyUnlockWatch;
