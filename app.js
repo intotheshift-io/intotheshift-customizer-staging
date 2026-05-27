@@ -632,7 +632,7 @@ function itsResumeUrlForProject(project) {
   }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
-  if (rawStep.includes("campagne")) return "parametrage.html" + suffix;
+  if (rawStep.includes("campagne")) return "campagne.html" + suffix;
   if (rawStep.includes("param")) return "parametrage.html" + suffix;
   return "questions.html" + suffix;
 }
@@ -900,6 +900,15 @@ function itsApplyReadOnlyMode(options = {}) {
       link.style.pointerEvents = "";
       link.style.opacity = ".85";
       link.title = "Projet transmis : consultation en lecture seule";
+
+      // Une fois un projet commencé/transmis, le point de départ "Choisir une base"
+      // ne doit jamais redevenir cliquable.
+      if (href.includes("index.html") || link.classList.contains("step-link-locked-start")) {
+        link.removeAttribute("href");
+        link.style.pointerEvents = "none";
+        link.style.opacity = ".45";
+        link.title = "Point de départ du parcours : non cliquable une fois le projet commencé";
+      }
       return;
     }
 
