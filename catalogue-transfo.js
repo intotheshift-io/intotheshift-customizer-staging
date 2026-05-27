@@ -26,7 +26,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une nouvelle procédure administrative remplace celle que vous appliquiez depuis quatre ans. Votre collègue Béatrice dit que 'l'ancienne était parfaitement adaptée' et propose de continuer à l'utiliser en parallèle.",
@@ -42,7 +42,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un changement est annoncé dans votre organisation, votre premier réflexe est de chercher ce qu'il peut vous apporter plutôt que ce qu'il va vous coûter.",
@@ -59,7 +59,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre organisation passe d'une structure par fonction à une organisation par projets transversaux. Votre périmètre change significativement. Vous vous sentiez compétent dans l'ancienne configuration.",
@@ -75,7 +75,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une décision de votre direction vous semble peu cohérente avec les objectifs annoncés. Vous ne comprenez pas la logique de ce choix.",
@@ -91,7 +91,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Face à une décision que vous ne comprenez pas bien, vous posez des questions pour comprendre la logique avant de vous forger une opinion définitive.",
@@ -108,7 +108,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un consultant externe vient présenter une nouvelle méthode de travail à votre équipe. Vous avez dix ans d'expérience dans votre domaine et certaines recommandations vous semblent théoriques.",
@@ -124,7 +124,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre organisation veut déployer un changement important en deux mois. Vous pensez que quatre mois seraient nécessaires pour bien le faire.",
@@ -140,7 +140,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous exprimez vos réserves sur un changement par les voies appropriées avant de vous y engager, plutôt que de les exprimer après ou de les taire.",
@@ -157,7 +157,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous adaptez aux changements mais votre réflexe initial est encore souvent de résister avant d'explorer", desc: "Vous finissez par vous adapter aux changements et vous posez des questions pour comprendre. Mais votre première réaction est souvent de souligner ce qui va être perdu ou difficile avant de chercher ce qui peut être gagné. Ce délai initial — qui peut sembler anodin — influence l'ensemble de votre équipe si vous avez un rôle d'ancienneté ou de référence." },
           haut: { label: "Réflexes installés", titre: "Face au changement, votre premier réflexe est de chercher comment vous y engager et ce qu'il peut vous apporter", desc: "Vous explorez le nouvel outil avant la formation. Vous appliquez la nouvelle procédure même quand Béatrice propose de garder l'ancienne. Vous documentez vos réserves sur le calendrier tout en vous engageant à faire au mieux. Vous rappelez qu'un délai de deux mois est court pour juger une transformation. Cette posture d'engagement précoce — qui suppose d'accepter l'inconfort de la nouveauté — est ce qui rend les changements moins coûteux pour vous et pour votre entourage." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une nouvelle organisation est en place depuis deux mois. Les résultats ne sont pas encore au niveau attendu. Des voix s'élèvent pour revenir à l'ancienne façon de faire.",
@@ -192,7 +192,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Pendant une période de changement, vous signalez les surcharges et les incompatibilités que vous rencontrez plutôt que de les absorber silencieusement.",
@@ -209,7 +209,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En apprenant un nouvel outil, vous faites plusieurs erreurs qui entraînent des retards. Un collègue, Thibault, gère la transition beaucoup plus facilement que vous.",
@@ -225,7 +225,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Trois semaines après la mise en place d'une nouvelle méthode, vous réalisez que vous êtes moins efficace qu'avant. C'est décourageant.",
@@ -241,7 +241,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre direction n'a pas communiqué clairement les raisons du changement en cours. Vos collègues commencent à remplir le vide avec des rumeurs.",
@@ -257,7 +257,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Pendant une période de transition, vous demandez de l'aide ou un accompagnement quand vous en avez besoin, sans attendre que les difficultés soient trop importantes.",
@@ -274,7 +274,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre indicateur de performance a baissé pendant la période de transition. Votre évaluation annuelle approche.",
@@ -290,7 +290,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collègue Nadia est en grande difficulté avec le changement en cours. Elle ne le montre pas en réunion mais vous le voyez dans son travail quotidien.",
@@ -306,7 +306,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Pendant les périodes de changement, vous soutenez activement les collègues qui sont en difficulté, sans attendre qu'ils demandent.",
@@ -323,7 +323,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les difficultés de transition mais vous attendez souvent qu'elles soient importantes avant d'agir", desc: "Vous signalez quand les difficultés deviennent importantes et vous demandez de l'aide quand vous êtes clairement en difficulté. Mais la surcharge de 30%, la régression temporaire des premières semaines, la baisse de performance pendant la transition : ces signaux arrivent parfois trop tard dans votre remontée. L'enjeu est d'agir plus tôt, quand les solutions sont encore simples." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les difficultés de transition tôt, vous demandez de l'aide sans attendre, et vous soutenez vos collègues", desc: "Vous signalez la surcharge de 30% avec une proposition de priorisation. Vous demandez à Thibault de vous montrer comment il s'y prend. Vous aidez Nadia sans attendre qu'elle demande. Vous documentez le lien entre la transformation et la baisse de performance. Cette façon d'utiliser le changement comme un contexte de collaboration — plutôt que de le traverser seul·e — est ce qui rend les transitions plus efficaces pour l'ensemble de l'équipe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La nouvelle méthode de travail déployée dans votre organisation a des défauts réels que vous avez identifiés après six semaines de pratique.",
@@ -358,7 +358,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous exprimez des doutes sur un changement, vous les accompagnez systématiquement d'une proposition ou d'une question constructive.",
@@ -375,7 +375,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un nouveau collaborateur arrive dans une équipe en pleine transformation. Il observe les réticences de certains anciens et commence à se demander s'il a fait le bon choix.",
@@ -391,7 +391,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous identifiez une amélioration rapide liée au changement en cours — quelque chose qui pourrait montrer concrètement la valeur du nouveau fonctionnement.",
@@ -407,7 +407,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre responsable vous demande de participer à un groupe de travail pour accompagner le déploiement du changement auprès des autres équipes. Vous n'êtes pas enthousiaste.",
@@ -423,7 +423,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Une fois une décision de changement prise, vous vous engagez dans sa mise en œuvre même si vous n'étiez pas convaincu au départ.",
@@ -440,7 +440,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Après deux mois de mise en œuvre, vous avez des retours terrain très riches sur ce qui fonctionne et ce qui coince dans le nouveau fonctionnement.",
@@ -456,7 +456,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre responsable vous demande de 'porter le changement' auprès de collègues résistants. Vous ne vous sentez pas légitime pour ce rôle.",
@@ -472,7 +472,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous partagez activement votre expérience du changement avec vos collègues — ce qui fonctionne, ce qui est difficile, comment vous avez surmonté les obstacles.",
@@ -489,7 +489,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous contribuez au changement mais votre influence sur la dynamique collective reste encore limitée", desc: "Vous vous engagez dans les changements une fois décidés et vous partagez vos retours terrain. Mais interpeller les collègues qui exercent une influence négative, proposer et tester des quick wins, soulever les glissements vers les anciennes habitudes : ces comportements d'influence active sur la dynamique collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la dynamique du changement — quick wins, retours terrain, influence sur le collectif", desc: "Vous interpellez les collègues négatifs en leur demandant ce qu'ils proposeraient. Vous testez et partagez les quick wins. Vous remontez les retours terrain sans attendre le bilan formel. Vous soulevez les glissements vers les anciennes habitudes quand la transformation se délite. Cette contribution active à la dynamique collective — qui suppose parfois d'occuper un rôle inconfortable — est ce qui fait qu'une transformation produit durablement ses effets." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Le changement est en place depuis six mois. Certains collègues ont repris d'anciennes habitudes sans que personne ne réagisse. La nouvelle façon de faire est en train de se déliter.",
@@ -524,7 +524,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Dans un environnement qui change vite, vous considérez l'adaptabilité comme une compétence à développer plutôt que comme une contrainte à subir.",
@@ -541,7 +541,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un changement important modifie le cœur de votre métier. Vous aviez construit votre identité professionnelle autour de compétences qui seront moins valorisées demain.",
@@ -557,7 +557,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous devez apprendre à utiliser un outil d'IA dans votre travail quotidien. Vous n'êtes pas à l'aise avec les nouvelles technologies.",
@@ -573,7 +573,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un projet intéressant vous est proposé mais il vous demanderait de travailler dans un domaine où vous n'avez pas encore d'expérience.",
@@ -589,7 +589,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous acceptez des missions qui vous placent hors de votre zone de confort, en les traitant comme des opportunités d'apprentissage.",
@@ -606,7 +606,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Après un changement difficile, vous faites le bilan. Vous avez développé des compétences nouvelles mais perdu en efficacité sur certains aspects de votre travail.",
@@ -622,7 +622,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une nouvelle recrue arrive dans votre équipe alors que vous traversez une période de transformation intense. Elle vous demande comment vous gérez les changements continus.",
@@ -638,7 +638,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous considérez les périodes de changement difficiles comme des éléments formateurs pour votre développement professionnel.",
@@ -655,7 +655,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez développé une certaine flexibilité mais les changements qui touchent votre identité professionnelle créent encore des résistances", desc: "Vous acceptez les changements de méthode et d'outils. Mais quand le changement touche le cœur de votre métier ou vous pousse hors de votre zone de confort professionnel : des résistances plus profondes peuvent apparaître. L'enjeu est de traiter ces moments comme des opportunités de développement plutôt que comme des menaces à l'identité." },
           haut: { label: "Réflexes installés", titre: "Vous traitez les transformations continues comme des opportunités de développement, y compris quand elles touchent votre identité professionnelle", desc: "Vous identifiez comment vos compétences existantes peuvent se transposer aux nouvelles exigences. Vous acceptez des projets hors de votre zone de confort en nommant clairement vos lacunes et vos besoins. Vous traitez les pertes d'efficacité temporaires comme une donnée normale de l'apprentissage. Vous transmettez à la nouvelle recrue les stratégies concrètes qui vous aident. Cette flexibilité profonde — qui touche l'identité professionnelle pas seulement les méthodes — est ce qui rend durablement adaptable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Six mois après un changement majeur, votre organisation ne demande pas de retour formel sur la transformation. Vous avez des observations utiles.",
@@ -693,7 +693,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Lors d'une réunion d'équipe, vous observez qu'Hamid prend systématiquement la parole avant que les autres aient fini leur pensée. Le reste de l'équipe semble s'auto-censurer.",
@@ -709,7 +709,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vos feedbacks décrivent des comportements observables précis plutôt que des jugements sur la personne ou des impressions générales.",
@@ -726,7 +726,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un membre de votre équipe a géré une situation difficile avec un client de façon exemplaire. Vous trouvez les compliments un peu embarrassants à formuler.",
@@ -742,7 +742,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous devez donner un feedback à une collaboratrice sur une erreur répétée dans ses rapports. Elle est perfectionniste et prend les critiques très à cœur.",
@@ -758,7 +758,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous donnez les feedbacks difficiles en face-à-face, sans les atténuer au point que le message devient flou.",
@@ -775,7 +775,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En formulant un feedback à votre collègue Céline, vous réalisez que vous êtes agacé·e par elle depuis plusieurs semaines. Vous vous demandez si c'est le bon moment.",
@@ -791,7 +791,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez observé quelque chose d'utile à partager avec un collègue mais il ne vous a pas demandé votre avis. Vous vous interrogez sur la légitimité d'un feedback non sollicité.",
@@ -807,7 +807,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Avant de donner un feedback non sollicité, vous vérifiez que votre interlocuteur est disponible et ouvert à le recevoir.",
@@ -824,7 +824,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous donnez des feedbacks factuels dans les situations claires mais les situations complexes ou émotionnelles créent encore des hésitations", desc: "Vous donnez des feedbacks précis dans les situations ordinaires. Mais quand la personne est perfectionniste, quand vous êtes vous-même dans un état émotionnel difficile, quand le feedback n'a pas été demandé : vous pouvez encore hésiter ou atténuer le fond. L'enjeu est de tenir la qualité factuelle du feedback dans ces situations précises." },
           haut: { label: "Réflexes installés", titre: "Vos feedbacks sont précis, courageux et adaptés à la personne — sans perdre le fond", desc: "Vous décrivez précisément ce que vous avez observé chez Hamid en tête-à-tête après la réunion. Vous donnez un feedback factuel à la collaboratrice perfectionniste sans diluer le fond. Vous demandez à Céline si elle est disponible pour un retour avant de le lui donner. Vous revenez vers le collaborateur dont le comportement n'a pas changé pour comprendre ce qui bloque. Cette rigueur dans la façon de donner des feedbacks — précis, courageux, bien timés — est ce qui fait qu'ils sont réellement utiles." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez donné un feedback important à un collègue il y a trois semaines. Le comportement n'a pas changé. Vous ne l'avez pas suivi.",
@@ -859,7 +859,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous recevez un feedback négatif, vous laissez votre interlocuteur aller jusqu'au bout avant de répondre.",
@@ -876,7 +876,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous recevez un feedback que vous estimez partiellement injuste — les faits sont réels mais le contexte n'a pas été pris en compte.",
@@ -892,7 +892,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous recevez un feedback sévère en réunion de groupe sur votre dernier livrable. Vous sentez la colère monter.",
@@ -908,7 +908,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous recevez un feedback d'un collègue avec qui vous avez des divergences régulières. Le fond vous semble juste mais vous suspectez une arrière-pensée.",
@@ -924,7 +924,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous recevez un feedback, vous prenez le temps de réfléchir à ce qu'il contient d'utile avant de décider si vous l'intégrez.",
@@ -941,7 +941,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre responsable vous dit que votre travail sur ce projet était excellent. Vous avez tendance à minimiser.",
@@ -957,7 +957,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous venez de terminer une mission importante. Votre responsable ne vous donne pas spontanément de retour.",
@@ -973,7 +973,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous demandez proactivement des feedbacks sur votre travail sans attendre les évaluations formelles.",
@@ -990,7 +990,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous écoutez les feedbacks jusqu'au bout mais la réaction défensive peut encore apparaître quand le fond vous surprend", desc: "Vous laissez votre interlocuteur aller jusqu'au bout et vous prenez le temps de réfléchir. Mais quand le feedback vient d'un collègue avec qui vous avez des tensions, quand il vous semble partiellement injuste, quand il vous surprend vraiment : une réaction défensive peut encore apparaître. L'enjeu est de séparer la réception du feedback de l'évaluation de sa pertinence." },
           haut: { label: "Réflexes installés", titre: "Vous recevez les feedbacks avec curiosité, même ceux qui vous surprennent ou qui viennent d'une source inattendue", desc: "Vous laissez votre interlocuteur aller au bout, vous posez des questions pour comprendre avant de répondre, vous séparez le fond du message de la relation avec la personne qui le porte. Vous demandez proactivement des feedbacks sans attendre les évaluations formelles. Quand le même feedback revient de plusieurs sources, vous cherchez un accompagnement plutôt que de continuer seul·e. Cette réceptivité — qui suppose d'accepter d'être surpris·e par ce qu'on apprend sur soi — est ce qui rend les feedbacks vraiment formateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez reçu le même feedback de trois personnes différentes sur un comportement que vous n'arrivez pas à changer malgré vos efforts.",
@@ -1025,7 +1025,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous demandez régulièrement des feedbacks sur votre propre façon de travailler ou de manager, pas seulement sur les projets.",
@@ -1042,7 +1042,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Dans votre équipe, personne ne se donne de feedback en dehors des évaluations formelles. Vous pensez que la peur de froisser bloque les échanges.",
@@ -1058,7 +1058,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur vous donne un feedback sur votre communication en réunion. Il soulève un point que vous trouvez pertinent mais qui vous surprend.",
@@ -1074,7 +1074,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Deux collaborateurs de votre équipe ont une tension latente. Ni l'un ni l'autre ne se donne de feedback direct. La tension affecte l'ambiance.",
@@ -1090,7 +1090,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous créez activement des occasions d'échanges de feedback dans votre équipe, sans vous limiter aux évaluations formelles.",
@@ -1107,7 +1107,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur vous donne un feedback que vous avez bien reçu et sur lequel vous avez changé votre comportement. Il ne l'a pas remarqué.",
@@ -1123,7 +1123,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez mis en place un rituel de feedback post-projet dans votre équipe. Après quelques mois, les feedbacks sont devenus polis et superficiels.",
@@ -1139,7 +1139,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand les échanges de feedback dans votre équipe perdent en qualité, vous intervenez pour les relancer plutôt que de maintenir la forme sans le fond.",
@@ -1156,7 +1156,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez mis en place des moments de feedback mais leur qualité n'est pas encore maintenue dans la durée", desc: "Vous avez des moments de feedback réguliers. Mais relancer un rituel qui perd en qualité, faciliter un échange de feedback entre deux collègues en tension, demander vous-même du feedback sur votre management avant de lancer un rituel collectif : ces aspects de facilitation active restent encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous construisez activement la culture du feedback dans votre équipe par l'exemple et la facilitation", desc: "Vous commencez par demander du feedback à votre équipe avant de lancer un rituel collectif. Vous faites évoluer les formats qui deviennent superficiels. Vous faciliter les échanges entre collègues en tension. Vous bouclez la boucle en signalant à ceux qui vous ont donné des feedbacks utiles ce que vous avez changé. Cette cohérence entre ce que vous demandez à votre équipe et ce que vous faites vous-même est ce qui rend une culture du feedback durable." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre responsable vous demande de partager les feedbacks que vos collaborateurs vous ont donnés sur votre management. C'était une conversation privée.",
@@ -1191,7 +1191,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous utilisez les feedbacks reçus pour identifier des opportunités de développement concrètes, pas seulement pour corriger des erreurs.",
@@ -1208,7 +1208,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez reçu trois feedbacks contradictoires sur la même situation. Vous ne savez pas lequel prendre en compte.",
@@ -1224,7 +1224,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez travaillé sur un axe d'amélioration pendant six mois. Vous avez progressé dans les situations habituelles mais pas dans les situations nouvelles ou stressantes.",
@@ -1240,7 +1240,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un feedback reçu il y a deux ans sur votre style de communication vous revient en mémoire. Vous n'y aviez pas vraiment travaillé à l'époque.",
@@ -1256,7 +1256,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous travaillez sur vos axes d'amélioration dans la durée, pas seulement dans les semaines qui suivent une évaluation.",
@@ -1273,7 +1273,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez travaillé sur un point d'amélioration mais vous n'êtes pas sûr·e que les changements sont visibles de l'extérieur.",
@@ -1289,7 +1289,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez appris quelque chose d'important sur vous-même grâce à un feedback difficile à recevoir. Un collègue semble traverser la même situation.",
@@ -1305,7 +1305,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous partagez vos apprentissages personnels issus de feedbacks difficiles quand c'est utile à un collègue.",
@@ -1322,7 +1322,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous utilisez les feedbacks pour corriger des erreurs mais moins pour capitaliser sur vos points forts ou progresser en profondeur", desc: "Vous travaillez sur les feedbacks qui pointent des axes d'amélioration clairs. Mais capitaliser sur un feedback positif, travailler sur un changement jusqu'à ce qu'il soit visible dans les situations stressantes, reprendre un feedback ancien avec un regard nouveau : ces usages plus avancés du feedback comme outil de développement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous utilisez les feedbacks comme un outil de développement continu — points forts, contradictions et progression dans la durée", desc: "Vous cherchez comment capitaliser sur vos points forts dans de nouvelles situations. Vous analysez pourquoi des feedbacks contradictoires divergent plutôt que de les moyenner. Vous testez vos changements dans les situations stressantes pas seulement les habituelles. Vous donnez du feedback sur la façon dont un feedback vous a été donné. Ce rapport au feedback comme outil de développement continu — et non comme évaluation ponctuelle — est ce qui fait progresser en profondeur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Quelqu'un vous a donné un feedback de façon maladroite — le fond était juste mais la forme était dure. Vous ne savez pas si vous devez lui dire.",
@@ -1360,7 +1360,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous devez attribuer un nouveau dossier complexe. Lucas est le plus expérimenté mais il est déjà chargé. Sofia est moins expérimentée mais disponible et demandeuse de défis.",
@@ -1376,7 +1376,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous attribuez les missions en tenant compte à la fois des compétences actuelles et du développement potentiel de chaque collaborateur.",
@@ -1393,7 +1393,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur a fourni un effort remarquable sur une période tendue. Son travail n'a pas été visible en dehors de votre équipe. Aucun résultat spectaculaire n'en est sorti.",
@@ -1409,7 +1409,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre agenda est saturé. Un collaborateur vous demande un entretien pour parler d'un sujet qui lui tient à cœur — pas urgents selon vous.",
@@ -1425,7 +1425,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur demande à vous parler d'un sujet important pour lui, vous trouvez un créneau dans la semaine, même si votre agenda est chargé.",
@@ -1442,7 +1442,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe a commis une erreur qui a eu un impact visible. Votre direction demande des comptes. Vous savez que l'erreur est due à une décision collective.",
@@ -1458,7 +1458,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous êtes manager d'une équipe qui travaille sur des tâches récurrentes et peu valorisantes. L'engagement est bas. Aucune évolution de poste n'est envisageable à court terme.",
@@ -1474,7 +1474,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous cherchez activement à relier le travail quotidien de votre équipe à un impact plus large, même sur des tâches récurrentes.",
@@ -1491,7 +1491,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous créez globalement de bonnes conditions d'engagement mais certains leviers restent encore peu actifs", desc: "Vous donnez du sens, vous reconnaissez les efforts discrets, vous défendez votre équipe face à la direction. Mais attribuer les missions uniquement selon les compétences actuelles sans penser au développement, ne pas chercher de nouveaux leviers quand tout tourne bien, ne pas répondre aux demandes d'échange cette semaine : quelques leviers restent encore peu actifs. L'enjeu est de traiter l'engagement comme un investissement continu, pas comme une satisfaction des besoins immédiats." },
           haut: { label: "Réflexes installés", titre: "Vous créez activement les conditions d'engagement — sens, reconnaissance, confiance, développement — pour chaque collaborateur", desc: "Vous cherchez le sens avant de le demander à votre équipe. Vous donnez le dossier complexe à Sofia avec un accompagnement adapté. Vous reconnaissez l'effort discret en privé dès qu'il se produit. Vous bloquez un créneau cette semaine quand un collaborateur vous le demande. Vous assumez l'erreur collective devant la direction. Cette façon de traiter chaque levier d'engagement comme une priorité — même sous pression — est ce qui fait qu'une équipe se sent portée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur vous propose une façon de traiter un dossier différente de votre méthode habituelle. Sa méthode vous semble moins bonne mais pas risquée.",
@@ -1526,7 +1526,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous repérez les signaux faibles de désengagement dans votre équipe sans attendre que la situation soit évidente.",
@@ -1543,7 +1543,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe est compétente et autonome. Les réunions d'équipe sont devenues routinières. Tout tourne. Vous vous demandez si vous êtes encore utile.",
@@ -1559,7 +1559,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Dans votre équipe, certains collaborateurs sont naturellement plus engageants que d'autres. Vous passez plus de temps avec eux. Les autres se sentent peut-être délaissés.",
@@ -1575,7 +1575,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur vous dit directement qu'il ne se sent plus engagé dans son travail. Il ne cherche pas à partir mais il a perdu la flamme.",
@@ -1591,7 +1591,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur vous dit qu'il est désengagé, vous cherchez avec lui les causes et les leviers plutôt que de lui proposer directement des solutions.",
@@ -1608,7 +1608,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe est performante. Les indicateurs sont bons. Votre direction est satisfaite. L'engagement vous semble acquis.",
@@ -1624,7 +1624,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre direction vous met sous pression pour livrer plus vite. Vous sentez que ça commence à peser sur votre équipe. Certains signes d'épuisement apparaissent.",
@@ -1640,7 +1640,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand la pression de votre direction risque de désengager votre équipe, vous intervenez auprès de votre direction plutôt que de simplement la transmettre.",
@@ -1657,7 +1657,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur l'engagement avant que les situations soient critiques, mais pas encore systématiquement sur les signaux faibles", desc: "Vous repérez les collaborateurs en difficulté avant que ça soit flagrant et vous intervenez. Mais attendre quelques semaines pour confirmer un signal faible, ne pas marquer un succès collectif avant de passer au projet suivant, ne pas remettre en question votre disponibilité quand votre agenda est saturé : votre vigilance est là mais pas encore systématique sur tous les fronts." },
           haut: { label: "Réflexes installés", titre: "Vous investissez dans l'engagement de façon proactive et continue, y compris quand tout va bien", desc: "Vous proposez un échange informel à Jérôme avant que son retrait soit visible. Vous cherchez de nouveaux défis collectifs quand tout tourne. Vous remontez à votre direction le risque de désengagement lié à la pression. Vous marquez les succès avant de passer au projet suivant. Cette vigilance continue sur l'engagement — même dans les périodes de bons résultats — est ce qui évite que l'érosion silencieuse s'installe." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe vient de terminer un projet difficile avec un bon résultat. Vous êtes déjà passé au projet suivant.",
@@ -1692,7 +1692,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous déléguez une mission, vous attendez que le collaborateur revienne vers vous plutôt que de vérifier vous-même l'avancement.",
@@ -1709,7 +1709,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur vous soumet une décision à prendre sur son périmètre. C'est clairement dans ses responsabilités mais il semble chercher votre validation.",
@@ -1725,7 +1725,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur a pris une décision autonome qui s'est avérée mauvaise. Il vous en parle après coup.",
@@ -1741,7 +1741,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaborateur Jérôme a pris une initiative utile mais qui débordait légèrement de son périmètre. Ça a bien fonctionné.",
@@ -1757,7 +1757,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous encouragez et valorisez les initiatives de vos collaborateurs, même quand elles débordent légèrement de leur périmètre habituel.",
@@ -1774,7 +1774,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaboratrice fait son travail de façon très différente de vous. Les résultats sont bons mais votre façon de faire vous semble meilleure.",
@@ -1790,7 +1790,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaborateur vient vous voir avec un problème en vous demandant quoi faire. Il aurait les ressources pour le résoudre seul.",
@@ -1806,7 +1806,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur vient vous voir avec un problème qu'il pourrait résoudre seul, vous l'aidez à trouver sa propre solution plutôt que de lui donner la vôtre.",
@@ -1823,7 +1823,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec confiance mais votre réflexe de contrôle ou de solution directe peut encore s'activer", desc: "Vous déléguez et vous faites confiance. Mais vérifier l'avancement deux jours après, donner votre méthode à une collaboratrice dont les résultats sont bons, répondre directement quand un collaborateur vient avec un problème qu'il pourrait résoudre seul : des réflexes de contrôle ou de résolution directe peuvent encore s'activer. L'enjeu est de maintenir la délégation même dans ces moments." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec une confiance réelle et vous favorisez l'autonomie même quand c'est moins efficace à court terme", desc: "Vous laissez Amandine mener sa mission sans vérifier. Vous demandez à votre collaborateur ce qu'il ferait s'il ne pouvait pas vous demander. Vous valorisez l'initiative de Jérôme et explorez si son périmètre doit évoluer. Vous laissez votre collaboratrice travailler à sa façon tant que les résultats sont là. Vous aidez un collaborateur ambitieux à construire son plan même si ça implique son départ. Cette confiance dans l'autonomie — qui suppose d'accepter de ne pas contrôler — est ce qui fait progresser les gens." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur exprime une ambition professionnelle qui dépasse ce que vous pouvez lui offrir dans votre équipe actuelle.",
@@ -1858,7 +1858,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur a besoin d'un soutien qui dépasse votre rôle de manager, vous l'orientez vers les ressources adaptées sans vous substituer à elles.",
@@ -1875,7 +1875,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur compétent vous demande votre avis sur pratiquement toutes ses décisions depuis plusieurs mois. Il ne prend plus rien sans vous consulter.",
@@ -1891,7 +1891,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous accompagnez un collaborateur sur une montée en compétences depuis six mois. Il progresse mais ne prend pas encore d'initiatives sans votre encouragement explicite.",
@@ -1907,7 +1907,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur exprime des signes de souffrance au travail. Il vous dit qu'il ne veut pas en parler aux RH ou à un professionnel de santé.",
@@ -1923,7 +1923,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous êtes clair·e sur les limites de votre rôle de soutien managérial et vous les communiquez à vos collaborateurs avec bienveillance.",
@@ -1940,7 +1940,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous quittez votre poste dans deux mois. Un collaborateur que vous avez beaucoup soutenu est inquiet de votre départ.",
@@ -1956,7 +1956,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous traversez vous-même une période difficile. Votre équipe perçoit votre état et certains collaborateurs vous demandent comment vous allez.",
@@ -1972,7 +1972,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous êtes capable de dire à votre équipe que vous traversez une période difficile, sans pour autant les mettre dans la position de vous soutenir.",
@@ -1989,7 +1989,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous soutenez avec des limites mais vous avez encore du mal à les poser clairement quand la relation est forte", desc: "Vous posez des limites à votre soutien dans la plupart des situations. Mais soutenir un collaborateur émotionnellement sans l'orienter vers des ressources adaptées, ne pas parler d'une dépendance qui s'est installée progressivement, ne pas préparer l'autonomie avant son propre départ : les limites que vous posez peuvent encore manquer de clarté dans les situations relationnelles les plus fortes." },
           haut: { label: "Réflexes installés", titre: "Votre soutien est empathique et limité — vous orientez vers l'autonomie et les ressources appropriées", desc: "Vous orientez le collaborateur en souffrance vers des ressources professionnelles sans vous y substituer. Vous parlez à Amandine de la dépendance qui s'est installée avant de la gérer par l'évitement. Vous préparez votre départ en construisant l'autonomie du collaborateur qui s'y appuyait. Vous dites honnêtement à votre équipe que vous traversez une période difficile sans les en charger. Ce soutien avec des limites claires — bienveillant mais orienté vers l'autonomie — est ce qui fait grandir durablement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe vous sollicite sur des sujets qui devraient être résolus à leur niveau. Vous y répondez par réflexe. La dépendance collective s'est installée progressivement.",
@@ -2027,7 +2027,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La chef de projet vous confie une mission dont les contours sont flous. Vous avez votre propre interprétation de ce qui est attendu mais vous n'êtes pas sûr·e qu'elle corresponde à la sienne.",
@@ -2043,7 +2043,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Avant de démarrer une contribution sur un projet, vous clarifiez explicitement ce qu'on attend de vous et dans quel délai.",
@@ -2060,7 +2060,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En travaillant sur votre contribution au projet, vous identifiez un problème important qui dépasse votre périmètre mais qui risque d'impacter le résultat global.",
@@ -2076,7 +2076,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "On vous a attribué une tâche sur le projet qui est clairement en dessous de vos compétences. Vous pourriez apporter beaucoup plus ailleurs.",
@@ -2092,7 +2092,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand votre contribution à un projet n'est pas à la hauteur de ce que vous pourriez apporter, vous le signalez et proposez un repositionnement.",
@@ -2109,7 +2109,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre contribution dépend d'une livraison d'un autre membre de l'équipe. Cette livraison est en retard et commence à bloquer votre travail.",
@@ -2125,7 +2125,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Lors d'une réunion projet, une décision est sur le point d'être prise sur un sujet où vous avez une expertise pointue. Vous pensez que la décision envisagée est sous-optimale.",
@@ -2141,7 +2141,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous exprimez votre expertise lors des décisions projet qui relèvent de votre domaine, même quand le groupe semble déjà pencher vers une direction.",
@@ -2158,7 +2158,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous clarifiez votre rôle au démarrage mais certaines ambiguïtés sur les livrables ou les dépendances créent encore des inefficacités", desc: "Vous clarifiez les livrables attendus et vous signalez les problèmes de dépendance. Mais travailler selon votre interprétation sur une mission floue sans vérification, ne pas mentionner un élargissement de périmètre progressif, ne pas proposer votre disponibilité en fin de contribution : ces situations créent encore des inefficacités. L'enjeu est de clarifier explicitement à chaque moment clé du projet." },
           haut: { label: "Réflexes installés", titre: "Vous clarifiez votre rôle, vos livrables et les dépendances dès le démarrage et vous signalez tout élargissement non formalisé", desc: "Vous soumettez votre interprétation avant de démarrer. Vous remontez le périmètre qui s'est élargi sans décision formelle. Vous partagez votre expertise en réunion même quand la décision semble déjà prise. Vous contactez directement le collègue dont la livraison vous bloque. Vous proposez votre disponibilité pour le déploiement même quand votre contribution principale est terminée. Cette rigueur dans la clarification et la contribution au fil du projet est ce qui rend les livrables prévisibles et les projets efficaces." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre contribution principale au projet est terminée. La phase de déploiement commence. On ne vous sollicite plus directement mais votre implication serait utile.",
@@ -2193,7 +2193,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Face à un désaccord technique dans un projet, vous défendez votre position avec des arguments factuels plutôt que de céder ou de vous imposer.",
@@ -2210,7 +2210,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collègue accapare la parole lors des réunions projet. Ses contributions sont bonnes mais les autres membres, dont vous, peinent à s'exprimer.",
@@ -2226,7 +2226,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez terminé votre livrable en avance. Un collègue est clairement en retard sur le sien et sa contribution est sur le chemin critique.",
@@ -2242,7 +2242,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous disposez d'une information utile pour un autre membre du projet mais elle ne vous concerne pas directement. La partager vous prendrait 10 minutes.",
@@ -2258,7 +2258,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous partagez proactivement les informations utiles à d'autres membres du projet, même quand elles ne vous ont pas été demandées.",
@@ -2275,7 +2275,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "L'équipe projet a pris une décision avec laquelle vous n'étiez pas d'accord. Vous avez exprimé votre réserve mais la majorité a tranché autrement.",
@@ -2291,7 +2291,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une tension s'est installée entre deux membres de votre équipe projet. Elle commence à ralentir les échanges. Vous n'êtes pas impliqué·e dans le conflit.",
@@ -2307,7 +2307,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand des tensions entre membres ralentissent un projet, vous intervenez pour aider à les résoudre plutôt qu'à attendre que ça se règle seul.",
@@ -2324,7 +2324,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre mais votre contribution proactive à la dynamique collective est encore limitée", desc: "Vous partagez des informations utiles et vous aidez les collègues en retard. Mais laisser un collègue accaparer la parole sans prendre la vôtre, partager uniquement les observations de processus dans les rétrospectives, ne pas intervenir sur les tensions interpersonnelles : votre coopération est encore principalement centrée sur votre périmètre. L'enjeu est d'élargir votre contribution à la dynamique collective." },
           haut: { label: "Réflexes installés", titre: "Votre coopération dépasse votre périmètre — information proactive, aide spontanée, intervention sur les tensions", desc: "Vous partagez l'information utile spontanément. Vous aidez le collègue en retard sur le chemin critique. Vous prenez la parole malgré le collègue qui accapare. Vous proposez à la chef de projet d'aborder les tensions qui ralentissent. Vous partagez honnêtement vos observations en rétrospective. Vous mettez en œuvre pleinement les décisions collectives même quand vous n'y étiez pas favorable. Cette coopération active — qui dépasse votre périmètre direct — est ce qui fait la différence entre un bon contributeur individuel et un acteur utile au collectif." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En fin de projet, une rétrospective est organisée. Vous avez des observations sur des dysfonctionnements dans la coopération de l'équipe mais certaines impliquent des collègues présents.",
@@ -2359,7 +2359,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous signalez les risques de retard ou de dépassement le plus tôt possible, sans attendre d'être certain·e que le problème va se concrétiser.",
@@ -2376,7 +2376,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Pour tenir le délai, vous devez livrer un travail de qualité inférieure à ce que vous visez habituellement. La chef de projet a validé ce compromis.",
@@ -2392,7 +2392,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Au fil du projet, votre périmètre s'est élargi progressivement sans décision formelle. Vous faites maintenant le double de ce qui était prévu initialement.",
@@ -2408,7 +2408,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous réalisez que vous avez commis une erreur qui va nécessiter de refaire une partie du travail. L'impact sur le planning est significatif.",
@@ -2424,7 +2424,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous faites une erreur avec un impact sur le projet, vous la signalez rapidement plutôt que d'essayer de la corriger discrètement.",
@@ -2441,7 +2441,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En cours de projet, la direction décide de changer l'objectif principal. Votre travail des trois dernières semaines devient partiellement obsolète.",
@@ -2457,7 +2457,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez accepté trop de contributions simultanées sur plusieurs projets. Vous ne pouvez pas tenir tous vos engagements à temps.",
@@ -2473,7 +2473,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand votre charge projet dépasse ce que vous pouvez tenir, vous le signalez proactivement aux parties prenantes plutôt que d'essayer d'absorber seul·e.",
@@ -2490,7 +2490,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous signalez les imprévus importants mais vous absorbez encore les problèmes mineurs sans les remonter", desc: "Vous signalez les retards importants. Mais attendre de voir si vous pouvez rattraper avant de prévenir, corriger d'abord puis informer, travailler plus pour absorber une surcharge plutôt que de revoir les priorités avec les parties prenantes : ces comportements retardent les informations utiles. L'enjeu est de signaler plus tôt, même sur des problèmes qui semblent mineurs." },
           haut: { label: "Réflexes installés", titre: "Vous signalez les risques et les erreurs tôt, vous renégociez les engagements quand nécessaire et vous gérez votre charge collectivement", desc: "Vous prévenez la chef de projet dès que le risque de retard apparaît, pas quand il se confirme. Vous signalez votre erreur avec un plan de correction plutôt que de la corriger discrètement. Vous remontez l'élargissement de périmètre pour une décision formelle. Vous contactez tous les chefs de projet concernés quand vous êtes en surcharge. Cette transparence précoce — qui suppose d'accepter d'être la source de problèmes qui ne se sont pas encore concrétisés — est ce qui permet aux projets d'être gérés plutôt que subis." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Le projet se termine mais plusieurs points restent non résolus. L'équipe a tendance à les clore formellement sans les traiter vraiment.",
@@ -2525,7 +2525,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "À la fin d'un projet, vous prenez des initiatives pour que les apprentissages collectifs soient formalisés, même si personne ne le demande.",
@@ -2542,7 +2542,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez développé une méthode efficace sur ce projet qui pourrait être utile aux prochaines équipes. La documentation prend une journée.",
@@ -2558,7 +2558,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Sur ce projet, vous avez réalisé que vous avez une lacune dans un domaine qui a ralenti votre contribution.",
@@ -2574,7 +2574,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Ce projet vous a permis de travailler avec des personnes que vous ne connaissiez pas. Ces relations sont potentiellement utiles pour de futurs projets.",
@@ -2590,7 +2590,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous entretenez activement les relations professionnelles nouées durant les projets, même en dehors d'un contexte de travail commun.",
@@ -2607,7 +2607,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "À la fin du projet, vous avez envie de reconnaître la contribution de certains membres de l'équipe qui ont été particulièrement efficaces.",
@@ -2623,7 +2623,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "On vous propose de contribuer à un nouveau projet similaire au précédent. Vous avez des apprentissages très utiles du projet précédent.",
@@ -2639,7 +2639,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "À la fin de chaque projet, vous formalisez vos apprentissages personnels — méthodes, lacunes identifiées, relations nouées — pour les utiliser dans les suivants.",
@@ -2656,7 +2656,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous capitalisez sur vos apprentissages personnels mais la transmission collective et l'entretien des relations restent insuffisants", desc: "Vous formalisez vos apprentissages personnels. Mais ne pas organiser le REX si personne n'est motivé, ne pas documenter une méthode utile faute de temps, ne contacter les relations nouées que sur besoin : la capitalisation collective reste insuffisante. L'enjeu est de traiter chaque projet comme un investissement pour les suivants, pas seulement pour vous." },
           haut: { label: "Réflexes installés", titre: "Vous capitalisez activement — REX, documentation, relations, transmission aux moins expérimentés", desc: "Vous prenez l'initiative du REX quand personne n'est motivé. Vous documentez votre méthode pour les prochaines équipes. Vous entretenez les relations au-delà du projet. Vous reconnaissez directement les contributions qui vous ont aidé. Vous proposez votre expérience au collègue qui démarre un projet similaire. Cette façon de traiter chaque projet comme un investissement collectif — et non seulement comme une livraison — est ce qui fait progresser les organisations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collègue moins expérimenté intègre un projet similaire à celui que vous venez de terminer. Il pourrait bénéficier de votre expérience.",
@@ -2694,7 +2694,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Plusieurs membres de votre équipe ont des objections légitimes sur la façon dont la transformation est déployée. Vous êtes d'accord avec eux sur le fond.",
@@ -2710,7 +2710,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand votre équipe a des objections légitimes sur une transformation, vous les remontez à votre direction même si vous n'avez pas le pouvoir de changer la décision.",
@@ -2727,7 +2727,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaboratrice Inès résiste à un changement de méthode. En creusant, vous réalisez qu'elle n'a pas peur du changement en lui-même mais qu'elle n'a pas les compétences pour l'appliquer.",
@@ -2743,7 +2743,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un membre de votre équipe très écouté par les autres exprime ouvertement son opposition à la transformation. Il influence négativement le reste du groupe.",
@@ -2759,7 +2759,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Face à une résistance de votre équipe, vous cherchez d'abord à comprendre sa nature avant d'y répondre.",
@@ -2776,7 +2776,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous n'êtes vous-même pas convaincu·e par la transformation que vous devez accompagner. Votre équipe vous pose des questions directes sur votre avis.",
@@ -2792,7 +2792,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La résistance dans votre équipe est collective et silencieuse — personne ne s'exprime mais la mise en œuvre est molle.",
@@ -2808,7 +2808,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous créez des espaces où votre équipe peut exprimer ses résistances sans conséquence, même quand la décision est irrévocable.",
@@ -2825,7 +2825,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous comprenez et relayez les résistances dans les situations claires, mais les résistances subtiles ou collectives créent encore des angles morts", desc: "Vous écoutez les résistances individuelles et vous remontez les objections légitimes. Mais la résistance collective silencieuse, la résistance d'Inès qui cache une lacune de compétences, le collaborateur influent dont l'opposition vous embarrasse : ces situations plus complexes créent encore des angles morts. L'enjeu est d'aller chercher la nature de la résistance avant d'y répondre." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez et relayez toutes les formes de résistance — individuelles, collectives, visibles et silencieuses", desc: "Vous écoutez Étienne jusqu'au bout même si ses craintes vous semblent exagérées. Vous cherchez pourquoi Inès résiste avant d'exiger l'application. Vous créez un espace d'expression pour la résistance collective silencieuse. Vous parlez en tête-à-tête au collaborateur influent plutôt que de lui demander de se taire. Vous êtes honnête sur vos propres réserves tout en vous engageant à mettre en œuvre. Cette façon de traiter la résistance comme une information utile — plutôt qu'un obstacle à éliminer — est ce qui rend l'accompagnement réellement transformateur." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Après plusieurs semaines, certains membres de votre équipe n'ont toujours pas intégré le changement. Les autres commencent à s'en plaindre.",
@@ -2860,7 +2860,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Avant de relayer une décision de transformation à votre équipe, vous cherchez à comprendre les raisons derrière pour pouvoir les expliquer.",
@@ -2877,7 +2877,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe vous pose des questions sur la suite de la transformation que vous n'êtes pas en mesure d'anticiper avec certitude.",
@@ -2893,7 +2893,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La transformation avance bien dans votre équipe. Vous n'avez pas fait de point collectif depuis trois semaines. Il ne se passe rien de notable.",
@@ -2909,7 +2909,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La transformation va avoir un impact plus négatif que prévu sur certains membres de votre équipe. Vous devez leur annoncer.",
@@ -2925,7 +2925,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous annoncez les mauvaises nouvelles dès que vous avez les informations suffisantes, sans attendre qu'elles soient complètes.",
@@ -2942,7 +2942,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "En réunion avec la direction, vous défendez la transformation. Avec votre équipe, vous la relativisez pour ménager les susceptibilités.",
@@ -2958,7 +2958,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Des rumeurs circulent dans votre équipe sur des décisions qui n'ont pas encore été prises. Certains membres s'inquiètent.",
@@ -2974,7 +2974,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous adressez les rumeurs dans votre équipe de façon directe plutôt que d'attendre qu'elles s'éteignent.",
@@ -2991,7 +2991,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous communiquez proactivement sur les décisions et les mauvaises nouvelles, mais votre cohérence de discours peut encore varier", desc: "Vous expliquez les raisons des décisions et vous annoncez les mauvaises nouvelles sans trop attendre. Mais maintenir la même cohérence entre votre discours en direction et avec votre équipe, aborder directement les rumeurs plutôt que d'attendre, faire un point régulier même sans actualité notable : quelques aspects de la communication pendant la transformation sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Votre communication pendant la transformation est proactive, cohérente et adaptée — y compris sur les sujets difficiles", desc: "Vous cherchez les raisons avant de relayer les décisions. Vous distinguez clairement ce que vous savez, ce que vous ne savez pas et quand vous aurez l'information. Vous annoncez les mauvaises nouvelles dès que vous avez les éléments suffisants. Vous adressez les rumeurs directement. Vous maintenez des points réguliers même sans actualité. Votre discours est le même en direction et avec votre équipe. Cette cohérence et cette proactivité dans la communication — qui supposent parfois d'être porteur de mauvaises nouvelles ou d'incertitude assumée — sont ce qui maintient la confiance dans les périodes de changement." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La transformation produit ses premiers résultats positifs. Votre équipe ne l'a pas remarqué.",
@@ -3026,7 +3026,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand les nouvelles pratiques s'appliquent de façon inconstante, vous cherchez les causes plutôt que de renforcer uniquement les injonctions.",
@@ -3043,7 +3043,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Sous pression de production, certains membres de votre équipe reviennent aux anciennes pratiques. Ça va plus vite et ça n'impacte pas les résultats immédiats.",
@@ -3059,7 +3059,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Deux membres de votre équipe ont pleinement intégré les nouvelles pratiques. Les autres avancent plus lentement.",
@@ -3075,7 +3075,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous cherchez à créer des rituels qui ancrent les nouvelles pratiques dans le quotidien. Votre équipe trouve ça artificiel.",
@@ -3091,7 +3091,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous impliquez votre équipe dans la conception des rituels ou méthodes qui ancrent les nouvelles pratiques.",
@@ -3108,7 +3108,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous intégrez les nouvelles pratiques dans les critères d'évaluation de votre équipe pour la prochaine période.",
@@ -3124,7 +3124,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Les nouvelles pratiques imposées par la direction ne sont pas parfaitement adaptées aux spécificités de votre équipe. Vous pouvez les ajuster à la marge.",
@@ -3140,7 +3140,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous adaptez les nouvelles pratiques aux spécificités de votre équipe sans en perdre l'essentiel, en documentant vos ajustements.",
@@ -3157,7 +3157,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous ancrez activement les nouvelles pratiques mais votre intervention sur les causes des glissements est encore insuffisante", desc: "Vous maintenez les nouvelles pratiques et vous valorisez les membres qui les ont intégrées. Mais identifier pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions, co-construire les rituels avec l'équipe plutôt que de les imposer, maintenir une vigilance douce une fois les pratiques acquises : ces aspects d'ancrage profond sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous ancrez les nouvelles pratiques activement et durablement — analyse des glissements, co-construction, vigilance dans la durée", desc: "Vous identifiez pourquoi les pratiques cèdent sous pression plutôt que de renforcer les injonctions. Vous valorisez les membres qui ont intégré les pratiques en les invitant à partager. Vous co-construisez les rituels avec l'équipe. Vous adaptez à la marge en documentant. Vous maintenez une vigilance douce même quand les pratiques semblent acquises. Cette façon d'ancrer les pratiques en cherchant les causes plutôt qu'en forçant la conformité est ce qui fait que les transformations tiennent dans la durée." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un an après la transformation, les nouvelles pratiques semblent acquises. Votre équipe pense qu'elle n'a plus besoin d'y prêter attention.",
@@ -3192,7 +3192,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous êtes capable d'exprimer vos propres difficultés face à la transformation tout en continuant à accompagner votre équipe.",
@@ -3209,7 +3209,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Accompagner votre équipe dans une transformation longue commence à vous épuiser. Vous l'absorbez sans en parler.",
@@ -3225,7 +3225,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre propre niveau d'adhésion à la transformation a évolué positivement au fil du temps. Au départ vous étiez réticent·e, maintenant vous y croyez.",
@@ -3241,7 +3241,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez l'impression que l'accompagnement de votre équipe dans la transformation dépasse vos compétences actuelles.",
@@ -3257,7 +3257,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous identifiez des lacunes dans votre posture d'accompagnement, vous cherchez activement à les combler plutôt qu'à les contourner.",
@@ -3274,7 +3274,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La transformation est terminée. Vous avez accompagné votre équipe du mieux possible mais certains membres ont mal vécu la période.",
@@ -3290,7 +3290,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collègue manager va devoir accompagner une transformation similaire à celle que vous venez de traverser. Il vous demande votre retour.",
@@ -3306,7 +3306,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous partagez votre expérience d'accompagnement de transformation avec vos pairs managers, y compris vos erreurs et vos hésitations.",
@@ -3323,7 +3323,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous reconnaissez vos propres difficultés mais vous cherchez encore peu de soutien externe et partagez peu avec vos pairs", desc: "Vous êtes capable d'exprimer vos propres difficultés. Mais chercher un soutien externe avant d'être épuisé·e, demander une formation quand l'accompagnement dépasse vos compétences, faire un bilan honnête à la fin de la transformation et le partager avec vos pairs : ces comportements de développement actif de votre posture d'accompagnement sont encore peu présents." },
           haut: { label: "Réflexes installés", titre: "Vous prenez soin de votre propre vécu de la transformation et vous capitalisez pour vous et pour vos pairs", desc: "Vous êtes honnête sur vos propres difficultés sans en charger votre équipe. Vous cherchez un soutien externe avant d'être épuisé·e. Vous partagez votre parcours d'adhésion progressive avec votre équipe quand c'est utile. Vous demandez une formation quand l'accompagnement dépasse vos compétences. Vous faites un bilan honnête et le partagez avec vos pairs. Vous annoncez la prochaine transformation dès que vous l'avez en reconnaissant la fatigue. Ce soin de soi et cette générosité dans le partage de l'expérience sont ce qui fait un manager durablement efficace dans les transformations." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une nouvelle transformation s'annonce. Votre équipe est encore fatiguée de la précédente.",
@@ -3361,7 +3361,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez délégué une mission à une collaboratrice. Trois jours après, elle revient vous voir avec une question que vous pensez qu'elle aurait pu résoudre seule.",
@@ -3377,7 +3377,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous déléguez, vous clarifiez explicitement l'objectif, les résultats attendus, les contraintes et le niveau d'autonomie accordé.",
@@ -3394,7 +3394,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous devez déléguer une mission à deux collaborateurs de profils très différents — l'un est autonome et expérimenté, l'autre est junior et a besoin d'encadrement. Vous donnez le même cadre à tous les deux.",
@@ -3410,7 +3410,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaboratrice utilise une méthode différente de la vôtre pour réaliser une mission que vous lui avez déléguée. Les résultats intermédiaires sont bons.",
@@ -3426,7 +3426,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous déléguez, vous évaluez les résultats obtenus plutôt que la façon dont ils ont été obtenus.",
@@ -3443,7 +3443,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous déléguez une mission à un collaborateur junior. Vous pensez qu'il va probablement faire une erreur sur un point précis. L'erreur serait récupérable.",
@@ -3459,7 +3459,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaborateur a réussi brillamment la mission que vous lui aviez déléguée. Sa réussite est visible en dehors de votre équipe.",
@@ -3475,7 +3475,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur réussit une mission déléguée, vous rendez sa réussite visible au-delà de votre seul échange.",
@@ -3492,7 +3492,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous déléguez avec un cadre généralement clair mais vous accordez encore trop d'importance à la méthode et pas assez à l'adaptation au profil", desc: "Vous clarifiez les objectifs et les résultats attendus. Mais donner le même cadre à un junior et à un expérimenté, intervenir sur la méthode même quand les résultats sont bons, attendre la date de livraison sans point intermédiaire sur une mission longue : ces aspects de la délégation sont encore insuffisants. L'enjeu est d'adapter le cadre et le suivi au profil de chaque collaborateur." },
           haut: { label: "Réflexes installés", titre: "Vous déléguez avec un cadre clair et adapté à chaque profil — résultat, pas méthode", desc: "Vous expliquez à Théo l'objectif, le résultat attendu, les contraintes et jusqu'où il peut décider seul. Vous adaptez le niveau de cadre au profil — plus pour le junior, moins pour l'expérimenté. Vous évaluez les résultats et non la méthode. Vous rendez les réussites visibles au-delà de votre seul échange. Vous proposez un point intermédiaire sur une mission longue en précisant que c'est pour être disponible, pas pour contrôler. Cette délégation avec cadre clair, adaptée au profil et orientée résultat est ce qui fait progresser les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Six semaines après avoir délégué une mission longue, vous n'avez pas eu de nouvelles de votre collaborateur. Vous ne savez pas où il en est.",
@@ -3527,7 +3527,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous êtes capable d'identifier quand votre besoin de contrôle dépasse ce qui est utile pour les collaborateurs.",
@@ -3544,7 +3544,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous souhaitez savoir où en est un collaborateur sur une mission déléguée. Vous vous demandez comment faire sans que ça ressemble à du contrôle.",
@@ -3560,7 +3560,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez délégué une mission avec des indicateurs de suivi. Votre collaborateur commence à les remplir de façon à montrer des résultats positifs qui vous semblent optimistes.",
@@ -3576,7 +3576,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur a fait une erreur sérieuse sur sa dernière mission. Vous lui en confiez une nouvelle. Vous avez du mal à ne pas surveiller de trop près.",
@@ -3592,7 +3592,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Après une erreur d'un collaborateur, vous lui faites confiance pour la suite sans augmenter durablement votre niveau de contrôle.",
@@ -3609,7 +3609,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaboratrice a pris une décision autonome que votre direction conteste. La décision était dans le périmètre que vous lui aviez délégué.",
@@ -3625,7 +3625,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre direction vous demande un rapport détaillé sur le travail d'un collaborateur à qui vous avez délégué en toute confiance. Vous avez peu d'éléments de détail.",
@@ -3641,7 +3641,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand votre direction demande un compte rendu détaillé sur un collaborateur, vous résistez à l'envie de renforcer votre contrôle en retour.",
@@ -3658,7 +3658,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous avez conscience de votre besoin de contrôle mais vous ne l'adressez pas encore directement avec votre équipe", desc: "Vous repérez quand votre contrôle est excessif. Mais vous ne le nommez pas avec votre équipe, vous renforciez parfois le suivi quand la direction pose des questions, vous avez du mal à faire confiance à distance : votre prise de conscience n'est pas encore pleinement traduite en comportements cohérents. L'enjeu est de traiter directement votre besoin de contrôle avec les personnes concernées." },
           haut: { label: "Réflexes installés", titre: "Vous avez un niveau de contrôle adapté, vous le nommez avec votre équipe et vous le défendez face à la direction", desc: "Vous nommez votre besoin de contrôle avec votre équipe et vous y travaillez. Vous posez des questions sur des indicateurs optimistes plutôt que de surveiller de plus près. Vous reconstruisez la confiance avec un collaborateur après une erreur sans augmenter durablement la supervision. Vous défendez la décision de votre collaboratrice devant la direction. Vous résistez à renforcer le contrôle quand la direction demande un rapport. Cette cohérence — qui suppose de tenir votre posture de délégation même sous pression externe — est ce qui crée une vraie confiance." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous managez une équipe en partie à distance. Vous avez du mal à faire confiance sans voir le travail en temps réel.",
@@ -3693,7 +3693,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur vient avec une difficulté, vous l'aidez à trouver sa propre solution plutôt que de lui donner directement la vôtre.",
@@ -3710,7 +3710,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La mission déléguée est en difficulté. Les résultats ne sont pas au niveau attendu. Vous pourriez la faire vous-même en deux jours.",
@@ -3726,7 +3726,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un collaborateur répète la même erreur pour la troisième fois sur des missions déléguées. Vous avez corrigé les deux premières fois.",
@@ -3742,7 +3742,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaborateur est bloqué sur un problème depuis deux jours et n'a pas demandé d'aide. Il semble vouloir s'en sortir seul.",
@@ -3758,7 +3758,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur semble bloqué, vous lui proposez proactivement un soutien sans attendre qu'il vienne vous chercher.",
@@ -3775,7 +3775,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La mission est terminée. Le résultat est bon mais la façon dont elle a été menée a créé des tensions avec d'autres équipes.",
@@ -3791,7 +3791,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre collaborateur prend des initiatives qui dépassent clairement ses compétences actuelles. Il crée des risques sans s'en rendre compte.",
@@ -3807,7 +3807,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un collaborateur prend des risques au-delà de ses compétences, vous intervenez en développant ses compétences plutôt qu'en réduisant son autonomie.",
@@ -3824,7 +3824,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous résistez à reprendre la main mais votre intervention sur les difficultés peut encore court-circuiter l'apprentissage", desc: "Vous aidez les collaborateurs à trouver leur propre solution. Mais proposer proactivement un soutien quand un collaborateur est bloqué depuis deux jours, traiter une erreur récurrente en cherchant sa cause plutôt qu'en réexpliquant, explorer ce qui aurait pu être encore mieux quand le résultat est satisfaisant : ces interventions de développement sont encore insuffisantes." },
           haut: { label: "Réflexes installés", titre: "Vous accompagnez les difficultés sans reprendre la main — soutien, développement, apprentissage", desc: "Vous aidez votre collaborateur à explorer ses options sans lui imposer la vôtre. Vous proposez proactivement un soutien quand il est bloqué depuis deux jours. Vous cherchez avec lui pourquoi l'erreur persiste plutôt que de la corriger une troisième fois. Vous lui montrez la limite atteinte et travaillez les compétences manquantes plutôt que de réduire l'autonomie. Vous explorez ce qui aurait pu être encore meilleur même quand l'objectif est atteint. Cette posture de développement dans la difficulté est ce qui transforme les collaborateurs." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La mission a atteint ses objectifs mais votre collaborateur aurait pu faire beaucoup mieux avec un effort supplémentaire. Il est satisfait.",
@@ -3859,7 +3859,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous clarifiez régulièrement avec votre équipe ce qui relève de son périmètre de décision et ce qui nécessite votre validation.",
@@ -3876,7 +3876,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vos collaborateurs se consultent peu entre eux et viennent tous vers vous. La dynamique est en étoile autour de vous.",
@@ -3892,7 +3892,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous partez deux semaines en congé. Votre équipe est capable de fonctionner seule mais vous avez l'habitude d'être disponible.",
@@ -3908,7 +3908,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un problème nouveau se pose dans votre équipe. Plusieurs collaborateurs attendent votre analyse avant d'agir.",
@@ -3924,7 +3924,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Face à un problème collectif, vous demandez l'analyse de votre équipe avant de partager la vôtre.",
@@ -3941,7 +3941,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe a le potentiel d'aller beaucoup plus loin dans son autonomie mais elle n'ose pas. La dynamique est confortable pour tout le monde.",
@@ -3957,7 +3957,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous souhaitez que votre équipe prenne plus d'autonomie sur les décisions stratégiques. Votre direction n'est pas habituée à ce modèle.",
@@ -3973,7 +3973,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous développez activement l'autonomie de votre équipe, même quand le modèle est confortable pour tout le monde.",
@@ -3990,7 +3990,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous développez l'autonomie de votre équipe mais des points de dépendance structurels persistent", desc: "Vous clarifiez le périmètre de décision et vous créez des occasions d'échanges entre pairs. Mais préparer votre équipe à fonctionner sans vous lors de vos absences, discuter avec votre direction pour obtenir son soutien sur plus d'autonomie, commencer à préparer l'autonomie de l'équipe trois mois avant votre départ : ces comportements de développement à long terme de l'autonomie collective sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous développez activement l'autonomie collective — décisions, pairs, absences, transition", desc: "Vous clarifiez collectivement le périmètre de décision. Vous créez des dynamiques pair-à-pair plutôt que tout-vers-vous. Vous préparez votre absence pour couper vraiment. Vous demandez l'analyse collective avant de partager la vôtre. Vous discutez avec votre direction pour soutenir plus d'autonomie. Vous commencez à préparer l'équipe trois mois avant votre départ. Cette façon de construire l'autonomie collective sur le long terme — et non seulement la performance individuelle à court terme — est ce qui fait la marque d'un manager qui développe vraiment." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous quittez ce poste dans trois mois. Votre équipe fonctionne bien mais dépend encore de vous sur plusieurs points.",
@@ -4028,7 +4028,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous êtes frustré·e par les délais de validation de l'équipe juridique. Ils semblent toujours bloquer à des moments critiques.",
@@ -4044,7 +4044,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Avant de vous plaindre des délais ou contraintes d'une autre équipe, vous cherchez à comprendre leur logique de fonctionnement.",
@@ -4061,7 +4061,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe est souvent citée négativement dans les discussions inter-équipes. Vous pensez que cette réputation est injuste.",
@@ -4077,7 +4077,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe et l'équipe RH ont des objectifs qui s'opposent sur un point précis — rapidité de recrutement pour vous, rigueur des processus pour eux.",
@@ -4093,7 +4093,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vos objectifs entrent en tension avec ceux d'une autre équipe, vous cherchez un compromis direct avec elle avant d'escalader.",
@@ -4110,7 +4110,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous entendez souvent dans votre équipe des commentaires négatifs stéréotypés sur une autre équipe — 'les commerciaux ne pensent qu'aux chiffres', 'l'IT ne comprend pas le business'.",
@@ -4126,7 +4126,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous ne savez pas vraiment comment fonctionne l'équipe avec laquelle vous devez collaborer régulièrement. Votre lecture de leur travail est partielle.",
@@ -4142,7 +4142,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous cherchez activement à comprendre comment fonctionnent les équipes avec lesquelles vous collaborez — leurs contraintes, leur culture, leur façon de travailler.",
@@ -4159,7 +4159,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous cherchez à comprendre les logiques des autres équipes mais pas encore systématiquement avant d'agir", desc: "Vous cherchez à comprendre pourquoi une demande urgente est urgente avant de répondre. Vous proposez des réunions de cadrage en amont avec le juridique. Mais réfléchir à la représentation que votre équipe a chez les autres, aller chercher comment fonctionne une équipe avec laquelle vous collaborez sans projet commun, capitaliser sur les bonnes pratiques d'une équipe partenaire : ces comportements sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous comprenez les logiques des autres équipes et vous en tenez compte systématiquement avant d'agir", desc: "Vous cherchez pourquoi la demande commerciale est urgente avant de répondre. Vous proposez des réunions en amont avec le juridique pour éviter les blocages. Vous interpellez les stéréotypes négatifs sur les autres équipes. Vous proposez un échange informel pour comprendre le travail d'une équipe partenaire. Vous adaptez les bonnes pratiques d'une autre équipe à votre contexte. Cette curiosité systématique pour la logique de l'autre — qui suppose de sortir de sa propre perspective — est ce qui rend la coopération réellement efficace." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous découvrez qu'une autre équipe a développé une méthode de travail très efficace sur un sujet qui vous pose problème.",
@@ -4194,7 +4194,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand une dépendance entre votre équipe et une autre crée un problème, vous le gérez directement avec l'équipe concernée avant d'escalader.",
@@ -4211,7 +4211,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La même friction se reproduit régulièrement avec la même équipe. Vous avez réglé les situations au cas par cas sans jamais traiter la cause.",
@@ -4227,7 +4227,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un projet en commun a échoué. Des deux côtés, on s'attribue mutuellement la responsabilité. La situation est tendue.",
@@ -4243,7 +4243,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre équipe et une autre équipe se disputent une ressource partagée — un expert, un budget, du temps machine. La tension monte.",
@@ -4259,7 +4259,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand vous êtes en compétition avec une autre équipe sur une ressource partagée, vous cherchez un compromis plutôt que de vous battre pour maximiser votre part.",
@@ -4276,7 +4276,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous réalisez que vous retenez parfois des informations utiles à d'autres équipes par crainte qu'elles vous concurrencent.",
@@ -4292,7 +4292,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une équipe partenaire n'a pas tenu un engagement qu'elle avait pris. Votre équipe en a pâti. Vous devez aborder le sujet.",
@@ -4308,7 +4308,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand une équipe partenaire ne tient pas ses engagements, vous l'abordez directement avec elle plutôt que de le gérer en contournant ou en escaladant.",
@@ -4325,7 +4325,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous gérez les frictions directement dans la plupart des cas mais les frictions récurrentes et les conflits anciens vous dépassent encore", desc: "Vous gérez les retards et les engagements non tenus directement avec les équipes concernées. Mais proposer une rencontre pour traiter une friction récurrente structurellement, reconnaître la part de responsabilité de votre équipe dans un échec commun, nommer un conflit d'intérêt explicitement plutôt que de le gérer implicitement : ces situations plus complexes créent encore des hésitations." },
           haut: { label: "Réflexes installés", titre: "Vous gérez les frictions directement, tôt et en cherchant les causes — pas seulement les symptômes", desc: "Vous contactez directement le responsable d'une livraison en retard. Vous proposez une rencontre pour traiter une friction récurrente structurellement. Vous proposez un REX commun après un échec partagé. Vous partagez les informations utiles spontanément. Vous abordez directement un engagement non tenu avec son impact concret. Cette gestion directe et précoce des frictions — qui suppose de ne pas attendre que la situation se dégrade — est ce qui maintient les coopérations en bonne santé." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous remarquez que votre organisation fonctionne en silos — les équipes ne se parlent pas spontanément et passent par la hiérarchie pour tout. Vous avez des relations directes avec plusieurs équipes.",
@@ -4360,7 +4360,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous entretenez des relations avec les équipes partenaires en dehors des projets communs.",
@@ -4377,7 +4377,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous aidez régulièrement une équipe partenaire mais vous avez l'impression que l'aide n'est pas réciproque.",
@@ -4393,7 +4393,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un nouveau responsable arrive dans une équipe avec laquelle vous travaillez fréquemment. Vous n'avez pas encore de relation avec lui.",
@@ -4409,7 +4409,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Votre relation avec une équipe partenaire a été marquée par un conflit passé. La relation est froide depuis. Vous devez retravailler ensemble.",
@@ -4425,7 +4425,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand une relation inter-équipes a été marquée par un conflit, vous prenez l'initiative de le traiter plutôt que de faire comme s'il n'avait pas existé.",
@@ -4442,7 +4442,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un membre de votre équipe prend en charge une relation avec une équipe partenaire que vous gérez jusqu'ici. Vous avez construit cette relation sur plusieurs années.",
@@ -4458,7 +4458,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une équipe partenaire a fait un effort notable pour vous aider sur un sujet urgent. Personne ne le sait en dehors de vous.",
@@ -4474,7 +4474,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous rendez visibles les contributions des équipes partenaires à votre travail, même quand elles ne sont pas reconnues par défaut.",
@@ -4491,7 +4491,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous investissez dans les relations inter-équipes mais leur entretien hors projet et leur transmission restent insuffisants", desc: "Vous prenez l'initiative de rencontrer un nouveau responsable. Vous transmettez les informations utiles spontanément. Mais entretenir des relations hors projet, clarifier avec l'autre équipe un déséquilibre dans la réciprocité, transmettre le contexte d'une relation à un membre qui en prend le relais : ces aspects de la construction et de la transmission des relations sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vos relations inter-équipes sont entretenues hors projet, transmises et valorisées", desc: "Vous entretenez des relations hors projet. Vous prenez l'initiative de rencontrer le nouveau responsable. Vous proposez de clarifier un historique conflictuel avant de retravailler ensemble. Vous transmettez le contexte d'une relation à votre successeur. Vous rendez visible la contribution d'une équipe partenaire auprès de ses responsables. Cette façon de traiter les relations inter-équipes comme des actifs à construire et entretenir — pas seulement comme des moyens de faire les projets — est ce qui crée les conditions de coopérations durables." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Dans votre réseau interne, votre équipe a une image positive. Vous avez une influence sur la façon dont les autres équipes perçoivent votre organisation.",
@@ -4526,7 +4526,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un projet inter-équipes déraille faute d'alignement, vous prenez l'initiative de créer les conditions de cet alignement sans attendre la direction.",
@@ -4543,7 +4543,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Une décision favorable à votre équipe aurait un impact négatif sur une autre équipe. Les deux options sont défendables.",
@@ -4559,7 +4559,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un projet inter-équipes réussit. Votre équipe a fourni la contribution la plus visible. D'autres équipes ont apporté des contributions moins visibles mais indispensables.",
@@ -4575,7 +4575,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Un membre de votre équipe travaille sur un projet transversal et consacre beaucoup de temps à une autre équipe. Vous avez besoin de lui en interne.",
@@ -4591,7 +4591,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Quand un membre de votre équipe est partagé entre vos besoins et ceux d'un projet transversal, vous arbitrez avec lui et les parties prenantes concernées.",
@@ -4608,7 +4608,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "La culture de votre organisation valorise la performance individuelle des équipes plus que la coopération inter-équipes. Vous pensez que ça crée des silos.",
@@ -4624,7 +4624,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous avez un conflit d'intérêt réel avec une équipe partenaire — ce qui est bon pour vous l'est moins pour eux. Vous avez tendance à l'ignorer.",
@@ -4640,7 +4640,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "likert",
         text: "Vous nommez explicitement les conflits d'intérêt avec les équipes partenaires plutôt que de les gérer implicitement.",
@@ -4657,7 +4657,7 @@
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
         },
-      }, 
+      },
       {
         type: "choix",
         text: "Vous incarnez dans votre organisation un modèle de coopération inter-équipes que vos collègues observent. Un homologue vous demande comment vous faites.",
@@ -4672,6 +4672,673 @@
           bas: { label: "Repères à consolider", titre: "Vous fonctionnez encore principalement dans la logique de votre équipe sans vous inscrire dans un collectif plus large", desc: "Prendre la décision favorable à son équipe sans chercher d'option qui tient compte de l'impact sur les autres, revendiquer le succès d'un projet collectif au nom de son équipe, s'adapter à la culture des silos sans la questionner : ces comportements contribuent à la fragmentation de l'organisation. La coopération inter-équipes n'est pas une posture naturelle — elle se choisit." },
           moyen: { label: "Pratiques en développement", titre: "Vous vous inscrivez dans des logiques collectives sur les projets mais pas encore de façon proactive sur les sujets structurels", desc: "Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs. Mais prendre l'initiative d'aligner des équipes dont les objectifs divergent sans attendre la direction, maintenir vos pratiques de coopération dans une culture qui valorise la performance individuelle, nommer explicitement les conflits d'intérêt : ces comportements de leadership coopératif sont encore insuffisants." },
           haut: { label: "Réflexes installés", titre: "Vous dépassez les logiques de silos par l'initiative, le partage du crédit et la transparence sur les conflits", desc: "Vous prenez l'initiative d'aligner les équipes quand la direction ne le fait pas. Vous cherchez des options qui tiennent compte de l'impact sur les autres équipes. Vous partagez le crédit des succès collectifs avec les contributions moins visibles. Vous maintenez vos pratiques coopératives dans une culture qui valorise la performance individuelle. Vous nommez les conflits d'intérêt. Vous transmettez vos pratiques quand un homologue vous le demande. Ce leadership coopératif — qui suppose d'aller contre les incentives organisationnels quand c'est nécessaire — est ce qui fait progresser les organisations au-delà de leurs silos." },
+        },
+      }
+    ],
+
+  },
+
+  "adapter-outils-methodes": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre organisation déploie un nouvel outil de gestion des tâches. La formation est dans quinze jours. En attendant, vous continuez avec vos fichiers Excel habituels.",
+        tags: ["outils", "premier contact"],
+        answers: [
+          { text: "J'attends la formation — utiliser l'outil sans formation risque de créer de mauvaises habitudes.", score: 0.5 },
+          { text: "Je commence à explorer l'outil par moi-même pour arriver à la formation avec des questions concrètes.", score: 2 },
+          { text: "Je continue avec Excel jusqu'à ce que tout le monde soit formé — la cohérence d'équipe prime.", score: 0 },
+          { text: "Je demande à un collègue déjà formé de me faire une démonstration rapide.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un nouvel outil remplace une méthode que vous maîtrisez parfaitement depuis cinq ans. Votre première réaction est de penser que c'est une régression.",
+        tags: ["outils", "résistance"],
+        answers: [
+          { text: "Je l'exprime en réunion — mon expérience me permet de juger que cet outil est moins bon.", score: 0 },
+          { text: "Je teste l'outil sérieusement avant de me forger une opinion définitive.", score: 2 },
+          { text: "Je l'utilise sans conviction en attendant que la direction revienne à la raison.", score: 0 },
+          { text: "Je documente mes réserves pour les partager après une période d'usage réel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un nouvel outil est déployé, vous lui accordez une période d'essai sérieuse avant de le comparer à ce que vous utilisiez avant.",
+        tags: ["outils", "ouverture"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors de la formation au nouvel outil, vous avez des difficultés sur certaines fonctionnalités. Tout le monde semble comprendre plus vite que vous.",
+        tags: ["outils", "aide"],
+        answers: [
+          { text: "Je hoche la tête en faisant semblant de suivre — je rattrapperai plus tard.", score: 0 },
+          { text: "Je pose mes questions même si ça ralentit le groupe — ne pas comprendre coûtera plus cher après.", score: 2 },
+          { text: "Je note mes questions et je les pose au formateur après la session.", score: 1.5 },
+          { text: "Je demande à un collègue qui semble avoir compris de m'expliquer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après deux semaines d'usage, vous trouvez que le nouvel outil vous fait perdre du temps par rapport à votre ancienne méthode.",
+        tags: ["outils", "utilité"],
+        answers: [
+          { text: "Je reviens à mon ancienne méthode — le gain de temps est un argument objectif.", score: 0 },
+          { text: "Je documente les situations où l'outil est moins efficace et je les remonte avec des propositions.", score: 2 },
+          { text: "Je continue en sachant que la courbe d'apprentissage prend plus de temps que deux semaines.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour qu'il évalue si l'outil est adapté.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous distinguez la résistance au changement de la perte d'efficacité réelle et vous donnez à un outil le temps nécessaire pour l'évaluer objectivement.",
+        tags: ["outils", "patience"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez une expertise technique que vos collègues n'ont pas. Le nouvel outil est simple pour vous mais vous voyez que certains collègues se noient.",
+        tags: ["outils", "expertise"],
+        answers: [
+          { text: "Je me concentre sur ma propre progression — aider tout le monde n'est pas mon rôle.", score: 0 },
+          { text: "Je propose spontanément mon aide à ceux qui sont en difficulté.", score: 2 },
+          { text: "Je me mets disponible si quelqu'un me demande de l'aide.", score: 1 },
+          { text: "Je le signale au responsable de la formation pour qu'il ajuste le rythme.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous maîtrisez les fonctionnalités de base du nouvel outil mais vous savez qu'il en a d'autres que personne n'utilise encore dans votre équipe.",
+        tags: ["outils", "usages avancés"],
+        answers: [
+          { text: "Je me contente des fonctionnalités de base — les usages avancés viendront naturellement.", score: 0 },
+          { text: "J'explore les fonctionnalités avancées et je partage avec mon équipe celles qui sont utiles.", score: 2 },
+          { text: "Je les explore pour moi mais je ne les impose pas à mon équipe.", score: 1 },
+          { text: "Je signale leur existence à mon responsable pour qu'il programme une formation avancée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Une fois les bases d'un outil maîtrisées, vous explorez ses fonctionnalités avancées et partagez ce que vous découvrez.",
+        tags: ["outils", "exploration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un outil que vous maîtrisez parfaitement va être remplacé dans six mois. Vous savez que la transition sera longue.",
+        tags: ["outils", "obsolescence"],
+        answers: [
+          { text: "J'optimise mon usage de l'outil actuel jusqu'à la fin — pas d'énergie sur ce qui va changer.", score: 0 },
+          { text: "Je commence à me former sur le futur outil dès maintenant pour arriver prêt·e.", score: 2 },
+          { text: "J'attends que la date de transition approche pour me former.", score: 0 },
+          { text: "Je demande à participer au projet de déploiement du nouvel outil pour influencer son usage.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre première réaction face à un nouvel outil est encore la résistance ou l'attente plutôt que l'exploration", desc: "Attendre la formation pour commencer à explorer, penser qu'un outil est une régression sans l'avoir testé sérieusement, revenir à Excel dès que la pression monte, ne pas chercher à maîtriser les fonctionnalités avancées : ces comportements maintiennent à distance des outils qui pourraient être de vrais leviers. La maîtrise d'un outil s'acquiert par l'exploration et l'expérimentation, pas par l'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous explorez les nouveaux outils mais votre engagement peut encore céder sous la pression ou face à la courbe d'apprentissage", desc: "Vous explorez l'outil avant la formation et vous posez vos questions. Mais revenir à vos anciens réflexes après deux semaines si l'outil vous semble moins efficace, ne pas explorer les fonctionnalités avancées, ne pas commencer à vous former sur un futur outil six mois avant la transition : quelques comportements proactifs manquent encore. L'enjeu est de tenir votre engagement d'exploration même quand la courbe d'apprentissage est longue." },
+          haut: { label: "Réflexes installés", titre: "Vous explorez les nouveaux outils avec curiosité, vous aidez vos collègues et vous exploitez les fonctionnalités avancées", desc: "Vous explorez l'outil avant la formation pour arriver avec des questions concrètes. Vous posez vos questions même si ça ralentit le groupe. Vous donnez à l'outil deux semaines de plus quand il vous semble moins efficace. Vous explorez les fonctionnalités avancées et les partagez. Vous commencez à vous former sur le futur outil six mois avant la transition. Cette combinaison d'exploration proactive et de patience dans la courbe d'apprentissage est ce qui transforme les nouveaux outils en vrais leviers." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre organisation adopte une nouvelle méthode de travail qui change votre façon de planifier vos semaines. La méthode vous semble plus bureaucratique.",
+        tags: ["méthodes", "méthode imposée"],
+        answers: [
+          { text: "Je l'applique en surface tout en gardant mon ancienne organisation pour les vrais sujets.", score: 0 },
+          { text: "Je l'applique sérieusement pendant un mois pour voir si ce sentiment de bureaucratie tient à l'usage.", score: 2 },
+          { text: "J'exprime mon point de vue sur la bureaucratie et je demande une adaptation.", score: 1 },
+          { text: "Je l'applique sans conviction — la méthode est imposée, mon adhésion est optionnelle.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue, Maxime, refuse d'appliquer la nouvelle méthode. Il continue à travailler à l'ancienne façon. Ça crée des frictions dans l'équipe.",
+        tags: ["méthodes", "collègue résistant"],
+        answers: [
+          { text: "Je laisse — c'est à lui de gérer sa relation à la nouvelle méthode.", score: 0 },
+          { text: "Je lui en parle en tête-à-tête pour comprendre ses résistances.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il gère la situation.", score: 1 },
+          { text: "Je lui montre comment la méthode fonctionne concrètement sur mes propres sujets.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous appliquez les nouvelles méthodes sérieusement, pas en surface, même quand elles vous semblent moins efficaces que vos habitudes.",
+        tags: ["méthodes", "engagement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La nouvelle méthode ne s'applique pas bien à certaines spécificités de votre travail. Vous identifiez des adaptations qui l'amélioreraient.",
+        tags: ["méthodes", "adaptation"],
+        answers: [
+          { text: "Je m'écarte de la méthode sur ces points — l'adaptation est une forme de maîtrise.", score: 0 },
+          { text: "Je propose les adaptations par les voies appropriées avant de les appliquer unilatéralement.", score: 2 },
+          { text: "J'applique la méthode telle quelle même sur les points inadaptés.", score: 0.5 },
+          { text: "J'adapte la méthode en documentant mes ajustements pour les partager.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors d'une période de forte pression, vous avez retrouvé vos anciens réflexes de travail. La nouvelle méthode a cédé sous la charge.",
+        tags: ["méthodes", "régression"],
+        answers: [
+          { text: "Je laisse — sous pression, l'efficacité prime sur la méthode.", score: 0 },
+          { text: "Je reviens à la nouvelle méthode dès que la pression se lève et j'analyse pourquoi elle a cédé.", score: 2 },
+          { text: "Je note que cette méthode n'est pas assez robuste pour les périodes de pression.", score: 0.5 },
+          { text: "Je signale à mon responsable que la méthode ne tient pas sous pression.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand une nouvelle méthode cède sous pression, vous y revenez activement plutôt que de considérer l'exception comme une normalisation.",
+        tags: ["méthodes", "robustesse"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux méthodes coexistent dans votre organisation — une ancienne que tout le monde connaît et une nouvelle qui est officiellement en place mais peu suivie.",
+        tags: ["méthodes", "intégration"],
+        answers: [
+          { text: "Je suis la majorité — si tout le monde garde l'ancienne, c'est qu'elle est mieux.", score: 0 },
+          { text: "J'applique la nouvelle méthode et je comprends pourquoi elle peine à s'imposer.", score: 2 },
+          { text: "Je fais les deux selon les situations — pragmatisme avant tout.", score: 0 },
+          { text: "J'interroge mon responsable sur quelle méthode est officiellement attendue.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez bien intégré une nouvelle méthode. Un collègue vous demande de lui montrer comment vous l'avez adoptée — il a du mal.",
+        tags: ["méthodes", "pairs"],
+        answers: [
+          { text: "Je lui explique la méthode théoriquement — c'est à lui de trouver sa façon de l'appliquer.", score: 0 },
+          { text: "Je lui montre comment je l'applique concrètement sur mes propres sujets.", score: 2 },
+          { text: "Je lui donne les ressources que j'ai utilisées pour apprendre.", score: 1 },
+          { text: "Je lui propose qu'on travaille ensemble sur un sujet en appliquant la méthode.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous avez bien intégré une nouvelle méthode, vous partagez concrètement votre façon de l'appliquer avec les collègues qui ont du mal.",
+        tags: ["méthodes", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après six mois de nouvelle méthode, vous avez des observations précises sur ce qui fonctionne et ce qui est perfectible. On ne vous a pas demandé votre avis.",
+        tags: ["méthodes", "REX"],
+        answers: [
+          { text: "Je garde mes observations pour moi — si on voulait mon avis, on me l'aurait demandé.", score: 0 },
+          { text: "Je les remonte proactivement aux personnes qui peuvent faire évoluer la méthode.", score: 2 },
+          { text: "Je les partage avec mon équipe pour voir si elles partagent mes observations.", score: 1 },
+          { text: "Je les note pour les avoir sous la main si l'occasion de les partager se présente.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les nouvelles méthodes en surface sans vous y engager vraiment", desc: "Appliquer la méthode en surface tout en gardant ses anciens réflexes pour les vrais sujets, suivre la majorité qui n'a pas adopté la nouvelle méthode, attendre qu'on lui demande son avis plutôt que de remonter ses observations après six mois : ces comportements privent l'organisation d'un retour terrain utile et perpetuent les demi-adoptions qui n'apportent pas les bénéfices attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les nouvelles méthodes sérieusement mais vous n'en remontez pas encore proactivement les observations", desc: "Vous appliquez les nouvelles méthodes sérieusement y compris sous pression. Mais remonter proactivement vos observations après six mois sans qu'on vous le demande, proposer des adaptations par les voies appropriées avant de les appliquer unilatéralement, aider Maxime dont la résistance crée des frictions dans l'équipe : ces comportements de contribution active à l'amélioration des méthodes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les nouvelles méthodes sérieusement, vous remontez vos observations et vous aidez les collègues en difficulté", desc: "Vous appliquez la nouvelle méthode sérieusement, y compris sous pression. Vous y revenez activement après une exception. Vous appliquez la méthode officielle quand tout le monde est resté à l'ancienne. Vous remontez proactivement vos observations après six mois sans attendre qu'on vous le demande. Vous montrez concrètement à votre collègue comment vous l'appliquez. Cette rigueur dans l'application et cette générosité dans la transmission sont ce qui fait que les méthodes s'ancrent réellement." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Votre organisation encourage l'usage d'outils d'IA pour accélérer certaines tâches. Vous êtes sceptique sur leur fiabilité.",
+        tags: ["numérique", "IA"],
+        answers: [
+          { text: "Je les évite — les outils dont je ne comprends pas le fonctionnement créent plus de risques qu'ils n'en résolvent.", score: 0 },
+          { text: "Je les teste sur des tâches à faible enjeu pour me faire ma propre opinion.", score: 2 },
+          { text: "J'attends que mes collègues en aient un retour d'expérience avant de les utiliser.", score: 0.5 },
+          { text: "Je les utilise prudemment en vérifiant systématiquement leurs outputs.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Face à un outil numérique ou technologique que vous ne maîtrisez pas encore, vous expérimentez sur des sujets à faible enjeu pour vous faire votre propre opinion.",
+        tags: ["numérique", "expérimentation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez utilisé un outil numérique et le résultat a causé une erreur dans votre travail. Vous êtes frustré·e par l'outil.",
+        tags: ["numérique", "erreur"],
+        answers: [
+          { text: "Je cesse d'utiliser l'outil — une erreur suffit pour tirer des conclusions.", score: 0 },
+          { text: "Je cherche ce qui a causé l'erreur pour comprendre comment utiliser l'outil correctement.", score: 2 },
+          { text: "Je signale l'erreur à l'équipe IT pour qu'elle corrige.", score: 0.5 },
+          { text: "J'utilise l'outil avec plus de précaution mais sans chercher à comprendre la cause.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un processus que vous réalisiez manuellement est désormais automatisé. L'outil produit des résultats que vous ne comprenez pas entièrement.",
+        tags: ["numérique", "automatisation"],
+        answers: [
+          { text: "Je fais confiance à l'outil — si l'organisation l'a adopté, il est fiable.", score: 0 },
+          { text: "Je cherche à comprendre la logique de l'outil pour pouvoir en valider les outputs.", score: 2 },
+          { text: "Je vérifie les résultats de l'outil systématiquement sans chercher à comprendre sa logique.", score: 1 },
+          { text: "Je signale que je ne comprends pas l'outil pour obtenir une formation complémentaire.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez que vos compétences numériques sont insuffisantes par rapport aux attentes de votre poste actuel.",
+        tags: ["numérique", "compétences"],
+        answers: [
+          { text: "Je contourne les lacunes — il y a toujours un collègue plus à l'aise qui peut m'aider.", score: 0 },
+          { text: "Je prends en charge mon développement de façon proactive — formation, autoapprentissage, demande d'accompagnement.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il prévoie une formation.", score: 1 },
+          { text: "J'attends que l'organisation se rende compte du besoin et propose une formation.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous prenez en charge proactivement le développement de vos compétences numériques sans attendre que l'organisation vous le propose.",
+        tags: ["numérique", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez l'impression d'être moins à l'aise avec les outils numériques que vos collègues plus jeunes. Cette asymétrie vous gêne.",
+        tags: ["numérique", "génération"],
+        answers: [
+          { text: "Je l'accepte — les nouvelles générations ont grandi avec ces outils, c'est normal.", score: 0 },
+          { text: "Je demande aux collègues plus à l'aise de partager leurs pratiques avec moi.", score: 2 },
+          { text: "Je compense par mes autres compétences — la maîtrise numérique n'est pas tout.", score: 0.5 },
+          { text: "Je cherche des formations adaptées à mon niveau de départ.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Pour gagner du temps, vous utilisez un outil numérique non approuvé par votre DSI. Il est efficace et populaire dans votre secteur.",
+        tags: ["numérique", "sécurité"],
+        answers: [
+          { text: "Je continue — s'il est populaire dans le secteur, il est probablement sécurisé.", score: 0 },
+          { text: "Je cesse de l'utiliser et je demande à la DSI de l'évaluer officiellement.", score: 2 },
+          { text: "Je l'utilise sur des sujets non sensibles uniquement.", score: 0 },
+          { text: "Je vérifierai sa politique de sécurité avant de continuer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous n'utilisez que des outils approuvés par votre organisation, même quand des alternatives non approuvées vous semblent plus efficaces.",
+        tags: ["numérique", "cadre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre secteur évolue vite sur le plan technologique. Vous avez du mal à suivre les nouvelles tendances et outils émergents.",
+        tags: ["numérique", "veille"],
+        answers: [
+          { text: "Je me concentre sur ce que j'utilise aujourd'hui — anticiper les tendances c'est le rôle de la DSI.", score: 0 },
+          { text: "Je consacre un temps régulier à ma veille technologique pour ne pas être pris par surprise.", score: 2 },
+          { text: "Je suis les actualités du secteur sans aller jusqu'à tester les nouveaux outils.", score: 1 },
+          { text: "Je m'appuie sur les collègues plus tech-savvy pour filtrer ce qui est utile.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre inconfort numérique freine votre développement sans que vous le compensiez activement", desc: "Éviter les outils d'IA parce qu'on n'en comprend pas le fonctionnement, contourner ses lacunes numériques en s'appuyant sur des collègues, utiliser un outil non approuvé parce qu'il est populaire dans le secteur : ces comportements créent des dépendances et des risques. La maîtrise numérique ne s'acquiert pas par proxy — elle se construit activement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous prenez en charge votre développement numérique mais des zones d'évitement persistent", desc: "Vous prenez en charge votre développement numérique de façon proactive. Mais tester les outils d'IA sur des sujets à faible enjeu plutôt que de les éviter, chercher à comprendre la logique d'un outil automatisé plutôt que de valider ses outputs sans les comprendre, consacrer un temps régulier à la veille technologique : ces aspects d'une adaptation numérique complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez en charge activement votre développement numérique — expérimentation, compréhension, veille, cadre", desc: "Vous testez les outils d'IA sur des sujets à faible enjeu. Vous cherchez la cause d'une erreur plutôt que d'abandonner l'outil. Vous cherchez à comprendre la logique d'un outil automatisé pour valider ses outputs. Vous prenez en charge proactivement votre développement numérique. Vous ne vous contentez pas de compenser vos lacunes avec des collègues. Vous n'utilisez que des outils approuvés. Ce rapport actif et rigoureux à la compétence numérique est ce qui permet de s'adapter à un environnement technologique qui change vite." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous avez rapidement maîtrisé un nouvel outil que votre équipe adopte difficilement. On vous propose de devenir référent pour aider vos collègues.",
+        tags: ["adoption collective", "référent"],
+        answers: [
+          { text: "Je décline — être référent prend du temps et ce n'est pas mon cœur de métier.", score: 0 },
+          { text: "J'accepte — partager ce que j'ai appris est utile pour l'équipe et enrichissant pour moi.", score: 2 },
+          { text: "J'accepte si c'est valorisé dans mon évaluation.", score: 0 },
+          { text: "J'accepte en demandant un temps dédié dans mon planning pour cette mission.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous maîtrisez quelque chose qu'un collègue peine à apprendre, vous proposez spontanément votre aide.",
+        tags: ["adoption collective", "partage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous observez que l'adoption du nouvel outil patine dans votre équipe. Vous pensez comprendre pourquoi.",
+        tags: ["adoption collective", "freins"],
+        answers: [
+          { text: "Je laisse — c'est à l'équipe de déploiement ou au management de gérer l'adoption.", score: 0 },
+          { text: "Je partage mes observations aux personnes en charge du déploiement avec des pistes concrètes.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il prenne les mesures nécessaires.", score: 1 },
+          { text: "Je cherche des solutions avec mes collègues les plus motivés.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Certains membres de votre équipe utilisent le nouvel outil au strict minimum — juste ce qu'on leur demande — sans chercher à l'intégrer vraiment.",
+        tags: ["adoption collective", "usage minimal"],
+        answers: [
+          { text: "Je les laisse — l'usage minimal est déjà une adoption acceptable.", score: 0 },
+          { text: "Je cherche à comprendre ce qui bloque leur usage plus profond et je leur partage mes propres expériences.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il fixe des attentes plus précises.", score: 1 },
+          { text: "Je leur montre des cas d'usage concrets qui pourraient les convaincre d'aller plus loin.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le déploiement d'un nouvel outil se passe mal. L'équipe de déploiement semble déconnectée des difficultés terrain.",
+        tags: ["adoption collective", "retours"],
+        answers: [
+          { text: "Je laisse la situation se régler — les problèmes de déploiement remontent naturellement.", score: 0 },
+          { text: "Je contacte directement l'équipe de déploiement avec des retours terrain précis et constructifs.", score: 2 },
+          { text: "Je remonte les problèmes à mon responsable pour qu'il les transmette.", score: 1 },
+          { text: "Je documente les problèmes pour qu'ils soient traités lors du bilan de déploiement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous remontez proactivement les difficultés d'adoption à l'équipe de déploiement, avec des éléments concrets et des pistes d'amélioration.",
+        tags: ["adoption collective", "terrain"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre équipe, la culture est de se méfier des nouveaux outils et de rester sur les pratiques établies. Vous trouvez cette culture limitante.",
+        tags: ["adoption collective", "culture"],
+        answers: [
+          { text: "Je m'y adapte — aller contre la culture de l'équipe crée plus de problèmes qu'ça n'en résout.", score: 0 },
+          { text: "J'incarne une posture différente par mes propres pratiques et j'en parle quand c'est pertinent.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il fasse évoluer la culture.", score: 1 },
+          { text: "J'essaie de convaincre mes collègues les plus influents d'adopter une posture plus ouverte.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre organisation vous consulte sur le choix d'un nouvel outil. Vous avez une préférence basée sur votre usage personnel mais vous savez que d'autres membres de l'équipe ont des besoins différents.",
+        tags: ["adoption collective", "décision outil"],
+        answers: [
+          { text: "Je défends l'outil que j'utilise — mon expérience me donne une légitimité.", score: 0 },
+          { text: "Je recueille les besoins de mes collègues avant de proposer ma préférence.", score: 2 },
+          { text: "Je propose l'outil qui me convient en précisant que c'est mon usage personnel.", score: 1 },
+          { text: "Je laisse les plus techniques décider — ce n'est pas mon domaine d'expertise.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand on vous consulte sur le choix d'un outil, vous prenez en compte les besoins de vos collègues et pas seulement les vôtres.",
+        tags: ["adoption collective", "collectif"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous quittez un poste où vous avez développé une expertise pointue sur les outils de l'équipe. Votre successeur n'a pas votre niveau.",
+        tags: ["adoption collective", "capitalisation"],
+        answers: [
+          { text: "Je lui transfère la documentation officielle — elle devrait suffire.", score: 0 },
+          { text: "Je lui transmets ce que j'ai appris au-delà de la documentation — les trucs, les raccourcis, les erreurs à éviter.", score: 2 },
+          { text: "Je reste disponible après mon départ si elle a des questions.", score: 1 },
+          { text: "Je lui propose quelques heures de passation intensive sur les points les plus complexes.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à l'adoption collective reste passive — vous attendez que les autres règlent les problèmes", desc: "Décliner d'être référent parce que ça prend du temps, laisser les problèmes de déploiement remonter naturellement, s'adapter à une culture de méfiance envers les nouveaux outils sans la questionner : ces comportements laissent les transitions numériques à ceux qui veulent bien s'en occuper. La contribution à l'adoption collective n'est pas réservée aux équipes IT." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à l'adoption collective sur les sujets évidents mais votre rôle actif sur les freins collectifs est encore limité", desc: "Vous partagez vos maîtrises quand on vous le demande. Mais proposer spontanément votre aide à ceux qui ont du mal, contacter directement l'équipe de déploiement avec des retours terrain précis quand le déploiement patine, incarner une posture différente de la culture de méfiance envers les outils : ces comportements de contribution proactive à l'adoption collective sont encore peu présents." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à l'adoption collective — référent, retours terrain, culture, transmission", desc: "Vous acceptez d'être référent parce que c'est utile, pas parce que c'est valorisé. Vous contactez directement l'équipe de déploiement avec des retours concrets. Vous incarnez une posture d'ouverture dans une culture de méfiance sans être moralisateur. Vous recueillez les besoins de vos collègues avant de proposer votre préférence sur un outil. Vous transmettez les trucs et raccourcis au-delà de la documentation officielle. Cette contribution active à l'adoption collective — qui suppose de dépasser son seul usage individuel — est ce qui fait que les transformations numériques réussissent." },
         },
       }
     ],
@@ -4749,6 +5416,16 @@
         ["Gérer les dépendances et les frictions", "Contact direct, causes structurelles, partage d'information."],
         ["Construire des relations de coopération durables", "Entretien hors projet, réciprocité, historique, valorisation."],
         ["Dépasser les logiques de silos", "Initiative collective, partage du crédit, transparence sur les conflits."],
+      ]}
+    ],
+
+    ["adapter-outils-methodes", "S'adapter aux nouveaux outils et méthodes", "Tous publics",
+      "Trouver sa posture face aux transformations numériques, accompagner les moins à l'aise et questionner les usages.",
+      { domain: "transformation", chapters: [
+        ["Aborder un nouvel outil avec ouverture", "Exploration proactive, aide aux collègues, fonctionnalités avancées."],
+        ["Adopter une nouvelle méthode de travail", "Engagement sérieux, robustesse sous pression, remontée des observations."],
+        ["Gérer l'inconfort numérique et technologique", "Expérimentation, compréhension, développement proactif, cadre."],
+        ["Contribuer à l'adoption collective", "Référent, retours terrain, culture d'équipe, transmission."],
       ]}
     ],
 
