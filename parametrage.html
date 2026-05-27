@@ -901,9 +901,13 @@ function handleCloseDateChange(value){
   checkContinue();
 }
 function themeTitle(){return state.themeTitle || state.title || state.name || state.selectedTheme?.title || state.selectedTheme?.name || 'Nouveau thème'}
+function cleanAutodiagPrefix(value){
+  return String(value || '').replace(/^\s*Autodiagnostic\s+/i, '').trim();
+}
 function ensureDefaults(){
   const p = state.parametrage;
-  const t = themeTitle();
+  const t = cleanAutodiagPrefix(themeTitle());
+  if(p.nom) p.nom = cleanAutodiagPrefix(p.nom);
   if(!p.nom) p.nom = t;
   if(p.titre == null) p.titre = '';
   if(!p.desc) p.desc = 'Campagne interne sur ' + t + '.';
@@ -984,28 +988,15 @@ async function loadDefaultClientLogoForPassation(){
     console.warn('Logo entreprise non récupéré pour la passation', err);
   }
 }
-function normalizeAutodiagNames(){
-  state.parametrage = state.parametrage || {};
-  if(state.parametrage.nom){
-    state.parametrage.nom = cleanAutodiagPrefix(state.parametrage.nom);
-  }
-  if(state.themeTitle){
-    state.themeTitle = cleanAutodiagPrefix(state.themeTitle);
-  }
-  if(state.title){
-    state.title = cleanAutodiagPrefix(state.title);
-  }
-  if(state.name){
-    state.name = cleanAutodiagPrefix(state.name);
-  }
-  save();
-}
-
 async function init(){
   ensureDefaults();
+  state.current_step = 'parametrage';
+  state.step = 'parametrage';
   normalizeCampaignDatesInState();
   applyDateRules(false);
   applyRoleMode();
+  normalizeAutodiagNames();
+  save();
   const p=state.parametrage;
   ['nom','titre','desc','date_lancement','date_cloture','slug','intro','nb_repondants','entreprise','pack_choisi','volume_prevu'].forEach(id=>{
     const el=document.getElementById(id);
@@ -1267,7 +1258,7 @@ async function persistProjectDraft(step, status){
       headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
       body: JSON.stringify({
         projectId: getCurrentProjectIdForSave() || undefined,
-        title: state.parametrage?.titre_repondants || state.parametrage?.titreRespondants || state.parametrage?.titre_visible_repondants || state.parametrage?.titreVisibleRepondants || state.parametrage?.titre || state.parametrage?.nom || state.themeTitle || state.title || 'Autodiagnostic',
+        title: state.parametrage?.titre_repondants || state.parametrage?.titreRespondants || state.parametrage?.titre_visible_repondants || state.parametrage?.titreVisibleRepondants || state.parametrage?.titre || cleanAutodiagPrefix(state.parametrage?.nom) || state.themeTitle || state.title || 'Autodiagnostic',
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
         status: status || state.status || 'draft',
         currentStep: step || 'parametrage',
@@ -1315,7 +1306,7 @@ async function goNext(){
     state.parametrage.partner_client_id = localStorage.getItem("its_selected_partner_client_id") || "";
   }
 
-  state.parametrage.nom = getFieldValue('nom') || state.parametrage.nom || '';
+  state.parametrage.nom = cleanAutodiagPrefix(getFieldValue('nom') || state.parametrage.nom || '');
   state.parametrage.titre = getFieldValue('titre') || state.parametrage.titre || '';
   syncRespondentTitleAliases(state.parametrage.titre);
   state.parametrage.desc = getFieldValue('desc') || state.parametrage.desc || '';

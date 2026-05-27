@@ -560,16 +560,47 @@
       return raw && typeof raw === "object" ? raw : {};
     }
 
+    function hasParametrageStarted(project) {
+      const data = getProjectData(project);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const stateData = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || stateData.parametrage || payload.parametrage || {};
+
+      return Boolean(
+        param.done === true ||
+        param.nom ||
+        param.titre ||
+        param.desc ||
+        param.entreprise ||
+        param.pack_choisi ||
+        param.date_lancement ||
+        param.date_cloture ||
+        param.slug ||
+        data.campaignStartDate ||
+        data.campaign_start_date ||
+        data.campaignEndDate ||
+        data.campaign_end_date ||
+        project.campaignStartDate ||
+        project.campaign_start_date ||
+        project.campaignEndDate ||
+        project.campaign_end_date
+      );
+    }
+
     function getProjectStep(project) {
       const data = getProjectData(project);
-      return String(
+      const rawStep = String(
         project.currentStep ||
         project.current_step ||
         data.current_step ||
         data.currentStep ||
         data.step ||
-        "questions"
+        ""
       ).toLowerCase();
+
+      if (rawStep) return rawStep;
+      if (hasParametrageStarted(project)) return "parametrage";
+      return "questions";
     }
 
     function getProjectId(project) {
