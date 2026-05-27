@@ -468,7 +468,100 @@
     }
 
     function getTheme(p) {
-      return deepFindTheme(p) || inferThemeFromTitle(getTitle(p)) || "Thématique non renseignée";
+      const themes = getProjectThemes(p);
+      return themes[0] || "Thématique non renseignée";
+    }
+
+    function normalizeTextForTheme(value){
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function addThemeCandidate(list, value, titleNorm, strictTag){
+      const forbidden = [
+        "base assistee par ia",
+        "aide a la redaction",
+        "relecture obligatoire",
+        "concu par un expert",
+        "brouillon",
+        "publie",
+        "transmis"
+      ];
+      const businessKeywords = [
+        "cyber", "cybersecurite", "qvt", "rps", "risques psychosociaux", "management", "manager", "transformation",
+        "compliance", "conformite", "ethique", "diversite", "inclusion", "handicap", "sexisme", "lgbt", "religieuse", "origines",
+        "rse", "environnement", "sobriete", "securite", "surete", "btp"
+      ];
+
+      if(Array.isArray(value)){
+        value.forEach(item => addThemeCandidate(list, item, titleNorm, strictTag));
+        return;
+      }
+      if(value && typeof value === "object"){
+        addThemeCandidate(list, value.title || value.name || value.label || value.titre || value.nom || "", titleNorm, strictTag);
+        return;
+      }
+      const raw = String(value || "").trim();
+      if(!raw) return;
+      const norm = normalizeTextForTheme(raw);
+      if(!norm || norm === titleNorm) return;
+      if(forbidden.includes(norm) || forbidden.some(f => norm.includes(f))) return;
+      if(strictTag && !businessKeywords.some(k => norm.includes(k))) return;
+      if(!list.some(existing => normalizeTextForTheme(existing) === norm)) list.push(raw);
+    }
+
+    function inferThemeFromProject(p){
+      const text = normalizeTextForTheme(JSON.stringify(getProjectData(p) || {}) + " " + getTitle(p));
+      if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+      if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+      if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+      if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+      if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+      return "";
+    }
+
+    function getProjectThemes(p){
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const titleNorm = normalizeTextForTheme(getTitle(p));
+      const themes = [];
+
+      [
+        p.theme, p.themeName, p.themeLabel, p.themeTitle, p.thematique, p.thématique,
+        data.theme, data.themeName, data.themeLabel, data.themeTitle, data.thematique, data.thématique,
+        payload.theme, payload.themeName, payload.themeLabel, payload.themeTitle, payload.thematique, payload.thématique,
+        state.theme, state.themeName, state.themeLabel, state.themeTitle, state.thematique, state.thématique,
+        param.theme, param.themeName, param.themeLabel, param.themeTitle, param.thematique, param.thématique,
+        data.selectedTheme, payload.selectedTheme, state.selectedTheme, param.selectedTheme,
+        data.category, payload.category, state.category, param.category,
+        data.catalogTheme, payload.catalogTheme, data.catalog_theme, payload.catalog_theme,
+        data.baseTheme, payload.baseTheme, data.base_theme, payload.base_theme
+      ].forEach(value => addThemeCandidate(themes, value, titleNorm, false));
+
+      if(!themes.length){
+        [payload.tags, data.tags, state.tags, payload.themeTags, data.themeTags, state.themeTags, payload.theme?.tags, data.theme?.tags]
+          .forEach(value => addThemeCandidate(themes, value, titleNorm, true));
+      }
+
+      if(!themes.length){
+        const inferred = inferThemeFromProject(p) || inferThemeFromTitle(getTitle(p));
+        if(inferred) themes.push(inferred);
+      }
+
+      return themes.slice(0,4);
+    }
+
+    function renderThemeTags(project){
+      const themes = getProjectThemes(project);
+      if(!themes.length) return `<span class="tag">Thématique non renseignée</span>`;
+      return themes.map(theme => `<span class="tag">${escapeHtml(theme)}</span>`).join("");
     }
 
     function getCampaignDates(p) {
@@ -904,7 +997,7 @@
                 ${hasResults ? `<div class="url-line"><strong>URL résultats</strong><a class="url-short" href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr(resultsUrl)}">${escapeHtml(shortUrl(resultsUrl))}</a><button class="copy-btn" type="button" onclick="copyText('${escapeAttr(resultsUrl)}')">Copier</button></div>` : ""}
               </div>
               <div class="tags">
-                <span class="tag">${escapeHtml(theme)}</span>
+                ${renderThemeTags(p)}
                 ${copyTagHTML(p)}
                 ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
               </div>

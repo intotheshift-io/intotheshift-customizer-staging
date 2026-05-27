@@ -530,6 +530,8 @@ function getProjectTitle(project){
     function getProjectThemes(project){
       const payload = getProjectPayload(project);
       const data = getProjectData(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const titleNorm = normalizeTextForTheme(getProjectTitle(project));
       const forbidden = [
         "base assistée par ia",
         "base assistee par ia",
@@ -537,31 +539,83 @@ function getProjectTitle(project){
         "aide a la redaction",
         "relecture obligatoire",
         "conçu par un expert",
-        "concu par un expert"
+        "concu par un expert",
+        "brouillon",
+        "publié",
+        "publie",
+        "transmis"
       ];
       const businessKeywords = [
         "cybersécurité","cybersecurite","cyber",
-        "qvt","rps",
-        "management","manager",
+        "qvt","rps","risques psychosociaux",
+        "management","manager","transformation",
         "compliance","conformité","conformite","éthique","ethique",
         "diversité","diversite","inclusion","handicap","sexisme","lgbt","religieuse","origines",
-        "rse","sécurité","securite","sûreté","surete","transformation"
+        "rse","environnement","sobriete","sobriété",
+        "sécurité","securite","sûreté","surete","btp"
       ];
-      const source = []
-        .concat(payload.theme?.title || [])
-        .concat(payload.themeTitle || [])
-        .concat(payload.title || [])
-        .concat(data.theme?.title || [])
-        .concat(data.themeTitle || [])
-        .concat(payload.tags || [])
-        .concat(payload.themeTags || [])
-        .concat(payload.theme?.tags || []);
-      const cleaned = source
-        .map(x => String(x || "").trim())
-        .filter(Boolean)
-        .filter(t => !forbidden.includes(t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')))
-        .filter(t => businessKeywords.some(k => t.toLowerCase().includes(k)) || !forbidden.some(f => t.toLowerCase().includes(f)));
-      return [...new Set(cleaned)].slice(0,4);
+
+      function addCandidate(list, value, strictTag){
+        if(Array.isArray(value)){
+          value.forEach(item => addCandidate(list, item, strictTag));
+          return;
+        }
+        if(value && typeof value === "object"){
+          addCandidate(list, value.title || value.name || value.label || value.titre || value.nom || "", strictTag);
+          return;
+        }
+        const raw = String(value || "").trim();
+        if(!raw) return;
+        const norm = normalizeTextForTheme(raw);
+        if(!norm || norm === titleNorm) return;
+        if(forbidden.includes(norm) || forbidden.some(f => norm.includes(f))) return;
+        if(strictTag && !businessKeywords.some(k => norm.includes(normalizeTextForTheme(k)))) return;
+        if(!list.some(existing => normalizeTextForTheme(existing) === norm)) list.push(raw);
+      }
+
+      const themes = [];
+      [
+        project.theme, project.themeName, project.themeLabel, project.themeTitle, project.thematique, project.thématique,
+        data.theme, data.themeName, data.themeLabel, data.themeTitle, data.thematique, data.thématique,
+        payload.theme, payload.themeName, payload.themeLabel, payload.themeTitle, payload.thematique, payload.thématique,
+        param.theme, param.themeName, param.themeLabel, param.themeTitle, param.thematique, param.thématique,
+        data.selectedTheme, payload.selectedTheme, param.selectedTheme,
+        data.category, payload.category, param.category,
+        data.catalogTheme, payload.catalogTheme, data.catalog_theme, payload.catalog_theme,
+        data.baseTheme, payload.baseTheme, data.base_theme, payload.base_theme
+      ].forEach(value => addCandidate(themes, value, false));
+
+      if(!themes.length){
+        [payload.tags, data.tags, payload.themeTags, data.themeTags, payload.theme?.tags, data.theme?.tags]
+          .forEach(value => addCandidate(themes, value, true));
+      }
+
+      if(!themes.length){
+        const inferred = inferThemeFromProject(project);
+        if(inferred) themes.push(inferred);
+      }
+
+      return themes.slice(0,4);
+    }
+
+    function normalizeTextForTheme(value){
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function inferThemeFromProject(project){
+      const text = normalizeTextForTheme(JSON.stringify(getProjectData(project) || {}) + " " + getProjectTitle(project));
+      if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+      if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+      if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+      if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+      if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+      return "";
     }
 
     function renderThemeTags(project){
