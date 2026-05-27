@@ -1270,6 +1270,7 @@ function renderProjects(){
         <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
         <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
         <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
+        <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Campagne / QR code</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
         <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
         <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
@@ -1277,6 +1278,11 @@ function renderProjects(){
     </article>`;
   }).join("");
   document.getElementById("projectsEmpty").style.display=rows.length?"none":"block";
+}
+
+function openProjectCampaign(projectId){
+  if(!projectId)return;
+  window.location.href = "campagne.html?projectId=" + encodeURIComponent(projectId);
 }
 
 function togglePublicationUrlFields(projectId){
@@ -1317,7 +1323,7 @@ async function saveProjectPublication(projectId){
   if(feedback) feedback.classList.remove("on");
 
   try{
-    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{
+    const result = await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{
       status,
       share_url: shareUrl,
       results_url: resultsUrl,
@@ -1334,7 +1340,11 @@ async function saveProjectPublication(projectId){
     }:p);
     renderKpis();
     renderProjects();
-    showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + ".");
+    const emailInfo = result?.publicationEmail;
+    const emailMsg = status === "published"
+      ? (emailInfo?.sent ? " Email client envoyé." : emailInfo?.reason === "ALREADY_SENT" ? " Email client déjà envoyé auparavant." : " Email client non envoyé : " + (emailInfo?.reason || "non déclenché") + ".")
+      : "";
+    showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + "." + emailMsg);
 
     setTimeout(()=>{
       const btn=document.getElementById("project-save-"+String(projectId));
