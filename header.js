@@ -153,9 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const accueilLink = !logged
-    ? `<a class="nav-link ${active("home.html")}" href="home.html">Accueil</a>`
-    : "";
+  const accueilLink = `<a class="nav-link ${active("home.html")}" href="home.html">Accueil</a>`;
 
   const dashboardLink = logged
     ? `<a class="nav-link ${active("dashboard.html")}" href="dashboard.html">Mon dashboard</a>`
@@ -203,18 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>
     `;
 
-  let homeTarget = "home.html";
-
-  if (logged) {
-
-    if (admin) {
-      homeTarget = "admin.html";
-    } else if (partner) {
-      homeTarget = "partner.html";
-    } else {
-      homeTarget = "dashboard.html";
-    }
-  }
+  const homeTarget = "home.html";
 
   header.innerHTML = `
     <div class="topbar compact-topbar">
