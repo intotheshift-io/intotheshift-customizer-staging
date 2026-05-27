@@ -257,7 +257,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
       </section>
 
       <div class="actions">
-        <button class="btn-back" onclick="window.location.href='campagne.html'">← Retour à la campagne</button>
+        <button class="btn-back" onclick="goBackToCampagne()">← Retour à la campagne</button>
         <button class="btn-main" id="btn-transmit" onclick="transmit()" disabled>Transmettre pour mise en ligne</button>
       </div>
     </main>
@@ -334,6 +334,18 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 function validationProjectIdFromUrl(){
   const params = new URLSearchParams(window.location.search);
   return params.get('projectId') || params.get('projectid') || params.get('id') || '';
+}
+function validationCurrentProjectId(){
+  return state?.currentAdId || state?.project_id || state?.projectId ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    validationProjectIdFromUrl() ||
+    '';
+}
+function goBackToCampagne(){
+  if (typeof itsSave === 'function') itsSave(state);
+  const id = validationCurrentProjectId();
+  window.location.href = id ? 'campagne.html?projectId=' + encodeURIComponent(id) : 'campagne.html';
 }
 function validationLoadProjectFromServerSync(projectId){
   const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';

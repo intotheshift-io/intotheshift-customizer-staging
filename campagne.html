@@ -213,7 +213,7 @@ function applyCampaignDateConstraints(){
   const close=document.getElementById('date-close');
   if(launch) launch.min=minLaunch;
   const currentLaunch=normalizeDateInputValue((launch&&launch.value)||p().date_lancement||'');
-  if(close) close.min=currentLaunch || minLaunch;
+  if(close) close.min=currentLaunch ? campaignAddDaysISO(currentLaunch,1) : minLaunch;
 }
 function validateAndNormalizeCampaignDates(showToastOnAdjust){
   const minLaunch=campaignMinLaunchDateISO();
@@ -226,7 +226,8 @@ function validateAndNormalizeCampaignDates(showToastOnAdjust){
     adjusted=true;
   }
   if(end && start && end <= start){
-    end=campaignAddDaysISO(start,1);
+    // Pas d’auto-correction : le client doit choisir explicitement sa date de clôture.
+    end='';
     adjusted=true;
   }
 

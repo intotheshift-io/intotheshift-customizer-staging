@@ -267,7 +267,7 @@ select option[value="current_pack"]{
         </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="handleLaunchDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="launch-date-hint"><span class="alert-ico">⚠️</span><span>Délai minimum : la campagne ne peut pas démarrer avant J+5 pour laisser le temps de la préparer et de la livrer.</span></div></div>
-          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="handleCloseDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="close-date-hint"><span class="alert-ico">⚠️</span><span>La date de clôture doit être postérieure à la date de lancement. Par défaut, elle est proposée à J+5 après le lancement.</span></div></div>
+          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="handleCloseDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="close-date-hint"><span class="alert-ico">⚠️</span><span>La date de clôture doit être postérieure à la date de lancement. Elle est à choisir par le client et doit rester postérieure à la date de lancement.</span></div></div>
         </div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
@@ -876,15 +876,8 @@ function applyDateRules(autofillClosure){
     closeEl.min = addDaysIso(launch, 1);
   }
 
-  if(autofillClosure && launch){
-    const suggestedClose = addDaysIso(launch, 5);
-    if(!close || close <= launch){
-      state.parametrage.date_cloture = suggestedClose;
-      state.parametrage.dateCloture = suggestedClose;
-      state.campaignEndDate = suggestedClose;
-      state.campaign_end_date = suggestedClose;
-    }
-  }
+  // La date de clôture n’est jamais renseignée automatiquement.
+  // Elle reste un choix explicite du client.
 
   syncDateInputsFromState();
   updateSidebar();
@@ -892,7 +885,7 @@ function applyDateRules(autofillClosure){
 }
 function handleLaunchDateChange(value){
   updateParam('date_lancement', value);
-  applyDateRules(true);
+  applyDateRules(false);
   checkContinue();
 }
 function handleCloseDateChange(value){
