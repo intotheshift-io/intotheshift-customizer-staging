@@ -8680,137 +8680,814 @@
 
   },
 
+  "manager-distance-hybride": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous managez une équipe hybride. Les membres en présentiel au bureau ont naturellement plus d'accès à vous. Vous ne l'avez pas vraiment remarqué jusqu'ici.",
+        tags: ["distance", "présence"],
+        answers: [
+          { text: "Je laisse — c'est la réalité du présentiel et les membres à distance s'adaptent.", score: 0 },
+          { text: "Je vérifie que je consacre un temps équivalent aux membres à distance et j'ajuste ma façon de me rendre disponible.", score: 2 },
+          { text: "J'encourage les membres à distance à me solliciter plus souvent.", score: 1 },
+          { text: "Je compense en faisant des réunions d'équipe plus fréquentes avec tout le monde.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collaborateur en télétravail à 100% est moins expressif depuis deux semaines — réponses plus courtes, moins d'initiatives. Rien de visible en visio.",
+        tags: ["distance", "signal faible"],
+        answers: [
+          { text: "J'attends qu'il vienne me voir — respecter l'espace de chacun est important en télétravail.", score: 0 },
+          { text: "Je lui propose un appel informel pour prendre de ses nouvelles sans mettre en avant ce que j'observe.", score: 2 },
+          { text: "Je lui envoie un message pour lui demander si tout va bien.", score: 1 },
+          { text: "Je le surveille de plus près pendant quelques jours avant d'intervenir.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous repérez les signaux faibles de difficulté chez vos collaborateurs à distance, même sans les voir physiquement.",
+        tags: ["distance", "signaux faibles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe hybride n'a pas de moments collectifs informels. Les échanges sont tous professionnels et orientés tâches.",
+        tags: ["distance", "rituels"],
+        answers: [
+          { text: "Je laisse — les moments informels sont difficiles à créer à distance et souvent forcés.", score: 0 },
+          { text: "Je crée des rituels réguliers courts — café virtuel, check-in d'équipe — pour maintenir le lien humain.", score: 2 },
+          { text: "Je compte sur les moments en présentiel pour créer le lien informel.", score: 1 },
+          { text: "Je crée un canal de discussion informelle pour les échanges non-professionnels.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors de vos réunions hybrides, les participants en présentiel dominent naturellement la conversation. Les participants à distance parlent peu.",
+        tags: ["distance", "équité"],
+        answers: [
+          { text: "Je laisse — la dynamique présentiel/distance est inévitable en réunion hybride.", score: 0 },
+          { text: "Je structure la réunion pour donner explicitement la parole aux participants à distance.", score: 2 },
+          { text: "J'encourage les participants à distance à s'exprimer au même titre que les autres.", score: 1 },
+          { text: "Je fais le tour de table systématiquement pour que tout le monde parle.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous vous assurez que les participants à distance ont le même espace de parole que les participants en présentiel lors de vos réunions hybrides.",
+        tags: ["distance", "équité réunion"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Des décisions informelles sont prises au bureau entre collègues en présentiel. Vos collaborateurs à distance ne sont pas dans la boucle.",
+        tags: ["distance", "inclusion décisions"],
+        answers: [
+          { text: "Je laisse — les décisions informelles font partie de la dynamique du bureau.", score: 0 },
+          { text: "Je m'assure que les décisions importantes sont documentées et partagées avec tous avant d'être actées.", score: 2 },
+          { text: "Je demande aux membres en présentiel d'informer leurs collègues à distance des décisions prises.", score: 1 },
+          { text: "Je réserve les décisions importantes aux moments où toute l'équipe est connectée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collaborateur en télétravail vous dit qu'il se sent seul et coupé de l'équipe malgré les réunions régulières.",
+        tags: ["distance", "isolement"],
+        answers: [
+          { text: "Je lui suggère de venir plus souvent au bureau — le télétravail n'est pas fait pour tout le monde.", score: 0 },
+          { text: "Je cherche avec lui ce qui manque et comment y répondre concrètement.", score: 2 },
+          { text: "Je lui rappelle les canaux disponibles pour interagir avec l'équipe.", score: 0.5 },
+          { text: "J'augmente la fréquence de nos one-to-ones pour compenser le sentiment d'isolement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous investissez activement dans le lien humain avec vos collaborateurs à distance, au-delà des réunions de travail.",
+        tags: ["distance", "lien"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre organisation impose deux jours de présentiel par semaine. Certains membres de votre équipe souhaiteraient moins ou plus. Vous appliquez la règle sans discussion.",
+        tags: ["distance", "présentiel choisi"],
+        answers: [
+          { text: "J'applique la règle — c'est la politique de l'organisation.", score: 0.5 },
+          { text: "J'applique la règle en laissant de la flexibilité dans quels jours, selon les contraintes de chacun.", score: 2 },
+          { text: "J'applique la règle et j'en discute avec chaque membre pour comprendre leurs préférences.", score: 2 },
+          { text: "Je m'aligne sur la règle mais j'accepte des exceptions pour les cas particuliers.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre présence managériale favorise encore inconsciemment les membres en présentiel", desc: "Ne pas remarquer que les membres en présentiel ont plus d'accès à vous, attendre qu'un collaborateur en difficulté vienne vous voir, ne pas créer de rituels informels à distance, traiter l'isolement d'un collaborateur en lui suggérant de venir plus souvent au bureau : ces comportements créent un management à deux vitesses où la distance est un désavantage. La proximité physique ne doit pas être un critère managérial." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collaborateurs à distance mais les signaux faibles et l'équité en réunion hybride sont encore des angles morts", desc: "Vous créez des rituels informels et vous prenez des nouvelles de vos collaborateurs à distance. Mais repérer un signal faible sans interactions physiques quotidiennes, vous assurer que les participants à distance s'expriment autant que ceux en présentiel lors des réunions hybrides, éviter que les décisions informelles se prennent uniquement entre membres en présentiel : ces aspects restent encore insuffisants. L'enjeu est d'étendre votre vigilance managériale à l'ensemble des dynamiques hybrides." },
+          haut: { label: "Réflexes installés", titre: "Votre présence managériale est équitable — vous investissez autant dans le lien avec les membres à distance qu'avec ceux en présentiel", desc: "Vous vérifiez que vous consacrez un temps équivalent aux membres à distance. Vous repérez le signal faible du collaborateur moins expressif et vous lui proposez un appel informel. Vous créez des rituels d'équipe qui maintiennent le lien humain. Vous structurez les réunions pour donner la parole aux participants à distance. Vous cherchez avec le collaborateur isolé ce qui manque concrètement. Cette présence managériale équitable — qui suppose d'investir intentionnellement dans ce que la distance effacerait naturellement — est ce qui maintient la cohésion d'une équipe hybride." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous évaluez vos collaborateurs à distance principalement sur leur disponibilité et leur réactivité aux messages plutôt que sur leurs livrables.",
+        tags: ["performance distance", "objectifs"],
+        answers: [
+          { text: "Je continue — la disponibilité est un signe d'engagement.", score: 0 },
+          { text: "Je revois mes critères d'évaluation pour me concentrer sur les résultats et les livrables.", score: 2 },
+          { text: "J'équilibre disponibilité et résultats dans mon évaluation.", score: 1 },
+          { text: "Je leur explique que la visibilité compte autant que les résultats en télétravail.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables, pas sur leur disponibilité ou leur réactivité aux messages.",
+        tags: ["performance distance", "résultats"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vos one-to-ones avec les collaborateurs à distance sont principalement des points d'avancement sur les dossiers. Il n'y a pas d'espace pour ce qui se passe vraiment pour eux.",
+        tags: ["performance distance", "one-to-one"],
+        answers: [
+          { text: "Je laisse — le one-to-one est un outil de management opérationnel.", score: 0 },
+          { text: "Je structure mes one-to-ones pour inclure à la fois l'opérationnel et le ressenti de la personne.", score: 2 },
+          { text: "Je commence systématiquement par 'comment tu vas' avant de passer aux dossiers.", score: 1 },
+          { text: "Je crée des moments séparés pour les dossiers et pour la dimension humaine.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "À distance, vous avez tendance à demander plus souvent où en sont vos collaborateurs qu'en présentiel, même pour des sujets en cours.",
+        tags: ["performance distance", "autonomie"],
+        answers: [
+          { text: "C'est normal — le manque de visibilité crée un besoin légitime de points de suivi.", score: 0 },
+          { text: "Je remarque ce comportement et je travaille à faire confiance à distance comme je le ferais en présentiel.", score: 2 },
+          { text: "Je réduis mes relances mais je maintiens un suivi rapproché sur les sujets à risque.", score: 1 },
+          { text: "Je demande à mes collaborateurs de me tenir proactivement informé pour que je n'aie pas besoin de les relancer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collaborateur à distance livre en dessous du niveau attendu. Il semble travailler mais les résultats ne sont pas là. Vous ne savez pas pourquoi.",
+        tags: ["performance distance", "sous-performance"],
+        answers: [
+          { text: "Je lui demande de venir plus souvent au bureau pour que je puisse mieux observer.", score: 0 },
+          { text: "J'organise un échange approfondi pour comprendre ce qui se passe — obstacles, clarté des objectifs, ressources manquantes.", score: 2 },
+          { text: "Je lui envoie un mail récapitulatif des attentes pour être sûr qu'elles sont claires.", score: 0.5 },
+          { text: "Je lui donne un plan d'amélioration formel.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Face à une sous-performance à distance, vous cherchez à comprendre les causes avant de définir un plan d'action.",
+        tags: ["performance distance", "diagnostic"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collaborateur à distance produit un excellent travail mais il ne le rend pas visible. Ses contributions passent inaperçues dans l'équipe.",
+        tags: ["performance distance", "visibilité travail"],
+        answers: [
+          { text: "Je laisse — si son travail est bon, il finira par être reconnu.", score: 0 },
+          { text: "Je l'aide à rendre son travail plus visible en lui proposant des occasions de le partager.", score: 2 },
+          { text: "Je le mentionne moi-même dans les réunions pour valoriser ses contributions.", score: 1.5 },
+          { text: "Je lui dis que la visibilité est aussi importante que la qualité en télétravail.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collaborateur à distance a fait une erreur sur un dossier. Il l'a signalée rapidement. Vous vous demandez si le télétravail en est la cause.",
+        tags: ["performance distance", "droit à l'erreur"],
+        answers: [
+          { text: "Je lui dis que ce type d'erreur serait moins probable en présentiel.", score: 0 },
+          { text: "Je traite l'erreur de la même façon qu'en présentiel — analyse, apprentissage, pas de corrélation automatique avec le télétravail.", score: 2 },
+          { text: "Je surveille de plus près ses prochains livrables pour m'assurer que c'était ponctuel.", score: 0.5 },
+          { text: "Je cherche à comprendre si le contexte de télétravail a joué un rôle dans cette erreur.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous appliquez les mêmes standards d'évaluation aux collaborateurs en présentiel et à ceux en télétravail.",
+        tags: ["performance distance", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez l'impression qu'un collaborateur en télétravail profite de sa situation pour ne pas travailler autant que prévu. Vous n'avez pas de preuve.",
+        tags: ["performance distance", "confiance"],
+        answers: [
+          { text: "Je lui demande de venir au bureau plus souvent pour lever ce doute.", score: 0 },
+          { text: "Je me concentre sur ses livrables — si les résultats sont là, mes suspicions ne sont pas fondées.", score: 2 },
+          { text: "Je lui pose directement la question sur sa charge perçue.", score: 1 },
+          { text: "Je mets en place des points de suivi plus fréquents pour avoir une meilleure visibilité.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évaluez vos collaborateurs à distance sur leur disponibilité plutôt que sur leurs résultats", desc: "Évaluer sur la disponibilité et la réactivité aux messages plutôt que sur les livrables, augmenter les points de suivi à distance parce que 'on ne voit pas ce qu'ils font', attribuer des erreurs au télétravail sans en chercher vraiment la cause : ces comportements créent une pression de visibilité qui mine la confiance. Le management à distance se pratique sur les résultats, pas sur la surveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évaluez sur les résultats mais votre confiance à distance n'est pas encore totalement cohérente avec votre discours", desc: "Vous évaluez sur les livrables. Mais résister à l'envie de multiplier les points de suivi à distance parce que vous ne 'voyez pas' ce qui se passe, traiter une erreur à distance sans présupposer un lien avec le télétravail, soutenir activement la visibilité d'un collaborateur qui produit bien mais reste discret : votre confiance à distance est encore perfectible sur ces points." },
+          haut: { label: "Réflexes installés", titre: "Vous évaluez sur les résultats et vous faites confiance à distance de façon cohérente avec ce que vous dites", desc: "Vous évaluez vos collaborateurs à distance sur leurs résultats et livrables. Vous résistez à l'envie de multiplier les points de suivi. Vous traitez les erreurs à distance de la même façon qu'en présentiel. Vous aidez le collaborateur discret à rendre son travail visible. Vous vous concentrez sur les livrables plutôt que sur vos suspicions quand vous doutez. Cette confiance cohérente — qui suppose d'accepter de ne pas tout voir — est ce qui crée les conditions du management à distance." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous laissez chaque membre de votre équipe choisir librement ses jours de télétravail. Résultat : certains jours personne n'est au bureau en même temps.",
+        tags: ["hybride", "jours présentiel"],
+        answers: [
+          { text: "Je laisse — la liberté individuelle est un avantage du télétravail.", score: 0 },
+          { text: "Je coordonne les jours de présence pour que les membres qui collaborent soient au bureau en même temps.", score: 2 },
+          { text: "Je fixe un jour commun obligatoire et laisse la liberté sur les autres.", score: 1.5 },
+          { text: "Je demande à l'équipe de se coordonner entre elle pour les jours de présence.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous coordonnez les jours de présence au bureau pour que les interactions importantes puissent se faire en présentiel.",
+        tags: ["hybride", "coordination"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous planifiez vos réunions d'équipe importantes les jours où la majorité est au bureau. Les membres en télétravail ces jours-là se retrouvent systématiquement à distance.",
+        tags: ["hybride", "réunions"],
+        answers: [
+          { text: "Je continue — si la majorité est là, c'est logique de planifier ces jours.", score: 0 },
+          { text: "Je m'assure que les réunions importantes se tiennent soit en full présentiel soit en full distance — pas en hybride par défaut.", score: 2 },
+          { text: "J'utilise le format hybride en m'assurant que les participants à distance sont bien inclus.", score: 1 },
+          { text: "Je fais tourner les jours de réunion pour que tout le monde soit parfois en présentiel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous sentez que votre équipe est en train de se diviser en deux groupes — ceux qui télétravaillent et ceux qui viennent au bureau — avec des dynamiques différentes.",
+        tags: ["hybride", "deux vitesses"],
+        answers: [
+          { text: "Je laisse — les préférences de travail sont légitimes et chacun s'organise.", score: 0 },
+          { text: "Je cherche activement à recréer des moments qui mélangent les deux groupes.", score: 2 },
+          { text: "J'en parle à mon équipe pour qu'elle prenne conscience de la dynamique.", score: 1.5 },
+          { text: "Je propose des ajustements à la politique de télétravail pour réduire la fracture.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Les opportunités informelles — mentorat, projets spontanés, visibilité auprès de la direction — semblent aller plus souvent aux membres en présentiel.",
+        tags: ["hybride", "opportunités"],
+        answers: [
+          { text: "C'est inévitable — la proximité physique crée des opportunités.", score: 0 },
+          { text: "Je m'assure de distribuer les opportunités de façon équitable indépendamment du mode de travail.", score: 2 },
+          { text: "J'en informe les membres à distance pour qu'ils se positionnent eux-mêmes.", score: 1 },
+          { text: "Je compense en donnant des missions visibles aux membres à distance.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous vous assurez que les opportunités de développement et de visibilité sont distribuées équitablement entre membres en présentiel et à distance.",
+        tags: ["hybride", "équité opportunités"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur rejoint votre équipe hybride. Il a choisi de travailler principalement à distance dès le départ.",
+        tags: ["hybride", "onboarding"],
+        answers: [
+          { text: "Je respecte son choix — c'est son droit de travailler à distance dès le début.", score: 0 },
+          { text: "Je lui explique l'importance d'une période initiale plus présentielle pour créer les liens avec l'équipe.", score: 2 },
+          { text: "Je lui propose un programme d'intégration adapté au travail à distance.", score: 1 },
+          { text: "Je lui demande de venir au bureau les trois premiers mois avant de décider son rythme.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe n'a pas de règles claires sur les attentes en télétravail — disponibilité, réactivité, participation. Chacun fait comme il l'entend.",
+        tags: ["hybride", "charte"],
+        answers: [
+          { text: "Je laisse — des règles trop précises sur le télétravail sont infantilisantes.", score: 0 },
+          { text: "Je construis avec l'équipe une charte de fonctionnement hybride pour clarifier les attentes communes.", score: 2 },
+          { text: "Je fixe moi-même les règles et je les communique à l'équipe.", score: 1 },
+          { text: "Je traite les problèmes au cas par cas quand ils se présentent.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Votre équipe dispose de règles claires co-construites sur les attentes en mode hybride.",
+        tags: ["hybride", "règles"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre politique d'équipe sur le télétravail n'a pas évolué depuis deux ans, malgré des changements dans les profils des membres et leurs besoins.",
+        tags: ["hybride", "évolution"],
+        answers: [
+          { text: "Je garde la politique actuelle — la cohérence est importante et changer crée des attentes.", score: 0 },
+          { text: "Je révise régulièrement la politique avec l'équipe pour qu'elle reste adaptée aux besoins.", score: 2 },
+          { text: "Je l'ajuste quand des problèmes spécifiques se posent.", score: 1 },
+          { text: "Je laisse chaque membre exprimer ses besoins individuellement et j'adapte.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation du travail hybride crée des inégalités sans que vous les ayez traitées", desc: "Laisser chaque membre choisir ses jours sans coordonner les présences, planifier les réunions importantes les jours de forte présence bureau en laissant les télétravailleurs systématiquement à distance, laisser les opportunités informelles aller aux membres en présentiel, ne pas avoir de charte de fonctionnement hybride : ces comportements laissent les inégalités s'installer progressivement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous organisez l'hybride avec des règles claires mais l'équité dans les opportunités et le traitement des deux vitesses restent insuffisants", desc: "Vous coordonnez les jours de présence et vous avez construit une charte avec l'équipe. Mais éviter les réunions hybrides asymétriques par défaut, lutter activement contre la tendance à deux vitesses, distribuer les opportunités de façon explicitement équitable, adapter régulièrement votre politique hybride aux besoins changeants : ces comportements d'équité active restent insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation hybride est équitable et adaptée — jours coordonnés, opportunités distribuées, charte co-construite", desc: "Vous coordonnez les jours de présence pour que les interactions importantes puissent se faire. Vous organisez les réunions importantes en full présentiel ou full distance pour éviter l'asymétrie. Vous distribuez les opportunités équitablement. Vous construisez avec l'équipe une charte de fonctionnement. Vous préparez les nouveaux à l'intégration à distance. Vous révisez régulièrement la politique hybride. Cette organisation équitable et délibérée — qui suppose de lutter contre les dynamiques naturelles qui favorisent le présentiel — est ce qui fait qu'une équipe hybride reste une seule équipe." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Les opportunités de développement informel — échanges sur les bonnes pratiques, apprentissage par observation — sont moins naturelles à distance pour votre équipe.",
+        tags: ["développement distance", "formation"],
+        answers: [
+          { text: "Je laisse — les formations formelles compensent le manque de développement informel.", score: 0 },
+          { text: "Je crée intentionnellement des moments d'apprentissage informel adaptés à la distance.", score: 2 },
+          { text: "Je compte sur les jours de présentiel pour recréer ces moments.", score: 1 },
+          { text: "Je demande aux membres expérimentés de partager leurs pratiques lors des réunions d'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous créez intentionnellement des occasions d'apprentissage informel à distance pour compenser ce qui se perd naturellement.",
+        tags: ["développement distance", "apprentissage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez que vous connaissez moins bien les aspirations et les ambitions de vos collaborateurs à distance que ceux en présentiel.",
+        tags: ["développement distance", "visibilité manager"],
+        answers: [
+          { text: "Je laisse — les aspirations se manifestent naturellement dans le travail.", score: 0 },
+          { text: "Je prends le temps d'avoir des conversations dédiées au développement avec chaque collaborateur à distance.", score: 2 },
+          { text: "J'intègre les questions de développement dans mes one-to-ones réguliers.", score: 1.5 },
+          { text: "Je leur envoie un questionnaire sur leurs aspirations professionnelles.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors des décisions de promotion, vous réalisez que vos collaborateurs à distance sont moins souvent mentionnés que ceux en présentiel, à compétences égales.",
+        tags: ["développement distance", "promotion"],
+        answers: [
+          { text: "C'est inévitable — la visibilité en présentiel crée une légitimité que le télétravail ne crée pas.", score: 0 },
+          { text: "Je plaide activement pour mes collaborateurs à distance dans les discussions de promotion.", score: 2 },
+          { text: "Je leur dis de soigner leur visibilité dans l'organisation.", score: 0.5 },
+          { text: "Je rends leurs contributions plus visibles dans l'organisation pour compenser le biais présentiel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le mentorat informel fonctionne bien en présentiel dans votre organisation. Vos collaborateurs à distance y ont moins accès.",
+        tags: ["développement distance", "mentorat"],
+        answers: [
+          { text: "Je laisse — s'ils veulent un mentor, ils peuvent en chercher un.", score: 0 },
+          { text: "Je leur facilite l'accès à des relations de mentorat formelles ou informelles adaptées à la distance.", score: 2 },
+          { text: "Je leur propose de les mentorer moi-même.", score: 1 },
+          { text: "Je les encourage à nouer des relations avec des collègues lors des jours de présentiel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous vous assurez que vos collaborateurs à distance ont les mêmes opportunités de développement et de progression que ceux en présentiel.",
+        tags: ["développement distance", "égalité des chances"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous donnez moins souvent du feedback à vos collaborateurs à distance qu'à ceux en présentiel — les occasions naturelles sont moins fréquentes.",
+        tags: ["développement distance", "feedback"],
+        answers: [
+          { text: "Je laisse — les collaborateurs à distance valorisent l'autonomie et moins de feedback.", score: 0 },
+          { text: "Je crée des occasions régulières de feedback à distance pour compenser la moindre fréquence naturelle.", score: 2 },
+          { text: "Je concentre mon feedback sur les one-to-ones réguliers.", score: 1 },
+          { text: "Je leur demande de solliciter du feedback quand ils en ont besoin.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors des entretiens annuels, vous réalisez que vous connaissez moins bien la progression réelle de vos collaborateurs à distance que celle des membres en présentiel.",
+        tags: ["développement distance", "bilan"],
+        answers: [
+          { text: "J'accepte — la distance crée naturellement moins de visibilité sur la progression.", score: 0 },
+          { text: "Je mets en place tout au long de l'année des moments dédiés à suivre la progression de chaque collaborateur à distance.", score: 2 },
+          { text: "Je m'appuie sur les livrables et les résultats pour évaluer la progression.", score: 1 },
+          { text: "Je leur demande de me tenir au courant de leurs progrès et apprentissages.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous suivez activement la progression et le développement de vos collaborateurs à distance tout au long de l'année, pas seulement lors des évaluations formelles.",
+        tags: ["développement distance", "suivi progression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre organisation valorise implicitement le présentiel — 'les gens sérieux sont au bureau'. Vous gérez une équipe hybride dans cette culture.",
+        tags: ["développement distance", "culture"],
+        answers: [
+          { text: "Je m'y adapte — aller contre la culture est un combat perdu d'avance.", score: 0 },
+          { text: "J'incarne un modèle différent en défendant publiquement la valeur des contributions à distance.", score: 2 },
+          { text: "Je protège mes collaborateurs à distance de cette culture sans la remettre en question publiquement.", score: 1 },
+          { text: "Je remonte le biais présentiel à ma direction pour qu'elle le traite.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le développement de vos collaborateurs à distance est moins suivi et moins soutenu que celui des membres en présentiel", desc: "Donner moins souvent du feedback aux collaborateurs à distance, moins bien connaître leurs aspirations, ne pas les mentionner autant dans les discussions de promotion, ne pas créer d'occasions d'apprentissage informel à distance : ces comportements réduisent les chances de progression des collaborateurs à distance. À terme, les meilleurs quittent les équipes qui ne les soutiennent pas autant que leurs pairs en présentiel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous soutenez le développement à distance mais vous intervenez moins activement pour compenser les désavantages structurels", desc: "Vous suivez le développement de vos collaborateurs à distance dans les one-to-ones. Mais créer intentionnellement des occasions d'apprentissage informel à distance, plaider activement pour les collaborateurs à distance dans les décisions de promotion, incarner un modèle différent dans une culture qui valorise le présentiel : ces comportements de soutien actif au développement à distance sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous soutenez activement le développement de vos collaborateurs à distance et vous combattez les désavantages structurels", desc: "Vous créez des occasions d'apprentissage informel adaptées à la distance. Vous avez des conversations dédiées au développement avec chaque collaborateur à distance. Vous plaidez pour vos collaborateurs à distance dans les discussions de promotion. Vous leur facilitez l'accès au mentorat. Vous créez des occasions régulières de feedback. Vous suivez leur progression tout au long de l'année. Vous incarnez publiquement un modèle qui valorise les contributions à distance. Cette défense active des collaborateurs à distance — qui suppose parfois de lutter contre la culture — est ce qui leur permet de progresser au même rythme que leurs pairs en présentiel." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
 
     ["changer-sans-se-crisper", "Changer sans se crisper", "Tous publics",
-      "Comprendre ses réflexes face aux changements de méthode, d'outil ou d'organisation.",
+      "Comprendre ses réflexes face aux changements.",
       { domain: "transformation", chapters: [
-        ["Comprendre ses réflexes face au changement", "Passer de la protection à l'exploration."],
-        ["Traverser la période de transition", "Signaler, demander de l'aide et soutenir."],
-        ["Contribuer positivement à la dynamique", "Quick wins, retours terrain, influence collective."],
-        ["Développer sa flexibilité dans la durée", "Transformations continues comme opportunités."],
+        ["Comprendre ses réflexes face au changement", "Protection à exploration."],
+        ["Traverser la période de transition", "Signaler, aider, soutenir."],
+        ["Contribuer positivement", "Quick wins, influence collective."],
+        ["Développer sa flexibilité", "Transformations comme opportunités."],
       ]}
     ],
 
     ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
-      "Installer des échanges réguliers, factuels et mobilisables sans créer de posture défensive.",
+      "Installer des échanges factuels sans posture défensive.",
       { domain: "transformation", chapters: [
-        ["Donner un feedback factuel et utile", "Précision, timing, courage — sans diluer le fond."],
-        ["Recevoir un feedback sans se défendre", "Écoute active, séparation fond/source, intégration."],
-        ["Créer une culture du feedback", "Exemplarité, facilitation, maintien de la qualité."],
-        ["Utiliser le feedback pour progresser", "Points forts, contradictions, travail en profondeur."],
+        ["Donner un feedback factuel", "Précision, timing, courage."],
+        ["Recevoir sans se défendre", "Écoute, séparation fond/source."],
+        ["Créer une culture du feedback", "Exemplarité, facilitation."],
+        ["Utiliser pour progresser", "Points forts, profondeur."],
       ]}
     ],
 
     ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
-      "Questionner sa posture d'engagement, de responsabilisation et de soutien au collectif.",
+      "Posture d'engagement, responsabilisation, soutien.",
       { domain: "transformation", chapters: [
-        ["Créer les conditions de l'engagement", "Sens, reconnaissance, confiance, développement."],
-        ["Maintenir l'engagement dans la durée", "Signaux faibles, bons résultats, protection."],
-        ["Responsabiliser sans infantiliser", "Déléguer, valoriser les initiatives, favoriser l'autonomie."],
-        ["Soutenir sans créer de dépendance", "Empathie avec limites claires, orienté autonomie."],
+        ["Créer les conditions", "Sens, reconnaissance, confiance."],
+        ["Maintenir dans la durée", "Signaux faibles, protection."],
+        ["Responsabiliser sans infantiliser", "Déléguer, initiatives."],
+        ["Soutenir sans dépendance", "Limites claires, autonomie."],
       ]}
     ],
 
     ["contribuer-projet", "Contribuer efficacement à un projet", "Collaborateurs",
-      "Clarifier les rôles, gérer les imprévus et coopérer dans un cadre mouvant.",
+      "Rôles, imprévus, coopération dans un cadre mouvant.",
       { domain: "transformation", chapters: [
-        ["Clarifier son rôle et ses contributions", "Livrables, dépendances, périmètre — clarté au démarrage."],
-        ["Coopérer dans une équipe projet", "Information proactive, aide spontanée, décisions collectives."],
-        ["Gérer les imprévus et les tensions", "Alerter tôt, signaler les erreurs, gérer sa charge collectivement."],
-        ["Capitaliser et transmettre", "REX, documentation, relations, transmission."],
+        ["Clarifier son rôle", "Livrables, dépendances, périmètre."],
+        ["Coopérer", "Information proactive, décisions collectives."],
+        ["Gérer les imprévus", "Alerter tôt, signaler, charge collective."],
+        ["Capitaliser", "REX, documentation, transmission."],
       ]}
     ],
 
     ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
-      "Comprendre les résistances, relayer les décisions et ancrer les nouvelles pratiques dans la durée.",
+      "Résistances, relai des décisions, ancrage des pratiques.",
       { domain: "transformation", chapters: [
-        ["Comprendre et relayer les résistances", "Écouter, distinguer les types, remonter les objections légitimes."],
-        ["Communiquer pendant la transformation", "Proactivité, cohérence, mauvaises nouvelles, rumeurs."],
-        ["Ancrer les nouvelles pratiques", "Analyse des glissements, co-construction, vigilance dans la durée."],
-        ["Prendre soin de soi pendant la transformation", "Double rôle, soutien externe, bilan et transmission."],
+        ["Comprendre les résistances", "Écouter, distinguer, remonter."],
+        ["Communiquer", "Proactivité, cohérence, rumeurs."],
+        ["Ancrer les pratiques", "Glissements, co-construction."],
+        ["Prendre soin de soi", "Double rôle, bilan, transmission."],
       ]}
     ],
 
     ["responsabiliser-sans-controler", "Responsabiliser sans contrôler", "Managers",
-      "Déléguer avec confiance, développer l'autonomie de décision et valoriser l'initiative sans créer de dépendance.",
+      "Déléguer avec confiance, autonomie, initiative.",
       { domain: "transformation", chapters: [
-        ["Déléguer avec clarté et confiance", "Cadre, profil, résultat — pas méthode, visibilité des réussites."],
-        ["Faire confiance sans perdre le fil", "Conscience du contrôle, points de suivi utiles, cohérence face à la direction."],
-        ["Traiter les difficultés sans reprendre la main", "Soutien, développement, apprentissage par l'erreur."],
-        ["Développer l'autonomie collective", "Périmètre de décision, pairs, absences, transition de poste."],
+        ["Déléguer avec clarté", "Cadre, profil, résultat."],
+        ["Faire confiance", "Conscience du contrôle, cohérence."],
+        ["Traiter les difficultés", "Soutien, développement."],
+        ["Autonomie collective", "Périmètre, absences, transition."],
       ]}
     ],
 
     ["cooperer-autres-equipes", "Coopérer avec les autres équipes", "Tous publics",
-      "Identifier les frictions interéquipes, gérer les dépendances et dépasser les logiques de silos.",
+      "Frictions, dépendances, logiques de silos.",
       { domain: "transformation", chapters: [
-        ["Comprendre les logiques des autres équipes", "Curiosité, empathie, négociation directe avant escalade."],
-        ["Gérer les dépendances et les frictions", "Contact direct, causes structurelles, partage d'information."],
-        ["Construire des relations de coopération durables", "Entretien hors projet, réciprocité, historique, valorisation."],
-        ["Dépasser les logiques de silos", "Initiative collective, partage du crédit, transparence sur les conflits."],
+        ["Comprendre les autres équipes", "Curiosité, empathie."],
+        ["Gérer les frictions", "Contact direct, causes structurelles."],
+        ["Relations durables", "Entretien, réciprocité, valorisation."],
+        ["Dépasser les silos", "Initiative, crédit partagé, transparence."],
       ]}
     ],
 
     ["adapter-outils-methodes", "S'adapter aux nouveaux outils et méthodes", "Tous publics",
-      "Trouver sa posture face aux transformations numériques, accompagner les moins à l'aise et questionner les usages.",
+      "Posture face aux transformations numériques.",
       { domain: "transformation", chapters: [
-        ["Aborder un nouvel outil avec ouverture", "Exploration proactive, aide aux collègues, fonctionnalités avancées."],
-        ["Adopter une nouvelle méthode de travail", "Engagement sérieux, robustesse sous pression, remontée des observations."],
-        ["Gérer l'inconfort numérique et technologique", "Expérimentation, compréhension, développement proactif, cadre."],
-        ["Contribuer à l'adoption collective", "Référent, retours terrain, culture d'équipe, transmission."],
+        ["Aborder un outil", "Exploration proactive, partage."],
+        ["Adopter une méthode", "Engagement, robustesse, observations."],
+        ["Inconfort numérique", "Expérimentation, développement."],
+        ["Adoption collective", "Référent, retours, culture."],
       ]}
     ],
 
     ["prioriser-arbitrer", "Prioriser et arbitrer quand tout est urgent", "Managers / Encadrants",
-      "Hiérarchiser les demandes, gérer les injonctions contradictoires et tenir ses arbitrages dans la durée.",
+      "Hiérarchiser, injonctions contradictoires, tenir dans la durée.",
       { domain: "transformation", chapters: [
-        ["Clarifier ce qui est vraiment urgent", "Évaluer l'impact réel, protéger l'important, déléguer en surcharge."],
-        ["Arbitrer sous pression", "Critères explicites, qualité vs délai, décisions difficiles assumées."],
-        ["Tenir ses arbitrages dans la durée", "Tenue sous pression, revue régulière, anticipation, charge structurelle."],
-        ["Communiquer ses arbitrages", "Proactivité, explication des critères, arbitrages assumés publiquement."],
+        ["Clarifier l'urgence", "Impact réel, protéger l'important."],
+        ["Arbitrer sous pression", "Critères, qualité vs délai."],
+        ["Tenir dans la durée", "Revue, anticipation, charge."],
+        ["Communiquer", "Proactivité, critères assumés."],
       ]}
     ],
 
     ["prendre-sa-place", "Prendre sa place sans s'effacer", "Collaborateurs",
-      "Développer son assertivité, défendre ses positions et gérer sa visibilité professionnelle.",
+      "Assertivité, positions, visibilité professionnelle.",
       { domain: "transformation", chapters: [
-        ["S'exprimer même quand c'est inconfortable", "Prise de parole, visibilité des contributions, demandes directes."],
-        ["Défendre sa position sans s'imposer", "Arguments vs pression, légitimité d'expertise, concessions raisonnées."],
-        ["Poser des limites sans se justifier", "Refus clairs, délais réalistes, tâches en dessous de ses compétences."],
-        ["S'affirmer dans les relations de travail", "Visibilité, ambition, conflits adressés, évaluation contestée."],
+        ["S'exprimer", "Prise de parole, visibilité, demandes."],
+        ["Défendre sa position", "Arguments vs pression."],
+        ["Poser des limites", "Refus, délais, périmètre."],
+        ["S'affirmer", "Visibilité, ambition, évaluation."],
       ]}
     ],
 
     ["gerer-energie-priorites", "Gérer son énergie et ses priorités", "Tous publics",
-      "Organiser son travail en fonction de ses rythmes, identifier les sources de drain et construire une récupération durable.",
+      "Rythmes, drain, récupération, organisation durable.",
       { domain: "transformation", chapters: [
-        ["Connaître et respecter ses rythmes", "Pics d'énergie, espace dans l'agenda, déconnexion vraie."],
-        ["Identifier et gérer les sources de drain", "Tâches ingrates, réunions inutiles, perfectionnisme, multitâche."],
-        ["Recharger ses ressources", "Rituels de recharge, signaux du corps, soutien avant l'épuisement."],
-        ["Construire une organisation personnelle durable", "Planification, revue hebdomadaire, systèmes fiables, long terme."],
+        ["Respecter ses rythmes", "Pics d'énergie, espace, déconnexion."],
+        ["Gérer les drains", "Réunions, perfectionnisme, multitâche."],
+        ["Recharger", "Rituels, signaux, soutien."],
+        ["Organisation durable", "Planification, revue, systèmes."],
       ]}
     ],
 
     ["travailler-mode-projet", "Travailler en mode projet transversal", "Tous publics",
-      "Piloter sans autorité hiérarchique, coordonner des parties prenantes multiples et capitaliser à la clôture.",
+      "Piloter sans autorité, parties prenantes, capitalisation.",
       { domain: "transformation", chapters: [
-        ["Piloter sans autorité hiérarchique", "Influence, engagements formalisés, légitimité de coordination."],
-        ["Gérer des parties prenantes multiples", "Cartographie, communication différenciée, conflits explicités."],
-        ["Coordonner sans réunionner", "Asynchrone, indicateurs concrets, échanges directs facilités."],
-        ["Clôturer et capitaliser", "Bilan, transfert, relations entretenues, méthode partagée."],
+        ["Piloter sans autorité", "Influence, engagements, légitimité."],
+        ["Parties prenantes", "Cartographie, communication, conflits."],
+        ["Coordonner", "Asynchrone, indicateurs, échanges directs."],
+        ["Clôturer", "Bilan, transfert, relations, méthode."],
       ]}
     ],
 
     ["conduire-reunion-utile", "Conduire une réunion utile", "Tous publics",
-      "Préparer, animer et conclure des réunions qui produisent des décisions et des engagements tenus.",
+      "Préparer, animer, conclure avec décisions et engagements.",
       { domain: "transformation", chapters: [
-        ["Préparer une réunion qui vaut le déplacement", "Objectif, participants, documents, durée calibrée."],
-        ["Animer une réunion qui avance", "Cadre tenu, participation équilibrée, décisions formulées."],
-        ["Conclure et assurer le suivi", "Actions, compte rendu utile, engagements suivis."],
-        ["S'adapter aux contextes variés", "Visio, hybride, grande réunion, conflit, créativité."],
+        ["Préparer", "Objectif, participants, durée calibrée."],
+        ["Animer", "Cadre, participation, décisions formulées."],
+        ["Conclure et suivre", "Actions, compte rendu, engagements."],
+        ["S'adapter", "Visio, hybride, conflit, créativité."],
+      ]}
+    ],
+
+    ["manager-distance-hybride", "Manager à distance et en hybride", "Managers",
+      "Équité présentiel/distance, performance, développement.",
+      { domain: "transformation", chapters: [
+        ["Maintenir le lien", "Équité, signaux faibles, rituels, isolement."],
+        ["Manager la performance", "Résultats, confiance, sous-performance."],
+        ["Organiser l'hybride", "Jours, opportunités, charte, équité."],
+        ["Développer à distance", "Apprentissage, promotion, feedback, culture."],
       ]}
     ],
 

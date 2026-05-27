@@ -45,6 +45,12 @@
 .toast-customizer{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:#18375d;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:800;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:9999;opacity:0;pointer-events:none;transition:all .18s ease}.toast-customizer.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .qr-download-btn{background:#007883!important;color:#fff!important;border-color:#007883!important;box-shadow:0 8px 18px rgba(0,120,131,.16);cursor:pointer!important}.qr-download-btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(0,120,131,.20)}
 .campaign-locked input,.campaign-locked select,.campaign-locked textarea{background:#f6f8fb!important;color:#64748b!important}
+.campaign-locked .comm-tabs button,
+.campaign-locked .template-card button{
+  pointer-events:auto!important;
+  opacity:1!important;
+  cursor:pointer!important;
+}
 .help-dot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;margin-left:6px;cursor:help;position:relative}.help-dot:hover::after{content:attr(data-help);position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:260px;background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.35;text-transform:none;letter-spacing:0;z-index:20;box-shadow:0 12px 30px rgba(15,30,55,.22)}
 
 /* ── Dates campagne : visibilité + délai minimum J+5 ───────── */
@@ -848,7 +854,12 @@ bootCampagnePage();
       button.removeAttribute("disabled");
       button.style.cursor = "pointer";
       button.style.opacity = "1";
-      button.style.pointerEvents = "";
+      button.style.pointerEvents = "auto";
+    });
+
+    document.querySelectorAll(".comm-tabs, .template-card, .comm-tabs button, .template-card button").forEach(el => {
+      el.style.pointerEvents = "auto";
+      el.style.opacity = "1";
     });
   }
 
@@ -937,6 +948,11 @@ bootCampagnePage();
         pageWrap.insertBefore(banner, title);
       }
     }
+
+    ensureCampaignCopyActionsAvailable();
+    setTimeout(ensureCampaignCopyActionsAvailable, 80);
+    setTimeout(ensureCampaignCopyActionsAvailable, 250);
+    setTimeout(ensureCampaignCopyActionsAvailable, 600);
   }
 
   function applyClientReadonlyText(){
