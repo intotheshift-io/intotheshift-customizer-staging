@@ -787,7 +787,15 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
   }
 
   if(typeof itsApplyReadOnlyMode === "function"){
-    setTimeout(() => itsApplyReadOnlyMode(), 50);
+    setTimeout(() => {
+      itsApplyReadOnlyMode();
+      if(typeof window.applyCampaignModeAfterHydration === "function"){
+        window.applyCampaignModeAfterHydration();
+      }
+      if(typeof window.ensureCampaignCopyActionsAvailable === "function"){
+        window.ensureCampaignCopyActionsAvailable();
+      }
+    }, 50);
   }
 }
 
@@ -832,6 +840,19 @@ bootCampagnePage();
       onclick.includes("openResultsUrl")
     );
   }
+
+  function ensureCampaignCopyActionsAvailable(){
+    document.querySelectorAll("button").forEach(button => {
+      if(!allowedButton(button)) return;
+      button.disabled = false;
+      button.removeAttribute("disabled");
+      button.style.cursor = "pointer";
+      button.style.opacity = "1";
+      button.style.pointerEvents = "";
+    });
+  }
+
+  window.ensureCampaignCopyActionsAvailable = ensureCampaignCopyActionsAvailable;
 
   function applyLockedCampaignMode(){
     document.body.classList.add("campaign-locked");
