@@ -876,19 +876,41 @@ function uniqTags(tags){
     });
 }
 
-function tagsFromCatalogueQuestion(cq){
+function catalogueQuestionTags(cq){
   return normalizeTags(cq && cq.tags ? cq.tags : [])
     .map(t => ({ t:t.t, ai:false }))
     .slice(0,3);
 }
 
+function canonicalQuestionText(v){
+  return norm(v)
+    .replace(/[’']/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function sameCatalogueQuestion(question, cq){
   if(!question || !cq) return false;
+
   const qid = String(question.id || question.catalogueId || question.catalogue_id || '').trim();
   const cid = String(cq.id || cq.catalogueId || cq.catalogue_id || '').trim();
-  const qtext = norm(question.text || question.question || question.title || '');
-  const ctext = norm(cq.text || cq.question || cq.title || '');
-  return Boolean((qid && cid && qid === cid) || (qtext && ctext && qtext === ctext));
+  if(qid && cid && qid === cid) return true;
+
+  const qtext = canonicalQuestionText(question.text || question.question || question.title || '');
+  const ctext = canonicalQuestionText(cq.text || cq.question || cq.title || '');
+  if(!qtext || !ctext) return false;
+  if(qtext === ctext) return true;
+
+  if(qtext.length >= 80 && ctext.length >= 80 && (qtext.includes(ctext) || ctext.includes(qtext))) return true;
+
+  const qWords = qtext.split(' ').filter(w => w.length > 3);
+  const cWords = new Set(ctext.split(' ').filter(w => w.length > 3));
+  if(qWords.length < 8 || cWords.size < 8) return false;
+
+  const common = qWords.filter(w => cWords.has(w)).length;
+  const ratio = common / Math.max(qWords.length, cWords.size);
+  return ratio >= 0.72;
 }
 
 function findCatalogueQuestionTags(question){
@@ -899,7 +921,7 @@ function findCatalogueQuestionTags(question){
       for(const ch of (ad.chapters || [])){
         for(const cq of (ch.questions || [])){
           if(sameCatalogueQuestion(question, cq)){
-            const tags = tagsFromCatalogueQuestion(cq);
+            const tags = catalogueQuestionTags(cq);
             if(tags.length) return tags;
           }
         }
@@ -914,7 +936,7 @@ function findCatalogueQuestionTags(question){
         const list = Array.isArray(groups[groupKey]) ? groups[groupKey] : [];
         for(const cq of list){
           if(sameCatalogueQuestion(question, cq)){
-            const tags = tagsFromCatalogueQuestion(cq);
+            const tags = catalogueQuestionTags(cq);
             if(tags.length) return tags;
           }
         }
@@ -932,8 +954,8 @@ function catalogueOrRawTags(question, rawTags){
 }
 
 function inferContentTags(text, subject, chapter){
-  // Conservé uniquement pour compatibilité : les tags doivent venir des catalogues,
-  // pas être inventés par la page questions.
+  // Compatibilité : on ne génère plus de tags métier dans questions.html.
+  // La source de vérité est le tag déjà présent dans les catalogues.
   return [];
 }
 
