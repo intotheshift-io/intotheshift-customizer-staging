@@ -46,6 +46,7 @@
     .meta{font-size:13px;color:#64748b;line-height:1.5}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .tag{font-size:12px;font-weight:800;border-radius:999px;background:#edf1f7;color:#18375d;border:1px solid #d0d8e8;padding:5px 10px}
+    .tag.copy{background:#f0edff;color:#6d28d9;border-color:#c4b5fd}
     .status{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
     .status.draft{background:#edf1f7;color:#475569}
     .status.submitted{background:#fff4d5;color:#9a6700}
@@ -607,6 +608,84 @@
       return String(project?.id || project?.project_id || project?.projectId || project?.data?.project_id || project?.data?.projectId || "");
     }
 
+    function isTruthyCopyFlag(value){
+      return value === true || value === 1 || String(value || "").toLowerCase() === "true";
+    }
+
+    function getNestedCopyMarker(data){
+      if(!data || typeof data !== "object") return "";
+      const param = data.parametrage || {};
+      const meta = data.meta || {};
+      const source = data.source || {};
+      return (
+        data.copiedFromProjectId || data.copied_from_project_id ||
+        data.cloneSourceProjectId || data.clone_source_project_id ||
+        data.originalProjectId || data.original_project_id ||
+        data.parentProjectId || data.parent_project_id ||
+        param.copiedFromProjectId || param.copied_from_project_id ||
+        meta.copiedFromProjectId || meta.copied_from_project_id ||
+        source.projectId || source.project_id || ""
+      );
+    }
+
+    function isProjectCopy(project){
+      const data = getProjectData(project);
+      const rawTitle = String(project?.title || project?.name || project?.project_name || data?.title || data?.name || "").trim();
+      return Boolean(
+        isTruthyCopyFlag(project?.isCopy) ||
+        isTruthyCopyFlag(project?.is_copy) ||
+        isTruthyCopyFlag(data?.isCopy) ||
+        isTruthyCopyFlag(data?.is_copy) ||
+        getNestedCopyMarker(project) ||
+        getNestedCopyMarker(data) ||
+        /^copie\b/i.test(rawTitle) ||
+        /^copie\s*[—\-:]/i.test(rawTitle)
+      );
+    }
+
+    function copyTagHTML(project){
+      return isProjectCopy(project) ? `<span class="tag copy">🧬 Copie</span>` : "";
+    }
+
+    async function markProjectAsCopy(cloneId, cloneProject, sourceProjectId){
+      if(!cloneId || !token()) return cloneProject;
+      const data = getProjectData(cloneProject);
+      const nextData = Object.assign({}, data, {
+        isCopy: true,
+        is_copy: true,
+        copiedFromProjectId: sourceProjectId || "",
+        copied_from_project_id: sourceProjectId || "",
+        current_step: "questions",
+        step: "questions",
+        status: "draft"
+      });
+
+      const body = {
+        projectId: cloneId,
+        title: cloneProject?.title || cloneProject?.name || getTitle(cloneProject),
+        status: "draft",
+        currentStep: "questions",
+        data: nextData
+      };
+
+      try{
+        const res = await fetch(`${API_BASE}/api/projects`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token()}`
+          },
+          body: JSON.stringify(body)
+        });
+        if(!res.ok) return cloneProject;
+        const saved = await res.json().catch(() => ({}));
+        return saved.project || Object.assign({}, cloneProject, {data: nextData, status:"draft", currentStep:"questions"});
+      }catch(e){
+        console.warn("Marquage copie non enregistré", e);
+        return cloneProject;
+      }
+    }
+
     function resumeLabel(project) {
   const status = normalizeStatus(project);
 
@@ -816,6 +895,7 @@
               </div>
               <div class="tags">
                 <span class="tag">${escapeHtml(theme)}</span>
+                ${copyTagHTML(p)}
                 ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
               </div>
             </div>
@@ -913,10 +993,13 @@
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || "Clonage impossible");
 
-        const cloned = data.project;
-        if (cloned) {
-          setCurrentProjectPointer(cloned);
-          window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
+        let cloned = data.project || data.clone || data.item || data;
+        const clonedId = getProjectId(cloned);
+
+        if (cloned && clonedId) {
+          cloned = await markProjectAsCopy(clonedId, cloned, id);
+          setCurrentProjectPointer(Object.assign({}, cloned, {id: clonedId, project_id: clonedId}));
+          window.location.assign(`questions.html?projectId=${encodeURIComponent(clonedId)}`);
           return;
         }
 
