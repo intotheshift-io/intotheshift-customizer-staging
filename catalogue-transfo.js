@@ -10014,6 +10014,1340 @@
 
   },
 
+  "onboarder-nouveau": {
+    0: [
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur arrive dans une semaine. Vous n'avez pas encore vérifié que son poste de travail, ses accès et son matériel seront prêts à son arrivée.",
+        tags: ["préparation", "logistique"],
+        answers: [
+          { text: "Je laisse l'IT gérer — c'est leur responsabilité.", score: 0 },
+          { text: "Je vérifie que tout sera prêt dès maintenant et je suis l'avancement.", score: 2 },
+          { text: "J'envoie un mail à l'IT la veille pour m'assurer.", score: 0.5 },
+          { text: "Je demande à mon assistante de s'en occuper.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous n'avez pas encore préparé de programme pour les deux premières semaines du nouveau collaborateur. Il arrive dans trois jours.",
+        tags: ["préparation", "programme"],
+        answers: [
+          { text: "Je laisse le programme se construire naturellement — trop structurer les premiers jours est contre-productif.", score: 0 },
+          { text: "Je prépare un programme structuré maintenant — deux jours est largement suffisant pour l'essentiel.", score: 2 },
+          { text: "Je lui envoie un programme allégé — les grandes lignes sans les détails.", score: 1 },
+          { text: "Je lui donne une liste de personnes à rencontrer et je le laisse s'organiser.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant l'arrivée d'un nouveau collaborateur, vous préparez un programme structuré pour ses premières semaines.",
+        tags: ["préparation", "programme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'équipe n'est pas encore informée de l'arrivée du nouveau collaborateur ni de son rôle. Il arrive dans cinq jours.",
+        tags: ["préparation", "équipe"],
+        answers: [
+          { text: "Je les informerai le jour J — l'effet de surprise crée un moment convivial.", score: 0 },
+          { text: "J'informe l'équipe maintenant avec les informations pertinentes sur le rôle et le profil.", score: 2 },
+          { text: "Je les informe la veille — pas besoin de plus d'anticipation.", score: 0.5 },
+          { text: "Je laisse le nouveau se présenter lui-même lors de son premier jour.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez l'habitude de ne pas désigner de parrain pour les nouveaux collaborateurs — ils 'se débrouillent'.",
+        tags: ["préparation", "parrain"],
+        answers: [
+          { text: "Je continue — l'autonomie dans l'intégration est formatrice.", score: 0 },
+          { text: "Je désigne un parrain ou une marraine dans l'équipe pour faciliter l'intégration informelle.", score: 2 },
+          { text: "Je suis moi-même le référent principal du nouveau collaborateur.", score: 1 },
+          { text: "Je propose au nouveau de choisir lui-même son référent dans l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous désignez un parrain ou une marraine dans l'équipe pour chaque nouveau collaborateur avant son arrivée.",
+        tags: ["préparation", "parrain"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur n'a pas encore reçu d'information sur le contexte de l'équipe — organisation, projets en cours, enjeux. Il arrive dans deux jours.",
+        tags: ["préparation", "contexte"],
+        answers: [
+          { text: "Je lui donnerai ces informations progressivement — trop d'information d'un coup est contre-productif.", score: 0.5 },
+          { text: "Je lui prépare un document de contexte avant son arrivée pour qu'il puisse le lire avant le premier jour.", score: 2 },
+          { text: "Je lui envoie un lien vers l'intranet — les informations sont disponibles.", score: 0 },
+          { text: "Je lui présente le contexte lors de notre premier entretien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le périmètre du poste du nouveau collaborateur n'est pas encore clairement défini dans votre tête. Il arrive la semaine prochaine.",
+        tags: ["préparation", "poste définition"],
+        answers: [
+          { text: "Je laisse — le périmètre se précisera dans les premières semaines.", score: 0 },
+          { text: "Je clarifie maintenant les attentes, les missions et les critères de succès avant son arrivée.", score: 2 },
+          { text: "Je lui présente un périmètre approximatif et je l'affinerai avec lui.", score: 1 },
+          { text: "Je lui donne une fiche de poste générique et on discutera en détail lors de son arrivée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant l'arrivée d'un nouveau collaborateur, vous avez clarifié pour vous-même les attentes précises et les critères de succès pour ses premiers mois.",
+        tags: ["préparation", "attentes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous n'avez pas contacté le nouveau collaborateur entre la signature de son contrat et son arrivée, soit deux mois.",
+        tags: ["préparation", "premier message"],
+        answers: [
+          { text: "Je laisse — s'il a des questions, il peut m'appeler.", score: 0 },
+          { text: "Je prends contact avant son arrivée pour créer le lien et répondre à ses questions éventuelles.", score: 2 },
+          { text: "Je lui envoie un mail de bienvenue une semaine avant son arrivée.", score: 1.5 },
+          { text: "Je lui transmets les informations pratiques logistiques sans entrer dans la relation.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'arrivée du nouveau collaborateur n'est pas préparée — logistique, programme et équipe ne sont pas prêts", desc: "Ne pas vérifier que le poste de travail sera prêt, ne pas préparer de programme, ne pas informer l'équipe avant l'arrivée, ne pas contacter le nouveau entre la signature et l'arrivée : ces comportements font que le premier jour — qui est déterminant — se passe dans le flou. Un nouveau collaborateur qui arrive dans un contexte mal préparé met plus longtemps à être opérationnel et à se sentir légitime." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez les aspects essentiels de l'arrivée mais certains éléments de préparation fine sont encore négligés", desc: "Vous préparez un programme et vous informez l'équipe avant l'arrivée. Mais vérifier que tout sera prêt techniquement dès maintenant, désigner un parrain avant l'arrivée, préparer un document de contexte à envoyer avant le premier jour, clarifier les attentes et critères de succès pour vous-même avant l'arrivée : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme aussi importante que l'accueil." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez l'arrivée avec soin — logistique, programme, équipe, parrain, contexte et attentes clarifiés avant le premier jour", desc: "Vous vérifiez maintenant que la logistique sera prête. Vous préparez un programme structuré. Vous informez l'équipe avec le profil et le rôle. Vous désignez un parrain. Vous envoyez un document de contexte avant le premier jour. Vous clarifiez vos attentes et critères de succès pour vous-même. Vous contactez le nouveau avant son arrivée. Cette préparation rigoureuse — qui prend du temps avant l'arrivée pour en gagner après — est ce qui fait qu'un premier jour se passe bien et qu'un nouveau collaborateur se sent attendu." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Le premier jour du nouveau collaborateur est un jour chargé pour vous. Vous avez peu de temps à lui consacrer.",
+        tags: ["intégration", "premier jour"],
+        answers: [
+          { text: "Je lui confie un programme et un parrain — il peut se débrouiller.", score: 0.5 },
+          { text: "Je bloque du temps dans mon agenda pour son premier jour, quoi qu'il arrive.", score: 2 },
+          { text: "Je le vois en début de journée puis en fin de journée pour faire le point.", score: 1.5 },
+          { text: "Je reporte l'arrivée à un jour moins chargé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous bloquez du temps dans votre agenda pour le premier jour d'un nouveau collaborateur, indépendamment de votre charge.",
+        tags: ["intégration", "présence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe a des codes implicites — façon de communiquer, relations avec les autres équipes, sujets sensibles — que le nouveau collaborateur ne connaît pas.",
+        tags: ["intégration", "culture implicite"],
+        answers: [
+          { text: "Je laisse — il découvrira les codes en vivant avec l'équipe.", score: 0 },
+          { text: "Je lui explique explicitement les codes culturels et implicites pour l'aider à naviguer.", score: 2 },
+          { text: "Je lui en parle progressivement quand des situations concrètes se présentent.", score: 1 },
+          { text: "Je demande au parrain de lui transmettre la culture informelle.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur semble avoir du mal à créer des liens avec ses collègues. Il déjeune seul depuis deux semaines.",
+        tags: ["intégration", "relation pairs"],
+        answers: [
+          { text: "Je laisse — certaines personnes sont naturellement plus solitaires.", score: 0 },
+          { text: "Je crée activement des occasions pour faciliter les échanges informels.", score: 2 },
+          { text: "Je lui parle de la situation et je lui demande ce qui le freinerait.", score: 1.5 },
+          { text: "Je demande à son parrain de l'inclure davantage.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur est là depuis trois semaines. Vous n'avez pas encore fait de point sur comment il se sent dans son rôle.",
+        tags: ["intégration", "feedback précoce"],
+        answers: [
+          { text: "Je laisse — trois semaines est trop tôt pour un point formel.", score: 0 },
+          { text: "Je lui propose un point informel — comment il se sent, ce qui lui semble clair ou flou.", score: 2 },
+          { text: "J'attends le premier mois pour faire un point structuré.", score: 1 },
+          { text: "Je l'observe plutôt que de lui poser des questions — il dira ce qui ne va pas si nécessaire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Pendant les premiers mois d'un nouveau collaborateur, vous faites des points réguliers pour vérifier comment il se sent et ce qui lui semble encore flou.",
+        tags: ["intégration", "points réguliers"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur fait une erreur dans ses premières semaines. Toute l'équipe est au courant.",
+        tags: ["intégration", "erreur débutant"],
+        answers: [
+          { text: "Je le corrige devant l'équipe — c'est une occasion d'apprentissage collectif.", score: 0 },
+          { text: "Je lui en parle en privé en séparant la correction de l'apprentissage.", score: 2 },
+          { text: "Je laisse l'équipe gérer — c'est formateur de recevoir un retour direct des pairs.", score: 0 },
+          { text: "Je dédramatise en équipe puis je parle à la personne en privé.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur demande à avoir plus d'autonomie après six semaines. Vous pensez qu'il n'est pas encore prêt.",
+        tags: ["intégration", "autonomie progressive"],
+        answers: [
+          { text: "Je lui dis qu'il doit encore apprendre avant d'être autonome.", score: 0 },
+          { text: "Je lui explique ma logique et je lui propose un chemin vers l'autonomie avec des étapes claires.", score: 2 },
+          { text: "Je lui confie progressivement plus de responsabilités pour tester sa maturité.", score: 1.5 },
+          { text: "Je lui accorde l'autonomie qu'il demande en restant disponible si besoin.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous construisez l'autonomie du nouveau collaborateur progressivement en explicitant les étapes plutôt qu'en la lui accordant ou refusant d'un bloc.",
+        tags: ["intégration", "autonomie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur très compétent a du mal à s'intégrer — il critique les façons de faire de l'équipe, se ferme aux suggestions. Vous sentez une tension.",
+        tags: ["intégration", "difficultés"],
+        answers: [
+          { text: "Je laisse — il finira par s'adapter ou il partira.", score: 0 },
+          { text: "Je lui parle rapidement — les comportements d'intégration se corrigent plus facilement tôt.", score: 2 },
+          { text: "J'attends que la tension soit exprimée par l'équipe avant d'intervenir.", score: 0.5 },
+          { text: "Je lui confie des missions valorisantes pour canaliser son énergie.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'intégration dans l'équipe et la culture est laissée à la débrouille plutôt qu'activement facilitée", desc: "Laisser le nouveau déjeuner seul sans intervenir, ne pas lui expliquer les codes culturels implicites, ne pas bloquer de temps pour son premier jour, attendre que la tension avec un collaborateur difficile à intégrer soit visible pour intervenir : ces comportements laissent l'intégration se faire au hasard des interactions. L'intégration réussie est un investissement, pas un processus naturel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous facilitez l'intégration dans les situations ordinaires mais votre réactivité sur les signaux d'alerte est encore insuffisante", desc: "Vous bloquez du temps pour le premier jour et vous faites des points réguliers. Mais expliquer proactivement les codes culturels implicites, intervenir rapidement quand le nouveau déjeune seul depuis deux semaines, parler rapidement quand un collaborateur compétent a des comportements d'intégration difficiles : votre réactivité sur les signaux d'alerte est encore insuffisante." },
+          haut: { label: "Réflexes installés", titre: "Vous facilitez activement l'intégration et vous intervenez vite sur les signaux d'alerte", desc: "Vous bloquez du temps pour le premier jour quoi qu'il arrive. Vous expliquez les codes culturels implicites. Vous intervenez quand le nouveau déjeune seul depuis deux semaines. Vous lui parlez rapidement quand il a des comportements d'intégration difficiles. Vous lui donnez du feedback en privé après une erreur visible. Vous construisez son autonomie avec des étapes claires plutôt qu'un bloc oui/non. Cette facilitation active — qui suppose d'investir du temps au-delà du programme officiel — est ce qui fait qu'une intégration réussit vraiment." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur est là depuis un mois. Vous ne lui avez pas encore communiqué d'objectifs clairs pour ses trois premiers mois.",
+        tags: ["attentes", "objectifs"],
+        answers: [
+          { text: "Je laisse — le premier mois est une période d'observation et les objectifs viennent après.", score: 0 },
+          { text: "Je lui fixe maintenant des objectifs clairs pour ses trois premiers mois — il est temps.", score: 2 },
+          { text: "Je lui demande ce qu'il pense être ses objectifs et on aligne ensemble.", score: 1.5 },
+          { text: "Je lui donne des objectifs indicatifs qui se préciseront dans les prochaines semaines.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous fixez des objectifs clairs pour les trois premiers mois d'un nouveau collaborateur dans les premières semaines.",
+        tags: ["attentes", "objectifs"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez des attentes implicites sur les comportements, la disponibilité ou la proactivité d'un nouveau collaborateur que vous n'avez jamais explicitées. Il ne les satisfait pas.",
+        tags: ["attentes", "non-dit"],
+        answers: [
+          { text: "Je le laisse découvrir — les attentes implicites font partie de l'apprentissage du poste.", score: 0 },
+          { text: "Je nomme mes attentes implicites clairement — elles ne peuvent pas être satisfaites si elles ne sont pas exprimées.", score: 2 },
+          { text: "Je lui donne des exemples de ce qui me satisferait sans mentionner que c'est une attente.", score: 0.5 },
+          { text: "Je lui dis que certaines choses lui semblent peut-être normales mais ne le sont pas dans cette équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous n'avez pas encore parlé du plan de développement à long terme avec le nouveau collaborateur. Il est là depuis deux mois.",
+        tags: ["attentes", "plan de développement"],
+        answers: [
+          { text: "Je laisse — deux mois c'est trop tôt pour parler de développement.", score: 0 },
+          { text: "J'initie une conversation sur ses aspirations et comment les rattacher à ce que le poste peut lui offrir.", score: 2 },
+          { text: "J'attends l'entretien annuel pour parler développement.", score: 0 },
+          { text: "Je lui demande d'y réfléchir et on en parle dans un mois.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur monte en compétences plus lentement que vous l'espériez. Vous êtes déçu·e mais ne lui en avez pas encore parlé.",
+        tags: ["attentes", "rythme montée"],
+        answers: [
+          { text: "J'attends encore — chacun a son rythme et la pression nuirait.", score: 0 },
+          { text: "Je lui en parle en nommant ce que j'observe et en cherchant avec lui ce qui pourrait accélérer sa progression.", score: 2 },
+          { text: "Je lui confie des missions plus simples pour consolider les bases.", score: 0.5 },
+          { text: "Je remets en question mes attentes — elles étaient peut-être irréalistes.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand la montée en compétences d'un nouveau collaborateur ne correspond pas à vos attentes, vous lui en parlez directement et rapidement.",
+        tags: ["attentes", "ajustement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Pendant les six premiers mois, votre feedback au nouveau collaborateur se limite à l'entretien de mi-période. Pas de feedback en continu.",
+        tags: ["attentes", "feedback continu"],
+        answers: [
+          { text: "Je laisse — l'entretien formel suffit et les feedbacks trop fréquents infantilisent.", score: 0 },
+          { text: "Je lui donne du feedback régulier et informel tout au long des six premiers mois.", score: 2 },
+          { text: "Je lui demande s'il souhaite plus de feedback — c'est à lui de choisir.", score: 1 },
+          { text: "Je lui donne du feedback quand quelque chose de notable se passe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur est très performant dès les premières semaines. Il commence à dépasser son périmètre et à empiéter sur d'autres rôles.",
+        tags: ["attentes", "surperformance"],
+        answers: [
+          { text: "Je le laisse faire — la proactivité est une qualité à encourager.", score: 0 },
+          { text: "Je lui parle de la dynamique que ça crée et de comment canaliser son énergie dans son périmètre.", score: 2 },
+          { text: "Je lui confie rapidement plus de responsabilités pour absorber son énergie.", score: 1 },
+          { text: "Je lui fixe des limites claires sur son périmètre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous donnez du feedback régulier et informel aux nouveaux collaborateurs pendant leurs six premiers mois.",
+        tags: ["attentes", "feedback régulier"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur a passé sa période d'essai. Vous n'avez pas fait de bilan structuré sur ce qui s'est bien passé et ce qui est à améliorer.",
+        tags: ["attentes", "bilan intégration"],
+        answers: [
+          { text: "Je laisse — la validation de la période d'essai est le bilan.", score: 0 },
+          { text: "Je prends le temps d'un bilan approfondi pour capitaliser et fixer le cap de la suite.", score: 2 },
+          { text: "Je lui demande son ressenti et je partage le mien.", score: 1.5 },
+          { text: "Je prépare un bilan pour l'entretien annuel suivant.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les attentes et la montée en compétences ne sont pas explicitées ni suivies suffisamment", desc: "Ne pas fixer d'objectifs pour les trois premiers mois, ne pas nommer ses attentes implicites, attendre l'entretien formel pour donner du feedback, ne pas parler de rythme de montée en compétences insuffisant : ces comportements privent le nouveau collaborateur des informations dont il a besoin pour s'améliorer. Un onboarding sans feedback continu est un onboarding dans le brouillard." },
+          moyen: { label: "Pratiques en développement", titre: "Vous communiquez vos attentes mais votre suivi de la montée en compétences et votre feedback continu sont encore perfectibles", desc: "Vous fixez des objectifs pour les trois premiers mois et vous donnez du feedback informel. Mais nommer vos attentes implicites qui ne sont pas satisfaites, parler directement d'une montée en compétences trop lente dès que vous le remarquez, initier une conversation de développement à long terme à deux mois : ces aspects de la clarification proactive des attentes sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos attentes sont explicitées, votre feedback est continu et vous abordez directement les décalages de montée en compétences", desc: "Vous fixez des objectifs pour les trois premiers mois dès les premières semaines. Vous nommez vos attentes implicites quand elles ne sont pas satisfaites. Vous parlez directement d'un rythme de montée insuffisant dès que vous le remarquez. Vous initiez une conversation sur le développement à long terme à deux mois. Vous donnez du feedback régulier et informel. Vous faites un bilan structuré à la fin de la période d'essai. Cette clarté continue des attentes — qui suppose d'assumer des conversations parfois difficiles tôt — est ce qui permet au nouveau collaborateur de progresser sans brouillard." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Le prédécesseur du nouveau collaborateur est parti sans transmettre ses connaissances. Le nouveau arrive dans une semaine.",
+        tags: ["continuité", "départ prédécesseur"],
+        answers: [
+          { text: "Je laisse le nouveau se débrouiller — il devra reconstruire par lui-même.", score: 0 },
+          { text: "Je reconstitue avec les membres de l'équipe et la documentation disponible un minimum de passation.", score: 2 },
+          { text: "Je demande à l'ancien de faire une passation express même s'il est déjà parti.", score: 1 },
+          { text: "J'accepte qu'il y ait une perte de connaissances et j'en tiens compte dans les délais de montée en compétences.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous assurez une passation de connaissances minimale avant toute arrivée d'un nouveau collaborateur.",
+        tags: ["continuité", "passation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe n'a pas de documentation sur ses processus, ses outils et ses façons de faire. Chaque arrivée repose sur la transmission orale.",
+        tags: ["continuité", "documentation"],
+        answers: [
+          { text: "Je laisse — la transmission orale est plus riche et adaptée.", score: 0 },
+          { text: "Je crée progressivement une documentation de base pour les éléments essentiels.", score: 2 },
+          { text: "Je demande au nouveau collaborateur de documenter ce qu'il apprend pour enrichir la base.", score: 1.5 },
+          { text: "Je demande aux membres de l'équipe de documenter leurs pratiques.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre processus d'onboarding a été vécu comme insuffisant par le nouveau collaborateur selon un retour informal. Vous ne l'aviez pas demandé.",
+        tags: ["continuité", "bilan processus"],
+        answers: [
+          { text: "Je prends note sans faire de démarche particulière — chaque situation est différente.", score: 0 },
+          { text: "Je lui demande un feedback structuré sur l'onboarding pour améliorer le prochain.", score: 2 },
+          { text: "Je l'utilise pour ajuster ma façon de faire sur les prochaines arrivées.", score: 1.5 },
+          { text: "Je défends mon processus — l'onboarding parfait n'existe pas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Le nouveau collaborateur repart pendant sa période d'essai. Vous n'avez pas cherché à comprendre pourquoi.",
+        tags: ["continuité", "départ pendant période essai"],
+        answers: [
+          { text: "Je laisse — ça arrive et ce n'est pas forcément évitable.", score: 0 },
+          { text: "Je cherche à comprendre ce qui s'est passé pour ajuster mon processus d'onboarding et de recrutement.", score: 2 },
+          { text: "J'en parle aux RH pour qu'ils gèrent la sortie.", score: 0.5 },
+          { text: "Je demande à un tiers de faire l'entretien de sortie pour plus d'objectivité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un onboarding se passe mal ou qu'un collaborateur part pendant sa période d'essai, vous cherchez activement à comprendre pourquoi.",
+        tags: ["continuité", "apprentissage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Plusieurs nouveaux collaborateurs arrivent en même temps dans votre équipe. Votre processus habituel d'onboarding est individuel.",
+        tags: ["continuité", "plusieurs arrivées"],
+        answers: [
+          { text: "Je maintiens le processus individuel — chaque personne mérite une intégration personnalisée.", score: 0.5 },
+          { text: "Je combine des éléments collectifs — contexte, culture, équipe — avec des éléments individuels adaptés à chaque rôle.", score: 2 },
+          { text: "Je fais un onboarding collectif pour gagner du temps.", score: 0 },
+          { text: "Je délègue l'intégration des nouveaux collaborateurs à des membres seniors.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Six mois après l'arrivée d'un nouveau collaborateur, vous ne savez plus vraiment si son intégration a été réussie.",
+        tags: ["continuité", "check six mois"],
+        answers: [
+          { text: "Je laisse — si ça se passait mal, ça se verrait.", score: 0 },
+          { text: "Je fais un point à six mois spécifiquement sur l'intégration — ce qui est bien installé et ce qui mérite encore attention.", score: 2 },
+          { text: "Je l'évalue comme les autres membres de l'équipe — l'intégration est terminée.", score: 0.5 },
+          { text: "Je lui demande informellement si tout va bien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous faites un bilan à six mois sur l'intégration, distinct de l'évaluation de performance.",
+        tags: ["continuité", "suivi long terme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un pair manager vous demande comment vous faites votre onboarding. Vous n'avez jamais formalisé votre façon de faire.",
+        tags: ["continuité", "transmission"],
+        answers: [
+          { text: "Je lui dis que j'improvise selon les situations — pas de méthode fixe.", score: 0 },
+          { text: "Je profite de sa question pour formaliser ce que je fais et lui partager.", score: 2 },
+          { text: "Je lui partage quelques conseils généraux sans entrer dans les détails.", score: 1 },
+          { text: "Je lui recommande des lectures ou des ressources sur l'onboarding.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'onboarding ne fait pas l'objet d'une amélioration continue — ni bilan, ni documentation, ni transmission", desc: "Ne pas chercher à comprendre pourquoi un collaborateur est reparti pendant sa période d'essai, ne pas créer de documentation minimale, ne pas faire de bilan de l'onboarding pour améliorer le prochain, garder sa méthode pour soi : ces comportements traitent chaque onboarding comme un événement isolé plutôt que comme une pratique qui s'améliore." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites un bilan de chaque onboarding mais la documentation et la transmission sont encore insuffisantes", desc: "Vous faites un bilan de l'onboarding et vous cherchez à améliorer. Mais créer de la documentation sur les processus essentiels, faire un bilan structuré à six mois distinct de l'évaluation de performance, chercher à comprendre ce qui s'est passé quand un collaborateur repart pendant sa période d'essai, formaliser votre méthode pour la partager avec vos pairs : ces comportements d'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre onboarding s'améliore en continu — bilan systématique, documentation, transmission à vos pairs", desc: "Vous cherchez à comprendre pourquoi un collaborateur est reparti pendant la période d'essai. Vous créez progressivement une documentation des processus essentiels. Vous demandez un feedback sur votre onboarding pour l'améliorer. Vous faites un bilan à six mois sur l'intégration. Vous combinez collectif et individuel quand plusieurs personnes arrivent en même temps. Vous formalisez et partagez votre méthode quand un pair vous le demande. Cette amélioration continue de l'onboarding est ce qui fait que votre façon d'intégrer les collaborateurs s'améliore à chaque arrivée." },
+        },
+      }
+    ],
+
+  },
+
+  "communiquer-situation-tendue": {
+    0: [
+      {
+        type: "choix",
+        text: "Lors d'une réunion, votre responsable critique votre travail de façon abrupte devant d'autres personnes. Vous sentez la colère monter.",
+        tags: ["ancrage", "état émotionnel"],
+        answers: [
+          { text: "Je réponds immédiatement pour défendre mon travail — laisser passer signifie acquiescer.", score: 0 },
+          { text: "Je prends le temps de respirer, je note ce qui est dit et je réponds de façon factuelle.", score: 2 },
+          { text: "Je me tais pour éviter d'aggraver la situation.", score: 0.5 },
+          { text: "Je dis calmement que je préfère discuter de ça en tête-à-tête.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez une conversation difficile à mener cet après-midi — annoncer une mauvaise nouvelle, recadrer un collaborateur. Vous n'avez pas préparé comment vous allez la conduire.",
+        tags: ["ancrage", "préparation"],
+        answers: [
+          { text: "J'improvise — je connais bien la personne et les conversations spontanées sont souvent plus authentiques.", score: 0 },
+          { text: "Je prends dix minutes pour clarifier mon objectif, anticiper les réactions et préparer mes formulations clés.", score: 2 },
+          { text: "Je prépare quelques points mais je laisse la conversation se développer naturellement.", score: 1 },
+          { text: "Je reporte à demain pour avoir le temps de mieux préparer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant une conversation difficile, vous prenez le temps de clarifier votre objectif et d'anticiper les réactions possibles.",
+        tags: ["ancrage", "préparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez mener une conversation tendue mais vous êtes épuisé·e après une longue journée. Vous savez que votre seuil de tolérance est bas.",
+        tags: ["ancrage", "fatigue"],
+        answers: [
+          { text: "Je la mène quand même — reporter montrerait que j'évite.", score: 0 },
+          { text: "Je reporte si c'est possible — un entretien mené fatigué est souvent moins efficace.", score: 2 },
+          { text: "Je la mène en étant vigilant·e à ma réactivité.", score: 1 },
+          { text: "Je la délègue à quelqu'un de plus disponible émotionnellement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Pendant une conversation tendue, votre interlocuteur passe du sujet à une critique personnelle de votre façon d'être.",
+        tags: ["ancrage", "attaque personnelle"],
+        answers: [
+          { text: "Je réponds sur le fond de la critique personnelle — si elle est fondée, je dois l'entendre.", score: 0.5 },
+          { text: "Je ramène calmement la conversation sur les faits et les comportements observables.", score: 2 },
+          { text: "Je me défends — laisser passer une attaque personnelle sans réagir m'affaiblit.", score: 0 },
+          { text: "Je termine la conversation — les attaques personnelles ne sont pas acceptables.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand une conversation dérive vers des attaques personnelles, vous ramenez le sujet sur les faits et les comportements observables.",
+        tags: ["ancrage", "faits"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur fait une pause longue après que vous avez dit quelque chose d'important. Le silence vous met mal à l'aise et vous êtes tenté·e de le remplir.",
+        tags: ["ancrage", "silence"],
+        answers: [
+          { text: "Je remplis le silence en ajoutant des éléments — le silence prolongé est inconfortable pour les deux.", score: 0 },
+          { text: "Je laisse le silence — il signifie souvent que l'autre réfléchit.", score: 2 },
+          { text: "Je lui demande ce qu'il pense de ce que je viens de dire.", score: 1.5 },
+          { text: "Je reformule ce que je viens de dire pour m'assurer d'avoir été clair·e.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur vous interrompt systématiquement sans vous laisser finir votre pensée. Ça dure depuis le début de la conversation.",
+        tags: ["ancrage", "interruption"],
+        answers: [
+          { text: "Je m'adapte — les personnes qui interrompent ont souvent une façon de fonctionner différente.", score: 0 },
+          { text: "Je le signale calmement : 'je préférerais finir ma pensée avant de t'entendre'.", score: 2 },
+          { text: "Je parle plus vite pour finir avant d'être interrompu·e.", score: 0 },
+          { text: "Je pose la règle du jeu en début de conversation — on se laisse finir mutuellement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Dans une conversation tendue, vous maintenez un ton stable même quand votre interlocuteur monte en pression.",
+        tags: ["ancrage", "ancrage émotionnel"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après une conversation tendue difficile, vous ressassez pendant des heures ce que vous auriez dû dire différemment.",
+        tags: ["ancrage", "rumination"],
+        answers: [
+          { text: "Je laisse — la rumination est le prix de l'implication.", score: 0 },
+          { text: "Je note ce que j'aurais pu faire différemment puis je passe à autre chose.", score: 2 },
+          { text: "J'en parle à quelqu'un de confiance pour extérioriser.", score: 1.5 },
+          { text: "Je cherche à retourner voir la personne pour 'corriger' la conversation.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Dans les moments de tension, vous réagissez avant de réfléchir — réponse immédiate, silence ou évitement", desc: "Répondre immédiatement à une critique publique sous l'effet de la colère, ne pas préparer les conversations difficiles, remplir les silences par inconfort, ne pas nommer le ton d'un interlocuteur agressif : ces comportements sont des réactions automatiques à la tension. Rester ancré dans les moments de pression est une compétence qui se développe — elle commence par reconnaître ses propres déclencheurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous préparez et restez généralement ancré·e mais les situations de surprise ou de fatigue créent encore des réactivités", desc: "Vous préparez vos conversations difficiles et vous revenez aux faits quand la conversation dérive vers le personnel. Mais gérer la surprise d'une critique abrupte devant d'autres personnes, mener une conversation difficile quand vous êtes fatigué·e, nommer le ton d'un interlocuteur agressif sans y répondre de même, ne pas ruminer après une conversation difficile : ces situations spécifiques créent encore des réactivités. L'enjeu est d'étendre votre ancrage aux moments de surprise et de fatigue." },
+          haut: { label: "Réflexes installés", titre: "Vous restez ancré·e dans les moments de tension — préparé·e, stable, et vous savez nommer ce qui se passe", desc: "Vous prenez dix minutes pour préparer vos conversations difficiles. Vous respirez et répondez factuellement quand la critique est abrupte. Vous reportez si vous êtes épuisé·e. Vous ramenez la conversation sur les faits quand elle dérive vers le personnel. Vous laissez les silences. Vous nommez le ton de l'interlocuteur agressif. Vous notez ce que vous auriez fait différemment et vous passez à autre chose. Cette stabilité — qui suppose de reconnaître ses propres déclencheurs et d'y travailler — est ce qui fait qu'une conversation difficile reste une conversation, pas un affrontement." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre interlocuteur est très émotionnel pendant la conversation. Il pleure ou sa voix tremble. Vous vous concentrez sur ce qu'il dit plutôt que sur son état.",
+        tags: ["écoute", "émotion"],
+        answers: [
+          { text: "Je continue à traiter le fond — les émotions passent et le sujet reste.", score: 0 },
+          { text: "Je prends acte de son état émotionnel avant de continuer sur le fond.", score: 2 },
+          { text: "Je lui propose une pause.", score: 1.5 },
+          { text: "Je l'encourage à continuer — exprimer ses émotions est sain.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand votre interlocuteur est émotionnel, vous prenez acte de son état avant de continuer sur le fond.",
+        tags: ["écoute", "émotions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Pendant que votre interlocuteur parle dans une conversation tendue, vous formulez déjà votre réponse dans votre tête.",
+        tags: ["écoute", "préparation réponse"],
+        answers: [
+          { text: "C'est normal — être prêt·e à répondre est une qualité dans une conversation difficile.", score: 0 },
+          { text: "Je remarque ce réflexe et je me force à vraiment écouter jusqu'au bout avant de construire ma réponse.", score: 2 },
+          { text: "Je prends des notes pour ne pas oublier ce que je veux dire tout en écoutant.", score: 1 },
+          { text: "Je laisse — les deux activités se font simultanément sans que l'une nuise à l'autre.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur vient de dire quelque chose de confus ou de contradictoire. Vous n'êtes pas sûr·e d'avoir bien compris.",
+        tags: ["écoute", "reformulation"],
+        answers: [
+          { text: "Je réponds à ce que j'ai compris — si je me trompe, il me corrigera.", score: 0 },
+          { text: "Je reformule ce que j'ai compris et je lui demande si c'est bien ça.", score: 2 },
+          { text: "Je lui pose une question directe sur le point confus.", score: 1.5 },
+          { text: "Je note la confusion et j'y reviens plus tard dans la conversation.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur répète plusieurs fois le même argument sans en ajouter de nouveau. Il n'entend pas votre position.",
+        tags: ["écoute", "position ferme"],
+        answers: [
+          { text: "Je répète aussi mon argument — la répétition finira par faire effet.", score: 0 },
+          { text: "Je lui montre que j'ai entendu son argument et j'exprime pourquoi ma position reste différente.", score: 2 },
+          { text: "Je cherche un point de convergence pour sortir de la répétition.", score: 1.5 },
+          { text: "Je passe à autre chose — répéter ne fait pas avancer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous montrez explicitement à votre interlocuteur que vous avez entendu son argument avant d'exprimer votre désaccord.",
+        tags: ["écoute", "montrer qu'on a entendu"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur dit des choses avec lesquelles vous n'êtes pas d'accord. Vous avez du mal à écouter sans vous préparer à réfuter.",
+        tags: ["écoute", "filtre"],
+        answers: [
+          { text: "Je laisse — avoir envie de réfuter est la preuve que j'écoute et que je suis engagé·e.", score: 0 },
+          { text: "Je m'impose d'écouter pour comprendre, pas pour réfuter — les deux peuvent venir après.", score: 2 },
+          { text: "Je prends des notes sur les points à réfuter pour ne pas les perdre.", score: 0.5 },
+          { text: "Je pose des questions pour affiner sa position avant de réfuter.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur dit qu'il 'va bien' mais son langage non-verbal et son ton vous indiquent le contraire.",
+        tags: ["écoute", "ce qui n'est pas dit"],
+        answers: [
+          { text: "Je prends sa réponse pour argent comptant — il sait mieux que moi comment il se sent.", score: 0 },
+          { text: "Je nomme ce que j'observe : 'tu dis que ça va mais je sens une tension — est-ce qu'il y a quelque chose que tu ne dis pas ?'", score: 2 },
+          { text: "J'observe encore et je reviens vers lui si ça persiste.", score: 1 },
+          { text: "Je lui donne l'occasion de parler en continuant la conversation sans le forcer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous êtes attentif·ve aux signaux non-verbaux et vous les nommez quand ils semblent en désaccord avec ce qui est dit.",
+        tags: ["écoute", "non-verbal"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez en écoutant votre interlocuteur que vous avez surtout envie qu'il vous entende, vous — pas vraiment de l'entendre lui.",
+        tags: ["écoute", "vouloir être entendu"],
+        answers: [
+          { text: "Je laisse — vouloir être entendu est légitime dans une conversation tendue.", score: 0 },
+          { text: "Je prends conscience de ce biais et je me recentre sur l'écoute.", score: 2 },
+          { text: "Je cherche d'abord un point sur lequel je suis d'accord avec lui avant de continuer.", score: 1.5 },
+          { text: "Je lui dis directement que j'ai l'impression que nos besoins d'être entendus entrent en compétition.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre écoute dans les conversations tendues est filtrée par votre besoin de répondre ou de convaincre", desc: "Formuler sa réponse pendant que l'autre parle, ne pas prendre acte de l'état émotionnel de son interlocuteur avant de continuer sur le fond, chercher à réfuter plutôt qu'à comprendre, ne pas remarquer quand ce qui est dit ne correspond pas au non-verbal : ces comportements écoutent pour répondre plutôt que pour comprendre. Dans une conversation tendue, la personne qui se sent réellement entendue est souvent prête à entendre à son tour." },
+          moyen: { label: "Pratiques en développement", titre: "Vous écoutez activement mais votre écoute peut encore céder quand vous êtes en désaccord profond", desc: "Vous prenez acte de l'état émotionnel de votre interlocuteur et vous reformulez pour vérifier votre compréhension. Mais distinguer écouter pour comprendre de préparer mentalement sa réponse, nommer ce que le non-verbal dit quand ça diffère de ce qui est dit, reconnaître votre propre biais quand vous voulez surtout être entendu·e : ces dimensions de l'écoute profonde sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre écoute dans les conversations tendues est active et profonde — état émotionnel pris en compte, non-verbal nommé", desc: "Vous prenez acte de l'état émotionnel avant de continuer sur le fond. Vous vous imposez d'écouter pour comprendre avant de construire votre réponse. Vous reformulez pour vérifier votre compréhension. Vous montrez que vous avez entendu avant d'exprimer votre désaccord. Vous nommez ce que le non-verbal dit quand ça diffère de ce qui est dit. Vous reconnaissez quand vous voulez surtout être entendu·e. Cette écoute profonde — qui suppose d'aller contre le réflexe naturel de réponse immédiate — est ce qui crée les conditions pour que l'autre puisse vraiment entendre à son tour." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous devez dire à un collaborateur que sa façon de gérer un client a été problématique. Vous avez tendance à formuler des reproches.",
+        tags: ["formulation", "reproche"],
+        answers: [
+          { text: "Je lui dis directement ce qu'il a mal fait — la clarté prime sur la forme.", score: 0 },
+          { text: "Je décris le comportement observé et son impact sans jugement de valeur.", score: 2 },
+          { text: "Je lui pose des questions sur sa façon de gérer le client pour qu'il arrive lui-même à la conclusion.", score: 1 },
+          { text: "Je lui donne un retour positif d'abord puis j'aborde le problème.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous formulez vos retours critiques en décrivant des comportements observables et leurs impacts, sans jugement de la personne.",
+        tags: ["formulation", "comportements"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez annoncer une décision difficile à un collaborateur — réorganisation, changement de poste, non-promotion. Il ne s'y attend pas.",
+        tags: ["formulation", "mauvaise nouvelle"],
+        answers: [
+          { text: "Je commence par de longues explications contextuelles pour l'amortir.", score: 0 },
+          { text: "J'annonce la décision clairement dès le début puis j'explique les raisons.", score: 2 },
+          { text: "Je tourne autour jusqu'à ce qu'il comprenne par lui-même.", score: 0 },
+          { text: "Je lui envoie les informations par mail avant pour qu'il ait le temps de se préparer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre responsable vient de prendre une décision avec laquelle vous êtes en désaccord profond. Il vous demande votre avis.",
+        tags: ["formulation", "désaccord"],
+        answers: [
+          { text: "Je dis que je suis d'accord — exprimer un désaccord à la hiérarchie est risqué.", score: 0 },
+          { text: "J'exprime mon désaccord clairement et respectueusement tout en précisant que j'appliquerai la décision.", score: 2 },
+          { text: "J'exprime des réserves atténuées sans aller jusqu'au désaccord direct.", score: 0.5 },
+          { text: "Je lui pose des questions pour comprendre sa logique avant d'exprimer mon désaccord.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous recevez une critique sur votre travail qui vous semble partiellement injuste. Votre premier réflexe est de vous défendre.",
+        tags: ["formulation", "critique"],
+        answers: [
+          { text: "Je me défends — laisser passer une critique injuste est nuisible.", score: 0 },
+          { text: "J'écoute la critique jusqu'au bout puis je partage ce qui me semble juste et ce qui me semble partial.", score: 2 },
+          { text: "Je reconnais tout — même partielle, une critique mérite d'être acceptée.", score: 0 },
+          { text: "Je demande des exemples précis pour évaluer la justesse de la critique.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous recevez une critique partiellement injuste, vous reconnaissez ce qui est juste sans acquiescer à ce qui ne l'est pas.",
+        tags: ["formulation", "critique reçue"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre interlocuteur vous presse de donner une réponse immédiate sur une question importante. Vous avez besoin de temps pour réfléchir.",
+        tags: ["formulation", "pression temps"],
+        answers: [
+          { text: "Je donne une réponse maintenant — sembler hésitant affaiblit ma position.", score: 0 },
+          { text: "Je dis que je vais réfléchir et que je reviendrai avec ma réponse à une heure précise.", score: 2 },
+          { text: "Je donne une réponse provisoire en précisant que je pourrai la revoir.", score: 1 },
+          { text: "Je lui retourne la question — pourquoi une réponse immédiate est-elle nécessaire ?", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue vous parle avec un ton agressif. Vous sentez l'envie de répondre sur le même ton.",
+        tags: ["formulation", "colère"],
+        answers: [
+          { text: "Je réponds sur le même ton — l'assertivité s'impose parfois face à l'agressivité.", score: 0 },
+          { text: "Je lui dis calmement que je préfère qu'on se parle autrement et que je suis prêt·e à continuer quand c'est possible.", score: 2 },
+          { text: "Je ne dis rien et je quitte la conversation.", score: 0.5 },
+          { text: "Je continue à répondre sur le fond en ignorant le ton.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Face à un interlocuteur agressif, vous nommez le ton plutôt que d'y répondre sur le même registre ou de l'ignorer.",
+        tags: ["formulation", "ton"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La conversation tourne en rond depuis 20 minutes. Vous répétez les mêmes arguments, l'autre aussi. Il n'y a pas d'avancée.",
+        tags: ["formulation", "clore"],
+        answers: [
+          { text: "Je continue — céder maintenant signifie avoir tort.", score: 0 },
+          { text: "Je nomme l'impasse et je propose de changer d'approche ou de reprendre plus tard.", score: 2 },
+          { text: "Je concède pour mettre fin à la conversation.", score: 0 },
+          { text: "Je demande à un tiers d'intervenir pour débloquer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos formulations dans les moments difficiles sont encore marquées par le reproche ou la défense", desc: "Formuler des reproches plutôt que des observations de comportements, commencer une mauvaise nouvelle par de longues explications pour l'amortir, se défendre face à une critique partiellement injuste plutôt que reconnaître ce qui est juste, répondre sur le même ton agressif : ces formulations augmentent la tension au lieu de la réduire. La façon de dire les choses difficiles détermine souvent autant que le fond." },
+          moyen: { label: "Pratiques en développement", titre: "Vos formulations sont généralement factuelles et respectueuses mais les situations d'injustice perçue créent encore des réactivités", desc: "Vous décrivez des comportements observables plutôt que des reproches. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Mais annoncer clairement une mauvaise nouvelle dès le début plutôt que de l'amortir par du contexte, nommer le ton d'un interlocuteur agressif, nommer l'impasse quand la conversation tourne en rond : ces formulations directes dans les moments difficiles créent encore des hésitations." },
+          haut: { label: "Réflexes installés", titre: "Vos formulations sont directes et factuelles — mauvaises nouvelles annoncées clairement, ton nommé, impasses nommées", desc: "Vous décrivez les comportements et leurs impacts sans jugement de valeur. Vous annoncez la mauvaise nouvelle clairement dès le début. Vous exprimez votre désaccord respectueusement tout en précisant que vous appliquerez. Vous reconnaissez ce qui est juste dans une critique partiellement injuste. Vous prenez le temps de réfléchir quand on vous presse. Vous nommez le ton agressif. Vous nommez l'impasse et proposez de changer d'approche. Ces formulations directes et respectueuses — qui supposent de distinguer le fond de la forme dans les moments de tension — sont ce qui permet de dire les choses difficiles sans les aggraver." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous devez annoncer une mauvaise nouvelle à l'ensemble de votre équipe. Certains membres réagiront fortement, d'autres pas. Vous ne savez pas trop comment structurer.",
+        tags: ["audience", "annonce collective"],
+        answers: [
+          { text: "J'annonce la nouvelle directement dès le début pour éviter la suspense.", score: 1.5 },
+          { text: "Je structure l'annonce — faits, raisons, conséquences, suite — pour que tout le monde ait les mêmes informations.", score: 2 },
+          { text: "Je commence par contextualiser longuement pour amortir l'impact.", score: 0 },
+          { text: "Je prépare une communication écrite que je distribue avant la réunion.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous devez communiquer une mauvaise nouvelle à un groupe, vous structurez votre message — faits, raisons, conséquences, suite — avant de vous exprimer.",
+        tags: ["audience", "structure"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors d'une réunion d'équipe après une annonce difficile, une question hostile vous est posée devant tout le monde. Vous ne savez pas quoi répondre.",
+        tags: ["audience", "questions hostiles"],
+        answers: [
+          { text: "Je réponds de façon évasive pour éviter de m'engager.", score: 0 },
+          { text: "Je reconnais la légitimité de la question et je réponds honnêtement ce que je sais et ce que je ne sais pas.", score: 2 },
+          { text: "Je demande à la personne de reformuler sa question pour gagner du temps.", score: 0.5 },
+          { text: "Je propose de lui répondre en tête-à-tête après la réunion.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Suite à votre annonce, un membre de l'équipe réagit très émotionnellement devant tout le groupe.",
+        tags: ["audience", "réactions fortes"],
+        answers: [
+          { text: "Je continue sur le fond — les réactions émotionnelles ne changent pas les faits.", score: 0 },
+          { text: "Je prends acte de sa réaction devant le groupe puis je lui propose un échange individuel.", score: 2 },
+          { text: "Je fais une pause et je lui parle en privé immédiatement.", score: 1.5 },
+          { text: "Je lui laisse l'espace de s'exprimer jusqu'au bout avant de continuer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après votre annonce, un silence total s'installe dans la salle. Personne ne réagit. Vous ne savez pas comment interpréter ce silence.",
+        tags: ["audience", "silence collectif"],
+        answers: [
+          { text: "Je remplis le silence en ajoutant des éléments — le silence collectif est inconfortable.", score: 0 },
+          { text: "Je nomme le silence : 'je vois que c'est une nouvelle qui prend du temps à digérer'.", score: 2 },
+          { text: "J'attends quelques secondes puis je pose une question ouverte.", score: 1.5 },
+          { text: "Je leur donne du temps et je propose qu'on se retrouve dans une heure.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand un silence s'installe après une annonce difficile, vous le nommez ou l'utilisez plutôt que de vous précipiter à le remplir.",
+        tags: ["audience", "silence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez défendre une décision impopulaire auprès d'une audience qui y est opposée. Vous avez des arguments solides.",
+        tags: ["audience", "récit"],
+        answers: [
+          { text: "Je présente mes arguments directement — la logique doit convaincre.", score: 0.5 },
+          { text: "Je commence par montrer que je comprends leurs réserves avant de présenter mes arguments.", score: 2 },
+          { text: "Je leur pose des questions pour comprendre leurs objections spécifiques avant de répondre.", score: 1.5 },
+          { text: "Je présente les arguments et je leur laisse du temps pour y réfléchir.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Lors d'une réunion tendue, on vous pose une question à laquelle vous n'avez pas de réponse. L'audience attend.",
+        tags: ["audience", "ne pas savoir"],
+        answers: [
+          { text: "J'improvise une réponse approximative pour ne pas paraître pris de court.", score: 0 },
+          { text: "Je dis honnêtement que je n'ai pas la réponse et que je la donnerai dès que je l'aurai.", score: 2 },
+          { text: "Je renvoie la question à quelqu'un de plus informé dans la salle.", score: 1 },
+          { text: "Je prends note et je la transmets aux équipes concernées.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous admettez honnêtement quand vous n'avez pas de réponse à une question difficile, sans improviser.",
+        tags: ["audience", "honnêteté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La réunion s'est passée dans la tension. Certains membres sont repartis clairement mécontents. Vous n'avez pas prévu de suivi individuel.",
+        tags: ["audience", "après la réunion"],
+        answers: [
+          { text: "Je laisse le temps passer — les tensions de réunion se dissipent souvent d'elles-mêmes.", score: 0 },
+          { text: "Je prévois des échanges individuels avec les personnes les plus touchées dans les jours suivants.", score: 2 },
+          { text: "J'envoie un mail récapitulatif à toute l'équipe pour réancrer les messages.", score: 1 },
+          { text: "J'attends qu'ils viennent vers moi s'ils en ont besoin.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Face à une audience difficile, vous n'êtes pas encore à l'aise pour accueillir les réactions fortes et les silencess", desc: "Remplir le silence collectif après une annonce difficile, répondre de façon évasive à une question hostile, continuer sur le fond quand un membre réagit émotionnellement devant le groupe, improviser une réponse quand on ne sait pas : ces comportements perdent la salle plutôt que de la tenir. Communiquer en situation tendue face à un groupe demande des réflexes différents de la communication individuelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez vos communications collectives mais votre gestion des réactions fortes en groupe est encore perfectible", desc: "Vous structurez vos annonces collectives difficiles et vous prévoyez des suivis individuels. Mais nommer le silence collectif plutôt que de le remplir, prendre acte de la réaction émotionnelle d'un membre devant le groupe sans perdre le fil, commencer une défense d'une décision impopulaire par montrer que vous comprenez les réserves : ces comportements face aux audiences difficiles sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Face à une audience difficile, vous tenez la salle — structure claire, réactions accueillies, honnêteté sur ce que vous ne savez pas", desc: "Vous structurez vos annonces — faits, raisons, conséquences, suite. Vous répondez honnêtement aux questions hostiles en distinguant ce que vous savez et ce que vous ne savez pas. Vous prenez acte de la réaction émotionnelle d'un membre devant le groupe. Vous nommez le silence plutôt que de le remplir. Vous commencez par montrer que vous comprenez les réserves avant de défendre une décision impopulaire. Vous admettez honnêtement quand vous n'avez pas de réponse. Vous prévoyez des suivis individuels après une réunion tendue. Cette maîtrise de la communication collective en situation difficile — qui suppose de tenir le groupe tout en restant humain·e — est ce qui fait la différence entre un manager qui traverse les crises et un manager qui en sort renforcé." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -10022,149 +11356,169 @@
       "Réflexes face aux changements.",
       { domain: "transformation", chapters: [
         ["Réflexes", "Protection à exploration."],
-        ["Transition", "Signaler, aider."],
+        ["Transition", "Signaler."],
         ["Contribution", "Quick wins."],
         ["Flexibilité", "Opportunités."],
       ]}
     ],
 
     ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
-      "Échanges factuels sans posture défensive.",
+      "Échanges factuels.",
       { domain: "transformation", chapters: [
-        ["Donner", "Précision, courage."],
-        ["Recevoir", "Écoute, intégration."],
+        ["Donner", "Précision."],
+        ["Recevoir", "Écoute."],
         ["Culture", "Exemplarité."],
         ["Progresser", "Profondeur."],
       ]}
     ],
 
     ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
-      "Engagement, responsabilisation, soutien.",
+      "Engagement, soutien.",
       { domain: "transformation", chapters: [
-        ["Conditions", "Sens, reconnaissance."],
-        ["Durée", "Signaux faibles."],
+        ["Conditions", "Sens."],
+        ["Durée", "Signaux."],
         ["Responsabiliser", "Déléguer."],
-        ["Soutenir", "Limites, autonomie."],
+        ["Soutenir", "Limites."],
       ]}
     ],
 
     ["contribuer-projet", "Contribuer efficacement à un projet", "Collaborateurs",
-      "Rôles, imprévus, coopération.",
+      "Rôles, coopération.",
       { domain: "transformation", chapters: [
-        ["Rôle", "Livrables, périmètre."],
-        ["Coopérer", "Information, décisions."],
-        ["Imprévus", "Alerter, charge."],
-        ["Capitaliser", "REX, transmission."],
+        ["Rôle", "Livrables."],
+        ["Coopérer", "Information."],
+        ["Imprévus", "Alerter."],
+        ["Capitaliser", "REX."],
       ]}
     ],
 
     ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
-      "Résistances, communication, ancrage.",
+      "Résistances, ancrage.",
       { domain: "transformation", chapters: [
-        ["Résistances", "Écouter, remonter."],
-        ["Communication", "Proactivité, cohérence."],
-        ["Ancrage", "Glissements, co-construction."],
-        ["Soi", "Bilan, transmission."],
+        ["Résistances", "Écouter."],
+        ["Communication", "Proactivité."],
+        ["Ancrage", "Glissements."],
+        ["Soi", "Bilan."],
       ]}
     ],
 
     ["responsabiliser-sans-controler", "Responsabiliser sans contrôler", "Managers",
-      "Déléguer, autonomie, initiative.",
+      "Déléguer, autonomie.",
       { domain: "transformation", chapters: [
-        ["Déléguer", "Cadre, résultat."],
-        ["Confiance", "Conscience contrôle."],
+        ["Déléguer", "Cadre."],
+        ["Confiance", "Conscience."],
         ["Difficultés", "Développement."],
-        ["Autonomie collective", "Périmètre, transition."],
+        ["Autonomie", "Périmètre."],
       ]}
     ],
 
     ["cooperer-autres-equipes", "Coopérer avec les autres équipes", "Tous publics",
-      "Frictions, dépendances, silos.",
+      "Silos, frictions.",
       { domain: "transformation", chapters: [
-        ["Comprendre", "Curiosité, empathie."],
-        ["Frictions", "Contact direct."],
-        ["Relations", "Entretien, valorisation."],
-        ["Silos", "Initiative, crédit."],
+        ["Comprendre", "Curiosité."],
+        ["Frictions", "Contact."],
+        ["Relations", "Entretien."],
+        ["Silos", "Initiative."],
       ]}
     ],
 
     ["adapter-outils-methodes", "S'adapter aux nouveaux outils et méthodes", "Tous publics",
-      "Posture face aux transformations numériques.",
+      "Transformations numériques.",
       { domain: "transformation", chapters: [
-        ["Outil", "Exploration, partage."],
-        ["Méthode", "Engagement, robustesse."],
+        ["Outil", "Exploration."],
+        ["Méthode", "Engagement."],
         ["Numérique", "Expérimentation."],
-        ["Adoption", "Référent, culture."],
+        ["Adoption", "Référent."],
       ]}
     ],
 
     ["prioriser-arbitrer", "Prioriser et arbitrer quand tout est urgent", "Managers / Encadrants",
-      "Hiérarchiser, injonctions, tenir.",
+      "Hiérarchiser.",
       { domain: "transformation", chapters: [
-        ["Urgence réelle", "Impact réel."],
-        ["Arbitrer", "Critères, décisions."],
-        ["Durée", "Revue, anticipation."],
-        ["Communiquer", "Critères assumés."],
+        ["Urgence", "Impact réel."],
+        ["Arbitrer", "Critères."],
+        ["Durée", "Revue."],
+        ["Communiquer", "Assumer."],
       ]}
     ],
 
     ["prendre-sa-place", "Prendre sa place sans s'effacer", "Collaborateurs",
-      "Assertivité, positions, visibilité.",
+      "Assertivité.",
       { domain: "transformation", chapters: [
         ["S'exprimer", "Prise de parole."],
-        ["Position", "Arguments vs pression."],
-        ["Limites", "Refus, périmètre."],
-        ["S'affirmer", "Visibilité, ambition."],
+        ["Position", "Arguments."],
+        ["Limites", "Refus."],
+        ["S'affirmer", "Ambition."],
       ]}
     ],
 
     ["gerer-energie-priorites", "Gérer son énergie et ses priorités", "Tous publics",
-      "Rythmes, drain, récupération.",
+      "Rythmes, récupération.",
       { domain: "transformation", chapters: [
-        ["Rythmes", "Pics d'énergie."],
-        ["Drains", "Réunions, perfectionnisme."],
-        ["Recharge", "Rituels, signaux."],
-        ["Organisation", "Planification, systèmes."],
+        ["Rythmes", "Pics."],
+        ["Drains", "Perfectionnisme."],
+        ["Recharge", "Rituels."],
+        ["Organisation", "Planification."],
       ]}
     ],
 
     ["travailler-mode-projet", "Travailler en mode projet transversal", "Tous publics",
-      "Piloter sans autorité, parties prenantes.",
+      "Piloter sans autorité.",
       { domain: "transformation", chapters: [
-        ["Piloter", "Influence, engagements."],
-        ["Parties prenantes", "Cartographie, conflits."],
-        ["Coordonner", "Asynchrone, indicateurs."],
-        ["Clôturer", "Bilan, transmission."],
+        ["Piloter", "Influence."],
+        ["Parties prenantes", "Cartographie."],
+        ["Coordonner", "Asynchrone."],
+        ["Clôturer", "Bilan."],
       ]}
     ],
 
     ["conduire-reunion-utile", "Conduire une réunion utile", "Tous publics",
-      "Préparer, animer, conclure.",
+      "Préparer, animer.",
       { domain: "transformation", chapters: [
-        ["Préparer", "Objectif, durée."],
-        ["Animer", "Cadre, décisions."],
-        ["Conclure", "Actions, suivi."],
-        ["S'adapter", "Visio, hybride, conflit."],
+        ["Préparer", "Objectif."],
+        ["Animer", "Cadre."],
+        ["Conclure", "Actions."],
+        ["S'adapter", "Visio."],
       ]}
     ],
 
     ["manager-distance-hybride", "Manager à distance et en hybride", "Managers",
-      "Équité, performance, développement.",
+      "Équité à distance.",
       { domain: "transformation", chapters: [
-        ["Lien", "Équité, signaux faibles."],
-        ["Performance", "Résultats, confiance."],
-        ["Hybride", "Jours, opportunités."],
-        ["Développement", "Apprentissage, promotion."],
+        ["Lien", "Équité."],
+        ["Performance", "Résultats."],
+        ["Hybride", "Jours."],
+        ["Développement", "Apprentissage."],
       ]}
     ],
 
     ["gerer-conflits-equipe", "Gérer les conflits dans l'équipe", "Managers",
-      "Détecter, intervenir, faciliter la résolution, prévenir.",
+      "Détecter, résoudre, prévenir.",
       { domain: "transformation", chapters: [
-        ["Détecter tôt", "Signaux faibles, tensions cachées, conflits managériaux."],
-        ["Intervenir", "Équité, neutralité, reconnaissance de sa contribution."],
-        ["Faciliter la résolution", "Cadre sécurisé, accord formalisé, causes profondes."],
-        ["Prévenir", "Clarté des rôles, culture du désaccord, leçons tirées."],
+        ["Détecter", "Signaux faibles."],
+        ["Intervenir", "Équité."],
+        ["Résoudre", "Accord."],
+        ["Prévenir", "Culture."],
+      ]}
+    ],
+
+    ["onboarder-nouveau", "Onboarder un nouveau collaborateur", "Managers",
+      "Préparer, intégrer, clarifier.",
+      { domain: "transformation", chapters: [
+        ["Préparer", "Logistique, programme."],
+        ["Intégrer", "Culture, lien."],
+        ["Attentes", "Objectifs, feedback."],
+        ["Continuité", "Documentation, bilan."],
+      ]}
+    ],
+
+    ["communiquer-situation-tendue", "Communiquer en situation tendue", "Tous publics",
+      "Rester ancré·e, écouter, formuler, tenir une audience difficile.",
+      { domain: "transformation", chapters: [
+        ["Rester ancré·e", "Préparation, stabilité, nommer ce qui se passe."],
+        ["Écouter vraiment", "État émotionnel, non-verbal, écouter pour comprendre."],
+        ["Dire sans aggraver", "Comportements observables, mauvaises nouvelles claires, ton nommé."],
+        ["Face à une audience difficile", "Structure, réactions accueillies, honnêteté sur ce qu'on ne sait pas."],
       ]}
     ],
 
