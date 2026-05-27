@@ -321,6 +321,15 @@
         data.config_transmise === true ||
         data.submitted === true;
 
+      const hasCopyMarker = Boolean(
+        project?.isCopy === true || project?.is_copy === true ||
+        data.isCopy === true || data.is_copy === true ||
+        data.copiedFromProjectId || data.copied_from_project_id ||
+        data.clonedFromProjectId || data.cloned_from_project_id ||
+        data.cloneSourceProjectId || data.clone_source_project_id
+      );
+
+      if (hasCopyMarker && (!raw || raw === "draft" || raw === "brouillon")) return "draft";
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
       if (raw.includes("publi")) return "published";
       if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
@@ -619,6 +628,7 @@
       const source = data.source || {};
       return (
         data.copiedFromProjectId || data.copied_from_project_id ||
+        data.clonedFromProjectId || data.cloned_from_project_id ||
         data.cloneSourceProjectId || data.clone_source_project_id ||
         data.originalProjectId || data.original_project_id ||
         data.parentProjectId || data.parent_project_id ||
