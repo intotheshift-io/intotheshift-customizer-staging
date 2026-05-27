@@ -8013,6 +8013,673 @@
 
   },
 
+  "conduire-reunion-utile": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous convoquez une réunion hebdomadaire récurrente. Cette semaine, vous n'avez pas vraiment d'ordre du jour précis mais vous maintenez la réunion par habitude.",
+        tags: ["préparation", "objectif"],
+        answers: [
+          { text: "Je maintiens — la régularité de la réunion crée un espace utile même sans ordre du jour précis.", score: 0 },
+          { text: "J'annule ou je repousse — sans objectif clair, cette réunion fera perdre du temps à tout le monde.", score: 2 },
+          { text: "Je maintiens en improvisant l'ordre du jour au démarrage.", score: 0 },
+          { text: "Je maintiens mais je la raccourcis à 15 minutes pour un simple tour d'informations.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez informer votre équipe d'une décision déjà prise. Vous avez l'habitude de le faire en réunion.",
+        tags: ["préparation", "format"],
+        answers: [
+          { text: "Je convoque la réunion habituelle — l'information en présentiel est plus impactante.", score: 0 },
+          { text: "J'envoie un mail clair ou une vidéo courte — une information ne nécessite pas de réunion.", score: 2 },
+          { text: "Je leur envoie l'information par mail et j'organise une réunion courte pour les questions.", score: 1.5 },
+          { text: "Je l'annonce lors de la prochaine réunion planifiée.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant de convoquer une réunion, vous vérifiez si le format réunion est vraiment nécessaire ou si un autre canal ferait mieux.",
+        tags: ["préparation", "pertinence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous convoquez systématiquement les mêmes personnes à vos réunions récurrentes, même quand le sujet du jour ne les concerne pas toutes.",
+        tags: ["préparation", "participants"],
+        answers: [
+          { text: "Je les invite toutes — l'information large évite les frustrations de ceux qui ne sont pas au courant.", score: 0 },
+          { text: "J'adapte les participants en fonction du sujet du jour.", score: 2 },
+          { text: "Je fais deux réunions — un sous-groupe restreint pour les décisions, l'ensemble pour l'information.", score: 1.5 },
+          { text: "J'envoie un compte rendu à ceux qui ne sont pas présents.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous présentez souvent vos slides pour la première fois en réunion, sans les avoir partagées avant. Les participants découvrent le contenu en même temps que vous présentez.",
+        tags: ["préparation", "matériaux"],
+        answers: [
+          { text: "C'est plus dynamique — partager avant donne l'impression que la réunion est inutile.", score: 0 },
+          { text: "Je partage les documents en avance pour que la réunion soit consacrée à la discussion, pas à la lecture.", score: 2 },
+          { text: "Je partage les points clés en avance et je garde les détails pour la réunion.", score: 1.5 },
+          { text: "Je partage uniquement les documents qui nécessitent une préparation de la part des participants.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous partagez les documents préparatoires avant la réunion pour que les participants arrivent informés.",
+        tags: ["préparation", "documents"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous préparez un ordre du jour mais vous n'avez pas clarifié pour chaque point si c'est pour décider, informer, consulter ou résoudre.",
+        tags: ["préparation", "résultat attendu"],
+        answers: [
+          { text: "Je laisse les participants deviner — c'est évident selon les sujets.", score: 0 },
+          { text: "Je précise pour chaque point de l'ordre du jour le type de conversation attendu.", score: 2 },
+          { text: "Je le clarifie en introduction de chaque point en réunion.", score: 1 },
+          { text: "Je le précise uniquement pour les points qui risquent de dériver.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vos réunions durent systématiquement 60 minutes parce que c'est le créneau par défaut dans votre calendrier. Souvent vous avez fini les sujets en 35 minutes.",
+        tags: ["préparation", "durée"],
+        answers: [
+          { text: "Je remplis le temps disponible — il y a toujours quelque chose à couvrir.", score: 0 },
+          { text: "Je planifie la durée en fonction des sujets et je termine quand les objectifs sont atteints.", score: 2 },
+          { text: "Je termine à l'heure prévue même s'il ne reste rien — la ponctualité est un signe de respect.", score: 0.5 },
+          { text: "Je laisse le temps libre pour des échanges informels.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous calibrez la durée de vos réunions aux sujets à traiter plutôt que de vous aligner sur les créneaux standards.",
+        tags: ["préparation", "durée"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous préparez une réunion importante mais vous n'avez pas identifié la décision précise que vous souhaitez voir prise à l'issue.",
+        tags: ["préparation", "objectif décision"],
+        answers: [
+          { text: "Je laisse la discussion mener à la décision — fixer une décision à l'avance biaiserait les échanges.", score: 0 },
+          { text: "Je clarifie quelle décision doit être prise à l'issue et je l'annonce dès le début de la réunion.", score: 2 },
+          { text: "Je fixe une direction souhaitée sans l'annoncer pour ne pas biaiser.", score: 0 },
+          { text: "Je prépare plusieurs scénarios de décision possibles à présenter au groupe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions sont convoquées sans objectif clair et mal préparées — le format s'impose sur le besoin", desc: "Maintenir une réunion récurrente par habitude sans ordre du jour précis, convoquer 15 personnes pour une information qui aurait pu être un mail, présenter des slides pour la première fois en réunion sans les partager avant, prévoir 60 minutes parce que c'est le créneau standard : ces comportements font de la réunion une routine plutôt qu'un outil. Une réunion qui n'a pas d'objectif clair ne devrait pas avoir lieu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez vos réunions avec un objectif clair mais certains aspects de la préparation sont encore négligés", desc: "Vous préparez un ordre du jour et vous invitez les bonnes personnes. Mais partager les documents en avance plutôt que de les découvrir en réunion, préciser pour chaque point si c'est pour décider, informer ou consulter, calibrer la durée aux sujets plutôt que d'utiliser le créneau standard : ces aspects de la préparation fine sont encore négligés. L'enjeu est de traiter la préparation comme un investissement qui rend la réunion plus courte et plus productive." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions ont un objectif précis, les bons participants et une préparation qui permet d'entrer directement dans le fond", desc: "Vous annulez la réunion récurrente quand il n'y a pas d'ordre du jour. Vous envoyez l'information par mail quand une réunion n'est pas nécessaire. Vous partagez les documents en avance. Vous précisez pour chaque point s'il est pour décider, informer ou consulter. Vous calibrez la durée aux sujets et vous terminez quand les objectifs sont atteints. Vous annoncez la décision à prendre dès le début. Cette préparation rigoureuse — qui peut prendre dix minutes pour économiser trente — est ce qui fait qu'une réunion vaut le déplacement." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "En pleine réunion, un participant lance un sujet intéressant mais hors-agenda. Le groupe s'y engage. Vous sentez que ça va durer.",
+        tags: ["animation", "hors-sujet"],
+        answers: [
+          { text: "Je laisse — si tout le monde s'y engage, c'est que c'est utile.", score: 0 },
+          { text: "Je note le sujet dans un 'parking lot' et je recentre sur l'ordre du jour.", score: 2 },
+          { text: "J'alloue cinq minutes au sujet puis je recentre.", score: 1 },
+          { text: "Je propose de faire une réunion dédiée à ce sujet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous tenez le cadre de la réunion en recentrant sur les objectifs quand la conversation dérive, même si le hors-sujet est intéressant.",
+        tags: ["animation", "cadre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "En réunion, deux ou trois personnes dominent la conversation. Les autres restent silencieuses. Vous ne savez pas ce qu'elles pensent.",
+        tags: ["animation", "silencieux"],
+        answers: [
+          { text: "Je laisse — si elles ne parlent pas, c'est qu'elles n'ont rien à ajouter.", score: 0 },
+          { text: "Je sollicite directement les personnes silencieuses sur les points qui les concernent.", score: 2 },
+          { text: "Je propose un tour de table pour que chacun s'exprime.", score: 1.5 },
+          { text: "Je demande si quelqu'un a un point de vue différent de celui qui a été exprimé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux participants ont une discussion qui dégénère en débat tendu. Les autres se taisent. Le sujet est important.",
+        tags: ["animation", "conflit"],
+        answers: [
+          { text: "Je laisse le débat se régler — les tensions produisent parfois de bonnes décisions.", score: 0 },
+          { text: "J'interviens pour recentrer sur les faits et les objectifs de la réunion.", score: 2 },
+          { text: "Je propose une pause de cinq minutes pour que les tensions retombent.", score: 1.5 },
+          { text: "Je propose de traiter le désaccord en bilatéral après la réunion.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La discussion a bien avancé mais la décision n'est toujours pas clairement formulée. Le temps est presque écoulé.",
+        tags: ["animation", "décision"],
+        answers: [
+          { text: "Je conclus que la décision sera prise par mail — la réunion n'a pas abouti.", score: 0 },
+          { text: "Je formule moi-même la décision telle que je la comprends et je demande à chacun de confirmer.", score: 2 },
+          { text: "Je demande à quelqu'un de formuler la décision avant qu'on lève la séance.", score: 1.5 },
+          { text: "Je prolonge la réunion pour arriver à une décision.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous formulez explicitement les décisions prises avant de passer au point suivant.",
+        tags: ["animation", "décision explicite"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Plusieurs participants regardent leur téléphone pendant la réunion. L'attention est dispersée.",
+        tags: ["animation", "smartphones"],
+        answers: [
+          { text: "Je laisse — interdire les téléphones en réunion est infantilisant.", score: 0 },
+          { text: "Je pose en début de réunion une règle collective sur les téléphones et je m'y tiens moi-même.", score: 2 },
+          { text: "Je rends la réunion plus engageante pour que les téléphones ne soient plus une tentation.", score: 1.5 },
+          { text: "Je raccourcis la réunion — l'attention se perd quand les réunions sont trop longues.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'énergie de la réunion est basse depuis le début — monosyllabes, regards dans le vide, participation minimale.",
+        tags: ["animation", "énergie"],
+        answers: [
+          { text: "Je continue l'ordre du jour — l'énergie n'est pas mon affaire en réunion.", score: 0 },
+          { text: "Je nomme ce que j'observe et je demande ce qui se passe.", score: 2 },
+          { text: "Je raccourcis la réunion et je reprends le sujet à un autre moment.", score: 1 },
+          { text: "Je propose une activité courte pour relancer l'énergie.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous vérifiez régulièrement en cours de réunion si l'énergie et l'engagement du groupe sont au niveau requis.",
+        tags: ["animation", "engagement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Il reste dix minutes et vous avez encore trois points à l'ordre du jour. Vous ne pouvez pas tous les traiter.",
+        tags: ["animation", "temps"],
+        answers: [
+          { text: "Je les traite tous rapidement — ce serait frustrant de finir sans les avoir abordés.", score: 0 },
+          { text: "Je choisis collectivement les points prioritaires à traiter dans le temps restant et je reporte les autres.", score: 2 },
+          { text: "Je dépasse le temps prévu — les sujets sont importants.", score: 0 },
+          { text: "Je traite les deux premiers et je renvoie le dernier par mail.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'animation de vos réunions est peu structurée — dérivations, silence des uns, monopole des autres", desc: "Laisser deux personnes monopoliser la conversation pendant que les autres se taisent, ne pas recadrer quand le sujet dérive, ne pas formuler explicitement les décisions avant de passer au point suivant, tolérer les téléphones sans règle collective : ces comportements laissent la réunion se dérouler sans direction. Animer une réunion, c'est créer les conditions pour que l'objectif soit atteint." },
+          moyen: { label: "Pratiques en développement", titre: "Vous animez de façon structurée dans les situations confortables mais les situations difficiles créent encore des hésitations", desc: "Vous recadrez les hors-sujets et vous formulez les décisions explicitement. Mais solliciter les participants silencieux, nommer l'énergie basse et en chercher la cause, intervenir sur un débat tendu entre deux participants sans laisser les autres se taire : ces situations d'animation plus délicates créent encore des hésitations. L'enjeu est d'étendre votre posture d'animateur aux moments d'inconfort." },
+          haut: { label: "Réflexes installés", titre: "Vous animez avec rigueur et empathie — cadre tenu, participation équilibrée, décisions formulées", desc: "Vous notez les hors-sujets et vous recentrez. Vous sollicitez les silencieux. Vous intervenez sur les tensions sans les laisser bloquer le groupe. Vous formulez la décision avant de passer au point suivant. Vous posez une règle collective sur les téléphones et vous vous y tenez. Vous nommez l'énergie basse et vous en cherchez la cause. Vous choisissez collectivement les points prioritaires quand le temps manque. Cette animation rigoureuse et humaine — qui suppose d'être à la fois structuré et attentif aux dynamiques — est ce qui fait qu'une réunion produit ce qu'elle devait produire." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "La réunion s'est bien passée. Tout le monde repart avec une bonne impression mais personne n'a noté les actions à faire ni leur responsable.",
+        tags: ["conclusion", "actions"],
+        answers: [
+          { text: "Je fais confiance — les participants savent ce qu'ils ont à faire.", score: 0 },
+          { text: "Je récapitule les actions, les responsables et les délais avant de lever la séance.", score: 2 },
+          { text: "Je prends des notes et j'envoie le compte rendu après.", score: 1.5 },
+          { text: "Je demande à chaque participant de me confirmer ses actions par mail.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous concluez chaque réunion en récapitulant les décisions, les actions, les responsables et les délais.",
+        tags: ["conclusion", "actions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous rédigez des comptes rendus de réunion détaillés qui reprennent l'ensemble de la discussion. Personne ne les lit vraiment.",
+        tags: ["conclusion", "compte rendu"],
+        answers: [
+          { text: "Je continue — le compte rendu complet est une trace indispensable.", score: 0 },
+          { text: "Je remplace le compte rendu complet par un résumé des décisions et des actions uniquement.", score: 2 },
+          { text: "Je réduis le compte rendu mais je garde les points de discussion importants.", score: 1 },
+          { text: "Je supprime les comptes rendus et je n'envoie que les actions.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "La réunion s'est terminée sans décision claire sur le point principal. Vous repartez avec un flou sur la suite.",
+        tags: ["conclusion", "non-décisions"],
+        answers: [
+          { text: "Je laisse — certaines décisions prennent du temps et ce n'est pas grave de repartir sans.", score: 0 },
+          { text: "Je formule explicitement pourquoi la décision n'a pas été prise et ce qui est nécessaire pour avancer.", score: 2 },
+          { text: "J'envoie un mail après pour relancer la décision.", score: 1 },
+          { text: "Je convoque une réunion de suivi pour prendre la décision.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Les actions décidées lors de votre dernière réunion ne sont pas avancées. Les responsables arrivent à la réunion de suivi sans avoir fait ce qui était convenu.",
+        tags: ["conclusion", "retard actions"],
+        answers: [
+          { text: "Je repousse les actions dans le planning — si personne n'a avancé, c'est que le timing n'était pas bon.", score: 0 },
+          { text: "J'aborde directement le non-respect des engagements et j'identifie les raisons.", score: 2 },
+          { text: "Je relance les actions sans aborder le fait qu'elles n'ont pas été faites.", score: 0.5 },
+          { text: "Je commence par demander à chaque responsable ce qui a bloqué.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous abordez directement le non-respect des engagements pris lors des réunions précédentes.",
+        tags: ["conclusion", "suivi"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous organisez les mêmes types de réunions depuis des mois sans jamais demander à vos participants si le format leur convient.",
+        tags: ["conclusion", "feedback réunion"],
+        answers: [
+          { text: "Je laisse — si quelqu'un avait un problème avec le format, il le dirait.", score: 0 },
+          { text: "Je demande de temps en temps un retour rapide sur le format pour l'améliorer.", score: 2 },
+          { text: "Je propose un questionnaire anonyme en fin d'année sur l'efficacité des réunions.", score: 0.5 },
+          { text: "Je surveille les signaux d'engagement pendant les réunions pour évaluer leur utilité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une action importante convenue lors d'une réunion a été oubliée par son responsable. Elle était dans le compte rendu mais personne n'a suivi.",
+        tags: ["conclusion", "actions oubliées"],
+        answers: [
+          { text: "Je l'accepte — les oublis arrivent et le compte rendu devrait suffire.", score: 0 },
+          { text: "Je mets en place un système de suivi des actions entre les réunions.", score: 2 },
+          { text: "Je relance le responsable par mail la veille des réunions de suivi.", score: 1.5 },
+          { text: "Je note les actions dans un outil partagé accessible à tous.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous avez un système simple de suivi des actions entre les réunions pour que les engagements ne se perdent pas.",
+        tags: ["conclusion", "système suivi"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez une réunion récurrente qui, selon vous, n'apporte plus vraiment de valeur. Vous la maintenez quand même parce qu'elle existe depuis longtemps.",
+        tags: ["conclusion", "valeur réunion"],
+        answers: [
+          { text: "Je la maintiens — supprimer une réunion récurrente crée plus de confusion que ça n'en résout.", score: 0 },
+          { text: "Je la supprime ou je la transforme en function de la valeur réelle qu'elle apporte.", score: 2 },
+          { text: "Je la raccourcis progressivement pour tester si elle manque.", score: 1 },
+          { text: "Je propose au groupe de décider collectivement si la réunion doit continuer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réunions ne produisent pas de livrables clairs — pas d'actions, pas de suivi, pas de compte rendu utile", desc: "Repartir d'une réunion réussie sans que personne n'ait noté les actions ni les responsables, rédiger des comptes rendus que personne ne lit, ne pas aborder le non-respect des engagements de la réunion précédente, maintenir une réunion récurrente qui n'apporte plus de valeur : ces comportements font de la réunion un temps consommé sans production. Ce qui n'est pas suivi n'était pas vraiment décidé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous concluez avec des actions et un compte rendu mais votre suivi entre les réunions est encore perfectible", desc: "Vous récapitulez les actions en fin de réunion et vous envoyez un compte rendu. Mais aborder directement le non-respect des engagements de la réunion précédente, mettre en place un système de suivi entre les réunions, demander un feedback sur le format pour l'améliorer, supprimer ou transformer les réunions récurrentes qui n'apportent plus de valeur : ces aspects du suivi et de l'amélioration continue sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vos réunions produisent des livrables clairs et le suivi assure que les engagements sont tenus", desc: "Vous récapitulez actions, responsables et délais avant de lever la séance. Votre compte rendu se limite aux décisions et aux actions. Vous formulez pourquoi la décision n'a pas été prise quand la réunion n'a pas abouti. Vous abordez directement les engagements non tenus. Vous avez un système de suivi entre les réunions. Vous demandez régulièrement un feedback sur le format. Vous supprimez les réunions récurrentes qui n'apportent plus de valeur. Cette rigueur dans la clôture et le suivi — qui suppose d'assumer que les décisions non suivies ne valent rien — est ce qui transforme les réunions en production réelle." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous animez une réunion en visioconférence. Les caméras sont éteintes. Vous ne savez pas si les gens suivent.",
+        tags: ["contextes", "visio"],
+        answers: [
+          { text: "Je continue — les caméras éteintes sont la norme en visio et je ne force pas.", score: 0 },
+          { text: "Je demande en début de réunion que les caméras soient ouvertes et j'explique pourquoi c'est utile.", score: 2 },
+          { text: "Je multiplie les interactions directes pour maintenir l'attention sans les caméras.", score: 1.5 },
+          { text: "Je raccourcis la réunion — les visios longues sans caméra sont inefficaces.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "likert",
+        text: "En réunion hybride, vous vous assurez que les participants à distance ont la même capacité à s'exprimer que ceux en présentiel.",
+        tags: ["contextes", "hybride"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez animer une réunion de vingt personnes pour produire des idées et des décisions. Vous pensez à utiliser le format plénière classique.",
+        tags: ["contextes", "grande réunion"],
+        answers: [
+          { text: "Je fais une plénière — c'est le format que tout le monde connaît.", score: 0 },
+          { text: "Je divise en sous-groupes pour les phases de production et je centralise en plénière pour les décisions.", score: 2 },
+          { text: "Je prépare un ordre du jour très structuré pour que la plénière ne dérive pas.", score: 1 },
+          { text: "Je limite les sujets traités pour que la plénière reste gérable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez animer une réunion sur un sujet conflictuel entre deux groupes. Les tensions sont prévisibles.",
+        tags: ["contextes", "réunion tendue"],
+        answers: [
+          { text: "J'anime normalement — gérer les tensions est dans la nature des réunions difficiles.", score: 0.5 },
+          { text: "Je prépare soigneusement le format — règles du jeu explicites, temps de parole équitables, objectif clair — avant d'entrer dans le fond.", score: 2 },
+          { text: "Je rencontre chaque partie avant la réunion pour comprendre les positions.", score: 1.5 },
+          { text: "Je demande à quelqu'un de plus neutre d'animer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous cherchez à générer des idées créatives en réunion. Votre format habituel ne favorise pas la créativité — les mêmes personnes parlent, les mêmes idées reviennent.",
+        tags: ["contextes", "créativité"],
+        answers: [
+          { text: "Je continue — la créativité ne se force pas et les bonnes idées finissent par émerger.", score: 0 },
+          { text: "J'expérimente des formats différents — silence d'abord, post-its, sous-groupes — pour changer la dynamique.", score: 2 },
+          { text: "Je prépare des questions de lancement plus stimulantes.", score: 1 },
+          { text: "Je fais appel à un facilitateur externe pour les sessions créatives importantes.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous adaptez le format de vos réunions au type d'objectif visé — information, décision, créativité, résolution de conflit.",
+        tags: ["contextes", "format adapté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "On vous a invité à une réunion à laquelle votre présence n'est pas vraiment utile. Vous ne voulez pas créer de friction en déclinant.",
+        tags: ["contextes", "réunion inutile"],
+        answers: [
+          { text: "J'y vais — refuser une invitation peut être mal perçu.", score: 0 },
+          { text: "Je décline en expliquant pourquoi je ne suis pas la bonne personne et en proposant une alternative.", score: 2 },
+          { text: "J'y vais mais je travaille sur autre chose en parallèle.", score: 0 },
+          { text: "Je demande à l'organisateur si ma présence est vraiment nécessaire.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Plusieurs participants arrivent en retard de façon récurrente à vos réunions. Ça perturbe le démarrage et démotive les ponctuels.",
+        tags: ["contextes", "retard"],
+        answers: [
+          { text: "Je les attends — commencer sans eux crée un sentiment d'exclusion.", score: 0 },
+          { text: "Je démarre à l'heure et je ne reprends pas depuis le début pour les retardataires.", score: 2 },
+          { text: "Je décale le démarrage de 5 minutes pour les accommoder.", score: 0 },
+          { text: "Je dis en début de réunion que je démarrerai à l'heure la prochaine fois.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous démarrez vos réunions à l'heure indiquée, quel que soit le nombre de présents.",
+        tags: ["contextes", "ponctualité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vos réunions fonctionnent correctement mais vous sentez qu'elles pourraient être plus impactantes. Vous n'avez jamais formalisé ce que vous faites bien ou mal.",
+        tags: ["contextes", "amélioration"],
+        answers: [
+          { text: "Je laisse — si ça fonctionne, pas besoin d'y toucher.", score: 0 },
+          { text: "Je prends le temps d'observer mes propres réunions avec un regard critique pour identifier ce qui peut être amélioré.", score: 2 },
+          { text: "Je demande un feedback à quelques participants sur ce qu'ils changeraient.", score: 1.5 },
+          { text: "Je cherche des formations ou des lectures sur la facilitation pour m'améliorer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez le même format à tous les contextes sans adapter à l'objectif ou aux participants", desc: "Animer une réunion de vingt personnes en plénière classique, ne pas s'assurer que les participants à distance ont le même espace de parole, toujours utiliser le même format quand l'objectif change, attendre les retardataires plutôt que de démarrer à l'heure : ces comportements plaquent le même format sur des contextes différents. Un bon animateur choisit son format en fonction de l'objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous adaptez votre format dans les situations connues mais les formats moins habituels ou les contextes difficiles restent des angles morts", desc: "Vous adaptez votre format pour les réunions ordinaires. Mais préparer soigneusement le format avant une réunion tendue, animer une grande réunion créative en sous-groupes, gérer une réunion hybride en s'assurant que les participants à distance ont le même espace, décliner une invitation quand votre présence n'est pas utile : ces contextes moins habituels sont encore des angles morts." },
+          haut: { label: "Réflexes installés", titre: "Vous adaptez votre format à chaque contexte — taille, enjeu, distance, objectif", desc: "Vous préparez soigneusement le format avant une réunion tendue. Vous divisez en sous-groupes pour les grandes réunions créatives. Vous vous assurez que les participants à distance s'expriment autant que les participants en présentiel. Vous démarrez à l'heure. Vous déclinez les invitations quand votre présence n'est pas utile. Vous expérimentez des formats différents pour relancer la créativité. Vous observez vos propres réunions avec un regard critique pour vous améliorer. Cette adaptabilité consciente — qui suppose d'investir dans sa pratique d'animateur — est ce qui distingue quelqu'un qui fait des réunions de quelqu'un qui les maîtrise." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -8134,6 +8801,16 @@
         ["Gérer des parties prenantes multiples", "Cartographie, communication différenciée, conflits explicités."],
         ["Coordonner sans réunionner", "Asynchrone, indicateurs concrets, échanges directs facilités."],
         ["Clôturer et capitaliser", "Bilan, transfert, relations entretenues, méthode partagée."],
+      ]}
+    ],
+
+    ["conduire-reunion-utile", "Conduire une réunion utile", "Tous publics",
+      "Préparer, animer et conclure des réunions qui produisent des décisions et des engagements tenus.",
+      { domain: "transformation", chapters: [
+        ["Préparer une réunion qui vaut le déplacement", "Objectif, participants, documents, durée calibrée."],
+        ["Animer une réunion qui avance", "Cadre tenu, participation équilibrée, décisions formulées."],
+        ["Conclure et assurer le suivi", "Actions, compte rendu utile, engagements suivis."],
+        ["S'adapter aux contextes variés", "Visio, hybride, grande réunion, conflit, créativité."],
       ]}
     ],
 
