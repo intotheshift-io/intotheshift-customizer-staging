@@ -6679,6 +6679,673 @@
 
   },
 
+  "gerer-energie-priorites": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous savez que vous êtes plus efficace le matin sur les sujets complexes. Votre agenda est pourtant rempli de réunions de 8h à 12h tous les jours.",
+        tags: ["énergie", "rythme"],
+        answers: [
+          { text: "Je subis — l'agenda des réunions se décide collectivement, pas individuellement.", score: 0 },
+          { text: "Je négocie le déplacement de certaines réunions pour protéger mes matinées sur les sujets complexes.", score: 2 },
+          { text: "Je réserve quelques matinées par semaine pour les sujets importants en bloquant l'agenda.", score: 2 },
+          { text: "Je travaille sur les sujets complexes avant les réunions — à 7h si nécessaire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous remarquez que votre concentration baisse significativement en milieu d'après-midi. Vous forcez à continuer à travailler sur des sujets complexes.",
+        tags: ["énergie", "signal fatigue"],
+        answers: [
+          { text: "Je continue — la fatigue fait partie du travail et se force.", score: 0 },
+          { text: "Je bascule vers des tâches moins exigeantes ou je prends une vraie pause.", score: 2 },
+          { text: "Je bois un café de plus et j'essaie de tenir.", score: 0 },
+          { text: "Je note où j'en suis et je reprends demain matin — les heures du soir sur un sujet complexe sont peu rentables.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous organisez vos journées en tenant compte de vos pics d'énergie — les sujets complexes quand vous êtes au mieux, les tâches routinières quand votre énergie est plus basse.",
+        tags: ["énergie", "rythme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez enchaîné trois semaines de forte intensité. Vous sentez que vous êtes proche de la limite mais il reste encore deux semaines avant une période plus calme.",
+        tags: ["énergie", "récupération"],
+        answers: [
+          { text: "Je tiens — deux semaines c'est gérable et je récupère après.", score: 0 },
+          { text: "Je cherche à réduire la charge maintenant plutôt que d'attendre le crash.", score: 2 },
+          { text: "Je prends un jour de repos pour recharger.", score: 1.5 },
+          { text: "Je signale à mon responsable que je suis proche de la limite.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous vérifiez vos mails et Slack toutes les dix minutes pendant vos blocs de travail profond. Vous avez du mal à vous en empêcher.",
+        tags: ["énergie", "distractions"],
+        answers: [
+          { text: "C'est normal — rester disponible est une exigence du travail en équipe.", score: 0 },
+          { text: "Je coupe les notifications pendant mes blocs de travail profond et je fixe des plages de consultation.", score: 2 },
+          { text: "Je réduis la fréquence de vérification mais je ne coupe pas les notifications.", score: 1 },
+          { text: "Je préviens l'équipe que je suis en mode concentration pour qu'ils passent par le téléphone si c'est urgent.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous protégez vos blocs de travail profond en coupant les notifications et en limitant les interruptions.",
+        tags: ["énergie", "concentration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous partez en vacances dans deux jours. Vous vous dites que vous répondrez aux mails urgents si nécessaire.",
+        tags: ["énergie", "vacances"],
+        answers: [
+          { text: "Je reste joignable — deux semaines déconnectées dans mon secteur c'est risqué.", score: 0 },
+          { text: "Je prépare mes absences pour vraiment déconnecter — délégation, messagerie d'absence, point de contact d'urgence.", score: 2 },
+          { text: "Je consulte mes mails une fois par jour pour ne pas accumuler.", score: 0 },
+          { text: "Je laisse les mails de côté sauf urgence réelle — je fais confiance à mon équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre agenda est rempli à 100% depuis des semaines. Il n'y a pas d'espace pour les imprévus, la réflexion ou la récupération.",
+        tags: ["énergie", "alimentation agenda"],
+        answers: [
+          { text: "C'est la réalité du poste — un agenda plein est un agenda efficace.", score: 0 },
+          { text: "Je libère intentionnellement 20% de mon agenda pour l'imprévisible et la réflexion.", score: 2 },
+          { text: "Je déprogramme les réunions les moins utiles pour créer de l'espace.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour qu'il intervienne sur le volume de sollicitations.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous maintenez intentionnellement des espaces dans votre agenda pour la réflexion, les imprévus et la récupération.",
+        tags: ["énergie", "espace"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez l'habitude de travailler le week-end pour 'prendre de l'avance' sur la semaine. Ça vous semble normal.",
+        tags: ["énergie", "week-end"],
+        answers: [
+          { text: "Je continue — prendre de l'avance réduit le stress de la semaine.", score: 0 },
+          { text: "Je remets en question cette habitude — si je dois travailler le week-end, c'est que ma charge hebdomadaire est trop lourde.", score: 2 },
+          { text: "Je limite le week-end à deux heures maximum.", score: 0 },
+          { text: "Je travaille le week-end uniquement sur les urgences réelles.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ne tenez pas compte de vos rythmes d'énergie dans votre organisation — vous subissez votre agenda", desc: "Accepter des réunions sur vos pics d'énergie parce que l'agenda se décide collectivement, forcer à travailler sur des sujets complexes quand la concentration baisse, vérifier Slack toutes les dix minutes pendant les blocs de travail, avoir un agenda rempli à 100% sans espace pour la réflexion : ces comportements consomment l'énergie disponible sans optimiser sa production. L'énergie est une ressource finie qui se gère comme le temps — par des choix actifs, pas par la capitulation aux contraintes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez compte de vos rythmes dans les situations confortables mais votre protection de l'énergie cède encore sous pression", desc: "Vous organisez vos journées en tenant compte de vos pics d'énergie dans les semaines ordinaires. Mais sous pression collective, quand tout le monde travaille tard et les week-ends, votre gestion de l'énergie peut encore céder. Préparer les vacances pour vraiment déconnecter, libérer 20% de votre agenda pour l'imprévisible, remettre en question l'habitude de travailler le week-end : ces comportements proactifs de gestion de l'énergie sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous concevez votre agenda en fonction de vos rythmes d'énergie et vous le défendez activement", desc: "Vous négociez le déplacement de réunions pour protéger vos matinées sur les sujets complexes. Vous basculez vers des tâches moins exigeantes quand votre concentration baisse. Vous coupez les notifications pendant vos blocs de travail profond. Vous libérez 20% de votre agenda pour l'imprévisible. Vous préparez vos absences pour vraiment déconnecter. Vous remettez en question l'habitude de travailler le week-end. Cette gestion active de l'énergie — qui suppose de prendre des décisions qui peuvent surprendre l'entourage — est ce qui maintient une performance durable." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Certaines tâches récurrentes dans votre travail vous drainent profondément même si elles prennent peu de temps. Vous les faites sans jamais en parler.",
+        tags: ["drain", "tâches ingrates"],
+        answers: [
+          { text: "Je les fais — tout poste a ses tâches ingrates et se plaindre ne changerait rien.", score: 0 },
+          { text: "Je cherche à les automatiser, les déléguer ou à en parler à mon responsable pour les réduire.", score: 2 },
+          { text: "Je les reporte autant que possible pour les grouper et les faire d'une traite.", score: 1 },
+          { text: "Je les fais rapidement pour en être débarrassé·e sans que ça prenne trop d'énergie.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous identifiez les tâches, interactions ou situations qui vous drainent de façon disproportionnée et vous cherchez à les réduire.",
+        tags: ["drain", "sources"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous participez à des réunions récurrentes dont vous ne voyez pas clairement l'utilité pour vous. Vous n'en avez jamais questionné la pertinence.",
+        tags: ["drain", "réunions"],
+        answers: [
+          { text: "Je continue — il y a sûrement une raison à ma présence que je ne vois pas.", score: 0 },
+          { text: "Je questionne ma présence à ces réunions — suis-je indispensable ou informationnel?", score: 2 },
+          { text: "Je reste mais je travaille sur autre chose en parallèle.", score: 0 },
+          { text: "Je demande à recevoir les comptes rendus plutôt que d'être présent·e.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Des interactions régulières avec une personne de votre organisation vous laissent systématiquement épuisé·e. Vous ne savez pas trop pourquoi.",
+        tags: ["drain", "relations"],
+        answers: [
+          { text: "Je les maintiens — les relations professionnelles ne se choisissent pas.", score: 0 },
+          { text: "Je cherche à comprendre ce qui crée ce drain et j'essaie de modifier la dynamique.", score: 2 },
+          { text: "Je réduis la fréquence de ces interactions sans en chercher la cause.", score: 1 },
+          { text: "Je les gère de façon plus courte et directive pour limiter le drain.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous passez systématiquement plus de temps que nécessaire sur des livrables parce que vous ne les trouvez jamais assez bons. Ça vous épuise.",
+        tags: ["drain", "perfectionnisme"],
+        answers: [
+          { text: "Je continue — la qualité est un standard que je ne sacrifie pas.", score: 0 },
+          { text: "Je fixe un niveau de qualité adapté à l'enjeu du livrable avant de commencer.", score: 2 },
+          { text: "Je me donne une deadline arbitraire pour forcer la livraison.", score: 1 },
+          { text: "Je demande un retour intermédiaire pour calibrer le niveau attendu.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous calibrez votre niveau d'effort en fonction de l'enjeu du livrable plutôt que de toujours viser la perfection.",
+        tags: ["drain", "perfectionnisme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous repartez souvent du travail avec des sujets non résolus qui tournent dans votre tête le soir et la nuit.",
+        tags: ["drain", "rumination"],
+        answers: [
+          { text: "C'est la preuve que je suis impliqué·e — les sujets importants méritent qu'on y pense.", score: 0 },
+          { text: "Je cherche un rituel de déconnexion — liste des sujets ouverts, point de fin de journée — pour ne pas ramener le travail chez moi.", score: 2 },
+          { text: "J'essaie de trouver une résolution rapide aux sujets non résolus avant de partir.", score: 1 },
+          { text: "Je l'accepte — la rumination fait partie de ma façon de résoudre les problèmes.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous jongler simultanément entre plusieurs sujets tout au long de la journée. Vous avez l'impression d'avancer sur tout sans vraiment progresser sur rien.",
+        tags: ["drain", "multitasking"],
+        answers: [
+          { text: "Je continue — la polyvalence est une qualité appréciée dans mon organisation.", score: 0 },
+          { text: "Je travaille en blocs thématiques pour avancer en profondeur sur chaque sujet.", score: 2 },
+          { text: "Je réduis le nombre de sujets ouverts simultanément.", score: 1.5 },
+          { text: "J'identifie les sujets qui peuvent attendre et je les mets en pause.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous travaillez par blocs sur un seul sujet à la fois plutôt que de jongler entre plusieurs en parallèle.",
+        tags: ["drain", "focus"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre liste mentale de choses à faire est si longue qu'elle occupe une partie permanente de votre bande passante cognitive.",
+        tags: ["drain", "charge mentale"],
+        answers: [
+          { text: "Je la gère mentalement — écrire des listes me donne l'impression de perdre du temps.", score: 0 },
+          { text: "Je l'externalise dans un système de capture fiable pour libérer de l'espace mental.", score: 2 },
+          { text: "J'essaie de réduire la liste en traitant les sujets rapides immédiatement.", score: 1 },
+          { text: "Je la révise en début de journée pour garder les priorités en tête.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'identifiez pas et ne réduisez pas les sources de drain systématiques dans votre quotidien", desc: "Faire les tâches ingrates sans jamais en parler, participer à des réunions dont on ne voit pas l'utilité parce qu'il doit y avoir une raison, travailler sur plusieurs sujets simultanément en jonglant, ne jamais faire le lien entre certaines interactions et l'épuisement qui suit : ces comportements laissent des drains ouverts qui consomment de l'énergie de façon invisible." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez certains drains et vous les réduisez mais d'autres passent encore sans être traités", desc: "Vous réduisez certaines sources de drain — réunions inutiles, tâches perfectionnistes, notifications. Mais les interactions qui vous drainent sans que vous en compreniez la cause, la rumination nocturne, la charge mentale d'une liste interminable non externalisée : ces drains plus subtils ou plus inconfortables à traiter persistent encore. L'enjeu est d'appliquer la même rigueur aux drains relationnels et cognitifs qu'aux drains organisationnels." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et réduisez systématiquement les sources de drain — tâches, réunions, relations, perfectionnisme", desc: "Vous cherchez à automatiser ou déléguer les tâches qui vous drainent. Vous questionnez votre présence aux réunions dont vous ne voyez pas l'utilité. Vous comprenez et modifiez les dynamiques relationnelles qui vous épuisent. Vous calibrez votre niveau d'effort à l'enjeu du livrable. Vous externalisez votre liste mentale dans un système fiable. Vous travaillez en blocs thématiques plutôt qu'en jonglage permanent. Cette identification et réduction systématique des drains est ce qui libère de l'énergie pour ce qui compte vraiment." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous savez que certaines activités vous rechargent réellement — sport, lecture, nature, créativité. Vous ne leur faites pas assez de place dans votre semaine.",
+        tags: ["recharge", "activités"],
+        answers: [
+          { text: "Je les fais quand il reste du temps — le travail passe d'abord.", score: 0 },
+          { text: "Je les inscris dans mon agenda comme des rendez-vous non négociables.", score: 2 },
+          { text: "Je les fais le week-end quand la semaine me le permet.", score: 0.5 },
+          { text: "Je cherche à les intégrer dans mes trajets ou mes pauses pour ne pas y consacrer du temps supplémentaire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous avez des rituels de recharge réguliers que vous maintenez même lors des périodes intenses.",
+        tags: ["recharge", "rituels"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous enchaînez les réunions sans pauses entre elles. Vous arrivez épuisé·e à la fin de la journée.",
+        tags: ["recharge", "pauses"],
+        answers: [
+          { text: "C'est la réalité du travail — les agendas ne laissent pas de place aux pauses.", score: 0 },
+          { text: "J'impose des pauses de 10 minutes entre les réunions en organisant mes propres créneaux.", score: 2 },
+          { text: "Je prends mes pauses à la fin de la journée quand les réunions sont finies.", score: 0 },
+          { text: "Je réduis la durée des réunions pour créer des espaces de transition.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez du mal à 'décrocher' en rentrant chez vous — les sujets professionnels restent présents mentalement même pendant le dîner.",
+        tags: ["recharge", "décompression"],
+        answers: [
+          { text: "Je l'accepte — être impliqué·e signifie que le travail occupe l'esprit au-delà des heures de bureau.", score: 0 },
+          { text: "Je mets en place un rituel de transition entre le travail et la vie personnelle pour faciliter la déconnexion.", score: 2 },
+          { text: "Je lis ou je regarde quelque chose pour forcer mon cerveau à changer de registre.", score: 1.5 },
+          { text: "Je règle les sujets non résolus avant de partir pour ne pas les ramener à la maison.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez des maux de tête fréquents, des difficultés à dormir et une irritabilité accrue depuis quelques semaines. Vous continuez à travailler au même rythme.",
+        tags: ["recharge", "signaux corps"],
+        answers: [
+          { text: "Je continue — ces signaux sont normaux en période de charge intense.", score: 0 },
+          { text: "Je prends ces signaux au sérieux et je cherche à réduire ma charge ou à récupérer.", score: 2 },
+          { text: "Je consulte un médecin pour les symptômes physiques.", score: 1.5 },
+          { text: "Je prends quelques jours de congé pour récupérer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous prenez au sérieux les signaux physiques et émotionnels de surcharge et vous ajustez avant d'être en difficulté.",
+        tags: ["recharge", "signaux"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre organisation traverse une période très intense. Tout le monde travaille beaucoup. Vous avez l'impression que prendre soin de vous est un luxe dans ce contexte.",
+        tags: ["recharge", "contexte intense"],
+        answers: [
+          { text: "Je m'aligne sur le rythme collectif — sortir du lot en gérant mieux son énergie est mal vu.", score: 0 },
+          { text: "Je maintiens mes pratiques de récupération — c'est précisément dans les périodes intenses qu'elles sont les plus utiles.", score: 2 },
+          { text: "Je réduis mes pratiques de récupération mais sans les abandonner complètement.", score: 1 },
+          { text: "J'attends la fin de la période intense pour récupérer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous êtes épuisé·e et vous sentez que vous ne pouvez pas gérer seul·e. Demander de l'aide vous semble être un aveu de faiblesse.",
+        tags: ["recharge", "aide"],
+        answers: [
+          { text: "Je continue à gérer seul·e — montrer de la faiblesse nuit à ma crédibilité.", score: 0 },
+          { text: "Je cherche un soutien — manager, pairs, médecin, coach — sans attendre que la situation se dégrade davantage.", score: 2 },
+          { text: "J'en parle à quelqu'un de confiance hors du travail.", score: 1.5 },
+          { text: "Je prends quelques jours de congé pour récupérer seul·e.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous êtes en difficulté, vous cherchez un soutien externe plutôt que de gérer seul·e jusqu'à l'épuisement.",
+        tags: ["recharge", "soutien"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre équipe, la culture valorise implicitement ceux qui sont disponibles en permanence et travaillent tard. Vous voudriez incarner une culture différente.",
+        tags: ["recharge", "modèle"],
+        answers: [
+          { text: "Je me plie à la culture — aller contre créerait des jugements négatifs.", score: 0 },
+          { text: "J'incarne la posture que je veux promouvoir par mes propres comportements visibles.", score: 2 },
+          { text: "Je gère mon énergie discrètement sans le rendre visible.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour qu'il fasse évoluer la culture.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre récupération est reportée à 'plus tard' plutôt que maintenue comme une priorité", desc: "Travailler le week-end pour 'prendre de l'avance', continuer après trois semaines intenses parce que deux semaines sont gérables, s'aligner sur la culture de disponibilité permanente, demander de l'aide seulement quand on ne peut vraiment plus : ces comportements traitent la récupération comme optionnelle. Elle ne l'est pas — c'est le carburant de la performance durable." },
+          moyen: { label: "Pratiques en développement", titre: "Vous récupérez après les périodes intenses mais vous ne maintenez pas vos pratiques pendant elles", desc: "Vous récupérez pendant les périodes calmes et vous prenez les signaux de surcharge au sérieux quand ils sont flagrants. Mais maintenir vos pratiques de recharge précisément pendant les périodes intenses, demander du soutien avant l'épuisement, incarner une culture différente de la disponibilité permanente : ces comportements de récupération proactive sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos pratiques de récupération même pendant les périodes intenses et vous cherchez du soutien avant l'épuisement", desc: "Vous inscrivez vos activités de recharge dans votre agenda comme des rendez-vous non négociables. Vous imposez des pauses entre les réunions. Vous mettez en place un rituel de déconnexion en fin de journée. Vous prenez au sérieux les signaux physiques et émotionnels de surcharge avant qu'ils deviennent critiques. Vous cherchez un soutien sans attendre l'épuisement. Vous maintenez ces pratiques pendant les périodes intenses — précisément quand elles sont le plus utiles. Cette récupération proactive est ce qui rend le travail soutenable dans la durée." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous commencez chaque journée en regardant votre agenda et vos mails pour décider quoi faire. Vous n'avez pas de plan préparé la veille.",
+        tags: ["organisation", "planification"],
+        answers: [
+          { text: "C'est plus agile — préparer un plan la veille ne sert à rien vu la fréquence des imprévus.", score: 0 },
+          { text: "Je prépare un plan de journée la veille en dix minutes pour démarrer avec clarté.", score: 2 },
+          { text: "Je fais mon plan en début de journée avant d'ouvrir les mails.", score: 1.5 },
+          { text: "Je planifie semaine par semaine sans descendre au niveau de la journée.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous planifiez vos journées en avance pour démarrer avec clarté plutôt que de décider au fil de l'eau.",
+        tags: ["organisation", "planification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous n'avez pas de moment hebdomadaire pour faire le point sur votre semaine et planifier la suivante. Vous naviguez au jour le jour.",
+        tags: ["organisation", "revue"],
+        answers: [
+          { text: "Je n'en ai pas besoin — ma charge est gérée de façon intuitive.", score: 0 },
+          { text: "Je mets en place une revue hebdomadaire courte — 30 minutes — pour ajuster mes priorités.", score: 2 },
+          { text: "Je fais ce point en fin de semaine avant de partir.", score: 1.5 },
+          { text: "Je fais ce point uniquement les semaines chargées.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vos tâches sont dispersées entre plusieurs outils — mails, Slack, notes papier, outil de gestion. Vous perdez régulièrement des sujets.",
+        tags: ["organisation", "outils"],
+        answers: [
+          { text: "Je laisse — mes outils actuels sont suffisants même s'ils sont imparfaits.", score: 0 },
+          { text: "Je centralise dans un seul système de capture pour ne plus perdre de sujets.", score: 2 },
+          { text: "Je revois mes outils pendant les périodes calmes.", score: 0.5 },
+          { text: "Je tiens à jour une liste de priorités sans unifier les outils.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre boîte mail est une source permanente d'anxiété — 847 mails non lus, des sujets qui dorment depuis des semaines.",
+        tags: ["organisation", "mails"],
+        answers: [
+          { text: "Je m'y habitue — tout le monde a une boîte débordante.", score: 0 },
+          { text: "Je prends le temps de mettre en place un système de traitement et je reviens à zéro.", score: 2 },
+          { text: "Je traite les mails urgents et je laisse le reste dormir.", score: 0 },
+          { text: "Je passe une journée à vider la boîte puis je la laisse se reremplir.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous avez des systèmes d'organisation fiables qui réduisent la charge mentale liée à la gestion des tâches et des informations.",
+        tags: ["organisation", "systèmes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre façon de vous organiser n'a pas évolué depuis plusieurs années malgré une charge et des responsabilités croissantes.",
+        tags: ["organisation", "évolution"],
+        answers: [
+          { text: "Je garde ma méthode — elle a fait ses preuves.", score: 0 },
+          { text: "Je réévalue régulièrement mon organisation et je l'adapte à mes nouvelles responsabilités.", score: 2 },
+          { text: "J'ajuste mon organisation quand je sens que ça ne tient plus.", score: 1 },
+          { text: "Je cherche des méthodes d'organisation plus efficaces quand j'ai le temps.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un collègue junior vous demande comment vous organisez votre travail. Vous n'y avez jamais vraiment réfléchi de façon explicite.",
+        tags: ["organisation", "transmission"],
+        answers: [
+          { text: "Je lui dis que ça vient avec l'expérience — il n'y a pas de méthode universelle.", score: 0 },
+          { text: "Je profite de sa question pour formaliser mes pratiques et lui partager ce qui fonctionne pour moi.", score: 2 },
+          { text: "Je lui donne quelques conseils généraux sans trop entrer dans les détails.", score: 1 },
+          { text: "Je lui recommande des livres ou des méthodes connues.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous réfléchissez régulièrement à votre façon de vous organiser et vous l'ajustez en fonction de vos apprentissages.",
+        tags: ["organisation", "réflexivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous gérez bien le court terme mais vous avez du mal à avancer sur vos objectifs à plus long terme — développement, projets personnels, veille.",
+        tags: ["organisation", "long terme"],
+        answers: [
+          { text: "Je les traite quand le court terme se calme — ça finit toujours par arriver.", score: 0 },
+          { text: "Je leur alloue du temps fixe dans mon agenda comme pour n'importe quel projet.", score: 2 },
+          { text: "Je les intègre dans ma revue hebdomadaire pour vérifier que j'y avance.", score: 1.5 },
+          { text: "Je les décompose en petites actions régulières pour progresser sans bloc de temps dédié.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre organisation personnelle est réactive et manque de systèmes fiables", desc: "Décider quoi faire en ouvrant ses mails le matin, avoir ses tâches dispersées entre cinq outils, naviguer semaine par semaine sans revue et sans plan, n'avoir pas fait évoluer son organisation depuis des années : ces comportements créent une charge mentale permanente et une impression de toujours courir sans vraiment avancer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous avez des systèmes d'organisation mais ils manquent encore de cohérence et de revue régulière", desc: "Vous avez des outils d'organisation et vous planifiez votre semaine. Mais une revue hebdomadaire régulière, un système unifié de capture des tâches, un temps fixe alloué aux objectifs à long terme, une réflexivité régulière sur votre façon de vous organiser : ces aspects d'une organisation vraiment durable sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Votre organisation est planifiée, systématique et régulièrement ajustée", desc: "Vous préparez votre journée la veille. Vous faites une revue hebdomadaire pour ajuster vos priorités. Vous centralisez vos tâches dans un système fiable. Vous allouez du temps fixe à vos objectifs à long terme. Vous faites évoluer votre organisation avec vos responsabilités. Vous partagez vos pratiques quand un collègue vous le demande. Cette organisation planifiée et réflexive — qui suppose un investissement régulier dans le 'comment travailler' pas seulement le 'quoi faire' — est ce qui transforme l'efficacité ponctuelle en performance durable." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -6780,6 +7447,16 @@
         ["Défendre sa position sans s'imposer", "Arguments vs pression, légitimité d'expertise, concessions raisonnées."],
         ["Poser des limites sans se justifier", "Refus clairs, délais réalistes, tâches en dessous de ses compétences."],
         ["S'affirmer dans les relations de travail", "Visibilité, ambition, conflits adressés, évaluation contestée."],
+      ]}
+    ],
+
+    ["gerer-energie-priorites", "Gérer son énergie et ses priorités", "Tous publics",
+      "Organiser son travail en fonction de ses rythmes, identifier les sources de drain et construire une récupération durable.",
+      { domain: "transformation", chapters: [
+        ["Connaître et respecter ses rythmes", "Pics d'énergie, espace dans l'agenda, déconnexion vraie."],
+        ["Identifier et gérer les sources de drain", "Tâches ingrates, réunions inutiles, perfectionnisme, multitâche."],
+        ["Recharger ses ressources", "Rituels de recharge, signaux du corps, soutien avant l'épuisement."],
+        ["Construire une organisation personnelle durable", "Planification, revue hebdomadaire, systèmes fiables, long terme."],
       ]}
     ],
 
