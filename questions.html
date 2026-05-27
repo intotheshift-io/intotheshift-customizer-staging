@@ -888,6 +888,52 @@ function catalogueQuestionTags(cq){
   return normalizeTags(cq && cq.tags ? cq.tags : []);
 }
 
+// Règle unique : les tags visibles d'une question catalogue viennent directement
+// de la question source chargée dans window.CUSTOM_QUESTIONS / window.ITS_CATALOGUE.
+// On construit un index une seule fois pour éviter de reparcourir tous les catalogues
+// à chaque rendu de carte, ce qui protège les temps de chargement.
+let ITS_QUESTION_TAG_INDEX = null;
+
+function indexCatalogueQuestion(source, tags){
+  if(!source || !ITS_QUESTION_TAG_INDEX) return;
+  const cleanTags = catalogueQuestionTags({ tags });
+  if(!cleanTags.length) return;
+
+  const ids = [source.id, source.catalogueId, source.catalogue_id].map(v => String(v || '').trim()).filter(Boolean);
+  ids.forEach(id => ITS_QUESTION_TAG_INDEX.byId.set(id, cleanTags));
+
+  const textKey = canonicalQuestionText(source.text || source.question || source.title || '');
+  if(textKey) ITS_QUESTION_TAG_INDEX.byText.set(textKey, cleanTags);
+}
+
+function buildCatalogueQuestionTagIndex(){
+  ITS_QUESTION_TAG_INDEX = { byId:new Map(), byText:new Map() };
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    window.ITS_CATALOGUE.forEach(ad => {
+      (ad.chapters || []).forEach(ch => {
+        (ch.questions || []).forEach(q => indexCatalogueQuestion(q, q.tags));
+      });
+    });
+  }
+
+  if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
+    Object.keys(window.CUSTOM_QUESTIONS).forEach(adKey => {
+      const chaptersObj = window.CUSTOM_QUESTIONS[adKey] || {};
+      Object.keys(chaptersObj).forEach(chapterKey => {
+        const list = Array.isArray(chaptersObj[chapterKey]) ? chaptersObj[chapterKey] : [];
+        list.forEach(q => indexCatalogueQuestion(q, q.tags));
+      });
+    });
+  }
+
+  return ITS_QUESTION_TAG_INDEX;
+}
+
+function getCatalogueQuestionTagIndex(){
+  return ITS_QUESTION_TAG_INDEX || buildCatalogueQuestionTagIndex();
+}
+
 function canonicalQuestionText(v){
   return norm(v)
     .replace(/[’']/g, ' ')
@@ -915,32 +961,20 @@ function sameCatalogueQuestion(question, cq){
 function findCatalogueQuestionTags(question){
   if(!question) return [];
 
-  if(Array.isArray(window.ITS_CATALOGUE)){
-    for(const ad of window.ITS_CATALOGUE){
-      for(const ch of (ad.chapters || [])){
-        for(const cq of (ch.questions || [])){
-          if(sameCatalogueQuestion(question, cq)){
-            const tags = catalogueQuestionTags(cq);
-            if(tags.length) return tags;
-          }
-        }
-      }
-    }
+  const index = getCatalogueQuestionTagIndex();
+  const ids = [question.id, question.catalogueId, question.catalogue_id]
+    .map(v => String(v || '').trim())
+    .filter(Boolean);
+
+  for(const id of ids){
+    const byId = index.byId.get(id);
+    if(byId && byId.length) return byId;
   }
 
-  if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
-    for(const adKey of Object.keys(window.CUSTOM_QUESTIONS)){
-      const chaptersObj = window.CUSTOM_QUESTIONS[adKey] || {};
-      for(const chapterKey of Object.keys(chaptersObj)){
-        const list = Array.isArray(chaptersObj[chapterKey]) ? chaptersObj[chapterKey] : [];
-        for(const cq of list){
-          if(sameCatalogueQuestion(question, cq)){
-            const tags = catalogueQuestionTags(cq);
-            if(tags.length) return tags;
-          }
-        }
-      }
-    }
+  const textKey = canonicalQuestionText(question.text || question.question || question.title || '');
+  if(textKey){
+    const byText = index.byText.get(textKey);
+    if(byText && byText.length) return byText;
   }
 
   return [];
@@ -1872,98 +1906,53 @@ function regenOne(id, btn) {
   updateSaveButton();
 }
 
-function makeAIQuestion(id){
-  const subject = getCurrentSubject();
-  const ch = chapters[activeChap] || {name:'ce chapitre'};
-  const sid = String(id || 'q' + Date.now());
-  const variantsCyber = [
-    {
-      text:`Vous recevez un message contenant un lien urgent lié à ${ch.name}. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Lien suspect',ai:true}],
-      answers:[
-        {l:"Je clique rapidement pour vérifier de quoi il s’agit.",s:0},
-        {l:"Je demande à une personne autour de moi si le message semble fiable.",s:1},
-        {l:"Je vérifie l’expéditeur, l’adresse du lien et je signale le message en cas de doute.",s:2}
-      ]
-    },
-    {
-      text:`Un document sensible doit être partagé avec une personne externe dans le cadre de ${ch.name}. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Données sensibles',ai:true}],
-      answers:[
-        {l:"Je l’envoie par le canal le plus rapide pour ne pas bloquer le dossier.",s:0},
-        {l:"Je demande confirmation à mon interlocuteur avant l’envoi.",s:1},
-        {l:"Je vérifie le droit de partage, le canal sécurisé et les règles internes avant d’envoyer.",s:2}
-      ]
-    },
-    {
-      text:`Vous devez créer ou modifier un mot de passe pour accéder à un outil professionnel. Quel réflexe adoptez-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Mot de passe',ai:true}],
-      answers:[
-        {l:"J’utilise un mot de passe simple dont je me souviens facilement.",s:0},
-        {l:"Je réutilise un ancien mot de passe en le modifiant légèrement.",s:1},
-        {l:"Je crée un mot de passe robuste ou j’utilise le gestionnaire validé par l’organisation.",s:2}
-      ]
-    },
-    {
-      text:`Une demande inhabituelle vous invite à transmettre rapidement une information confidentielle. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Vérification',ai:true}],
-      answers:[
-        {l:"Je réponds vite pour éviter de retarder la demande.",s:0},
-        {l:"Je vérifie seulement si le nom de l’expéditeur me semble connu.",s:1},
-        {l:"Je contrôle la demande par un autre canal et j’applique la procédure de signalement si nécessaire.",s:2}
-      ]
-    },
-    {
-      text:`Vous utilisez un outil numérique non validé pour gagner du temps sur une tâche liée à ${ch.name}. Quelle posture adoptez-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Outil numérique',ai:true}],
-      answers:[
-        {l:"Je l’utilise si l’outil est pratique et gratuit.",s:0},
-        {l:"Je l’utilise seulement pour des informations qui me semblent peu sensibles.",s:1},
-        {l:"Je vérifie les règles internes avant d’y déposer des données professionnelles.",s:2}
-      ]
-    }
-  ];
-
-  const variantsGeneric = [
-    {
-      text:`Dans une situation liée à ${subject || ch.name}, vous devez choisir entre aller vite et vérifier un point important. Que faites-vous ?`,
-      tags:[{t:'Brouillon',ai:true},{t:'À adapter',ai:true}],
-      answers:[
-        {l:"J’avance rapidement avec les informations disponibles.",s:0},
-        {l:"Je demande un avis avant de décider.",s:1},
-        {l:"Je clarifie le cadre et les risques avant d’agir.",s:2}
-      ]
-    }
-  ];
-
-  const pool = norm(subject).includes('cyber') || norm(subject).includes('securite numerique') || norm(subject).includes('risques numeriques') || norm(subject).includes('securite informatique') ? variantsCyber : variantsGeneric;
-  const n = Math.abs([...sid].reduce((a,c)=>a+c.charCodeAt(0),0)) % pool.length;
-  return { id: sid, type:'choix', prov:'AI', ...pool[n] };
+function catalogueQuestionToEditorQuestion(bq, forcedId){
+  return {
+    id: forcedId || bq.id || ('q' + Date.now()),
+    type: bq.type === 'likert' ? 'likert' : 'choix',
+    prov: bq.prov || 'AI',
+    text: bq.text,
+    tags: normalizeTags(bq.tags || []).map(t => ({t:t.t, ai:false})),
+    answers: normalizeImportedAnswers(bq)
+  };
 }
 
-function addManual() {
-  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
+function nextCatalogueQuestionForChapter(excludeId){
+  const existing = currentQuestionKeys();
+  if(excludeId){
+    const ch = chapters[activeChap];
+    const current = (ch.questions || []).find(q => q.id === excludeId);
+    if(current){
+      existing.delete(String(current.id || ''));
+      existing.delete(norm(current.text || ''));
+    }
+  }
 
-  const id = 'q' + Date.now();
-  chapters[activeChap].questions.push({
-    id,
-    type: 'choix',
-    prov: 'COMPANY',
-    text: 'Nouvelle mise en situation',
-    tags: [],
-    answers: [
-      {l:'Réponse A',s:0},
-      {l:'Réponse B',s:1},
-      {l:'Réponse C',s:2}
+  return currentLib().find(q => {
+    if(String(q.id || '') === String(excludeId || '')) return false;
+    return !existing.has(String(q.id || '')) && !existing.has(norm(q.text || ''));
+  }) || null;
+}
+
+function makeAIQuestion(id){
+  // Le bouton d'aide rédactionnelle ne fabrique pas de tags locaux.
+  // Il prend la prochaine question disponible dans la route catalogue chargée,
+  // puis conserve exactement ses tags métier.
+  const source = nextCatalogueQuestionForChapter(id);
+  if(source) return catalogueQuestionToEditorQuestion(source, id || source.id);
+
+  return {
+    id: id || ('q' + Date.now()),
+    type:'choix',
+    prov:'AI',
+    text:'Nouvelle mise en situation à rédiger',
+    tags:[],
+    answers:[
+      {l:'Réponse fragile',s:0},
+      {l:'Réponse intermédiaire',s:1},
+      {l:'Réponse constructive',s:2}
     ]
-  });
-
-  openCards[id] = true;
-  refreshThresholdsAfterQuestionChange();
-  saveState();
-  renderNav();
-  renderMain();
-  updateSaveButton();
+  };
 }
 
 function addOneAI() {
@@ -2009,7 +1998,8 @@ function closeRegenModal() {
 function confirmRegen() {
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   closeRegenModal();
-  chapters[activeChap].questions = Array.from({length: DEFAULT_GENERATED_QUESTIONS}, (_, i) => makeAIQuestion('qr' + (i + 1)));
+  const sources = currentLib().slice(0, DEFAULT_GENERATED_QUESTIONS);
+  chapters[activeChap].questions = sources.map((q, i) => catalogueQuestionToEditorQuestion(q, q.id || ('qr' + (i + 1))));
   refreshThresholdsAfterQuestionChange();
   saveState();
   openCards = {};
@@ -2238,14 +2228,7 @@ function addFromLib(qid) {
 
   markLibraryAdded(qid);
 
-  chapters[activeChap].questions.push({
-    id: bq.id || ('q' + Date.now()),
-    type: bq.type === 'likert' ? 'likert' : 'choix',
-    prov: bq.prov || 'AI',
-    text: bq.text,
-tags: normalizeTags(bq.tags || []).map(t => ({t:t.t, ai:false})),
-    answers: normalizeImportedAnswers(bq)
-  });
+  chapters[activeChap].questions.push(catalogueQuestionToEditorQuestion(bq));
 
   refreshThresholdsAfterQuestionChange();
   saveState();
