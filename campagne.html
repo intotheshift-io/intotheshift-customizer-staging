@@ -104,7 +104,7 @@
 <div class="launch-grid"><main>
 <div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
 <section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary qr-download-btn" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
-<section class="block" id="campaign-communication-block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
+<section class="block" id="campaign-communication-block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" data-template="launch" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" data-template="managers" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" data-template="reminder" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" data-template="last" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" data-template="channels" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" data-template="intranet" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" data-template="firstResults" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" data-template="finalResults" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
 <section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
 <section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
 <div class="bottom-actions"><button class="btn-back" onclick="goBackToParametrage()">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
@@ -177,7 +177,7 @@ function refreshPublicationUrls(){
   }
   drawQrCode(share);
 }
-function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab.on')||document.querySelector('.comm-tab'))}
+function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch')}
 function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}copyToClipboard(url,'URL résultats copiée')}
 function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
@@ -266,7 +266,23 @@ function validateAndNormalizeCampaignDates(showToastOnAdjust){
 
 function formatDateFR(s){s=normalizeDateInputValue(s);if(!s)return'—';let a=s.split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:s}function parseD(s){let a=String(s||'').split('-');return a.length===3?new Date(+a[0],+a[1]-1,+a[2]):null}function diffDays(a,b){return(!a||!b)?null:Math.round((b-a)/(86400000))}
 const templates={launch:{title:'Email de lancement',meta:'Jour du lancement',body:`Bonjour à toutes et tous,\n\nNous lançons un autodiagnostic consacré à {{THEME}}.\n\nIl vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes, vos points d’appui et les sujets à renforcer collectivement.\n\nLa démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.\n\nLien de passation : {{URL}}\n\nMerci pour votre participation.`},managers:{title:'Email managers',meta:'Relais managers',body:`Bonjour,\n\nNous lançons la campagne {{THEME}}. Merci de relayer l’autodiagnostic auprès de vos équipes, sans orienter les réponses.\n\nLa démarche est anonyme et vise à mieux comprendre les réflexes du quotidien pour identifier des actions utiles collectivement.\n\nLien : {{URL}}`},reminder:{title:'Relance',meta:'Mi-campagne',body:`Bonjour,\n\nPetit rappel : l’autodiagnostic {{THEME}} est toujours ouvert.\n\nVotre participation est importante pour obtenir une vision utile des pratiques du quotidien.\n\nLien : {{URL}}`},last:{title:'Dernière chance',meta:'Avant clôture',body:`Bonjour,\n\nDernière chance pour participer à l’autodiagnostic avant la clôture de la campagne.\n\nLa démarche reste entièrement anonyme.\n\nLien : {{URL}}`},channels:{title:'Canaux internes',meta:'Teams / Slack',body:`📣 L’autodiagnostic {{THEME}} est ouvert.\n\n5 à 7 minutes, 100 % anonyme, sans login ni suivi individuel.\n\n👉 {{URL}}`},intranet:{title:'Post intranet',meta:'Intranet',body:`Nous lançons un autodiagnostic pour mieux comprendre les réflexes du quotidien autour de {{THEME}}.\n\nL’objectif n’est pas d’évaluer les personnes, mais d’identifier les leviers utiles pour progresser collectivement.\n\nAccéder à l’autodiagnostic : {{URL}}`},firstResults:{title:'Restitution premiers enseignements',meta:'Après clôture',body:`Merci pour votre participation à l’autodiagnostic.\n\nLes premiers enseignements permettent d’identifier les points d’appui et les sujets à approfondir collectivement.\n\nLes résultats seront partagés de manière agrégée.`},finalResults:{title:'Restitution finale',meta:'Après restitution',body:`Suite à l’autodiagnostic, nous partageons les principaux enseignements et les actions qui seront engagées.\n\nMerci encore pour votre contribution à cette démarche collective.`}};
-function showTemplate(k,btn){document.querySelectorAll('.comm-tab').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');let t=templates[k]||templates.launch;document.getElementById('tpl-title').textContent=t.title;document.getElementById('tpl-meta').textContent=t.meta;document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());c().activeTemplate=k;saveState()}
+function showTemplate(k,btn){
+  const key = templates[k] ? k : 'launch';
+  const activeBtn = btn || document.querySelector('.comm-tab[data-template="'+key+'"]') || document.querySelector('.comm-tab');
+  document.querySelectorAll('.comm-tab').forEach(b=>b.classList.remove('on'));
+  if(activeBtn) activeBtn.classList.add('on');
+
+  let t=templates[key]||templates.launch;
+  document.getElementById('tpl-title').textContent=t.title;
+  document.getElementById('tpl-meta').textContent=t.meta;
+  document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());
+  c().activeTemplate=key;
+  saveState();
+
+  if(typeof window.ensureCampaignCopyActionsAvailable === 'function'){
+    window.ensureCampaignCopyActionsAvailable();
+  }
+}
 function showToast(message){let el=document.getElementById('toastCustomizer');if(!el)return;el.textContent=message;el.classList.add('on');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove('on'),2200)}
 async function copyToClipboard(text,successMessage){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');ta.remove()}showToast(successMessage||'Copié')}catch(e){console.error(e);showToast('Copie impossible : copiez manuellement')}}
 function copyUrl(){let url=buildUrl();if(!url){showToast('Renseignez d’abord le nom de l’entreprise pour générer le lien.');return}copyToClipboard(url,'Lien de passation copié')}function copyTemplate(){let text=document.getElementById('tpl-body').textContent;copyToClipboard(text,'Message copié')}
@@ -732,7 +748,7 @@ function init(){
   forceInjectCampaignDatesUI();
   let ck=c().checklist||{};
   document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);
-  showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));
+  showTemplate(c().activeTemplate||'launch');
   refreshLaunchUrl();
   updateChecklist();
   if(isBackofficeViewingCampaign()){
@@ -863,6 +879,11 @@ bootCampagnePage();
     block.style.setProperty("pointer-events", "auto", "important");
     block.style.setProperty("opacity", "1", "important");
 
+    block.querySelectorAll(".comm-tabs, .template-card, .template-head, .template-body").forEach(el => {
+      el.style.setProperty("pointer-events", "auto", "important");
+      el.style.setProperty("opacity", "1", "important");
+    });
+
     block.querySelectorAll("button").forEach(button => {
       button.disabled = false;
       button.removeAttribute("disabled");
@@ -870,6 +891,17 @@ bootCampagnePage();
       button.style.setProperty("pointer-events", "auto", "important");
       button.style.setProperty("cursor", "pointer", "important");
       button.style.setProperty("opacity", "1", "important");
+    });
+
+    block.querySelectorAll(".comm-tab").forEach(button => {
+      if(button.dataset.boundCommTab === "1") return;
+      button.dataset.boundCommTab = "1";
+      button.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        const key = this.getAttribute("data-template") || "launch";
+        showTemplate(key, this);
+      }, true);
     });
   }
 
