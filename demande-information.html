@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demande d’information — Into The Shift</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Asap',sans-serif;background:linear-gradient(180deg,#eef6fb 0%,#f4f6f9 45%,#ffffff 100%);color:#18375d;min-height:100vh}
+.info-wrap{max-width:980px;margin:0 auto;padding:34px 22px 70px}
+.info-card{background:#fff;border:1px solid #d8e0ea;border-radius:28px;padding:34px;box-shadow:0 18px 45px rgba(13,76,114,.10)}
+.info-kicker{display:inline-flex;background:#e6f0f6;color:#0d4c72;border:1px solid #c6deec;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:900;margin-bottom:14px}
+h1{font-size:34px;line-height:1.12;color:#18375d;margin-bottom:10px}
+.info-sub{font-size:15px;line-height:1.6;color:#64748b;max-width:720px;margin-bottom:24px}
+.info-form{background:#f8fbfd;border:1px solid #dfe8ef;border-radius:22px;padding:22px}
+.back-link{display:inline-flex;margin-bottom:18px;color:#0d4c72;text-decoration:none;font-weight:900;font-size:14px}
+.back-link:hover{text-decoration:underline}
+@media(max-width:620px){.info-wrap{padding:22px 14px 52px}.info-card{padding:24px;border-radius:22px}h1{font-size:28px}.info-form{padding:16px}}
+</style>
+</head>
+<body>
+<div id="header"></div>
+<script src="header.js"></script>
+<script src="app.js"></script>
+
+<main class="info-wrap">
+  <a class="back-link" href="javascript:history.back()">← Retour</a>
+  <section class="info-card">
+    <div class="info-kicker">Shift Studio</div>
+    <h1>Demande d’information</h1>
+    <p class="info-sub">Une question sur Shift Studio, les passations, la mise en ligne ou l’accompagnement ? L’équipe Into The Shift vous répondra.</p>
+
+    <div class="info-form">
+      <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+        hbspt.forms.create({
+          portalId: "139575435",
+          formId: "3ed49d01-9f25-43fd-bd02-b9480176f396",
+          region: "eu1"
+        });
+      </script>
+    </div>
+  </section>
+</main>
+</body>
+</html>
