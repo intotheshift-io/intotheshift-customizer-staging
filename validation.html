@@ -355,6 +355,7 @@ function validationLoadProjectFromServerSync(projectId){
 
 
 let state = (typeof itsLoad === 'function' ? itsLoad() : (JSON.parse(localStorage.getItem('its_state') || '{}') || {}));
+if(window.ITSProject && typeof window.ITSProject.normalizeState === 'function') state = window.ITSProject.normalizeState(state);
 
 function esc(s){
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -462,10 +463,12 @@ function getParam(){
   return state.parametrage;
 }
 function getThemeTitle(){
-  return state.themeTitle || state.title || state.nom || getParam().titre || getParam().nom || 'Autodiagnostic';
+  const param = getParam();
+  return param.nom || state.autodiagTitle || state.themeTitle || state.theme?.title || state.selectedTheme?.title || state.title || state.nom || 'Autodiagnostic';
 }
 function getCollaboratorTitle(){
-  return getParam().titre_repondants || getParam().titre || getThemeTitle();
+  const param = getParam();
+  return param.titre_repondants || param.titreRespondants || param.titre_visible_repondants || param.titreVisibleRepondants || param.titre_visible || param.titreVisible || param.titre || state.titre_repondants || state.titreRespondants || getThemeTitle();
 }
 function getCompany(){
   return getClientInfo().entreprise || getParam().entreprise || getParam().company || state.company || '';
@@ -494,7 +497,11 @@ function normalizeQuestion(q){
   };
 }
 function getChapters(){
-  return (state.chapters || state.theme?.chapters || []).map((c, i) => ({
+  const source = Array.isArray(state.chapters) && state.chapters.length ? state.chapters
+    : (Array.isArray(state.theme?.chapters) && state.theme.chapters.length ? state.theme.chapters
+    : (Array.isArray(state.selectedTheme?.chapters) && state.selectedTheme.chapters.length ? state.selectedTheme.chapters
+    : (Array.isArray(state.data?.chapters) ? state.data.chapters : [])));
+  return source.map((c, i) => ({
     title: c.title || c.name || `Chapitre ${i+1}`,
     description: c.description || c.desc || '',
     questions: (c.questions || []).map(normalizeQuestion),
@@ -1435,6 +1442,7 @@ async function initValidationPage(){
   if(typeof itsBootstrapProjectFromUrl === 'function'){
     try {
       state = await itsBootstrapProjectFromUrl();
+      if(window.ITSProject && typeof window.ITSProject.normalizeState === 'function') state = window.ITSProject.normalizeState(state);
     } catch(e) {
       console.warn('Chargement projet validation impossible', e);
     }

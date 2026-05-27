@@ -260,25 +260,62 @@ function itsParseMaybeJson(value) {
   }
 }
 
+function itsLooksLikeProjectState(value) {
+  if (!value || typeof value !== "object") return false;
+  return Boolean(
+    Array.isArray(value.chapters) ||
+    value.parametrage ||
+    value.current_step ||
+    value.currentStep ||
+    value.step ||
+    value.theme ||
+    value.selectedTheme ||
+    value.autodiagTitle ||
+    value.titre_repondants ||
+    value.campaignStartDate ||
+    value.campaign_start_date
+  );
+}
+
 function itsUnwrapProjectData(rawData) {
   let data = itsParseMaybeJson(rawData);
   if (!data || typeof data !== "object") return {};
 
+  // Cas backend possible : { data: { ...state } } ou { payload: { data: { ...state } } }.
+  // On ne déplie que si le contenu ressemble réellement à un état projet
+  // pour ne pas confondre avec les pièces jointes de transmission nommées "data".
+  if (data.data && typeof data.data === "object" && itsLooksLikeProjectState(data.data)) {
+    const inner = itsUnwrapProjectData(data.data);
+    return {
+      ...inner,
+      current_step: data.currentStep || data.current_step || data.step || inner.current_step || inner.step,
+      step: data.currentStep || data.current_step || data.step || inner.step || inner.current_step,
+      status: data.status || inner.status || "draft"
+    };
+  }
+
   // Ancienne sauvegarde questions.html : { step, status, configTransmise, state: {...} }
   if (data.state && typeof data.state === "object") {
-    const state = data.state;
+    const state = itsUnwrapProjectData(data.state);
     return {
       ...state,
-      current_step: data.step || data.current_step || state.current_step || state.step || "questions",
-      step: data.step || data.current_step || state.step || state.current_step || "questions",
+      current_step: data.step || data.current_step || data.currentStep || state.current_step || state.step || "questions",
+      step: data.step || data.current_step || data.currentStep || state.step || state.current_step || "questions",
       status: data.status || state.status || "draft",
       configTransmise: data.configTransmise === true || state.configTransmise === true
     };
   }
 
-  // Variante possible : { payload: { state: {...} } }
-  if (data.payload && typeof data.payload === "object") {
-    return itsUnwrapProjectData(data.payload);
+  // Variante possible : { payload: { state: {...} } }.
+  // Si le wrapper porte aussi des métadonnées utiles, on les réinjecte.
+  if (data.payload && typeof data.payload === "object" && itsLooksLikeProjectState(data.payload)) {
+    const inner = itsUnwrapProjectData(data.payload);
+    return {
+      ...inner,
+      current_step: data.currentStep || data.current_step || data.step || inner.current_step || inner.step,
+      step: data.currentStep || data.current_step || data.step || inner.step || inner.current_step,
+      status: data.status || inner.status || "draft"
+    };
   }
 
   return data;
@@ -336,13 +373,13 @@ function itsCompactStateForLocalStorage(value) {
       const isHeavyValue = typeof v === "string" && (v.startsWith("data:image/") || v.length > 250000);
 
       const isGeneratedAttachmentKey =
-        lowerKey === "payload" ||
         lowerKey === "excel_html" ||
         lowerKey === "pdf_html" ||
-        lowerKey === "data" ||
         lowerKey === "attachments" ||
         lowerKey === "excel" ||
-        lowerKey === "recap";
+        lowerKey === "recap" ||
+        (lowerKey === "payload" && !itsLooksLikeProjectState(v)) ||
+        (lowerKey === "data" && typeof v === "string" && v.length > 50000);
 
       if (isGeneratedAttachmentKey) {
         obj[key] = "";
@@ -978,6 +1015,13 @@ function itsNormalizeProjectState(state) {
     next.parametrage.titreVisibleRepondants = visibleTitle;
     next.titre_repondants = visibleTitle;
     next.titreRespondants = visibleTitle;
+  }
+
+  if ((!Array.isArray(next.chapters) || !next.chapters.length) && Array.isArray(next.theme?.chapters)) {
+    next.chapters = next.theme.chapters;
+  }
+  if ((!Array.isArray(next.chapters) || !next.chapters.length) && Array.isArray(next.selectedTheme?.chapters)) {
+    next.chapters = next.selectedTheme.chapters;
   }
 
   const step = next.current_step || next.currentStep || next.step || itsInferCurrentStep() || "questions";

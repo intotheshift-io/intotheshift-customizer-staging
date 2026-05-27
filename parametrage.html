@@ -404,6 +404,25 @@ function paramUnwrapState(raw){
   if(typeof content === 'string'){
     try{ content = JSON.parse(content); }catch(e){ content = {}; }
   }
+  // Certains retours backend encapsulent l'état dans data.data ou payload.data.
+  // On ne déplie que si le contenu ressemble à un vrai projet, pas à une pièce jointe.
+  function looksLikeProjectState(value){
+    return value && typeof value === 'object' && (Array.isArray(value.chapters) || value.parametrage || value.current_step || value.step || value.theme || value.selectedTheme);
+  }
+  if(content && content.data && looksLikeProjectState(content.data)){
+    content = Object.assign({}, content.data, {
+      current_step: content.current_step || content.step || content.data.current_step || content.data.step || 'parametrage',
+      step: content.step || content.current_step || content.data.step || content.data.current_step || 'parametrage',
+      status: content.status || content.data.status || 'draft'
+    });
+  }
+  if(content && content.payload && looksLikeProjectState(content.payload)){
+    content = Object.assign({}, content.payload, {
+      current_step: content.current_step || content.step || content.payload.current_step || content.payload.step || 'parametrage',
+      step: content.step || content.current_step || content.payload.step || content.payload.current_step || 'parametrage',
+      status: content.status || content.payload.status || 'draft'
+    });
+  }
   if(content && content.state && typeof content.state === 'object'){
     content = Object.assign({}, content.state, {
       current_step: content.current_step || content.step || content.state.current_step || content.state.step || 'parametrage',
