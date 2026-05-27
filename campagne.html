@@ -51,6 +51,16 @@
   opacity:1!important;
   cursor:pointer!important;
 }
+.campaign-locked .comm-tabs button[disabled],
+.campaign-locked .template-card button[disabled],
+.its-readonly-mode .comm-tabs button,
+.its-readonly-mode .template-card button,
+.its-readonly-mode .comm-tabs button[disabled],
+.its-readonly-mode .template-card button[disabled]{
+  pointer-events:auto!important;
+  opacity:1!important;
+  cursor:pointer!important;
+}
 .help-dot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;margin-left:6px;cursor:help;position:relative}.help-dot:hover::after{content:attr(data-help);position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:260px;background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.35;text-transform:none;letter-spacing:0;z-index:20;box-shadow:0 12px 30px rgba(15,30,55,.22)}
 
 /* ── Dates campagne : visibilité + délai minimum J+5 ───────── */
@@ -798,7 +808,9 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
       if(typeof window.applyCampaignModeAfterHydration === "function"){
         window.applyCampaignModeAfterHydration();
       }
-      if(typeof window.ensureCampaignCopyActionsAvailable === "function"){
+      if(typeof window.startCampaignCopyUnlockWatch === "function"){
+        window.startCampaignCopyUnlockWatch();
+      } else if(typeof window.ensureCampaignCopyActionsAvailable === "function"){
         window.ensureCampaignCopyActionsAvailable();
       }
     }, 50);
@@ -850,20 +862,62 @@ bootCampagnePage();
   function ensureCampaignCopyActionsAvailable(){
     document.querySelectorAll("button").forEach(button => {
       if(!allowedButton(button)) return;
+
       button.disabled = false;
       button.removeAttribute("disabled");
-      button.style.cursor = "pointer";
-      button.style.opacity = "1";
-      button.style.pointerEvents = "auto";
+      button.removeAttribute("aria-disabled");
+
+      button.style.setProperty("pointer-events", "auto", "important");
+      button.style.setProperty("cursor", "pointer", "important");
+      button.style.setProperty("opacity", "1", "important");
+
+      if(button.classList.contains("comm-tab")){
+        button.style.setProperty("background", button.classList.contains("on") ? "#18375d" : "#ffffff", "important");
+        button.style.setProperty("color", button.classList.contains("on") ? "#ffffff" : "#64748b", "important");
+        button.style.setProperty("border-color", button.classList.contains("on") ? "#18375d" : "#d8e0ea", "important");
+      }
+
+      if(String(button.getAttribute("onclick") || "").includes("copyTemplate")){
+        button.style.setProperty("background", "#007883", "important");
+        button.style.setProperty("color", "#ffffff", "important");
+        button.style.setProperty("border-color", "#007883", "important");
+      }
     });
 
     document.querySelectorAll(".comm-tabs, .template-card, .comm-tabs button, .template-card button").forEach(el => {
-      el.style.pointerEvents = "auto";
-      el.style.opacity = "1";
+      el.style.setProperty("pointer-events", "auto", "important");
+      el.style.setProperty("opacity", "1", "important");
     });
   }
 
   window.ensureCampaignCopyActionsAvailable = ensureCampaignCopyActionsAvailable;
+
+  let campaignCopyUnlockObserver = null;
+  function startCampaignCopyUnlockWatch(){
+    ensureCampaignCopyActionsAvailable();
+
+    if(campaignCopyUnlockObserver) return;
+
+    campaignCopyUnlockObserver = new MutationObserver(() => {
+      ensureCampaignCopyActionsAvailable();
+    });
+
+    campaignCopyUnlockObserver.observe(document.body, {
+      attributes: true,
+      subtree: true,
+      childList: true,
+      attributeFilter: ["disabled", "style", "class", "aria-disabled"]
+    });
+
+    let remaining = 30;
+    const timer = setInterval(() => {
+      ensureCampaignCopyActionsAvailable();
+      remaining -= 1;
+      if(remaining <= 0) clearInterval(timer);
+    }, 300);
+  }
+
+  window.startCampaignCopyUnlockWatch = startCampaignCopyUnlockWatch;
 
   function applyLockedCampaignMode(){
     document.body.classList.add("campaign-locked");
@@ -949,10 +1003,7 @@ bootCampagnePage();
       }
     }
 
-    ensureCampaignCopyActionsAvailable();
-    setTimeout(ensureCampaignCopyActionsAvailable, 80);
-    setTimeout(ensureCampaignCopyActionsAvailable, 250);
-    setTimeout(ensureCampaignCopyActionsAvailable, 600);
+    startCampaignCopyUnlockWatch();
   }
 
   function applyClientReadonlyText(){
@@ -985,7 +1036,10 @@ bootCampagnePage();
     // ou prêt à transmettre. Le verrouillage ne s'applique qu'après transmission/publication
     // ou en lecture seule explicite.
     if(isBackofficeRole()){
-      if(readonly || lockStatus) applyLockedCampaignMode();
+      if(readonly || lockStatus){
+        applyLockedCampaignMode();
+        startCampaignCopyUnlockWatch();
+      }
       return;
     }
 
@@ -993,6 +1047,7 @@ bootCampagnePage();
     if(readonly || lockStatus){
       applyClientReadonlyText();
       applyLockedCampaignMode();
+      startCampaignCopyUnlockWatch();
     }
   }
 
