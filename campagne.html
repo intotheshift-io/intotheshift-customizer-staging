@@ -862,8 +862,21 @@ bootCampagnePage();
       el.style.cursor='default';
     });
 
+    document.querySelectorAll(".step-link").forEach(link=>{
+      link.removeAttribute("href");
+      link.style.pointerEvents = "none";
+      link.style.cursor = "not-allowed";
+      link.style.opacity = ".45";
+    });
+
     document.querySelectorAll(".bottom-actions").forEach(el => {
       el.style.display = "none";
+    });
+
+    document.querySelectorAll(".check-row input").forEach(el=>{
+      el.disabled = true;
+      el.style.pointerEvents = "none";
+      el.style.cursor = "not-allowed";
     });
 
     document.querySelectorAll("input, select, textarea").forEach(el => {
@@ -875,6 +888,9 @@ bootCampagnePage();
         el.style.background = "#f6f8fb";
         return;
       }
+
+      if(el.closest(".check-row")) return;
+
       el.disabled = true;
       el.style.cursor = "not-allowed";
     });
@@ -892,18 +908,34 @@ bootCampagnePage();
     });
 
     document.querySelectorAll("a.pack-contact, a.btn-secondary").forEach(link => {
+      if(link.onclick || link.classList.contains("qr-download-btn")){
+        return;
+      }
       link.style.pointerEvents = "none";
       link.style.opacity = ".55";
       link.style.cursor = "not-allowed";
     });
 
     const sidebarHint = document.getElementById("sidebar-check-hint");
-    if(sidebarHint) sidebarHint.textContent = "Consultation verrouillée : lien, QR code et messages restent copiables.";
+    if(sidebarHint) sidebarHint.textContent = "Consultation verrouillée : seuls les liens, QR code et messages restent utilisables.";
 
     const help = document.getElementById("publish-help");
     if(help){
       help.style.display = "none";
       help.innerHTML = "";
+    }
+
+    if(!document.getElementById("campaign-published-banner")){
+      const banner = document.createElement("div");
+      banner.id = "campaign-published-banner";
+      banner.style.cssText = "background:#f0fbf2;border:1px solid #b8e8c0;color:#18375d;padding:14px 16px;border-radius:12px;margin-bottom:18px;font-size:13px;font-weight:700;line-height:1.5";
+      banner.innerHTML = "Votre simulateur a été publié. La campagne est consultable en lecture seule ; seuls les liens, QR code et messages de communication restent disponibles.";
+
+      const pageWrap = document.querySelector(".page-wrap");
+      const title = document.querySelector(".page-title");
+      if(pageWrap && title){
+        pageWrap.insertBefore(banner, title);
+      }
     }
   }
 
