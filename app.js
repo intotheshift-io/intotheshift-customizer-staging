@@ -623,16 +623,16 @@ function itsResumeUrlForProject(project) {
     rawData.step ||
     ""
   ).toLowerCase();
-  const id = encodeURIComponent(project?.id || project?.project_id || "");
+  const id = encodeURIComponent(project?.id || project?.project_id || rawData.project_id || rawData.projectId || "");
   const suffix = id ? `?projectId=${id}` : "";
 
   const status = itsNormalizeProjectStatus(project);
-  if (status === "published" || status === "unpublished" || status === "sent" || status === "submitted" || status === "archived") {
+  if (status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted") {
     return "validation.html" + suffix;
   }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
-  if (rawStep.includes("campagne")) return "parametrage.html" + suffix;
+  if (rawStep.includes("campagne")) return "campagne.html" + suffix;
   if (rawStep.includes("param")) return "parametrage.html" + suffix;
   return "questions.html" + suffix;
 }
@@ -785,13 +785,10 @@ function itsIsProjectReadOnly(state) {
   const currentState = state || itsLoad();
   const status = itsNormalizeProjectStatus(currentState);
 
-  if (status === "published" || status === "unpublished" || status === "archived") return true;
-
-  // Côté client, un projet transmis reste consultable mais non modifiable
-  // jusqu'à publication par Into The Shift. Admin et partner gardent la main.
-  if (itsIsPendingPublicationStatus(currentState) && !itsIsAdminLikeRole()) return true;
-
-  return false;
+  // Seuls les états réellement verrouillés bloquent l'édition globale.
+  // Un projet "transmis / en attente de publication" doit rester navigable :
+  // la page validation affiche l'état transmis, mais Paramétrage/Campagne restent consultables.
+  return status === "published" || status === "unpublished" || status === "archived";
 }
 
 async function itsFetchProjectById(projectId) {
@@ -944,65 +941,174 @@ function itsApplyReadOnlyMode(options = {}) {
 }
 
 
-function itsUrlWithProjectId(url, projectId) {
-  if (!url || !projectId) return url;
-  const raw = String(url || "").trim();
-  if (!raw || raw.startsWith("#") || raw.startsWith("mailto:") || raw.startsWith("tel:") || raw.startsWith("javascript:")) return url;
+function itsNormalizeProjectState(state) {
+  const next = itsCanonicalizeCampaignDates(itsUnwrapProjectData(state || {}));
+  next.parametrage = next.parametrage || {};
 
-  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
-  const page = raw.split("?")[0].split("#")[0];
-  if (!projectPages.includes(page)) return url;
-
-  try {
-    const parsed = new URL(raw, window.location.href);
-    parsed.searchParams.set("projectId", String(projectId));
-    return parsed.pathname.split("/").pop() + parsed.search + parsed.hash;
-  } catch(e) {
-    const separator = raw.includes("?") ? "&" : "?";
-    return raw.includes("projectId=") ? raw : raw + separator + "projectId=" + encodeURIComponent(projectId);
-  }
-}
-
-function itsGetProjectIdForNavigation() {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const fromUrl = params.get("projectId") || params.get("projectid") || params.get("project_id") || params.get("id") || "";
-    if (fromUrl) return fromUrl;
-  } catch(e) {}
-
-  return (
-    window.ITS_CURRENT_PROJECT_STATE?.currentAdId ||
-    window.ITS_CURRENT_PROJECT_STATE?.project_id ||
-    window.ITS_CURRENT_PROJECT_STATE?.projectId ||
-    itsGetCurrentProjectId() ||
-    ""
-  );
-}
-
-function itsApplyProjectIdToNavigationLinks() {
-  const projectId = itsGetProjectIdForNavigation();
-  if (!projectId) return;
-
-  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
-  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
-
-  if (projectPages.includes(page)) {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      if (!params.get("projectId")) {
-        params.set("projectId", String(projectId));
-        const nextUrl = window.location.pathname + "?" + params.toString() + window.location.hash;
-        window.history.replaceState(window.history.state, "", nextUrl);
-      }
-    } catch(e) {}
+  const projectId = next.currentAdId || next.project_id || next.projectId || itsGetCurrentProjectId();
+  if (projectId) {
+    next.currentAdId = projectId;
+    next.project_id = projectId;
+    next.projectId = projectId;
   }
 
-  document.querySelectorAll('a[href]').forEach((link) => {
-    const href = link.getAttribute("href") || "";
-    const next = itsUrlWithProjectId(href, projectId);
-    if (next !== href) link.setAttribute("href", next);
-  });
+  const visibleTitle = itsPickFirstNonEmpty([
+    next.parametrage.titre_repondants,
+    next.parametrage.titreRespondants,
+    next.parametrage.titre_visible_repondants,
+    next.parametrage.titreVisibleRepondants,
+    next.parametrage.titre_visible,
+    next.parametrage.titreVisible,
+    next.parametrage.titre,
+    next.titre_repondants,
+    next.titreRespondants,
+    next.autodiagTitle,
+    next.title,
+    next.parametrage.nom,
+    next.themeTitle,
+    next.theme?.title,
+    next.selectedTheme?.title
+  ]);
+
+  if (visibleTitle) {
+    next.parametrage.titre = visibleTitle;
+    next.parametrage.titre_repondants = visibleTitle;
+    next.parametrage.titreRespondants = visibleTitle;
+    next.parametrage.titre_visible_repondants = visibleTitle;
+    next.parametrage.titreVisibleRepondants = visibleTitle;
+    next.titre_repondants = visibleTitle;
+    next.titreRespondants = visibleTitle;
+  }
+
+  const step = next.current_step || next.currentStep || next.step || itsInferCurrentStep() || "questions";
+  next.current_step = step;
+  next.step = step;
+  next.status = itsNormalizeProjectStatus(next);
+  return next;
 }
+
+function itsGetProjectData(project) {
+  const raw = project?.data || project?.payload || project?.configuration || project || {};
+  return itsUnwrapProjectData(raw);
+}
+
+function itsCleanAdTitle(title) {
+  const cleaned = String(title || "")
+    .replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i, "")
+    .replace(/^\s*Autodiag\s*[-–—:]?\s*/i, "")
+    .trim();
+  return cleaned && !/^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned) ? cleaned : "Projet sans titre";
+}
+
+function itsGetProjectTitle(project) {
+  const data = itsGetProjectData(project);
+  const param = data.parametrage || {};
+  return itsCleanAdTitle(itsPickFirstNonEmpty([
+    param.titre_repondants,
+    param.titreRespondants,
+    param.titre_visible_repondants,
+    param.titreVisibleRepondants,
+    param.titre_visible,
+    param.titreVisible,
+    param.titre,
+    data.titre_repondants,
+    data.titreRespondants,
+    data.autodiagTitle,
+    data.title,
+    param.nom,
+    project?.title,
+    project?.name,
+    project?.project_name,
+    project?.ad_title
+  ]));
+}
+
+function itsNormalizeTextForTheme(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function itsInferThemeFromProject(project) {
+  const data = itsGetProjectData(project);
+  const text = itsNormalizeTextForTheme(JSON.stringify(data || {}) + " " + itsGetProjectTitle(project));
+  if (text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+  if (text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+  if (text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+  if (text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+  if (text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+  if (text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+  return "";
+}
+
+function itsGetProjectThemes(project) {
+  const data = itsGetProjectData(project);
+  const param = data.parametrage || {};
+  const titleNorm = itsNormalizeTextForTheme(itsGetProjectTitle(project));
+  const forbidden = [
+    "base assistee par ia", "aide a la redaction", "relecture obligatoire",
+    "concu par un expert", "concu par the big factory", "copie",
+    "brouillon", "publie", "transmis", "en attente"
+  ];
+  const businessKeywords = [
+    "cyber", "cybersecurite", "qvt", "rps", "risques psychosociaux", "management", "manager", "transformation",
+    "compliance", "conformite", "ethique", "diversite", "inclusion", "handicap", "sexisme", "lgbt", "religieuse", "origines",
+    "rse", "environnement", "sobriete", "securite", "surete", "btp"
+  ];
+  const themes = [];
+
+  function add(value, strictTag) {
+    if (Array.isArray(value)) { value.forEach(v => add(v, strictTag)); return; }
+    if (value && typeof value === "object") { add(value.title || value.name || value.label || value.titre || value.nom || "", strictTag); return; }
+    const raw = String(value || "").trim();
+    if (!raw) return;
+    const norm = itsNormalizeTextForTheme(raw);
+    if (!norm || norm === titleNorm) return;
+    if (forbidden.includes(norm) || forbidden.some(f => norm.includes(f))) return;
+    if (strictTag && !businessKeywords.some(k => norm.includes(k))) return;
+    if (!themes.some(existing => itsNormalizeTextForTheme(existing) === norm)) themes.push(raw);
+  }
+
+  [
+    project?.theme, project?.themeName, project?.themeLabel, project?.themeTitle, project?.thematique, project?.thématique,
+    data.theme, data.themeName, data.themeLabel, data.themeTitle, data.thematique, data.thématique,
+    param.theme, param.themeName, param.themeLabel, param.themeTitle, param.thematique, param.thématique,
+    data.selectedTheme, param.selectedTheme, data.category, param.category,
+    data.catalogTheme, data.catalog_theme, data.baseTheme, data.base_theme
+  ].forEach(v => add(v, false));
+
+  if (!themes.length) [data.themeTags, data.tags, data.theme?.tags, project?.themeTags, project?.tags].forEach(v => add(v, true));
+  if (!themes.length) {
+    const inferred = itsInferThemeFromProject(project);
+    if (inferred) themes.push(inferred);
+  }
+  return themes.slice(0, 4);
+}
+
+function itsGetProjectShareUrl(project) {
+  const data = itsGetProjectData(project);
+  return itsPickFirstNonEmpty([project?.shareUrl, project?.share_url, project?.adUrl, project?.ad_url, data.shareUrl, data.share_url, data.publicUrl, data.public_url]);
+}
+
+function itsGetProjectResultsUrl(project) {
+  const data = itsGetProjectData(project);
+  return itsPickFirstNonEmpty([project?.resultsUrl, project?.results_url, project?.resultUrl, project?.result_url, data.resultsUrl, data.results_url, data.dashboardUrl, data.dashboard_url]);
+}
+
+window.ITSProject = Object.assign(window.ITSProject || {}, {
+  normalizeState: itsNormalizeProjectState,
+  normalizeStatus: itsNormalizeProjectStatus,
+  getData: itsGetProjectData,
+  getTitle: itsGetProjectTitle,
+  getThemes: itsGetProjectThemes,
+  getShareUrl: itsGetProjectShareUrl,
+  getResultsUrl: itsGetProjectResultsUrl,
+  resumeUrl: itsResumeUrlForProject,
+  isReadOnly: itsIsProjectReadOnly
+});
 
 function itsShouldApplyReadOnlyOnThisPage() {
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
@@ -1020,14 +1126,13 @@ function itsShouldApplyReadOnlyOnThisPage() {
   return editablePages.includes(page) && hasProjectId;
 }
 
-function itsBootGlobalProjectNavigation() {
-  itsApplyProjectIdToNavigationLinks();
-  if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
-}
-
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", itsBootGlobalProjectNavigation);
+  document.addEventListener("DOMContentLoaded", () => {
+    if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
+  });
 } else {
-  setTimeout(itsBootGlobalProjectNavigation, 0);
+  setTimeout(() => {
+    if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
+  }, 0);
 }
 

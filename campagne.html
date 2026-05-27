@@ -778,6 +778,7 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
   if(!state || typeof state !== 'object'){
     state={theme:{title:'Sécurité & culture de sûreté'},chapters:[]};
   }
+  if(typeof itsNormalizeProjectState === 'function') state = itsNormalizeProjectState(state || {});
 
   init();
 
@@ -904,7 +905,7 @@ bootCampagnePage();
   function applyCampaignMode(){
     const params = new URLSearchParams(window.location.search);
     const readonly = params.get("readonly") === "1";
-    const lockStatus = ["published","unpublished","archived","sent"].includes(getCampaignStatusForLock());
+    const lockStatus = ["published","unpublished","archived"].includes(getCampaignStatusForLock());
 
     // Admin / partner : on garde la campagne modifiable tant que l'AD est un brouillon
     // ou prêt à transmettre. Le verrouillage ne s'applique qu'après transmission/publication

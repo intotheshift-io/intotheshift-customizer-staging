@@ -219,7 +219,16 @@
   </div>
 
   <script>
-    const API_BASE = "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
+    const API_BASE = (typeof ITS_API_BASE !== 'undefined' && ITS_API_BASE)
+      ? ITS_API_BASE
+      : (window.ITS_API_BASE || localStorage.getItem('its_api_base') || (
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          window.location.hostname.startsWith('staging.') ||
+          window.location.pathname.startsWith('/staging')
+            ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+            : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io'
+        ));
 
     let projects = [];
     let currentFilter = "all";
@@ -526,6 +535,10 @@
     }
 
     function getProjectThemes(p){
+      if(window.ITSProject && typeof window.ITSProject.getThemes === "function"){
+        const shared = window.ITSProject.getThemes(p);
+        if(Array.isArray(shared) && shared.length) return shared;
+      }
       const data = getProjectData(p);
       const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
       const state = data.state && typeof data.state === "object" ? data.state : {};
@@ -797,21 +810,22 @@
 
   const step = getProjectStep(project);
   if (step.includes("validation")) return "Transmettre";
-  if (step.includes("campagne")) return "Reprendre le paramétrage";
+  if (step.includes("campagne")) return "Reprendre la campagne";
   if (step.includes("param")) return "Reprendre le paramétrage";
   return "Reprendre la création";
 }
 
     function resumeUrl(project) {
+      if(window.ITSProject && typeof window.ITSProject.resumeUrl === "function") return window.ITSProject.resumeUrl(project);
       const status = normalizeStatus(project);
       const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
-      if (status === "published" || status === "unpublished" || status === "archived") return "validation.html" + suffix;
+      if (status === "published" || status === "unpublished" || status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
-      if (step.includes("campagne")) return "parametrage.html" + suffix;
+      if (step.includes("campagne")) return "campagne.html" + suffix;
       if (step.includes("param")) return "parametrage.html" + suffix;
       return "questions.html" + suffix;
     }
