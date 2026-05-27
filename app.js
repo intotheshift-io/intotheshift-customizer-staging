@@ -1154,6 +1154,89 @@ window.ITSProject = Object.assign(window.ITSProject || {}, {
   isReadOnly: itsIsProjectReadOnly
 });
 
+
+function itsUrlWithProjectId(url, projectId) {
+  if (!url || !projectId) return url;
+  const raw = String(url || "").trim();
+  if (!raw || raw.startsWith("#") || raw.startsWith("mailto:") || raw.startsWith("tel:") || raw.startsWith("javascript:")) return url;
+
+  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
+  const page = raw.split("?")[0].split("#")[0];
+  if (!projectPages.includes(page)) return url;
+
+  try {
+    const parsed = new URL(raw, window.location.href);
+    parsed.searchParams.set("projectId", String(projectId));
+    return parsed.pathname.split("/").pop() + parsed.search + parsed.hash;
+  } catch(e) {
+    const separator = raw.includes("?") ? "&" : "?";
+    return raw.includes("projectId=") ? raw : raw + separator + "projectId=" + encodeURIComponent(projectId);
+  }
+}
+
+function itsGetProjectIdForNavigation() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("projectId") || params.get("projectid") || params.get("project_id") || params.get("id") || "";
+    if (fromUrl) return fromUrl;
+  } catch(e) {}
+
+  return (
+    window.ITS_CURRENT_PROJECT_STATE?.currentAdId ||
+    window.ITS_CURRENT_PROJECT_STATE?.project_id ||
+    window.ITS_CURRENT_PROJECT_STATE?.projectId ||
+    itsGetCurrentProjectId() ||
+    ""
+  );
+}
+
+function itsApplyProjectIdToNavigationLinks() {
+  const projectId = itsGetProjectIdForNavigation();
+  if (!projectId) return;
+
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
+
+  if (projectPages.includes(page)) {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.get("projectId")) {
+        params.set("projectId", String(projectId));
+        window.history.replaceState(window.history.state, "", window.location.pathname + "?" + params.toString() + window.location.hash);
+      }
+    } catch(e) {}
+  }
+
+  document.querySelectorAll(".stepper a.step-link[href]").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const label = String(link.textContent || "").toLowerCase();
+
+    if (href.split("?")[0].split("#")[0] === "index.html" || label.includes("choisir une base")) {
+      link.removeAttribute("href");
+      link.classList.add("step-link-locked-start");
+      link.style.pointerEvents = "none";
+      link.style.cursor = "default";
+      link.style.opacity = ".75";
+      link.title = "Point de départ du parcours : non cliquable une fois le projet commencé";
+      return;
+    }
+
+    const next = itsUrlWithProjectId(href, projectId);
+    if (next !== href) link.setAttribute("href", next);
+  });
+}
+
+function itsBootGlobalProjectNavigation() {
+  if (!document.getElementById("its-project-navigation-style")) {
+    const style = document.createElement("style");
+    style.id = "its-project-navigation-style";
+    style.textContent = ".step-link-locked-start{color:#007883!important;text-decoration:none!important}.step-link.done[href]{cursor:pointer!important;opacity:1!important}.step-link.done[href]:hover{text-decoration:underline}";
+    document.head.appendChild(style);
+  }
+  itsApplyProjectIdToNavigationLinks();
+}
+
+
 function itsShouldApplyReadOnlyOnThisPage() {
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
 
@@ -1172,10 +1255,12 @@ function itsShouldApplyReadOnlyOnThisPage() {
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
+    itsBootGlobalProjectNavigation();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   });
 } else {
   setTimeout(() => {
+    itsBootGlobalProjectNavigation();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   }, 0);
 }

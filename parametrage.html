@@ -76,7 +76,8 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .param-modal-list{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;margin:12px 0 18px;color:#18375d;font-size:13px;line-height:1.7}
 .param-modal-actions{display:flex;justify-content:flex-end;gap:10px}
 .param-modal-btn{border:none;border-radius:10px;background:#18375d;color:#fff;padding:10px 16px;font-size:13px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer}
-.btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
+.btn-continue.blocked{background:#eb6366!important;color:#fff!important;cursor:pointer!important;opacity:1!important}
+.btn-continue.blocked:hover{background:#d4474a!important}
 
 
 /* ── Pack passations client ───────────────────── */
@@ -216,7 +217,7 @@ select option[value="current_pack"]{
 
 <div class="stepper-wrap">
   <div class="stepper">
-    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector done"></div>
+    <div class="step"><div class="step-circle done">✓</div><span class="step-label done step-link step-link-locked-start" title="Point de départ du parcours : non cliquable une fois le projet commencé">Choisir une base</span></div><div class="step-connector done"></div>
     <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div>
     <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer</span></div><div class="step-connector todo"></div>
     <div class="step"><div class="step-circle todo">4</div><span class="step-label todo">Campagne</span></div><div class="step-connector todo"></div>
@@ -267,7 +268,7 @@ select option[value="current_pack"]{
         </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="handleLaunchDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="launch-date-hint"><span class="alert-ico">⚠️</span><span>Délai minimum : la campagne ne peut pas démarrer avant J+5 pour laisser le temps de la préparer et de la livrer.</span></div></div>
-          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="handleCloseDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="close-date-hint"><span class="alert-ico">⚠️</span><span>La date de clôture doit être postérieure à la date de lancement. Par défaut, elle est proposée à J+5 après le lancement.</span></div></div>
+          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="handleCloseDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="close-date-hint"><span class="alert-ico">⚠️</span><span>La date de clôture doit être postérieure à la date de lancement. Elle est à choisir par le client et doit rester postérieure à la date de lancement.</span></div></div>
         </div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
@@ -894,24 +895,15 @@ function applyDateRules(autofillClosure){
   if(closeEl && launch){
     closeEl.min = addDaysIso(launch, 1);
   }
-
-  if(autofillClosure && launch){
-    const suggestedClose = addDaysIso(launch, 5);
-    if(!close || close <= launch){
-      state.parametrage.date_cloture = suggestedClose;
-      state.parametrage.dateCloture = suggestedClose;
-      state.campaignEndDate = suggestedClose;
-      state.campaign_end_date = suggestedClose;
-    }
-  }
-
-  syncDateInputsFromState();
+  // La date de clôture n’est jamais renseignée automatiquement.
+  // Elle reste un choix explicite du client.
+syncDateInputsFromState();
   updateSidebar();
   save();
 }
 function handleLaunchDateChange(value){
   updateParam('date_lancement', value);
-  applyDateRules(true);
+  applyDateRules(false);
   checkContinue();
 }
 function handleCloseDateChange(value){
