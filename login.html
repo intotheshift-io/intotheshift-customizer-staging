@@ -571,12 +571,18 @@ document.getElementById("login-form").addEventListener("submit", async function(
 
     const forcedRedirect = localStorage.getItem("its_after_login_redirect");
     localStorage.removeItem("its_after_login_redirect");
+
     const urlParams = new URLSearchParams(window.location.search);
-    const queryRedirect = urlParams.get("redirect");
+    const queryRedirect =
+      urlParams.get("next") ||
+      urlParams.get("redirect");
+
     const mustChangePassword = data.user?.mustChangePassword === true;
+
     const redirect = mustChangePassword
       ? "account.html?tab=securite&firstLogin=1"
       : (forcedRedirect || queryRedirect || "dashboard.html");
+
     window.location.href = redirect;
   }catch(error){
     showLoginError(error.message || "Erreur de connexion à l’API.");
