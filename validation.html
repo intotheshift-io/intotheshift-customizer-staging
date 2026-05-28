@@ -340,16 +340,43 @@ function isValidationReprogramMode(){
   return params.get('reprogram') === '1';
 }
 function markValidationAsReprogramming(){
-  state = state || {};
-  state.isReprogramming = true;
-  state.reprogramming = true;
+  state = mergeReprogramStatePreservingData(state || {});
+}
+function clearReprogramTransmissionFlags(){
   state.status = 'draft';
   state.configTransmise = false;
   state.config_transmise = false;
   state.submitted = false;
-  state.transmission = Object.assign({}, state.transmission || {}, {status:'draft', submitted_at:''});
-  delete state.transmission.submittedAt;
+  state.reprogramSubmitted = false;
+  state.reprogram_submitted = false;
+  state.transmission = Object.assign({}, state.transmission || {}, {
+    status:'draft',
+    submitted_at:'',
+    submittedAt:'',
+    sent_at:'',
+    sentAt:''
+  });
 }
+function mergeReprogramStatePreservingData(source){
+  const base = source && typeof source === 'object' ? source : {};
+  base.isReprogramming = true;
+  base.reprogramming = true;
+  base.status = 'draft';
+  base.configTransmise = false;
+  base.config_transmise = false;
+  base.submitted = false;
+  base.reprogramSubmitted = false;
+  base.reprogram_submitted = false;
+  base.transmission = Object.assign({}, base.transmission || {}, {
+    status:'draft',
+    submitted_at:'',
+    submittedAt:'',
+    sent_at:'',
+    sentAt:''
+  });
+  return base;
+}
+
 function validationCurrentProjectId(){
   return state?.currentAdId || state?.project_id || state?.projectId ||
     localStorage.getItem('its_current_project_id') ||
@@ -1423,6 +1450,7 @@ async function transmit(){
 
   if(sentOk){
     state.status = 'sent';
+    if(isValidationReprogramMode()){ state.reprogramSubmitted = true; state.reprogram_submitted = true; }
     state.configTransmise = true;
     state.config_transmise = true;
     state.submitted = true;
@@ -1454,13 +1482,16 @@ async function transmit(){
 
 
 function isAlreadyTransmitted(){
-  if(isValidationReprogramMode()) return false;
+  if(isValidationReprogramMode() && state?.reprogramSubmitted !== true && state?.reprogram_submitted !== true){
+    return false;
+  }
   return state?.status === 'sent' ||
     state?.configTransmise === true ||
     state?.config_transmise === true ||
     state?.submitted === true ||
     state?.transmission?.status === 'sent' ||
-    !!state?.transmission?.submitted_at;
+    !!state?.transmission?.submitted_at ||
+    !!state?.transmission?.submittedAt;
 }
 
 function applyTransmittedView(){

@@ -87,8 +87,21 @@
 }
 
 
-.reprogram-note{background:#f0f8f7;border:1px solid #b8dfe0;color:#18375d;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:13px;font-weight:700;line-height:1.45}
-.reprogram-note small{display:block;color:#64748b;font-weight:600;margin-top:3px}
+
+/* Modale reprogrammation incomplète */
+.reprogram-missing-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px}
+.reprogram-missing-overlay.on{display:flex}
+.reprogram-missing-modal{width:min(520px,92vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:26px 28px}
+.reprogram-missing-icon{width:52px;height:52px;border-radius:18px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}
+.reprogram-missing-title{font-size:19px;font-weight:900;color:#18375d;margin-bottom:7px}
+.reprogram-missing-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}
+.reprogram-missing-list{display:flex;flex-direction:column;gap:7px;margin:12px 0 18px}
+.reprogram-missing-item{display:flex;align-items:flex-start;gap:8px;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:9px 11px;color:#8a6408;font-size:12px;font-weight:800;line-height:1.35}
+.reprogram-missing-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.reprogram-missing-btn{border:none;border-radius:10px;padding:10px 15px;background:#18375d;color:#fff;font-size:13px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif}
+.reprogram-missing-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}
+.btn-continue.not-ready{background:#f5c0c1;color:#fff;cursor:pointer}
+.btn-continue.not-ready:hover{background:#efaaab}
 
 </style>
 </head>
@@ -115,6 +128,19 @@
 </main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
+<div class="reprogram-missing-overlay" id="reprogram-missing-modal" aria-hidden="true" onclick="closeReprogramMissingModal()">
+  <div class="reprogram-missing-modal" role="dialog" aria-modal="true" aria-labelledby="reprogram-missing-title" onclick="event.stopPropagation()">
+    <div class="reprogram-missing-icon">⚠️</div>
+    <div class="reprogram-missing-title" id="reprogram-missing-title">Reprogrammation à compléter</div>
+    <div class="reprogram-missing-text">Pour transmettre la reprogrammation, modifiez la période de campagne puis recochez la checklist.</div>
+    <div class="reprogram-missing-list" id="reprogram-missing-list"></div>
+    <div class="reprogram-missing-actions">
+      <button class="reprogram-missing-btn secondary" type="button" onclick="closeReprogramMissingModal()">Fermer</button>
+      <button class="reprogram-missing-btn" type="button" onclick="focusReprogramMissingField()">Compléter maintenant</button>
+    </div>
+  </div>
+</div>
+
 <div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
 <script>
 let state = {};
@@ -455,37 +481,54 @@ function isBackofficeViewingCampaign(){
   return role === 'admin' || role === 'partner';
 }
 
-
-function isCampaignReprogramMode(){
-  try{
-    const params = new URLSearchParams(window.location.search);
-    return params.get('reprogram') === '1' || state.isReprogramming === true || state.reprogramming === true;
-  }catch(e){ return false; }
-}
-function getReprogramOriginalDates(){
-  const body = document.body;
-  return {
-    start: body.getAttribute('data-reprogram-original-start') || '',
-    end: body.getAttribute('data-reprogram-original-end') || ''
-  };
-}
-function reprogramDatesHaveChanged(){
-  if(!isCampaignReprogramMode()) return true;
+function getReprogramMissingItems(){
+  const items = [];
+  if(!isCampaignReprogramMode()) return items;
   const original = getReprogramOriginalDates();
   const currentStart = normalizeDateInputValue(p().date_lancement || document.getElementById('date-launch')?.value || '');
   const currentEnd = normalizeDateInputValue(p().date_cloture || document.getElementById('date-close')?.value || '');
-  return Boolean(currentStart && currentEnd && (currentStart !== original.start || currentEnd !== original.end));
+  if(!currentStart || currentStart === original.start) items.push({label:'Modifier la date de lancement', fieldId:'date-launch'});
+  if(!currentEnd || currentEnd === original.end) items.push({label:'Modifier la date de clôture', fieldId:'date-close'});
+  document.querySelectorAll('.check-row input').forEach(box => {
+    if(!box.checked){
+      const title = box.closest('.check-row')?.querySelector('.check-title')?.textContent?.trim() || 'Point de checklist';
+      items.push({label:title, checkbox:box});
+    }
+  });
+  return items;
 }
-function resetCampaignChecklistForReprogramming(){
-  if(!isCampaignReprogramMode() || window.__itsReprogramChecklistInitialized) return;
-  window.__itsReprogramChecklistInitialized = true;
-  c().checklist = {};
-  document.querySelectorAll('.check-row input').forEach(input => { input.checked = false; });
-  const sidebarHint = document.getElementById('sidebar-check-hint');
-  if(sidebarHint) sidebarHint.textContent = 'Reprogrammation : modifiez les dates, puis recochez la checklist.';
-  saveState();
+function showReprogramMissingModal(){
+  const items = getReprogramMissingItems();
+  const list = document.getElementById('reprogram-missing-list');
+  if(list){
+    list.innerHTML = items.length
+      ? items.map(item => '<div class="reprogram-missing-item"><span>•</span><span>'+esc(item.label)+'</span></div>').join('')
+      : '<div class="reprogram-missing-item"><span>✓</span><span>Tout est complété. Vous pouvez transmettre.</span></div>';
+  }
+  const modal = document.getElementById('reprogram-missing-modal');
+  if(modal){
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+  }
 }
-function updateChecklist(){let cc=c();cc.checklist=cc.checklist||{};let boxes=[...document.querySelectorAll('.check-row input')];boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});if(!p().date_lancement)missing.push('Date de lancement');if(!p().date_cloture)missing.push('Date de clôture');if(p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');if(isCampaignReprogramMode()&&!reprogramDatesHaveChanged())missing.push('Modifier les dates de campagne pour créer une nouvelle période');let ok=missing.length===0;document.getElementById('check-pill').textContent=checked+'/'+total;document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');document.getElementById('btn-launch').disabled=!ok;if(!isBackofficeViewingCampaign()){document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';}else{document.getElementById('sb-status').textContent=statusLabel();}let help=document.getElementById('publish-help');help.style.display=ok?'none':'block';help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':(isCampaignReprogramMode()?'Reprogrammation bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.':'Transmission bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.');saveState()}
+function closeReprogramMissingModal(){
+  const modal = document.getElementById('reprogram-missing-modal');
+  if(modal){
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+  }
+}
+function focusReprogramMissingField(){
+  const item = getReprogramMissingItems()[0];
+  closeReprogramMissingModal();
+  if(!item) return;
+  const el = item.fieldId ? document.getElementById(item.fieldId) : item.checkbox;
+  if(el){
+    (el.closest('.kpi') || el.closest('.check-row') || el).scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(()=>el.focus(),250);
+  }
+}
+function updateChecklist(){let cc=c();cc.checklist=cc.checklist||{};let boxes=[...document.querySelectorAll('.check-row input')];boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});if(!p().date_lancement)missing.push('Date de lancement');if(!p().date_cloture)missing.push('Date de clôture');if(p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');let ok=missing.length===0;document.getElementById('check-pill').textContent=checked+'/'+total;document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');const launchBtn=document.getElementById('btn-launch'); if(launchBtn){ launchBtn.disabled=false; launchBtn.dataset.ready=ok?'1':'0'; launchBtn.classList.toggle('not-ready', !ok); }if(!isBackofficeViewingCampaign()){document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';}else{document.getElementById('sb-status').textContent=statusLabel();}let help=document.getElementById('publish-help');help.style.display=ok?'none':'block';help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':'Transmission bloquée : '+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.';saveState()}
 const CFG=[{key:'bad',hex:'#ff847e',mk:'#fff0ef',text:'#c0392b'},{key:'mid',hex:'#ffc744',mk:'#fff9ec',text:'#b7840a'},{key:'good',hex:'#77cd8a',mk:'#f0fbf2',text:'#27823a'}];let PS={step:'home',chap:0,q:0,sel:null,socio:{},scores:{},chapScores:[],chapProfil:[],open:{}};
 function normAD(){let chapters=(state.chapters||[]).map((ch,i)=>({title:ch.title||ch.name||'Chapitre '+(i+1),questions:(ch.questions||[]).map(q=>{let ans=q.answers||q.opts||[];return{text:q.text||q.question||'Question',opts:ans.map(a=>a.text||a.l||a.label||String(a)),scores:ans.map(a=>Number(a.score??a.s??1))}}),profiles:(ch.profiles||ch.profils||[]).map((pr,j)=>({title:pr.title||pr.titre||'Profil',summary:pr.summary||pr.phrase||'',description:pr.description||pr.desc||'',keywords:pr.keywords||pr.motscles||pr.mots||[]})),seuils:ch.seuils||[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}));if(!chapters.length)chapters=[{title:'Chapitre 1',questions:[{text:'Première question de démonstration',opts:['Réponse A','Réponse B','Réponse C'],scores:[0,1,2]}],profiles:[{title:'Profil en progression',summary:'Votre profil apparaît ici.',description:'La description détaillée du profil sera affichée ici.',keywords:['Mot clé']}],seuils:[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}];return{title:cleanTheme(),intro:p().intro||'Bienvenue dans cet autodiagnostic. Il vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes. La démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.',socio:p().sociodemo||[{q:'À quelle catégorie appartenez-vous ?',opts:['Collaborateur·rice','Manager','Direction']}],chapters,resources:p().resources||state.resources||[]}}
 function pEsc(s){return esc(s)}function cleanProfileTitle(t){return String(t||'Profil').replace(/^(Pratiques en construction|Réflexes installés|Réflexes ancrés|En développement|En progression|Ancré|Mauvais|Moyen|Bon)\s*[—–-]\s*/i,'').trim()||'Profil'}function splitRadarLabel(t){let words=String(t||'').split(' '),lines=[''];words.forEach(w=>{let last=lines.length-1;if((lines[last]+' '+w).trim().length>18&&lines.length<3){lines.push(w)}else{lines[last]=(lines[last]+' '+w).trim()}});return lines}function pTotal(ad){return ad.chapters.reduce((a,ch)=>a+ch.questions.length,0)}function pDone(ad){return ad.chapters.slice(0,PS.chap).reduce((a,ch)=>a+ch.questions.length,0)+PS.q}function pCalc(ad,ci){let ch=ad.chapters[ci],t=0;for(let i=0;i<ch.questions.length;i++)t+=PS.scores[ci+'_'+i]||0;return t/ch.questions.length}function pIdx(score,seuils){let s=(seuils||[]).map(x=>x.max??x);return score<(s[0]??.7)?0:score<(s[1]??1.7)?1:2}
@@ -506,7 +549,6 @@ function getCurrentProjectIdForSave(){
     '';
 }
 function goBackToParametrage(){
-  if(isCampaignReprogramMode()){ showToast('En reprogrammation, vous ne pouvez modifier que les dates de campagne.'); return; }
   saveState();
   const id = getCurrentProjectIdForSave();
   location.href = id ? 'parametrage.html?projectId=' + encodeURIComponent(id) : 'parametrage.html';
@@ -834,7 +876,7 @@ function init(){
   setTimeout(updateDatesUI, 80);
   setTimeout(updateDatesUI, 350);
 }
-async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='draft';state.current_step='campagne';state.step='campagne';state.configTransmise=false;state.config_transmise=false;state.submitted=false;if(state.transmission&&state.transmission.status!=='sent'){state.transmission.status='draft';delete state.transmission.submitted_at;}saveState();await persistProjectDraft('campagne','draft');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
+async function goNext(){updateChecklist();const launchBtn=document.getElementById('btn-launch');if(launchBtn && launchBtn.dataset.ready!=='1'){ if(isCampaignReprogramMode()) showReprogramMissingModal(); else { const help=document.getElementById('publish-help'); if(help){help.scrollIntoView({behavior:'smooth',block:'center'});} } return; }c().done=true;state.status='draft';state.current_step='campagne';state.step='campagne';state.configTransmise=false;state.config_transmise=false;state.submitted=false;if(state.transmission&&state.transmission.status!=='sent'){state.transmission.status='draft';delete state.transmission.submitted_at;}saveState();await persistProjectDraft('campagne','draft');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
   const params=new URLSearchParams(window.location.search);
   const projectIdFromUrl=params.get('projectId') || params.get('project_id') || params.get('id') || '';
   const projectId=projectIdFromUrl ||
@@ -1130,18 +1172,6 @@ bootCampagnePage();
       const sub = document.querySelector(".page-sub");
       if(title) title.textContent = "Reprogrammer la campagne";
       if(sub) sub.textContent = "Même URL, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
-      if(!document.getElementById("reprogram-campaign-note")){
-        const note=document.createElement("div");
-        note.id="reprogram-campaign-note";
-        note.className="reprogram-note";
-        note.innerHTML="Reprogrammation : vous conservez la même URL de passation et la même URL statistiques.<small>Les statistiques de cette nouvelle période s’ajouteront à l’historique existant. Pour continuer, modifiez les dates puis recochez toute la checklist.</small>";
-        const grid=document.querySelector(".launch-grid");
-        if(grid && grid.parentNode) grid.parentNode.insertBefore(note, grid);
-      }
-      if(!document.body.getAttribute("data-reprogram-original-start")){
-        document.body.setAttribute("data-reprogram-original-start", normalizeDateInputValue(p().date_lancement || state.campaign_start_date || state.campaignStartDate || document.getElementById("date-launch")?.value || ""));
-        document.body.setAttribute("data-reprogram-original-end", normalizeDateInputValue(p().date_cloture || state.campaign_end_date || state.campaignEndDate || document.getElementById("date-close")?.value || ""));
-      }
 
       ["date-launch", "date-close"].forEach(id => {
         const el = document.getElementById(id);
@@ -1172,20 +1202,11 @@ bootCampagnePage();
         button.style.opacity = "1";
       });
 
-      document.querySelectorAll(".bottom-actions .btn-back").forEach(button => {
-        button.disabled = true;
-        button.style.display = "none";
-        button.style.pointerEvents = "none";
-        button.onclick = null;
-        button.title = "En reprogrammation, vous ne pouvez modifier que les dates de campagne.";
-      });
-
+      const sidebarHint = document.getElementById("sidebar-check-hint");
+      if(sidebarHint) sidebarHint.textContent = "Reprogrammation : vérifiez les dates, puis transmettez à Into The Shift.";
+      const banner = document.getElementById("campaign-published-banner");
       resetCampaignChecklistForReprogramming();
       updateChecklist();
-
-      const sidebarHint = document.getElementById("sidebar-check-hint");
-      if(sidebarHint) sidebarHint.textContent = "Reprogrammation : modifiez les dates, puis recochez la checklist.";
-      const banner = document.getElementById("campaign-published-banner");
       if(banner) banner.remove();
       return;
     }

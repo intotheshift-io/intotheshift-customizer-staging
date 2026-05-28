@@ -203,8 +203,6 @@
       <div class="kpi"><strong id="kpiPassations">—</strong><span>Passations restantes</span></div>
     </section>
 
-    <section id="clientPackUpgradePanel" style="display:none"></section>
-
     <section class="tabs">
       <button class="tab active" onclick="showTab('ads', this)">Autodiagnostics</button>
       <button class="tab" onclick="showTab('campaigns', this)">Campagnes</button>
@@ -737,52 +735,6 @@ function getProjectTitle(project){
       `;
     }
 
-
-    function renderClientPackUpgradePanel(projects){
-      const panel = document.getElementById("clientPackUpgradePanel");
-      if(!panel) return;
-      const requests = (projects || [])
-        .map(project => ({ project, request: getPackUpgradeRequest(project) }))
-        .filter(item => item.request.requested);
-
-      if(!requests.length){
-        panel.style.display = "none";
-        panel.innerHTML = "";
-        return;
-      }
-
-      panel.style.display = "block";
-      panel.innerHTML = `
-        <div class="pack-upgrade-box" style="margin:0 0 18px 0">
-          📦 <strong>Recharge pack du cockpit client</strong><br>
-          <span>Ces demandes concernent le quota global du client, pas un autodiagnostic en particulier.</span>
-          <div style="display:grid;gap:10px;margin-top:12px">
-            ${requests.map(({project, request}) => {
-              const label = request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`;
-              const after = request.unlimited ? "Pack illimité" : `${Number(request.totalAfter || 0).toLocaleString("fr-FR")} passations au total`;
-              const title = getProjectTitle(project);
-              const isPending = request.status === "pending";
-              const isApproved = request.status === "approved";
-              const isRejected = request.status === "rejected";
-              return `
-                <div style="background:#fff;border:1px solid #ffd9a3;border-radius:12px;padding:10px 12px">
-                  <strong>${isApproved ? "✅ Recharge validée" : isRejected ? "↩️ Recharge refusée" : "⏳ Recharge à valider"}</strong><br>
-                  ${escapeHtml(label)} · ${escapeHtml(after)}<br>
-                  <small>Demande issue de : ${escapeHtml(title)}</small>
-                  ${isPending && isAdmin() ? `
-                    <div class="pack-upgrade-actions">
-                      <button class="small-btn approve-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','approve')">✅ Valider recharge</button>
-                      <button class="small-btn reject-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','reject')">Refuser</button>
-                    </div>
-                  ` : ""}
-                </div>
-              `;
-            }).join("")}
-          </div>
-        </div>
-      `;
-    }
-
     function getProjectLogoData(project){
       const payload = getProjectPayload(project);
       return val(project,["passationLogoDataUrl","passation_logo_data_url","projectLogoDataUrl","project_logo_data_url"],
@@ -992,7 +944,6 @@ function getProjectTitle(project){
       document.getElementById("kpiSent").textContent = sentCount;
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
-      renderClientPackUpgradePanel(projects);
 
       renderAds(projects);
       renderCampaigns(projects);
@@ -1196,6 +1147,7 @@ function getProjectTitle(project){
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
+            ${renderPackUpgradeBox(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -1662,6 +1614,21 @@ function getProjectTitle(project){
 
     let confirmModalResolver = null;
 
+    async function showActionInfoModal(options = {}){
+      await openConfirmModal(Object.assign({
+        tone: options.tone || "primary",
+        icon: options.icon || "ℹ️",
+        title: options.title || "Information",
+        subtitle: options.subtitle || "",
+        text: options.text || "",
+        project: options.project || "",
+        warning: options.warning || "",
+        confirmText: options.confirmText || "Compris",
+        hideCancel: true
+      }, options, { hideCancel: true, confirmText: options.confirmText || "Compris" }));
+      return true;
+    }
+
     function openConfirmModal(options = {}){
       const modal = document.getElementById("confirmModal");
       const icon = document.getElementById("confirmModalIcon");
@@ -1671,6 +1638,7 @@ function getProjectTitle(project){
       const project = document.getElementById("confirmModalProject");
       const warning = document.getElementById("confirmModalWarning");
       const okBtn = document.getElementById("confirmOkBtn");
+      const cancelBtn = document.getElementById("confirmCancelBtn");
 
       if(!modal || !title || !text || !okBtn){
         return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
