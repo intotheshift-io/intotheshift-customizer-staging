@@ -323,6 +323,10 @@
     function normalizeStatus(project) {
       const raw = String(project.status || project.project_status || "").toLowerCase();
       const data = getProjectData(project);
+      const archivedFlag = Boolean(
+        project.archived_at || project.archivedAt || project.is_archived === true || project.isArchived === true ||
+        data.archived_at || data.archivedAt || data.is_archived === true || data.isArchived === true
+      );
       const sentFlag =
         project.configTransmise === true ||
         project.config_transmise === true ||
@@ -338,11 +342,11 @@
         data.cloneSourceProjectId || data.clone_source_project_id
       );
 
+      if (archivedFlag || raw === "archived" || raw.includes("archiv")) return "archived";
       if (hasCopyMarker && (!raw || raw === "draft" || raw === "brouillon")) return "draft";
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
       if (raw.includes("publi")) return "published";
       if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
-      if (raw.includes("archiv")) return "archived";
       return "draft";
     }
 
