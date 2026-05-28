@@ -146,6 +146,62 @@ td:nth-child(9){width:125px}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
 
+
+/* Refonte visuelle cockpit clients — cartes inspirées du client-folder, sans changement fonctionnel */
+.org-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #dfe8ef;
+  border-radius:26px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+  padding:0;
+  box-shadow:0 14px 34px rgba(13,76,114,.08);
+}
+.org-card:before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:7px;
+  background:linear-gradient(90deg,#0d4c72,#1f7b98,#77c6a1,#ffc744);
+}
+.org-card-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:16px;
+  align-items:flex-start;
+  padding:22px 22px 14px;
+  margin:0;
+}
+.org-title-row{display:flex;gap:13px;align-items:flex-start;min-width:0}
+.org-avatar{width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,#0d4c72,#1f7b98);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 auto;box-shadow:0 10px 22px rgba(13,76,114,.18)}
+.org-card h3{color:#17375d;font-size:21px;line-height:1.15;margin:0 0 6px}
+.org-card .card-meta{color:#61738a;font-size:13px;line-height:1.45}
+.org-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.org-chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;border:1px solid #d7e8f1;background:#eef6fb;color:#0d4c72;white-space:nowrap}
+.org-chip.green{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
+.org-chip.orange{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}
+.org-chip.grey{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+.org-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0 22px 16px}
+.org-kpi{border:1px solid #e4edf5;border-radius:19px;padding:14px;background:#f9fbfd;min-width:0}
+.org-kpi strong{display:block;font-size:23px;line-height:1;color:#0d4c72;margin-bottom:5px}
+.org-kpi span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900}
+.org-kpi small{display:block;margin-top:6px;color:#61738a;font-size:12px;line-height:1.35}
+.org-content-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;padding:0 22px 18px}
+.org-panel{background:#f7fafd;border:1px solid #e4edf5;border-radius:20px;padding:15px;min-width:0}
+.org-panel-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;color:#17375d;font-size:14px;font-weight:900}
+.org-user-list{display:grid;gap:8px}
+.org-user-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;background:#fff;border:1px solid #e2ebf2;border-radius:15px;padding:10px 11px;font-size:13px}
+.org-user-row strong{color:#17375d;display:block;margin-bottom:2px}
+.org-user-row small{color:#61738a;line-height:1.35;word-break:break-word}
+.org-user-role{border-radius:999px;padding:5px 8px;background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900;white-space:nowrap}
+.org-empty-note{background:#fff;border:1px dashed #cbd9e7;border-radius:15px;padding:13px;color:#61738a;font-size:13px;line-height:1.4}
+.org-quota-panel{margin:0 22px 16px;border-radius:20px;background:linear-gradient(135deg,#fbfdfe,#eef6fb);border:1px solid #d7e8f1}
+.org-actions{margin:0;padding:0 22px 22px;display:flex;gap:9px;flex-wrap:wrap}
+.org-actions .mini-btn{border-radius:999px;padding:10px 13px}
+@media(max-width:1100px){.org-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.org-content-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.org-card-head{grid-template-columns:1fr}.org-badges{justify-content:flex-start}.org-kpi-grid{grid-template-columns:1fr}.org-title-row{flex-direction:column}}
+
+
 /* Cartes comptes utilisateurs — styles isolés admin */
 .accounts-card-grid{
   display:grid;
@@ -1040,75 +1096,7 @@ function renderAccounts(){
             <option value="partner" ${role==="partner"?"selected":""}>partner</option>
             <option value="admin" ${role==="admin"?"selected":""}>admin</option>
           </select>
-          <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">Changer rôle</button>
-          ${role==="partner"?`<button class="mini-btn light" onclick="openPartnerFolder('${escapeAttr(id)}')">Dossier partner</button>`:""}
-        </div>
-        <div class="account-role-edit" style="justify-content:flex-end">
-          ${status==="active" && !disableDelete?`<button class="mini-btn light" onclick="changeUserStatus('${escapeAttr(id)}','disabled')">Désactiver</button>`:""}
-          ${status==="disabled"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Réactiver</button>`:""}
-          ${status==="deleted"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Restaurer</button>`:""}
-          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete||status==="deleted"?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
-          ${disableDelete?'<div class="account-protected">Protégé</div>':''}
-        </div>
-      </div>
-    </article>`;
-  }).join("");
-
-  grid.style.display=rows.length?"grid":"none";
-  document.getElementById("accountsEmpty").style.display=rows.length?"none":"block";
-}
-
-function renderPartners(){
-  const q=(document.getElementById("partnerSearch")?.value||"").toLowerCase().trim();
-  const partners=adminState.clients.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner").filter(p=>!q||JSON.stringify(p).toLowerCase().includes(q));
-  const grid=document.getElementById("partnersGrid");
-
-  grid.innerHTML=partners.map(p=>{
-    const id=val(p,["id","user_id"],"");
-    const name=getCompany(p) || getUserName(p);
-    const email=val(p,["email"],"—");
-    const quota=num(val(p,["passationsQuota","passations_quota"],0));
-    const used=num(val(p,["passationsUsed","passations_used"],0));
-    const remaining=Math.max(0,quota-used);
-    const orgs=getPartnerOrgs(id);
-    const projectCount=adminState.projects.filter(pr=>String(val(pr,["partner_id","partnerId","owner_id","user_id"],""))===String(id)).length;
-
-    return`<article class="partner-card">
-      <h3>${escapeHtml(name || "Partner sans nom")}</h3>
-      <div class="partner-meta">
-        ${escapeHtml(email)}<br>
-        ${orgs.length} cockpit${orgs.length>1?"s":""} client${orgs.length>1?"s":""} · ${projectCount} AD
-      </div>
-
-      <div class="partner-quota">
-        <div class="partner-mini"><strong>${formatNumber(quota)}</strong><span>Achetées</span></div>
-        <div class="partner-mini"><strong>${formatNumber(remaining)}</strong><span>Restantes</span></div>
-        <div class="partner-mini"><strong>${formatNumber(used)}</strong><span>Utilisées calculées</span></div>
-      </div>
-
-      <div class="quota-edit">
-        <div class="quota-field">
-          <label>Achetées</label>
-          <input id="quota-${escapeAttr(id)}" type="number" min="0" value="${quota}">
-        </div>
-        <div class="quota-field">
-          <label>Restantes</label>
-          <input id="remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}">
-        </div>
-        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">Saisissez ici le solde restant visible dans le moteur Me&YouToo.</span></div>
-        <button class="mini-btn light quota-action" onclick="saveUserPassations('${escapeAttr(id)}')">Enregistrer le quota</button>
-      </div>
-
-      <div class="actions-cell" style="margin-top:12px">
-        <button class="mini-btn" onclick="openPartnerFolder('${escapeAttr(id)}')">Voir dossier partner</button>
-      </div>
-    </article>`;
-  }).join("");
-
-  document.getElementById("partnersEmpty").style.display=partners.length?"none":"block";
-}
-
-function renderOrganizations(){
+          <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">Changer rôle</buttofunction renderOrganizations(){
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
   const rows=getDirectOrganizations().filter(o=>!q||JSON.stringify(o).toLowerCase().includes(q));
   const grid=document.getElementById("orgCards");
@@ -1128,20 +1116,68 @@ function renderOrganizations(){
     const users=Array.isArray(o.users)?o.users:[];
     const activeUsers=users.filter(u=>String(val(u,["email"],"")).trim());
     const usersCount=activeUsers.length;
+    const initials=String(name || "C").trim().slice(0,1).toUpperCase();
+    const canDeleteOrg=projectsCount===0 && usersCount===0;
     const usersHtml=usersCount
-      ? activeUsers.map(u=>{
+      ? `<div class="org-user-list">` + activeUsers.map(u=>{
           const first=val(u,["firstName","first_name"],"");
           const last=val(u,["lastName","last_name"],"");
           const fullName=String((first+" "+last).trim() || val(u,["companyName","company_name"],"") || "Compte sans nom");
           const email=val(u,["email"],"—");
           const uid=val(u,["id","user_id"],"—");
           const userRole=val(u,["role"],"member");
-          return `<div class="global-line"><span>${escapeHtml(fullName)}<br><small class="muted">${escapeHtml(email)}</small></span><strong>#${escapeHtml(uid)} · ${escapeHtml(userRole)}</strong></div>`;
-        }).join("")
-      : `<div class="muted">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
-    const canDeleteOrg=projectsCount===0 && usersCount===0;
+          return `<div class="org-user-row"><span><strong>${escapeHtml(fullName)}</strong><small>${escapeHtml(email)}</small></span><span class="org-user-role">#${escapeHtml(uid)} · ${escapeHtml(userRole)}</span></div>`;
+        }).join("") + `</div>`
+      : `<div class="org-empty-note">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
     return`<article class="org-card">
-      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
+      <div class="org-card-head">
+        <div class="org-title-row">
+          <div class="org-avatar">${escapeHtml(initials)}</div>
+          <div>
+            <h3>${escapeHtml(name)}</h3>
+            <div class="card-meta">ID cockpit #${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div>
+          </div>
+        </div>
+        <div class="org-badges">
+          <span class="org-chip green">🏢 client direct Into The Shift</span>
+          <span class="org-chip ${canDeleteOrg ? "grey" : "orange"}">${canDeleteOrg ? "✓ supprimable" : "🔒 suppression bloquée"}</span>
+        </div>
+      </div>
+
+      <div class="org-kpi-grid">
+        <div class="org-kpi"><span>Pack acheté</span><strong>${escapeHtml(formatPackLabel(pack, quota))}</strong><small>${formatNumber(quota)} passations achetées</small></div>
+        <div class="org-kpi"><span>Passations restantes</span><strong>${formatNumber(remaining)}</strong><small>${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</small></div>
+        <div class="org-kpi"><span>Autodiagnostics</span><strong>${formatNumber(projectsCount)}</strong><small>Configurations rattachées</small></div>
+        <div class="org-kpi"><span>Comptes rattachés</span><strong>${formatNumber(usersCount)}</strong><small>${canDeleteOrg?"Aucun blocage":"Comptes ou AD présents"}</small></div>
+      </div>
+
+      <div class="org-content-grid">
+        <div class="org-panel">
+          <div class="org-panel-title"><span>👥 Comptes utilisateurs rattachés</span><span class="org-chip grey">${usersCount}</span></div>
+          ${usersHtml}
+        </div>
+        <div class="org-panel">
+          <div class="org-panel-title"><span>📇 Contact dossier</span></div>
+          <div class="info-grid" style="grid-template-columns:1fr;margin:0">
+            <div class="info-box"><div class="info-label">Contact</div><div class="info-value">${escapeHtml(contactName)}</div><div class="muted">${escapeHtml(contactEmail || "Email non renseigné")}</div></div>
+            <div class="info-box"><div class="info-label">Owner / créateur</div><div class="info-value">${escapeHtml(ownerName)}</div><div class="muted">${escapeHtml(ownerCompany || ownerEmail || "—")}</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="org-quota-panel">
+        <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
+        <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
+        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
+        <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
+      </div>
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Ouvrir le dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
+    </article>`;
+  }).join("");
+  document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
+}
+
+ge badge-direct">client direct Into The Shift</span></div>
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
