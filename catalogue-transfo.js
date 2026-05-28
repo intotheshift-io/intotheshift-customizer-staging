@@ -1,6 +1,7 @@
 /**
  * catalogue-transfo.js — INTO THE SHIFT
  * Domaine : Transformation & Management
+ * 18 autodiagnostics — 720 questions
  * Dépend de : catalogue-core.js
  */
 
@@ -11348,6 +11349,673 @@
 
   },
 
+  "decider-incertitude": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous devez prendre une décision importante mais vous attendez encore deux informations clés qui pourraient changer votre analyse. Elles arriveront dans dix jours.",
+        tags: ["incertitude", "attente info"],
+        answers: [
+          { text: "J'attends — décider sans informations complètes augmente le risque d'erreur.", score: 0 },
+          { text: "J'évalue si le coût d'attendre dix jours dépasse le bénéfice d'avoir ces informations.", score: 2 },
+          { text: "Je prends une décision provisoire réversible en attendant les informations.", score: 1.5 },
+          { text: "Je demande si ces informations peuvent être obtenues plus vite.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre organisation vous reproche de ne pas avancer assez vite sur certains sujets. Vous avez besoin d'analyser en profondeur avant de vous engager.",
+        tags: ["incertitude", "analyse paralysie"],
+        answers: [
+          { text: "Je maintiens mon rythme d'analyse — les décisions précipitées coûtent plus cher que le délai.", score: 0 },
+          { text: "Je clarifie quelle profondeur d'analyse est vraiment nécessaire pour ce type de décision.", score: 2 },
+          { text: "J'accepte d'avancer plus vite sur les sujets moins importants et je maintiens la rigueur sur les importants.", score: 1.5 },
+          { text: "Je leur explique que la qualité de l'analyse est un investissement en prévention des erreurs.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous clarifiez le niveau d'information nécessaire pour décider plutôt que d'attendre d'avoir toutes les informations possibles.",
+        tags: ["incertitude", "seuil décision"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous hésitez entre deux options. L'une est facilement réversible, l'autre ne l'est pas. L'irréversible semble légèrement meilleure sur le fond.",
+        tags: ["incertitude", "réversibilité"],
+        answers: [
+          { text: "Je choisis l'irréversible — si c'est la meilleure option sur le fond, je l'assume.", score: 0.5 },
+          { text: "Je pèse explicitement la réversibilité comme un critère — pouvoir corriger une erreur a une valeur.", score: 2 },
+          { text: "Je choisis la réversible par défaut — en incertitude, la flexibilité prime.", score: 1 },
+          { text: "Je cherche une troisième option qui combine les avantages des deux.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez tendance à retarder les décisions jusqu'à ce que vous vous sentiez vraiment à l'aise. Vos collègues commencent à trouver que ça ralentit le groupe.",
+        tags: ["incertitude", "confort vs qualité"],
+        answers: [
+          { text: "Je continue — l'inconfort est un signal utile que la décision n'est pas encore mûre.", score: 0 },
+          { text: "Je distingue l'inconfort lié au manque d'information de l'inconfort lié à la prise de risque normale.", score: 2 },
+          { text: "Je me fixe une date limite pour décider, confortable ou pas.", score: 1.5 },
+          { text: "Je délègue les décisions avec lesquelles je suis trop inconfortable.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous distinguez l'inconfort lié à un manque d'information réel de l'inconfort normal qui accompagne toute prise de risque.",
+        tags: ["incertitude", "inconfort normal"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous prenez une décision en sachant que vous avez peut-être 30% de chances de vous tromper. Ça vous pèse.",
+        tags: ["incertitude", "erreur acceptable"],
+        answers: [
+          { text: "Je ne prends pas la décision avec 30% de chances d'erreur — c'est trop risqué.", score: 0 },
+          { text: "J'évalue si le coût de cette erreur éventuelle est acceptable et si oui, je décide.", score: 2 },
+          { text: "Je cherche à réduire les 30% avant de décider.", score: 0.5 },
+          { text: "Je documente que j'ai décidé en connaissance du risque pour me protéger si ça tourne mal.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Face à une décision complexe sur laquelle vous manquez de données, vous pouvez soit décider maintenant soit tester d'abord à petite échelle.",
+        tags: ["incertitude", "expérimentation"],
+        answers: [
+          { text: "Je décide maintenant — les tests prennent trop de temps.", score: 0.5 },
+          { text: "Je teste à petite échelle pour obtenir des données réelles avant de décider à grande échelle.", score: 2 },
+          { text: "Je décide sur la base de mes intuitions et je corrige si nécessaire.", score: 0.5 },
+          { text: "Je cherche des analogies dans d'autres contextes pour me guider.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand c'est possible, vous testez à petite échelle avant de décider à grande échelle en situation d'incertitude.",
+        tags: ["incertitude", "expérimentation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une fenêtre de décision se ferme dans 48 heures. Vous n'avez pas encore tous les éléments que vous voudriez. Vous ne pouvez plus attendre.",
+        tags: ["incertitude", "timing"],
+        answers: [
+          { text: "Je laisse passer la fenêtre — une décision précipitée sous la pression est rarement bonne.", score: 0 },
+          { text: "Je décide avec ce que j'ai en étant clair sur les hypothèses que je fais.", score: 2 },
+          { text: "Je cherche à accélérer la collecte des informations manquantes.", score: 1 },
+          { text: "Je demande à quelqu'un de décider à ma place pour ne pas porter la responsabilité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez la certitude avant de décider — au risque de laisser les fenêtres de décision se fermer", desc: "Attendre dix jours des informations sans évaluer le coût de l'attente, retarder les décisions jusqu'à se sentir à l'aise, laisser passer une fenêtre de décision pour ne pas décider sous pression, s'arrêter à deux options sans chercher des alternatives : ces comportements traitent l'incertitude comme un obstacle à éliminer plutôt qu'une condition normale de la décision. Dans un environnement incertain, attendre la certitude est souvent la pire décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous décidez en incertitude dans les situations ordinaires mais votre seuil d'inconfort crée encore des blocages dans les situations complexes", desc: "Vous évaluez le coût d'attendre des informations et vous distinguez l'inconfort normal de l'inconfort lié à un vrai manque d'information. Mais décider avec 48h sous la pression de la fenêtre qui se ferme, lever la sur-analyse quand vous tournez en rond depuis deux semaines, tester à petite échelle quand vous manquez de données : ces comportements de décision proactive en conditions difficiles créent encore des blocages." },
+          haut: { label: "Réflexes installés", titre: "Vous décidez avec le niveau d'information nécessaire, pas le maximum disponible — et vous choisissez la réversibilité en incertitude", desc: "Vous évaluez si le coût d'attendre dix jours justifie l'information manquante. Vous clarifiez le niveau d'information nécessaire pour décider. Vous pondérez la réversibilité comme un critère à part entière. Vous distinguez l'inconfort normal de l'incertitude de l'inconfort lié à un vrai manque d'information. Vous évaluez les erreurs acceptables. Vous testez à petite échelle quand c'est possible. Vous décidez avec ce que vous avez en 48h en explicitant vos hypothèses. Cette façon d'intégrer l'incertitude comme une donnée normale — plutôt que comme un obstacle — est ce qui permet de décider sans attendre une certitude qui ne vient jamais." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous faites face à une décision difficile. Vous avez identifié deux options mais vous avez l'impression de passer à côté d'alternatives.",
+        tags: ["structuration", "options"],
+        answers: [
+          { text: "Je choisis entre les deux options identifiées — élargir trop les options ralentit sans améliorer.", score: 0 },
+          { text: "Je prends le temps de chercher d'autres options avant de me limiter à deux.", score: 2 },
+          { text: "Je demande à d'autres personnes de me proposer des options auxquelles je n'ai pas pensé.", score: 1.5 },
+          { text: "Je questionne si mes deux options sont vraiment différentes ou si elles partagent les mêmes hypothèses.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Avant de décider, vous vérifiez que vous avez exploré des alternatives au-delà des premières options qui vous viennent.",
+        tags: ["structuration", "alternatives"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre analyse repose sur plusieurs hypothèses que vous n'avez pas explicitées. Certaines pourraient être fausses.",
+        tags: ["structuration", "hypothèses"],
+        answers: [
+          { text: "Je laisse — expliciter toutes les hypothèses est un exercice académique pas nécessaire en pratique.", score: 0 },
+          { text: "J'identifie les hypothèses critiques — celles dont dépend le plus ma décision — et je les teste.", score: 2 },
+          { text: "Je les note mais sans les vérifier — ça prendrait trop de temps.", score: 0.5 },
+          { text: "Je les partage avec quelqu'un d'autre pour voir si elles lui semblent raisonnables.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous êtes sur le point de décider. Vous n'avez pas réfléchi à ce qui se passerait si votre décision était complètement mauvaise.",
+        tags: ["structuration", "pire scénario"],
+        answers: [
+          { text: "Je laisse — réfléchir au pire scénario avant de décider crée un biais négatif.", score: 0 },
+          { text: "Je prends quelques minutes pour imaginer le pire scénario et vérifier que je peux y faire face.", score: 2 },
+          { text: "Je le ferai si la décision ne se passe pas bien — anticiper n'est pas toujours utile.", score: 0 },
+          { text: "Je demande à quelqu'un de 'devil's advocate' de challenger ma décision.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez que vous avez déjà une préférence pour une option avant même d'avoir analysé les autres. Votre analyse risque d'être biaisée.",
+        tags: ["structuration", "biais"],
+        answers: [
+          { text: "Je laisse — la préférence intuitive reflète souvent une compréhension implicite correcte.", score: 0 },
+          { text: "Je nomme explicitement ma préférence et je cherche activement des arguments contre l'option que je préfère.", score: 2 },
+          { text: "Je demande à quelqu'un de défendre les options que je n'ai pas choisies.", score: 1.5 },
+          { text: "J'essaie de mettre ma préférence de côté pendant l'analyse.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous réalisez que vous avez une préférence avant l'analyse, vous cherchez activement des arguments contre l'option que vous favorisez.",
+        tags: ["structuration", "biais"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez prendre une décision qui implique plusieurs personnes avec des perspectives différentes. Vous avez tendance à décider seul·e puis à les informer.",
+        tags: ["structuration", "décision en groupe"],
+        answers: [
+          { text: "Je continue — consulter tout le monde ralentit sans forcément améliorer la qualité de la décision.", score: 0 },
+          { text: "Je distingue les décisions qui bénéficient d'un apport collectif de celles qui n'en ont pas besoin.", score: 2 },
+          { text: "Je consulte systématiquement les parties prenantes avant chaque décision.", score: 0 },
+          { text: "Je consulte ceux qui ont l'expertise utile pour cette décision spécifique.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez analysé une décision pendant deux semaines. Votre analyse ne progresse plus — vous tournez en rond avec les mêmes arguments.",
+        tags: ["structuration", "sur-analyse"],
+        answers: [
+          { text: "Je continue — les décisions importantes méritent le temps qu'il faut.", score: 0 },
+          { text: "Je reconnais que j'ai atteint le point de rendement décroissant de l'analyse et je décide.", score: 2 },
+          { text: "Je cherche une information externe qui pourrait débloquer mon analyse.", score: 1 },
+          { text: "Je demande à quelqu'un d'extérieur de m'aider à sortir du blocage.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous reconnaissez quand votre analyse a atteint son point de rendement décroissant et vous décidez plutôt que de continuer à analyser.",
+        tags: ["structuration", "rendement décroissant"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez arbitrer entre deux options selon plusieurs critères. Vous n'avez pas décidé lesquels critères comptent le plus.",
+        tags: ["structuration", "critères"],
+        answers: [
+          { text: "Je les pondère intuitivement — formaliser les poids des critères est artificiel.", score: 0 },
+          { text: "J'explicite quels critères priment pour cette décision avant de comparer les options.", score: 2 },
+          { text: "Je liste tous les critères et j'attribue un score à chaque option.", score: 1 },
+          { text: "Je choisis l'option qui satisfait le mieux le critère le plus important.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre analyse en incertitude n'est pas structurée — hypothèses non explicitées, biais non traités, sur-analyse récurrente", desc: "Ne pas identifier les hypothèses critiques de son analyse, ne pas imaginer le pire scénario avant de décider, ne pas chercher d'arguments contre l'option qu'on préfère, continuer à analyser longtemps après le point de rendement décroissant : ces comportements produisent des analyses incomplètes ou biaisées. La qualité d'une décision incertaine dépend moins de la quantité d'analyse que de sa rigueur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous structurez votre analyse mais certains biais et certaines sur-analyses persistants réduisent la qualité de vos décisions", desc: "Vous identifiez vos hypothèses critiques et vous cherchez le pire scénario. Mais nommer et traiter vos biais quand vous avez une préférence avant l'analyse, distinguer les décisions qui bénéficient d'apports collectifs de celles qui n'en ont pas besoin, clarifier les critères qui priment avant de comparer les options : ces aspects d'une analyse rigoureuse sont encore perfectibles." },
+          haut: { label: "Réflexes installés", titre: "Votre analyse en incertitude est rigoureuse — alternatives explorées, hypothèses testées, biais nommés, rendement décroissant reconnu", desc: "Vous cherchez des alternatives au-delà des deux premières options. Vous testez les hypothèses critiques. Vous imaginez le pire scénario. Vous cherchez des arguments contre l'option que vous préférez. Vous distinguez les décisions collectives des décisions individuelles. Vous reconnaissez le point de rendement décroissant de votre analyse. Vous clarifiez les critères qui priment avant de comparer. Cette rigueur analytique sans sur-analyse — qui suppose de savoir quand s'arrêter — est ce qui fait que vos décisions incertaines sont de qualité." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous avez pris une décision en incertitude. Vous devez l'annoncer à votre équipe sans pouvoir garantir que c'est la bonne.",
+        tags: ["assumer", "annonce"],
+        answers: [
+          { text: "Je l'annonce avec une confiance totale pour ne pas affaiblir l'adhésion.", score: 0 },
+          { text: "J'annonce la décision, j'explique le raisonnement et je reconnais les incertitudes qui subsistent.", score: 2 },
+          { text: "J'annonce la décision sans mentionner les incertitudes — ça ne les aiderait pas.", score: 0 },
+          { text: "Je présente la décision comme provisoire pour me ménager une porte de sortie.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous annoncez une décision prise en incertitude, vous reconnaissez les incertitudes qui subsistent plutôt que de feindre une certitude totale.",
+        tags: ["assumer", "transparence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une décision que vous avez prise en incertitude s'avère mauvaise. Des personnes en subissent les conséquences.",
+        tags: ["assumer", "responsabilité"],
+        answers: [
+          { text: "Je cherche d'abord à comprendre ce que j'aurais pu faire différemment.", score: 0.5 },
+          { text: "J'assume la responsabilité de la décision, j'explique ce qui a conduit à l'erreur et je me concentre sur la correction.", score: 2 },
+          { text: "J'explique que c'était incertain et que l'erreur était difficile à éviter.", score: 0 },
+          { text: "Je me défends en montrant que ma décision était raisonnable au vu des informations disponibles.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre décision est critiquée. Les critiques vous semblent légitimes sur certains points mais pas sur d'autres. On vous demande de faire marche arrière.",
+        tags: ["assumer", "pression de recul"],
+        answers: [
+          { text: "Je fais marche arrière pour montrer que je prends les critiques en compte.", score: 0 },
+          { text: "Je distingue les critiques qui justifient un ajustement de celles qui ne le justifient pas.", score: 2 },
+          { text: "Je tiens ma décision — la pression ne doit pas seule motiver un retour en arrière.", score: 1 },
+          { text: "Je demande du temps pour évaluer les critiques avant de me positionner.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous réalisez très rapidement après avoir décidé que votre décision était mauvaise. Vous avez encore la possibilité de la corriger facilement.",
+        tags: ["assumer", "erreur rapide"],
+        answers: [
+          { text: "Je maintiens la décision — changer aussi vite donnerait l'image d'une personne instable.", score: 0 },
+          { text: "Je corrige immédiatement — les coûts d'orgueil coûtent plus cher que les coûts de correction.", score: 2 },
+          { text: "Je corrige discrètement sans l'annoncer formellement.", score: 0.5 },
+          { text: "J'attends de voir si d'autres signaux confirment que c'est bien une erreur.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous réalisez rapidement qu'une décision était mauvaise, vous la corrigez sans attendre même si ça peut sembler incohérent.",
+        tags: ["assumer", "correction rapide"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Après une décision prise en incertitude, vous ne faites jamais de bilan sur ce qui s'est bien ou mal passé dans votre processus de décision.",
+        tags: ["assumer", "bilan"],
+        answers: [
+          { text: "Je laisse — les bilans de décision sont des exercices de style peu utiles en pratique.", score: 0 },
+          { text: "Je prends le temps d'un bilan court sur les hypothèses que j'avais faites et comment elles se sont avérées.", score: 2 },
+          { text: "Je fais des bilans uniquement sur les décisions importantes qui se sont mal passées.", score: 1 },
+          { text: "Je l'intègre dans mes entretiens annuels.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez pris une décision que votre équipe ne comprend pas bien. Certains membres la questionnent.",
+        tags: ["assumer", "partage raisonnement"],
+        answers: [
+          { text: "Je leur dis que c'est ma décision et que je n'ai pas à me justifier.", score: 0 },
+          { text: "Je partage le raisonnement qui m'a conduit à cette décision et les incertitudes qui restent.", score: 2 },
+          { text: "Je leur donne les grandes lignes sans entrer dans le détail du raisonnement.", score: 1 },
+          { text: "Je leur demande ce qui les dérange précisément pour répondre à leurs objections spécifiques.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous partagez le raisonnement de vos décisions avec votre équipe, y compris les incertitudes qui subsistaient.",
+        tags: ["assumer", "raisonnement partagé"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous devez prendre une décision impopulaire qui vous semble néanmoins la bonne. Votre entourage attend de vous que vous l'annuliez.",
+        tags: ["assumer", "courage"],
+        answers: [
+          { text: "J'annule — l'impopularité d'une décision est un signe que ses conséquences n'ont pas été bien évaluées.", score: 0 },
+          { text: "Je maintiens la décision en expliquant clairement pourquoi, tout en reconnaissant l'impopularité.", score: 2 },
+          { text: "Je cherche un compromis pour réduire l'impopularité sans changer le fond.", score: 1 },
+          { text: "Je la repousse dans le temps pour laisser les esprits se calmer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous assumez mal vos décisions — confiance feinte, résistance à la correction, raisonnement non partagé", desc: "Annoncer une décision avec une confiance feinte pour maintenir l'adhésion, maintenir une décision clairement mauvaise pour ne pas sembler instable, attribuer les bons résultats à son jugement sans questionnement, ne pas partager le raisonnement de ses décisions avec son équipe : ces comportements protègent l'image à court terme au détriment de la confiance à long terme." },
+          moyen: { label: "Pratiques en développement", titre: "Vous assumez vos décisions dans les situations ordinaires mais les situations de correction rapide et d'impopularité créent encore des résistances", desc: "Vous reconnaissez les incertitudes quand vous annoncez vos décisions. Vous assumez les erreurs et vous vous concentrez sur la correction. Mais corriger immédiatement une erreur récente sans attendre d'avoir tort deux fois, maintenir une décision impopulaire que vous estimez bonne en l'expliquant clairement, partager systématiquement votre raisonnement avec votre équipe : ces comportements d'assomption complète sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous assumez pleinement vos décisions — transparence sur les incertitudes, correction rapide, partage du raisonnement", desc: "Vous annoncez vos décisions en reconnaissant les incertitudes qui subsistent. Vous assumez l'erreur en vous concentrant sur la correction. Vous distinguez les critiques justifiées de celles qui ne le sont pas. Vous corrigez immédiatement une décision mauvaise sans attendre. Vous maintenez une décision impopulaire que vous estimez bonne en l'expliquant. Vous partagez le raisonnement de vos décisions avec votre équipe. Cette transparence courageuse — qui suppose d'assumer l'imperfection de ses décisions devant les autres — est ce qui construit la confiance durable." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Une décision importante que vous avez prise en incertitude a produit de bons résultats. Vous passez au projet suivant sans regarder en arrière.",
+        tags: ["apprentissage", "postmortem"],
+        answers: [
+          { text: "Je passe — si ça a bien marché, il n'y a rien à analyser.", score: 0 },
+          { text: "Je prends le temps d'analyser pourquoi ça a marché — les bonnes décisions donnent aussi des apprentissages.", score: 2 },
+          { text: "Je note que cette façon de décider fonctionne et j'essaie de la reproduire.", score: 1 },
+          { text: "Je partage ce succès avec mon équipe pour renforcer la confiance collective.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous analysez aussi les décisions qui ont bien marché pour comprendre pourquoi, pas seulement celles qui ont échoué.",
+        tags: ["apprentissage", "bonnes décisions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une décision risquée que vous avez prise s'est bien passée. Vous n'êtes pas sûr·e si c'est grâce à votre jugement ou à la chance.",
+        tags: ["apprentissage", "chance vs qualité"],
+        answers: [
+          { text: "Je m'attribue le succès — le résultat est bon et c'est ce qui compte.", score: 0 },
+          { text: "Je cherche à distinguer la qualité de ma décision de son résultat — une bonne décision peut donner un mauvais résultat et vice versa.", score: 2 },
+          { text: "Je reproduis la même façon de décider — si ça marche, c'est la bonne méthode.", score: 0 },
+          { text: "Je nuance le succès en notant les facteurs externes qui ont aidé.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez investi beaucoup dans une direction. Les premiers résultats ne sont pas bons mais vous avez du mal à changer de cap à cause de ce que vous avez déjà dépensé.",
+        tags: ["apprentissage", "escalade"],
+        answers: [
+          { text: "Je continue — arrêter maintenant ferait perdre l'investissement déjà fait.", score: 0 },
+          { text: "J'évalue la décision sur la base des perspectives futures, pas de l'investissement passé.", score: 2 },
+          { text: "Je cherche à récupérer une partie de l'investissement avant de changer de cap.", score: 0 },
+          { text: "Je demande un avis extérieur pour ne pas être aveuglé·e par mon investissement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous prenez souvent de bonnes décisions en faisant confiance à votre intuition. Vous n'analysez pas vraiment pourquoi votre intuition fonctionne.",
+        tags: ["apprentissage", "intuition"],
+        answers: [
+          { text: "Je laisse — l'intuition qui marche n'a pas besoin d'être analysée.", score: 0 },
+          { text: "Je cherche à comprendre ce que mon intuition capte pour l'affiner et la rendre plus fiable.", score: 2 },
+          { text: "Je continue à faire confiance à mon intuition sur les sujets où elle a fonctionné.", score: 0.5 },
+          { text: "Je compare mes intuitions à mes analyses rationnelles pour calibrer la confiance que j'y accorde.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous cherchez à comprendre ce que capte votre intuition pour la rendre plus fiable, plutôt que de simplement lui faire confiance ou de la rejeter.",
+        tags: ["apprentissage", "intuition"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous prenez régulièrement des décisions importantes mais vous n'avez jamais tracé vos décisions et leurs résultats pour voir vos patterns.",
+        tags: ["apprentissage", "journal décisions"],
+        answers: [
+          { text: "Je laisse — ma mémoire suffit pour me souvenir de mes décisions passées.", score: 0 },
+          { text: "Je mets en place un suivi simple de mes décisions importantes pour identifier mes patterns de force et de faiblesse.", score: 2 },
+          { text: "Je le ferai sur les décisions importantes à venir sans revoir le passé.", score: 1 },
+          { text: "Je m'en tiens à un bilan annuel sur les décisions majeures.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez développé une façon de décider en incertitude qui fonctionne bien pour vous. Des collègues moins expérimentés font face aux mêmes défis.",
+        tags: ["apprentissage", "transmission"],
+        answers: [
+          { text: "Je laisse — chacun doit développer sa propre façon de décider.", score: 0 },
+          { text: "Je partage ma méthode et mes apprentissages avec eux, y compris mes erreurs.", score: 2 },
+          { text: "Je leur transmets les grandes lignes sans entrer dans mes cas personnels.", score: 1 },
+          { text: "Je les accompagne sur des décisions spécifiques pour qu'ils apprennent en pratique.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous partagez votre façon de décider en incertitude avec vos pairs ou collaborateurs moins expérimentés, y compris vos erreurs.",
+        tags: ["apprentissage", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Dans votre organisation, les erreurs de décision sont rarement discutées ouvertement. Les gens se protègent plutôt qu'ils n'apprennent.",
+        tags: ["apprentissage", "culture organisationnelle"],
+        answers: [
+          { text: "Je m'adapte — parler de ses erreurs dans un contexte qui les punit est risqué.", score: 0 },
+          { text: "Je commence par partager moi-même mes erreurs de décision pour créer l'espace que j'aimerais voir.", score: 2 },
+          { text: "Je crée des espaces dans mon équipe pour que les erreurs soient discutées même si l'organisation ne le fait pas.", score: 2 },
+          { text: "J'en parle à ma direction pour que la culture évolue.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous n'apprenez pas systématiquement de vos décisions — bonnes comme mauvaises", desc: "Ne faire des bilans que sur les décisions qui ont mal tourné, s'attribuer les succès sans analyser la part de chance, continuer dans une mauvaise direction à cause de ce qui a déjà été investi, ne jamais avoir tracé ses patterns de décision : ces comportements privent de l'apprentissage qui permet de décider mieux." },
+          moyen: { label: "Pratiques en développement", titre: "Vous faites des bilans sur les décisions importantes mais l'apprentissage systématique sur toutes vos décisions reste insuffisant", desc: "Vous analysez les décisions qui se sont mal passées. Mais analyser aussi les décisions réussies pour comprendre pourquoi, distinguer la qualité de votre décision de son résultat, créer un espace dans votre équipe pour parler des erreurs même si la culture organisationnelle ne le fait pas, partager votre méthode avec les moins expérimentés : ces aspects d'apprentissage continu sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous apprenez systématiquement de toutes vos décisions — bonnes et mauvaises — et vous transmettez votre méthode", desc: "Vous analysez aussi les décisions qui ont bien marché. Vous distinguez la qualité de votre décision de son résultat. Vous évaluez l'investissement passé indépendamment de la décision future. Vous cherchez à comprendre ce que capte votre intuition. Vous suivez vos décisions importantes pour identifier vos patterns. Vous partagez votre méthode et vos erreurs avec les moins expérimentés. Vous créez un espace dans votre équipe pour parler des erreurs même si l'organisation ne le fait pas. Cet apprentissage systématique — qui suppose d'aborder toutes les décisions comme des occasions d'apprendre — est ce qui fait progresser le jugement dans la durée." },
+        },
+      }
+    ],
+
+  },
+
   }); // fin Object.assign
 
   window.ITS_registerTheme("transformation", "Transformation & Management", "🔄", [
@@ -11355,170 +12023,180 @@
     ["changer-sans-se-crisper", "Changer sans se crisper", "Tous publics",
       "Réflexes face aux changements.",
       { domain: "transformation", chapters: [
-        ["Réflexes", "Protection à exploration."],
-        ["Transition", "Signaler."],
-        ["Contribution", "Quick wins."],
-        ["Flexibilité", "Opportunités."],
+        ["Réflexes face au changement", "Protection à exploration."],
+        ["Traverser la transition", "Signaler, soutenir."],
+        ["Contribuer", "Quick wins, influence."],
+        ["Flexibilité dans la durée", "Opportunités."],
       ]}
     ],
 
     ["feedback-utile", "Donner et recevoir du feedback utile", "Managers",
-      "Échanges factuels.",
+      "Échanges factuels et mobilisables.",
       { domain: "transformation", chapters: [
-        ["Donner", "Précision."],
-        ["Recevoir", "Écoute."],
-        ["Culture", "Exemplarité."],
-        ["Progresser", "Profondeur."],
+        ["Donner un feedback", "Précision, timing, courage."],
+        ["Recevoir un feedback", "Écoute, intégration."],
+        ["Créer la culture", "Exemplarité, facilitation."],
+        ["Utiliser pour progresser", "Points forts, profondeur."],
       ]}
     ],
 
     ["manager-engageant", "Êtes-vous un manager engageant ?", "Managers",
-      "Engagement, soutien.",
+      "Engagement, responsabilisation, soutien.",
       { domain: "transformation", chapters: [
-        ["Conditions", "Sens."],
-        ["Durée", "Signaux."],
-        ["Responsabiliser", "Déléguer."],
-        ["Soutenir", "Limites."],
+        ["Créer les conditions", "Sens, reconnaissance, confiance."],
+        ["Maintenir dans la durée", "Signaux faibles, protection."],
+        ["Responsabiliser", "Déléguer, initiatives."],
+        ["Soutenir", "Limites claires, autonomie."],
       ]}
     ],
 
     ["contribuer-projet", "Contribuer efficacement à un projet", "Collaborateurs",
-      "Rôles, coopération.",
+      "Rôles, imprévus, coopération.",
       { domain: "transformation", chapters: [
-        ["Rôle", "Livrables."],
-        ["Coopérer", "Information."],
-        ["Imprévus", "Alerter."],
-        ["Capitaliser", "REX."],
+        ["Clarifier son rôle", "Livrables, dépendances."],
+        ["Coopérer", "Information, aide, décisions."],
+        ["Gérer les imprévus", "Alerter, signaler."],
+        ["Capitaliser", "REX, documentation."],
       ]}
     ],
 
     ["accompagner-equipe-transformation", "Accompagner son équipe dans la transformation", "Managers",
-      "Résistances, ancrage.",
+      "Résistances, communication, ancrage.",
       { domain: "transformation", chapters: [
-        ["Résistances", "Écouter."],
-        ["Communication", "Proactivité."],
-        ["Ancrage", "Glissements."],
-        ["Soi", "Bilan."],
+        ["Comprendre les résistances", "Écouter, distinguer, remonter."],
+        ["Communiquer", "Proactivité, cohérence."],
+        ["Ancrer les pratiques", "Glissements, co-construction."],
+        ["Prendre soin de soi", "Double rôle, bilan."],
       ]}
     ],
 
     ["responsabiliser-sans-controler", "Responsabiliser sans contrôler", "Managers",
-      "Déléguer, autonomie.",
+      "Déléguer avec confiance, autonomie.",
       { domain: "transformation", chapters: [
-        ["Déléguer", "Cadre."],
-        ["Confiance", "Conscience."],
-        ["Difficultés", "Développement."],
-        ["Autonomie", "Périmètre."],
+        ["Déléguer", "Cadre clair, résultat."],
+        ["Faire confiance", "Conscience du contrôle."],
+        ["Traiter les difficultés", "Développement."],
+        ["Autonomie collective", "Périmètre, transition."],
       ]}
     ],
 
     ["cooperer-autres-equipes", "Coopérer avec les autres équipes", "Tous publics",
-      "Silos, frictions.",
+      "Frictions, dépendances, silos.",
       { domain: "transformation", chapters: [
-        ["Comprendre", "Curiosité."],
-        ["Frictions", "Contact."],
-        ["Relations", "Entretien."],
-        ["Silos", "Initiative."],
+        ["Comprendre les logiques", "Curiosité, empathie."],
+        ["Gérer les frictions", "Contact direct, causes."],
+        ["Relations durables", "Entretien, valorisation."],
+        ["Dépasser les silos", "Initiative, crédit partagé."],
       ]}
     ],
 
     ["adapter-outils-methodes", "S'adapter aux nouveaux outils et méthodes", "Tous publics",
-      "Transformations numériques.",
+      "Transformations numériques et adoption.",
       { domain: "transformation", chapters: [
-        ["Outil", "Exploration."],
-        ["Méthode", "Engagement."],
-        ["Numérique", "Expérimentation."],
-        ["Adoption", "Référent."],
+        ["Aborder un outil", "Exploration proactive."],
+        ["Adopter une méthode", "Engagement, robustesse."],
+        ["Inconfort numérique", "Expérimentation, développement."],
+        ["Adoption collective", "Référent, retours terrain."],
       ]}
     ],
 
     ["prioriser-arbitrer", "Prioriser et arbitrer quand tout est urgent", "Managers / Encadrants",
-      "Hiérarchiser.",
+      "Hiérarchiser, injonctions contradictoires.",
       { domain: "transformation", chapters: [
-        ["Urgence", "Impact réel."],
-        ["Arbitrer", "Critères."],
-        ["Durée", "Revue."],
-        ["Communiquer", "Assumer."],
+        ["Clarifier l'urgence réelle", "Impact, protéger l'important."],
+        ["Arbitrer sous pression", "Critères, décisions assumées."],
+        ["Tenir ses arbitrages", "Revue, anticipation."],
+        ["Communiquer", "Proactivité, critères explicités."],
       ]}
     ],
 
     ["prendre-sa-place", "Prendre sa place sans s'effacer", "Collaborateurs",
-      "Assertivité.",
+      "Assertivité, positions, visibilité.",
       { domain: "transformation", chapters: [
-        ["S'exprimer", "Prise de parole."],
-        ["Position", "Arguments."],
-        ["Limites", "Refus."],
-        ["S'affirmer", "Ambition."],
+        ["S'exprimer", "Prise de parole, visibilité."],
+        ["Défendre sa position", "Arguments vs pression."],
+        ["Poser des limites", "Refus, périmètre."],
+        ["S'affirmer dans les relations", "Ambition, évaluation."],
       ]}
     ],
 
     ["gerer-energie-priorites", "Gérer son énergie et ses priorités", "Tous publics",
-      "Rythmes, récupération.",
+      "Rythmes, drain, récupération, organisation.",
       { domain: "transformation", chapters: [
-        ["Rythmes", "Pics."],
-        ["Drains", "Perfectionnisme."],
-        ["Recharge", "Rituels."],
-        ["Organisation", "Planification."],
+        ["Respecter ses rythmes", "Pics d'énergie, espace, déconnexion."],
+        ["Gérer les drains", "Tâches ingrates, perfectionnisme."],
+        ["Recharger ses ressources", "Rituels, signaux du corps."],
+        ["Organisation durable", "Planification, revue, systèmes."],
       ]}
     ],
 
     ["travailler-mode-projet", "Travailler en mode projet transversal", "Tous publics",
-      "Piloter sans autorité.",
+      "Piloter sans autorité hiérarchique.",
       { domain: "transformation", chapters: [
-        ["Piloter", "Influence."],
-        ["Parties prenantes", "Cartographie."],
-        ["Coordonner", "Asynchrone."],
-        ["Clôturer", "Bilan."],
+        ["Piloter sans autorité", "Influence, engagements formalisés."],
+        ["Gérer les parties prenantes", "Cartographie, conflits explicités."],
+        ["Coordonner sans réunionner", "Asynchrone, indicateurs concrets."],
+        ["Clôturer et capitaliser", "Bilan, transfert, méthode partagée."],
       ]}
     ],
 
     ["conduire-reunion-utile", "Conduire une réunion utile", "Tous publics",
-      "Préparer, animer.",
+      "Préparer, animer, conclure avec impact.",
       { domain: "transformation", chapters: [
-        ["Préparer", "Objectif."],
-        ["Animer", "Cadre."],
-        ["Conclure", "Actions."],
-        ["S'adapter", "Visio."],
+        ["Préparer la réunion", "Objectif, participants, durée."],
+        ["Animer", "Cadre, participation, décisions."],
+        ["Conclure et suivre", "Actions, engagements, feedback."],
+        ["S'adapter aux contextes", "Visio, hybride, conflit, créativité."],
       ]}
     ],
 
     ["manager-distance-hybride", "Manager à distance et en hybride", "Managers",
-      "Équité à distance.",
+      "Équité présentiel/distance, performance, développement.",
       { domain: "transformation", chapters: [
-        ["Lien", "Équité."],
-        ["Performance", "Résultats."],
-        ["Hybride", "Jours."],
-        ["Développement", "Apprentissage."],
+        ["Maintenir le lien", "Équité, signaux faibles, rituels."],
+        ["Manager la performance", "Résultats, confiance, sous-performance."],
+        ["Organiser l'hybride", "Jours coordonnés, opportunités équitables."],
+        ["Développer à distance", "Apprentissage, promotion, feedback."],
       ]}
     ],
 
     ["gerer-conflits-equipe", "Gérer les conflits dans l'équipe", "Managers",
-      "Détecter, résoudre, prévenir.",
+      "Détecter tôt, intervenir, résoudre, prévenir.",
       { domain: "transformation", chapters: [
-        ["Détecter", "Signaux faibles."],
-        ["Intervenir", "Équité."],
-        ["Résoudre", "Accord."],
-        ["Prévenir", "Culture."],
+        ["Détecter tôt", "Signaux faibles, conflits cachés."],
+        ["Intervenir", "Équité, neutralité, limites."],
+        ["Faciliter la résolution", "Cadre sécurisé, accord formalisé."],
+        ["Prévenir", "Clarté des rôles, culture du désaccord."],
       ]}
     ],
 
     ["onboarder-nouveau", "Onboarder un nouveau collaborateur", "Managers",
-      "Préparer, intégrer, clarifier.",
+      "Préparer, intégrer, clarifier, améliorer.",
       { domain: "transformation", chapters: [
-        ["Préparer", "Logistique, programme."],
-        ["Intégrer", "Culture, lien."],
-        ["Attentes", "Objectifs, feedback."],
-        ["Continuité", "Documentation, bilan."],
+        ["Préparer l'arrivée", "Logistique, programme, parrain."],
+        ["Intégrer dans l'équipe", "Culture implicite, lien, feedback précoce."],
+        ["Clarifier les attentes", "Objectifs, montée en compétences."],
+        ["Assurer la continuité", "Documentation, bilan, amélioration."],
       ]}
     ],
 
     ["communiquer-situation-tendue", "Communiquer en situation tendue", "Tous publics",
-      "Rester ancré·e, écouter, formuler, tenir une audience difficile.",
+      "Rester ancré·e, écouter, formuler, tenir une audience.",
       { domain: "transformation", chapters: [
         ["Rester ancré·e", "Préparation, stabilité, nommer ce qui se passe."],
-        ["Écouter vraiment", "État émotionnel, non-verbal, écouter pour comprendre."],
-        ["Dire sans aggraver", "Comportements observables, mauvaises nouvelles claires, ton nommé."],
-        ["Face à une audience difficile", "Structure, réactions accueillies, honnêteté sur ce qu'on ne sait pas."],
+        ["Écouter vraiment", "État émotionnel, non-verbal, comprendre avant répondre."],
+        ["Dire sans aggraver", "Comportements, mauvaises nouvelles claires, ton nommé."],
+        ["Face à une audience difficile", "Structure, réactions accueillies, honnêteté."],
+      ]}
+    ],
+
+    ["decider-incertitude", "Prendre des décisions en incertitude", "Managers / Encadrants",
+      "Décider avec le niveau d'info nécessaire, structurer, assumer et apprendre.",
+      { domain: "transformation", chapters: [
+        ["Accepter d'agir sans certitude", "Seuil décision, réversibilité, expérimentation."],
+        ["Structurer sa réflexion", "Alternatives, hypothèses, biais, rendement décroissant."],
+        ["Assumer et communiquer", "Transparence, correction rapide, raisonnement partagé."],
+        ["Apprendre de ses décisions", "Bonnes et mauvaises, chance vs qualité, transmission."],
       ]}
     ],
 
