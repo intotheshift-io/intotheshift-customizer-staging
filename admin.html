@@ -123,6 +123,8 @@ td:nth-child(9){width:125px}
 .global-line.clickable strong{text-decoration:underline;text-underline-offset:3px;color:#0d4c72}
 .card-list{display:grid;grid-template-columns:1fr;gap:14px}
 .org-card,.project-card{border:1px solid #dfe8ef;border-radius:22px;background:#fff;padding:18px;box-shadow:0 8px 22px rgba(13,76,114,.05)}
+.org-card.clickable-card{cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.org-card.clickable-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(13,76,114,.10);border-color:#c7dbe8}
 .org-card-head,.project-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:12px}
 .org-card h3,.project-card h3{margin:0;color:#0d4c72;font-size:18px;line-height:1.25}
 .card-meta{font-size:13px;color:#718497;line-height:1.45;margin-top:4px}
@@ -1125,8 +1127,8 @@ function renderOrganizations(){
         }).join("")
       : `<div class="muted">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
     const canDeleteOrg=projectsCount===0 && usersCount===0;
-    return`<article class="org-card">
-      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
+    return`<article class="org-card clickable-card" onclick="openClientFolder('${escapeAttr(id)}')" title="Ouvrir le dossier client">
+      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""} · Cliquer pour ouvrir le dossier client</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
@@ -1137,13 +1139,13 @@ function renderOrganizations(){
         <div class="info-label" style="margin-bottom:8px">Comptes utilisateurs rattachés à ce dossier</div>
         ${usersHtml}
       </div>
-      <div class="org-quota-panel">
+      <div class="org-quota-panel" onclick="event.stopPropagation()">
         <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
         <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
-      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
+      <div class="org-actions" onclick="event.stopPropagation()"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
