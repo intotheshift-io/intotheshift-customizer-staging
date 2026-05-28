@@ -146,61 +146,84 @@ td:nth-child(9){width:125px}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
 
-/* Design coloré onglet Cockpit clients — sans changement fonctionnel */
-.org-card{
-  position:relative;
-  overflow:hidden;
-  border:1px solid #dfe8ef;
-  border-radius:26px;
-  background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
-  padding:20px;
-  box-shadow:0 14px 32px rgba(13,76,114,.08);
+
+/* Cockpit clients — filtres SaaS et score santé */
+.org-section-tools .admin-select{min-width:170px}
+.org-cockpit-analytics{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:12px;
+  margin:12px 0 14px;
 }
-.org-card:before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:7px;
-  background:linear-gradient(90deg,#0d4c72,#1f7b98,#7ed6c4,#ffc857);
+.org-analytic-card{
+  border:1px solid #e2ebf2;
+  border-radius:20px;
+  padding:14px;
+  background:#fbfdfe;
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  min-height:92px;
 }
-.org-card-head{align-items:flex-start;margin-top:2px}
-.org-title-row{display:flex;gap:13px;align-items:flex-start;min-width:0}
-.org-avatar{
-  width:48px;height:48px;border-radius:18px;
+.org-analytic-card strong{display:block;color:#0d4c72;font-size:22px;line-height:1.1;margin-bottom:3px}
+.org-analytic-card span{display:block;color:#60758a;font-size:12px;line-height:1.3;font-weight:800}
+.org-analytic-ico{
+  width:40px;height:40px;border-radius:15px;
   display:flex;align-items:center;justify-content:center;
-  flex:0 0 auto;
-  background:linear-gradient(135deg,#0d4c72,#1f7b98);
-  color:#fff;font-size:19px;font-weight:900;
-  box-shadow:0 10px 22px rgba(13,76,114,.20);
+  font-size:20px;flex:0 0 auto;background:#eef6fb;
 }
-.org-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.org-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
-.org-kpi{
-  background:#f7fafd;border:1px solid #e2ebf2;border-radius:18px;padding:13px;
-  min-height:82px;
+.org-analytic-card.green{background:#eefbf3;border-color:#c8ebd4}.org-analytic-card.green .org-analytic-ico{background:#d9f4e3}
+.org-analytic-card.orange{background:#fff8ec;border-color:#ffd9a3}.org-analytic-card.orange .org-analytic-ico{background:#ffe9c7}
+.org-analytic-card.blue{background:#eef6ff;border-color:#cfe3ff}.org-analytic-card.blue .org-analytic-ico{background:#dcecff}
+.org-analytic-card.purple{background:#f4f0ff;border-color:#ded5ff}.org-analytic-card.purple .org-analytic-ico{background:#e7ddff}
+.org-filter-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.org-filter-chip{
+  border:1px solid #d8e2ec;
+  background:#fff;
+  color:#0d4c72;
+  border-radius:999px;
+  padding:9px 12px;
+  font-family:'Asap',sans-serif;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:all .15s ease;
 }
-.org-kpi strong{display:block;color:#0d4c72;font-size:22px;line-height:1.1;margin-bottom:4px}
-.org-kpi span{display:block;color:#718497;font-size:12px;line-height:1.25;font-weight:800}
-.org-kpi.pack{background:#eef6fb;border-color:#d7e8f1}
-.org-kpi.remaining{background:#eefbf3;border-color:#c8ebd4}
-.org-kpi.used{background:#fff8ec;border-color:#ffd9a3}
-.org-kpi.users{background:#f2efff;border-color:#ded5ff}
-.org-detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;margin:12px 0}
-.org-detail-box{background:#fbfdfe;border:1px solid #e2ebf2;border-radius:18px;padding:14px;min-width:0}
-.org-detail-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900;margin-bottom:7px}
-.org-detail-main{font-size:14px;color:#18375d;font-weight:900;word-break:break-word}
-.org-detail-sub{font-size:12px;color:#718497;line-height:1.35;margin-top:4px;word-break:break-word}
-.org-user-list{display:grid;gap:8px;margin-top:2px}
-.org-user-row{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border:1px solid #edf2f6;border-radius:14px;padding:9px 10px}
-.org-user-row strong{display:block;color:#18375d;font-size:13px}
-.org-user-row small{display:block;color:#718497;font-size:12px;margin-top:2px;word-break:break-word}
-.org-user-role{display:inline-flex;white-space:nowrap;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:900}
-.org-empty-note{background:#fff;border:1px dashed #cbd9e7;border-radius:14px;padding:12px;color:#718497;font-size:13px;text-align:center}
-.org-card .org-quota-panel{background:#f7fafd;border-radius:20px;border-color:#dfe8ef;margin-top:14px}
-.org-card .org-actions{justify-content:flex-end;margin-top:14px}
-.org-card .org-actions .mini-btn.light{background:#0d4c72;color:#fff}
-@media(max-width:1000px){.org-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.org-detail-grid{grid-template-columns:1fr}.org-card-head{flex-direction:column}.org-badges{justify-content:flex-start}}
-@media(max-width:620px){.org-kpi-grid{grid-template-columns:1fr}.org-user-row{align-items:flex-start;flex-direction:column}.org-user-role{white-space:normal}.org-card .org-actions .mini-btn{width:100%;justify-content:center}}
+.org-filter-chip:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(13,76,114,.08)}
+.org-filter-chip.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
+.org-filter-chip-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:21px;height:21px;padding:0 7px;border-radius:999px;
+  background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900;
+}
+.org-filter-chip.active .org-filter-chip-count{background:rgba(255,255,255,.22);color:#fff}
+.org-health-row{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 0}
+.org-health-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  border-radius:999px;padding:6px 9px;
+  font-size:11px;font-weight:900;border:1px solid;
+}
+.org-health-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
+.org-health-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}
+.org-health-badge.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}
+.org-health-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+.org-progress{height:9px;border-radius:999px;background:#e8eef4;overflow:hidden;margin-top:9px}
+.org-progress-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,#0d4c72,#1f7b98)}
+.org-progress-bar.low{background:linear-gradient(90deg,#f59e0b,#f97316)}
+.org-progress-bar.critical{background:linear-gradient(90deg,#e11d48,#be123c)}
+.org-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.org-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#f6f9fb;border:1px solid #e2ebf2;color:#244b63;
+  border-radius:999px;padding:6px 9px;font-size:12px;font-weight:800;
+}
+.org-tag.theme{background:#f4f0ff;border-color:#ded5ff;color:#5b3bbd}
+.org-tag.sector{background:#eef6fb;border-color:#d7e8f1;color:#0d4c72}
+@media(max-width:1200px){.org-cockpit-analytics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.org-cockpit-analytics{grid-template-columns:1fr}.org-section-tools .admin-select{width:100%}}
 
 
 /* Cartes comptes utilisateurs — styles isolés admin */
@@ -536,10 +559,26 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <h2>Cockpit clients</h2>
             <div class="section-sub">Dossiers cockpit clients, rattachés à un partner ou directs Into The Shift.</div>
           </div>
-          <div class="section-tools">
-            <input id="orgSearch" class="admin-input" placeholder="Rechercher client, partenaire..." oninput="renderOrganizations()">
+          <div class="section-tools org-section-tools">
+            <input id="orgSearch" class="admin-input" placeholder="Rechercher client, secteur, thématique..." oninput="renderOrganizations()">
+            <select id="orgSectorFilter" class="admin-select" onchange="renderOrganizations()">
+              <option value="">Tous les secteurs</option>
+            </select>
+            <select id="orgThemeFilter" class="admin-select" onchange="renderOrganizations()">
+              <option value="">Toutes les thématiques</option>
+            </select>
+            <select id="orgSort" class="admin-select" onchange="renderOrganizations()">
+              <option value="priority">Tri intelligent</option>
+              <option value="recent">Activité récente</option>
+              <option value="remainingAsc">Passations restantes ↑</option>
+              <option value="usageDesc">Utilisation pack ↓</option>
+              <option value="projectsDesc">Nombre d’AD ↓</option>
+              <option value="nameAsc">Nom client A-Z</option>
+            </select>
           </div>
         </div>
+        <div id="orgCockpitAnalytics" class="org-cockpit-analytics"></div>
+        <div id="orgFilterChips" class="org-filter-chips"></div>
         <div id="orgsLoading" class="loading">Chargement du cockpit clients...</div>
         <div id="orgCards" class="card-list"></div>
         <div id="orgsEmpty" class="empty" style="display:none">Aucun client trouvé.</div>
@@ -573,6 +612,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
 <script>
 const API_BASE_URL = "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
 let adminState = { summary:{}, clients:[], projects:[], organizations:[] };
+let currentOrgFilter = "all";
 const ADMIN_JOB_OPTIONS = [
   'CEO / Direction générale',
   'COO / Direction des opérations',
@@ -833,7 +873,203 @@ function getPartnerOrgs(partnerId){
 }
 function getProjectsForOrg(org){
   const orgId=String(val(org,["id"],""));
-  return adminState.projects.filter(p=>String(val(p,["organization_id","organizationId","org_id","orgId"],""))===orgId);
+  return adminState.projects.filter(p=>String(val(p,["organization_id","organizationId","orgId","org_id"],""))===orgId);
+}
+
+function normalizeAdminText(value){
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9]+/g," ")
+    .trim();
+}
+
+function getProjectThemeLabel(project){
+  const cfg=getProjectConfig(project);
+  const raw=JSON.stringify(cfg || {})+" "+String(val(project,["title","name","project_title"],""));
+  const text=normalizeAdminText(raw);
+  if(text.includes("cyber") || text.includes("phishing") || text.includes("numerique")) return "Cybersécurité";
+  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("sante au travail")) return "QVT & RPS";
+  if(text.includes("securite") || text.includes("surete") || text.includes("btp") || text.includes("accident")) return "Sécurité & sûreté";
+  if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Management & transformation";
+  if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+  if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+  if(text.includes("inclusion") || text.includes("diversite") || text.includes("sexisme") || text.includes("handicap") || text.includes("lgbt")) return "Diversité & inclusion";
+  return "Thématique non renseignée";
+}
+
+function mostFrequent(values, fallback="—"){
+  const counts={};
+  values.filter(Boolean).forEach(v=>{counts[v]=(counts[v]||0)+1;});
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
+  return sorted[0]?.[0] || fallback;
+}
+
+function getOrgSector(org){
+  const users=Array.isArray(org.users)?org.users:[];
+  const sectors=[];
+  users.forEach(u=>{
+    const user=getUserById(val(u,["id","user_id"],""));
+    const sector=val(user || u,["sector"],"");
+    if(sector) sectors.push(sector);
+  });
+  const creator=getUserById(getOrgCreatorId(org));
+  if(creator && val(creator,["sector"],"")) sectors.push(val(creator,["sector"],""));
+  return mostFrequent(sectors, "Secteur non renseigné");
+}
+
+function getOrgStats(org){
+  const projects=getProjectsForOrg(org);
+  const statuses={draft:0,sent:0,published:0,unpublished:0};
+  projects.forEach(p=>{const s=getProjectEffectiveStatus(p);statuses[s]=(statuses[s]||0)+1;});
+  const pack=val(org,["passationsPack","passations_pack"],"");
+  const quota=num(val(org,["passationsQuota","passations_quota"],0));
+  const used=num(val(org,["passationsUsed","passations_used"],0));
+  const remaining=Math.max(0,quota-used);
+  const usageRate=quota>0 ? Math.min(100, Math.round((used/quota)*100)) : 0;
+  const remainingRate=quota>0 ? Math.round((remaining/quota)*100) : 0;
+  const users=Array.isArray(org.users)?org.users:[];
+  const usersCount=users.filter(u=>String(val(u,["email"],"")).trim()).length;
+  const themes=projects.map(getProjectThemeLabel).filter(t=>t && t!=="Thématique non renseignée");
+  const theme=mostFrequent(themes, "Thématique non renseignée");
+  const sector=getOrgSector(org);
+  const campaignLive=projects.some(p=>{
+    const start=getCampaignStartDate(p);
+    const end=getCampaignEndDate(p);
+    const status=getProjectEffectiveStatus(p);
+    const today=new Date().toISOString().slice(0,10);
+    return status==="published" && (!start || start<=today) && (!end || end>=today);
+  });
+  const hasResults=projects.some(p=>Boolean(getProjectResultsUrl(p)));
+  const quotaLow=quota>0 && remainingRate<=20;
+  const underused=quota>0 && usageRate<=10 && projects.length>0;
+  const inactive=projects.length===0 || (!campaignLive && statuses.published===0 && statuses.sent===0);
+  const active=campaignLive || statuses.published>0 || statuses.sent>0;
+  const score=campaignLive || statuses.published>0 ? "active" : statuses.sent>0 ? "toPublish" : underused ? "underused" : inactive ? "inactive" : "standard";
+  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,sector,campaignLive,hasResults,quotaLow,underused,inactive,active,score};
+}
+
+function getOrgPriority(org){
+  const s=getOrgStats(org);
+  let score=0;
+  if(s.campaignLive) score+=50;
+  if(s.statuses.sent) score+=40;
+  if(s.quotaLow) score+=35;
+  if(s.underused) score+=25;
+  score+=Math.min(20,s.projects.length*3);
+  score+=Math.min(20,s.usageRate/5);
+  return score;
+}
+
+function orgMatchesFilter(org){
+  const s=getOrgStats(org);
+  if(currentOrgFilter==="active") return s.active;
+  if(currentOrgFilter==="inactive") return s.inactive;
+  if(currentOrgFilter==="toPublish") return s.statuses.sent>0;
+  if(currentOrgFilter==="campaignLive") return s.campaignLive;
+  if(currentOrgFilter==="quotaLow") return s.quotaLow;
+  if(currentOrgFilter==="underused") return s.underused;
+  if(currentOrgFilter==="noUser") return s.usersCount===0;
+  if(currentOrgFilter==="noQuota") return s.quota===0 && String(s.pack||"")!=="illimite";
+  return true;
+}
+
+function updateOrgSelectOptions(rows){
+  const sectorSelect=document.getElementById("orgSectorFilter");
+  const themeSelect=document.getElementById("orgThemeFilter");
+  if(!sectorSelect || !themeSelect) return;
+
+  const currentSector=sectorSelect.value || "";
+  const currentTheme=themeSelect.value || "";
+
+  const sectors=[...new Set(rows.map(o=>getOrgStats(o).sector).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  const themes=[...new Set(rows.map(o=>getOrgStats(o).theme).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+
+  sectorSelect.innerHTML='<option value="">Tous les secteurs</option>'+sectors.map(s=>`<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join("");
+  themeSelect.innerHTML='<option value="">Toutes les thématiques</option>'+themes.map(t=>`<option value="${escapeAttr(t)}">${escapeHtml(t)}</option>`).join("");
+
+  if(sectors.includes(currentSector)) sectorSelect.value=currentSector;
+  if(themes.includes(currentTheme)) themeSelect.value=currentTheme;
+}
+
+function setOrgFilter(filter){
+  currentOrgFilter=filter || "all";
+  renderOrganizations();
+}
+
+function renderOrgCockpitAnalytics(rows){
+  const el=document.getElementById("orgCockpitAnalytics");
+  if(!el) return;
+  const stats=rows.map(getOrgStats);
+  const active=stats.filter(s=>s.active).length;
+  const toPublish=stats.filter(s=>s.statuses.sent>0).length;
+  const live=stats.filter(s=>s.campaignLive).length;
+  const quotaLow=stats.filter(s=>s.quotaLow).length;
+  const underused=stats.filter(s=>s.underused).length;
+  el.innerHTML=`
+    <article class="org-analytic-card green"><div class="org-analytic-ico">🟢</div><div><strong>${active}</strong><span>clients actifs</span></div></article>
+    <article class="org-analytic-card blue"><div class="org-analytic-ico">🚀</div><div><strong>${toPublish}</strong><span>AD à publier</span></div></article>
+    <article class="org-analytic-card purple"><div class="org-analytic-ico">📣</div><div><strong>${live}</strong><span>campagnes en cours</span></div></article>
+    <article class="org-analytic-card orange"><div class="org-analytic-ico">🔥</div><div><strong>${quotaLow}</strong><span>quotas faibles</span></div></article>
+    <article class="org-analytic-card"><div class="org-analytic-ico">💤</div><div><strong>${underused}</strong><span>packs sous-utilisés</span></div></article>
+  `;
+}
+
+function renderOrgFilterChips(rows){
+  const el=document.getElementById("orgFilterChips");
+  if(!el) return;
+  const count=(filter)=>rows.filter(o=>{
+    const previous=currentOrgFilter;
+    currentOrgFilter=filter;
+    const ok=orgMatchesFilter(o);
+    currentOrgFilter=previous;
+    return ok;
+  }).length;
+  const filters=[
+    ["all","✨ Tous",rows.length],
+    ["active","🟢 Actifs",count("active")],
+    ["toPublish","🚀 À publier",count("toPublish")],
+    ["campaignLive","📣 Campagne en cours",count("campaignLive")],
+    ["quotaLow","🔥 Quota faible",count("quotaLow")],
+    ["underused","💤 Pack sous-utilisé",count("underused")],
+    ["noUser","⚠️ Sans compte",count("noUser")],
+    ["noQuota","📦 Sans quota",count("noQuota")],
+    ["inactive","⚪ Inactifs",count("inactive")]
+  ];
+  el.innerHTML=filters.map(([key,label,total])=>`
+    <button type="button" class="org-filter-chip ${currentOrgFilter===key?'active':''}" onclick="setOrgFilter('${key}')">
+      <span>${label}</span><span class="org-filter-chip-count">${total}</span>
+    </button>
+  `).join("");
+}
+
+function renderOrgHealthBadges(stats){
+  const badges=[];
+  if(stats.campaignLive) badges.push(["good","🟢","Campagne en cours"]);
+  if(stats.statuses.sent>0) badges.push(["info","🚀",`${stats.statuses.sent} à publier`]);
+  if(stats.quotaLow) badges.push(["danger","🔥","Quota faible"]);
+  if(stats.underused) badges.push(["warn","💤","Pack sous-utilisé"]);
+  if(stats.usersCount===0) badges.push(["warn","⚠️","Aucun compte rattaché"]);
+  if(!badges.length) badges.push([stats.active?"good":"info",stats.active?"✅":"⚪",stats.active?"Client actif":"À surveiller"]);
+  return `<div class="org-health-row">${badges.map(([kind,ico,text])=>`<span class="org-health-badge ${kind}">${ico} ${escapeHtml(text)}</span>`).join("")}</div>`;
+}
+
+function sortOrganizations(rows){
+  const sort=document.getElementById("orgSort")?.value || "priority";
+  return [...rows].sort((a,b)=>{
+    const sa=getOrgStats(a), sb=getOrgStats(b);
+    if(sort==="recent"){
+      const da=Math.max(0,...sa.projects.map(p=>new Date(val(p,["updated_at","updatedAt","created_at","createdAt"],"")).getTime()||0));
+      const db=Math.max(0,...sb.projects.map(p=>new Date(val(p,["updated_at","updatedAt","created_at","createdAt"],"")).getTime()||0));
+      return db-da;
+    }
+    if(sort==="remainingAsc") return sa.remaining-sb.remaining;
+    if(sort==="usageDesc") return sb.usageRate-sa.usageRate;
+    if(sort==="projectsDesc") return sb.projects.length-sa.projects.length;
+    if(sort==="nameAsc") return String(getOrgName(a)).localeCompare(String(getOrgName(b)));
+    return getOrgPriority(b)-getOrgPriority(a);
+  });
 }
 
 function showTab(tab){
@@ -1167,7 +1403,31 @@ function renderPartners(){
 
 function renderOrganizations(){
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
-  const rows=getDirectOrganizations().filter(o=>!q||JSON.stringify(o).toLowerCase().includes(q));
+  const sectorFilter=document.getElementById("orgSectorFilter")?.value || "";
+  const themeFilter=document.getElementById("orgThemeFilter")?.value || "";
+  const allRows=getDirectOrganizations();
+
+  updateOrgSelectOptions(allRows);
+  renderOrgCockpitAnalytics(allRows);
+  renderOrgFilterChips(allRows);
+
+  let rows=allRows.filter(o=>{
+    const stats=getOrgStats(o);
+    const text=[
+      JSON.stringify(o),
+      stats.sector,
+      stats.theme,
+      getOrgName(o),
+      stats.projects.map(p=>pickProjectTitle(val(p,["title"],""))).join(" ")
+    ].join(" ").toLowerCase();
+    return (!q || text.includes(q))
+      && (!sectorFilter || stats.sector===sectorFilter)
+      && (!themeFilter || stats.theme===themeFilter)
+      && orgMatchesFilter(o);
+  });
+
+  rows=sortOrganizations(rows);
+
   const grid=document.getElementById("orgCards");
   grid.innerHTML=rows.map(o=>{
     const id=val(o,["id"],"");
@@ -1177,16 +1437,18 @@ function renderOrganizations(){
     const ownerName=val(o,["ownerName","owner_name"],"—");
     const ownerEmail=val(o,["ownerEmail","owner_email"],"");
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
+    const stats=getOrgStats(o);
     const pack=val(o,["passationsPack","passations_pack"],"");
-    const quota=num(val(o,["passationsQuota","passations_quota"],0));
-    const used=num(val(o,["passationsUsed","passations_used"],0));
-    const remaining=Math.max(0, quota-used);
-    const projectsCount=getProjectsForOrg(o).length;
+    const quota=stats.quota;
+    const used=stats.used;
+    const remaining=stats.remaining;
+    const projectsCount=stats.projects.length;
     const users=Array.isArray(o.users)?o.users:[];
     const activeUsers=users.filter(u=>String(val(u,["email"],"")).trim());
     const usersCount=activeUsers.length;
     const initials=String(name || "C").trim().slice(0,1).toUpperCase();
     const canDeleteOrg=projectsCount===0 && usersCount===0;
+    const progressClass=stats.usageRate>=90 ? "critical" : stats.usageRate>=75 ? "low" : "";
     const usersHtml=usersCount
       ? `<div class="org-user-list">` + activeUsers.map(u=>{
           const first=val(u,["firstName","first_name"],"");
@@ -1206,6 +1468,11 @@ function renderOrganizations(){
           <div>
             <h3>${escapeHtml(name)}</h3>
             <div class="card-meta">ID cockpit #${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div>
+            <div class="org-tag-row">
+              <span class="org-tag sector">🏭 ${escapeHtml(stats.sector)}</span>
+              <span class="org-tag theme">🧩 ${escapeHtml(stats.theme)}</span>
+            </div>
+            ${renderOrgHealthBadges(stats)}
           </div>
         </div>
         <div class="org-badges">
@@ -1216,7 +1483,7 @@ function renderOrganizations(){
       <div class="org-kpi-grid">
         <div class="org-kpi pack"><strong>${escapeHtml(formatPackLabel(pack, quota))}</strong><span>Pack acheté</span></div>
         <div class="org-kpi remaining"><strong>${formatNumber(remaining)}</strong><span>Passations restantes</span></div>
-        <div class="org-kpi used"><strong>${formatNumber(used)}</strong><span>Utilisées / ${formatNumber(quota)} achetées</span></div>
+        <div class="org-kpi used"><strong>${stats.usageRate}%</strong><span>${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</span><div class="org-progress"><div class="org-progress-bar ${progressClass}" style="width:${Math.max(0,Math.min(100,stats.usageRate))}%"></div></div></div>
         <div class="org-kpi users"><strong>${usersCount}</strong><span>Compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</span></div>
       </div>
 
@@ -1247,8 +1514,10 @@ function renderOrganizations(){
       <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Ouvrir le dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
     </article>`;
   }).join("");
+
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
 }
+
 
 function getProjectConfig(p){let cfg=val(p,["config","configuration","payload","data"],null);if(typeof cfg==="string"){try{return JSON.parse(cfg);}catch(e){return {};}}return cfg&&typeof cfg==="object"?cfg:{};}
 
