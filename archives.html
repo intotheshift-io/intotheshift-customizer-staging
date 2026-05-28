@@ -135,21 +135,21 @@
         icon:"↩️",
         title:"Reprogrammer cet autodiagnostic ?",
         subtitle:"Même URL : seules les dates de campagne sont à reprogrammer.",
-        text:"Vous allez rouvrir la page Campagne pour définir une nouvelle période de diffusion. Le contenu, les liens et l’historique restent conservés.",
+        text:"Vous allez rouvrir la page Campagne pour définir une nouvelle période de diffusion. Le contenu, l’historique et les liens restent conservés. Les nouvelles statistiques s’ajouteront à l’historique existant et resteront consultables par période dans le dashboard.",
         project:p ? title(p) : "Projet archivé",
-        warning:"Reprogrammer ne crée pas de nouvel autodiagnostic : l’URL reste la même. Pour obtenir une nouvelle URL, utilisez Cloner.",
+        warning:"Reprogrammer ne crée pas de nouvel autodiagnostic : l’URL de passation et l’URL de statistiques restent les mêmes. Pour obtenir une nouvelle URL, utilisez Cloner.",
         confirmText:"Reprogrammer"
       });
       if(!ok)return;
       try{
         const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/restore`,{method:"PATCH",headers:{Authorization:`Bearer ${token()}`}});
         const data=await res.json().catch(()=>({}));
-        if(!res.ok) throw new Error(data.error || "Restauration impossible");
+        if(!res.ok) throw new Error(data.error || "Reprogrammation impossible");
         archives=archives.filter(p=>projectId(p)!==String(id));
         renderArchives();
         showToast("Autodiagnostic prêt à reprogrammer");
         location.href=`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`;
-      }catch(e){alert(e.message || "Restauration impossible pour le moment.");}
+      }catch(e){alert(e.message || "Reprogrammation impossible pour le moment.");}
     }
     async function cloneProject(id){
       if(!id)return;

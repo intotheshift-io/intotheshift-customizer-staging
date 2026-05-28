@@ -863,20 +863,60 @@ async function itsFetchProjectById(projectId) {
   const token = itsGetToken();
   if (!token || !projectId) return null;
 
+  const headers = { "Authorization": "Bearer " + token };
+  const role = itsGetFrontendUserRole();
+
   try {
+    if (role === "admin") {
+      try {
+        const direct = await fetch(ITS_API_BASE + "/api/admin/projects/" + encodeURIComponent(projectId), { headers });
+        const directJson = await direct.json().catch(() => ({}));
+        if (direct.ok) return directJson.project || directJson.data || directJson;
+      } catch(e) {}
+
+      const list = await fetch(ITS_API_BASE + "/api/admin/projects", { headers });
+      const listJson = await list.json().catch(() => ({}));
+      if (list.ok) {
+        const projects = Array.isArray(listJson) ? listJson : (listJson.projects || listJson.autodiags || listJson.data || []);
+        const found = projects.find(p => String(p.id || p.project_id || p.projectId || "") === String(projectId));
+        if (found) return found;
+      }
+    }
+
+    if (role === "partner") {
+      try {
+        const resPartner = await fetch(ITS_API_BASE + "/api/partner/clients", { headers });
+        const dataPartner = await resPartner.json().catch(() => ({}));
+        if (resPartner.ok) {
+          const clients = dataPartner.clients || dataPartner.organizations || [];
+          for (const client of clients) {
+            const found = (client.projects || client.autodiags || []).find(p => String(p.id || p.project_id || p.projectId || "") === String(projectId));
+            if (found) {
+              return Object.assign({}, found, {
+                organizationName: client.name || found.organizationName || found.organization_name || "",
+                organization_id: client.id || found.organization_id,
+                organizationId: client.id || found.organizationId
+              });
+            }
+          }
+        }
+      } catch(e) {}
+    }
+
     const res = await fetch(
       ITS_API_BASE + "/api/projects/" + encodeURIComponent(projectId),
-      {
-        headers: {
-          "Authorization": "Bearer " + token
-        }
-      }
+      { headers }
     );
 
     if (!res.ok) {
       if (res.status === 403 || res.status === 404) {
         const currentProjectId = itsGetCurrentProjectId();
-        if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+        if (String(currentProjectId) === String(projectId)) {
+          // On ne vide pas brutalement le contexte en mode reprogrammation :
+          // le cache local peut encore contenir le projet chargé depuis le cockpit.
+          const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
+          if (!isReprogram) itsClearProjectContextOnly();
+        }
       }
       return null;
     }
@@ -942,6 +982,9 @@ function itsInjectReadOnlyBanner(message) {
 }
 
 function itsApplyReadOnlyMode(options = {}) {
+  const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
+  if (isReprogram) return false;
+
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
 
@@ -955,32 +998,11 @@ function itsApplyReadOnlyMode(options = {}) {
   itsInjectReadOnlyBanner(message);
 
   document.querySelectorAll(".step-link").forEach(link => {
-    if (isPendingPublication) {
-      const projectId = itsGetCurrentProjectId();
-      const href = link.getAttribute("href") || "";
-      if (href && projectId && !href.includes("projectId=")) {
-        const separator = href.includes("?") ? "&" : "?";
-        link.setAttribute("href", href + separator + "projectId=" + encodeURIComponent(projectId));
-      }
-      link.style.pointerEvents = "";
-      link.style.opacity = ".85";
-      link.title = "Projet transmis : consultation en lecture seule";
-
-      // Une fois un projet commencé/transmis, le point de départ "Choisir une base"
-      // ne doit jamais redevenir cliquable.
-      if (href.includes("index.html") || link.classList.contains("step-link-locked-start")) {
-        link.removeAttribute("href");
-        link.style.pointerEvents = "none";
-        link.style.opacity = ".45";
-        link.title = "Point de départ du parcours : non cliquable une fois le projet commencé";
-      }
-      return;
-    }
-
     link.removeAttribute("href");
     link.style.pointerEvents = "none";
-    link.style.opacity = ".55";
-    link.title = "Navigation bloquée : projet publié";
+    link.style.opacity = isPendingPublication ? ".45" : ".55";
+    link.style.cursor = "not-allowed";
+    link.title = isPendingPublication ? "Projet transmis : navigation bloquée" : "Navigation bloquée : projet publié";
   });
 
   document.querySelectorAll("input, textarea, select").forEach(el => {
@@ -1018,6 +1040,9 @@ function itsApplyReadOnlyMode(options = {}) {
 }
 
 function itsShouldApplyReadOnlyOnThisPage() {
+  const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
+  if (isReprogram) return false;
+
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
 
   // On bloque uniquement les pages d'édition / consultation d'un projet précis.

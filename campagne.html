@@ -1145,6 +1145,11 @@ bootCampagnePage();
         button.style.opacity = "1";
       });
 
+      document.querySelectorAll(".bottom-actions .btn-back").forEach(button => {
+        button.disabled = true;
+        button.style.display = "none";
+      });
+
       const sidebarHint = document.getElementById("sidebar-check-hint");
       if(sidebarHint) sidebarHint.textContent = "Reprogrammation : vérifiez les dates, puis transmettez à Into The Shift.";
       const banner = document.getElementById("campaign-published-banner");

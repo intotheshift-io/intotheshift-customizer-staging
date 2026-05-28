@@ -340,15 +340,7 @@ function isValidationReprogramMode(){
   return params.get('reprogram') === '1';
 }
 function markValidationAsReprogramming(){
-  state = state || {};
-  state.isReprogramming = true;
-  state.reprogramming = true;
-  state.status = 'draft';
-  state.configTransmise = false;
-  state.config_transmise = false;
-  state.submitted = false;
-  state.transmission = Object.assign({}, state.transmission || {}, {status:'draft', submitted_at:''});
-  delete state.transmission.submittedAt;
+  state = mergeReprogramStatePreservingData(state || {});
 }
 function validationCurrentProjectId(){
   return state?.currentAdId || state?.project_id || state?.projectId ||
@@ -367,6 +359,32 @@ function validationLoadProjectFromServerSync(projectId){
   // Chargement centralisé dans app.js via itsBootstrapProjectFromUrl().
   // On évite ici un deuxième loader synchrone et une URL API codée en dur.
   return null;
+}
+
+function lockValidationStepper(){
+  document.querySelectorAll('.step-link').forEach(link => {
+    link.removeAttribute('href');
+    link.style.pointerEvents = 'none';
+    link.style.cursor = 'not-allowed';
+    link.style.opacity = '.45';
+    link.title = 'Navigation bloquée sur cette étape.';
+  });
+}
+
+function mergeReprogramStatePreservingData(source){
+  const base = source && typeof source === 'object' ? source : {};
+  base.isReprogramming = true;
+  base.reprogramming = true;
+  base.status = 'draft';
+  base.configTransmise = false;
+  base.config_transmise = false;
+  base.submitted = false;
+  base.transmission = Object.assign({}, base.transmission || {}, {
+    status:'draft',
+    submitted_at:''
+  });
+  delete base.transmission.submittedAt;
+  return base;
 }
 
 
@@ -493,6 +511,8 @@ function getSlug(){
   return getParam().slug || state.slug || slugify(getThemeTitle()) || 'autodiagnostic';
 }
 function getUrl(){
+  const existing = state.shareUrl || state.share_url || state.results?.shareUrl || state.publication?.shareUrl || state.publication?.share_url || '';
+  if(existing) return existing;
   return 'https://selfdiag-mayt.meandyoutoo.app/' + slugify(getCompany()) + '/' + getSlug();
 }
 function normalizeAnswer(a){
@@ -1495,7 +1515,10 @@ async function initValidationPage(){
     }
   }
   if(typeof itsNormalizeProjectState === 'function') state = itsNormalizeProjectState(state || {});
-  if(isValidationReprogramMode()) markValidationAsReprogramming();
+  if(isValidationReprogramMode()) {
+    markValidationAsReprogramming();
+    window.ITS_CURRENT_PROJECT_STATE = state;
+  }
 
   restoreClientInfo();
   refresh();
@@ -1506,7 +1529,7 @@ async function initValidationPage(){
     const title = document.querySelector('.page-title');
     const sub = document.getElementById('default-page-sub');
     if(title) title.textContent = 'Transmettre la reprogrammation pour mise en ligne';
-    if(sub) sub.textContent = 'Vous reprogrammez une nouvelle période de campagne avec la même URL de passation et la même URL de statistiques. Vérifiez les informations, puis transmettez la reprogrammation à Into The Shift.';
+    if(sub) sub.textContent = 'Vous reprogrammez une nouvelle période de campagne avec la même URL de passation et la même URL de statistiques. Les statistiques s’ajouteront à l’historique existant et resteront consultables par période dans le dashboard.';
     document.body.classList.remove('is-transmitted');
     const box = document.getElementById('already-transmitted-box');
     if(box) box.classList.add('hidden');
@@ -1515,8 +1538,10 @@ async function initValidationPage(){
     updateReady();
   }
 
+  lockValidationStepper();
+
   if(typeof itsApplyReadOnlyMode === 'function' && !isValidationReprogramMode()){
-    setTimeout(() => itsApplyReadOnlyMode(), 50);
+    setTimeout(() => { itsApplyReadOnlyMode(); lockValidationStepper(); }, 50);
   }
 }
 
