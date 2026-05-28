@@ -1012,15 +1012,88 @@ function getProjectTitle(apiProject){
     "Autodiagnostic";
 }
 
-function getProjectTheme(apiProject){
-  const data = apiProject?.data || {};
-  const payload = data.payload || {};
+function normalizeDashboardThemeText(value){
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
 
-  return data.theme ||
-    data.selectedTheme ||
-    payload.theme ||
-    payload.thematique ||
-    "Autodiagnostic";
+function normalizeDashboardThemeLabel(value){
+  if(value === undefined || value === null) return "";
+
+  if(typeof value === "string"){
+    const trimmed = value.trim();
+    if(!trimmed) return "";
+    if((trimmed.startsWith("{") && trimmed.endsWith("}")) || (trimmed.startsWith("[") && trimmed.endsWith("]"))){
+      try{
+        return normalizeDashboardThemeLabel(JSON.parse(trimmed));
+      }catch(e){}
+    }
+    return trimmed;
+  }
+
+  if(Array.isArray(value)){
+    for(const item of value){
+      const label = normalizeDashboardThemeLabel(item);
+      if(label) return label;
+    }
+    return "";
+  }
+
+  if(typeof value === "object"){
+    const direct = value.title || value.name || value.label || value.titre || value.nom || value.themeLabel || value.themeName;
+    if(direct) return normalizeDashboardThemeLabel(direct);
+
+    const nested = value.theme || value.thematique || value.thématique || value.selectedTheme || value.category || value.topic || value.subject;
+    if(nested && nested !== value) return normalizeDashboardThemeLabel(nested);
+  }
+
+  return "";
+}
+
+function inferDashboardThemeFromProject(apiProject){
+  const text = normalizeDashboardThemeText(JSON.stringify(apiProject || {}) + " " + getProjectTitle(apiProject));
+
+  if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+  if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+  if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+  if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+  if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+
+  return "";
+}
+
+function getProjectTheme(apiProject){
+  const data = apiProject?.data && typeof apiProject.data === "object" ? apiProject.data : parseMaybeJson(apiProject?.data || {});
+  const payload = data?.payload && typeof data.payload === "object" ? data.payload : parseMaybeJson(data?.payload || {});
+
+  return (
+    normalizeDashboardThemeLabel(apiProject?.theme) ||
+    normalizeDashboardThemeLabel(apiProject?.themeName) ||
+    normalizeDashboardThemeLabel(apiProject?.themeLabel) ||
+    normalizeDashboardThemeLabel(apiProject?.themeTitle) ||
+    normalizeDashboardThemeLabel(apiProject?.thematique) ||
+    normalizeDashboardThemeLabel(data?.theme) ||
+    normalizeDashboardThemeLabel(data?.selectedTheme) ||
+    normalizeDashboardThemeLabel(data?.themeName) ||
+    normalizeDashboardThemeLabel(data?.themeLabel) ||
+    normalizeDashboardThemeLabel(data?.themeTitle) ||
+    normalizeDashboardThemeLabel(data?.thematique) ||
+    normalizeDashboardThemeLabel(data?.thématique) ||
+    normalizeDashboardThemeLabel(payload?.theme) ||
+    normalizeDashboardThemeLabel(payload?.selectedTheme) ||
+    normalizeDashboardThemeLabel(payload?.themeName) ||
+    normalizeDashboardThemeLabel(payload?.themeLabel) ||
+    normalizeDashboardThemeLabel(payload?.themeTitle) ||
+    normalizeDashboardThemeLabel(payload?.thematique) ||
+    normalizeDashboardThemeLabel(payload?.thématique) ||
+    inferDashboardThemeFromProject(apiProject) ||
+    "Autodiagnostic"
+  );
 }
 
 function getProjectQuestionCount(apiProject){
@@ -1141,7 +1214,7 @@ function renderLocalDraft(state){
     return;
   }
 
-  const theme = state?.theme || state?.selectedTheme || "Thématique à choisir";
+  const theme = normalizeDashboardThemeLabel(state?.theme) || normalizeDashboardThemeLabel(state?.selectedTheme) || "Thématique à choisir";
   const chapters = Array.isArray(state?.chapters) ? state.chapters : [];
   const qCount = chapters.reduce((sum, ch) => sum + ((ch.questions || []).length), 0);
 
