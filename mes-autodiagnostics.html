@@ -811,7 +811,7 @@
 
   if (status === "submitted" || status === "sent") return "En attente de publication";
   if (status === "published") return "Communication";
-  if (status === "unpublished" || status === "archived") return "Voir le projet";
+  if (status === "archived") return "Voir le projet";
 
   const step = getProjectStep(project);
   if (step.includes("validation")) return "Transmettre";
@@ -827,7 +827,8 @@
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
       if (status === "published") return "campagne.html" + suffix + "&readonly=1";
-      if (status === "unpublished" || status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
+      if (status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
+      if (status === "unpublished") return reprogramUrl(project);
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
@@ -872,6 +873,19 @@
     function canCloneProject(project) {
       return ["submitted", "sent", "published", "unpublished", "archived"].includes(normalizeStatus(project));
     }
+
+    function reprogramUrl(project){
+      const id = getProjectId(project);
+      return id ? `campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1` : "campagne.html?reprogram=1";
+    }
+
+    function reprogramProject(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`);
+    }
+
 
     function shortUrl(url) {
       if (!url) return "";
@@ -1051,16 +1065,22 @@
             <div class="actions">
               <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
-                <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
-                  ${resumeLabel(p)}
-                </button>
+                ${status === "unpublished" ? `
+                  <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
+                    🚀 Reprogrammer
+                  </button>
+                ` : `
+                  <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
+                    ${resumeLabel(p)}
+                  </button>
+                `}
                 ${status === "draft" ? `
                   <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
                     🗑️ Supprimer
                   </button>
                 ` : ""}
                 ${canClone ? `
-                  <button class="btn" onclick="duplicateProject('${escapeAttr(projectId)}')">
+                  <button class="btn" onclick="duplicateProject('${escapeAttr(projectId)}')" title="Nouvel autodiagnostic : une nouvelle URL sera délivrée après publication.">
                     🧬 Cloner
                   </button>
                 ` : ""}
@@ -1185,7 +1205,7 @@
         const title = getTitle(project);
         modal.querySelector(".modal-icon").textContent = "📦";
         modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le restaurer depuis les archives.`;
+        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le reprogrammer depuis les archives avec la même URL, ou le cloner pour créer un nouvel autodiagnostic.`;
         modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveActiveProject()">Archiver</button>';
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");

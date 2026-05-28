@@ -1085,7 +1085,52 @@ bootCampagnePage();
   function applyCampaignMode(){
     const params = new URLSearchParams(window.location.search);
     const readonly = params.get("readonly") === "1";
-    const lockStatus = ["published","unpublished","archived"].includes(getCampaignStatusForLock());
+    const reprogram = params.get("reprogram") === "1";
+    const campaignStatusForLock = getCampaignStatusForLock();
+    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !(reprogram && campaignStatusForLock === "unpublished");
+
+    if(reprogram && campaignStatusForLock === "unpublished"){
+      document.body.classList.remove("campaign-locked");
+      const title = document.querySelector(".page-title");
+      const sub = document.querySelector(".page-sub");
+      if(title) title.textContent = "Reprogrammer la campagne";
+      if(sub) sub.textContent = "Même URL, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
+
+      ["date-launch", "date-close"].forEach(id => {
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.disabled = false;
+        el.readOnly = false;
+        el.style.pointerEvents = "auto";
+        el.style.cursor = "pointer";
+        el.style.background = "#fff";
+      });
+
+      document.querySelectorAll(".check-row input").forEach(el => {
+        el.disabled = false;
+        el.style.pointerEvents = "auto";
+        el.style.cursor = "pointer";
+      });
+
+      document.querySelectorAll(".bottom-actions").forEach(el => {
+        el.style.display = "flex";
+      });
+
+      document.querySelectorAll("button").forEach(button => {
+        button.disabled = false;
+        button.removeAttribute("disabled");
+        button.removeAttribute("aria-disabled");
+        button.style.pointerEvents = "auto";
+        button.style.cursor = "pointer";
+        button.style.opacity = "1";
+      });
+
+      const sidebarHint = document.getElementById("sidebar-check-hint");
+      if(sidebarHint) sidebarHint.textContent = "Reprogrammation : vérifiez les dates, puis transmettez à Into The Shift.";
+      const banner = document.getElementById("campaign-published-banner");
+      if(banner) banner.remove();
+      return;
+    }
 
     // Admin / partner : on garde la campagne modifiable tant que l'AD est un brouillon
     // ou prêt à transmettre. Le verrouillage ne s'applique qu'après transmission/publication
