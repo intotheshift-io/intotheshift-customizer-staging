@@ -409,7 +409,7 @@
       const link = document.getElementById("backToClients");
       if(!link) return;
       if(isAdmin()){
-        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour à la vue globale admin";
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour aux cockpits clients";
       }else{
         link.textContent = "← Retour à mes clients";
       }
@@ -1327,20 +1327,8 @@ function getProjectTitle(project){
 
     function createAdForThisClient(){
       const clientId = getClientId();
-      const clientName = currentClient?.name || "";
-
-      if(!clientId){
-        alert("Cockpit client introuvable.");
-        return;
-      }
-
-      // Création admin/partner depuis un cockpit : l'AD doit être rattaché au cockpit dès le premier brouillon.
       localStorage.setItem("its_selected_partner_client_id", clientId);
-      localStorage.setItem("its_target_organization_id", clientId);
-      localStorage.setItem("its_admin_create_for_organization_id", clientId);
-      if(clientName) localStorage.setItem("its_target_organization_name", clientName);
-
-      window.location.href = `index.html?organizationId=${encodeURIComponent(clientId)}&adminCreate=1`;
+      window.location.href = "index.html";
     }
 
     function setActiveProjectForNavigation(projectId){

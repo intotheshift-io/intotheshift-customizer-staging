@@ -228,30 +228,6 @@ td:nth-child(9){width:125px}
   padding:11px;
   min-width:0;
 }
-.account-cockpit-link{
-  display:block;
-  width:100%;
-  text-align:left;
-  font-family:'Asap',sans-serif;
-  cursor:pointer;
-  transition:background .15s ease,border-color .15s ease,transform .15s ease;
-}
-.account-cockpit-link:hover{
-  background:#eaf3f8;
-  border-color:#c7dbe8;
-  transform:translateY(-1px);
-}
-.account-cockpit-link .account-info-value{
-  color:#0d4c72;
-  text-decoration:underline;
-  text-underline-offset:3px;
-}
-.account-info-hint{
-  margin-top:5px;
-  font-size:11px;
-  color:#60758a;
-  font-weight:800;
-}
 .account-info-label{
   font-size:10px;
   text-transform:uppercase;
@@ -810,6 +786,20 @@ function showTab(tab){
   document.querySelector(`.side-link[data-tab="${tab}"]`)?.classList.add("active");
 }
 
+function getInitialAdminTab(){
+  const hash = String(window.location.hash || "").replace("#", "").trim().toLowerCase();
+  const allowed = ["global", "create", "accounts", "partners", "organizations", "projects"];
+  return allowed.includes(hash) ? hash : "global";
+}
+
+function applyInitialAdminTab(){
+  const initialTab = getInitialAdminTab();
+  if(initialTab && initialTab !== "global"){
+    showTab(initialTab);
+    document.getElementById("tab-" + initialTab)?.scrollIntoView({behavior:"auto",block:"start"});
+  }
+}
+
 function goToProjects(status="", search=""){
   showTab("projects");
   const statusFilter=document.getElementById("statusFilter");
@@ -870,6 +860,7 @@ async function loadAdminData(){
     adminState.projects=normalizeArray(projects,["projects","autodiags","data"]);
     adminState.organizations=normalizeArray(organizations,["organizations","clients","data"]);
     renderAll();
+    applyInitialAdminTab();
   }catch(err){
     console.error(err);
     showError("Impossible de charger l’espace admin. Détail : "+err.message);
@@ -988,10 +979,6 @@ function renderAccounts(){
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
-    const orgIdClean=cleanId(organizationId);
-    const cockpitBox=orgIdClean
-      ? `<button type="button" class="account-info-box account-cockpit-link" onclick="openClientFolder('${escapeAttr(orgIdClean)}')" title="Ouvrir le dossier client"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div><div class="account-info-hint">Ouvrir le dossier client</div></button>`
-      : `<div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>`;
     const canAttach=role==="client";
 
     return`<article class="account-card">
@@ -1012,7 +999,7 @@ function renderAccounts(){
       </div>
 
       <div class="account-meta-grid">
-        ${cockpitBox}
+        <div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>
         <div class="account-info-box"><div class="account-info-label">Projets</div><div class="account-info-value">${escapeHtml(projectCount)} autodiag${Number(projectCount)>1?"s":""}</div></div>
         <div class="account-info-box"><div class="account-info-label">ID compte</div><div class="account-info-value">${escapeHtml(id)}</div></div>
         <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
@@ -1688,6 +1675,17 @@ function showError(msg){hideSuccess();const box=document.getElementById("errorBo
 function hideError(){const box=document.getElementById("errorBox");box.style.display="none";box.textContent="";}
 function showSuccess(msg){hideError();const box=document.getElementById("successBox");box.textContent=msg;box.style.display="block";setTimeout(()=>hideSuccess(),3500);}
 function hideSuccess(){const box=document.getElementById("successBox");box.style.display="none";box.textContent="";}
+
+window.addEventListener("hashchange",()=>{
+  const tab = getInitialAdminTab();
+  if(tab){
+    showTab(tab);
+    if(tab === "organizations") renderOrganizations();
+    if(tab === "projects") renderProjects();
+    if(tab === "accounts") renderAccounts();
+    if(tab === "partners") renderPartners();
+  }
+});
 
 document.addEventListener("DOMContentLoaded",()=>{
   resetAdminFilters();
