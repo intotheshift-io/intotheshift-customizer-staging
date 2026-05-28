@@ -323,10 +323,6 @@
     function normalizeStatus(project) {
       const raw = String(project.status || project.project_status || "").toLowerCase();
       const data = getProjectData(project);
-      const archivedFlag = Boolean(
-        project.archived_at || project.archivedAt || project.is_archived === true || project.isArchived === true ||
-        data.archived_at || data.archivedAt || data.is_archived === true || data.isArchived === true
-      );
       const sentFlag =
         project.configTransmise === true ||
         project.config_transmise === true ||
@@ -342,11 +338,11 @@
         data.cloneSourceProjectId || data.clone_source_project_id
       );
 
-      if (archivedFlag || raw === "archived" || raw.includes("archiv")) return "archived";
       if (hasCopyMarker && (!raw || raw === "draft" || raw === "brouillon")) return "draft";
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
       if (raw.includes("publi")) return "published";
       if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
+      if (raw.includes("archiv")) return "archived";
       return "draft";
     }
 
@@ -886,7 +882,6 @@
       window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`);
     }
 
-
     function shortUrl(url) {
       if (!url) return "";
       try {
@@ -910,40 +905,15 @@
       alert("Lien copié.");
     }
 
-    function isArchivedProject(project){
-      const data = getProjectData(project);
-      const raw = String(project?.status || project?.project_status || data?.status || data?.project_status || "").toLowerCase();
-      return Boolean(
-        raw === "archived" ||
-        raw.includes("archiv") ||
-        project?.archived_at ||
-        project?.archivedAt ||
-        project?.is_archived === true ||
-        project?.isArchived === true ||
-        data?.archived_at ||
-        data?.archivedAt ||
-        data?.is_archived === true ||
-        data?.isArchived === true
-      );
-    }
-
-    function getArchivedProjects(){
-      return projects.filter(isArchivedProject);
-    }
-
-    function updateArchiveCounter(count){
-      const archiveQuickCount = document.getElementById("archiveQuickCount");
-      if(archiveQuickCount) archiveQuickCount.textContent = Number(count || 0);
-    }
-
     function getActiveProjects(){
-      return projects.filter(p => !isArchivedProject(p) && normalizeStatus(p) !== "archived");
+      return projects.filter(p => normalizeStatus(p) !== "archived");
     }
 
     function renderStats() {
       const activeProjects = getActiveProjects();
-      const archivedCount = getArchivedProjects().length;
-      updateArchiveCounter(archivedCount);
+      const archivedCount = projects.filter(p => normalizeStatus(p) === "archived").length;
+      const archiveQuickCount = document.getElementById("archiveQuickCount");
+      if(archiveQuickCount) archiveQuickCount.textContent = archivedCount;
       const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
       activeProjects.forEach(p => {
         const status = normalizeStatus(p);
@@ -1066,7 +1036,7 @@
               <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
                 ${status === "unpublished" ? `
-                  <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
+                  <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL de passation et même URL de statistiques : seules les dates de campagne sont à reprogrammer.">
                     🚀 Reprogrammer
                   </button>
                 ` : `
@@ -1123,26 +1093,9 @@
 
     document.getElementById("searchInput").addEventListener("input", renderProjects);
 
-    async function refreshArchiveCounterFromApi(){
-      if(!token()) return;
-      try{
-        const res = await fetch(`${API_BASE}/api/projects`, {
-          cache: "no-store",
-          headers: { Authorization: `Bearer ${token()}` }
-        });
-        if(!res.ok) return;
-        const data = await res.json();
-        const all = Array.isArray(data) ? data : (data.projects || data.items || []);
-        updateArchiveCounter(all.filter(isArchivedProject).length);
-      }catch(e){
-        console.warn("Compteur archives non rafraîchi", e);
-      }
-    }
-
     async function loadProjects() {
       try {
         const res = await fetch(`${API_BASE}/api/projects`, {
-          cache: "no-store",
           headers: { Authorization: `Bearer ${token()}` }
         });
 
@@ -1156,7 +1109,6 @@
 
       renderStats();
       renderProjects();
-      refreshArchiveCounterFromApi();
     }
 
     async function duplicateProject(id) {
@@ -1205,7 +1157,7 @@
         const title = getTitle(project);
         modal.querySelector(".modal-icon").textContent = "📦";
         modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le reprogrammer depuis les archives avec la même URL, ou le cloner pour créer un nouvel autodiagnostic.`;
+        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le restaurer depuis les archives.`;
         modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveActiveProject()">Archiver</button>';
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");
