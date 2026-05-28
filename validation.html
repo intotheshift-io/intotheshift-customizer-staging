@@ -340,8 +340,15 @@ function isValidationReprogramMode(){
   return params.get('reprogram') === '1';
 }
 function markValidationAsReprogramming(){
-  if (isAlreadyTransmitted()) return;
-  state = mergeReprogramStatePreservingData(state || {});
+  state = state || {};
+  state.isReprogramming = true;
+  state.reprogramming = true;
+  state.status = 'draft';
+  state.configTransmise = false;
+  state.config_transmise = false;
+  state.submitted = false;
+  state.transmission = Object.assign({}, state.transmission || {}, {status:'draft', submitted_at:''});
+  delete state.transmission.submittedAt;
 }
 function validationCurrentProjectId(){
   return state?.currentAdId || state?.project_id || state?.projectId ||
@@ -351,7 +358,6 @@ function validationCurrentProjectId(){
     '';
 }
 function goBackToCampagne(){
-  if (isAlreadyTransmitted()) return;
   if (typeof itsSave === 'function') itsSave(state);
   const id = validationCurrentProjectId();
   const suffix = isValidationReprogramMode() ? '&reprogram=1' : '';
@@ -361,32 +367,6 @@ function validationLoadProjectFromServerSync(projectId){
   // Chargement centralisé dans app.js via itsBootstrapProjectFromUrl().
   // On évite ici un deuxième loader synchrone et une URL API codée en dur.
   return null;
-}
-
-function lockValidationStepper(){
-  document.querySelectorAll('.step-link').forEach(link => {
-    link.removeAttribute('href');
-    link.style.pointerEvents = 'none';
-    link.style.cursor = 'not-allowed';
-    link.style.opacity = '.45';
-    link.title = 'Navigation bloquée sur cette étape.';
-  });
-}
-
-function mergeReprogramStatePreservingData(source){
-  const base = source && typeof source === 'object' ? source : {};
-  base.isReprogramming = true;
-  base.reprogramming = true;
-  base.status = 'draft';
-  base.configTransmise = false;
-  base.config_transmise = false;
-  base.submitted = false;
-  base.transmission = Object.assign({}, base.transmission || {}, {
-    status:'draft',
-    submitted_at:''
-  });
-  delete base.transmission.submittedAt;
-  return base;
 }
 
 
@@ -513,8 +493,6 @@ function getSlug(){
   return getParam().slug || state.slug || slugify(getThemeTitle()) || 'autodiagnostic';
 }
 function getUrl(){
-  const existing = state.shareUrl || state.share_url || state.results?.shareUrl || state.publication?.shareUrl || state.publication?.share_url || '';
-  if(existing) return existing;
   return 'https://selfdiag-mayt.meandyoutoo.app/' + slugify(getCompany()) + '/' + getSlug();
 }
 function normalizeAnswer(a){
@@ -1453,35 +1431,6 @@ async function transmit(){
     state.current_step = 'validation';
     state.step = 'validation';
     if (typeof itsSave === 'function') itsSave(state);
-    try {
-      await fetch(getApiBaseUrl() + "/api/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + token
-        },
-        body: JSON.stringify({
-          projectId: projectSavedId || getCurrentProjectIdForSave() || undefined,
-          title: getThemeTitle(),
-          organizationId: getSelectedPartnerClientId(),
-          status: 'sent',
-          currentStep: 'validation',
-          campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
-          campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
-          data: Object.assign({}, state, {
-            status: 'sent',
-            configTransmise: true,
-            config_transmise: true,
-            submitted: true,
-            step: 'validation',
-            current_step: 'validation',
-            transmission: Object.assign({}, state.transmission || {}, { status: 'sent', submitted_at: payload.submitted_at })
-          })
-        })
-      });
-    } catch(e) {
-      console.warn('Sauvegarde statut transmis non bloquante', e);
-    }
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
       'success',
@@ -1490,8 +1439,6 @@ async function transmit(){
     );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
-    applyTransmittedView();
-    lockValidationStepper();
   } else {
     state.status = 'draft';
     state.configTransmise = false;
@@ -1507,6 +1454,7 @@ async function transmit(){
 
 
 function isAlreadyTransmitted(){
+  if(isValidationReprogramMode()) return false;
   return state?.status === 'sent' ||
     state?.configTransmise === true ||
     state?.config_transmise === true ||
@@ -1535,14 +1483,6 @@ function applyTransmittedView(){
     btn.disabled = true;
     btn.textContent = 'En attente de publication ✓';
   }
-  const backBtn = document.querySelector('.btn-back[onclick="goBackToCampagne()"]');
-  if(backBtn){
-    backBtn.disabled = true;
-    backBtn.style.opacity = '.55';
-    backBtn.style.cursor = 'not-allowed';
-    backBtn.title = 'Configuration transmise : retour à la campagne bloqué.';
-  }
-  lockValidationStepper();
 }
 
 async function initValidationPage(){
@@ -1555,21 +1495,18 @@ async function initValidationPage(){
     }
   }
   if(typeof itsNormalizeProjectState === 'function') state = itsNormalizeProjectState(state || {});
-  if(isValidationReprogramMode()) {
-    markValidationAsReprogramming();
-    window.ITS_CURRENT_PROJECT_STATE = state;
-  }
+  if(isValidationReprogramMode()) markValidationAsReprogramming();
 
   restoreClientInfo();
   refresh();
   await applyAccountCompany();
   refresh();
   applyTransmittedView();
-  if(isValidationReprogramMode() && !isAlreadyTransmitted()){
+  if(isValidationReprogramMode()){
     const title = document.querySelector('.page-title');
     const sub = document.getElementById('default-page-sub');
     if(title) title.textContent = 'Transmettre la reprogrammation pour mise en ligne';
-    if(sub) sub.textContent = 'Vous reprogrammez une nouvelle période de campagne avec la même URL de passation et la même URL de statistiques. Les statistiques s’ajouteront à l’historique existant et resteront consultables par période dans le dashboard.';
+    if(sub) sub.textContent = 'Vous reprogrammez une nouvelle période de campagne avec la même URL de passation et la même URL de statistiques. Vérifiez les informations, puis transmettez la reprogrammation à Into The Shift.';
     document.body.classList.remove('is-transmitted');
     const box = document.getElementById('already-transmitted-box');
     if(box) box.classList.add('hidden');
@@ -1578,10 +1515,8 @@ async function initValidationPage(){
     updateReady();
   }
 
-  lockValidationStepper();
-
   if(typeof itsApplyReadOnlyMode === 'function' && !isValidationReprogramMode()){
-    setTimeout(() => { itsApplyReadOnlyMode(); lockValidationStepper(); }, 50);
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
 }
 

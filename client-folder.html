@@ -203,6 +203,8 @@
       <div class="kpi"><strong id="kpiPassations">—</strong><span>Passations restantes</span></div>
     </section>
 
+    <section id="clientPackUpgradePanel" style="display:none"></section>
+
     <section class="tabs">
       <button class="tab active" onclick="showTab('ads', this)">Autodiagnostics</button>
       <button class="tab" onclick="showTab('campaigns', this)">Campagnes</button>
@@ -409,7 +411,7 @@
       const link = document.getElementById("backToClients");
       if(!link) return;
       if(isAdmin()){
-        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour aux cockpits clients";
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour à la vue globale admin";
       }else{
         link.textContent = "← Retour à mes clients";
       }
@@ -735,6 +737,52 @@ function getProjectTitle(project){
       `;
     }
 
+
+    function renderClientPackUpgradePanel(projects){
+      const panel = document.getElementById("clientPackUpgradePanel");
+      if(!panel) return;
+      const requests = (projects || [])
+        .map(project => ({ project, request: getPackUpgradeRequest(project) }))
+        .filter(item => item.request.requested);
+
+      if(!requests.length){
+        panel.style.display = "none";
+        panel.innerHTML = "";
+        return;
+      }
+
+      panel.style.display = "block";
+      panel.innerHTML = `
+        <div class="pack-upgrade-box" style="margin:0 0 18px 0">
+          📦 <strong>Recharge pack du cockpit client</strong><br>
+          <span>Ces demandes concernent le quota global du client, pas un autodiagnostic en particulier.</span>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            ${requests.map(({project, request}) => {
+              const label = request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`;
+              const after = request.unlimited ? "Pack illimité" : `${Number(request.totalAfter || 0).toLocaleString("fr-FR")} passations au total`;
+              const title = getProjectTitle(project);
+              const isPending = request.status === "pending";
+              const isApproved = request.status === "approved";
+              const isRejected = request.status === "rejected";
+              return `
+                <div style="background:#fff;border:1px solid #ffd9a3;border-radius:12px;padding:10px 12px">
+                  <strong>${isApproved ? "✅ Recharge validée" : isRejected ? "↩️ Recharge refusée" : "⏳ Recharge à valider"}</strong><br>
+                  ${escapeHtml(label)} · ${escapeHtml(after)}<br>
+                  <small>Demande issue de : ${escapeHtml(title)}</small>
+                  ${isPending && isAdmin() ? `
+                    <div class="pack-upgrade-actions">
+                      <button class="small-btn approve-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','approve')">✅ Valider recharge</button>
+                      <button class="small-btn reject-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','reject')">Refuser</button>
+                    </div>
+                  ` : ""}
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+
     function getProjectLogoData(project){
       const payload = getProjectPayload(project);
       return val(project,["passationLogoDataUrl","passation_logo_data_url","projectLogoDataUrl","project_logo_data_url"],
@@ -944,6 +992,7 @@ function getProjectTitle(project){
       document.getElementById("kpiSent").textContent = sentCount;
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
+      renderClientPackUpgradePanel(projects);
 
       renderAds(projects);
       renderCampaigns(projects);
@@ -1147,7 +1196,6 @@ function getProjectTitle(project){
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             ${renderAlertBadges(project)}
-            ${renderPackUpgradeBox(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -1164,7 +1212,7 @@ function getProjectTitle(project){
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? (packUpgrade.requested && packUpgrade.status === "pending"
-                    ? `<button class="small-btn publish" onclick="showPackPendingModal('${escapeAttr(projectTitle)}')">✅ Publier</button>`
+                    ? `<button class="small-btn publish" onclick="alert('Validez d’abord la recharge pack avant de publier.')">✅ Publier</button>`
                     : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
                   : ""
               }
@@ -1327,26 +1375,8 @@ function getProjectTitle(project){
 
     function createAdForThisClient(){
       const clientId = getClientId();
-      const clientName = currentClient?.name || "";
-
-      if(!clientId){
-        showActionInfoModal({
-          icon: "⚠️",
-          title: "Cockpit client introuvable",
-          subtitle: "La création ne peut pas être lancée.",
-          text: "Rechargez le cockpit client, puis réessayez.",
-          confirmText: "Compris"
-        });
-        return;
-      }
-
-      // Création admin/partner depuis un cockpit : l'AD doit être rattaché au cockpit dès le premier brouillon.
       localStorage.setItem("its_selected_partner_client_id", clientId);
-      localStorage.setItem("its_target_organization_id", clientId);
-      localStorage.setItem("its_admin_create_for_organization_id", clientId);
-      if(clientName) localStorage.setItem("its_target_organization_name", clientName);
-
-      window.location.href = `index.html?organizationId=${encodeURIComponent(clientId)}&adminCreate=1`;
+      window.location.href = "index.html";
     }
 
     function setActiveProjectForNavigation(projectId){
@@ -1510,20 +1540,6 @@ function getProjectTitle(project){
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const isArchive = nextStatus === "archived";
       const isUnpublish = nextStatus === "unpublished";
-
-      if(isArchive && project && normalizeStatus(project.status) === "published"){
-        await showActionInfoModal({
-          icon: "📦",
-          title: "Dépubliez avant d’archiver",
-          subtitle: "Cet autodiagnostic est encore publié.",
-          text: "Un autodiagnostic publié doit d’abord être dépublié avant d’être archivé.",
-          project: title,
-          warning: "Cliquez sur “Dépublier”, puis vous pourrez l’archiver.",
-          confirmText: "Compris"
-        });
-        return;
-      }
-
       const ok = await openConfirmModal({
         tone: isArchive ? "warn" : "primary",
         icon: isArchive ? "📦" : "🛑",
@@ -1559,14 +1575,7 @@ function getProjectTitle(project){
         await loadClientFolder();
       }catch(err){
         console.error(err);
-        await showActionInfoModal({
-          icon: "⚠️",
-          title: "Action non effectuée",
-          subtitle: "Le statut de l’autodiagnostic n’a pas été modifié.",
-          text: err.message || "Impossible de changer le statut de cet autodiagnostic.",
-          project: title,
-          confirmText: "Compris"
-        });
+        alert(err.message || "Impossible de changer le statut de cet autodiagnostic.");
       }
     }
 
@@ -1651,32 +1660,6 @@ function getProjectTitle(project){
     }
 
 
-    async function showActionInfoModal(options = {}){
-      return await openConfirmModal({
-        tone: options.tone || "warn",
-        icon: options.icon || "⚠️",
-        title: options.title || "Action impossible",
-        subtitle: options.subtitle || "Cette action ne peut pas être effectuée pour le moment.",
-        text: options.text || "Merci de vérifier le statut de cet autodiagnostic.",
-        project: options.project || "",
-        warning: options.warning || "",
-        confirmText: options.confirmText || "Compris",
-        hideCancel: true
-      });
-    }
-
-    function showPackPendingModal(projectTitle){
-      return showActionInfoModal({
-        icon: "📦",
-        title: "Recharge pack à valider",
-        subtitle: "La publication est bloquée tant que la recharge n’est pas validée.",
-        text: "Validez d’abord la recharge pack avant de publier cet autodiagnostic.",
-        project: projectTitle || "Autodiagnostic sélectionné",
-        confirmText: "Compris"
-      });
-    }
-
-
     let confirmModalResolver = null;
 
     function openConfirmModal(options = {}){
@@ -1688,7 +1671,6 @@ function getProjectTitle(project){
       const project = document.getElementById("confirmModalProject");
       const warning = document.getElementById("confirmModalWarning");
       const okBtn = document.getElementById("confirmOkBtn");
-      const cancelBtn = document.getElementById("confirmCancelBtn");
 
       if(!modal || !title || !text || !okBtn){
         return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
@@ -1719,7 +1701,6 @@ function getProjectTitle(project){
 
       okBtn.textContent = options.confirmText || "Confirmer";
       okBtn.className = "confirm-btn " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "primary");
-      if(cancelBtn) cancelBtn.style.display = options.hideCancel ? "none" : "inline-flex";
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
 
@@ -1734,8 +1715,6 @@ function getProjectTitle(project){
         modal.classList.remove("open");
         modal.setAttribute("aria-hidden", "true");
       }
-      const cancelBtn = document.getElementById("confirmCancelBtn");
-      if(cancelBtn) cancelBtn.style.display = "inline-flex";
       if(confirmModalResolver){
         const resolve = confirmModalResolver;
         confirmModalResolver = null;
