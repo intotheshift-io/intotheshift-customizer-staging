@@ -1038,7 +1038,13 @@ function buildPayload(){
   const excelFilename = 'configuration-shift-studio-' + safeCompanySlug + '.xls';
   const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
 
+  const currentProjectId = getCurrentProjectIdForSave();
+
   return {
+    projectId: currentProjectId || undefined,
+    project_id: currentProjectId || undefined,
+    currentProjectId: currentProjectId || undefined,
+    currentAdId: currentProjectId || undefined,
     organizationId: getSelectedPartnerClientId(),
     submitted_at: new Date().toISOString(),
     client_info: getClientInfo(),
@@ -1287,18 +1293,26 @@ async function transmit(){
     showMissingModal();
     return;
   }
+
   const payload = buildPayload();
+  const token =
+    localStorage.getItem("its_token") ||
+    localStorage.getItem("token") ||
+    localStorage.getItem("auth_token") ||
+    "";
+
   showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.');
 
   state.clientInfo = getClientInfo();
   state.transmission = state.transmission || {};
   state.transmission.clientInfo = state.clientInfo;
-  state.transmission.status = 'ready_to_send';
-  state.transmission.submitted_at = payload.submitted_at;
-  state.status = 'sent';
-  state.configTransmise = true;
-  state.config_transmise = true;
-  state.submitted = true;
+  state.transmission.status = 'email_pending';
+  state.transmission.last_attempt_at = payload.submitted_at;
+  state.transmission.submitted_at = '';
+  state.status = 'draft';
+  state.configTransmise = false;
+  state.config_transmise = false;
+  state.submitted = false;
   state.current_step = 'validation';
   state.step = 'validation';
 
@@ -1306,70 +1320,80 @@ async function transmit(){
     if (typeof itsSave === 'function') itsSave(state);
     else localStorage.setItem('its_state', JSON.stringify(state));
   } catch(e) {}
-  const token =
-  localStorage.getItem("its_token") ||
-  localStorage.getItem("token") ||
-  localStorage.getItem("auth_token") ||
-  "";
 
- try {
-  const projectResponse = await fetch(getApiBaseUrl() + "/api/projects", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token
-    },
-    body: JSON.stringify({
-      projectId: getCurrentProjectIdForSave() || undefined,
-      title: getThemeTitle(),
-      organizationId: getSelectedPartnerClientId(),
-      status: 'sent',
-      currentStep: 'validation',
-      campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
-      campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
-      passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || undefined,
-      passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || undefined,
-      data: Object.assign({}, state, {
-        autodiagTitle: getThemeTitle(),
-        campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || '',
-        campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || '',
-        campaign_start_date: getParam().date_lancement || state.campaign_start_date || state.campaignStartDate || '',
-        campaign_end_date: getParam().date_cloture || state.campaign_end_date || state.campaignEndDate || '',
-        configTransmise: true,
-        config_transmise: true,
-        submitted: true,
-        step: 'validation',
-        current_step: 'validation',
-        status: 'sent',
-        clientInfo: getClientInfo(),
-        transmission: Object.assign({}, state.transmission || {}, {
+  let projectSavedId = getCurrentProjectIdForSave() || '';
+
+  // Sauvegarde de sécurité avant tentative d'email : on conserve le projet en brouillon.
+  // Il ne passera en "sent" que si /api/transmissions/submit confirme l'envoi des emails.
+  try {
+    const projectResponse = await fetch(getApiBaseUrl() + "/api/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({
+        projectId: getCurrentProjectIdForSave() || undefined,
+        title: getThemeTitle(),
+        organizationId: getSelectedPartnerClientId(),
+        status: 'draft',
+        currentStep: 'validation',
+        campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
+        campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
+        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || undefined,
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || undefined,
+        data: Object.assign({}, state, {
+          autodiagTitle: getThemeTitle(),
+          campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || '',
+          campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || '',
+          campaign_start_date: getParam().date_lancement || state.campaign_start_date || state.campaignStartDate || '',
+          campaign_end_date: getParam().date_cloture || state.campaign_end_date || state.campaignEndDate || '',
+          configTransmise: false,
+          config_transmise: false,
+          submitted: false,
+          step: 'validation',
+          current_step: 'validation',
+          status: 'draft',
           clientInfo: getClientInfo(),
-          status: 'ready_to_send',
-          submitted_at: payload.submitted_at
-        }),
-        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
-        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
+          transmission: Object.assign({}, state.transmission || {}, {
+            clientInfo: getClientInfo(),
+            status: 'email_pending',
+            last_attempt_at: payload.submitted_at,
+            submitted_at: ''
+          }),
+          passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+          passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
+        })
       })
-    })
-  });
+    });
 
-  if(!projectResponse.ok){
-    const err = await projectResponse.json().catch(() => ({}));
-    console.error("Erreur API sauvegarde projet", projectResponse.status, err);
-  } else {
-    const saved = await projectResponse.json().catch(() => ({}));
-    const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){
-      state.currentAdId = id;
-      state.project_id = id;
-      localStorage.setItem('its_current_project_id', String(id));
-      localStorage.setItem('its_current_ad_id', String(id));
-      if (typeof itsSave === 'function') itsSave(state);
+    if(!projectResponse.ok){
+      const err = await projectResponse.json().catch(() => ({}));
+      console.error("Erreur API sauvegarde projet avant transmission", projectResponse.status, err);
+    } else {
+      const saved = await projectResponse.json().catch(() => ({}));
+      const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
+      if(id){
+        projectSavedId = String(id);
+        state.currentAdId = id;
+        state.project_id = id;
+        state.projectId = id;
+        localStorage.setItem('its_current_project_id', String(id));
+        localStorage.setItem('its_current_ad_id', String(id));
+        if (typeof itsSave === 'function') itsSave(state);
+      }
     }
+  } catch(e) {
+    console.error("Erreur sauvegarde projet avant transmission", e);
   }
-} catch(e) {
-  console.error("Erreur sauvegarde projet", e);
-}
+
+  if(projectSavedId){
+    payload.projectId = projectSavedId;
+    payload.project_id = projectSavedId;
+    payload.currentProjectId = projectSavedId;
+    payload.currentAdId = projectSavedId;
+  }
+
   const transmissionResult = await sendTransmissionEmails(payload, token);
   const sentOk = transmissionResult.ok === true;
 
@@ -1380,7 +1404,6 @@ async function transmit(){
   state.transmission.client_recap_email_status = transmissionResult.details?.clientEmailStatus || state.transmission.backend_submit_status;
   state.transmission.admin_excel_email_sent = !!transmissionResult.details?.adminEmailSent;
   state.transmission.admin_excel_email_status = transmissionResult.details?.adminEmailStatus || state.transmission.backend_submit_status;
-  if (typeof itsSave === 'function') itsSave(state);
 
   if(sentOk){
     state.status = 'sent';
@@ -1388,6 +1411,9 @@ async function transmit(){
     state.config_transmise = true;
     state.submitted = true;
     state.transmission.status = 'sent';
+    state.transmission.submitted_at = payload.submitted_at;
+    state.current_step = 'validation';
+    state.step = 'validation';
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
@@ -1398,9 +1424,14 @@ async function transmit(){
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
+    state.status = 'draft';
+    state.configTransmise = false;
+    state.config_transmise = false;
+    state.submitted = false;
     state.transmission.status = 'send_error';
+    state.transmission.submitted_at = '';
     if (typeof itsSave === 'function') itsSave(state);
-    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement par le backend. Vérifiez la configuration email serveur ou contactez contact@intotheshift.io.');
+    showTransmitModal('error', 'Transmission non confirmée', 'La transmission n’a pas abouti : aucun email de confirmation n’a été envoyé. Merci de réessayer dans quelques instants ou de contacter contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = false;
   }
 }
@@ -1412,7 +1443,6 @@ function isAlreadyTransmitted(){
     state?.config_transmise === true ||
     state?.submitted === true ||
     state?.transmission?.status === 'sent' ||
-    state?.transmission?.status === 'ready_to_send' ||
     !!state?.transmission?.submitted_at;
 }
 
