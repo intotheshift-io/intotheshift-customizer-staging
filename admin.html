@@ -123,8 +123,6 @@ td:nth-child(9){width:125px}
 .global-line.clickable strong{text-decoration:underline;text-underline-offset:3px;color:#0d4c72}
 .card-list{display:grid;grid-template-columns:1fr;gap:14px}
 .org-card,.project-card{border:1px solid #dfe8ef;border-radius:22px;background:#fff;padding:18px;box-shadow:0 8px 22px rgba(13,76,114,.05)}
-.org-card.clickable-card{cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-.org-card.clickable-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(13,76,114,.10);border-color:#c7dbe8}
 .org-card-head,.project-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:12px}
 .org-card h3,.project-card h3{margin:0;color:#0d4c72;font-size:18px;line-height:1.25}
 .card-meta{font-size:13px;color:#718497;line-height:1.45;margin-top:4px}
@@ -229,6 +227,30 @@ td:nth-child(9){width:125px}
   border-radius:14px;
   padding:11px;
   min-width:0;
+}
+.account-cockpit-link{
+  display:block;
+  width:100%;
+  text-align:left;
+  font-family:'Asap',sans-serif;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.account-cockpit-link:hover{
+  background:#eaf3f8;
+  border-color:#c7dbe8;
+  transform:translateY(-1px);
+}
+.account-cockpit-link .account-info-value{
+  color:#0d4c72;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.account-info-hint{
+  margin-top:5px;
+  font-size:11px;
+  color:#60758a;
+  font-weight:800;
 }
 .account-info-label{
   font-size:10px;
@@ -966,6 +988,10 @@ function renderAccounts(){
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
+    const orgIdClean=cleanId(organizationId);
+    const cockpitBox=orgIdClean
+      ? `<button type="button" class="account-info-box account-cockpit-link" onclick="openClientFolder('${escapeAttr(orgIdClean)}')" title="Ouvrir le dossier client"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div><div class="account-info-hint">Ouvrir le dossier client</div></button>`
+      : `<div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>`;
     const canAttach=role==="client";
 
     return`<article class="account-card">
@@ -986,7 +1012,7 @@ function renderAccounts(){
       </div>
 
       <div class="account-meta-grid">
-        <div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>
+        ${cockpitBox}
         <div class="account-info-box"><div class="account-info-label">Projets</div><div class="account-info-value">${escapeHtml(projectCount)} autodiag${Number(projectCount)>1?"s":""}</div></div>
         <div class="account-info-box"><div class="account-info-label">ID compte</div><div class="account-info-value">${escapeHtml(id)}</div></div>
         <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
@@ -1127,8 +1153,8 @@ function renderOrganizations(){
         }).join("")
       : `<div class="muted">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
     const canDeleteOrg=projectsCount===0 && usersCount===0;
-    return`<article class="org-card clickable-card" onclick="openClientFolder('${escapeAttr(id)}')" title="Ouvrir le dossier client">
-      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""} · Cliquer pour ouvrir le dossier client</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
+    return`<article class="org-card">
+      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
         <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
@@ -1139,13 +1165,13 @@ function renderOrganizations(){
         <div class="info-label" style="margin-bottom:8px">Comptes utilisateurs rattachés à ce dossier</div>
         ${usersHtml}
       </div>
-      <div class="org-quota-panel" onclick="event.stopPropagation()">
+      <div class="org-quota-panel">
         <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
         <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
-      <div class="org-actions" onclick="event.stopPropagation()"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
