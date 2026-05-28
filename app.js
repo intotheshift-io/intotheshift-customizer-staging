@@ -178,6 +178,65 @@ function itsPickFirstNonEmpty(values) {
   return "";
 }
 
+function itsCleanOrganizationId(value) {
+  const id = String(value || "").trim();
+  if (!id || id === "0" || id.toLowerCase() === "null" || id.toLowerCase() === "undefined") return "";
+  return id;
+}
+
+function itsGetCreationOrganizationIdFromContext() {
+  let fromUrl = "";
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    fromUrl = params.get("organizationId") || params.get("organization_id") || params.get("orgId") || params.get("clientId") || "";
+  } catch(e) {}
+
+  return itsCleanOrganizationId(
+    fromUrl ||
+    localStorage.getItem("its_target_organization_id") ||
+    localStorage.getItem("its_admin_create_for_organization_id") ||
+    localStorage.getItem("its_selected_partner_client_id") ||
+    ""
+  );
+}
+
+function itsAttachOrganizationContext(state, projectId) {
+  if (!state || typeof state !== "object") return state || {};
+
+  const existingOrgId = itsCleanOrganizationId(
+    state.organizationId ||
+    state.organization_id ||
+    state.orgId ||
+    state.org_id ||
+    state.targetOrganizationId ||
+    state.target_organization_id ||
+    state.payload?.organizationId ||
+    state.payload?.organization_id ||
+    state.state?.organizationId ||
+    state.state?.organization_id ||
+    ""
+  );
+
+  const contextOrgId = !projectId ? itsGetCreationOrganizationIdFromContext() : "";
+  const finalOrgId = existingOrgId || contextOrgId;
+
+  if (!finalOrgId) return state;
+
+  state.organizationId = finalOrgId;
+  state.organization_id = finalOrgId;
+  state.targetOrganizationId = finalOrgId;
+  state.target_organization_id = finalOrgId;
+  state.adminCreateForOrganizationId = finalOrgId;
+
+  const orgName = localStorage.getItem("its_target_organization_name") || state.organizationName || state.organization_name || "";
+  if (orgName) {
+    state.organizationName = orgName;
+    state.organization_name = orgName;
+  }
+
+  return state;
+}
+
 function itsCanonicalizeCampaignDates(state) {
   if (!state || typeof state !== "object") return state || {};
   state.parametrage = state.parametrage || {};
@@ -400,6 +459,8 @@ function itsSave(state) {
     Boolean(safeState.selectedAdId && !safeState.currentAdId && !safeState.project_id && !safeState.projectId);
 
   const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || (isExplicitNewProject ? "" : itsGetCurrentProjectId());
+  itsAttachOrganizationContext(safeState, projectId);
+
   if (projectId) {
     safeState.currentAdId = projectId;
     safeState.project_id = projectId;
@@ -426,6 +487,8 @@ async function itsSyncProjectToApi(state) {
   if (!token || !state || typeof state !== "object") return;
 
   const projectId = state.currentAdId || state.project_id || state.projectId || itsGetCurrentProjectId();
+  state = itsAttachOrganizationContext(state, projectId);
+  const organizationId = itsCleanOrganizationId(state.organizationId || state.organization_id || state.orgId || state.org_id || "");
   const title = itsProjectTitleFromState(state);
   const currentStep = state.current_step || state.step || itsInferCurrentStep();
   const configSent = state.configTransmise === true || state.config_transmise === true || state.submitted === true;
@@ -440,6 +503,8 @@ async function itsSyncProjectToApi(state) {
     title,
     status,
     currentStep,
+    organizationId: organizationId || undefined,
+    organization_id: organizationId || undefined,
     campaignStartDate: campaignStartDate || undefined,
     campaignEndDate: campaignEndDate || undefined,
     data: state

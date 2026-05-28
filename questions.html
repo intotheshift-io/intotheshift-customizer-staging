@@ -639,6 +639,54 @@ function questionsProjectIdFromUrl(){
   return questionsExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
 }
 
+function questionsCleanOrganizationId(value){
+  const id = String(value || '').trim();
+  if(!id || id === '0' || id.toLowerCase() === 'null' || id.toLowerCase() === 'undefined') return '';
+  return id;
+}
+
+function questionsTargetOrganizationIdFromContext(){
+  return questionsCleanOrganizationId(
+    urlParams.get('organizationId') ||
+    urlParams.get('organization_id') ||
+    urlParams.get('orgId') ||
+    urlParams.get('clientId') ||
+    localStorage.getItem('its_target_organization_id') ||
+    localStorage.getItem('its_admin_create_for_organization_id') ||
+    localStorage.getItem('its_selected_partner_client_id') ||
+    ''
+  );
+}
+
+function questionsAttachOrganizationContext(targetState, projectId){
+  if(!targetState || typeof targetState !== 'object') return targetState || {};
+  const existingOrgId = questionsCleanOrganizationId(
+    targetState.organizationId ||
+    targetState.organization_id ||
+    targetState.orgId ||
+    targetState.org_id ||
+    targetState.targetOrganizationId ||
+    targetState.target_organization_id ||
+    ''
+  );
+  const contextOrgId = !projectId ? questionsTargetOrganizationIdFromContext() : '';
+  const finalOrgId = existingOrgId || contextOrgId;
+  if(!finalOrgId) return targetState;
+
+  targetState.organizationId = finalOrgId;
+  targetState.organization_id = finalOrgId;
+  targetState.targetOrganizationId = finalOrgId;
+  targetState.target_organization_id = finalOrgId;
+  targetState.adminCreateForOrganizationId = finalOrgId;
+
+  const orgName = localStorage.getItem('its_target_organization_name') || targetState.organizationName || targetState.organization_name || '';
+  if(orgName){
+    targetState.organizationName = orgName;
+    targetState.organization_name = orgName;
+  }
+  return targetState;
+}
+
 function questionsClearStaleProject(projectId){
   try{
     if(String(localStorage.getItem('its_current_project_id') || '') === String(projectId || '') ||
@@ -669,12 +717,20 @@ function questionsExtractProjectState(project){
   const status = project.status || project.project_status || data.status || 'draft';
   const step = project.currentStep || project.current_step || data.currentStep || data.current_step || data.step || 'questions';
   const id = project.id || project.project_id || project.projectId || data.project_id || data.projectId || questionsProjectIdFromUrl();
+  const organizationId = questionsCleanOrganizationId(
+    project.organization_id || project.organizationId || project.org_id || project.orgId ||
+    data.organization_id || data.organizationId || data.org_id || data.orgId || ''
+  );
 
   const merged = { ...data };
   if(title && !merged.title) merged.title = title;
   merged.status = status;
   merged.step = step;
   merged.current_step = step;
+  if(organizationId){
+    merged.organizationId = organizationId;
+    merged.organization_id = organizationId;
+  }
   if(id){
     merged.projectId = id;
     merged.project_id = id;
@@ -774,6 +830,10 @@ if(requestedProjectId && window.ITS_PROJECT_LOAD_FORBIDDEN){
 let state = requestedProjectId
   ? (fetchedProjectState || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
   : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
+
+if(state && typeof state === 'object'){
+  questionsAttachOrganizationContext(state, requestedProjectId);
+}
 
 if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
   state.projectId = requestedProjectId;
@@ -1123,6 +1183,7 @@ function persistQuestionsStateForNextStep(){
   // parametrage.html dépend encore de l'état courant côté navigateur ; le backend reste la source de vérité pour la reprise par projectId.
   try{
     const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+    questionsAttachOrganizationContext(state, projectId);
     if(projectId){
       localStorage.setItem('its_current_project_id', String(projectId));
       localStorage.setItem('its_current_ad_id', String(projectId));

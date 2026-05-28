@@ -1164,7 +1164,7 @@ function getProjectTitle(project){
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? (packUpgrade.requested && packUpgrade.status === "pending"
-                    ? `<button class="small-btn publish" onclick="showClientFolderAlert({tone:'warn',icon:'📦',title:'Recharge pack à valider',subtitle:'La publication est bloquée tant que le quota n’est pas confirmé.',text:'Validez d’abord la recharge pack demandée avant de publier cet autodiagnostic.',confirmText:'Compris'})">✅ Publier</button>`
+                    ? `<button class="small-btn publish" onclick="alert('Validez d’abord la recharge pack avant de publier.')">✅ Publier</button>`
                     : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
                   : ""
               }
@@ -1327,8 +1327,20 @@ function getProjectTitle(project){
 
     function createAdForThisClient(){
       const clientId = getClientId();
+      const clientName = currentClient?.name || "";
+
+      if(!clientId){
+        alert("Cockpit client introuvable.");
+        return;
+      }
+
+      // Création admin/partner depuis un cockpit : l'AD doit être rattaché au cockpit dès le premier brouillon.
       localStorage.setItem("its_selected_partner_client_id", clientId);
-      window.location.href = "index.html";
+      localStorage.setItem("its_target_organization_id", clientId);
+      localStorage.setItem("its_admin_create_for_organization_id", clientId);
+      if(clientName) localStorage.setItem("its_target_organization_name", clientName);
+
+      window.location.href = `index.html?organizationId=${encodeURIComponent(clientId)}&adminCreate=1`;
     }
 
     function setActiveProjectForNavigation(projectId){
@@ -1445,14 +1457,7 @@ function getProjectTitle(project){
 
       }catch(err){
         console.error(err);
-        await showClientFolderAlert({
-          tone: "warn",
-          icon: "📦",
-          title: "Publication impossible",
-          subtitle: "Le statut de l’autodiagnostic n’a pas été modifié.",
-          text: err.message || "Impossible de publier cet autodiagnostic. Vérifiez le pack, les URLs et les dates, puis réessayez.",
-          confirmText: "Compris"
-        });
+        alert(err.message || "Impossible de publier cet autodiagnostic.");
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
@@ -1621,13 +1626,6 @@ function getProjectTitle(project){
 
     let confirmModalResolver = null;
 
-    function showClientFolderAlert(options = {}){
-      return openConfirmModal(Object.assign({}, options, {
-        hideCancel: true,
-        confirmText: options.confirmText || "Compris"
-      }));
-    }
-
     function openConfirmModal(options = {}){
       const modal = document.getElementById("confirmModal");
       const icon = document.getElementById("confirmModalIcon");
@@ -1663,11 +1661,6 @@ function getProjectTitle(project){
       }else{
         warning.style.display = "none";
         warning.textContent = "";
-      }
-
-      const cancelBtn = document.getElementById("confirmCancelBtn");
-      if(cancelBtn){
-        cancelBtn.style.display = options.hideCancel ? "none" : "inline-flex";
       }
 
       okBtn.textContent = options.confirmText || "Confirmer";
