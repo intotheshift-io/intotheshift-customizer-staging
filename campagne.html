@@ -428,7 +428,12 @@ function updateDatesFromInputs(){
     if(closeInput&&!closeInput.value) closeInput.value=cl;
   }
 
-  const lockStatus=['published','unpublished','archived'].includes(getCampaignStatusForLock());
+  const rawStatus = String(
+    (backendProject && (backendProject.status || backendProject.project_status)) ||
+    (state && (state.status || state.project_status)) ||
+    ''
+  ).toLowerCase();
+  const lockStatus = rawStatus.includes('published') || rawStatus.includes('publi') || rawStatus.includes('unpublished') || rawStatus.includes('dépub') || rawStatus.includes('depub') || rawStatus.includes('archiv');
   const kpiLaunch=document.getElementById('kpi-launch');
   const kpiClose=document.getElementById('kpi-close');
   const sbLaunch=document.getElementById('sb-launch');
