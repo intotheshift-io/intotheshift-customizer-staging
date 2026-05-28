@@ -335,6 +335,21 @@ function validationProjectIdFromUrl(){
   const params = new URLSearchParams(window.location.search);
   return params.get('projectId') || params.get('projectid') || params.get('id') || '';
 }
+function isValidationReprogramMode(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('reprogram') === '1';
+}
+function markValidationAsReprogramming(){
+  state = state || {};
+  state.isReprogramming = true;
+  state.reprogramming = true;
+  state.status = 'draft';
+  state.configTransmise = false;
+  state.config_transmise = false;
+  state.submitted = false;
+  state.transmission = Object.assign({}, state.transmission || {}, {status:'draft', submitted_at:''});
+  delete state.transmission.submittedAt;
+}
 function validationCurrentProjectId(){
   return state?.currentAdId || state?.project_id || state?.projectId ||
     localStorage.getItem('its_current_project_id') ||
@@ -345,7 +360,8 @@ function validationCurrentProjectId(){
 function goBackToCampagne(){
   if (typeof itsSave === 'function') itsSave(state);
   const id = validationCurrentProjectId();
-  window.location.href = id ? 'campagne.html?projectId=' + encodeURIComponent(id) : 'campagne.html';
+  const suffix = isValidationReprogramMode() ? '&reprogram=1' : '';
+  window.location.href = id ? 'campagne.html?projectId=' + encodeURIComponent(id) + suffix : 'campagne.html' + (isValidationReprogramMode() ? '?reprogram=1' : '');
 }
 function validationLoadProjectFromServerSync(projectId){
   // Chargement centralisé dans app.js via itsBootstrapProjectFromUrl().
@@ -1438,6 +1454,7 @@ async function transmit(){
 
 
 function isAlreadyTransmitted(){
+  if(isValidationReprogramMode()) return false;
   return state?.status === 'sent' ||
     state?.configTransmise === true ||
     state?.config_transmise === true ||
@@ -1478,14 +1495,27 @@ async function initValidationPage(){
     }
   }
   if(typeof itsNormalizeProjectState === 'function') state = itsNormalizeProjectState(state || {});
+  if(isValidationReprogramMode()) markValidationAsReprogramming();
 
   restoreClientInfo();
   refresh();
   await applyAccountCompany();
   refresh();
   applyTransmittedView();
+  if(isValidationReprogramMode()){
+    const title = document.querySelector('.page-title');
+    const sub = document.getElementById('default-page-sub');
+    if(title) title.textContent = 'Transmettre la reprogrammation pour mise en ligne';
+    if(sub) sub.textContent = 'Vous reprogrammez une nouvelle période de campagne avec la même URL de passation et la même URL de statistiques. Vérifiez les informations, puis transmettez la reprogrammation à Into The Shift.';
+    document.body.classList.remove('is-transmitted');
+    const box = document.getElementById('already-transmitted-box');
+    if(box) box.classList.add('hidden');
+    const success = document.getElementById('success-alert');
+    if(success) success.classList.add('hidden');
+    updateReady();
+  }
 
-  if(typeof itsApplyReadOnlyMode === 'function'){
+  if(typeof itsApplyReadOnlyMode === 'function' && !isValidationReprogramMode()){
     setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
 }

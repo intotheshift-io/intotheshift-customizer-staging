@@ -407,7 +407,44 @@ function updateDatesFromInputs(){
   updateDatesUI();
   updateChecklist();
   saveState();
-}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';const lockStatus=['published','unpublished','archived'].includes(getCampaignStatusForLock());['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+}function updateDatesUI(){
+  const launchInput=document.getElementById('date-launch');
+  const closeInput=document.getElementById('date-close');
+  let l=normalizeDateInputValue(p().date_lancement||state.campaign_start_date||state.campaignStartDate||(launchInput&&launchInput.value)||'');
+  let cl=normalizeDateInputValue(p().date_cloture||state.campaign_end_date||state.campaignEndDate||(closeInput&&closeInput.value)||'');
+
+  if(l){
+    p().date_lancement=l;
+    p().dateLancement=l;
+    state.campaign_start_date=l;
+    state.campaignStartDate=l;
+    if(launchInput&&!launchInput.value) launchInput.value=l;
+  }
+  if(cl){
+    p().date_cloture=cl;
+    p().dateCloture=cl;
+    state.campaign_end_date=cl;
+    state.campaignEndDate=cl;
+    if(closeInput&&!closeInput.value) closeInput.value=cl;
+  }
+
+  const rawStatus = String(
+    (backendProject && (backendProject.status || backendProject.project_status)) ||
+    (state && (state.status || state.project_status)) ||
+    ''
+  ).toLowerCase();
+  const lockStatus = rawStatus.includes('published') || rawStatus.includes('publi') || rawStatus.includes('unpublished') || rawStatus.includes('dépub') || rawStatus.includes('depub') || rawStatus.includes('archiv');
+  const kpiLaunch=document.getElementById('kpi-launch');
+  const kpiClose=document.getElementById('kpi-close');
+  const sbLaunch=document.getElementById('sb-launch');
+  const sbClose=document.getElementById('sb-close');
+  if(kpiLaunch)kpiLaunch.textContent=lockStatus?formatDateFR(l):'À définir';
+  if(kpiClose)kpiClose.textContent=lockStatus?formatDateFR(cl):'À définir';
+  if(sbLaunch)sbLaunch.textContent=l?formatDateFR(l):'À définir';
+  if(sbClose)sbClose.textContent=cl?formatDateFR(cl):'À définir';
+  updateReminderPlan(l,cl);
+}
+function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){v=String(v||'');return !v?'Pack non renseigné':(v==='current_pack'||v==='existing'?'J’ai déjà un pack':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations'))}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const el=document.getElementById('pack-select');const v=el?el.value||'':(state.parametrage.pack_choisi||state.pack.volume||'');state.pack.volume=v;state.parametrage.pack_choisi=v;const pv=document.getElementById('pack-val');if(pv)pv.textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
   const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
@@ -755,8 +792,14 @@ function init(){
     const sbStatus=document.getElementById('sb-status');
     if(sbStatus)sbStatus.textContent=statusLabel();
   }
+
+  // Sécurité anti-régression : certains navigateurs réinjectent les valeurs
+  // des champs date après le premier rendu. On resynchronise seulement le
+  // récap latéral, sans modifier les autres blocs ni les actions.
+  setTimeout(updateDatesUI, 80);
+  setTimeout(updateDatesUI, 350);
 }
-async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='draft';state.current_step='campagne';state.step='campagne';state.configTransmise=false;state.config_transmise=false;state.submitted=false;if(state.transmission&&state.transmission.status!=='sent'){state.transmission.status='draft';delete state.transmission.submitted_at;}saveState();await persistProjectDraft('campagne','draft');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
+async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;const params=new URLSearchParams(window.location.search);const isReprogram=params.get('reprogram')==='1';c().done=true;state.status='draft';state.current_step='campagne';state.step='campagne';state.configTransmise=false;state.config_transmise=false;state.submitted=false;state.isReprogramming=isReprogram;state.reprogramming=isReprogram;if(state.transmission){state.transmission.status='draft';state.transmission.submitted_at='';delete state.transmission.submittedAt;}saveState();await persistProjectDraft('campagne','draft');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id)+(isReprogram?'&reprogram=1':''):'validation.html'+(isReprogram?'?reprogram=1':'')}async function bootCampagnePage(){
   const params=new URLSearchParams(window.location.search);
   const projectIdFromUrl=params.get('projectId') || params.get('project_id') || params.get('id') || '';
   const projectId=projectIdFromUrl ||
@@ -1044,16 +1087,29 @@ bootCampagnePage();
     const readonly = params.get("readonly") === "1";
     const reprogram = params.get("reprogram") === "1";
     const campaignStatusForLock = getCampaignStatusForLock();
-    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !reprogram;
+    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !(reprogram && campaignStatusForLock === "unpublished");
 
-    if(reprogram){
+    if(reprogram && campaignStatusForLock === "unpublished"){
       document.body.classList.remove("campaign-locked");
       const title = document.querySelector(".page-title");
       const sub = document.querySelector(".page-sub");
       if(title) title.textContent = "Reprogrammer la campagne";
-      if(sub) sub.textContent = "Même URL de passation, même URL de statistiques, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
+      if(sub) sub.textContent = "Même URL, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
 
-      document.querySelectorAll(".step-link").forEach(link => {
+      state.isReprogramming = true;
+      state.reprogramming = true;
+      state.status = "draft";
+      state.configTransmise = false;
+      state.config_transmise = false;
+      state.submitted = false;
+      if(state.transmission){
+        state.transmission.status = "draft";
+        state.transmission.submitted_at = "";
+        delete state.transmission.submittedAt;
+      }
+      try{ saveState(); }catch(e){}
+
+      document.querySelectorAll(".step-link").forEach(link=>{
         link.removeAttribute("href");
         link.style.pointerEvents = "none";
         link.style.cursor = "not-allowed";
@@ -1065,8 +1121,6 @@ bootCampagnePage();
         if(!el) return;
         el.disabled = false;
         el.readOnly = false;
-        el.removeAttribute("disabled");
-        el.removeAttribute("readonly");
         el.style.pointerEvents = "auto";
         el.style.cursor = "pointer";
         el.style.background = "#fff";
@@ -1074,7 +1128,6 @@ bootCampagnePage();
 
       document.querySelectorAll(".check-row input").forEach(el => {
         el.disabled = false;
-        el.removeAttribute("disabled");
         el.style.pointerEvents = "auto";
         el.style.cursor = "pointer";
       });
@@ -1093,13 +1146,9 @@ bootCampagnePage();
       });
 
       const sidebarHint = document.getElementById("sidebar-check-hint");
-      if(sidebarHint) sidebarHint.textContent = "Reprogrammation : vérifiez uniquement les dates, puis transmettez à Into The Shift.";
+      if(sidebarHint) sidebarHint.textContent = "Reprogrammation : vérifiez les dates, puis transmettez à Into The Shift.";
       const banner = document.getElementById("campaign-published-banner");
       if(banner) banner.remove();
-
-      if(typeof updateChecklist === "function"){
-        updateChecklist();
-      }
       return;
     }
 
