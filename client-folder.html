@@ -1492,6 +1492,21 @@ function getProjectTitle(project){
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const isArchive = nextStatus === "archived";
       const isUnpublish = nextStatus === "unpublished";
+      const currentStatus = project ? normalizeStatus(project.status) : "";
+      if(isArchive && currentStatus === "published"){
+        await openConfirmModal({
+          tone: "warn",
+          icon: "📦",
+          title: "Dépublier avant d’archiver",
+          subtitle: "Un autodiagnostic publié ne peut pas être archivé directement.",
+          text: "Dépubliez d’abord la campagne, puis vous pourrez l’archiver depuis l’onglet Dépubliés.",
+          project: title,
+          warning: "Cette étape évite d’archiver par erreur une campagne encore active côté client.",
+          confirmText: "Compris",
+          hideCancel: true
+        });
+        return;
+      }
       const ok = await openConfirmModal({
         tone: isArchive ? "warn" : "primary",
         icon: isArchive ? "📦" : "🛑",
@@ -1614,21 +1629,6 @@ function getProjectTitle(project){
 
     let confirmModalResolver = null;
 
-    async function showActionInfoModal(options = {}){
-      await openConfirmModal(Object.assign({
-        tone: options.tone || "primary",
-        icon: options.icon || "ℹ️",
-        title: options.title || "Information",
-        subtitle: options.subtitle || "",
-        text: options.text || "",
-        project: options.project || "",
-        warning: options.warning || "",
-        confirmText: options.confirmText || "Compris",
-        hideCancel: true
-      }, options, { hideCancel: true, confirmText: options.confirmText || "Compris" }));
-      return true;
-    }
-
     function openConfirmModal(options = {}){
       const modal = document.getElementById("confirmModal");
       const icon = document.getElementById("confirmModalIcon");
@@ -1638,7 +1638,6 @@ function getProjectTitle(project){
       const project = document.getElementById("confirmModalProject");
       const warning = document.getElementById("confirmModalWarning");
       const okBtn = document.getElementById("confirmOkBtn");
-      const cancelBtn = document.getElementById("confirmCancelBtn");
 
       if(!modal || !title || !text || !okBtn){
         return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
