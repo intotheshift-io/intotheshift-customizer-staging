@@ -114,6 +114,19 @@
 </main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
+
+<div class="reprogram-missing-overlay" id="reprogram-missing-modal" aria-hidden="true" onclick="closeReprogramMissingModal()">
+  <div class="reprogram-missing-modal" role="dialog" aria-modal="true" aria-labelledby="reprogram-missing-title" onclick="event.stopPropagation()">
+    <div class="reprogram-missing-icon">⚠️</div>
+    <div class="reprogram-missing-title" id="reprogram-missing-title">Reprogrammation à compléter</div>
+    <div class="reprogram-missing-text">Pour continuer vers la transmission, modifiez la période de campagne puis recochez la checklist.</div>
+    <div class="reprogram-missing-list" id="reprogram-missing-list"></div>
+    <div class="reprogram-missing-actions">
+      <button class="reprogram-missing-btn secondary" type="button" onclick="closeReprogramMissingModal()">Fermer</button>
+      <button class="reprogram-missing-btn" type="button" onclick="focusReprogramMissingField()">Compléter maintenant</button>
+    </div>
+  </div>
+</div>
 <div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
 <script>
 let state = {};
@@ -410,7 +423,19 @@ function updateDatesFromInputs(){
   updateDatesUI();
   updateChecklist();
   saveState();
-}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';const forceShowDates=isCampaignReprogramMode();const lockStatus=forceShowDates||['published','unpublished','archived'].includes(getCampaignStatusForLock());['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+}function updateDatesUI(){
+  const launchInput=document.getElementById('date-launch');
+  const closeInput=document.getElementById('date-close');
+  let l=normalizeDateInputValue(p().date_lancement||state.campaign_start_date||state.campaignStartDate||(launchInput&&launchInput.value)||'');
+  let cl=normalizeDateInputValue(p().date_cloture||state.campaign_end_date||state.campaignEndDate||(closeInput&&closeInput.value)||'');
+  if(l){p().date_lancement=l;p().dateLancement=l;state.campaign_start_date=l;state.campaignStartDate=l;if(launchInput)launchInput.value=l;}
+  if(cl){p().date_cloture=cl;p().dateCloture=cl;state.campaign_end_date=cl;state.campaignEndDate=cl;if(closeInput)closeInput.value=cl;}
+  const forceShowDates=isCampaignReprogramMode();
+  const lockStatus=forceShowDates||['published','unpublished','archived'].includes(getCampaignStatusForLock());
+  ['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});
+  ['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});
+  updateReminderPlan(l,cl);
+}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){v=String(v||'');return !v?'Pack non renseigné':(v==='current_pack'||v==='existing'?'J’ai déjà un pack':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations'))}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const el=document.getElementById('pack-select');const v=el?el.value||'':(state.parametrage.pack_choisi||state.pack.volume||'');state.pack.volume=v;state.parametrage.pack_choisi=v;const pv=document.getElementById('pack-val');if(pv)pv.textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
   const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
@@ -452,12 +477,14 @@ function resetCampaignChecklistForReprogramming(){
 }
 function lockStepperForReprogramming(){
   if(!isCampaignReprogramMode()) return;
-  document.querySelectorAll('.stepper a, .step-link').forEach(link=>{
+  document.querySelectorAll('.stepper a, .stepper .step-link, .breadcrumb .bc-link').forEach(link=>{
     link.removeAttribute('href');
-    link.onclick=function(e){ e.preventDefault(); return false; };
+    link.removeAttribute('onclick');
+    link.onclick=function(e){ if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();} return false; };
     link.style.pointerEvents='none';
     link.style.cursor='not-allowed';
     link.style.opacity='.45';
+    link.title='En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
   });
 }
 function getReprogramMissingItems(){
@@ -1297,6 +1324,8 @@ bootCampagnePage();
     document.addEventListener('auxclick', block, true);
     document.querySelectorAll('.stepper a, .stepper .step-link, .breadcrumb .bc-link').forEach(el=>{
       el.removeAttribute('href');
+      el.removeAttribute('onclick');
+      el.onclick=function(e){ if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();} return false; };
       el.style.pointerEvents='none';
       el.style.cursor='not-allowed';
       el.style.opacity='.45';

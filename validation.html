@@ -1456,8 +1456,145 @@ function applyTransmittedView(){
   }
 }
 
+
+async function validationFetchProjectById(projectId){
+  const token = localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+  if(!projectId || !token) return null;
+  const headers = { Authorization:'Bearer ' + token };
+  const role = String(localStorage.getItem('its_user_role') || '').toLowerCase();
+  try{
+    if(role === 'admin'){
+      try{
+        const direct = await fetch(getApiBaseUrl() + '/api/admin/projects/' + encodeURIComponent(projectId), {headers});
+        const directJson = await direct.json().catch(()=>({}));
+        if(direct.ok) return directJson.project || directJson.data || directJson;
+      }catch(e){}
+      const list = await fetch(getApiBaseUrl() + '/api/admin/projects', {headers});
+      const listJson = await list.json().catch(()=>({}));
+      if(list.ok){
+        const projects = Array.isArray(listJson) ? listJson : (listJson.projects || listJson.autodiags || listJson.data || []);
+        return projects.find(pr => String(pr.id || pr.project_id || pr.projectId || '') === String(projectId)) || null;
+      }
+    }
+    const res = await fetch(getApiBaseUrl() + '/api/projects/' + encodeURIComponent(projectId), {headers});
+    const json = await res.json().catch(()=>({}));
+    if(res.ok) return json.project || json.data || json;
+  }catch(e){
+    console.warn('Chargement projet validation depuis backend impossible', e);
+  }
+  return null;
+}
+function validationParseMaybeJson(value){
+  if(!value) return {};
+  if(typeof value === 'object') return value;
+  try{return JSON.parse(value);}catch(e){return {};}
+}
+function validationUnwrapData(raw){
+  const data = validationParseMaybeJson(raw);
+  const payload = validationParseMaybeJson(data.payload || {});
+  const nestedState = validationParseMaybeJson(data.state || {});
+  const payloadState = validationParseMaybeJson(payload.state || {});
+  return Object.assign({}, data, payload, nestedState, payloadState);
+}
+function validationPickDate(project, merged, kind){
+  const data = validationParseMaybeJson(project?.data || project?.payload || project?.configuration || {});
+  const payload = validationParseMaybeJson(data.payload || {});
+  const stateObj = validationParseMaybeJson(data.state || {});
+  const param = merged?.parametrage || {};
+  const dataParam = data.parametrage || {};
+  const payloadParam = payload.parametrage || {};
+  const stateParam = stateObj.parametrage || {};
+  const startKeys = ['campaign_start_date','campaignStartDate','start_date','startDate','date_lancement','dateLancement'];
+  const endKeys = ['campaign_end_date','campaignEndDate','end_date','endDate','date_cloture','dateCloture'];
+  const keys = kind === 'start' ? startKeys : endKeys;
+  for(const source of [project, merged, data, payload, stateObj, param, dataParam, payloadParam, stateParam]){
+    for(const key of keys){
+      if(source && source[key] !== undefined && source[key] !== null && String(source[key]).trim() !== ''){
+        return normalizeDateOnly(source[key]);
+      }
+    }
+  }
+  return '';
+}
+function validationHydrateProject(project){
+  if(!project || typeof project !== 'object') return false;
+  const merged = validationUnwrapData(project.data || project.payload || project.configuration || {});
+  const next = Object.assign({}, merged);
+  next.currentAdId = project.id || project.project_id || project.projectId || merged.currentAdId || merged.project_id || merged.projectId || validationProjectIdFromUrl();
+  next.project_id = next.currentAdId;
+  next.projectId = next.currentAdId;
+  next.status = project.status || project.project_status || merged.status || 'draft';
+  next.title = project.title || merged.title || merged.autodiagTitle || merged.titre_autodiag || '';
+  next.autodiagTitle = merged.autodiagTitle || merged.titre_autodiag || project.title || next.title || '';
+  next.themeTitle = merged.themeTitle || merged.autodiagTitle || merged.titre_autodiag || project.title || next.title || '';
+  next.theme = merged.theme && typeof merged.theme === 'object' ? merged.theme : (next.theme || {});
+  next.theme.title = next.theme.title || next.themeTitle || next.title || '';
+  next.chapters = Array.isArray(merged.chapters) ? merged.chapters : (Array.isArray(merged.theme?.chapters) ? merged.theme.chapters : []);
+  next.parametrage = Object.assign({}, merged.parametrage || {});
+  next.parametrage.nom = next.parametrage.nom || merged.autodiagTitle || merged.titre_autodiag || project.title || next.title || '';
+  next.parametrage.titre = next.parametrage.titre || merged.titre_repondants || merged.titreRespondants || next.parametrage.nom || '';
+  next.parametrage.entreprise = next.parametrage.entreprise || project.organizationName || project.organization_name || merged.entreprise || merged.company || '';
+  const start = validationPickDate(project, merged, 'start');
+  const end = validationPickDate(project, merged, 'end');
+  next.parametrage.date_lancement = start;
+  next.parametrage.dateLancement = start;
+  next.parametrage.date_cloture = end;
+  next.parametrage.dateCloture = end;
+  next.campaignStartDate = start;
+  next.campaign_start_date = start;
+  next.startDate = start;
+  next.start_date = start;
+  next.campaignEndDate = end;
+  next.campaign_end_date = end;
+  next.endDate = end;
+  next.end_date = end;
+  next.parametrage.pack_choisi = next.parametrage.pack_choisi || merged.pack_choisi || merged.packChoisi || merged.selectedPack || merged.pack || '';
+  next.shareUrl = project.shareUrl || project.share_url || merged.shareUrl || merged.share_url || '';
+  next.share_url = next.shareUrl;
+  next.resultsUrl = project.resultsUrl || project.results_url || merged.resultsUrl || merged.results_url || '';
+  next.results_url = next.resultsUrl;
+  state = next;
+  try{
+    if(next.currentAdId){
+      localStorage.setItem('its_current_project_id', String(next.currentAdId));
+      localStorage.setItem('its_current_ad_id', String(next.currentAdId));
+    }
+    if(typeof itsGetStorageKey === 'function') localStorage.setItem(itsGetStorageKey(), JSON.stringify(state));
+  }catch(e){}
+  return true;
+}
+function enforceValidationReprogramNavigationLock(){
+  if(!isValidationReprogramMode()) return;
+  const block = function(event){
+    const target = event.target && event.target.closest && event.target.closest('.stepper a, .stepper .step-link, .actions .btn-back');
+    if(!target) return;
+    event.preventDefault();
+    event.stopPropagation();
+    if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+    showMissingModal();
+    return false;
+  };
+  document.addEventListener('click', block, true);
+  document.addEventListener('auxclick', block, true);
+  document.querySelectorAll('.stepper a, .stepper .step-link, .actions .btn-back').forEach(el=>{
+    el.removeAttribute('href');
+    el.removeAttribute('onclick');
+    el.onclick = function(e){ if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();} return false; };
+    el.style.pointerEvents = 'none';
+    el.style.cursor = 'not-allowed';
+    el.style.opacity = '.45';
+    el.title = 'En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
+  });
+}
+
 async function initValidationPage(){
-  if(typeof itsBootstrapProjectFromUrl === 'function'){
+  const projectId = validationProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+  let hydratedFromBackend = false;
+  if(projectId){
+    const backendProject = await validationFetchProjectById(projectId);
+    hydratedFromBackend = validationHydrateProject(backendProject);
+  }
+  if(!hydratedFromBackend && typeof itsBootstrapProjectFromUrl === 'function'){
     try {
       state = await itsBootstrapProjectFromUrl();
       if(window.ITSProject && typeof window.ITSProject.normalizeState === 'function') state = window.ITSProject.normalizeState(state);
@@ -1488,6 +1625,7 @@ async function initValidationPage(){
     const btn = document.getElementById('btn-transmit');
     if(btn){ btn.disabled = false; btn.textContent = 'Transmettre la reprogrammation'; }
     updateReady();
+    enforceValidationReprogramNavigationLock();
   }else{
     applyTransmittedView();
     if(typeof itsApplyReadOnlyMode === 'function'){
