@@ -896,15 +896,40 @@
       alert("Lien copié.");
     }
 
+    function isArchivedProject(project){
+      const data = getProjectData(project);
+      const raw = String(project?.status || project?.project_status || data?.status || data?.project_status || "").toLowerCase();
+      return Boolean(
+        raw === "archived" ||
+        raw.includes("archiv") ||
+        project?.archived_at ||
+        project?.archivedAt ||
+        project?.is_archived === true ||
+        project?.isArchived === true ||
+        data?.archived_at ||
+        data?.archivedAt ||
+        data?.is_archived === true ||
+        data?.isArchived === true
+      );
+    }
+
+    function getArchivedProjects(){
+      return projects.filter(isArchivedProject);
+    }
+
+    function updateArchiveCounter(count){
+      const archiveQuickCount = document.getElementById("archiveQuickCount");
+      if(archiveQuickCount) archiveQuickCount.textContent = Number(count || 0);
+    }
+
     function getActiveProjects(){
-      return projects.filter(p => normalizeStatus(p) !== "archived");
+      return projects.filter(p => !isArchivedProject(p) && normalizeStatus(p) !== "archived");
     }
 
     function renderStats() {
       const activeProjects = getActiveProjects();
-      const archivedCount = projects.filter(p => normalizeStatus(p) === "archived").length;
-      const archiveQuickCount = document.getElementById("archiveQuickCount");
-      if(archiveQuickCount) archiveQuickCount.textContent = archivedCount;
+      const archivedCount = getArchivedProjects().length;
+      updateArchiveCounter(archivedCount);
       const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
       activeProjects.forEach(p => {
         const status = normalizeStatus(p);
@@ -1078,9 +1103,26 @@
 
     document.getElementById("searchInput").addEventListener("input", renderProjects);
 
+    async function refreshArchiveCounterFromApi(){
+      if(!token()) return;
+      try{
+        const res = await fetch(`${API_BASE}/api/projects`, {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+        if(!res.ok) return;
+        const data = await res.json();
+        const all = Array.isArray(data) ? data : (data.projects || data.items || []);
+        updateArchiveCounter(all.filter(isArchivedProject).length);
+      }catch(e){
+        console.warn("Compteur archives non rafraîchi", e);
+      }
+    }
+
     async function loadProjects() {
       try {
         const res = await fetch(`${API_BASE}/api/projects`, {
+          cache: "no-store",
           headers: { Authorization: `Bearer ${token()}` }
         });
 
@@ -1094,6 +1136,7 @@
 
       renderStats();
       renderProjects();
+      refreshArchiveCounterFromApi();
     }
 
     async function duplicateProject(id) {
