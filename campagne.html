@@ -88,7 +88,7 @@
 
 
 .reprogram-note{background:#f0f8f7;border:1px solid #b8dfe0;color:#18375d;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:13px;font-weight:700;line-height:1.45}.reprogram-note small{display:block;color:#64748b;font-weight:600;margin-top:3px}
-.reprogram-missing-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px}.reprogram-missing-overlay.on{display:flex}.reprogram-missing-modal{width:min(520px,92vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:26px 28px}.reprogram-missing-icon{width:52px;height:52px;border-radius:18px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}.reprogram-missing-title{font-size:19px;font-weight:900;color:#18375d;margin-bottom:7px}.reprogram-missing-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}.reprogram-missing-list{display:flex;flex-direction:column;gap:7px;margin:12px 0 18px}.reprogram-missing-item{display:flex;align-items:flex-start;gap:8px;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:9px 11px;color:#8a6408;font-size:12px;font-weight:800;line-height:1.35}.reprogram-missing-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}.reprogram-missing-btn{border:none;border-radius:10px;padding:10px 15px;background:#18375d;color:#fff;font-size:13px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif}.reprogram-missing-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}.btn-continue.not-ready{background:#f5c0c1;color:#fff;cursor:pointer}.btn-continue.not-ready:hover{background:#efaaab}
+.reprogram-missing-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px}.reprogram-missing-overlay.on{display:flex}.reprogram-missing-modal{width:min(520px,92vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:26px 28px}.reprogram-missing-icon{width:52px;height:52px;border-radius:18px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}.reprogram-missing-title{font-size:19px;font-weight:900;color:#18375d;margin-bottom:7px}.reprogram-missing-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}.reprogram-missing-list{display:flex;flex-direction:column;gap:7px;margin:12px 0 18px}.reprogram-missing-item{display:flex;align-items:flex-start;gap:8px;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:9px 11px;color:#8a6408;font-size:12px;font-weight:800;line-height:1.35}.reprogram-missing-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}.reprogram-missing-btn{border:none;border-radius:10px;padding:10px 15px;background:#18375d;color:#fff;font-size:13px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif}.reprogram-missing-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}.btn-continue.not-ready{background:#94a3b8!important;color:#fff;cursor:pointer;box-shadow:none}.btn-continue.not-ready:hover{background:#7f8fa3!important}
 </style>
 </head>
 <body>
@@ -410,7 +410,7 @@ function updateDatesFromInputs(){
   updateDatesUI();
   updateChecklist();
   saveState();
-}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';const lockStatus=['published','unpublished','archived'].includes(getCampaignStatusForLock());['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';const forceShowDates=isCampaignReprogramMode();const lockStatus=forceShowDates||['published','unpublished','archived'].includes(getCampaignStatusForLock());['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){v=String(v||'');return !v?'Pack non renseigné':(v==='current_pack'||v==='existing'?'J’ai déjà un pack':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations'))}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const el=document.getElementById('pack-select');const v=el?el.value||'':(state.parametrage.pack_choisi||state.pack.volume||'');state.pack.volume=v;state.parametrage.pack_choisi=v;const pv=document.getElementById('pack-val');if(pv)pv.textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
   const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
@@ -1193,9 +1193,9 @@ bootCampagnePage();
     const readonly = params.get("readonly") === "1";
     const reprogram = params.get("reprogram") === "1";
     const campaignStatusForLock = getCampaignStatusForLock();
-    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !(reprogram && campaignStatusForLock === "unpublished");
+    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !reprogram;
 
-    if(reprogram && campaignStatusForLock === "unpublished"){
+    if(reprogram){
       document.body.classList.remove("campaign-locked");
       state.isReprogramming = true;
       state.reprogramming = true;
@@ -1253,6 +1253,7 @@ bootCampagnePage();
       resetCampaignChecklistForReprogramming();
       updateChecklist();
       lockStepperForReprogramming();
+      enforceReprogramNavigationLock();
       const banner=document.getElementById("campaign-published-banner");
       if(banner) banner.remove();
       return;
@@ -1277,7 +1278,36 @@ bootCampagnePage();
     }
   }
 
-  window.applyCampaignModeAfterHydration = applyCampaignMode;
+
+
+  function enforceReprogramNavigationLock(){
+    if(!isCampaignReprogramMode()) return;
+    const block = function(event){
+      const target = event.target && event.target.closest && event.target.closest('.stepper a, .stepper .step-link, .breadcrumb .bc-link, .bottom-actions .btn-back');
+      if(!target) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+      showToast('En reprogrammation, seules les dates de campagne sont modifiables avant transmission.');
+      const firstDate=document.getElementById('date-launch');
+      if(firstDate){ firstDate.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>firstDate.focus(),250); }
+      return false;
+    };
+    document.addEventListener('click', block, true);
+    document.addEventListener('auxclick', block, true);
+    document.querySelectorAll('.stepper a, .stepper .step-link, .breadcrumb .bc-link').forEach(el=>{
+      el.removeAttribute('href');
+      el.style.pointerEvents='none';
+      el.style.cursor='not-allowed';
+      el.style.opacity='.45';
+      el.title='En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
+    });
+  }
+
+  const originalApplyCampaignModeAfterHydration = window.applyCampaignModeAfterHydration;
+
+  window.applyCampaignModeAfterHydration = function(){ applyCampaignMode(); enforceReprogramNavigationLock(); };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', enforceReprogramNavigationLock); else enforceReprogramNavigationLock();
 })();
 </script>
 

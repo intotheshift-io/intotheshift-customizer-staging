@@ -1175,7 +1175,9 @@ function getProjectTitle(project){
               }
               ${
                 ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
-                  ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
+                  ? (normalizedStatus === "published"
+                    ? `<button class="small-btn archive" onclick="showArchivePublishedBlockedModal('${escapeAttr(project.id)}')">📦 Archiver</button>`
+                    : `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`)
                   : ""
               }
             </div>
@@ -1486,6 +1488,27 @@ function getProjectTitle(project){
       }
     }
 
+    async function showArchivePublishedBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      if(typeof openConfirmModal === "function"){
+        await openConfirmModal({
+          tone: "warn",
+          icon: "📦",
+          title: "Dépublier avant d’archiver",
+          subtitle: "Un autodiagnostic publié ne peut pas être archivé directement.",
+          text: "Dépubliez d’abord la campagne, puis vous pourrez l’archiver depuis l’onglet Dépubliés.",
+          project: title,
+          warning: "Cette étape évite d’archiver par erreur une campagne encore active côté client.",
+          confirmText: "Compris",
+          hideCancel: true
+        });
+      }else{
+        showToast("Dépubliez d’abord la campagne avant de l’archiver.");
+      }
+      return false;
+    }
+
     async function changeProjectStatus(projectId, nextStatus, actionLabel){
       if(!projectId || !nextStatus) return;
       const project = getCurrentProjectById(projectId);
@@ -1666,6 +1689,8 @@ function getProjectTitle(project){
         warning.textContent = "";
       }
 
+      const cancelBtn = document.getElementById("confirmCancelBtn");
+      if(cancelBtn) cancelBtn.style.display = options.hideCancel ? "none" : "inline-flex";
       okBtn.textContent = options.confirmText || "Confirmer";
       okBtn.className = "confirm-btn " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "primary");
       modal.classList.add("open");
@@ -1675,6 +1700,9 @@ function getProjectTitle(project){
         confirmModalResolver = resolve;
       });
     }
+
+    window.showArchivePublishedBlockedModal = showArchivePublishedBlockedModal;
+    window.openConfirmModal = openConfirmModal;
 
     function closeConfirmModal(result){
       const modal = document.getElementById("confirmModal");
