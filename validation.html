@@ -340,6 +340,7 @@ function isValidationReprogramMode(){
   return params.get('reprogram') === '1';
 }
 function markValidationAsReprogramming(){
+  if (isAlreadyTransmitted()) return;
   state = mergeReprogramStatePreservingData(state || {});
 }
 function validationCurrentProjectId(){
@@ -350,6 +351,7 @@ function validationCurrentProjectId(){
     '';
 }
 function goBackToCampagne(){
+  if (isAlreadyTransmitted()) return;
   if (typeof itsSave === 'function') itsSave(state);
   const id = validationCurrentProjectId();
   const suffix = isValidationReprogramMode() ? '&reprogram=1' : '';
@@ -1451,6 +1453,35 @@ async function transmit(){
     state.current_step = 'validation';
     state.step = 'validation';
     if (typeof itsSave === 'function') itsSave(state);
+    try {
+      await fetch(getApiBaseUrl() + "/api/projects", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+          projectId: projectSavedId || getCurrentProjectIdForSave() || undefined,
+          title: getThemeTitle(),
+          organizationId: getSelectedPartnerClientId(),
+          status: 'sent',
+          currentStep: 'validation',
+          campaignStartDate: getParam().date_lancement || state.campaignStartDate || state.campaign_start_date || undefined,
+          campaignEndDate: getParam().date_cloture || state.campaignEndDate || state.campaign_end_date || undefined,
+          data: Object.assign({}, state, {
+            status: 'sent',
+            configTransmise: true,
+            config_transmise: true,
+            submitted: true,
+            step: 'validation',
+            current_step: 'validation',
+            transmission: Object.assign({}, state.transmission || {}, { status: 'sent', submitted_at: payload.submitted_at })
+          })
+        })
+      });
+    } catch(e) {
+      console.warn('Sauvegarde statut transmis non bloquante', e);
+    }
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
       'success',
@@ -1459,6 +1490,8 @@ async function transmit(){
     );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
+    applyTransmittedView();
+    lockValidationStepper();
   } else {
     state.status = 'draft';
     state.configTransmise = false;
@@ -1474,7 +1507,6 @@ async function transmit(){
 
 
 function isAlreadyTransmitted(){
-  if(isValidationReprogramMode()) return false;
   return state?.status === 'sent' ||
     state?.configTransmise === true ||
     state?.config_transmise === true ||
@@ -1503,6 +1535,14 @@ function applyTransmittedView(){
     btn.disabled = true;
     btn.textContent = 'En attente de publication ✓';
   }
+  const backBtn = document.querySelector('.btn-back[onclick="goBackToCampagne()"]');
+  if(backBtn){
+    backBtn.disabled = true;
+    backBtn.style.opacity = '.55';
+    backBtn.style.cursor = 'not-allowed';
+    backBtn.title = 'Configuration transmise : retour à la campagne bloqué.';
+  }
+  lockValidationStepper();
 }
 
 async function initValidationPage(){
@@ -1525,7 +1565,7 @@ async function initValidationPage(){
   await applyAccountCompany();
   refresh();
   applyTransmittedView();
-  if(isValidationReprogramMode()){
+  if(isValidationReprogramMode() && !isAlreadyTransmitted()){
     const title = document.querySelector('.page-title');
     const sub = document.getElementById('default-page-sub');
     if(title) title.textContent = 'Transmettre la reprogrammation pour mise en ligne';

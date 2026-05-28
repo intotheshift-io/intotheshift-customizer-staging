@@ -205,6 +205,22 @@
   </main>
 
 
+  <div class="modal-backdrop" id="cloneModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cloneModalTitle">
+      <div class="modal-icon">🧬</div>
+      <h2 id="cloneModalTitle">Cloner cet autodiagnostic ?</h2>
+      <p id="cloneModalText">Le clone reprend le contenu et les profils. Vous pourrez modifier le contenu, le paramétrage et programmer de nouvelles dates. Une nouvelle URL sera délivrée après publication.</p>
+      <div style="margin-top:14px">
+        <label for="cloneTitleInput" style="display:block;font-size:11px;font-weight:900;color:#18375d;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Titre du nouvel autodiagnostic</label>
+        <input id="cloneTitleInput" type="text" style="width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;outline:none">
+      </div>
+      <div style="margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:12px;padding:10px 12px;color:#9a5b00;font-size:13px;font-weight:800;line-height:1.4">Le pack ne sera pas sélectionné d’office : vous devrez choisir un pack dans le paramétrage.</div>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeCloneModal()">Annuler</button>
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="confirmCloneProject()">Cloner</button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
@@ -233,6 +249,7 @@
     let projects = [];
     let currentFilter = "all";
     let pendingArchiveProjectId = "";
+    let pendingCloneProjectId = "";
 
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
@@ -770,6 +787,28 @@
     async function markProjectAsCopy(cloneId, cloneProject, sourceProjectId){
       if(!cloneId || !token()) return cloneProject;
       const data = getProjectData(cloneProject);
+      const cloneTitle = cloneProject?.title || cloneProject?.name || getTitle(cloneProject);
+      const nextParam = Object.assign({}, data.parametrage || {}, {
+        titre_repondants: cloneTitle,
+        titreRespondants: cloneTitle,
+        titre_visible_repondants: cloneTitle,
+        titreVisibleRepondants: cloneTitle,
+        titre: cloneTitle,
+        pack: "",
+        packChoisi: "",
+        pack_choisi: "",
+        selectedPack: "",
+        formule: "",
+        offre: "",
+        offreChoisie: "",
+        pack_mode: "",
+        pack_upgrade_requested: false,
+        pack_upgrade_status: "",
+        pack_upgrade_choice: "",
+        packUpgradeRequested: false,
+        packUpgradeStatus: "",
+        packUpgradeChoice: ""
+      });
       const nextData = Object.assign({}, data, {
         isCopy: true,
         is_copy: true,
@@ -777,12 +816,31 @@
         copied_from_project_id: sourceProjectId || "",
         current_step: "questions",
         step: "questions",
-        status: "draft"
+        status: "draft",
+        title: cloneTitle,
+        autodiagTitle: cloneTitle,
+        titre_repondants: cloneTitle,
+        titreRespondants: cloneTitle,
+        pack: "",
+        packChoisi: "",
+        pack_choisi: "",
+        selectedPack: "",
+        pack_upgrade_requested: false,
+        pack_upgrade_status: "",
+        pack_upgrade_choice: "",
+        packUpgradeRequested: false,
+        packUpgradeStatus: "",
+        packUpgradeChoice: "",
+        campaignStartDate: "",
+        campaign_start_date: "",
+        campaignEndDate: "",
+        campaign_end_date: "",
+        parametrage: nextParam
       });
 
       const body = {
         projectId: cloneId,
-        title: cloneProject?.title || cloneProject?.name || getTitle(cloneProject),
+        title: cloneTitle,
         status: "draft",
         currentStep: "questions",
         data: nextData
@@ -1106,6 +1164,7 @@
 
     document.addEventListener("click", e => {
       if (e.target.id === "archiveModal") closeArchiveModal();
+      if (e.target.id === "cloneModal") closeCloneModal();
       if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
         document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       }
@@ -1159,8 +1218,36 @@
       refreshArchiveCounterFromApi();
     }
 
-    async function duplicateProject(id) {
+    function duplicateProject(id) {
       if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+      pendingCloneProjectId = String(id);
+      const modal = document.getElementById("cloneModal");
+      const input = document.getElementById("cloneTitleInput");
+      const sourceTitle = getTitle(project);
+      if(input) input.value = "Copie de " + sourceTitle;
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        setTimeout(() => input && input.focus(), 80);
+      }
+    }
+
+    function closeCloneModal(){
+      const modal = document.getElementById("cloneModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+      pendingCloneProjectId = "";
+    }
+
+    async function confirmCloneProject() {
+      const id = pendingCloneProjectId;
+      if (!id) return closeCloneModal();
+      const input = document.getElementById("cloneTitleInput");
+      const cloneTitle = String(input?.value || "").trim() || "Copie";
 
       try {
         const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`, {
@@ -1168,7 +1255,8 @@
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token()}`
-          }
+          },
+          body: JSON.stringify({ title: cloneTitle })
         });
 
         const data = await res.json().catch(() => ({}));
@@ -1180,10 +1268,12 @@
         if (cloned && clonedId) {
           cloned = await markProjectAsCopy(clonedId, cloned, id);
           setCurrentProjectPointer(Object.assign({}, cloned, {id: clonedId, project_id: clonedId}));
+          closeCloneModal();
           window.location.assign(`questions.html?projectId=${encodeURIComponent(clonedId)}`);
           return;
         }
 
+        closeCloneModal();
         await loadProjects();
       } catch (e) {
         alert(e.message || "Clonage impossible pour le moment.");
