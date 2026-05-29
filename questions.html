@@ -477,8 +477,9 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 /* ── Ajustements ciblés aide / profils ───────────────── */
 .sb-title .help-tip::after{left:0;bottom:auto;top:25px;transform:none;width:260px;line-height:1.45}
 .sb-title .help-tip::before{left:5px;bottom:auto;top:19px;transform:none;border-color:transparent;border-bottom-color:#18375d;border-top-color:transparent}
-.chap-title-edit-row{gap:10px}
-.chap-title-edit-row .edit-hint{margin-left:2px}
+.chap-title-edit-row{gap:0;position:relative;display:block;width:100%;max-width:760px}
+.chap-title-edit-row .chap-name-inp{display:block;width:100%;max-width:100%;padding-right:34px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chap-title-edit-row .edit-hint{position:absolute;right:8px;top:50%;transform:translateY(-50%);margin-left:0;pointer-events:none;background:#fff}
 .cni-name .edit-hint{display:none!important}
 .seuil-inp{width:66px;min-width:66px;padding:7px 10px}
 .seuil-item{min-width:245px}
