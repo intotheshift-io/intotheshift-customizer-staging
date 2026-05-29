@@ -1033,7 +1033,6 @@ function getProjectTitle(project){
       const timing = isMonitorableCampaign(project) ? getCampaignTiming(project) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
-      if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
       if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
