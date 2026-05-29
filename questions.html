@@ -473,6 +473,19 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .context-help-ico{font-size:16px;line-height:1.2;flex-shrink:0}
 @media(max-width:760px){.help-tip::after{left:auto;right:0;transform:none}.help-tip::before{left:auto;right:4px;transform:none}}
 
+
+/* ── Ajustements ciblés aide / profils ───────────────── */
+.sb-title .help-tip::after{left:0;bottom:auto;top:25px;transform:none;width:260px;line-height:1.45}
+.sb-title .help-tip::before{left:5px;bottom:auto;top:19px;transform:none;border-color:transparent;border-bottom-color:#18375d;border-top-color:transparent}
+.chap-title-edit-row{gap:10px}
+.chap-title-edit-row .edit-hint{margin-left:2px}
+.cni-name .edit-hint{display:none!important}
+.seuil-inp{width:66px;min-width:66px;padding:7px 10px}
+.seuil-item{min-width:245px}
+.seuil-range{flex-shrink:0}
+.profil-score-range{white-space:nowrap}
+.pfield input{min-height:42px;padding:11px 13px}
+
 </style>
 </head>
 
@@ -502,7 +515,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 
 <div class="editor-layout">
   <div class="sidebar">
-    <div class="sb-title">Chapitres <span class="help-tip" tabindex="0" data-help="Un chapitre correspond à une partie de l’autodiagnostic. Chaque chapitre doit contenir au moins 5 questions valides, puis 3 profils de résultat.">?</span></div>
+    <div class="sb-title">Chapitres <span class="help-tip" tabindex="0" data-help="Vous pouvez ajouter ou supprimer des chapitres, en gardant au moins 3 chapitres. Évitez de trop charger l’autodiagnostic : trop de contenu décourage les répondants. Chaque chapitre doit rester clair, court et utile.">?</span></div>
     <div id="chap-nav"></div>
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
@@ -546,7 +559,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
+    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec résumé du profil, phrase courte et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -621,7 +634,7 @@ function makeBlankDiagnosticState(){
         questions: [],
         profiles: [
           { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
-          { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+          { level:'Intermédiaire', title:'', summary:'', description:'', min:0.66, max:1.32 },
           { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
         ]
       }
@@ -930,7 +943,7 @@ const PROV = {
 
 const profils_config = [
   {couleur:'#ff847e', bgHead:'#fff0ef', borderHead:'#ffd6d4', textColor:'#c0392b', nom:'En développement'},
-  {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'En progression'},
+  {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'Intermédiaire'},
   {couleur:'#77cd8a', bgHead:'#f0fbf2', borderHead:'#b8e8c0', textColor:'#27823a', nom:'Ancré'}
 ];
 
@@ -1414,7 +1427,7 @@ function needsBlankSetup(){
 function makeBlankProfiles(){
   return [
     { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
-    { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+    { level:'Intermédiaire', title:'', summary:'', description:'', min:0.66, max:1.32 },
     { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
   ];
 }
@@ -1738,7 +1751,7 @@ function aiUnavailableMessage(){
 }
 
 function aiActionLabel(){
-  return "Aide IA à la rédaction (brouillon)";
+  return "Remplacer toutes les questions (IA)";
 }
 
 function aiActionText(){
@@ -1805,7 +1818,7 @@ function renderQuestions(ch) {
         <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
         <div class="chap-title-edit-row">
           <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
-          <span title="Cliquez sur le titre pour le modifier" style="color:#c5ccd5;font-size:13px;cursor:default;flex-shrink:0">✏️</span>
+          <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
@@ -1828,7 +1841,7 @@ function renderQuestions(ch) {
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> Construisez des mises en situation comportementales : une question décrit une situation concrète, les réponses reflètent plusieurs postures, et les scores servent ensuite à générer les profils.</span></div>
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> Construisez des situations concrètes issues du quotidien professionnel. L’autodiagnostic ne teste ni les connaissances ni les compétences : il expose des comportements réalistes et permet au répondant de se positionner sur ses réflexes habituels.</span></div>
     ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
@@ -1965,15 +1978,15 @@ function renderProfils(ch) {
       </div>
       <div class="profil-body">
         <div class="pfield">
-          <label>Nom interne du profil <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce nom sert à organiser les profils dans le studio. Il n’est pas visible par les répondants dans l’expérience de passation.">?</span></label>
-          <input type="text" value="${esc(p.titre)}" placeholder="Nom interne du profil" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
+          <label>Résumé du profil en quelques mots <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce titre est visible par les répondants sur la page de résultat du chapitre. Il doit résumer le profil en quelques mots.">?</span></label>
+          <input type="text" value="${esc(p.titre)}" placeholder="Ex. Vous êtes en progression sur ce sujet" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Phrase courte de résumé <span class="help-tip" tabindex="0" data-help="Une phrase synthétique qui donne au répondant une première lecture de son résultat.">?</span></label>
-          <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Une phrase concise, bienveillante" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
+          <label>Phrase courte de récapitulatif <span class="help-tip" tabindex="0" data-help="Cette phrase apparaît dans la page finale qui récapitule les profils obtenus sur chaque chapitre.">?</span></label>
+          <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Phrase courte affichée dans le récapitulatif final" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Description détaillée <span class="help-tip" tabindex="0" data-help="Expliquez ce que signifie le profil, sans jugement, avec une ou deux pistes d’action concrètes.">?</span></label>
+          <label>Description détaillée <span class="help-tip" tabindex="0" data-help="Cette description est visible à la fin du chapitre pendant le parcours de passation. Elle doit expliquer le résultat avec bienveillance et proposer une piste concrète.">?</span></label>
           <div class="rte-wrap">
             <div class="rte-toolbar">
               <button class="rte-btn" onclick="fmt('bold')" title="Gras"><b>G</b></button>
@@ -2001,7 +2014,7 @@ function renderProfils(ch) {
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
         <div class="chap-title-edit-row">
           <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
-          <span style="color:#c5ccd5;font-size:13px;flex-shrink:0">✏️</span>
+          <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
@@ -2400,7 +2413,7 @@ function chapProblems(c) {
   }
 
   const badP = c.profils.filter(p => !String(p.titre).trim() || !String(p.phrase).trim() || !stripHtml(p.description).trim());
-  if(badP.length) problems.push({type:'p', msg:`${badP.length} profil${badP.length>1?'s':''} incomplet${badP.length>1?'s':''} — titre, résumé et description requis`, tab:'profils'});
+  if(badP.length) problems.push({type:'p', msg:`${badP.length} profil${badP.length>1?'s':''} incomplet${badP.length>1?'s':''} — résumé du profil, phrase courte et description requis`, tab:'profils'});
 
   const badS = c.seuils.some(s => isNaN(Number(s.min)) || isNaN(Number(s.max)) || Number(s.min)>=Number(s.max) || Number(s.min)<0 || Number(s.max)>2);
   if(badS) problems.push({type:'p', msg:'Seuils incohérents — ils doivent rester sur une moyenne 0 → 2', tab:'profils'});
