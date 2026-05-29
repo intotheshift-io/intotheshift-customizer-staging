@@ -147,7 +147,7 @@
 <div class="page-wrap"><h1 class="page-title">Préparer la campagne</h1><p class="page-sub">Préparez les dates de campagne et testez l’expérience répondant. Les supports de diffusion définitifs seront livrés dans le kit de communication après publication par Into The Shift.</p>
 <div class="launch-grid"><main>
 <div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
-<section class="block"><div class="block-title">Lien de passation provisoire</div><div class="block-sub">Ce lien sert uniquement à tester l’expérience des répondants avant validation par Into The Shift. Il ne doit pas être diffusé aux collaborateurs.</div><div class="launch-url-box"><div><div class="url-label">Lien provisoire de test — ne pas diffuser</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-test" onclick="openPassationPreview()">Tester l’expérience des répondants</button></div></div></section>
+<section class="block"><div class="block-title">Lien de passation provisoire</div><div class="block-sub">Ce lien est construit à partir du slug renseigné à l’étape Paramétrage. Il est provisoire tant qu’Into The Shift n’a pas validé et publié la campagne : ne le diffusez pas aux collaborateurs pour le moment.</div><div class="launch-url-box"><div><div class="url-label">Lien provisoire — non diffusable pour le moment</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-test" onclick="openPassationPreview()">Tester l’expérience des répondants</button></div></div></section>
 <section class="block" id="campaign-communication-block"><div class="block-title">Kit de communication livré après publication</div><div class="block-sub">Après publication par Into The Shift, vous recevrez un kit de communication finalisé dans votre espace. Ce kit contiendra les éléments prêts à utiliser pour diffuser la campagne.</div><div class="template-card"><div class="template-body">Vous aurez à disposition :
 
 • le lien de passation final, validé et copiable ;
@@ -204,13 +204,34 @@ function getPublishedResultsUrl(){
     ''
   ).trim();
 }
+function getParametrageSlug(){
+  const param = p();
+  return String(
+    param.slug ||
+    param.url_slug ||
+    param.urlSlug ||
+    param.slug_autodiag ||
+    param.slugAutodiag ||
+    param.slug_repondants ||
+    param.slugRespondants ||
+    state.slug ||
+    state.url_slug ||
+    state.urlSlug ||
+    ''
+  ).trim();
+}
 function buildPlannedUrl(){
   let cs=companySlug();
   if(!cs)return '';
-  return 'https://selfdiag-mayt.meandyoutoo.app/'+cs+'/'+(p().slug||slugify(cleanTheme())||'autodiagnostic')
+  const configuredSlug = getParametrageSlug();
+  return 'https://selfdiag-mayt.meandyoutoo.app/'+cs+'/'+(configuredSlug||slugify(cleanTheme())||'autodiagnostic')
 }
 function buildUrl(){
-  return getPublishedShareUrl() || buildPlannedUrl();
+  const status = String((backendProject&&backendProject.status)||state.status||'').toLowerCase();
+  if(status==='published'||status.includes('publi')||status==='unpublished'||status.includes('dépub')||status.includes('depub')){
+    return getPublishedShareUrl() || buildPlannedUrl();
+  }
+  return buildPlannedUrl();
 }
 function displayUrl(){return buildUrl()||'Renseignez le nom de l’entreprise pour générer le lien'}
 function ensureResultsUrlBlock(){ return null; }
@@ -434,7 +455,6 @@ function forceInjectCampaignDatesUI(){
   normalizeCampaignDatesInState();
   ensureCampaignDateNotes();
   applyCampaignDateConstraints();
-  validateAndNormalizeCampaignDates(false);
   const start = p().date_lancement || '';
   const end = p().date_cloture || '';
   const launchInput = document.getElementById('date-launch');
@@ -460,10 +480,8 @@ function updateDatesFromInputs(){
   let cl=normalizeDateInputValue(p().date_cloture||state.campaign_end_date||state.campaignEndDate||(closeInput&&closeInput.value)||'');
   if(l){p().date_lancement=l;p().dateLancement=l;state.campaign_start_date=l;state.campaignStartDate=l;if(launchInput)launchInput.value=l;}
   if(cl){p().date_cloture=cl;p().dateCloture=cl;state.campaign_end_date=cl;state.campaignEndDate=cl;if(closeInput)closeInput.value=cl;}
-  const forceShowDates=isCampaignReprogramMode();
-  const lockStatus=forceShowDates||['published','unpublished','archived'].includes(getCampaignStatusForLock());
-  ['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(l):'À définir'});
-  ['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lockStatus?formatDateFR(cl):'À définir'});
+  ['kpi-launch','sb-launch'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=l?formatDateFR(l):'À définir'});
+  ['kpi-close','sb-close'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=cl?formatDateFR(cl):'À définir'});
   updateReminderPlan(l,cl);
 }function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){v=String(v||'');return !v?'Pack non renseigné':(v==='current_pack'||v==='existing'?'J’ai déjà un pack':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations'))}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const el=document.getElementById('pack-select');const v=el?el.value||'':(state.parametrage.pack_choisi||state.pack.volume||'');state.pack.volume=v;state.parametrage.pack_choisi=v;const pv=document.getElementById('pack-val');if(pv)pv.textContent=packLabel(v);saveState()}
