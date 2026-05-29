@@ -1313,10 +1313,10 @@ function getProjectTitle(project){
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
+      const campaignProjects = projects.filter(p => normalizeStatus(p.status) === "published");
 
       if(!campaignProjects.length){
-        list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent quand un AD est à publier ou publié.</div>`;
+        list.innerHTML = `<div class="empty">Aucune campagne publiée pour le moment. Les campagnes apparaissent ici uniquement quand un AD est publié.</div>`;
         return;
       }
 
