@@ -494,11 +494,11 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           Règle métier : un <strong>partner</strong> possède un quota global. Ses clients consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
         </div>
         <div class="global-cards">
-          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🚀</div><div style="width:100%"><h3>Publication</h3><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalToPublish">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Campagnes terminées</span><strong id="globalPublishedNoResults">—</strong></div><div class="global-line clickable" onclick="goToProjects('', 'sans lien diffusion')"><span>Sans lien diffusion</span><strong id="globalNoShare">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🏢</div><div style="width:100%"><h3>Clients</h3><div class="global-line clickable" onclick="goToOrganizations()"><span>Clients directs</span><strong id="kpiDirectOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Clients partners</span><strong id="kpiLinkedOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Partners</span><strong id="globalPartners">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">📊</div><div style="width:100%"><h3>Passations partners</h3><div class="global-line clickable" onclick="goToPartners()"><span>Achetées</span><strong id="kpiPartnerQuota">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Utilisées</span><strong id="kpiPartnerUsed">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Restantes</span><strong id="globalPartnerRemaining">—</strong></div></div></article>
-          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>Transmis sans lien</span><strong id="globalSentNoShare">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>À publier sans lien</span><strong id="globalSentNoShare">—</strong></div></div></article>
         </div>
       </section>
 
@@ -650,7 +650,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <select id="statusFilter" class="admin-select" onchange="renderProjects()">
               <option value="">Tous les statuts</option>
               <option value="draft">Brouillon</option>
-              <option value="sent">Transmis</option>
+              <option value="sent">À publier</option>
               <option value="published">Publié</option>
               <option value="unpublished">Dépublié</option>
             </select>
@@ -1643,7 +1643,7 @@ function getProjectStatusLabel(status){
   const s = String(status || "draft").toLowerCase();
   if(s === "unpublished") return "Dépublié";
   if(s === "published") return "Publié";
-  if(s === "sent") return "Transmis";
+  if(s === "sent") return "À publier";
   return "Brouillon";
 }
 
@@ -1651,7 +1651,7 @@ function projectStatusBadge(status){
   const s = String(status || "draft").toLowerCase();
   if(s === "unpublished") return `<span class="badge badge-unpublished">Dépublié</span>`;
   if(s === "published") return `<span class="badge badge-published">Publié</span>`;
-  if(s === "sent") return `<span class="badge badge-sent">Transmis</span>`;
+  if(s === "sent") return `<span class="badge badge-sent">À publier</span>`;
   return `<span class="badge badge-draft">Brouillon</span>`;
 }
 
@@ -1692,13 +1692,13 @@ function renderProjects(){
       <div class="info-grid">
         <div class="info-box"><div class="info-label">Client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
         <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>
-        <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
+        <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"À publier":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
         <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
         <div class="info-box"><div class="info-label">Fin campagne</div><div class="info-value">${formatDate(endDate)}</div></div>
         ${logoHtml}
       </div>
       <div class="project-publication">
-        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
+        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>À publier</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
         <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
         <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
         <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
@@ -1707,7 +1707,7 @@ function renderProjects(){
         <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Campagne / QR code</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
         <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
-        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
+        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"AD à publier par Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
     </article>`;
   }).join("");

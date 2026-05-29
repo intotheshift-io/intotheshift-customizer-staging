@@ -160,7 +160,7 @@
       <div>
         <h1>Mes autodiagnostics</h1>
         <p>
-          Retrouvez ici tous vos autodiagnostics : brouillons, configurations transmises à Into The Shift,
+          Retrouvez ici tous vos autodiagnostics : brouillons, autodiagnostics à publier,
           campagnes publiées, liens de diffusion et accès aux résultats.
         </p>
       </div>
@@ -179,7 +179,7 @@
       <div class="panel-head">
         <div>
           <h2>Autodiagnostics</h2>
-          <div class="panel-sub">Vos brouillons, configurations transmises, campagnes publiées et liens disponibles.</div>
+          <div class="panel-sub">Vos brouillons, autodiagnostics à publier, campagnes publiées et liens disponibles.</div>
         </div>
       </div>
 
@@ -189,7 +189,7 @@
         <div class="tabs">
           <button class="tab active" data-filter="all">✨ Tous <span class="filter-count" id="countAll">0</span></button>
           <button class="tab" data-filter="endingSoon">🔴 Fin proche <span class="filter-count" id="countEndingSoon">0</span></button>
-          <button class="tab" data-filter="submitted">🚀 Transmis <span class="filter-count" id="countSubmitted">0</span></button>
+          <button class="tab" data-filter="submitted">🚀 À publier <span class="filter-count" id="countSubmitted">0</span></button>
           <button class="tab" data-filter="results">📊 Résultats dispo <span class="filter-count" id="countResults">0</span></button>
           <button class="tab" data-filter="draft">✏️ Brouillons <span class="filter-count" id="countDraft">0</span></button>
           <button class="tab" data-filter="published">🟢 Publiés <span class="filter-count" id="countPublished">0</span></button>
@@ -370,8 +370,8 @@
     function statusLabel(status) {
       return {
         draft: "Brouillon",
-        submitted: "Transmis à Into The Shift",
-        sent: "Transmis à Into The Shift",
+        submitted: "À publier",
+        sent: "À publier",
         published: "Publié",
         unpublished: "Dépublié",
         archived: "Archivé"
@@ -673,7 +673,7 @@
       const shareUrl = p.shareUrl || p.share_url || p.ad_url || p.public_url || data.shareUrl || data.share_url || "";
       const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
       const alerts = [];
-      if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
+      if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"À publier"});
       const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
@@ -867,7 +867,7 @@
     function resumeLabel(project) {
   const status = normalizeStatus(project);
 
-  if (status === "submitted" || status === "sent") return "En attente de publication";
+  if (status === "submitted" || status === "sent") return "À publier";
   if (status === "published") return "Communication";
   if (status === "archived") return "Voir le projet";
 
@@ -1035,7 +1035,7 @@
         </div>
         <div class="watch-card blue ${currentFilter==='submitted'?'active':''}" onclick="setFilterFromCard('submitted')">
           <div class="watch-ico">🚀</div>
-          <div><div class="watch-title">${counts.submitted || 0} AD transmis</div><div class="watch-text">En attente de traitement ou publication par Into The Shift.</div></div>
+          <div><div class="watch-title">${counts.submitted || 0} AD à publier</div><div class="watch-text">Action attendue côté Into The Shift.</div></div>
         </div>
         <div class="watch-card green ${currentFilter==='results'?'active':''}" onclick="setFilterFromCard('results')">
           <div class="watch-ico">📊</div>

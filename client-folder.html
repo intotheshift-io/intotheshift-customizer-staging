@@ -198,7 +198,7 @@
 
     <section class="kpis">
       <div class="kpi"><strong id="kpiAds">—</strong><span>Autodiagnostics</span></div>
-      <div class="kpi"><strong id="kpiSent">—</strong><span>Transmis</span></div>
+      <div class="kpi"><strong id="kpiSent">—</strong><span>À publier</span></div>
       <div class="kpi"><strong id="kpiPublished">—</strong><span>Publiés</span></div>
       <div class="kpi"><strong id="kpiPassations">—</strong><span>Passations restantes</span></div>
     </section>
@@ -409,7 +409,7 @@
       const link = document.getElementById("backToClients");
       if(!link) return;
       if(isAdmin()){
-        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour à la vue globale admin";
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour cockpit client";
       }else{
         link.textContent = "← Retour à mes clients";
       }
@@ -906,7 +906,7 @@ function getProjectTitle(project){
 
     function getStatusLabel(status){
       const s = normalizeStatus(status);
-      if(s === "sent") return "Transmis";
+      if(s === "sent") return "À publier";
       if(s === "published") return "Publié";
       if(s === "unpublished") return "Dépublié";
       if(s === "archived") return "Archivé";
@@ -1065,7 +1065,7 @@ function getProjectTitle(project){
       const filters = [
         ["all","✨ Tous"],
         ["endingSoon","🔴 Fin proche"],
-        ["sent","🚀 Transmis"],
+        ["sent","🚀 À publier"],
         ["results","📊 Résultats dispo"],
         ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
@@ -1105,7 +1105,7 @@ function getProjectTitle(project){
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
         <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
-        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
+        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD à publier</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
         <div class="watch-card green clickable ${currentAdFilter==='results'?'active':''}" onclick="setAdFilter('results')"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Cliquez pour n’afficher que les AD avec lien résultats.</div></div></div>
       `;
     }
@@ -1191,7 +1191,7 @@ function getProjectTitle(project){
       const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
 
       if(!campaignProjects.length){
-        list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
+        list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent quand un AD est à publier ou publié.</div>`;
         return;
       }
 
@@ -1298,7 +1298,7 @@ function getProjectTitle(project){
           </div>
           <div class="info-box">
             <div class="info-label">État livrables</div>
-            <div class="info-value">${transmitted} transmis · ${published} publiés · ${results} résultats</div>
+            <div class="info-value">${transmitted} à publier · ${published} publiés · ${results} résultats</div>
           </div>
         </div>
         <div class="empty" style="text-align:left">
