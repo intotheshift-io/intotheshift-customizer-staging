@@ -459,6 +459,14 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .help-tip{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;line-height:1;cursor:help;position:relative;vertical-align:middle;flex-shrink:0}
 .help-tip::after{content:attr(data-help);position:absolute;left:50%;bottom:25px;transform:translateX(-50%);width:min(280px,72vw);background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.38;text-transform:none;letter-spacing:0;box-shadow:0 12px 30px rgba(15,30,55,.22);opacity:0;pointer-events:none;transition:opacity .12s;z-index:10010;white-space:normal;text-align:left}
 .help-tip::before{content:"";position:absolute;left:50%;bottom:19px;transform:translateX(-50%);border:6px solid transparent;border-top-color:#18375d;opacity:0;transition:opacity .12s;z-index:10011}
+.chap-actions .help-tip::after{bottom:auto;top:25px;left:auto;right:0;transform:none}
+.chap-actions .help-tip::before{bottom:auto;top:19px;left:auto;right:4px;transform:none;border-color:transparent;border-bottom-color:#18375d;border-top-color:transparent}
+.chap-title-edit-row{display:inline-flex;align-items:center;gap:3px;max-width:100%}
+.chap-title-edit-row .chap-name-inp{width:auto;min-width:180px;max-width:min(100%,720px);flex:0 1 auto}
+.likert-info{align-items:center}
+.likert-info-body{flex:0 1 auto}
+.likert-info-toggle{display:inline-flex;align-items:center;border:1px solid #b8dfe0;background:#fff;color:#007883;border-radius:999px;padding:4px 9px;font-weight:800;margin-left:4px}
+.seuils-more{display:inline-flex;align-items:center;gap:5px;border:1px solid #b8dfe0;background:#fff;color:#007883;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800;font-family:'Asap',sans-serif;text-transform:none;letter-spacing:0}
 .help-tip:hover::after,.help-tip:hover::before,.help-tip:focus::after,.help-tip:focus::before{opacity:1}
 .context-help-box{background:#eef6fb;border:1px solid #d7e8f1;color:#18375d;border-radius:12px;padding:11px 13px;margin:0 0 14px;font-size:12px;line-height:1.45;font-family:'Asap',sans-serif;display:flex;gap:9px;align-items:flex-start}
 .context-help-box strong{display:block;color:#0d4c72;margin-bottom:2px}
@@ -1795,15 +1803,15 @@ function renderQuestions(ch) {
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
-        <div style="display:flex;align-items:center;gap:6px">
+        <div class="chap-title-edit-row">
           <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
           <span title="Cliquez sur le titre pour le modifier" style="color:#c5ccd5;font-size:13px;cursor:default;flex-shrink:0">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
-        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
-        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement <span class="help-tip" tabindex="0" data-help="Ajoutez une question de zéro, puis renseignez au moins 3 réponses et leurs scores.">?</span></button>
+        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
+        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une question de zéro, puis renseignez au moins 3 réponses et leurs scores.">?</span></button>
       </div>` : ''}
     </div>`;
 
@@ -1957,8 +1965,8 @@ function renderProfils(ch) {
       </div>
       <div class="profil-body">
         <div class="pfield">
-          <label>Titre du profil <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Titre court et valorisant, par exemple “Réflexes en construction” ou “Posture bien ancrée”.">?</span></label>
-          <input type="text" value="${esc(p.titre)}" placeholder="Titre évocateur" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
+          <label>Nom interne du profil <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce nom sert à organiser les profils dans le studio. Il n’est pas visible par les répondants dans l’expérience de passation.">?</span></label>
+          <input type="text" value="${esc(p.titre)}" placeholder="Nom interne du profil" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
           <label>Phrase courte de résumé <span class="help-tip" tabindex="0" data-help="Une phrase synthétique qui donne au répondant une première lecture de son résultat.">?</span></label>
@@ -1991,16 +1999,16 @@ function renderProfils(ch) {
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
-        <div style="display:flex;align-items:center;gap:6px">
+        <div class="chap-title-edit-row">
           <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
-          <span style="color:#c5ccd5;font-size:13px">✏️</span>
+          <span style="color:#c5ccd5;font-size:13px;flex-shrink:0">✏️</span>
         </div>
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
     </div>
     <div class="seuils-card">
       <div class="seuils-head">
-        <span class="seuils-title">${icoStar} Seuils de moyenne par profil <span class="help-tip" tabindex="0" data-help="Les seuils déterminent quel profil s’affiche selon la moyenne des réponses du chapitre. Ils sont proposés automatiquement mais restent ajustables.">?</span></span>
+        <span class="seuils-title">${icoStar} Seuils de moyenne par profil <span class="seuils-more">Voir plus <span class="help-tip" tabindex="0" data-help="Les seuils déterminent quel profil s’affiche selon la moyenne des réponses du chapitre. Ils sont proposés automatiquement mais restent ajustables.">?</span></span></span>
         <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne 0 → 2.</span>
       </div>
       <div class="seuils-row">${seuilsHTML}</div>
