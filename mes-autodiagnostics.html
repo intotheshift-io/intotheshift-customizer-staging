@@ -868,7 +868,7 @@
   const status = normalizeStatus(project);
 
   if (status === "submitted" || status === "sent") return "En attente de publication";
-  if (status === "published") return "Communication";
+  if (status === "published") return "Kit de com";
   if (status === "archived") return "Voir le projet";
 
   const step = getProjectStep(project);
@@ -884,7 +884,7 @@
       const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
-      if (status === "published") return "campagne.html" + suffix + "&readonly=1";
+      if (status === "published") return "kit-communication.html" + suffix;
       if (status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
       if (status === "unpublished") return reprogramUrl(project);
 
@@ -942,6 +942,21 @@
       const project = projects.find(p => getProjectId(p) === String(id));
       if(project) setCurrentProjectPointer(project);
       window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`);
+    }
+
+    function openKitCommunication(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`kit-communication.html?projectId=${encodeURIComponent(id)}`);
+    }
+
+    function canOpenKitCommunication(project){
+      const status = normalizeStatus(project);
+      const data = getProjectData(project);
+      const shareUrl = project.shareUrl || project.share_url || project.ad_url || project.public_url || data.shareUrl || data.share_url || "";
+      const resultsUrl = project.resultsUrl || project.results_url || project.result_url || data.resultsUrl || data.results_url || "";
+      return (status === "published" || status === "unpublished") && Boolean(shareUrl || resultsUrl);
     }
 
 
@@ -1132,6 +1147,11 @@
                     ${resumeLabel(p)}
                   </button>
                 `}
+                ${canOpenKitCommunication(p) && status !== "published" ? `
+                  <button class="btn btn-green" onclick="openKitCommunication('${escapeAttr(projectId)}')">
+                    📣 Kit de com
+                  </button>
+                ` : ""}
                 ${status === "draft" ? `
                   <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
                     🗑️ Supprimer
