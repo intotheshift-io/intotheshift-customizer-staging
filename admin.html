@@ -272,6 +272,9 @@ td:nth-child(9){width:125px}
 .org-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
 .org-tag{display:inline-flex;align-items:center;gap:5px;background:#f6f9fb;border:1px solid #e2ebf2;color:#244b63;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900;line-height:1}
 .org-tag.theme{background:#f4f0ff;border-color:#ded5ff;color:#5b3bbd}.org-tag.sector{background:#eef6fb;border-color:#d7e8f1;color:#0d4c72}
+.org-theme-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.org-tag.more{background:#fff;border-color:#d8e2ec;color:#60758a}
+.org-tag strong{font-weight:900;color:inherit}
 .org-health-row{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 0}
 .org-health-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;border:1px solid;line-height:1}
 .org-health-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}.org-health-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}.org-health-badge.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}.org-health-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
@@ -950,6 +953,32 @@ function mostFrequent(values, fallback="—"){
   const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
   return sorted[0]?.[0] || fallback;
 }
+function getOrgThemeCounts(org){
+  const counts={};
+  getProjectsForOrg(org).forEach(project=>{
+    const theme=getProjectThemeLabel(project);
+    if(theme && theme !== "Thématique non renseignée"){
+      counts[theme]=(counts[theme]||0)+1;
+    }
+  });
+  return Object.entries(counts)
+    .map(([label,count])=>({label,count}))
+    .sort((a,b)=>b.count-a.count || a.label.localeCompare(b.label));
+}
+function renderOrgThemeTags(stats, maxVisible=4){
+  const themes=Array.isArray(stats.themeCounts) ? stats.themeCounts : [];
+  if(!themes.length){
+    return `<div class="org-theme-row"><span class="org-tag theme">🧩 Thématique non renseignée</span></div>`;
+  }
+  const visible=themes.slice(0,maxVisible);
+  const hiddenCount=themes.length-visible.length;
+  const tags=visible.map(theme=>`<span class="org-tag theme">🧩 ${escapeHtml(theme.label)} <strong>(${formatNumber(theme.count)})</strong></span>`);
+  if(hiddenCount>0){
+    const hiddenAdCount=themes.slice(maxVisible).reduce((sum,theme)=>sum+Number(theme.count||0),0);
+    tags.push(`<span class="org-tag more">+${hiddenCount} thématique${hiddenCount>1?"s":""} · ${formatNumber(hiddenAdCount)} AD</span>`);
+  }
+  return `<div class="org-theme-row">${tags.join("")}</div>`;
+}
 function getOrgSector(org){
   const users=Array.isArray(org.users)?org.users:[];
   const sectors=[];
@@ -974,7 +1003,8 @@ function getOrgStats(org){
   const remainingRate=quota>0 ? Math.round((remaining/quota)*100) : 0;
   const users=Array.isArray(org.users)?org.users:[];
   const usersCount=users.filter(u=>String(val(u,["email"],"")).trim()).length;
-  const themes=projects.map(getProjectThemeLabel).filter(t=>t && t!=="Thématique non renseignée");
+  const themeCounts=getOrgThemeCounts(org);
+  const themes=themeCounts.map(t=>t.label);
   const theme=mostFrequent(themes, "Thématique non renseignée");
   const sector=getOrgSector(org);
   const today=new Date().toISOString().slice(0,10);
@@ -988,7 +1018,7 @@ function getOrgStats(org){
   const underused=quota>0 && usageRate<=10 && projects.length>0;
   const inactive=projects.length===0 || (!campaignLive && statuses.published===0 && statuses.sent===0);
   const active=campaignLive || statuses.published>0 || statuses.sent>0;
-  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,sector,campaignLive,quotaLow,underused,inactive,active};
+  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active};
 }
 function getOrgPriority(org){
   const s=getOrgStats(org);
@@ -1020,7 +1050,7 @@ function updateOrgSelectOptions(rows){
   const currentSector=sectorSelect.value || "";
   const currentTheme=themeSelect.value || "";
   const sectors=[...new Set(rows.map(o=>getOrgStats(o).sector).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
-  const themes=[...new Set(rows.map(o=>getOrgStats(o).theme).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  const themes=[...new Set(rows.flatMap(o=>getOrgStats(o).themeCounts.map(t=>t.label)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
   sectorSelect.innerHTML='<option value="">Tous les secteurs</option>'+sectors.map(s=>`<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join("");
   themeSelect.innerHTML='<option value="">Toutes les thématiques</option>'+themes.map(t=>`<option value="${escapeAttr(t)}">${escapeHtml(t)}</option>`).join("");
   if(sectors.includes(currentSector)) sectorSelect.value=currentSector;
@@ -1446,12 +1476,13 @@ function renderOrganizations(){
       JSON.stringify(o),
       stats.sector,
       stats.theme,
+      stats.themeCounts.map(t=>`${t.label} ${t.count}`).join(" "),
       getOrgName(o),
       stats.projects.map(p=>pickProjectTitle(val(p,["title"],""))).join(" ")
     ].join(" ").toLowerCase();
     return (!q || text.includes(q))
       && (!sectorFilter || stats.sector===sectorFilter)
-      && (!themeFilter || stats.theme===themeFilter)
+      && (!themeFilter || stats.themeCounts.some(t=>t.label===themeFilter))
       && orgMatchesFilter(o);
   });
 
@@ -1498,7 +1529,8 @@ function renderOrganizations(){
           <div class="org-title-text">
             <h3>${escapeHtml(name)}</h3>
             <div class="card-meta">ID cockpit #${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div>
-            <div class="org-tag-row"><span class="org-tag sector">🏭 ${escapeHtml(stats.sector)}</span><span class="org-tag theme">🧩 ${escapeHtml(stats.theme)}</span></div>
+            <div class="org-tag-row"><span class="org-tag sector">🏭 Secteur : ${escapeHtml(stats.sector)}</span></div>
+            ${renderOrgThemeTags(stats)}
             ${renderOrgHealthBadges(stats)}
           </div>
         </div>
