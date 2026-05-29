@@ -630,21 +630,21 @@
             level:       p.bas.label  || "Repères à consolider",
             min: 0, max: 0.66,
             title:       p.bas.titre  || p.bas.label,
-            summary:     p.bas.titre  || "",
+            summary:     p.bas.resume || "",
             description: p.bas.desc   || ""
           },
           {
             level:       p.moyen.label || "Pratiques en développement",
             min: 0.66, max: 1.32,
             title:       p.moyen.titre || p.moyen.label,
-            summary:     p.moyen.titre || "",
+            summary:     p.moyen.resume || "",
             description: p.moyen.desc  || ""
           },
           {
             level:       p.haut.label  || "Réflexes installés",
             min: 1.32, max: 2,
             title:       p.haut.titre  || p.haut.label,
-            summary:     p.haut.titre  || "",
+            summary:     p.haut.resume || "",
             description: p.haut.desc   || ""
           }
         ];
