@@ -144,15 +144,23 @@
 <script src="catalogue-init.js?v=2"></script><script src="app.js"></script>
 <div class="breadcrumb"><span class="bc-link" onclick="location.href='index.html'">Bibliothèque</span><span class="bc-sep">›</span><span class="bc-link" onclick="location.href='questions.html'" id="bc-theme">Thème sélectionné</span><span class="bc-sep">›</span><span class="bc-cur">Campagne</span></div>
 <div class="stepper-wrap"><div class="stepper"><div class="step"><div class="step-circle done">✓</div><span class="step-label done step-link step-link-locked-start" title="Point de départ du parcours : non cliquable une fois le projet commencé">Choisir une base</span></div><div class="step-connector done"></div><div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div><div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="parametrage.html">Paramétrer</a></div><div class="step-connector done"></div><div class="step"><div class="step-circle active">4</div><span class="step-label active">Campagne</span></div><div class="step-connector todo"></div><div class="step"><div class="step-circle todo">5</div><span class="step-label todo">Transmettre</span></div></div></div>
-<div class="page-wrap"><h1 class="page-title">Préparer la campagne</h1><p class="page-sub">Centralisez le lien de passation prévu, les messages prêts à copier, les canaux de communication et les éléments à transmettre à Into The Shift pour la mise en ligne.</p>
+<div class="page-wrap"><h1 class="page-title">Préparer la campagne</h1><p class="page-sub">Préparez les dates de campagne et testez l’expérience répondant. Les supports de diffusion définitifs seront livrés dans le kit de communication après publication par Into The Shift.</p>
 <div class="launch-grid"><main>
 <div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
-<section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary qr-download-btn" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
-<section class="block" id="campaign-communication-block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" data-template="launch" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" data-template="managers" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" data-template="reminder" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" data-template="last" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" data-template="channels" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" data-template="intranet" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" data-template="firstResults" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" data-template="finalResults" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
+<section class="block"><div class="block-title">Lien de passation provisoire</div><div class="block-sub">Ce lien sert uniquement à tester l’expérience des répondants avant validation par Into The Shift. Il ne doit pas être diffusé aux collaborateurs.</div><div class="launch-url-box"><div><div class="url-label">Lien provisoire de test — ne pas diffuser</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-test" onclick="openPassationPreview()">Tester l’expérience des répondants</button></div></div></section>
+<section class="block" id="campaign-communication-block"><div class="block-title">Kit de communication livré après publication</div><div class="block-sub">Après publication par Into The Shift, vous recevrez un kit de communication finalisé dans votre espace. Ce kit contiendra les éléments prêts à utiliser pour diffuser la campagne.</div><div class="template-card"><div class="template-body">Vous aurez à disposition :
+
+• le lien de passation final, validé et copiable ;
+• le QR code final généré à partir du lien de passation publié ;
+• les messages prêts à copier pour le lancement, les relais managers, les relances et les canaux internes ;
+• le plan de relance conseillé selon vos dates de campagne ;
+• les affiches, visuels ou supports ajoutés par Into The Shift ;
+• le lien résultats lorsque celui-ci aura été renseigné par l’équipe Into The Shift.
+
+Les éléments visibles ici avant publication sont donc des éléments de préparation ou de test, pas des supports de diffusion définitifs.</div></div></section>
 <section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
-<section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
 <div class="bottom-actions"><button class="btn-back" onclick="goBackToParametrage()">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
-</main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
+</main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
 
@@ -160,7 +168,7 @@
   <div class="reprogram-missing-modal" role="dialog" aria-modal="true" aria-labelledby="reprogram-missing-title" onclick="event.stopPropagation()">
     <div class="reprogram-missing-icon">⚠️</div>
     <div class="reprogram-missing-title" id="reprogram-missing-title">Reprogrammation à compléter</div>
-    <div class="reprogram-missing-text">Pour continuer vers la transmission, modifiez la période de campagne puis recochez la checklist.</div>
+    <div class="reprogram-missing-text">Pour continuer vers la transmission, modifiez la période de campagne.</div>
     <div class="reprogram-missing-list" id="reprogram-missing-list"></div>
     <div class="reprogram-missing-actions">
       <button class="reprogram-missing-btn secondary" type="button" onclick="closeReprogramMissingModal()">Fermer</button>
@@ -205,20 +213,7 @@ function buildUrl(){
   return getPublishedShareUrl() || buildPlannedUrl();
 }
 function displayUrl(){return buildUrl()||'Renseignez le nom de l’entreprise pour générer le lien'}
-function ensureResultsUrlBlock(){
-  let box=document.querySelector('.launch-url-box');
-  if(!box)return null;
-  let block=document.getElementById('results-url-box');
-  if(!block){
-    block=document.createElement('div');
-    block.id='results-url-box';
-    block.className='launch-url-box';
-    block.style.marginTop='10px';
-    block.innerHTML='<div><div class="url-label">URL résultats</div><div class="url-big" id="results-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyResultsUrl()">Copier l’URL résultats</button><button class="btn-test" onclick="openResultsUrl()">Ouvrir</button></div>';
-    box.insertAdjacentElement('afterend',block);
-  }
-  return block;
-}
+function ensureResultsUrlBlock(){ return null; }
 function refreshPublicationUrls(){
   let share=buildUrl();
   let results=getPublishedResultsUrl();
@@ -226,13 +221,7 @@ function refreshPublicationUrls(){
   let sbUrl=document.getElementById('sb-url');
   if(launchEl)launchEl.textContent=displayUrl();
   if(sbUrl)sbUrl.textContent=displayUrl();
-  let block=ensureResultsUrlBlock();
-  if(block){
-    const resultsEl=document.getElementById('results-url');
-    if(resultsEl)resultsEl.textContent=results || 'URL résultats renseignée par l’admin après publication';
-    block.style.display = results ? 'flex' : 'none';
-  }
-  drawQrCode(share);
+  ensureResultsUrlBlock();
 }
 function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch')}
 function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}copyToClipboard(url,'URL résultats copiée')}
@@ -564,21 +553,13 @@ function focusReprogramMissingField(){
 }
 
 function updateChecklist(){
-  let cc=c();
-  cc.checklist=cc.checklist||{};
-  let boxes=[...document.querySelectorAll('.check-row input')];
-  boxes.forEach(b=>cc.checklist[b.dataset.key]=b.checked);
-  let checked=boxes.filter(b=>b.checked).length,total=boxes.length,missing=[];
-  boxes.forEach(b=>{if(!b.checked)missing.push(b.closest('.check-row').querySelector('.check-title').textContent)});
+  let missing=[];
   if(!p().date_lancement)missing.push('Date de lancement');
   if(!p().date_cloture)missing.push('Date de clôture');
   if(p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');
   if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');
   if(isCampaignReprogramMode()&&!reprogramDatesHaveChanged())missing.push('Modifier les dates pour créer une nouvelle période de diffusion');
   let ok=missing.length===0;
-  document.getElementById('check-pill').textContent=checked+'/'+total;
-  document.getElementById('check-progress').style.width=Math.round(checked/total*100)+'%';
-  document.getElementById('check-pill').className='pill '+(ok?'pill-ok':'');
   const btn=document.getElementById('btn-launch');
   if(btn){
     if(isCampaignReprogramMode()){
@@ -598,9 +579,10 @@ function updateChecklist(){
     document.getElementById('sb-status').textContent=statusLabel();
   }
   let help=document.getElementById('publish-help');
-  help.style.display=ok?'none':'block';
-  help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';
-  document.getElementById('sidebar-check-hint').textContent=ok?'Tout est prêt : vous pouvez transmettre.':(isCampaignReprogramMode()?'Reprogrammation bloquée : ':'Transmission bloquée : ')+missing.length+' élément'+(missing.length>1?'s':'')+' à compléter.';
+  if(help){
+    help.style.display=ok?'none':'block';
+    help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';
+  }
   if(isCampaignReprogramMode())lockStepperForReprogramming();
   saveState();
 }
@@ -936,8 +918,6 @@ function init(){
   applyBackendHydrationUI();
   refreshLaunchUrl();
   forceInjectCampaignDatesUI();
-  let ck=c().checklist||{};
-  document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);
   showTemplate(c().activeTemplate||'launch');
   refreshLaunchUrl();
   updateChecklist();
@@ -1282,7 +1262,7 @@ bootCampagnePage();
         const note=document.createElement("div");
         note.id="reprogram-campaign-note";
         note.className="reprogram-note";
-        note.innerHTML="Reprogrammation : vous conservez la même URL de passation et la même URL statistiques.<small>Les statistiques de cette nouvelle période s’ajouteront à l’historique existant. Pour continuer, modifiez les dates puis recochez toute la checklist.</small>";
+        note.innerHTML="Reprogrammation : vous conservez la même URL de passation et la même URL statistiques.<small>Les statistiques de cette nouvelle période s’ajouteront à l’historique existant. Pour continuer, modifiez les dates puis transmettez la reprogrammation.</small>";
         const grid=document.querySelector(".launch-grid");
         if(grid && grid.parentNode) grid.parentNode.insertBefore(note, grid);
       }
