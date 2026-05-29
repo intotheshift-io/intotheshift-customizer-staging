@@ -1156,8 +1156,8 @@ function getProjectTitle(project){
             <div class="card-actions">
               ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
               ${isAdmin()
-                ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
-                : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
+                ? `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
+                : `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
               }
               <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
@@ -1251,7 +1251,7 @@ function getProjectTitle(project){
 
               <div class="card-actions">
                 <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
-                <button class="small-btn" onclick="openCampaignPage('${pid}')">Voir campagne</button>
+                <button class="small-btn" onclick="openKitCommunicationPage('${pid}')">📣 Kit de com</button>
               </div>
             </div>
           </article>
@@ -1363,6 +1363,11 @@ function getProjectTitle(project){
     function openCampaignPage(projectId){
       const id = setActiveProjectForNavigation(projectId);
       window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
+    }
+
+    function openKitCommunicationPage(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `kit-communication.html?projectId=${encodeURIComponent(id)}` : "kit-communication.html";
     }
 
     function openPublishModal(projectId, projectTitle){
