@@ -249,6 +249,54 @@ function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('U
 function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
 function normalizeDateInputValue(s){if(!s)return'';let str=String(s);if(/^\d{4}-\d{2}-\d{2}/.test(str))return str.slice(0,10);let d=new Date(str);return Number.isNaN(d.getTime())?str:d.toISOString().slice(0,10)}
+function findCampaignDateDeep(source, kind){
+  const keys = kind === 'start'
+    ? ['date_lancement','dateLancement','campaign_start_date','campaignStartDate','start_date','startDate']
+    : ['date_cloture','dateCloture','campaign_end_date','campaignEndDate','end_date','endDate'];
+  const seen = new Set();
+  function scan(obj){
+    if(!obj || typeof obj !== 'object' || seen.has(obj)) return '';
+    seen.add(obj);
+    for(const key of keys){
+      const value = obj[key];
+      const normalized = normalizeDateInputValue(value || '');
+      if(normalized) return normalized;
+    }
+    const priority = ['parametrage','meta','campagne','campaign','data','state','payload','configuration','project'];
+    for(const key of priority){
+      const value = obj[key];
+      if(value && typeof value === 'object'){
+        const found = scan(value);
+        if(found) return found;
+      }
+    }
+    for(const key of Object.keys(obj)){
+      const value = obj[key];
+      if(value && typeof value === 'object'){
+        const found = scan(value);
+        if(found) return found;
+      }
+    }
+    return '';
+  }
+  return scan(source);
+}
+function applyCampaignDatesEverywhere(start,end){
+  state.parametrage = state.parametrage || {};
+  state.parametrage.date_lancement = start || '';
+  state.parametrage.dateLancement = start || '';
+  state.parametrage.date_cloture = end || '';
+  state.parametrage.dateCloture = end || '';
+  state.campaignStartDate = start || '';
+  state.campaign_start_date = start || '';
+  state.startDate = start || '';
+  state.start_date = start || '';
+  state.campaignEndDate = end || '';
+  state.campaign_end_date = end || '';
+  state.endDate = end || '';
+  state.end_date = end || '';
+}
+
 function campaignDateToISO(d){
   if(!d || Number.isNaN(d.getTime())) return '';
   const year = d.getFullYear();
@@ -406,50 +454,40 @@ function downloadQrCode(){
 }
 function normalizeCampaignDatesInState(){
   const param = p();
-  const nestedState = (state.data && state.data.state) || {};
-  const nestedPayload = (state.data && state.data.payload) || {};
-  const nestedPayloadState = (nestedPayload && nestedPayload.state) || {};
-  const nestedParam = (nestedState && nestedState.parametrage) || {};
-  const nestedPayloadParam = (nestedPayload && nestedPayload.parametrage) || {};
-  const nestedPayloadStateParam = (nestedPayloadState && nestedPayloadState.parametrage) || {};
+  const sources = [
+    param,
+    state,
+    state.meta,
+    state.campagne,
+    state.data,
+    state.data && state.data.state,
+    state.data && state.data.payload,
+    state.data && state.data.payload && state.data.payload.state,
+    backendProject,
+    backendProject && backendProject.data,
+    backendProject && backendProject.payload,
+    backendProject && backendProject.configuration
+  ];
 
-  let start = normalizeDateInputValue(
-    param.date_lancement ||
-    param.dateLancement ||
-    state.campaign_start_date ||
-    state.campaignStartDate ||
-    nestedParam.date_lancement ||
-    nestedParam.dateLancement ||
-    nestedPayloadParam.date_lancement ||
-    nestedPayloadParam.dateLancement ||
-    nestedPayloadStateParam.date_lancement ||
-    nestedPayloadStateParam.dateLancement ||
-    ''
-  );
+  let start = '';
+  let end = '';
+  for(const source of sources){
+    if(!start) start = findCampaignDateDeep(source, 'start');
+    if(!end) end = findCampaignDateDeep(source, 'end');
+  }
 
-  let end = normalizeDateInputValue(
-    param.date_cloture ||
-    param.dateCloture ||
-    state.campaign_end_date ||
-    state.campaignEndDate ||
-    nestedParam.date_cloture ||
-    nestedParam.dateCloture ||
-    nestedPayloadParam.date_cloture ||
-    nestedPayloadParam.dateCloture ||
-    nestedPayloadStateParam.date_cloture ||
-    nestedPayloadStateParam.dateCloture ||
-    ''
-  );
+  if((!start || !end) && typeof itsGetStorageKey === 'function'){
+    try{
+      const localRaw = localStorage.getItem(itsGetStorageKey());
+      const localState = localRaw ? JSON.parse(localRaw) : {};
+      if(!start) start = findCampaignDateDeep(localState, 'start');
+      if(!end) end = findCampaignDateDeep(localState, 'end');
+    }catch(e){}
+  }
 
-  param.date_lancement=start;
-  param.dateLancement=start;
-  param.date_cloture=end;
-  param.dateCloture=end;
-  state.campaignStartDate=start;
-  state.campaign_start_date=start;
-  state.campaignEndDate=end;
-  state.campaign_end_date=end;
+  applyCampaignDatesEverywhere(start,end);
 }
+
 
 function forceInjectCampaignDatesUI(){
   normalizeCampaignDatesInState();
@@ -838,8 +876,8 @@ function normalizeLoadedProject(project){
     merged.company ||
     getVal(project,['organizationName','organization_name','clientName','company_name'],'');
 
-  let backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
-  let backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
+  let backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start') || findCampaignDateDeep(project, 'start') || findCampaignDateDeep(merged, 'start');
+  let backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end') || findCampaignDateDeep(project, 'end') || findCampaignDateDeep(merged, 'end');
 
   // Sécurité : si le backend renvoie encore un projet ancien sans champs SQL,
   // on reprend les dates du state local du même projet au lieu d'afficher vide.
