@@ -454,6 +454,17 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   .panel-right.on{right:0!important;}
 }
 
+
+/* ── Aide contextuelle éditeur questions ───────────────── */
+.help-tip{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;line-height:1;cursor:help;position:relative;vertical-align:middle;flex-shrink:0}
+.help-tip::after{content:attr(data-help);position:absolute;left:50%;bottom:25px;transform:translateX(-50%);width:min(280px,72vw);background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.38;text-transform:none;letter-spacing:0;box-shadow:0 12px 30px rgba(15,30,55,.22);opacity:0;pointer-events:none;transition:opacity .12s;z-index:10010;white-space:normal;text-align:left}
+.help-tip::before{content:"";position:absolute;left:50%;bottom:19px;transform:translateX(-50%);border:6px solid transparent;border-top-color:#18375d;opacity:0;transition:opacity .12s;z-index:10011}
+.help-tip:hover::after,.help-tip:hover::before,.help-tip:focus::after,.help-tip:focus::before{opacity:1}
+.context-help-box{background:#eef6fb;border:1px solid #d7e8f1;color:#18375d;border-radius:12px;padding:11px 13px;margin:0 0 14px;font-size:12px;line-height:1.45;font-family:'Asap',sans-serif;display:flex;gap:9px;align-items:flex-start}
+.context-help-box strong{display:block;color:#0d4c72;margin-bottom:2px}
+.context-help-ico{font-size:16px;line-height:1.2;flex-shrink:0}
+@media(max-width:760px){.help-tip::after{left:auto;right:0;transform:none}.help-tip::before{left:auto;right:4px;transform:none}}
+
 </style>
 </head>
 
@@ -483,7 +494,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 
 <div class="editor-layout">
   <div class="sidebar">
-    <div class="sb-title">Chapitres</div>
+    <div class="sb-title">Chapitres <span class="help-tip" tabindex="0" data-help="Un chapitre correspond à une partie de l’autodiagnostic. Chaque chapitre doit contenir au moins 5 questions valides, puis 3 profils de résultat.">?</span></div>
     <div id="chap-nav"></div>
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
@@ -501,7 +512,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
 <div class="panel-right" id="panel-right">
   <div class="panel-head">
-    <span class="panel-title">Piocher dans la bibliothèque</span>
+    <span class="panel-title">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" data-help="Cette bibliothèque propose des questions compatibles avec le sujet et le chapitre sélectionné. Vous pouvez filtrer par tag et ajouter une question en un clic.">?</span></span>
     <button class="panel-close" type="button" aria-label="Fermer la bibliothèque" title="Fermer" onclick="closePanel();event.stopPropagation();">✕</button>
   </div>
   <div class="panel-context">
@@ -1791,8 +1802,8 @@ function renderQuestions(ch) {
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
-        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque</button>` : ''}
-        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement</button>
+        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
+        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement <span class="help-tip" tabindex="0" data-help="Ajoutez une question de zéro, puis renseignez au moins 3 réponses et leurs scores.">?</span></button>
       </div>` : ''}
     </div>`;
 
@@ -1809,7 +1820,8 @@ function renderQuestions(ch) {
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> Construisez des mises en situation comportementales : une question décrit une situation concrète, les réponses reflètent plusieurs postures, et les scores servent ensuite à générer les profils.</span></div>
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
@@ -1851,7 +1863,7 @@ function renderCard(q, qi) {
       ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><div class="editable-field-wrap"><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
       : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><div class="editable-field-wrap"><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
 
-    bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive</div>${answersHTML}</div>`;
+    bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive <span class="help-tip" tabindex="0" data-help="Le score n’est pas visible par les répondants. Il sert uniquement à calculer la moyenne du chapitre et à afficher le bon profil de résultat.">?</span></div>${answersHTML}</div>`;
   }
 
   return `<div class="q-card ${open ? 'open' : ''}" id="qc-${q.id}">
@@ -1945,15 +1957,15 @@ function renderProfils(ch) {
       </div>
       <div class="profil-body">
         <div class="pfield">
-          <label>Titre du profil <span style="color:#eb6366">*</span></label>
+          <label>Titre du profil <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Titre court et valorisant, par exemple “Réflexes en construction” ou “Posture bien ancrée”.">?</span></label>
           <input type="text" value="${esc(p.titre)}" placeholder="Titre évocateur" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Phrase courte de résumé</label>
+          <label>Phrase courte de résumé <span class="help-tip" tabindex="0" data-help="Une phrase synthétique qui donne au répondant une première lecture de son résultat.">?</span></label>
           <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Une phrase concise, bienveillante" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Description détaillée</label>
+          <label>Description détaillée <span class="help-tip" tabindex="0" data-help="Expliquez ce que signifie le profil, sans jugement, avec une ou deux pistes d’action concrètes.">?</span></label>
           <div class="rte-wrap">
             <div class="rte-toolbar">
               <button class="rte-btn" onclick="fmt('bold')" title="Gras"><b>G</b></button>
@@ -1975,6 +1987,7 @@ function renderProfils(ch) {
   }).join('');
 
   document.getElementById('main-editor').innerHTML = `
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif des profils</strong> Les profils sont les retours personnalisés affichés aux répondants à la fin du chapitre. Ils doivent être bienveillants, compréhensibles et actionnables.</span></div>
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
@@ -1987,7 +2000,7 @@ function renderProfils(ch) {
     </div>
     <div class="seuils-card">
       <div class="seuils-head">
-        <span class="seuils-title">${icoStar} Seuils de moyenne par profil</span>
+        <span class="seuils-title">${icoStar} Seuils de moyenne par profil <span class="help-tip" tabindex="0" data-help="Les seuils déterminent quel profil s’affiche selon la moyenne des réponses du chapitre. Ils sont proposés automatiquement mais restent ajustables.">?</span></span>
         <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne 0 → 2.</span>
       </div>
       <div class="seuils-row">${seuilsHTML}</div>
