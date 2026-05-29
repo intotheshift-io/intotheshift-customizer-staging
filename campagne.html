@@ -388,9 +388,14 @@ function showTemplate(k,btn){
   if(activeBtn) activeBtn.classList.add('on');
 
   let t=templates[key]||templates.launch;
-  document.getElementById('tpl-title').textContent=t.title;
-  document.getElementById('tpl-meta').textContent=t.meta;
-  document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());
+  const titleEl=document.getElementById('tpl-title');
+  const metaEl=document.getElementById('tpl-meta');
+  const bodyEl=document.getElementById('tpl-body');
+
+  if(titleEl) titleEl.textContent=t.title;
+  if(metaEl) metaEl.textContent=t.meta;
+  if(bodyEl) bodyEl.textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());
+
   c().activeTemplate=key;
   saveState();
 
