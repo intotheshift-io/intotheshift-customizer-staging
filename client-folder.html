@@ -100,6 +100,10 @@
     .project-logo-info strong{display:block;color:#17375d;font-size:13px}
     .project-contact-box{background:#eef6fb;border:1px solid #d7e8f1;border-radius:14px;padding:10px 12px;margin:10px 0;color:#0d4c72;font-size:12px;line-height:1.4}
     .project-contact-box strong{display:block;color:#17375d;font-size:12px;margin-bottom:2px}
+.attached-users-box{margin-top:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);border-radius:18px;padding:12px 14px;color:#fff;max-width:760px}
+    .attached-users-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:900;opacity:.86;margin-bottom:7px}
+    .attached-user-line{font-size:13px;line-height:1.45;opacity:.96}
+    .attached-user-line strong{font-weight:900;color:#fff}
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10000;opacity:0;pointer-events:none;transition:all .18s ease}
     .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -502,6 +506,54 @@
 
     function getContactEmail(client){
       return val(client,["contactEmail","contact_email","ownerEmail","owner_email","email"],"");
+    }
+
+
+    function getCreatorName(client){
+      return (
+        val(client,["ownerName","owner_name","creatorName","creator_name"],"") ||
+        getContactName(client)
+      );
+    }
+
+    function getCreatorEmail(client){
+      return (
+        val(client,["ownerEmail","owner_email","creatorEmail","creator_email"],"") ||
+        getContactEmail(client)
+      );
+    }
+
+    function getAttachedUsers(client){
+      const users = Array.isArray(client?.users) ? client.users : [];
+      const seen = new Set();
+      return users.filter(user => {
+        const key = String(val(user,["email"],"")).trim().toLowerCase() || String(val(user,["id"],"")).trim();
+        if(!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function getAttachedUserName(user){
+      return (
+        [val(user,["firstName","first_name"],""), val(user,["lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
+        val(user,["companyName","company_name"],"") ||
+        val(user,["email"],"") ||
+        "Compte rattaché"
+      );
+    }
+
+    function renderAttachedUsersHero(client){
+      const users = getAttachedUsers(client);
+      if(!users.length){
+        return `<div class="attached-users-box"><div class="attached-users-title">Comptes rattachés au cockpit</div><div class="attached-user-line">Aucun compte rattaché chargé pour le moment.</div></div>`;
+      }
+      return `<div class="attached-users-box"><div class="attached-users-title">Comptes rattachés au cockpit</div>${users.map(user => {
+        const name = getAttachedUserName(user);
+        const email = val(user,["email"],"");
+        const role = val(user,["role","organizationRole","organization_role"],"");
+        return `<div class="attached-user-line"><strong>${escapeHtml(name)}</strong>${email ? ` — ${escapeHtml(email)}` : ""}${role ? ` · ${escapeHtml(role)}` : ""}</div>`;
+      }).join("")}</div>`;
     }
 
     function getProjectData(project){
@@ -1005,11 +1057,12 @@ function getProjectTitle(project){
 
       document.getElementById("clientName").textContent = currentClient.name || "Cockpit client";
       document.getElementById("clientMeta").innerHTML = `
-        Contact : ${escapeHtml(getContactName(currentClient))}<br>
-        Email : ${escapeHtml(getContactEmail(currentClient) || "—")}<br>
+        Créateur du compte : ${escapeHtml(getCreatorName(currentClient))}<br>
+        Email créateur : ${escapeHtml(getCreatorEmail(currentClient) || "—")}<br>
         ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
         ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
+        ${renderAttachedUsersHero(currentClient)}
       `;
 
       document.getElementById("kpiAds").textContent = projects.length;
@@ -1325,6 +1378,7 @@ function getProjectTitle(project){
 
               <div class="card-actions">
                 <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
+                <button class="small-btn" onclick="notifyCampaignLinksUpdated('${pid}')">✉️ Notifier le client</button>
                 <button class="small-btn" onclick="openKitCommunicationPage('${pid}')">📣 Kit de com</button>
               </div>
             </div>
@@ -1366,8 +1420,8 @@ function getProjectTitle(project){
             <div class="info-value">${escapeHtml(displayId(getClientOwnerId()))}</div>
           </div>
           <div class="info-box">
-            <div class="info-label">Contact</div>
-            <div class="info-value">${escapeHtml(getContactName(currentClient))}</div>
+            <div class="info-label">Créateur du compte</div>
+            <div class="info-value">${escapeHtml(getCreatorName(currentClient))}</div>
           </div>
           <div class="info-box">
             <div class="info-label">État livrables</div>
@@ -1685,6 +1739,31 @@ function getProjectTitle(project){
       }catch(err){
         console.error(err);
         alert(err.message || "Impossible d’enregistrer les liens de campagne.");
+      }
+    }
+
+
+    async function notifyCampaignLinksUpdated(projectId){
+      if(!projectId) return;
+      const project = getCurrentProjectById(projectId);
+      if(!project) return;
+
+      if(!getProjectShareUrl(project) && !getProjectResultsUrl(project)){
+        alert("Aucun lien n’est renseigné pour cet AD. Enregistrez d’abord au moins un lien.");
+        return;
+      }
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/communication-links/notify`, {
+          method:"POST",
+          headers:{ Authorization:`Bearer ${getToken()}` }
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur notification liens");
+        showToast(data.emailSent ? "Email envoyé au client" : `Notification non envoyée : ${data.emailStatus || "à vérifier"}`);
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de notifier le client.");
       }
     }
 
