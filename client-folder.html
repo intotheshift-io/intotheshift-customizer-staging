@@ -98,6 +98,8 @@
     .project-logo-preview img{width:100%;height:100%;object-fit:contain;background:#fff}
     .project-logo-info{font-size:12px;color:#61738a;line-height:1.35;min-width:140px;flex:1}
     .project-logo-info strong{display:block;color:#17375d;font-size:13px}
+    .project-contact-box{background:#eef6fb;border:1px solid #d7e8f1;border-radius:14px;padding:10px 12px;margin:10px 0;color:#0d4c72;font-size:12px;line-height:1.4}
+    .project-contact-box strong{display:block;color:#17375d;font-size:12px;margin-bottom:2px}
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10000;opacity:0;pointer-events:none;transition:all .18s ease}
     .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -659,6 +661,76 @@ function getProjectTitle(project){
       return `<div class="card-meta" style="background:#fff;border:1px solid #e4edf5;border-radius:14px;padding:10px 12px;margin-top:10px"><strong>Commentaire client :</strong><br>${escapeHtml(comment)}</div>`;
     }
 
+    function firstNonEmptyProjectValue(...values){
+      for(const value of values){
+        if(value !== undefined && value !== null && String(value).trim() !== "") return String(value).trim();
+      }
+      return "";
+    }
+
+    function getProjectCommanditaire(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const campaign = data.campagne || data.campaign || payload.campagne || payload.campaign || {};
+      const communication = data.communication || payload.communication || {};
+      const clientInfo = payload.clientInfo || payload.client_info || data.clientInfo || data.client_info || {};
+      const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
+      const transmissionPayload = transmission.payload && typeof transmission.payload === "object" ? transmission.payload : {};
+      const transmissionClientInfo = transmission.clientInfo || transmission.client_info || transmissionPayload.clientInfo || transmissionPayload.client_info || {};
+
+      const firstName = firstNonEmptyProjectValue(
+        campaign.commanditaireFirstName, campaign.commanditaire_first_name,
+        campaign.contactFirstName, campaign.contact_first_name,
+        param.commanditaireFirstName, param.commanditaire_first_name,
+        param.contactFirstName, param.contact_first_name,
+        clientInfo.firstName, clientInfo.first_name, clientInfo.prenom,
+        transmissionClientInfo.firstName, transmissionClientInfo.first_name, transmissionClientInfo.prenom
+      );
+      const lastName = firstNonEmptyProjectValue(
+        campaign.commanditaireLastName, campaign.commanditaire_last_name,
+        campaign.contactLastName, campaign.contact_last_name,
+        param.commanditaireLastName, param.commanditaire_last_name,
+        param.contactLastName, param.contact_last_name,
+        clientInfo.lastName, clientInfo.last_name, clientInfo.nom,
+        transmissionClientInfo.lastName, transmissionClientInfo.last_name, transmissionClientInfo.nom
+      );
+      const name = firstNonEmptyProjectValue(
+        campaign.commanditaireName, campaign.commanditaire_name,
+        campaign.referentName, campaign.referent_name,
+        campaign.contactName, campaign.contact_name,
+        communication.commanditaireName, communication.commanditaire_name,
+        communication.contactName, communication.contact_name,
+        param.commanditaireName, param.commanditaire_name,
+        param.referentName, param.referent_name,
+        param.contactName, param.contact_name,
+        clientInfo.name, clientInfo.fullName, clientInfo.full_name,
+        transmissionClientInfo.name, transmissionClientInfo.fullName, transmissionClientInfo.full_name,
+        [firstName, lastName].filter(Boolean).join(" ")
+      );
+      const email = firstNonEmptyProjectValue(
+        campaign.commanditaireEmail, campaign.commanditaire_email,
+        campaign.referentEmail, campaign.referent_email,
+        campaign.contactEmail, campaign.contact_email,
+        communication.commanditaireEmail, communication.commanditaire_email,
+        communication.contactEmail, communication.contact_email,
+        param.commanditaireEmail, param.commanditaire_email,
+        param.referentEmail, param.referent_email,
+        param.contactEmail, param.contact_email,
+        data.commanditaireEmail, data.commanditaire_email,
+        payload.commanditaireEmail, payload.commanditaire_email,
+        clientInfo.email, clientInfo.mail,
+        transmissionClientInfo.email, transmissionClientInfo.mail
+      );
+      return { name, email };
+    }
+
+    function renderProjectCommanditaire(project){
+      const contact = getProjectCommanditaire(project);
+      if(!contact.name && !contact.email) return `<div class="project-contact-box"><strong>Commanditaire campagne</strong>Non renseigné dans cet AD.</div>`;
+      return `<div class="project-contact-box"><strong>Commanditaire campagne</strong>${escapeHtml(contact.name || "—")}${contact.email ? ` — <a href="mailto:${escapeAttr(contact.email)}" style="color:#0d4c72;font-weight:900;text-decoration:none">${escapeHtml(contact.email)}</a>` : ""}</div>`;
+    }
+
     function getPackUpgradeRequest(project){
       const data = getProjectData(project);
       const param = data.parametrage || {};
@@ -1145,6 +1217,7 @@ function getProjectTitle(project){
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             ${renderPackUpgradeBox(project)}
             ${renderProjectLogo(project)}
@@ -1209,6 +1282,7 @@ function getProjectTitle(project){
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
