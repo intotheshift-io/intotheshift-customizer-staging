@@ -72,6 +72,9 @@ let state = itsLoad();
 if(!state.chapters){ document.getElementById("app").innerHTML="<div class='page'><div class='card'>Aucun autodiagnostic chargé.</div></div>"; }
 let step="home", ci=0, qi=0, selected=null, scores=[];
 const previewMode = new URLSearchParams(window.location.search).get("preview") || "";
+// Depuis l’onglet Profils, le test répondant doit démarrer directement à la première question :
+// à ce stade, les données socio-démo ne sont pas encore paramétrées.
+if(previewMode === "respondent") step = "question";
 if(previewMode === "final") step = "final";
 
 function title(){ return state.meta?.titre || state.title || "Autodiagnostic"; }
@@ -176,13 +179,15 @@ function renderFinal(){
     <div class="note">Résultats simulés pour l’aperçu. Les résultats réels dépendront des réponses du collaborateur.</div>
     <div class="card" style="text-align:center"><div style="font-size:20px;font-weight:800">Récapitulatif de vos résultats</div></div>
     ${state.chapters.map((c,i)=>{
-      const p = (c.profiles||[])[1] || {};
+      const profiles = c.profiles || [];
+      // Mix volontaire pour l’aperçu final : rouge / orange / vert selon les chapitres,
+      // afin de visualiser plusieurs types de profils sans dépendre de vraies réponses.
+      const p = profiles.length ? profiles[i % profiles.length] : {};
       const kws = profileKeywords(p);
       return `<div class="card profil">
         <div style="font-size:12px;color:#64748b;font-weight:700">${i+1}. ${esc(c.title)}</div>
         <h3 style="font-size:16px;margin:8px 0">${esc(p.title || "Profil simulé")}</h3>
         ${p.summary ? `<p style="font-size:13px;color:#64748b;font-style:italic;margin-bottom:9px">${esc(p.summary)}</p>` : ''}
-        <p style="font-size:13px;color:#475569;line-height:1.6">${esc(p.description || "")}</p>
         ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
       </div>`;
     }).join("")}
