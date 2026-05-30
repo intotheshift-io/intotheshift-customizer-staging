@@ -72,6 +72,10 @@ let state = itsLoad();
 if(!state.chapters){ document.getElementById("app").innerHTML="<div class='page'><div class='card'>Aucun autodiagnostic chargé.</div></div>"; }
 let step="home", ci=0, qi=0, selected=null, scores=[];
 const previewMode = new URLSearchParams(window.location.search).get("preview") || "";
+const previewFrom = new URLSearchParams(window.location.search).get("from") || "";
+// Depuis l’onglet Profils, l’aperçu répondant doit ignorer la page socio-démo
+// car elle n’est pas encore paramétrée à cette étape.
+if(previewMode === "respondent" || previewFrom === "profiles") step = "question";
 if(previewMode === "final") step = "final";
 
 function title(){ return state.meta?.titre || state.title || "Autodiagnostic"; }
@@ -156,7 +160,6 @@ function renderChapter(){
     <div class="card profil">
       <div style="font-size:12px;color:#64748b;font-weight:700">Fin du chapitre ${ci+1} — ${esc(state.chapters[ci].title)}</div>
       <h2 style="font-size:20px;margin:10px 0">${esc(p.title)}</h2>
-      <p style="font-size:13px;color:#64748b;font-style:italic;margin-bottom:12px">${esc(p.summary)}</p>
       <p style="font-size:13px;color:#475569;line-height:1.65">${esc(p.description)}</p>
     </div>
     <button class="btn btn-primary" onclick="nextChapter()">${ci===state.chapters.length-1?'Voir mon résultat':'Chapitre suivant →'}</button>
