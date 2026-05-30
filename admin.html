@@ -289,6 +289,25 @@ td:nth-child(9){width:125px}
 .org-pack-upgrade-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
 .org-pack-upgrade-actions .mini-btn{font-size:12px;padding:7px 9px;border-radius:999px}
 @media(max-width:760px){.org-pack-upgrade-item{flex-direction:column}.org-pack-upgrade-actions{justify-content:flex-start}}
+.admin-modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.58);z-index:10020;display:none;align-items:center;justify-content:center;padding:20px}
+.admin-modal-backdrop.open{display:flex}
+.admin-modal{width:min(560px,100%);background:#fff;border:1px solid #d8e2ec;border-radius:26px;box-shadow:0 26px 80px rgba(0,0,0,.28);overflow:hidden}
+.admin-modal-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:#f8fafc;border-bottom:1px solid #e4edf5}
+.admin-modal-icon{width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;background:#eef6fb;color:#0d4c72}
+.admin-modal-icon.warn{background:#fff7ed;color:#9a3412}
+.admin-modal-title{margin:0 0 5px;color:#17375d;font-size:21px;line-height:1.15;font-weight:900}
+.admin-modal-sub{margin:0;color:#61738a;font-size:13px;line-height:1.45;font-weight:700}
+.admin-modal-body{padding:20px 24px;color:#60758a;font-size:14px;line-height:1.5}
+.admin-modal-detail{margin-top:12px;background:#eef6fb;border:1px solid #d7e8f1;border-radius:16px;padding:12px 13px;color:#0d4c72;font-weight:900}
+.admin-modal-warning{margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:16px;padding:12px 13px;color:#9a5b00;font-weight:800;font-size:13px;line-height:1.45}
+.admin-modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
+.admin-modal-btn{border:none;border-radius:999px;padding:11px 17px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.admin-modal-btn.secondary{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
+.admin-modal-btn.primary{background:#0d4c72;color:#fff}
+.admin-modal-btn.warn{background:#9a3412;color:#fff}
+.admin-modal-btn:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:620px){.admin-modal-footer .admin-modal-btn{width:100%}.admin-modal-head{padding:20px}.admin-modal-body{padding:18px 20px}.admin-modal-footer{padding:0 20px 20px}}
+
 @media(max-width:1200px){.org-cockpit-analytics{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.org-cockpit-analytics{grid-template-columns:1fr}.org-section-tools .admin-select{width:100%}}
 
@@ -674,6 +693,27 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
     </div>
   </div>
 </main>
+
+<div id="packUpgradeConfirmModal" class="admin-modal-backdrop" aria-hidden="true">
+  <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="packUpgradeConfirmTitle">
+    <div class="admin-modal-head">
+      <div id="packUpgradeConfirmIcon" class="admin-modal-icon">📦</div>
+      <div>
+        <h3 id="packUpgradeConfirmTitle" class="admin-modal-title">Valider cette recharge pack ?</h3>
+        <p id="packUpgradeConfirmSub" class="admin-modal-sub">Le quota réel du cockpit client sera mis à jour.</p>
+      </div>
+    </div>
+    <div class="admin-modal-body">
+      <div id="packUpgradeConfirmText">Confirmez le traitement de cette demande.</div>
+      <div id="packUpgradeConfirmDetail" class="admin-modal-detail"></div>
+      <div id="packUpgradeConfirmWarning" class="admin-modal-warning"></div>
+    </div>
+    <div class="admin-modal-footer">
+      <button type="button" class="admin-modal-btn secondary" onclick="closePackUpgradeConfirmModal(false)">Annuler</button>
+      <button id="packUpgradeConfirmBtn" type="button" class="admin-modal-btn primary" onclick="confirmAdminPackUpgrade()">Valider la recharge</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const API_BASE_URL = "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
@@ -1999,19 +2039,75 @@ async function saveUserPassations(userId){
   }
 }
 
+let packUpgradeToProcess = null;
+
+function openPackUpgradeConfirmModal({ projectId, action, title, label, afterLabel }){
+  packUpgradeToProcess = { projectId, action };
+  const modal=document.getElementById("packUpgradeConfirmModal");
+  const icon=document.getElementById("packUpgradeConfirmIcon");
+  const titleEl=document.getElementById("packUpgradeConfirmTitle");
+  const subEl=document.getElementById("packUpgradeConfirmSub");
+  const textEl=document.getElementById("packUpgradeConfirmText");
+  const detailEl=document.getElementById("packUpgradeConfirmDetail");
+  const warningEl=document.getElementById("packUpgradeConfirmWarning");
+  const btn=document.getElementById("packUpgradeConfirmBtn");
+
+  const approve=action==="approve";
+  if(icon){
+    icon.textContent=approve ? "✅" : "↩️";
+    icon.classList.toggle("warn", !approve);
+  }
+  if(titleEl) titleEl.textContent=approve ? "Valider cette recharge pack ?" : "Refuser cette recharge pack ?";
+  if(subEl) subEl.textContent=approve ? "Le quota réel du cockpit client sera mis à jour." : "La demande restera visible comme refusée.";
+  if(textEl) textEl.textContent=approve ? "Confirmez-vous la validation commerciale de cette recharge ?" : "Confirmez-vous le refus de cette demande de recharge ?";
+  if(detailEl) detailEl.innerHTML=`<strong>${escapeHtml(title)}</strong><br>${escapeHtml(label)}${afterLabel ? ` · après validation : ${escapeHtml(afterLabel)}` : ""}`;
+  if(warningEl){
+    warningEl.style.display=approve ? "block" : "none";
+    warningEl.textContent="À faire uniquement après validation commerciale / devis. Le client ne reçoit pas le détail interne HubSpot.";
+  }
+  if(btn){
+    btn.textContent=approve ? "Valider la recharge" : "Refuser la demande";
+    btn.className=approve ? "admin-modal-btn primary" : "admin-modal-btn warn";
+    btn.disabled=false;
+  }
+  if(modal){
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+  }
+}
+
+function closePackUpgradeConfirmModal(clear=true){
+  const modal=document.getElementById("packUpgradeConfirmModal");
+  if(modal){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+  }
+  if(clear) packUpgradeToProcess=null;
+}
+
 async function handleAdminPackUpgrade(projectId, action){
   if(!projectId || !["approve","reject"].includes(action)) return;
   const project=adminState.projects.find(p=>String(val(p,["id"],""))===String(projectId));
   const request=project ? getAdminProjectPackUpgradeRequest(project) : null;
   const title=project ? pickProjectTitle(val(project,["title","name","project_title"],"")) : "cet autodiagnostic";
   const label=request ? formatPackUpgradeRequestLabel(request) : "cette recharge";
-  const confirmed=window.confirm(action==="approve"
-    ? `Valider la recharge pack ${label} pour « ${title} » ?`
-    : `Refuser la recharge pack ${label} pour « ${title} » ?`);
-  if(!confirmed) return;
+  const afterLabel=request ? (request.unlimited ? "Pack illimité" : `${formatNumber(request.totalAfter || 0)} passations au total`) : "";
+  openPackUpgradeConfirmModal({projectId, action, title, label, afterLabel});
+}
+
+async function confirmAdminPackUpgrade(){
+  if(!packUpgradeToProcess?.projectId || !packUpgradeToProcess?.action) return;
+  const {projectId, action}=packUpgradeToProcess;
+  const btn=document.getElementById("packUpgradeConfirmBtn");
+  const oldText=btn?.textContent || "Confirmer";
 
   try{
+    if(btn){
+      btn.disabled=true;
+      btn.textContent=action==="approve" ? "Validation..." : "Refus...";
+    }
     await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/pack-upgrade`,{action});
+    closePackUpgradeConfirmModal(true);
     showSuccess(action==="approve" ? "Recharge pack validée." : "Recharge pack refusée.");
     await loadAdminData();
     currentOrgFilter="packUpgrade";
@@ -2019,6 +2115,11 @@ async function handleAdminPackUpgrade(projectId, action){
   }catch(err){
     console.error(err);
     showError("Traitement de la recharge impossible. Détail : "+err.message);
+  }finally{
+    if(btn){
+      btn.disabled=false;
+      btn.textContent=oldText;
+    }
   }
 }
 
