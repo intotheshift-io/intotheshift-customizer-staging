@@ -239,11 +239,17 @@ select option[value="current_pack"]{
         </div>
         <div class="field"><label>Description interne</label><input class="inp" id="desc" type="text" oninput="updateParam('desc',this.value)"></div>
         <div class="inp-row">
-          <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Écrivez ce nom sans espace, tout attaché. Il sera intégré dans l’URL de passation.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
+          <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Ce nom sera intégré dans l’URL envoyée aux répondants. Utilisez un format court, lisible et sans espace.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
           <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
         </div>
         <div id="paramQuotaInline" class="partner-hide"></div>
+        <div class="alert alert-neutral partner-hide" style="margin-bottom:14px">
+          <span class="alert-ico">💡</span>
+          <span>
+            Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Si vous disposez déjà d’un pack actif, vous pouvez réutiliser vos passations restantes sans racheter de volume supplémentaire. Si votre pack est insuffisant ou épuisé, sélectionnez un nouveau volume : une demande de devis sera automatiquement transmise à l’équipe Into The Shift avant activation des nouvelles passations.
+          </span>
+        </div>
         <div class="pack-tarifs-card pack-tarifs-inline partner-hide">
           <div class="pack-tarifs-title">💶 Tarifs des packs de passations</div>
           <div class="pack-tarifs-sub">Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Le pack 500 est recommandé pour un déploiement PME ; le pack 1 200 pour les grands comptes ou cabinets.</div>
@@ -269,7 +275,7 @@ select option[value="current_pack"]{
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="handleLaunchDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="launch-date-hint"><span class="alert-ico">⚠️</span><span>Délai minimum : la campagne ne peut pas démarrer avant J+5 pour laisser le temps de la préparer et de la livrer.</span></div></div>
           <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="handleCloseDateChange(this.value)"><div class="alert alert-warning date-policy-alert" id="close-date-hint"><span class="alert-ico">⚠️</span><span>La date de clôture doit être postérieure à la date de lancement. Elle est à choisir par le client et n’est jamais remplie automatiquement.</span></div></div>
         </div>
-        <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
+        <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Ce texte est utilisé dans le lien envoyé aux répondants. Utilisez un nom court, lisible et sans espace. Exemple : culture-managériale-2026.</div></div>
         <div class="block-divider"></div>
         <div class="field" style="margin-bottom:0">
           <label>Logo de passation</label>
@@ -288,19 +294,20 @@ select option[value="current_pack"]{
 
       <div class="block">
         <div class="block-title">Introduction affichée avant l'autodiagnostic <span class="oblig-badge">Obligatoire avant publication</span></div>
-        <div class="block-sub">Cette introduction doit préciser le caractère <strong>100 % anonyme</strong> : aucun login, aucun mot de passe, aucun cookie, aucun suivi d'adresse IP.</div>
+        <div class="block-sub">Ce texte apparaît sur la première page visible par les répondants avant le démarrage de l’autodiagnostic. Il permet d’expliquer la démarche, de rassurer sur l’anonymat et d’augmenter le taux de participation. Cette introduction doit préciser le caractère <strong>100 % anonyme</strong> : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.</div>
         <button class="btn-ai" id="btn-gen-intro" onclick="generateIntro()">✦ Générer une introduction avec l'IA</button>
-        <div class="field" style="margin-bottom:0"><label>Texte d'introduction<span class="req">*</span></label><textarea class="inp" id="intro" rows="6" oninput="updateParam('intro',this.value);checkContinue()"></textarea></div>
+        <div class="field" style="margin-bottom:0"><label>Texte d'introduction<span class="req">*</span><span class="help-q" data-help="Cette introduction est la première page visible par les répondants avant le lancement de l’autodiagnostic.">?</span></label><textarea class="inp" id="intro" rows="6" oninput="updateParam('intro',this.value);checkContinue()"></textarea></div>
       </div>
 
       <div class="block">
         <div class="block-title">Données socio-démo utiles à l'analyse <span class="oblig-badge">Au moins 1 requise</span></div>
-        <div class="block-sub">Ces données permettent de lire les résultats par segment et d'identifier les écarts entre populations, tout en préservant l'anonymat.</div>
+        <div class="block-sub">Ces données permettent d’analyser les écarts entre populations : métiers, sites, ancienneté, management, BU, etc. Les résultats restent anonymes et sont analysés uniquement de manière agrégée.</div>
         <div class="alert alert-info" style="margin-bottom:14px"><span class="alert-ico">🔒</span><span>Plus vous ajoutez de données socio-démo, plus les croisements peuvent créer de petits groupes. Réduisez les critères si l'alerte anonymat devient trop forte.</span></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
           <div class="field" style="margin-bottom:0"><label>Nombre total de répondants estimé<span class="req">*</span></label><input class="inp" id="nb_repondants" type="number" min="1" oninput="updateParam('nb_repondants',parseInt(this.value||0));checkAnonymity()"></div>
           <div style="padding:10px 14px;background:#f7f9fc;border:1px solid #e2e8f0;border-radius:8px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Taille moyenne après croisement</div><div id="cross-estimate" style="font-size:16px;font-weight:700;color:#18375d">—</div><div style="font-size:10px;color:#94a3b8;margin-top:1px">personnes environ par combinaison</div></div>
         </div>
+        <div class="alert alert-neutral" style="margin-bottom:12px"><span class="alert-ico">📊</span><span>Les croisements socio-démo permettent d’identifier des tendances entre différentes populations sans accéder aux réponses individuelles des collaborateurs.</span></div>
         <div id="anon-alert"></div><div id="socio-list"></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px"><button type="button" class="btn-add" onclick="addSociodemo()">+ Ajouter une donnée</button><button type="button" class="btn-ai" style="margin-bottom:0" onclick="suggestSociodemo()">✦ Suggérer avec l'IA</button></div>
       </div>
