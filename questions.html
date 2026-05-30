@@ -472,6 +472,11 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .context-help-box strong{display:block;color:#0d4c72;margin-bottom:2px}
 .context-help-ico{font-size:16px;line-height:1.2;flex-shrink:0}
 @media(max-width:760px){.help-tip::after{left:auto;right:0;transform:none}.help-tip::before{left:auto;right:4px;transform:none}}
+.panel-head{overflow:visible!important}
+.panel-title{overflow:visible!important}
+.panel-head .help-tip::after{bottom:auto!important;top:26px!important;left:0!important;right:auto!important;transform:none!important;width:min(320px,82vw)!important;z-index:10050!important}
+.panel-head .help-tip::before{bottom:auto!important;top:20px!important;left:4px!important;right:auto!important;transform:none!important;border-color:transparent!important;border-bottom-color:#18375d!important;border-top-color:transparent!important;z-index:10051!important}
+
 
 
 /* ── Ajustements ciblés aide / profils ───────────────── */
@@ -499,6 +504,30 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .btn-preview-final{background:#18375d;color:#fff;border:1px solid #18375d;border-radius:8px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px;}
 .btn-preview-final:hover{background:#122a47;}
 @media(max-width:760px){.profile-preview-actions{justify-content:stretch}.profile-preview-actions button{width:100%;justify-content:center}}
+
+
+/* Correctif tooltip panneau bibliothèque : l’aide ne doit pas être coupée */
+.panel-right .panel-head{overflow:visible!important;}
+.panel-right .panel-title{position:relative!important;overflow:visible!important;align-items:center!important;gap:6px!important;}
+.panel-right .panel-title .help-tip{position:relative!important;}
+.panel-right .panel-title .help-tip::after{
+  left:auto!important;
+  right:-6px!important;
+  bottom:auto!important;
+  top:26px!important;
+  transform:none!important;
+  width:min(320px, calc(100vw - 34px))!important;
+}
+.panel-right .panel-title .help-tip::before{
+  left:auto!important;
+  right:0!important;
+  bottom:auto!important;
+  top:20px!important;
+  transform:none!important;
+  border-color:transparent!important;
+  border-bottom-color:#18375d!important;
+  border-top-color:transparent!important;
+}
 
 </style>
 </head>
@@ -1213,10 +1242,9 @@ tags: catalogueOrRawTags(q, q.tags),
         const p = profiles[pi] || {};
         return {
           niveau: p.niveau || p.level || p.label || pi+1,
-          labelAdmin: p.labelAdmin || p.adminLabel || p.level || p.label || p.niveau || '',
           titre: p.titre || p.title || '',
-          phrase: p.phrase || p.summary || '',
-          description: p.description || '',
+          phrase: p.phrase || p.summary || p.resume || '',
+          description: p.description || p.desc || '',
           motscles: p.motscles || p.keywords || []
         };
       }),
@@ -1272,8 +1300,7 @@ function syncToState(){
       answers: q.answers.map(a => ({text:a.l, score:Number(a.s)}))
     })),
     profiles: c.profils.map((p, i) => ({
-      level: p.labelAdmin || p.niveau || profils_config[i]?.nom || `Profil ${i+1}`,
-      labelAdmin: p.labelAdmin || p.niveau || profils_config[i]?.nom || `Profil ${i+1}`,
+      level: p.niveau || profils_config[i]?.nom || `Profil ${i+1}`,
       title: p.titre,
       summary: p.phrase,
       description: p.description,
@@ -1991,7 +2018,7 @@ function renderProfils(ch) {
     const pc = profils_config[i];
     return `<div class="seuil-item">
       <div class="seuil-dot" style="background:${pc.couleur}"></div>
-      <span class="seuil-label">${pc.nom}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
+      <span class="seuil-label">${esc((ch.profils[i] && ch.profils[i].niveau) || pc.nom)}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
       <div class="seuil-range">
         <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
         <span class="seuil-sep">→</span>
@@ -2007,17 +2034,17 @@ function renderProfils(ch) {
       <div class="profil-header" style="background:${pc.bgHead};border-bottom:1px solid ${pc.borderHead}">
         <div class="profil-level">
           <div class="profil-dot" style="background:${pc.couleur}"></div>
-          <span class="profil-level-name" style="color:${pc.textColor}">Profil ${i+1} — ${esc(p.labelAdmin || p.niveau || pc.nom)}</span>
+          <span class="profil-level-name" style="color:${pc.textColor}">Profil ${i+1} — ${esc(p.niveau || pc.nom)}</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
           <span class="profil-score-range" style="color:${pc.textColor}">Moyenne ${ch.seuils[i].min} → ${ch.seuils[i].max}</span>
-          <button class="btn-ai-profil" style="background:rgba(0,0,0,0.08);color:${pc.textColor}" onclick="genProfil(${i})">${icoStar} Générer avec l'IA</button>
+
         </div>
       </div>
       <div class="profil-body">
         <div class="pfield">
-          <label>Intitulé de profil — label admin <span class="help-tip" tabindex="0" data-help="Nom interne du niveau de profil : il vous aide à repérer le palier dans l’éditeur et peut être repris dans les exports ou synthèses internes.">?</span></label>
-          <input type="text" value="${esc(p.labelAdmin || p.niveau || pc.nom)}" placeholder="Ex. Repères à consolider" oninput="chapters[activeChap].profils[${i}].labelAdmin=this.value;chapters[activeChap].profils[${i}].niveau=this.value;saveState();renderNav();updateSaveButton()">
+          <label>Niveau de résultat</label>
+          <input type="text" value="${esc(p.niveau || pc.nom)}" placeholder="Ex. Repères à consolider" oninput="chapters[activeChap].profils[${i}].niveau=this.value;saveState();renderNav();updateSaveButton()">
         </div>
         <div class="pfield">
           <label>Titre du profil en quelques mots <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce titre est visible par les répondants sur la page de résultat du chapitre. Il doit résumer le profil en quelques mots.">?</span></label>
@@ -2053,7 +2080,7 @@ function renderProfils(ch) {
     <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif des profils</strong> Les profils sont les retours personnalisés affichés aux répondants à la fin du chapitre. Ils doivent être bienveillants, compréhensibles et actionnables.</span></div>
     <div class="profile-preview-actions">
       <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’AD en mode répondant</button>
-      <button class="btn-preview-final" onclick="openFinalPreview()">👁 Visualiser la page récap finale</button>
+      <button class="btn-preview-final" onclick="openFinalPreview()">👁 Voir l’aperçu du récap final</button>
     </div>
     <div class="chap-head">
       <div class="chap-info">
@@ -2232,35 +2259,8 @@ function addMkw(e, profIdx) {
 }
 
 function genProfil(profIdx) {
-  const texts = [
-    {
-      titre:"La prise de conscience démarre",
-      phrase:"Vous identifiez certains réflexes, mais ils restent encore irréguliers.",
-      desc:"Ce profil montre une posture en construction. L'objectif est de rendre les bons réflexes plus visibles et plus faciles à activer dans le quotidien."
-    },
-    {
-      titre:"Les réflexes progressent",
-      phrase:"Vous adoptez déjà plusieurs comportements utiles, mais pas encore dans toutes les situations.",
-      desc:"Vous disposez de points d'appui solides. La prochaine étape consiste à gagner en constance, notamment dans les moments de pression ou d'incertitude."
-    },
-    {
-      titre:"Les bons réflexes sont ancrés",
-      phrase:"Vous agissez avec constance et pouvez inspirer les pratiques autour de vous.",
-      desc:"Votre posture est installée dans le quotidien. Vous êtes une ressource pour renforcer la dynamique collective et diffuser les bons comportements."
-    }
-  ];
-  const t = texts[profIdx];
-  Object.assign(chapters[activeChap].profils[profIdx], {
-    titre:t.titre,
-    phrase:t.phrase,
-    description:t.desc
-  });
-  saveState();
-  renderNav();
-  renderMain();
-  updateSaveButton();
+  // Fonction conservée par compatibilité, sans contenu générique local.
 }
-
 function fmt(cmd) {
   document.execCommand(cmd, false, null);
 }
