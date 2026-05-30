@@ -542,19 +542,19 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .pfield label .help-tip::after{
   bottom:auto!important;
   top:24px!important;
-  left:auto!important;
-  right:0!important;
-  transform:none!important;
-  width:min(340px, calc(100vw - 42px))!important;
-  max-width:340px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(300px, calc(100vw - 42px))!important;
+  max-width:300px!important;
   z-index:10080!important;
 }
 .pfield label .help-tip::before{
   bottom:auto!important;
   top:18px!important;
-  left:auto!important;
-  right:4px!important;
-  transform:none!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
   border-color:transparent!important;
   border-bottom-color:#18375d!important;
   border-top-color:transparent!important;
@@ -564,9 +564,10 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   .pfield label .help-tip::after{
     left:auto!important;
     right:0!important;
+    transform:none!important;
     width:min(300px, calc(100vw - 34px))!important;
   }
-  .pfield label .help-tip::before{left:auto!important;right:4px!important}
+  .pfield label .help-tip::before{left:auto!important;right:4px!important;transform:none!important}
 }
 .panel-right{overflow:visible!important}
 .panel-right .panel-head{overflow:visible!important}
