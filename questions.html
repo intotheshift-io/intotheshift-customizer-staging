@@ -533,12 +533,17 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 /* ── Correctifs ciblés bulles d’aide coupées ─────────────────
    Ne modifie que le positionnement des tooltips dans l’onglet Profils
    et dans le panneau Bibliothèque. */
-.profil-card,.profil-body,.pfield,.pfield label{overflow:visible!important}
+.profils-grid,.profil-card,.profil-header,.profil-body,.pfield,.pfield label{overflow:visible!important}
+.profil-body{position:relative!important;z-index:1!important}
+.pfield{position:relative!important;z-index:1!important}
+.pfield:has(.help-tip:hover),.pfield:has(.help-tip:focus){z-index:50!important}
+.pfield label{display:inline-flex!important;align-items:center!important;gap:5px!important;position:relative!important;width:auto!important;max-width:100%!important;line-height:1.35!important}
+.pfield label .help-tip{position:relative!important;flex:0 0 18px!important}
 .pfield label .help-tip::after{
   bottom:auto!important;
   top:24px!important;
   left:auto!important;
-  right:-8px!important;
+  right:0!important;
   transform:none!important;
   width:min(340px, calc(100vw - 42px))!important;
   max-width:340px!important;
@@ -548,12 +553,20 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   bottom:auto!important;
   top:18px!important;
   left:auto!important;
-  right:2px!important;
+  right:4px!important;
   transform:none!important;
   border-color:transparent!important;
   border-bottom-color:#18375d!important;
   border-top-color:transparent!important;
   z-index:10081!important;
+}
+@media(max-width:760px){
+  .pfield label .help-tip::after{
+    left:auto!important;
+    right:0!important;
+    width:min(300px, calc(100vw - 34px))!important;
+  }
+  .pfield label .help-tip::before{left:auto!important;right:4px!important}
 }
 .panel-right{overflow:visible!important}
 .panel-right .panel-head{overflow:visible!important}
