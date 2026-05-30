@@ -1965,6 +1965,7 @@ function renderQuestions(ch) {
         <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
+        <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’aperçu répondant</button>
         ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
         <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une question de zéro, puis renseignez au moins 3 réponses et leurs scores.">?</span></button>
       </div>` : ''}
