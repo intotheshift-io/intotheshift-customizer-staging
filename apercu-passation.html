@@ -83,6 +83,15 @@ function totalQ(){ return state.chapters.reduce((a,c)=>a+(c.questions||[]).lengt
 function currentQuestion(){ return state.chapters[ci].questions[qi]; }
 function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 function profileKeywords(p){ return (p?.keywords || p?.motscles || []).filter(Boolean); }
+const PROFILE_COLORS = ['#ff847e', '#ffc744', '#77cd8a'];
+function profileIndexForScore(profiles, avg){
+  const list = Array.isArray(profiles) ? profiles : [];
+  const found = list.findIndex(x => avg >= Number(x.min ?? 0) && avg <= Number(x.max ?? 2));
+  return found >= 0 ? found : Math.min(1, Math.max(0, list.length - 1));
+}
+function profileBorderColor(index){
+  return PROFILE_COLORS[index] || PROFILE_COLORS[1];
+}
 
 function render(){
   if(step==="home") return renderHome();
@@ -152,12 +161,14 @@ function nextQuestion(){
 function renderChapter(){
   const avg = scores.slice(-state.chapters[ci].questions.length).reduce((a,b)=>a+b,0)/state.chapters[ci].questions.length;
   const profiles = state.chapters[ci].profiles || [];
-  const p = profiles.find(x=>avg>=x.min && avg<=x.max) || profiles[1] || {};
+  const profileIndex = profileIndexForScore(profiles, avg);
+  const p = profiles[profileIndex] || profiles[1] || {};
+  const borderColor = profileBorderColor(profileIndex);
   document.getElementById("app").innerHTML = `
   <div class="hbar"><div class="hbar-title">${esc(title())}</div></div>
   <div class="page">
     <div class="note">Résultat simulé pour l’aperçu.</div>
-    <div class="card profil">
+    <div class="card profil" style="border-left-color:${borderColor}">
       <div style="font-size:12px;color:#64748b;font-weight:700">Fin du chapitre ${ci+1} — ${esc(state.chapters[ci].title)}</div>
       <h2 style="font-size:20px;margin:10px 0">${esc(p.title)}</h2>
       <p style="font-size:13px;color:#475569;line-height:1.65">${esc(p.description)}</p>
@@ -181,7 +192,7 @@ function renderFinal(){
     ${state.chapters.map((c,i)=>{
       const p = (c.profiles||[])[1] || {};
       const kws = profileKeywords(p);
-      return `<div class="card profil">
+      return `<div class="card profil" style="border-left-color:${profileBorderColor(1)}">
         <div style="font-size:12px;color:#64748b;font-weight:700">${i+1}. ${esc(c.title)}</div>
         <h3 style="font-size:16px;margin:8px 0">${esc(p.title || "Profil simulé")}</h3>
         ${p.summary ? `<p style="font-size:13px;color:#64748b;font-style:italic;margin-bottom:9px">${esc(p.summary)}</p>` : ''}
