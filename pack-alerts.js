@@ -105,6 +105,89 @@ L’équipe Into The Shift`,
   };
 }
 
+function formatPackChoiceLabel(request = {}) {
+  if (request.unlimited || request.choice === "illimite") return "Pack illimité";
+  const amount = Number(request.amount || request.choice || 0);
+  return Number.isFinite(amount) && amount > 0
+    ? `${amount.toLocaleString("fr-FR")} passations`
+    : "Pack complémentaire";
+}
+
+function getPackUpgradeRequestRecipients(row, adminEmail) {
+  const clientName = row.organization_name || row.user_company_name || "Client sans nom";
+  const requesterName =
+    row.contact_name ||
+    `${row.user_first_name || ""} ${row.user_last_name || ""}`.trim() ||
+    row.user_email ||
+    "—";
+  const cc = uniqueEmails(row.contact_email, row.user_email, row.partner_email);
+
+  return {
+    to: adminEmail || DEFAULT_ADMIN_EMAIL,
+    cc: cc.join(","),
+    clientName,
+    requesterName,
+    requesterEmail: row.contact_email || row.user_email || ""
+  };
+}
+
+function buildPackUpgradeRequestEmail({ row, request, recipient }) {
+  const title = row.display_title || row.title || "Autodiagnostic sans titre";
+  const currentQuota = Number(request.currentQuota ?? row.organization_passations_quota ?? 0);
+  const currentUsed = Number(request.currentUsed ?? row.organization_passations_used ?? 0);
+  const currentRemaining = request.currentRemaining === null
+    ? "Illimité"
+    : Math.max(0, Number(request.currentRemaining ?? (currentQuota - currentUsed) ?? 0)).toLocaleString("fr-FR");
+  const requestedPack = formatPackChoiceLabel(request);
+  const totalAfter = request.unlimited
+    ? "Illimité"
+    : Number(request.totalAfter || 0).toLocaleString("fr-FR");
+  const projectUrl = row.id ? `${row.frontend_url || "https://shiftstudio.intotheshift.io"}/client-folder.html?projectId=${encodeURIComponent(row.id)}` : "";
+
+  return {
+    subject: `Demande de devis pack — ${recipient.clientName}`,
+    text:
+`Bonjour,
+
+Une demande de pack complémentaire a été faite depuis Shift Studio.
+
+Client : ${recipient.clientName}
+Autodiagnostic : ${title}
+Pack demandé : ${requestedPack}
+Solde actuel : ${currentRemaining} passations restantes
+Quota actuel : ${currentQuota.toLocaleString("fr-FR")}
+Passations utilisées : ${currentUsed.toLocaleString("fr-FR")}
+Total après validation : ${totalAfter}
+Demandeur : ${recipient.requesterName}${recipient.requesterEmail ? ` <${recipient.requesterEmail}>` : ""}
+${projectUrl ? `
+Accès dossier/projet : ${projectUrl}` : ""}
+
+Action recommandée : créer ou envoyer le devis dans HubSpot, puis valider la recharge dans le dossier client Shift Studio.
+
+L’équipe Into The Shift`,
+    html:
+`<div style="font-family:Arial,sans-serif;color:#18375d;line-height:1.55;background:#f3f6f8;padding:24px">
+  <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #dfe8ef;border-radius:18px;padding:26px">
+    <p>Bonjour,</p>
+    <p>Une <strong>demande de pack complémentaire</strong> a été faite depuis Shift Studio.</p>
+    <div style="background:#eef6fb;border:1px solid #d7e8f1;border-radius:14px;padding:16px;margin:18px 0">
+      <p style="margin:0"><strong>Client :</strong> ${escapeHtml(recipient.clientName)}<br>
+      <strong>Autodiagnostic :</strong> ${escapeHtml(title)}<br>
+      <strong>Pack demandé :</strong> ${escapeHtml(requestedPack)}<br>
+      <strong>Solde actuel :</strong> ${escapeHtml(String(currentRemaining))} passations restantes<br>
+      <strong>Quota actuel :</strong> ${escapeHtml(currentQuota.toLocaleString("fr-FR"))}<br>
+      <strong>Passations utilisées :</strong> ${escapeHtml(currentUsed.toLocaleString("fr-FR"))}<br>
+      <strong>Total après validation :</strong> ${escapeHtml(String(totalAfter))}<br>
+      <strong>Demandeur :</strong> ${escapeHtml(recipient.requesterName)}${recipient.requesterEmail ? ` — ${escapeHtml(recipient.requesterEmail)}` : ""}</p>
+    </div>
+    ${projectUrl ? `<p style="margin:22px 0 10px"><a href="${escapeHtml(projectUrl)}" style="display:inline-block;background:#0d4c72;color:#ffffff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold">Ouvrir le dossier client</a></p>` : ""}
+    <p><strong>Action recommandée :</strong> créer ou envoyer le devis dans HubSpot, puis valider la recharge dans le dossier client Shift Studio.</p>
+    <p>L’équipe Into The Shift</p>
+  </div>
+</div>`
+  };
+}
+
 export function createPackAlerts({ pool, sendTransactionalEmail, adminEmail = DEFAULT_ADMIN_EMAIL }) {
   async function getPackAlertRows() {
     return pool.query(`
@@ -187,10 +270,98 @@ export function createPackAlerts({ pool, sendTransactionalEmail, adminEmail = DE
     return { sent, skipped };
   }
 
+  async function sendPackUpgradeRequestEmail(projectId) {
+    const result = await pool.query(`
+      SELECT
+        p.id,
+        p.title,
+        p.data,
+        COALESCE(
+          NULLIF(p.data->'parametrage'->>'titre_repondants', ''),
+          NULLIF(p.data->'parametrage'->>'titreRespondants', ''),
+          NULLIF(p.data->'parametrage'->>'titre_visible_repondants', ''),
+          NULLIF(p.data->'parametrage'->>'titreVisibleRepondants', ''),
+          NULLIF(p.data->'parametrage'->>'titre', ''),
+          p.title
+        ) AS display_title,
+        o.name AS organization_name,
+        o.contact_name,
+        o.contact_email,
+        o.passations_pack AS organization_passations_pack,
+        o.passations_quota AS organization_passations_quota,
+        o.passations_used AS organization_passations_used,
+        client.email AS user_email,
+        client.first_name AS user_first_name,
+        client.last_name AS user_last_name,
+        client.company_name AS user_company_name,
+        partner.email AS partner_email
+      FROM projects p
+      LEFT JOIN organizations o ON o.id = p.organization_id
+      LEFT JOIN users client ON client.id = p.user_id
+      LEFT JOIN users partner ON partner.id = o.created_by AND partner.role = 'partner'
+      WHERE p.id = $1
+      LIMIT 1
+    `, [projectId]);
+
+    const row = result.rows[0];
+    if (!row) return { sent: false, reason: "PROJECT_NOT_FOUND" };
+
+    const data = row.data && typeof row.data === "object" ? row.data : {};
+    const param = data.parametrage && typeof data.parametrage === "object" ? data.parametrage : {};
+    const alreadySentAt = data.pack_upgrade_email_sent_at || data.packUpgradeEmailSentAt || param.pack_upgrade_email_sent_at || param.packUpgradeEmailSentAt;
+    if (alreadySentAt) return { sent: false, reason: "ALREADY_SENT" };
+
+    const requested = data.pack_upgrade_requested === true || data.packUpgradeRequested === true || param.pack_upgrade_requested === true || param.packUpgradeRequested === true;
+    const status = String(data.pack_upgrade_status || data.packUpgradeStatus || param.pack_upgrade_status || param.packUpgradeStatus || "").toLowerCase();
+    if (!requested || status !== "pending") return { sent: false, reason: "NO_PENDING_REQUEST" };
+
+    const request = {
+      requested: true,
+      status: "pending",
+      choice: data.pack_upgrade_choice || data.packUpgradeChoice || param.pack_upgrade_choice || param.packUpgradeChoice || "",
+      amount: data.pack_upgrade_amount ?? data.packUpgradeAmount ?? param.pack_upgrade_amount ?? param.packUpgradeAmount ?? null,
+      totalAfter: data.pack_upgrade_total_after ?? data.packUpgradeTotalAfter ?? param.pack_upgrade_total_after ?? param.packUpgradeTotalAfter ?? null,
+      unlimited: data.pack_upgrade_unlimited === true || data.packUpgradeUnlimited === true || param.pack_upgrade_unlimited === true || param.packUpgradeUnlimited === true,
+      currentQuota: row.organization_passations_quota,
+      currentUsed: row.organization_passations_used,
+      currentRemaining: String(row.organization_passations_pack || "").toLowerCase() === "illimite" ? null : Math.max(0, Number(row.organization_passations_quota || 0) - Number(row.organization_passations_used || 0))
+    };
+
+    const recipient = getPackUpgradeRequestRecipients(row, adminEmail);
+    if (!recipient.to) return { sent: false, reason: "NO_ADMIN_RECIPIENT" };
+
+    const mail = buildPackUpgradeRequestEmail({ row: { ...row, frontend_url: process.env.FRONTEND_URL || "https://shiftstudio.intotheshift.io" }, request, recipient });
+    const mailResult = await sendTransactionalEmail({
+      to: recipient.to,
+      cc: recipient.cc || undefined,
+      subject: mail.subject,
+      text: mail.text,
+      html: mail.html
+    });
+
+    if (!mailResult.sent) return { ...mailResult, to: recipient.to, cc: recipient.cc || "" };
+
+    const sentAt = new Date().toISOString();
+    const nextData = {
+      ...data,
+      pack_upgrade_email_sent_at: sentAt,
+      packUpgradeEmailSentAt: sentAt,
+      parametrage: {
+        ...param,
+        pack_upgrade_email_sent_at: sentAt,
+        packUpgradeEmailSentAt: sentAt
+      }
+    };
+
+    await pool.query(`UPDATE projects SET data = $1::jsonb, updated_at = NOW() WHERE id = $2`, [JSON.stringify(nextData), projectId]);
+
+    return { sent: true, to: recipient.to, cc: recipient.cc || "" };
+  }
+
   async function runPackAlerts() {
     const pack = await processPackAlerts({ mode: "all" });
     return { pack, totalSent: pack.sent.length, totalSkipped: pack.skipped.length };
   }
 
-  return { processPackAlerts, runPackAlerts };
+  return { processPackAlerts, runPackAlerts, sendPackUpgradeRequestEmail };
 }
