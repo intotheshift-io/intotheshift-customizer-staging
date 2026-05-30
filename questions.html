@@ -2097,7 +2097,13 @@ function openRespondentPreview(){
 }
 
 function openFinalPreview(){
-  window.open(previewUrl('final'), '_blank');
+  saveState();
+  persistQuestionsStateForNextStep();
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
+  const params = new URLSearchParams();
+  if(projectId) params.set('projectId', projectId);
+  const qs = params.toString();
+  window.open('apercu-recap-final.html' + (qs ? '?' + qs : ''), '_blank');
 }
 
 function renderProfils(ch) {
