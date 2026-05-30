@@ -294,7 +294,7 @@ select option[value="current_pack"]{
 
       <div class="block">
         <div class="block-title">Introduction affichée avant l'autodiagnostic <span class="oblig-badge">Obligatoire avant publication</span></div>
-        <div class="block-sub">Ce texte apparaît sur la première page visible par les répondants avant le démarrage de l’autodiagnostic. Il permet d’expliquer la démarche, de rassurer sur l’anonymat et d’augmenter le taux de participation. Cette introduction doit préciser le caractère <strong>100 % anonyme</strong> : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.</div>
+        <div class="block-sub">Ce texte apparaît sur la première page visible par les répondants avant le démarrage de l’autodiagnostic. Il permet d’expliquer la démarche, de rassurer sur l’anonymat et d’augmenter le taux de participation. Si l’introduction est écrite et signée par la direction générale ou par la direction du service concerné, elle est souvent plus engageante pour les collaborateurs. Cette introduction doit préciser le caractère <strong>100 % anonyme</strong> : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.</div>
         <button class="btn-ai" id="btn-gen-intro" onclick="generateIntro()">✦ Générer une introduction avec l'IA</button>
         <div class="field" style="margin-bottom:0"><label>Texte d'introduction<span class="req">*</span><span class="help-q" data-help="Cette introduction est la première page visible par les répondants avant le lancement de l’autodiagnostic.">?</span></label><textarea class="inp" id="intro" rows="6" oninput="updateParam('intro',this.value);checkContinue()"></textarea></div>
       </div>
@@ -1442,6 +1442,18 @@ async function goNext(){
     state.parametrage.passations_total_apres_ajout = displayQuota?.quota === Infinity ? 'illimite' : (displayQuota?.quota || 0);
     state.parametrage.passations_restantes_apres_ajout = displayQuota?.remaining === Infinity ? 'illimite' : (displayQuota?.remaining || 0);
     state.parametrage.pack_mode = displayQuota?.isAddition ? 'addition_pack_existant' : (state.parametrage.pack_choisi === 'current_pack' ? 'pack_existant' : 'nouveau_pack');
+
+    const packUpgradeRequested = Boolean(state.parametrage.pack_choisi && state.parametrage.pack_choisi !== 'current_pack');
+    state.parametrage.pack_upgrade_requested = packUpgradeRequested;
+    state.parametrage.packUpgradeRequested = packUpgradeRequested;
+    state.parametrage.pack_upgrade_status = packUpgradeRequested ? 'pending' : '';
+    state.parametrage.packUpgradeStatus = packUpgradeRequested ? 'pending' : '';
+    state.parametrage.pack_upgrade_choice = packUpgradeRequested ? state.parametrage.pack_choisi : '';
+    state.parametrage.packUpgradeChoice = packUpgradeRequested ? state.parametrage.pack_choisi : '';
+    state.parametrage.pack_upgrade_amount = packUpgradeRequested && state.parametrage.pack_choisi !== 'illimite' ? Number(state.parametrage.pack_choisi || 0) : null;
+    state.parametrage.packUpgradeAmount = state.parametrage.pack_upgrade_amount;
+    state.parametrage.pack_upgrade_unlimited = packUpgradeRequested && state.parametrage.pack_choisi === 'illimite';
+    state.parametrage.packUpgradeUnlimited = state.parametrage.pack_upgrade_unlimited;
   } else {
     state.parametrage.volume_prevu = Number(getFieldValue('volume_prevu') || state.parametrage.volume_prevu || 0);
   }
