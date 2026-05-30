@@ -278,6 +278,17 @@ td:nth-child(9){width:125px}
 .org-health-row{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 0}
 .org-health-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;border:1px solid;line-height:1}
 .org-health-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}.org-health-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}.org-health-badge.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}.org-health-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+
+.org-pack-upgrade-panel{background:#fff8ec;border:1px solid #ffd9a3;border-radius:20px;padding:15px;margin:0;color:#8a5a00}
+.org-pack-upgrade-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;font-size:13px;font-weight:900;color:#17375d;margin-bottom:10px}
+.org-pack-upgrade-title span{font-size:12px;color:#9a5b00;font-weight:800}
+.org-pack-upgrade-list{display:grid;gap:8px}
+.org-pack-upgrade-item{background:#fff;border:1px solid #fed7aa;border-radius:15px;padding:10px 11px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.org-pack-upgrade-item strong{display:block;color:#17375d;font-size:13px;line-height:1.25}
+.org-pack-upgrade-item small{display:block;color:#8a5a00;font-size:12px;line-height:1.35;margin-top:3px}
+.org-pack-upgrade-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+.org-pack-upgrade-actions .mini-btn{font-size:12px;padding:7px 9px;border-radius:999px}
+@media(max-width:760px){.org-pack-upgrade-item{flex-direction:column}.org-pack-upgrade-actions{justify-content:flex-start}}
 @media(max-width:1200px){.org-cockpit-analytics{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.org-cockpit-analytics{grid-template-columns:1fr}.org-section-tools .admin-select{width:100%}}
 
@@ -498,7 +509,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <article class="global-card"><div class="global-ico">🚀</div><div style="width:100%"><h3>Publication</h3><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalToPublish">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Campagnes terminées</span><strong id="globalPublishedNoResults">—</strong></div><div class="global-line clickable" onclick="goToProjects('', 'sans lien diffusion')"><span>Sans lien diffusion</span><strong id="globalNoShare">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🏢</div><div style="width:100%"><h3>Clients</h3><div class="global-line clickable" onclick="goToOrganizations()"><span>Clients directs</span><strong id="kpiDirectOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Clients partners</span><strong id="kpiLinkedOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Partners</span><strong id="globalPartners">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">📊</div><div style="width:100%"><h3>Passations partners</h3><div class="global-line clickable" onclick="goToPartners()"><span>Achetées</span><strong id="kpiPartnerQuota">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Utilisées</span><strong id="kpiPartnerUsed">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Restantes</span><strong id="globalPartnerRemaining">—</strong></div></div></article>
-          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>À publier sans lien</span><strong id="globalSentNoShare">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>À publier sans lien</span><strong id="globalSentNoShare">—</strong></div><div class="global-line clickable" onclick="goToPackUpgradeRequests()"><span>Recharges à valider</span><strong id="globalPackUpgradeRequests">—</strong></div></div></article>
         </div>
       </section>
 
@@ -991,6 +1002,83 @@ function getOrgSector(org){
   if(creator && val(creator,["sector"],"")) sectors.push(val(creator,["sector"],""));
   return mostFrequent(sectors, "Secteur non renseigné");
 }
+
+function getAdminProjectData(project){
+  const raw=project?.data || project?.payload || project?.configuration || {};
+  if(typeof raw==="string"){
+    try{return JSON.parse(raw) || {};}catch(e){return {};}
+  }
+  return raw && typeof raw==="object" ? raw : {};
+}
+function getAdminProjectPackUpgradeRequest(project){
+  const data=getAdminProjectData(project);
+  const param=data.parametrage && typeof data.parametrage==="object" ? data.parametrage : {};
+  const choice=String(
+    data.pack_upgrade_choice || data.packUpgradeChoice ||
+    param.pack_upgrade_choice || param.packUpgradeChoice ||
+    param.pack_choisi || param.packChoisi || param.selectedPack ||
+    data.pack_choisi || data.packChoisi || data.selectedPack || ""
+  ).trim();
+  const status=String(
+    data.pack_upgrade_status || data.packUpgradeStatus ||
+    param.pack_upgrade_status || param.packUpgradeStatus || ""
+  ).toLowerCase();
+  if(!choice || choice==="current_pack" || choice==="existing") return {requested:false,status,choice};
+
+  const orgPack=String(project.organizationPassationsPack || project.organization_passations_pack || "").toLowerCase();
+  if(orgPack==="illimite" && choice!=="illimite" && !["approved","rejected"].includes(status)) return {requested:false,status:"not_required",choice};
+
+  const quota=Number(project.organizationPassationsQuota || project.organization_passations_quota || 0);
+  const used=Number(project.organizationPassationsUsed || project.organization_passations_used || 0);
+  const amount=choice==="illimite" ? null : Number(data.pack_upgrade_amount || data.packUpgradeAmount || param.pack_upgrade_amount || param.packUpgradeAmount || choice || 0);
+  if(choice!=="illimite" && (!Number.isFinite(amount) || amount<=0)) return {requested:false,status,choice};
+
+  const totalAfter=choice==="illimite" ? null : Number(data.pack_upgrade_total_after || data.packUpgradeTotalAfter || param.pack_upgrade_total_after || param.packUpgradeTotalAfter || quota + amount);
+  return {
+    requested:true,
+    status:status || "pending",
+    choice,
+    amount,
+    unlimited:choice==="illimite",
+    currentQuota:quota,
+    currentUsed:used,
+    currentRemaining:orgPack==="illimite" ? null : Math.max(0, quota-used),
+    totalAfter,
+    projectId:val(project,["id"],""),
+    projectTitle:pickProjectTitle(val(project,["title","name","project_title"],""))
+  };
+}
+function getOrgPackUpgradeRequests(org){
+  return getProjectsForOrg(org)
+    .map(project=>({project,request:getAdminProjectPackUpgradeRequest(project)}))
+    .filter(item=>item.request.requested);
+}
+function formatPackUpgradeRequestLabel(request){
+  if(request.unlimited) return "Passage en illimité";
+  return `+${formatNumber(request.amount || 0)} passations`;
+}
+function renderOrgPackUpgradePanel(stats){
+  const pending=(stats.packUpgradeRequests || []).filter(item=>String(item.request.status||"").toLowerCase()==="pending");
+  if(!pending.length) return "";
+  return `<div class="org-pack-upgrade-panel">
+    <div class="org-pack-upgrade-title"><strong>📦 Recharges pack à valider</strong><span>${pending.length} demande${pending.length>1?"s":""}</span></div>
+    <div class="org-pack-upgrade-list">
+      ${pending.map(({project,request})=>{
+        const projectId=val(project,["id"],"");
+        const title=pickProjectTitle(val(project,["title","name","project_title"],""));
+        const after=request.unlimited ? "Pack illimité" : `${formatNumber(request.totalAfter || 0)} passations au total`;
+        return `<div class="org-pack-upgrade-item">
+          <div><strong>${escapeHtml(title)}</strong><small>${escapeHtml(formatPackUpgradeRequestLabel(request))} · après validation : ${escapeHtml(after)}</small></div>
+          <div class="org-pack-upgrade-actions">
+            <button class="mini-btn" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','approve')">Valider</button>
+            <button class="mini-btn light" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','reject')">Refuser</button>
+          </div>
+        </div>`;
+      }).join("")}
+    </div>
+  </div>`;
+}
+
 function getOrgStats(org){
   const projects=getProjectsForOrg(org);
   const statuses={draft:0,sent:0,published:0,unpublished:0};
@@ -1018,12 +1106,15 @@ function getOrgStats(org){
   const underused=quota>0 && usageRate<=10 && projects.length>0;
   const inactive=projects.length===0 || (!campaignLive && statuses.published===0 && statuses.sent===0);
   const active=campaignLive || statuses.published>0 || statuses.sent>0;
-  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active};
+  const packUpgradeRequests=getOrgPackUpgradeRequests(org);
+  const packUpgradePending=packUpgradeRequests.filter(item=>String(item.request.status||"").toLowerCase()==="pending").length;
+  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
 }
 function getOrgPriority(org){
   const s=getOrgStats(org);
   let score=0;
   if(s.campaignLive) score+=50;
+  if(s.packUpgradePending) score+=60;
   if(s.statuses.sent) score+=40;
   if(s.quotaLow) score+=35;
   if(s.underused) score+=25;
@@ -1038,6 +1129,7 @@ function orgMatchesFilter(org){
   if(currentOrgFilter==="toPublish") return s.statuses.sent>0;
   if(currentOrgFilter==="campaignLive") return s.campaignLive;
   if(currentOrgFilter==="quotaLow") return s.quotaLow;
+  if(currentOrgFilter==="packUpgrade") return s.packUpgradePending>0;
   if(currentOrgFilter==="underused") return s.underused;
   if(currentOrgFilter==="noUser") return s.usersCount===0;
   if(currentOrgFilter==="noQuota") return s.quota===0 && String(s.pack||"")!=="illimite";
@@ -1068,12 +1160,14 @@ function renderOrgCockpitAnalytics(rows){
   const toPublish=stats.filter(s=>s.statuses.sent>0).length;
   const live=stats.filter(s=>s.campaignLive).length;
   const quotaLow=stats.filter(s=>s.quotaLow).length;
+  const packUpgrade=stats.reduce((sum,s)=>sum+Number(s.packUpgradePending||0),0);
   const underused=stats.filter(s=>s.underused).length;
   el.innerHTML=`
     <article class="org-analytic-card green"><div class="org-analytic-ico">🟢</div><div><strong>${active}</strong><span>clients actifs</span></div></article>
     <article class="org-analytic-card blue"><div class="org-analytic-ico">🚀</div><div><strong>${toPublish}</strong><span>AD à publier</span></div></article>
     <article class="org-analytic-card purple"><div class="org-analytic-ico">📣</div><div><strong>${live}</strong><span>campagnes en cours</span></div></article>
     <article class="org-analytic-card orange"><div class="org-analytic-ico">🔥</div><div><strong>${quotaLow}</strong><span>quotas faibles</span></div></article>
+    <article class="org-analytic-card orange"><div class="org-analytic-ico">📦</div><div><strong>${packUpgrade}</strong><span>recharges à valider</span></div></article>
     <article class="org-analytic-card"><div class="org-analytic-ico">💤</div><div><strong>${underused}</strong><span>packs sous-utilisés</span></div></article>
   `;
 }
@@ -1093,6 +1187,7 @@ function renderOrgFilterChips(rows){
     ["toPublish","🚀 À publier",count("toPublish")],
     ["campaignLive","📣 Campagne en cours",count("campaignLive")],
     ["quotaLow","🔥 Quota faible",count("quotaLow")],
+    ["packUpgrade","📦 Recharges à valider",count("packUpgrade")],
     ["underused","💤 Pack sous-utilisé",count("underused")],
     ["noUser","⚠️ Sans compte",count("noUser")],
     ["noQuota","📦 Sans quota",count("noQuota")],
@@ -1109,6 +1204,7 @@ function renderOrgHealthBadges(stats){
   if(stats.campaignLive) badges.push(["good","🟢","Campagne en cours"]);
   if(stats.statuses.sent>0) badges.push(["info","🚀",`${stats.statuses.sent} à publier`]);
   if(stats.quotaLow) badges.push(["danger","🔥","Quota faible"]);
+  if(stats.packUpgradePending>0) badges.push(["warn","📦",`${stats.packUpgradePending} recharge${stats.packUpgradePending>1?"s":""} à valider`]);
   if(stats.underused) badges.push(["warn","💤","Pack sous-utilisé"]);
   if(stats.usersCount===0) badges.push(["warn","⚠️","Aucun compte rattaché"]);
   if(!badges.length) badges.push([stats.active?"good":"info",stats.active?"✅":"⚪",stats.active?"Client actif":"À surveiller"]);
@@ -1168,6 +1264,14 @@ function goToOrganizations(search=""){
   renderOrganizations();
   document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
+function goToPackUpgradeRequests(){
+  showTab("organizations");
+  currentOrgFilter="packUpgrade";
+  const orgSearch=document.getElementById("orgSearch");
+  if(orgSearch)orgSearch.value="";
+  renderOrganizations();
+  document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
 function goToPartners(){
   showTab("partners");
   const partnerSearch=document.getElementById("partnerSearch");
@@ -1195,6 +1299,7 @@ function resetAdminFilters(){
   if(roleFilter)roleFilter.value="";
   if(statusFilter)statusFilter.value="";
   if(userStatusFilter)userStatusFilter.value="active";
+  currentOrgFilter="all";
 }
 
 async function loadAdminData(){
@@ -1247,6 +1352,7 @@ function renderKpis(){
   const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="unpublished").length;
   const noCompany=visibleUsers.filter(c=>isActiveUser(c)&&!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
+  const packUpgradeRequests=getDirectOrganizations().reduce((sum,o)=>sum+Number(getOrgStats(o).packUpgradePending||0),0);
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
   set("kpiUsers", visibleUsers.length);
   set("kpiPartners", partners.length);
@@ -1258,7 +1364,7 @@ function renderKpis(){
   set("kpiDirectOrgs", directOrgs);
   set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalUnpublished",statusCounts.unpublished||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
-  set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
+  set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);set("globalPackUpgradeRequests",packUpgradeRequests);
   set("sideUsers", visibleUsers.length);
   set("sidePartners", partners.length);
   set("sideOrganizations", directOrgs);
@@ -1546,6 +1652,8 @@ function renderOrganizations(){
           <div class="org-kpi used"><span>Utilisation pack</span><strong>${usageRate}%</strong><small>${formatNumber(used)} utilisées</small><div class="org-progress-mini"><div class="org-progress-mini-bar ${progressClass}" style="width:${usageRate}%"></div></div></div>
           <div class="org-kpi users"><span>Comptes</span><strong>${usersCount}</strong><small>${projectsCount} autodiag${projectsCount>1?"s":""}</small></div>
         </div>
+
+        ${renderOrgPackUpgradePanel(stats)}
 
         <div class="org-content-grid">
           <div style="display:grid;gap:12px;min-width:0">
@@ -1888,6 +1996,29 @@ async function saveUserPassations(userId){
   }catch(err){
     console.error(err);
     showError("Mise à jour impossible. Détail : "+err.message);
+  }
+}
+
+async function handleAdminPackUpgrade(projectId, action){
+  if(!projectId || !["approve","reject"].includes(action)) return;
+  const project=adminState.projects.find(p=>String(val(p,["id"],""))===String(projectId));
+  const request=project ? getAdminProjectPackUpgradeRequest(project) : null;
+  const title=project ? pickProjectTitle(val(project,["title","name","project_title"],"")) : "cet autodiagnostic";
+  const label=request ? formatPackUpgradeRequestLabel(request) : "cette recharge";
+  const confirmed=window.confirm(action==="approve"
+    ? `Valider la recharge pack ${label} pour « ${title} » ?`
+    : `Refuser la recharge pack ${label} pour « ${title} » ?`);
+  if(!confirmed) return;
+
+  try{
+    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/pack-upgrade`,{action});
+    showSuccess(action==="approve" ? "Recharge pack validée." : "Recharge pack refusée.");
+    await loadAdminData();
+    currentOrgFilter="packUpgrade";
+    renderOrganizations();
+  }catch(err){
+    console.error(err);
+    showError("Traitement de la recharge impossible. Détail : "+err.message);
   }
 }
 
