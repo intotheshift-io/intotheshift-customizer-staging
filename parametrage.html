@@ -315,7 +315,8 @@ select option[value="current_pack"]{
 
       <div class="block">
         <div class="block-title">Données d’analyse utiles <span class="oblig-badge">Au moins 1 requise</span></div>
-        <div class="block-sub">Ces données permettent de lire les tendances collectives par grands groupes : site, métier, ancienneté, type de poste, BU, périmètre, etc. Les résultats restent anonymes et sont analysés uniquement de manière agrégée.</div>
+        <div class="block-sub">Ces données permettent de lire les tendances collectives par grands groupes : site, métier, ancienneté, type de poste, BU, périmètre, etc. Elles sont posées aux répondants sur la 2ème page de l’autodiagnostic. Les résultats restent anonymes et sont analysés uniquement de manière agrégée.</div>
+        <div class="alert alert-neutral anonymity-intro-alert"><span class="alert-ico">📊</span><span>Choisissez seulement les critères utiles à la lecture des tendances. Plus vous ajoutez de données, plus les croisements peuvent créer de petits groupes.</span></div>
         <div class="anonymity-guide">
           <div class="anonymity-guide-title">🔒 Anonymat et qualité d’analyse</div>
           <p>Les réponses individuelles ne sont jamais visibles : les résultats sont lus uniquement de manière collective.</p>
@@ -335,7 +336,6 @@ select option[value="current_pack"]{
             <div id="anonymity-metrics" class="anonymity-metrics"></div>
           </div>
         </div>
-        <div class="alert alert-neutral anonymity-intro-alert"><span class="alert-ico">📊</span><span>Choisissez seulement les critères utiles à la lecture des tendances. Plus vous ajoutez de données, plus les croisements peuvent créer de petits groupes.</span></div>
         <div id="anon-alert"></div><div id="socio-list"></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px"><button type="button" class="btn-add" onclick="addSociodemo()">+ Ajouter une donnée</button><button type="button" class="btn-ai" style="margin-bottom:0" onclick="suggestSociodemo()">✦ Suggérer avec l'IA</button></div>
       </div>
@@ -1297,23 +1297,7 @@ function checkAnonymity(){
     metrics.innerHTML = '<span class="anonymity-metric">'+minTxt+'</span><span class="anonymity-metric">'+crossTxt+'</span><span class="anonymity-metric">'+critTxt+'</span><span class="anonymity-metric">'+missTxt+'</span>';
   }
 
-  let html='';
-  if(risk.level==='incomplete'){
-    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">✍️</span><span><strong>Effectifs à compléter.</strong><br>La moulinette signalera ensuite les petits groupes et la complexité des critères croisés.</span></div>';
-  }else if(risk.level==='danger'){
-    const ex = risk.smallCritical[0] ? ' Exemple : “'+esc(risk.smallCritical[0].label)+'” contient '+risk.smallCritical[0].count+' personne(s).' : '';
-    const many = risk.criteriaCount>=5 ? ' Vous avez ajouté beaucoup de critères : les croisements peuvent devenir trop fins.' : '';
-    html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Vigilance élevée.</strong><br>'+ex+many+' Regroupez des options ou retirez un critère si nécessaire.</span></div>';
-  }else if(risk.level==='warning'){
-    const small = risk.smallWarn[0] ? ' Une option contient moins de 8 personnes.' : '';
-    const many = risk.criteriaCount===4 ? ' Quatre critères peuvent créer des croisements assez fins.' : '';
-    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance légère.</strong><br>'+small+many+' Vérifiez simplement que ces critères sont tous utiles à l’analyse.</span></div>';
-  }else{
-    const sensitive = risk.sensitiveInfo && risk.sensitiveInfo.length ? ' Certaines options proches de 8 à 10 personnes restent à interpréter avec prudence.' : '';
-    html='<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">✓</span><span><strong>Niveau confortable.</strong> Les groupes renseignés semblent suffisamment larges pour une lecture collective.'+sensitive+'</span></div>';
-  }
-
-  document.getElementById('anon-alert').innerHTML=html;
+  document.getElementById('anon-alert').innerHTML='';
   save();
 }
 
