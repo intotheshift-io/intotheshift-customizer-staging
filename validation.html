@@ -1284,6 +1284,34 @@ function closeTransmitModal(){
   modal.setAttribute('aria-hidden','true');
 }
 
+function getTransmissionModeLabels(){
+  if(isValidationExtendMode()){
+    return {
+      loadingTitle: 'Prolongation en cours',
+      loadingText: 'Nous transmettons uniquement la nouvelle date de clôture à Into The Shift.',
+      successTitle: 'Prolongation transmise',
+      successText: 'Votre demande de prolongation a bien été transmise à Into The Shift.\n\nLa nouvelle date de clôture a été communiquée. Les liens de diffusion et de résultats restent inchangés.',
+      successButton: 'Prolongation transmise ✓'
+    };
+  }
+  if(isValidationReprogramMode()){
+    return {
+      loadingTitle: 'Reprogrammation en cours',
+      loadingText: 'Nous transmettons la nouvelle période de campagne à Into The Shift.',
+      successTitle: 'Reprogrammation transmise',
+      successText: 'Votre demande de reprogrammation a bien été transmise à Into The Shift.\n\nL’équipe va vérifier la nouvelle période de campagne avant remise en ligne.',
+      successButton: 'Reprogrammation transmise ✓'
+    };
+  }
+  return {
+    loadingTitle: 'Transmission en cours',
+    loadingText: 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.',
+    successTitle: 'Configuration transmise',
+    successText: 'Votre simulateur comportemental a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.',
+    successButton: 'Demande transmise ✓'
+  };
+}
+
 
 function getApiBaseUrl(){
   return (typeof ITS_API_BASE !== 'undefined' && ITS_API_BASE)
@@ -1351,7 +1379,8 @@ async function transmit(){
     delete payload.recap;
     delete payload.attachments;
   }
-  showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.');
+  const modalLabels = getTransmissionModeLabels();
+  showTransmitModal('loading', modalLabels.loadingTitle, modalLabels.loadingText);
 
   state.clientInfo = getClientInfo();
   state.transmission = state.transmission || {};
@@ -1461,11 +1490,11 @@ async function transmit(){
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
       'success',
-      'Configuration transmise',
-      'Votre simulateur comportemental a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.'
+      modalLabels.successTitle,
+      modalLabels.successText
     );
     document.getElementById('btn-transmit').disabled = true;
-    document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
+    document.getElementById('btn-transmit').textContent = modalLabels.successButton;
   } else {
     state.transmission.status = 'send_error';
     if (typeof itsSave === 'function') itsSave(state);
