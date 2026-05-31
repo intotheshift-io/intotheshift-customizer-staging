@@ -336,8 +336,8 @@ Les groupes créés par vos critères socio-démo semblent suffisamment larges p
 <div style="font-size:11px;color:#94a3b8;line-height:1.45;margin-top:8px">
 Les réponses restent toujours collectives et individuelles jamais accessibles.
 </div>
-<div style="margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:11px;color:#b7840a;line-height:1.45">
-⚠️ Évitez les catégories trop précises ou les petits groupes (ex : une équipe de 3 personnes).
+<div style="margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:11px;color:#b7840a;line-height:1.5">
+⚠️ Évitez les catégories trop précises ou les groupes de moins de 8 à 10 personnes, surtout lorsque plusieurs critères sont combinés.
 </div>
 </div>
         </div>
@@ -1122,7 +1122,81 @@ function removeSociodemo(i){ state.parametrage.sociodemo.splice(i,1); save(); re
 function addSocioOpt(i){ state.parametrage.sociodemo[i].opts.push('Nouvelle option'); save(); renderSociodemo(); }
 function removeSocioOpt(i,oi){ if(state.parametrage.sociodemo[i].opts.length<=2)return; state.parametrage.sociodemo[i].opts.splice(oi,1); save(); renderSociodemo(); }
 function suggestSociodemo(){ const sugg=[{q:"Ancienneté dans l'entreprise",opts:["Moins d'un an","1 à 3 ans","4 à 10 ans","Plus de 10 ans"],min_groupe:null},{q:"Type de poste",opts:["Terrain","Bureau","Encadrement","Support"],min_groupe:null},{q:"Périmètre",opts:["France","International","Groupe"],min_groupe:null}]; sugg.forEach(s=>{if(!state.parametrage.sociodemo.some(x=>x.q===s.q))state.parametrage.sociodemo.push(s)}); save(); renderSociodemo(); }
-function checkAnonymity(){ const arr=state.parametrage.sociodemo||[]; const nR=parseInt(document.getElementById('nb_repondants').value)||0; const prod=arr.reduce((a,s)=>a*((s.opts||[]).length||1),1); const cg=nR>0&&prod?Math.round((nR/prod)*10)/10:null; const level=document.getElementById('anonymity-level'); if(level){ level.textContent=cg===null?'À calculer':(cg<5?'🔴 Vigilance élevée':(cg<10?'🟠 Vigilance':'🟢 Confortable')); level.style.color=cg===null?'#64748b':(cg<5?'#c0392b':(cg<10?'#b7840a':'#27823a')); } let html=''; if(cg!==null&&cg<5) html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Certaines combinaisons de critères pourraient concerner très peu de collaborateurs.</strong><br>Exemple : “femmes managers du service juridique à Lyon avec +15 ans d’ancienneté”. Dans ce cas, les résultats pourraient devenir trop faciles à interpréter indirectement. Réduisez le nombre de critères ou regroupez certaines catégories.</span></div>'; else if(cg!==null&&cg<10) html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance : certains groupes peuvent devenir petits.</strong><br>Les réponses individuelles ne sont jamais visibles, mais les catégories trop précises peuvent fragiliser l’anonymat indirect. Regroupez les options si nécessaire.</span></div>'; else if(cg!==null) html='<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">✓</span><span><strong>Niveau d’anonymat confortable.</strong> Les croisements contiennent en moyenne environ <strong>'+cg+' personnes</strong>. Certaines combinaisons peuvent être plus petites que cette moyenne. Les résultats restent collectifs et les réponses individuelles ne sont jamais accessibles.</span></div>'; document.getElementById('anon-alert').innerHTML=html; save(); }
+function checkAnonymity(){
+  const arr=state.parametrage.sociodemo||[];
+  const nR=parseInt(document.getElementById('nb_repondants').value)||0;
+  const prod=arr.reduce((a,s)=>a*((s.opts||[]).length||1),1);
+  const cg=nR>0&&prod?Math.round((nR/prod)*10)/10:null;
+
+  const level=document.getElementById('anonymity-level');
+  const levelBox = level ? level.parentElement : null;
+
+  if(level){
+    if(cg===null){
+      level.textContent='À calculer';
+      level.style.color='#64748b';
+    }else if(cg<8){
+      level.textContent='🔴 Vigilance élevée';
+      level.style.color='#c0392b';
+    }else if(cg<15){
+      level.textContent='🟠 Vigilance';
+      level.style.color='#b7840a';
+    }else{
+      level.textContent='🟢 Confortable';
+      level.style.color='#27823a';
+    }
+  }
+
+  if(levelBox){
+    if(cg===null){
+      levelBox.style.background='#f7f9fc';
+      levelBox.style.borderColor='#e2e8f0';
+    }else if(cg<8){
+      levelBox.style.background='#fff6f6';
+      levelBox.style.borderColor='#ffd6d4';
+    }else if(cg<15){
+      levelBox.style.background='#fffaf0';
+      levelBox.style.borderColor='#ffd490';
+    }else{
+      levelBox.style.background='#f0fbf2';
+      levelBox.style.borderColor='#bfe6c8';
+    }
+
+    const infoTexts = levelBox.querySelectorAll('div');
+    if(infoTexts[1]){
+      infoTexts[1].innerHTML = cg<8
+        ? 'Certaines combinaisons de critères risquent de créer des groupes très petits et plus faciles à interpréter indirectement.'
+        : cg<15
+          ? 'Les groupes semblent globalement corrects mais certaines combinaisons peuvent devenir sensibles selon les croisements.'
+          : 'Les groupes créés par vos critères socio-démo semblent suffisamment larges pour préserver l’anonymat des répondants.';
+    }
+
+    if(infoTexts[2]){
+      infoTexts[2].innerHTML = cg<8
+        ? 'Réduisez le nombre de critères croisés ou regroupez certaines catégories pour renforcer l’anonymat.'
+        : 'Les réponses restent toujours collectives et individuelles jamais accessibles.';
+    }
+
+    if(infoTexts[3]){
+      infoTexts[3].style.color = cg<8 ? '#c0392b' : '#b7840a';
+      infoTexts[3].innerHTML = cg<8
+        ? '🚨 Évitez les catégories trop précises ou les groupes de moins de 8 personnes.'
+        : '⚠️ Évitez les catégories trop précises ou les groupes de moins de 8 à 10 personnes.';
+    }
+  }
+
+  let html='';
+  if(cg!==null&&cg<8){
+    html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Certaines combinaisons de critères peuvent fragiliser l’anonymat.</strong><br>Exemple : “Femmes managers du service juridique à Lyon avec plus de 15 ans d’ancienneté”. Même si les réponses restent anonymes, certaines catégories croisées peuvent concerner trop peu de collaborateurs et devenir plus faciles à interpréter indirectement.</span></div>';
+  }else if(cg!==null&&cg<15){
+    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance recommandée.</strong><br>Les réponses individuelles restent invisibles, mais certaines catégories peuvent devenir sensibles si plusieurs critères sont croisés ensemble.</span></div>';
+  }else if(cg!==null){
+    html='<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">✓</span><span><strong>Niveau d’anonymat confortable.</strong> Les groupes semblent suffisamment larges pour préserver une lecture collective des résultats.</span></div>';
+  }
+
+  document.getElementById('anon-alert').innerHTML=html;
+  save();
+}
 
 function renderResources(){
   const arr = state.parametrage.resources || [];
