@@ -1170,7 +1170,7 @@
             </div>
 
             <div class="actions">
-              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="status ${status}">${statusLabel(status)}</span>${extendedStatusHTML(p)}</div>
+              <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
                 ${status === "unpublished" ? `
                   <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
