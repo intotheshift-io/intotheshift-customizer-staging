@@ -1062,6 +1062,7 @@ function buildPayload(){
   const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
 
   const isExtension = isValidationExtendMode();
+  const isReprogramming = isValidationReprogramMode();
   const previousEndDate =
     state.previousEndDate ||
     state.oldEndDate ||
@@ -1085,7 +1086,10 @@ function buildPayload(){
     extending: isExtension,
     isExtension: isExtension,
     extension: isExtension,
-    transmissionType: isExtension ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
+    isReprogramming: isReprogramming,
+    reprogramming: isReprogramming,
+    isReprogrammingTransmission: isReprogramming,
+    transmissionType: isExtension ? 'extension' : (isReprogramming ? 'reprogramming' : 'standard'),
     oldEndDate: previousEndDate,
     previousEndDate: previousEndDate,
     newEndDate: param.date_cloture || param.dateCloture || '',
@@ -1368,7 +1372,8 @@ async function transmit(){
   }
   const payload = buildPayload();
   const isExtensionTransmission = isValidationExtendMode();
-  if(isExtensionTransmission){
+  const isReprogrammingTransmission = isValidationReprogramMode();
+  if(isExtensionTransmission || isReprogrammingTransmission){
     delete payload.excel_html;
     delete payload.pdf_html;
     delete payload.data;
@@ -1433,7 +1438,10 @@ async function transmit(){
         isExtending: isExtensionTransmission,
         extending: isExtensionTransmission,
         extensionRequest: isExtensionTransmission,
-        transmissionType: isExtensionTransmission ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
+        isReprogramming: isReprogrammingTransmission,
+        reprogramming: isReprogrammingTransmission,
+        reprogrammingRequest: isReprogrammingTransmission,
+        transmissionType: isExtensionTransmission ? 'extension' : (isReprogrammingTransmission ? 'reprogramming' : 'standard'),
         extended: isExtensionTransmission ? true : state.extended,
         isExtended: isExtensionTransmission ? true : state.isExtended,
         step: 'validation',
