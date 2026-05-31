@@ -54,6 +54,7 @@
     .status.results{background:#e8f8ef;color:#22824d}
     .status.archived{background:#f1f4f8;color:#94a3b8}
     .status.unpublished{background:#eef2f6;color:#64748b}
+    .status.extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
 
     .actions{grid-column:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:4px}
     .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-start}
@@ -676,6 +677,7 @@
       if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
       const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
       if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
       if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
@@ -783,6 +785,31 @@
     function copyTagHTML(project){
       return isProjectCopy(project) ? `<span class="tag copy">🧬 Copie</span>` : "";
     }
+
+    function isProjectExtended(project){
+      const data = getProjectData(project);
+      const param = data.parametrage || {};
+      return Boolean(
+        project?.extended === true ||
+        project?.isExtended === true ||
+        project?.extended_at ||
+        project?.extendedAt ||
+        data.extended === true ||
+        data.isExtended === true ||
+        data.extended_at ||
+        data.extendedAt ||
+        param.extended === true ||
+        param.isExtended === true ||
+        param.extended_at ||
+        param.extendedAt
+      );
+    }
+
+    function extendedStatusHTML(project){
+      return isProjectExtended(project) ? `<span class="status extended">Prolongé</span>` : "";
+    }
+
+
 
     async function markProjectAsCopy(cloneId, cloneProject, sourceProjectId){
       if(!cloneId || !token()) return cloneProject;
@@ -1143,7 +1170,7 @@
             </div>
 
             <div class="actions">
-              <span class="status ${status}">${statusLabel(status)}</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="status ${status}">${statusLabel(status)}</span>${extendedStatusHTML(p)}</div>
               <div class="row-actions">
                 ${status === "unpublished" ? `
                   <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">

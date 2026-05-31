@@ -128,6 +128,7 @@
 }
 
 
+.extend-status-note{display:inline-flex;align-items:center;gap:5px;margin-left:8px;padding:3px 8px;border-radius:999px;background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff;font-size:10px;font-weight:900;text-transform:none;letter-spacing:0}
 .reprogram-note{background:#f0f8f7;border:1px solid #b8dfe0;color:#18375d;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:13px;font-weight:700;line-height:1.45}.reprogram-note small{display:block;color:#64748b;font-weight:600;margin-top:3px}
 .reprogram-missing-overlay{position:fixed;inset:0;background:rgba(24,55,93,.48);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px}.reprogram-missing-overlay.on{display:flex}.reprogram-missing-modal{width:min(520px,92vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.25);padding:26px 28px}.reprogram-missing-icon{width:52px;height:52px;border-radius:18px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}.reprogram-missing-title{font-size:19px;font-weight:900;color:#18375d;margin-bottom:7px}.reprogram-missing-text{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}.reprogram-missing-list{display:flex;flex-direction:column;gap:7px;margin:12px 0 18px}.reprogram-missing-item{display:flex;align-items:flex-start;gap:8px;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:9px 11px;color:#8a6408;font-size:12px;font-weight:800;line-height:1.35}.reprogram-missing-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}.reprogram-missing-btn{border:none;border-radius:10px;padding:10px 15px;background:#18375d;color:#fff;font-size:13px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif}.reprogram-missing-btn.secondary{background:#fff;color:#64748b;border:1px solid #d8e0ea}.btn-continue.not-ready{background:#94a3b8!important;color:#fff;cursor:pointer;box-shadow:none}.btn-continue.not-ready:hover{background:#7f8fa3!important}
 </style>
@@ -496,6 +497,11 @@ function normalizeCampaignDatesInState(){
     }catch(e){}
   }
 
+  if(isCampaignExtendMode()){
+    const originalStart = document.body.getAttribute("data-reprogram-original-start") || "";
+    if(originalStart) start = originalStart;
+  }
+
   applyCampaignDatesEverywhere(start,end);
 }
 
@@ -515,9 +521,25 @@ function forceInjectCampaignDatesUI(){
 }
 
 function updateDatesFromInputs(){
-  p().date_lancement=document.getElementById('date-launch').value;
-  p().date_cloture=document.getElementById('date-close').value;
-  normalizeCampaignDatesInState();
+  const launchEl=document.getElementById('date-launch');
+  const closeEl=document.getElementById('date-close');
+  if(isCampaignExtendMode()){
+    const original=getReprogramOriginalDates();
+    const originalStart=normalizeDateInputValue(original.start || p().date_lancement || state.campaign_start_date || state.campaignStartDate || '');
+    p().date_lancement=originalStart;
+    p().dateLancement=originalStart;
+    state.campaign_start_date=originalStart;
+    state.campaignStartDate=originalStart;
+    if(launchEl) launchEl.value=originalStart;
+    p().date_cloture=closeEl ? closeEl.value : p().date_cloture;
+    p().dateCloture=p().date_cloture;
+    state.campaign_end_date=p().date_cloture;
+    state.campaignEndDate=p().date_cloture;
+  }else{
+    p().date_lancement=launchEl ? launchEl.value : p().date_lancement;
+    p().date_cloture=closeEl ? closeEl.value : p().date_cloture;
+    normalizeCampaignDatesInState();
+  }
   validateAndNormalizeCampaignDates(true);
   updateDatesUI();
   updateChecklist();
@@ -675,7 +697,7 @@ function updateChecklist(){
   if(!isBackofficeViewingCampaign()){
     document.getElementById('sb-status').textContent=ok?'Prêt à transmettre':'Brouillon';
   }else{
-    document.getElementById('sb-status').textContent=statusLabel();
+    document.getElementById('sb-status').textContent=isCampaignExtendMode()?'Prolongation':statusLabel();
   }
   let help=document.getElementById('publish-help');
   if(help){
@@ -1053,6 +1075,17 @@ async function goNext(){
   state.reprogramming=isReprogram;
   state.isExtending=isExtend;
   state.extending=isExtend;
+  if(isExtend){
+    state.extended = true;
+    state.isExtended = true;
+    state.extended_at = new Date().toISOString();
+    state.extendedAt = state.extended_at;
+    state.parametrage = state.parametrage || {};
+    state.parametrage.extended = true;
+    state.parametrage.isExtended = true;
+    state.parametrage.extended_at = state.extended_at;
+    state.parametrage.extendedAt = state.extended_at;
+  }
   if(state.transmission){state.transmission.status='draft';state.transmission.submitted_at='';delete state.transmission.submittedAt;}
   saveState();
   await persistProjectDraft('campagne','draft');
@@ -1386,6 +1419,17 @@ bootCampagnePage();
         el.style.pointerEvents=editable ? "auto" : "none";
         el.style.cursor=editable ? "pointer" : "not-allowed";
         el.style.background=editable ? "#fff" : "#f6f8fb";
+        if(extend && id === "date-launch"){
+          const original=getReprogramOriginalDates();
+          const originalStart=normalizeDateInputValue(original.start || p().date_lancement || state.campaign_start_date || state.campaignStartDate || '');
+          if(originalStart){
+            el.value=originalStart;
+            p().date_lancement=originalStart;
+            p().dateLancement=originalStart;
+            state.campaign_start_date=originalStart;
+            state.campaignStartDate=originalStart;
+          }
+        }
       });
       document.querySelectorAll(".check-row input").forEach(el=>{
         el.disabled=extend;
