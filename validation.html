@@ -1062,7 +1062,6 @@ function buildPayload(){
   const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
 
   const isExtension = isValidationExtendMode();
-  const isReprogramming = isValidationReprogramMode();
   const previousEndDate =
     state.previousEndDate ||
     state.oldEndDate ||
@@ -1086,10 +1085,9 @@ function buildPayload(){
     extending: isExtension,
     isExtension: isExtension,
     extension: isExtension,
-    isReprogramming: isReprogramming,
-    reprogramming: isReprogramming,
-    isReprogrammingTransmission: isReprogramming,
-    transmissionType: isExtension ? 'extension' : (isReprogramming ? 'reprogramming' : 'standard'),
+    isReprogramming: isValidationReprogramMode(),
+    reprogramming: isValidationReprogramMode(),
+    transmissionType: isExtension ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
     oldEndDate: previousEndDate,
     previousEndDate: previousEndDate,
     newEndDate: param.date_cloture || param.dateCloture || '',
@@ -1373,7 +1371,12 @@ async function transmit(){
   const payload = buildPayload();
   const isExtensionTransmission = isValidationExtendMode();
   const isReprogrammingTransmission = isValidationReprogramMode();
-  if(isExtensionTransmission || isReprogrammingTransmission){
+
+  // IMPORTANT :
+  // le backend / Make attend encore les pièces jointes obligatoires.
+  // On garde donc le payload complet pour les reprogrammations.
+  // Seules les prolongations utilisent le payload allégé.
+  if(isExtensionTransmission){
     delete payload.excel_html;
     delete payload.pdf_html;
     delete payload.data;
@@ -1438,10 +1441,7 @@ async function transmit(){
         isExtending: isExtensionTransmission,
         extending: isExtensionTransmission,
         extensionRequest: isExtensionTransmission,
-        isReprogramming: isReprogrammingTransmission,
-        reprogramming: isReprogrammingTransmission,
-        reprogrammingRequest: isReprogrammingTransmission,
-        transmissionType: isExtensionTransmission ? 'extension' : (isReprogrammingTransmission ? 'reprogramming' : 'standard'),
+        transmissionType: isExtensionTransmission ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
         extended: isExtensionTransmission ? true : state.extended,
         isExtended: isExtensionTransmission ? true : state.isExtended,
         step: 'validation',
