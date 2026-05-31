@@ -46,6 +46,7 @@
     .status-draft{background:#fff5da;color:#8a6200}
     .status-sent{background:#e8f1ff;color:#1f4e91}
     .status-published{background:#eafbf1;color:#16774a}
+    .status-extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
     .status-unpublished{background:#eef2f6;color:#64748b}
     .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .small-btn{border-radius:999px;padding:9px 13px;border:1px solid #d8e2ec;background:#fff;color:#0d4c72;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
@@ -1090,6 +1091,38 @@ function getProjectTitle(project){
       return "status-draft";
     }
 
+    function isProjectExtended(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+
+      return Boolean(
+        project?.extended === true ||
+        project?.isExtended === true ||
+        project?.extended_at ||
+        project?.extendedAt ||
+        data?.extended === true ||
+        data?.isExtended === true ||
+        data?.extended_at ||
+        data?.extendedAt ||
+        payload?.extended === true ||
+        payload?.isExtended === true ||
+        payload?.extended_at ||
+        payload?.extendedAt ||
+        param?.extended === true ||
+        param?.isExtended === true ||
+        param?.extended_at ||
+        param?.extendedAt
+      );
+    }
+
+    function renderExtendedBadge(project){
+      return isProjectExtended(project)
+        ? '<span class="status status-extended">Prolongé</span>'
+        : '';
+    }
+
+
     function renderClient(){
       const projects = currentClient.projects || [];
       const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
@@ -1405,7 +1438,13 @@ function getProjectTitle(project){
             ${renderProjectIds(project)}
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              ${renderExtendedBadge(project)}
+            </div>
+              ${renderExtendedBadge(project)}
+            </div>
             ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             ${renderProjectLogo(project)}
@@ -1469,7 +1508,10 @@ function getProjectTitle(project){
             ${renderProjectIds(project)}
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              ${renderExtendedBadge(project)}
+            </div>
             ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             <div class="card-meta">
