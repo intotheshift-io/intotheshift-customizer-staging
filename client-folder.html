@@ -1520,6 +1520,11 @@ function getProjectTitle(project){
                   : ""
               }
               ${
+                ["unpublished","archived"].includes(normalizedStatus) && isAdmin()
+                  ? `<button class="small-btn" onclick="reprogramProject('${escapeAttr(project.id)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">🚀 Reprogrammer</button>`
+                  : ""
+              }
+              ${
                 normalizedStatus === "published" && isAdmin()
                   ? `<button class="small-btn unpublish" onclick="changeProjectStatus('${escapeAttr(project.id)}','unpublished','dépublier')">🛑 Dépublier</button>`
                   : ""
@@ -1727,6 +1732,11 @@ function getProjectTitle(project){
     function extendProject(projectId){
       const id = setActiveProjectForNavigation(projectId);
       window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}&extend=1` : "campagne.html?extend=1";
+    }
+
+    function reprogramProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1` : "campagne.html?reprogram=1";
     }
 
     function openKitCommunicationPage(projectId){
