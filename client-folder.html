@@ -1117,8 +1117,8 @@ function getProjectTitle(project){
     }
 
     function renderExtendedBadge(project){
-      return isProjectExtended(project)
-        ? '<span class="status status-extended">Campagne prolongée</span>'
+      return normalizeStatus(project?.status) === "published" && isProjectExtended(project)
+        ? '<span class="status status-extended">📅 Campagne prolongée</span>'
         : '';
     }
 

@@ -677,7 +677,7 @@
       if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
       const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
-      if(isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
+      if(status === "published" && isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
       if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
       if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
@@ -806,7 +806,7 @@
     }
 
     function extendedStatusHTML(project){
-      return isProjectExtended(project) ? `<span class="status extended">Prolongé</span>` : "";
+      return normalizeStatus(project) === "published" && isProjectExtended(project) ? `<span class="status extended">📅 Campagne prolongée</span>` : "";
     }
 
 
