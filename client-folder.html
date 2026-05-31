@@ -828,47 +828,6 @@ function getProjectTitle(project){
       };
     }
 
-    function isProjectPackUpgradeBlockingPublication(project){
-      const request = getPackUpgradeRequest(project);
-      if(!request.requested || request.status !== "pending") return false;
-
-      // Une recharge validée au niveau du cockpit client met à jour le quota global,
-      // mais certains anciens AD peuvent encore porter une ancienne demande pending
-      // dans leur data projet. Dans ce cas, on ne bloque plus la publication.
-      const clientRequest = getClientPackUpgradeRequest(currentClient || {});
-      if(clientRequest.requested && clientRequest.status === "approved") return false;
-
-      const remaining = Number(val(currentClient || {},["passationsRemaining","passations_remaining"], project.organizationPassationsRemaining || project.organization_passations_remaining || 0) || 0);
-      const requestedAmount = request.unlimited ? Infinity : Number(request.amount || 0);
-      if(Number.isFinite(requestedAmount) && requestedAmount > 0 && remaining >= requestedAmount) return false;
-
-      return true;
-    }
-
-    async function showPackUpgradePublicationBlockedModal(projectId){
-      const project = getCurrentProjectById(projectId);
-      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const request = project ? getPackUpgradeRequest(project) : null;
-      const clientRequest = getClientPackUpgradeRequest(currentClient || {});
-      const label = request?.requested
-        ? (request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`)
-        : "recharge demandée";
-
-      await openConfirmModal({
-        tone:"warn",
-        icon:"📦",
-        title:"Recharge pack à vérifier",
-        subtitle:"La publication est bloquée tant que la demande de recharge affichée sur cet AD reste en attente.",
-        text:"La recharge a peut-être été validée au niveau du cockpit client, mais cet autodiagnostic porte encore une ancienne demande en attente. Recharge concernée : "+label+".",
-        project:title,
-        warning: clientRequest.requested && clientRequest.status === "approved"
-          ? "Recharge validée côté cockpit client : actualisez la page. Si le bouton reste bloqué, la demande pending est encore stockée dans les données de cet AD."
-          : "Validez ou refusez la recharge depuis le cockpit client, puis actualisez cette page avant de publier.",
-        confirmText:"J’ai compris",
-        hideCancel:true
-      });
-    }
-
     function renderPackUpgradeBox(project){
       const request = getPackUpgradeRequest(project);
       if(!request.requested) return "";
@@ -1320,6 +1279,97 @@ function getProjectTitle(project){
       `;
     }
 
+    function getClientRemainingPassations(){
+      const raw = val(currentClient || {}, ["passationsRemaining","passations_remaining"], "");
+      const n = Number(raw);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function isClientPackUpgradeApproved(){
+      const request = getClientPackUpgradeRequest(currentClient || {});
+      return request.requested === true && String(request.status || "").toLowerCase() === "approved";
+    }
+
+    function canPublishDespitePendingPack(project){
+      const request = getPackUpgradeRequest(project || {});
+      if(!(request.requested && String(request.status || "").toLowerCase() === "pending")) return true;
+
+      // Cas attendu : la demande a été validée au niveau du cockpit client.
+      // Le projet peut encore porter un ancien flag pending dans data.parametrage ;
+      // on le nettoie juste avant publication sans ré-ajouter de quota.
+      if(isClientPackUpgradeApproved()) return true;
+
+      // Sécurité complémentaire : si le quota actuel couvre déjà la publication,
+      // on ne bloque pas l'ouverture de la modale de publication.
+      return getClientRemainingPassations() > 0;
+    }
+
+    async function showPackPublicationBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      await openConfirmModal({
+        tone:"warn",
+        icon:"📦",
+        title:"Recharge pack à valider",
+        subtitle:"La publication est bloquée tant que la demande de recharge n’est pas validée.",
+        text:"Validez la recharge dans le cockpit client, puis relancez la publication. Si la recharge apparaît déjà validée, actualisez la page pour recharger les données.",
+        project:title,
+        warning:"Cette vérification évite de publier une campagne sans passations disponibles.",
+        confirmText:"Compris",
+        hideCancel:true
+      });
+    }
+
+    function getProjectCurrentStep(project){
+      const data = getProjectData(project || {});
+      return project?.currentStep || project?.current_step || data.currentStep || data.current_step || data.step || "campagne";
+    }
+
+    async function clearProjectPackUpgradePendingFlag(projectId){
+      const project = getCurrentProjectById(projectId);
+      if(!project) return false;
+      const request = getPackUpgradeRequest(project);
+      if(!(request.requested && String(request.status || "").toLowerCase() === "pending")) return true;
+      if(!canPublishDespitePendingPack(project)) return false;
+
+      const data = getProjectData(project);
+      const parametrage = Object.assign({}, data.parametrage || {});
+      data.pack_upgrade_status = "approved";
+      data.packUpgradeStatus = "approved";
+      data.pack_upgrade_approved_from_cockpit = true;
+      data.packUpgradeApprovedFromCockpit = true;
+      parametrage.pack_upgrade_status = "approved";
+      parametrage.packUpgradeStatus = "approved";
+      parametrage.pack_upgrade_approved_from_cockpit = true;
+      parametrage.packUpgradeApprovedFromCockpit = true;
+
+      const response = await fetch(`${API_URL}/api/projects`, {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${getToken()}`
+        },
+        body:JSON.stringify({
+          projectId: projectId,
+          title: getProjectTitle(project),
+          organizationId: getProjectOrgId(project) || getClientId() || null,
+          status: project.status || "sent",
+          currentStep: getProjectCurrentStep(project),
+          campaignStartDate: getProjectStartDate(project) || undefined,
+          campaignEndDate: getProjectEndDate(project) || undefined,
+          data:Object.assign({}, data, { parametrage })
+        })
+      });
+      const json = await response.json().catch(()=>({}));
+      if(!response.ok) throw new Error(json.error || "Impossible de synchroniser la recharge validée sur cet AD.");
+
+      const localProject = getCurrentProjectById(projectId);
+      if(localProject){
+        localProject.data = Object.assign({}, data, { parametrage });
+      }
+      return true;
+    }
+
     function renderAds(projects){
       const adsList = document.getElementById("adsList");
       renderWatchList(projects);
@@ -1373,8 +1423,8 @@ function getProjectTitle(project){
               <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? (isProjectPackUpgradeBlockingPublication(project)
-                    ? `<button class="small-btn publish" onclick="showPackUpgradePublicationBlockedModal('${escapeAttr(project.id)}')">✅ Publier</button>`
+                  ? (packUpgrade.requested && packUpgrade.status === "pending" && !canPublishDespitePendingPack(project)
+                    ? `<button class="small-btn publish" onclick="showPackPublicationBlockedModal('${escapeAttr(project.id)}')">✅ Publier</button>`
                     : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
                   : ""
               }
@@ -1621,9 +1671,7 @@ function getProjectTitle(project){
       const btn = document.getElementById("confirmPublishBtn");
       const oldText = btn?.textContent || "Publier";
 
-      try{
-        if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
-
+      async function sendPublicationRequest(){
         const shareUrl = String(document.getElementById("publishShareUrl")?.value || "").trim();
         const resultsUrl = String(document.getElementById("publishResultsUrl")?.value || "").trim();
         const startDate = String(document.getElementById("publishStartDate")?.value || "").trim();
@@ -1653,7 +1701,28 @@ function getProjectTitle(project){
         });
 
         const data = await response.json().catch(() => ({}));
-        if(!response.ok) throw new Error(data.error || "Erreur publication");
+        if(!response.ok){
+          const err = new Error(data.error || "Erreur publication");
+          err.status = response.status;
+          throw err;
+        }
+        return data;
+      }
+
+      try{
+        if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
+
+        await clearProjectPackUpgradePendingFlag(projectToPublish.id);
+
+        try{
+          await sendPublicationRequest();
+        }catch(firstErr){
+          const isPackError = String(firstErr.message || "").toLowerCase().includes("recharge") || Number(firstErr.status) === 409;
+          if(!isPackError) throw firstErr;
+
+          await clearProjectPackUpgradePendingFlag(projectToPublish.id);
+          await sendPublicationRequest();
+        }
 
         document.getElementById("publishSuccess").classList.add("on");
 
@@ -1664,7 +1733,17 @@ function getProjectTitle(project){
 
       }catch(err){
         console.error(err);
-        alert(err.message || "Impossible de publier cet autodiagnostic.");
+        await openConfirmModal({
+          tone:"warn",
+          icon:"📦",
+          title:"Publication bloquée",
+          subtitle:"La recharge pack n’est pas considérée comme validée pour cet AD.",
+          text:err.message || "Impossible de publier cet autodiagnostic.",
+          project:projectToPublish.title,
+          warning:"Si la recharge est bien validée dans le cockpit client, cela signifie que l’ancien indicateur de recharge pending est encore présent sur l’AD. Rechargez la page puis réessayez ; si le blocage reste présent, il faudra corriger la synchronisation côté API.",
+          confirmText:"Compris",
+          hideCancel:true
+        });
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
@@ -1701,7 +1780,7 @@ function getProjectTitle(project){
         await loadClientFolder();
       }catch(err){
         console.error(err);
-        alert(err.message || "Impossible de traiter la recharge pack.");
+        await openConfirmModal({tone:"warn",icon:"📦",title:"Recharge pack non traitée",subtitle:"La demande n’a pas pu être mise à jour.",text:err.message || "Impossible de traiter la recharge pack.",confirmText:"Compris",hideCancel:true});
       }
     }
 
@@ -1736,7 +1815,7 @@ function getProjectTitle(project){
         await loadClientFolder();
       }catch(err){
         console.error(err);
-        alert(err.message || "Impossible de traiter la recharge pack.");
+        await openConfirmModal({tone:"warn",icon:"📦",title:"Recharge pack non traitée",subtitle:"La demande n’a pas pu être mise à jour.",text:err.message || "Impossible de traiter la recharge pack.",confirmText:"Compris",hideCancel:true});
       }
     }
 
