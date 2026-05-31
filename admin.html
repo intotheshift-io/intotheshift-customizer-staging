@@ -1116,12 +1116,11 @@ function getAdminOrgPackUpgradeRequest(org){
   };
 }
 function getOrgPackUpgradeRequests(org){
-  const projectRequests = getProjectsForOrg(org)
+  const orgRequest = getAdminOrgPackUpgradeRequest(org);
+  if(orgRequest.requested) return [{project:null,org,request:orgRequest}];
+  return getProjectsForOrg(org)
     .map(project=>({project,org,request:getAdminProjectPackUpgradeRequest(project)}))
     .filter(item=>item.request.requested);
-  const orgRequest = getAdminOrgPackUpgradeRequest(org);
-  if(orgRequest.requested) projectRequests.unshift({project:null,org,request:orgRequest});
-  return projectRequests;
 }
 function formatPackUpgradeRequestLabel(request){
   if(request.unlimited) return "Passage en illimité";
@@ -1144,7 +1143,7 @@ function renderOrgPackUpgradePanel(stats){
           <div><strong>${escapeHtml(title)}</strong><small>${escapeHtml(formatPackUpgradeRequestLabel(request))} · après validation : ${escapeHtml(after)}${escapeHtml(requester)}</small></div>
           <div class="org-pack-upgrade-actions">
             ${isOrgRequest
-              ? `<button class="mini-btn" onclick="focusOrganizationPackEditor('${escapeAttr(orgId)}')">Mettre à jour le pack</button>`
+              ? `<button class="mini-btn" onclick="handleAdminOrganizationPackUpgrade('${escapeAttr(orgId)}','approve')">Valider</button><button class="mini-btn light" onclick="handleAdminOrganizationPackUpgrade('${escapeAttr(orgId)}','reject')">Refuser</button>`
               : `<button class="mini-btn" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','approve')">Valider</button><button class="mini-btn light" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','reject')">Refuser</button>`}
           </div>
         </div>`;
@@ -2131,6 +2130,23 @@ function closePackUpgradeConfirmModal(clear=true){
   if(clear) packUpgradeToProcess=null;
 }
 
+async function handleAdminOrganizationPackUpgrade(orgId, action){
+  if(!orgId || !["approve","reject"].includes(action)) return;
+  const org = adminState.organizations.find(o=>String(val(o,["id"],""))===String(orgId));
+  const request = org ? getAdminOrgPackUpgradeRequest(org) : null;
+  const orgName = org ? getOrgName(org) : "ce cockpit client";
+  const label = request?.requested ? formatPackUpgradeRequestLabel(request) : "cette recharge";
+  openPackUpgradeConfirmModal({
+    projectId: "org:" + String(orgId),
+    action,
+    title: orgName,
+    label,
+    afterLabel: request?.unlimited ? "Pack illimité" : `${formatNumber(request?.totalAfter || 0)} passations au total`,
+    isOrganizationRequest: true,
+    organizationId: orgId
+  });
+}
+
 async function handleAdminPackUpgrade(projectId, action){
   if(!projectId || !["approve","reject"].includes(action)) return;
   const project=adminState.projects.find(p=>String(val(p,["id"],""))===String(projectId));
@@ -2152,7 +2168,12 @@ async function confirmAdminPackUpgrade(){
       btn.disabled=true;
       btn.textContent=action==="approve" ? "Validation..." : "Refus...";
     }
-    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/pack-upgrade`,{action});
+    if(String(projectId || "").startsWith("org:")){
+      const orgId = String(projectId).slice(4);
+      await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/pack-upgrade`,{action});
+    }else{
+      await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/pack-upgrade`,{action});
+    }
     closePackUpgradeConfirmModal(true);
     showSuccess(action==="approve" ? "Recharge pack validée." : "Recharge pack refusée.");
     await loadAdminData();
