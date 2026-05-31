@@ -828,6 +828,47 @@ function getProjectTitle(project){
       };
     }
 
+    function isProjectPackUpgradeBlockingPublication(project){
+      const request = getPackUpgradeRequest(project);
+      if(!request.requested || request.status !== "pending") return false;
+
+      // Une recharge validée au niveau du cockpit client met à jour le quota global,
+      // mais certains anciens AD peuvent encore porter une ancienne demande pending
+      // dans leur data projet. Dans ce cas, on ne bloque plus la publication.
+      const clientRequest = getClientPackUpgradeRequest(currentClient || {});
+      if(clientRequest.requested && clientRequest.status === "approved") return false;
+
+      const remaining = Number(val(currentClient || {},["passationsRemaining","passations_remaining"], project.organizationPassationsRemaining || project.organization_passations_remaining || 0) || 0);
+      const requestedAmount = request.unlimited ? Infinity : Number(request.amount || 0);
+      if(Number.isFinite(requestedAmount) && requestedAmount > 0 && remaining >= requestedAmount) return false;
+
+      return true;
+    }
+
+    async function showPackUpgradePublicationBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const request = project ? getPackUpgradeRequest(project) : null;
+      const clientRequest = getClientPackUpgradeRequest(currentClient || {});
+      const label = request?.requested
+        ? (request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`)
+        : "recharge demandée";
+
+      await openConfirmModal({
+        tone:"warn",
+        icon:"📦",
+        title:"Recharge pack à vérifier",
+        subtitle:"La publication est bloquée tant que la demande de recharge affichée sur cet AD reste en attente.",
+        text:"La recharge a peut-être été validée au niveau du cockpit client, mais cet autodiagnostic porte encore une ancienne demande en attente. Recharge concernée : "+label+".",
+        project:title,
+        warning: clientRequest.requested && clientRequest.status === "approved"
+          ? "Recharge validée côté cockpit client : actualisez la page. Si le bouton reste bloqué, la demande pending est encore stockée dans les données de cet AD."
+          : "Validez ou refusez la recharge depuis le cockpit client, puis actualisez cette page avant de publier.",
+        confirmText:"J’ai compris",
+        hideCancel:true
+      });
+    }
+
     function renderPackUpgradeBox(project){
       const request = getPackUpgradeRequest(project);
       if(!request.requested) return "";
@@ -1332,8 +1373,8 @@ function getProjectTitle(project){
               <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? (packUpgrade.requested && packUpgrade.status === "pending"
-                    ? `<button class="small-btn publish" onclick="alert('Validez d’abord la recharge pack avant de publier.')">✅ Publier</button>`
+                  ? (isProjectPackUpgradeBlockingPublication(project)
+                    ? `<button class="small-btn publish" onclick="showPackUpgradePublicationBlockedModal('${escapeAttr(project.id)}')">✅ Publier</button>`
                     : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
                   : ""
               }
