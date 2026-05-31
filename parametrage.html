@@ -1210,12 +1210,15 @@ function computeAnonymityRisk(){
     crossEstimate = Math.round(crossEstimate*10)/10;
   }
   const manyCriteria = arr.length >= 4;
+  const crossDanger = criteria.length >= 3 && crossEstimate !== null && crossEstimate < 8;
+  const crossWarning = criteria.length >= 3 && crossEstimate !== null && crossEstimate < 15;
+  const repeatedSmallGroups = smallWarn.length >= 2 && arr.length >= 3;
   let level='good';
   if(!nR || !arr.length || all.length===0) level='incomplete';
   else if(missing>0) level='incomplete';
-  else if(smallCritical.length>0 || (crossEstimate!==null && crossEstimate<8) || (smallWarn.length>=2 && arr.length>=2)) level='danger';
-  else if(smallWarn.length>0 || (crossEstimate!==null && crossEstimate<15) || manyCriteria) level='warning';
-  return {level,nR,criteriaCount:arr.length,missing,smallest,smallCritical,smallWarn,crossEstimate,manyCriteria,allCount:all.length};
+  else if(smallCritical.length>0 || crossDanger || repeatedSmallGroups) level='danger';
+  else if(smallWarn.length>0 || crossWarning || manyCriteria) level='warning';
+  return {level,nR,criteriaCount:arr.length,missing,smallest,smallCritical,smallWarn,crossEstimate,manyCriteria,allCount:all.length,crossDanger,crossWarning,repeatedSmallGroups};
 }
 function checkAnonymity(){
   const risk=computeAnonymityRisk();
@@ -1252,7 +1255,7 @@ function checkAnonymity(){
   }
   if(metrics){
     const minTxt = risk.smallest ? 'Plus petit groupe : '+risk.smallest : 'Effectifs à compléter';
-    const crossTxt = risk.crossEstimate!==null ? 'Indice croisement : ≈ '+risk.crossEstimate : 'Croisement : à calculer';
+    const crossTxt = risk.crossEstimate!==null && risk.criteriaCount>=3 ? 'Indice croisement : ≈ '+risk.crossEstimate : (risk.criteriaCount<3 ? 'Croisement : faible complexité' : 'Croisement : à calculer');
     const critTxt = risk.criteriaCount+' critère(s)';
     const missTxt = risk.missing ? risk.missing+' effectif(s) manquant(s)' : 'Effectifs renseignés';
     metrics.innerHTML = '<span class="anonymity-metric">'+minTxt+'</span><span class="anonymity-metric">'+crossTxt+'</span><span class="anonymity-metric">'+critTxt+'</span><span class="anonymity-metric">'+missTxt+'</span>';
@@ -1262,7 +1265,7 @@ function checkAnonymity(){
     html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">✍️</span><span><strong>Effectifs à compléter.</strong><br>La moulinette signalera ensuite les petits groupes et les croisements sensibles. Si vous gardez beaucoup de critères, le niveau pourra rester en vigilance même avec des effectifs élevés.</span></div>';
   }else if(risk.level==='danger'){
     const ex = risk.smallCritical[0] ? ' Exemple : “'+esc(risk.smallCritical[0].label)+'” contient '+risk.smallCritical[0].count+' personne(s).' : '';
-    const cross = risk.crossEstimate!==null && risk.crossEstimate<8 ? ' L’indice de croisement est bas : plusieurs critères combinés peuvent créer des sous-groupes trop petits.' : '';
+    const cross = risk.crossDanger ? ' L’indice de croisement est bas : plusieurs critères combinés peuvent créer des sous-groupes trop petits.' : '';
     html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Risque potentiel de groupes trop petits.</strong><br>'+ex+cross+' Regroupez des options ou retirez un critère si nécessaire.</span></div>';
   }else if(risk.level==='warning'){
     html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance recommandée.</strong><br>Les effectifs sont globalement exploitables, mais le nombre de critères ou certains croisements peuvent réduire la lisibilité statistique.</span></div>';
