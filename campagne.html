@@ -1075,6 +1075,9 @@ async function goNext(){
   state.reprogramming=isReprogram;
   state.isExtending=isExtend;
   state.extending=isExtend;
+  state.transmissionType = isExtend ? 'extension' : (isReprogram ? 'reprogramming' : 'standard');
+  state.extensionRequest = isExtend;
+  state.reprogramRequest = isReprogram;
   if(isExtend){
     state.extended = true;
     state.isExtended = true;
