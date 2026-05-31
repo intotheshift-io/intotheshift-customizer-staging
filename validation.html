@@ -337,6 +337,14 @@ function isValidationReprogramMode(){
   const params = new URLSearchParams(window.location.search);
   return params.get('reprogram') === '1';
 }
+function isValidationExtendMode(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('extend') === '1' ||
+    state?.isExtending === true ||
+    state?.extending === true ||
+    state?.transmissionType === 'extension' ||
+    state?.extensionRequest === true;
+}
 function markValidationAsReprogramming(){
   state = state || {};
   state.isReprogramming = true;
@@ -359,8 +367,8 @@ function validationCurrentProjectId(){
 function goBackToCampagne(){
   if (typeof itsSave === 'function') itsSave(state);
   const id = validationCurrentProjectId();
-  const suffix = isValidationReprogramMode() ? '&reprogram=1' : '';
-  window.location.href = id ? 'campagne.html?projectId=' + encodeURIComponent(id) + suffix : 'campagne.html' + (isValidationReprogramMode() ? '?reprogram=1' : '');
+  const suffix = isValidationReprogramMode() ? '&reprogram=1' : (isValidationExtendMode() ? '&extend=1' : '');
+  window.location.href = id ? 'campagne.html?projectId=' + encodeURIComponent(id) + suffix : 'campagne.html' + (isValidationReprogramMode() ? '?reprogram=1' : (isValidationExtendMode() ? '?extend=1' : ''));
 }
 function validationLoadProjectFromServerSync(projectId){
   // Chargement centralisé dans app.js via itsBootstrapProjectFromUrl().
@@ -1053,9 +1061,33 @@ function buildPayload(){
   const excelFilename = 'configuration-shift-studio-' + safeCompanySlug + '.xls';
   const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
 
+  const isExtension = isValidationExtendMode();
+  const previousEndDate =
+    state.previousEndDate ||
+    state.oldEndDate ||
+    state.previous_end_date ||
+    state.old_end_date ||
+    state.extensionPreviousEndDate ||
+    state.transmission?.previousEndDate ||
+    state.transmission?.oldEndDate ||
+    state.parametrage?.previousEndDate ||
+    state.parametrage?.oldEndDate ||
+    '';
+
   return {
     organizationId: getSelectedPartnerClientId(),
     submitted_at: new Date().toISOString(),
+    isExtending: isExtension,
+    extending: isExtension,
+    isExtension: isExtension,
+    extension: isExtension,
+    transmissionType: isExtension ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
+    oldEndDate: previousEndDate,
+    previousEndDate: previousEndDate,
+    newEndDate: param.date_cloture || param.dateCloture || '',
+    campaignEndDate: param.date_cloture || param.dateCloture || '',
+    shareUrl: state.shareUrl || state.share_url || '',
+    resultsUrl: state.resultsUrl || state.results_url || '',
     client_info: getClientInfo(),
     entreprise: getCompany(),
     titre_autodiag: getThemeTitle(),
@@ -1303,6 +1335,18 @@ async function transmit(){
     return;
   }
   const payload = buildPayload();
+  const isExtensionTransmission = isValidationExtendMode();
+  if(isExtensionTransmission){
+    delete payload.excel_html;
+    delete payload.pdf_html;
+    delete payload.data;
+    delete payload.filename;
+    delete payload.file_name;
+    delete payload.mime_type;
+    delete payload.excel;
+    delete payload.recap;
+    delete payload.attachments;
+  }
   showTransmitModal('loading', 'Transmission en cours', 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.');
 
   state.clientInfo = getClientInfo();
@@ -1353,6 +1397,12 @@ async function transmit(){
         configTransmise: true,
         config_transmise: true,
         submitted: true,
+        isExtending: isExtensionTransmission,
+        extending: isExtensionTransmission,
+        extensionRequest: isExtensionTransmission,
+        transmissionType: isExtensionTransmission ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
+        extended: isExtensionTransmission ? true : state.extended,
+        isExtended: isExtensionTransmission ? true : state.isExtended,
         step: 'validation',
         current_step: 'validation',
         status: 'sent',
@@ -1422,7 +1472,7 @@ async function transmit(){
 
 
 function isAlreadyTransmitted(){
-  if(isValidationReprogramMode()) return false;
+  if(isValidationReprogramMode() || isValidationExtendMode()) return false;
   return state?.status === 'sent' ||
     state?.configTransmise === true ||
     state?.config_transmise === true ||
