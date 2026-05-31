@@ -1733,17 +1733,36 @@ function getProjectTitle(project){
 
       }catch(err){
         console.error(err);
-        await openConfirmModal({
-          tone:"warn",
-          icon:"📦",
-          title:"Publication bloquée",
-          subtitle:"La recharge pack n’est pas considérée comme validée pour cet AD.",
-          text:err.message || "Impossible de publier cet autodiagnostic.",
-          project:projectToPublish.title,
-          warning:"Si la recharge est bien validée dans le cockpit client, cela signifie que l’ancien indicateur de recharge pending est encore présent sur l’AD. Rechargez la page puis réessayez ; si le blocage reste présent, il faudra corriger la synchronisation côté API.",
-          confirmText:"Compris",
-          hideCancel:true
-        });
+        const message = String(err.message || "Impossible de publier cet autodiagnostic.");
+        const isPackBlockingError =
+          Number(err.status) === 409 ||
+          /pack|recharge|quota|passation/i.test(message);
+
+        if(isPackBlockingError){
+          await openConfirmModal({
+            tone:"warn",
+            icon:"📦",
+            title:"Publication bloquée",
+            subtitle:"Le pack ou le quota bloque encore la publication.",
+            text:message,
+            project:projectToPublish.title,
+            warning:"Vérifiez le quota réel du cockpit client ou la validation de recharge côté API. Cette alerte ne doit apparaître que pour un blocage pack/quota.",
+            confirmText:"Compris",
+            hideCancel:true
+          });
+        }else{
+          await openConfirmModal({
+            tone:"warn",
+            icon:"⚠️",
+            title:"Publication impossible",
+            subtitle:"La publication n’a pas pu aboutir.",
+            text:message,
+            project:projectToPublish.title,
+            warning:"",
+            confirmText:"Compris",
+            hideCancel:true
+          });
+        }
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
