@@ -1117,8 +1117,8 @@ function getProjectTitle(project){
     }
 
     function renderExtendedBadge(project){
-      return normalizeStatus(project?.status) === "published" && isProjectExtended(project)
-        ? '<span class="status status-extended">📅 Campagne prolongée</span>'
+      return isProjectExtended(project)
+        ? '<span class="status status-extended">Campagne prolongée</span>'
         : '';
     }
 
@@ -1466,6 +1466,11 @@ function getProjectTitle(project){
               }
               ${
                 normalizedStatus === "published" && isAdmin()
+                  ? `<button class="small-btn" onclick="extendProject('${escapeAttr(project.id)}')" title="Même URL : seule la date de clôture est modifiable.">📅 Prolonger</button>`
+                  : ""
+              }
+              ${
+                normalizedStatus === "published" && isAdmin()
                   ? `<button class="small-btn unpublish" onclick="changeProjectStatus('${escapeAttr(project.id)}','unpublished','dépublier')">🛑 Dépublier</button>`
                   : ""
               }
@@ -1553,6 +1558,7 @@ function getProjectTitle(project){
               <div class="card-actions">
                 <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
                 <button class="small-btn" onclick="notifyCampaignLinksUpdated('${pid}')">✉️ Notifier le client</button>
+                ${isAdmin() ? `<button class="small-btn" onclick="extendProject('${pid}')" title="Même URL : seule la date de clôture est modifiable.">📅 Prolonger</button>` : ""}
                 <button class="small-btn" onclick="openKitCommunicationPage('${pid}')">📣 Kit de com</button>
               </div>
             </div>
@@ -1665,6 +1671,11 @@ function getProjectTitle(project){
     function openCampaignPage(projectId){
       const id = setActiveProjectForNavigation(projectId);
       window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
+    }
+
+    function extendProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}&extend=1` : "campagne.html?extend=1";
     }
 
     function openKitCommunicationPage(projectId){
