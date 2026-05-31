@@ -1439,10 +1439,7 @@ function getProjectTitle(project){
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
-              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
               <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
-              ${renderExtendedBadge(project)}
-            </div>
               ${renderExtendedBadge(project)}
             </div>
             ${renderProjectCommanditaire(project)}
