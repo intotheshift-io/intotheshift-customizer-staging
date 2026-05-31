@@ -578,15 +578,76 @@ function isCampaignDateEditMode(){
 }
 function setReprogramOriginalDatesIfMissing(){
   if(!isCampaignDateEditMode()) return;
-  if(!document.body.getAttribute("data-reprogram-original-start")){
-    document.body.setAttribute("data-reprogram-original-start", normalizeDateInputValue(p().date_lancement || state.campaign_start_date || state.campaignStartDate || document.getElementById("date-launch")?.value || ""));
+
+  const currentStart=normalizeDateInputValue(
+    p().date_lancement ||
+    state.campaign_start_date ||
+    state.campaignStartDate ||
+    document.getElementById("date-launch")?.value ||
+    ""
+  );
+
+  const currentEnd=normalizeDateInputValue(
+    p().date_cloture ||
+    state.campaign_end_date ||
+    state.campaignEndDate ||
+    document.getElementById("date-close")?.value ||
+    ""
+  );
+
+  if(currentStart){
+    state.originalCampaignStartDate = state.originalCampaignStartDate || currentStart;
+    state.original_campaign_start_date = state.original_campaign_start_date || currentStart;
   }
+
+  if(currentEnd){
+    state.originalCampaignEndDate = state.originalCampaignEndDate || currentEnd;
+    state.original_campaign_end_date = state.original_campaign_end_date || currentEnd;
+  }
+
+  if(!document.body.getAttribute("data-reprogram-original-start")){
+    document.body.setAttribute("data-reprogram-original-start", currentStart);
+  }
+
   if(!document.body.getAttribute("data-reprogram-original-end")){
-    document.body.setAttribute("data-reprogram-original-end", normalizeDateInputValue(p().date_cloture || state.campaign_end_date || state.campaignEndDate || document.getElementById("date-close")?.value || ""));
+    document.body.setAttribute("data-reprogram-original-end", currentEnd);
   }
 }
 function getReprogramOriginalDates(){
-  return {start:document.body.getAttribute("data-reprogram-original-start")||"", end:document.body.getAttribute("data-reprogram-original-end")||""};
+  const bodyStart=document.body.getAttribute("data-reprogram-original-start")||"";
+  const bodyEnd=document.body.getAttribute("data-reprogram-original-end")||"";
+
+  let stateStart='';
+  let stateEnd='';
+
+  try{
+    stateStart=normalizeDateInputValue(
+      state?.originalCampaignStartDate ||
+      state?.original_campaign_start_date ||
+      state?.campaignOriginalStartDate ||
+      state?.campaign_original_start_date ||
+      state?.previousCampaignStartDate ||
+      state?.previous_campaign_start_date ||
+      ''
+    );
+  }catch(e){}
+
+  try{
+    stateEnd=normalizeDateInputValue(
+      state?.originalCampaignEndDate ||
+      state?.original_campaign_end_date ||
+      state?.campaignOriginalEndDate ||
+      state?.campaign_original_end_date ||
+      state?.previousCampaignEndDate ||
+      state?.previous_campaign_end_date ||
+      ''
+    );
+  }catch(e){}
+
+  return {
+    start: bodyStart || stateStart || "",
+    end: bodyEnd || stateEnd || ""
+  };
 }
 function reprogramDatesHaveChanged(){
   if(!isCampaignDateEditMode()) return true;
