@@ -944,6 +944,13 @@
       window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`);
     }
 
+    function extendProject(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&extend=1`);
+    }
+
     function openKitCommunication(id){
       if(!id) return alert("Projet introuvable.");
       const project = projects.find(p => getProjectId(p) === String(id));
@@ -1148,8 +1155,8 @@
                   </button>
                 `}
                 ${status === "published" ? `
-                  <button class="btn" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
-                    🚀 Reprogrammer
+                  <button class="btn" onclick="extendProject('${escapeAttr(projectId)}')" title="Même URL : seule la date de clôture est modifiable.">
+                    📅 Prolonger
                   </button>
                 ` : ""}
                 ${canOpenKitCommunication(p) && status !== "published" ? `

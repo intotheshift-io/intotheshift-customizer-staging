@@ -155,10 +155,8 @@
 • les messages prêts à copier pour le lancement, les relais managers, les relances et les canaux internes ;
 • le plan de relance conseillé selon vos dates de campagne ;
 • les affiches, visuels ou supports ajoutés par Into The Shift ;
-• le lien résultats lorsque celui-ci aura été renseigné par l’équipe Into The Shift.
-
-
-<section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
+• le lien résultats lorsque celui-ci aura été renseigné par l’équipe Into The Shift.</div></div></section>
+<section class="block" id="campaign-reminder-plan"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
 <div class="bottom-actions"><button class="btn-back" onclick="goBackToParametrage()">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
 </main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
@@ -342,15 +340,23 @@ function applyCampaignDateConstraints(){
   const close=document.getElementById('date-close');
   if(launch) launch.min=minLaunch;
   const currentLaunch=normalizeDateInputValue((launch&&launch.value)||p().date_lancement||'');
-  if(close) close.min=currentLaunch ? campaignAddDaysISO(currentLaunch,1) : minLaunch;
+  if(close){
+    if(isCampaignExtendMode()){
+      const originalEnd=document.body.getAttribute('data-reprogram-original-end') || normalizeDateInputValue(p().date_cloture||'');
+      close.min = originalEnd ? campaignAddDaysISO(originalEnd,1) : (currentLaunch ? campaignAddDaysISO(currentLaunch,1) : minLaunch);
+    }else{
+      close.min=currentLaunch ? campaignAddDaysISO(currentLaunch,1) : minLaunch;
+    }
+  }
 }
+
 function validateAndNormalizeCampaignDates(showToastOnAdjust){
   const minLaunch=campaignMinLaunchDateISO();
   let start=normalizeDateInputValue(p().date_lancement || document.getElementById('date-launch')?.value || '');
   let end=normalizeDateInputValue(p().date_cloture || document.getElementById('date-close')?.value || '');
   let adjusted=false;
 
-  if(start && start < minLaunch){
+  if(start && start < minLaunch && !isCampaignExtendMode()){
     start=minLaunch;
     adjusted=true;
   }
@@ -539,8 +545,17 @@ function isCampaignReprogramMode(){
     return params.get("reprogram") === "1" || state.isReprogramming === true || state.reprogramming === true;
   }catch(e){ return state.isReprogramming === true || state.reprogramming === true; }
 }
+function isCampaignExtendMode(){
+  try{
+    const params = new URLSearchParams(window.location.search || "");
+    return params.get("extend") === "1" || state.isExtending === true || state.extending === true;
+  }catch(e){ return state.isExtending === true || state.extending === true; }
+}
+function isCampaignDateEditMode(){
+  return isCampaignReprogramMode() || isCampaignExtendMode();
+}
 function setReprogramOriginalDatesIfMissing(){
-  if(!isCampaignReprogramMode()) return;
+  if(!isCampaignDateEditMode()) return;
   if(!document.body.getAttribute("data-reprogram-original-start")){
     document.body.setAttribute("data-reprogram-original-start", normalizeDateInputValue(p().date_lancement || state.campaign_start_date || state.campaignStartDate || document.getElementById("date-launch")?.value || ""));
   }
@@ -552,12 +567,18 @@ function getReprogramOriginalDates(){
   return {start:document.body.getAttribute("data-reprogram-original-start")||"", end:document.body.getAttribute("data-reprogram-original-end")||""};
 }
 function reprogramDatesHaveChanged(){
-  if(!isCampaignReprogramMode()) return true;
+  if(!isCampaignDateEditMode()) return true;
   const original=getReprogramOriginalDates();
   const currentStart=normalizeDateInputValue(p().date_lancement || document.getElementById("date-launch")?.value || "");
   const currentEnd=normalizeDateInputValue(p().date_cloture || document.getElementById("date-close")?.value || "");
+  if(isCampaignExtendMode()){
+    const oldEnd=parseD(original.end);
+    const newEnd=parseD(currentEnd);
+    return Boolean(currentEnd && currentEnd!==original.end && (!oldEnd || (newEnd && newEnd>oldEnd)));
+  }
   return Boolean(currentStart && currentEnd && (currentStart!==original.start || currentEnd!==original.end));
 }
+
 function resetCampaignChecklistForReprogramming(){
   if(!isCampaignReprogramMode() || window.__itsReprogramChecklistResetDone) return;
   window.__itsReprogramChecklistResetDone=true;
@@ -567,7 +588,7 @@ function resetCampaignChecklistForReprogramming(){
   try{ saveState(); }catch(e){}
 }
 function lockStepperForReprogramming(){
-  if(!isCampaignReprogramMode()) return;
+  if(!isCampaignDateEditMode()) return;
   document.querySelectorAll('.stepper a, .stepper .step-link, .breadcrumb .bc-link').forEach(link=>{
     link.removeAttribute('href');
     link.removeAttribute('onclick');
@@ -575,15 +596,24 @@ function lockStepperForReprogramming(){
     link.style.pointerEvents='none';
     link.style.cursor='not-allowed';
     link.style.opacity='.45';
-    link.title='En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
+    link.title=isCampaignExtendMode()?'En prolongation, vous ne pouvez modifier que la date de clôture.':'En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
   });
 }
+
 function getReprogramMissingItems(){
   const items=[];
-  if(!isCampaignReprogramMode()) return items;
+  if(!isCampaignDateEditMode()) return items;
   const original=getReprogramOriginalDates();
   const currentStart=normalizeDateInputValue(p().date_lancement || document.getElementById('date-launch')?.value || '');
   const currentEnd=normalizeDateInputValue(p().date_cloture || document.getElementById('date-close')?.value || '');
+  if(isCampaignExtendMode()){
+    const oldEnd=parseD(original.end);
+    const newEnd=parseD(currentEnd);
+    if(!currentEnd || currentEnd===original.end || (oldEnd && (!newEnd || newEnd<=oldEnd))){
+      items.push({label:'Choisir une nouvelle date de clôture postérieure à la clôture actuelle', fieldId:'date-close'});
+    }
+    return items;
+  }
   if(!currentStart || currentStart===original.start) items.push({label:'Modifier la date de lancement', fieldId:'date-launch'});
   if(!currentEnd || currentEnd===original.end) items.push({label:'Modifier la date de clôture', fieldId:'date-close'});
   document.querySelectorAll('.check-row input').forEach(box=>{
@@ -594,13 +624,19 @@ function getReprogramMissingItems(){
   });
   return items;
 }
+
 function showReprogramMissingModal(){
   const items=getReprogramMissingItems();
+  const title=document.getElementById('reprogram-missing-title');
+  const textEl=document.querySelector('.reprogram-missing-text');
+  if(title) title.textContent=isCampaignExtendMode()?'Prolongation à compléter':'Reprogrammation à compléter';
+  if(textEl) textEl.textContent=isCampaignExtendMode()?'Pour continuer vers la transmission, modifiez uniquement la date de clôture.':'Pour continuer vers la transmission, modifiez la période de campagne.';
   const list=document.getElementById('reprogram-missing-list');
   if(list) list.innerHTML=items.length?items.map(item=>'<div class="reprogram-missing-item"><span>•</span><span>'+esc(item.label)+'</span></div>').join(''):'<div class="reprogram-missing-item"><span>✓</span><span>Tout est complété. Vous pouvez transmettre.</span></div>';
   const modal=document.getElementById('reprogram-missing-modal');
   if(modal){ modal.classList.add('on'); modal.setAttribute('aria-hidden','false'); }
 }
+
 function closeReprogramMissingModal(){
   const modal=document.getElementById('reprogram-missing-modal');
   if(modal){ modal.classList.remove('on'); modal.setAttribute('aria-hidden','true'); }
@@ -615,19 +651,21 @@ function focusReprogramMissingField(){
 
 function updateChecklist(){
   let missing=[];
+  const isExtend=isCampaignExtendMode();
   if(!p().date_lancement)missing.push('Date de lancement');
   if(!p().date_cloture)missing.push('Date de clôture');
-  if(p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');
+  if(!isExtend && p().date_lancement&&p().date_lancement<campaignMinLaunchDateISO())missing.push('Date de lancement minimum J+5');
   if(p().date_lancement&&p().date_cloture&&parseD(p().date_cloture)<=parseD(p().date_lancement))missing.push('Date de clôture après la date de lancement');
   if(isCampaignReprogramMode()&&!reprogramDatesHaveChanged())missing.push('Modifier les dates pour créer une nouvelle période de diffusion');
+  if(isExtend&&!reprogramDatesHaveChanged())missing.push('Modifier uniquement la date de clôture pour prolonger la campagne');
   let ok=missing.length===0;
   const btn=document.getElementById('btn-launch');
   if(btn){
-    if(isCampaignReprogramMode()){
+    if(isCampaignDateEditMode()){
       btn.disabled=false;
       btn.dataset.ready=ok?'1':'0';
       btn.classList.toggle('not-ready', !ok);
-      btn.textContent=ok?'Continuer vers la transmission':'Compléter la reprogrammation';
+      btn.textContent=ok?(isExtend?'Transmettre la prolongation':'Continuer vers la transmission'):(isExtend?'Modifier la date de clôture':'Compléter la reprogrammation');
     }else{
       btn.disabled=!ok;
       btn.dataset.ready=ok?'1':'0';
@@ -644,9 +682,10 @@ function updateChecklist(){
     help.style.display=ok?'none':'block';
     help.innerHTML=ok?'':'<strong>Il reste des éléments à valider :</strong><ul>'+missing.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>';
   }
-  if(isCampaignReprogramMode())lockStepperForReprogramming();
+  if(isCampaignDateEditMode())lockStepperForReprogramming();
   saveState();
 }
+
 
 const CFG=[{key:'bad',hex:'#ff847e',mk:'#fff0ef',text:'#c0392b'},{key:'mid',hex:'#ffc744',mk:'#fff9ec',text:'#b7840a'},{key:'good',hex:'#77cd8a',mk:'#f0fbf2',text:'#27823a'}];let PS={step:'home',chap:0,q:0,sel:null,socio:{},scores:{},chapScores:[],chapProfil:[],open:{}};
 function normAD(){let chapters=(state.chapters||[]).map((ch,i)=>({title:ch.title||ch.name||'Chapitre '+(i+1),questions:(ch.questions||[]).map(q=>{let ans=q.answers||q.opts||[];return{text:q.text||q.question||'Question',opts:ans.map(a=>a.text||a.l||a.label||String(a)),scores:ans.map(a=>Number(a.score??a.s??1))}}),profiles:(ch.profiles||ch.profils||[]).map((pr,j)=>({title:pr.title||pr.titre||'Profil',summary:pr.summary||pr.phrase||'',description:pr.description||pr.desc||'',keywords:pr.keywords||pr.motscles||pr.mots||[]})),seuils:ch.seuils||[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}));if(!chapters.length)chapters=[{title:'Chapitre 1',questions:[{text:'Première question de démonstration',opts:['Réponse A','Réponse B','Réponse C'],scores:[0,1,2]}],profiles:[{title:'Profil en progression',summary:'Votre profil apparaît ici.',description:'La description détaillée du profil sera affichée ici.',keywords:['Mot clé']}],seuils:[{min:0,max:.7},{min:.7,max:1.7},{min:1.7,max:2.1}]}];return{title:cleanTheme(),intro:p().intro||'Bienvenue dans cet autodiagnostic. Il vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes. La démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.',socio:p().sociodemo||[{q:'À quelle catégorie appartenez-vous ?',opts:['Collaborateur·rice','Manager','Direction']}],chapters,resources:p().resources||state.resources||[]}}
@@ -994,8 +1033,9 @@ async function goNext(){
   updateChecklist();
   const launchBtn=document.getElementById('btn-launch');
   const isReprogram=isCampaignReprogramMode();
+  const isExtend=isCampaignExtendMode();
   if(launchBtn && launchBtn.dataset.ready!=='1'){
-    if(isReprogram) showReprogramMissingModal();
+    if(isReprogram || isExtend) showReprogramMissingModal();
     else {
       const help=document.getElementById('publish-help');
       if(help) help.scrollIntoView({behavior:'smooth',block:'center'});
@@ -1011,11 +1051,13 @@ async function goNext(){
   state.submitted=false;
   state.isReprogramming=isReprogram;
   state.reprogramming=isReprogram;
+  state.isExtending=isExtend;
+  state.extending=isExtend;
   if(state.transmission){state.transmission.status='draft';state.transmission.submitted_at='';delete state.transmission.submittedAt;}
   saveState();
   await persistProjectDraft('campagne','draft');
   const id=getCurrentProjectIdForSave();
-  location.href=id?'validation.html?projectId='+encodeURIComponent(id)+(isReprogram?'&reprogram=1':''):'validation.html'+(isReprogram?'?reprogram=1':'');
+  location.href=id?'validation.html?projectId='+encodeURIComponent(id)+(isReprogram?'&reprogram=1':(isExtend?'&extend=1':'')):'validation.html'+(isReprogram?'?reprogram=1':(isExtend?'?extend=1':''));
 }
 async function bootCampagnePage(){
   const params=new URLSearchParams(window.location.search);
@@ -1304,13 +1346,16 @@ bootCampagnePage();
     const params = new URLSearchParams(window.location.search);
     const readonly = params.get("readonly") === "1";
     const reprogram = params.get("reprogram") === "1";
+    const extend = params.get("extend") === "1";
     const campaignStatusForLock = getCampaignStatusForLock();
-    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !reprogram;
+    const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !reprogram && !extend;
 
-    if(reprogram){
+    if(reprogram || extend){
       document.body.classList.remove("campaign-locked");
-      state.isReprogramming = true;
-      state.reprogramming = true;
+      state.isReprogramming = reprogram;
+      state.reprogramming = reprogram;
+      state.isExtending = extend;
+      state.extending = extend;
       state.status = "draft";
       state.configTransmise = false;
       state.config_transmise = false;
@@ -1320,13 +1365,13 @@ bootCampagnePage();
 
       const title = document.querySelector(".page-title");
       const sub = document.querySelector(".page-sub");
-      if(title) title.textContent = "Reprogrammer la campagne";
-      if(sub) sub.textContent = "Même URL, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
+      if(title) title.textContent = extend ? "Prolonger la campagne" : "Reprogrammer la campagne";
+      if(sub) sub.textContent = extend ? "Même URL, même contenu : modifiez uniquement la date de clôture, puis transmettez la prolongation à Into The Shift." : "Même URL, même contenu : modifiez uniquement les dates de diffusion, puis transmettez la reprogrammation à Into The Shift.";
       if(!document.getElementById("reprogram-campaign-note")){
         const note=document.createElement("div");
         note.id="reprogram-campaign-note";
         note.className="reprogram-note";
-        note.innerHTML="Reprogrammation : vous conservez la même URL de passation et la même URL statistiques.<small>Les statistiques de cette nouvelle période s’ajouteront à l’historique existant. Pour continuer, modifiez les dates puis transmettez la reprogrammation.</small>";
+        note.innerHTML=extend ? "Prolongation : vous conservez la même URL de passation et la même URL statistiques.<small>Seule la date de clôture est modifiable. Pour continuer, choisissez une date de fin plus tardive puis transmettez la prolongation.</small>" : "Reprogrammation : vous conservez la même URL de passation et la même URL statistiques.<small>Les statistiques de cette nouvelle période s’ajouteront à l’historique existant. Pour continuer, modifiez les dates puis transmettez la reprogrammation.</small>";
         const grid=document.querySelector(".launch-grid");
         if(grid && grid.parentNode) grid.parentNode.insertBefore(note, grid);
       }
@@ -1335,16 +1380,17 @@ bootCampagnePage();
       ["date-launch","date-close"].forEach(id=>{
         const el=document.getElementById(id);
         if(!el)return;
+        const editable = reprogram || (extend && id === "date-close");
         el.disabled=false;
-        el.readOnly=false;
-        el.style.pointerEvents="auto";
-        el.style.cursor="pointer";
-        el.style.background="#fff";
+        el.readOnly=!editable;
+        el.style.pointerEvents=editable ? "auto" : "none";
+        el.style.cursor=editable ? "pointer" : "not-allowed";
+        el.style.background=editable ? "#fff" : "#f6f8fb";
       });
       document.querySelectorAll(".check-row input").forEach(el=>{
-        el.disabled=false;
-        el.style.pointerEvents="auto";
-        el.style.cursor="pointer";
+        el.disabled=extend;
+        el.style.pointerEvents=extend ? "none" : "auto";
+        el.style.cursor=extend ? "not-allowed" : "pointer";
       });
       document.querySelectorAll(".bottom-actions").forEach(el=>{ el.style.display="flex"; });
       document.querySelectorAll("button").forEach(button=>{
@@ -1360,9 +1406,9 @@ bootCampagnePage();
         button.style.display="none";
         button.style.pointerEvents="none";
         button.onclick=null;
-        button.title="En reprogrammation, seules les dates de campagne sont modifiables.";
+        button.title=extend?"En prolongation, seule la date de clôture est modifiable.":"En reprogrammation, seules les dates de campagne sont modifiables.";
       });
-      resetCampaignChecklistForReprogramming();
+      if(reprogram) resetCampaignChecklistForReprogramming();
       updateChecklist();
       lockStepperForReprogramming();
       enforceReprogramNavigationLock();
@@ -1393,15 +1439,15 @@ bootCampagnePage();
 
 
   function enforceReprogramNavigationLock(){
-    if(!isCampaignReprogramMode()) return;
+    if(!isCampaignDateEditMode()) return;
     const block = function(event){
       const target = event.target && event.target.closest && event.target.closest('.stepper a, .stepper .step-link, .breadcrumb .bc-link, .bottom-actions .btn-back');
       if(!target) return;
       event.preventDefault();
       event.stopPropagation();
       if(event.stopImmediatePropagation) event.stopImmediatePropagation();
-      showToast('En reprogrammation, seules les dates de campagne sont modifiables avant transmission.');
-      const firstDate=document.getElementById('date-launch');
+      showToast(isCampaignExtendMode()?'En prolongation, seule la date de clôture est modifiable avant transmission.':'En reprogrammation, seules les dates de campagne sont modifiables avant transmission.');
+      const firstDate=document.getElementById(isCampaignExtendMode()?'date-close':'date-launch');
       if(firstDate){ firstDate.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>firstDate.focus(),250); }
       return false;
     };
@@ -1414,7 +1460,7 @@ bootCampagnePage();
       el.style.pointerEvents='none';
       el.style.cursor='not-allowed';
       el.style.opacity='.45';
-      el.title='En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
+      el.title=isCampaignExtendMode()?'En prolongation, vous ne pouvez modifier que la date de clôture.':'En reprogrammation, vous ne pouvez pas revenir aux étapes précédentes.';
     });
   }
 

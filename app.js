@@ -914,8 +914,10 @@ async function itsFetchProjectById(projectId) {
         if (String(currentProjectId) === String(projectId)) {
           // On ne vide pas brutalement le contexte en mode reprogrammation :
           // le cache local peut encore contenir le projet chargé depuis le cockpit.
-          const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
-          if (!isReprogram) itsClearProjectContextOnly();
+          const params = new URLSearchParams(window.location.search || "");
+          const isReprogram = params.get("reprogram") === "1";
+          const isExtend = params.get("extend") === "1";
+          if (!isReprogram && !isExtend) itsClearProjectContextOnly();
         }
       }
       return null;
@@ -982,8 +984,10 @@ function itsInjectReadOnlyBanner(message) {
 }
 
 function itsApplyReadOnlyMode(options = {}) {
-  const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
-  if (isReprogram) return false;
+  const params = new URLSearchParams(window.location.search || "");
+  const isReprogram = params.get("reprogram") === "1";
+  const isExtend = params.get("extend") === "1";
+  if (isReprogram || isExtend) return false;
 
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
@@ -1040,8 +1044,10 @@ function itsApplyReadOnlyMode(options = {}) {
 }
 
 function itsShouldApplyReadOnlyOnThisPage() {
-  const isReprogram = new URLSearchParams(window.location.search || "").get("reprogram") === "1";
-  if (isReprogram) return false;
+  const params = new URLSearchParams(window.location.search || "");
+  const isReprogram = params.get("reprogram") === "1";
+  const isExtend = params.get("extend") === "1";
+  if (isReprogram || isExtend) return false;
 
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
 
