@@ -1088,10 +1088,40 @@ function getAdminProjectPackUpgradeRequest(project){
     projectTitle:pickProjectTitle(val(project,["title","name","project_title"],""))
   };
 }
+function getAdminOrgPackUpgradeRequest(org){
+  const raw = val(org,["packUpgradeRequest","pack_upgrade_request"],null) || {};
+  const choice = String(raw.choice || raw.pack_upgrade_choice || val(org,["pack_upgrade_choice"],"") || "").trim();
+  const status = String(raw.status || raw.pack_upgrade_status || val(org,["pack_upgrade_status"],"")).toLowerCase();
+  const requested = raw.requested === true || val(org,["pack_upgrade_requested"],false) === true;
+  if(!requested || !choice || choice==="current_pack" || choice==="existing") return {requested:false,status,choice};
+  const amount = choice==="illimite" ? null : Number(raw.amount ?? raw.pack_upgrade_amount ?? val(org,["pack_upgrade_amount"],choice));
+  if(choice!=="illimite" && (!Number.isFinite(amount) || amount<=0)) return {requested:false,status,choice};
+  const quota = num(val(org,["passationsQuota","passations_quota"],0));
+  const used = num(val(org,["passationsUsed","passations_used"],0));
+  const totalAfter = choice==="illimite" ? null : Number(raw.totalAfter ?? raw.total_after ?? raw.pack_upgrade_total_after ?? val(org,["pack_upgrade_total_after"],quota+amount));
+  return {
+    requested:true,
+    status: status || "pending",
+    choice,
+    amount,
+    unlimited: choice==="illimite" || raw.unlimited===true,
+    currentQuota: quota,
+    currentUsed: used,
+    currentRemaining: choice==="illimite" ? null : Math.max(0, quota-used),
+    totalAfter,
+    organizationId: val(org,["id"],""),
+    projectTitle: "Demande depuis Mon compte",
+    source: "organization",
+    requestedByEmail: raw.requestedByEmail || raw.requested_by_email || val(org,["pack_upgrade_requested_by_email"],"") || ""
+  };
+}
 function getOrgPackUpgradeRequests(org){
-  return getProjectsForOrg(org)
-    .map(project=>({project,request:getAdminProjectPackUpgradeRequest(project)}))
+  const projectRequests = getProjectsForOrg(org)
+    .map(project=>({project,org,request:getAdminProjectPackUpgradeRequest(project)}))
     .filter(item=>item.request.requested);
+  const orgRequest = getAdminOrgPackUpgradeRequest(org);
+  if(orgRequest.requested) projectRequests.unshift({project:null,org,request:orgRequest});
+  return projectRequests;
 }
 function formatPackUpgradeRequestLabel(request){
   if(request.unlimited) return "Passage en illimité";
@@ -1103,20 +1133,36 @@ function renderOrgPackUpgradePanel(stats){
   return `<div class="org-pack-upgrade-panel">
     <div class="org-pack-upgrade-title"><strong>📦 Recharges pack à valider</strong><span>${pending.length} demande${pending.length>1?"s":""}</span></div>
     <div class="org-pack-upgrade-list">
-      ${pending.map(({project,request})=>{
-        const projectId=val(project,["id"],"");
-        const title=pickProjectTitle(val(project,["title","name","project_title"],""));
+      ${pending.map(({project,org,request})=>{
+        const isOrgRequest=request.source==="organization" || !project;
+        const projectId=isOrgRequest ? "" : val(project,["id"],"");
+        const orgId=val(org,["id"],request.organizationId || "");
+        const title=isOrgRequest ? "Demande depuis Mon compte" : pickProjectTitle(val(project,["title","name","project_title"],""));
+        const requester=request.requestedByEmail ? ` · demandé par ${request.requestedByEmail}` : "";
         const after=request.unlimited ? "Pack illimité" : `${formatNumber(request.totalAfter || 0)} passations au total`;
         return `<div class="org-pack-upgrade-item">
-          <div><strong>${escapeHtml(title)}</strong><small>${escapeHtml(formatPackUpgradeRequestLabel(request))} · après validation : ${escapeHtml(after)}</small></div>
+          <div><strong>${escapeHtml(title)}</strong><small>${escapeHtml(formatPackUpgradeRequestLabel(request))} · après validation : ${escapeHtml(after)}${escapeHtml(requester)}</small></div>
           <div class="org-pack-upgrade-actions">
-            <button class="mini-btn" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','approve')">Valider</button>
-            <button class="mini-btn light" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','reject')">Refuser</button>
+            ${isOrgRequest
+              ? `<button class="mini-btn" onclick="focusOrganizationPackEditor('${escapeAttr(orgId)}')">Mettre à jour le pack</button>`
+              : `<button class="mini-btn" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','approve')">Valider</button><button class="mini-btn light" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','reject')">Refuser</button>`}
           </div>
         </div>`;
       }).join("")}
     </div>
   </div>`;
+}
+
+function focusOrganizationPackEditor(orgId){
+  const packEl=document.getElementById("org-pack-"+String(orgId));
+  const remainingEl=document.getElementById("org-remaining-"+String(orgId));
+  if(packEl){
+    packEl.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>packEl.focus(),250);
+  }else if(remainingEl){
+    remainingEl.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>remainingEl.focus(),250);
+  }
 }
 
 function getOrgStats(org){
@@ -2041,8 +2087,8 @@ async function saveUserPassations(userId){
 
 let packUpgradeToProcess = null;
 
-function openPackUpgradeConfirmModal({ projectId, action, title, label, afterLabel }){
-  packUpgradeToProcess = { projectId, action };
+function openPackUpgradeConfirmModal({ projectId, organizationId, action, title, label, afterLabel }){
+  packUpgradeToProcess = { projectId, organizationId, action };
   const modal=document.getElementById("packUpgradeConfirmModal");
   const icon=document.getElementById("packUpgradeConfirmIcon");
   const titleEl=document.getElementById("packUpgradeConfirmTitle");
