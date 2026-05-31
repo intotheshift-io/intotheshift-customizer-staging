@@ -47,6 +47,7 @@
     .status-sent{background:#e8f1ff;color:#1f4e91}
     .status-published{background:#eafbf1;color:#16774a}
     .status-extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
+    .status-reprogrammed{background:#fff8ec;color:#9a5b00;border:1px solid #ffd9a3}
     .status-unpublished{background:#eef2f6;color:#64748b}
     .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .small-btn{border-radius:999px;padding:9px 13px;border:1px solid #d8e2ec;background:#fff;color:#0d4c72;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
@@ -1117,8 +1118,55 @@ function getProjectTitle(project){
     }
 
     function renderExtendedBadge(project){
-      return isProjectExtended(project)
-        ? '<span class="status status-extended">Campagne prolongée</span>'
+      return normalizeStatus(project?.status) === "published" && isProjectExtended(project)
+        ? '<span class="status status-extended">📅 Campagne prolongée</span>'
+        : '';
+    }
+
+    function isProjectReprogrammed(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+
+      return Boolean(
+        project?.reprogrammed === true ||
+        project?.isReprogrammed === true ||
+        project?.reprogrammed_at ||
+        project?.reprogrammedAt ||
+        project?.campaign_reprogrammed === true ||
+        project?.campaignReprogrammed === true ||
+        project?.campaign_reprogrammed_at ||
+        project?.campaignReprogrammedAt ||
+        data?.reprogrammed === true ||
+        data?.isReprogrammed === true ||
+        data?.reprogrammed_at ||
+        data?.reprogrammedAt ||
+        data?.campaign_reprogrammed === true ||
+        data?.campaignReprogrammed === true ||
+        data?.campaign_reprogrammed_at ||
+        data?.campaignReprogrammedAt ||
+        payload?.reprogrammed === true ||
+        payload?.isReprogrammed === true ||
+        payload?.reprogrammed_at ||
+        payload?.reprogrammedAt ||
+        payload?.campaign_reprogrammed === true ||
+        payload?.campaignReprogrammed === true ||
+        payload?.campaign_reprogrammed_at ||
+        payload?.campaignReprogrammedAt ||
+        param?.reprogrammed === true ||
+        param?.isReprogrammed === true ||
+        param?.reprogrammed_at ||
+        param?.reprogrammedAt ||
+        param?.campaign_reprogrammed === true ||
+        param?.campaignReprogrammed === true ||
+        param?.campaign_reprogrammed_at ||
+        param?.campaignReprogrammedAt
+      );
+    }
+
+    function renderReprogrammedBadge(project){
+      return normalizeStatus(project?.status) === "published" && isProjectReprogrammed(project)
+        ? '<span class="status status-reprogrammed">🔁 Campagne reprogrammée</span>'
         : '';
     }
 
@@ -1235,6 +1283,7 @@ function getProjectTitle(project){
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
       const timing = isMonitorableCampaign(project) ? getCampaignTiming(project) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(status === "published" && isProjectReprogrammed(project)) alerts.push({kind:"warn", icon:"🔁", text:"Campagne reprogrammée"});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
@@ -1441,6 +1490,7 @@ function getProjectTitle(project){
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
               <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
               ${renderExtendedBadge(project)}
+              ${renderReprogrammedBadge(project)}
             </div>
             ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
@@ -1513,6 +1563,7 @@ function getProjectTitle(project){
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
               <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
               ${renderExtendedBadge(project)}
+              ${renderReprogrammedBadge(project)}
             </div>
             ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}

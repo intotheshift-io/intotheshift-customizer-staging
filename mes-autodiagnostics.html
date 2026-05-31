@@ -55,6 +55,7 @@
     .status.archived{background:#f1f4f8;color:#94a3b8}
     .status.unpublished{background:#eef2f6;color:#64748b}
     .status.extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
+    .status.reprogrammed{background:#fff8ec;color:#9a5b00;border:1px solid #ffd9a3}
 
     .actions{grid-column:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:4px}
     .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-start}
@@ -678,6 +679,7 @@
       const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
+      if(status === "published" && isProjectReprogrammed(p)) alerts.push({kind:"warn", icon:"🔁", text:"Campagne reprogrammée"});
       if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
       if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
@@ -805,8 +807,61 @@
       );
     }
 
+    function isProjectReprogrammed(project){
+      const data = getProjectData(project);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      return Boolean(
+        project?.reprogrammed === true ||
+        project?.isReprogrammed === true ||
+        project?.reprogrammed_at ||
+        project?.reprogrammedAt ||
+        project?.campaign_reprogrammed === true ||
+        project?.campaignReprogrammed === true ||
+        project?.campaign_reprogrammed_at ||
+        project?.campaignReprogrammedAt ||
+        data.reprogrammed === true ||
+        data.isReprogrammed === true ||
+        data.reprogrammed_at ||
+        data.reprogrammedAt ||
+        data.campaign_reprogrammed === true ||
+        data.campaignReprogrammed === true ||
+        data.campaign_reprogrammed_at ||
+        data.campaignReprogrammedAt ||
+        payload.reprogrammed === true ||
+        payload.isReprogrammed === true ||
+        payload.reprogrammed_at ||
+        payload.reprogrammedAt ||
+        payload.campaign_reprogrammed === true ||
+        payload.campaignReprogrammed === true ||
+        payload.campaign_reprogrammed_at ||
+        payload.campaignReprogrammedAt ||
+        state.reprogrammed === true ||
+        state.isReprogrammed === true ||
+        state.reprogrammed_at ||
+        state.reprogrammedAt ||
+        state.campaign_reprogrammed === true ||
+        state.campaignReprogrammed === true ||
+        state.campaign_reprogrammed_at ||
+        state.campaignReprogrammedAt ||
+        param.reprogrammed === true ||
+        param.isReprogrammed === true ||
+        param.reprogrammed_at ||
+        param.reprogrammedAt ||
+        param.campaign_reprogrammed === true ||
+        param.campaignReprogrammed === true ||
+        param.campaign_reprogrammed_at ||
+        param.campaignReprogrammedAt
+      );
+    }
+
     function extendedStatusHTML(project){
       return normalizeStatus(project) === "published" && isProjectExtended(project) ? `<span class="status extended">📅 Campagne prolongée</span>` : "";
+    }
+
+    function reprogrammedStatusHTML(project){
+      return normalizeStatus(project) === "published" && isProjectReprogrammed(project) ? `<span class="status reprogrammed">🔁 Campagne reprogrammée</span>` : "";
     }
 
 
@@ -1170,7 +1225,11 @@
             </div>
 
             <div class="actions">
-              <span class="status ${status}">${statusLabel(status)}</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <span class="status ${status}">${statusLabel(status)}</span>
+                ${extendedStatusHTML(p)}
+                ${reprogrammedStatusHTML(p)}
+              </div>
               <div class="row-actions">
                 ${status === "unpublished" ? `
                   <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
