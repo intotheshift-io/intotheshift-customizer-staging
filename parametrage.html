@@ -1129,7 +1129,7 @@ function socioOptionState(count){
   const n = Number(count);
   if(!Number.isFinite(n) || n <= 0) return {col:'#94a3b8',bg:'#f0f2f5',hint:'Effectif à estimer'};
   if(n < 8) return {col:'#c0392b',bg:'#fceaea',hint:'🚨 Groupe très petit'};
-  if(n < 10) return {col:'#b7840a',bg:'#fff9ec',hint:'⚠️ Groupe sensible'};
+  if(n < 10) return {col:'#b7840a',bg:'#fff9ec',hint:'ℹ️ Groupe à surveiller'};
   return {col:'#27823a',bg:'#f0fbf2',hint:'✓ Groupe exploitable'};
 }
 function applySocioCountVisual(input,count){
@@ -1165,7 +1165,7 @@ function updateSocioCardSummary(i){
   if(!counts.length){ summary.textContent='Renseignez les effectifs par option'; summary.style.color='#94a3b8'; return; }
   const min=Math.min(...counts);
   const st=socioOptionState(min);
-  summary.textContent=min<8?'🚨 Plus petit groupe inférieur à 8':(min<10?'⚠️ Plus petit groupe entre 8 et 10':'✓ Plus petit groupe exploitable');
+  summary.textContent=min<8?'🚨 Plus petit groupe inférieur à 8':(min<10?'ℹ️ Plus petit groupe entre 8 et 10':'✓ Plus petit groupe exploitable');
   summary.style.color=st.col;
 }
 function renderSociodemo(){
@@ -1177,7 +1177,7 @@ function renderSociodemo(){
     const counts=(s.opts||[]).map(o=>Number(o.count)).filter(n=>Number.isFinite(n)&&n>0);
     const mg=counts.length?Math.min(...counts):null;
     const st=socioOptionState(mg);
-    const hint=mg==null?'Renseignez les effectifs par option':(mg<8?'🚨 Plus petit groupe inférieur à 8':(mg<10?'⚠️ Plus petit groupe entre 8 et 10':'✓ Plus petit groupe exploitable'));
+    const hint=mg==null?'Renseignez les effectifs par option':(mg<8?'🚨 Plus petit groupe inférieur à 8':(mg<10?'ℹ️ Plus petit groupe entre 8 et 10':'✓ Plus petit groupe exploitable'));
     return `<div class="socio-card" data-socio-index="${i}"><div class="socio-card-head"><span class="socio-card-num">Donnée ${i+1} · choix unique</span><button class="btn-del" onclick="removeSociodemo(${i})">×</button></div><div class="field" style="margin-bottom:10px"><label>Intitulé de la question</label><input class="inp" value="${esc(s.q)}" oninput="state.parametrage.sociodemo[${i}].q=this.value;save();checkAnonymity()"></div><div style="display:flex;justify-content:flex-end;margin:-2px 30px 5px 0"><span class="socio-opt-count-label">Effectif estimé</span></div><div class="field" style="margin-bottom:0"><label>Réponses possibles</label><div class="socio-opts">${(s.opts||[]).map((o,oi)=>{ const ost=socioOptionState(o.count); return `<div class="socio-opt-unit"><div class="socio-opt-row"><input class="socio-opt-inp" value="${esc(o.label)}" oninput="state.parametrage.sociodemo[${i}].opts[${oi}].label=this.value;save();checkAnonymity()"><input class="socio-opt-count" type="number" min="0" placeholder="ex. 25" value="${o.count??''}" style="background:${ost.bg};border-color:${ost.col};color:${ost.col};font-weight:800" oninput="updateSocioOptionCount(${i},${oi},this.value,this)"><button class="btn-del-opt" onclick="removeSocioOpt(${i},${oi})">×</button></div><div class="socio-opt-hint" style="color:${ost.col};margin-left:calc(100% - 150px)">${ost.hint}</div></div>` }).join('')}</div><button class="btn-add-opt" onclick="addSocioOpt(${i})">+ Ajouter une option</button><div class="socio-card-summary" style="font-size:10px;font-weight:800;color:${st.col};margin-top:6px">${hint}</div></div></div>`
   }).join('');
   checkAnonymity(); checkContinue();
@@ -1193,32 +1193,63 @@ function computeAnonymityRisk(){
   const criteria=[];
   const all=[];
   let missing=0;
+
   arr.forEach((s,si)=>{
-    const opts=(s.opts||[]).map((o,oi)=>({criterion:s.q||('Donnée '+(si+1)), label:o.label||('Option '+(oi+1)), count:Number(o.count||0)}));
-    opts.forEach(o=>{ if(o.count>0) all.push(o); else missing++; });
+    const opts=(s.opts||[]).map((o,oi)=>({
+      criterion:s.q||('Donnée '+(si+1)),
+      label:o.label||('Option '+(oi+1)),
+      count:Number(o.count||0)
+    }));
+
+    opts.forEach(o=>{
+      if(o.count>0) all.push(o);
+      else missing++;
+    });
+
     const counts=opts.map(o=>o.count).filter(n=>n>0);
-    if(counts.length) criteria.push({name:s.q||('Donnée '+(si+1)), min:Math.min(...counts), options:opts});
+    if(counts.length){
+      criteria.push({
+        name:s.q||('Donnée '+(si+1)),
+        min:Math.min(...counts),
+        options:opts
+      });
+    }
   });
-  const smallCritical=all.filter(o=>o.count>0&&o.count<8);
-  const smallWarn=all.filter(o=>o.count>=8&&o.count<10);
+
+  const smallCritical=all.filter(o=>o.count>0&&o.count<5);
+  const smallWarn=all.filter(o=>o.count>=5&&o.count<8);
+  const sensitiveInfo=all.filter(o=>o.count>=8&&o.count<10);
   const smallest=all.length?Math.min(...all.map(o=>o.count)):null;
-  const smallestByCriterion=criteria.map(c=>c.min).sort((a,b)=>a-b);
-  let crossEstimate=null;
-  if(nR>0 && smallestByCriterion.length>=2){
-    const depth=Math.min(3, smallestByCriterion.length);
-    crossEstimate = smallestByCriterion.slice(0, depth).reduce((a,b)=>a*b,1) / Math.pow(nR, depth-1);
-    crossEstimate = Math.round(crossEstimate*10)/10;
-  }
-  const manyCriteria = arr.length >= 4;
-  const crossDanger = criteria.length >= 3 && crossEstimate !== null && crossEstimate < 8;
-  const crossWarning = criteria.length >= 3 && crossEstimate !== null && crossEstimate < 15;
-  const repeatedSmallGroups = smallWarn.length >= 2 && arr.length >= 3;
+  const criteriaCount=arr.length;
+
+  let crossingComplexity='faible';
+  if(criteriaCount===3) crossingComplexity='modérée';
+  if(criteriaCount===4) crossingComplexity='élevée';
+  if(criteriaCount>=5) crossingComplexity='très élevée';
+
   let level='good';
-  if(!nR || !arr.length || all.length===0) level='incomplete';
-  else if(missing>0) level='incomplete';
-  else if(smallCritical.length>0 || crossDanger || repeatedSmallGroups) level='danger';
-  else if(smallWarn.length>0 || crossWarning || manyCriteria) level='warning';
-  return {level,nR,criteriaCount:arr.length,missing,smallest,smallCritical,smallWarn,crossEstimate,manyCriteria,allCount:all.length,crossDanger,crossWarning,repeatedSmallGroups};
+  if(!nR || !arr.length || all.length===0 || missing>0){
+    level='incomplete';
+  }else if((smallest!==null && smallest<5) || criteriaCount>=5){
+    level='danger';
+  }else if((smallest!==null && smallest<8) || criteriaCount===4){
+    level='warning';
+  }else{
+    level='good';
+  }
+
+  return {
+    level,
+    nR,
+    criteriaCount,
+    missing,
+    smallest,
+    smallCritical,
+    smallWarn,
+    sensitiveInfo,
+    crossingComplexity,
+    allCount:all.length
+  };
 }
 function checkAnonymity(){
   const risk=computeAnonymityRisk();
@@ -1227,51 +1258,61 @@ function checkAnonymity(){
   const metrics=document.getElementById('anonymity-metrics');
   const summary=document.getElementById('anonymity-summary-text');
   const advice=document.getElementById('anonymity-summary-advice');
+
   const labels={
     incomplete:['À compléter','#64748b','#f7f9fc','#e2e8f0'],
     danger:['🔴 Vigilance élevée','#c0392b','#fff6f6','#ffd6d4'],
-    warning:['🟠 Vigilance','#b7840a','#fffaf0','#ffd490'],
+    warning:['🟠 Vigilance légère','#b7840a','#fffaf0','#ffd490'],
     good:['🟢 Confortable','#27823a','#f0fbf2','#bfe6c8']
   };
+
   const cfg=labels[risk.level]||labels.incomplete;
   if(level){ level.textContent=cfg[0]; level.style.color=cfg[1]; }
   if(levelBox){ levelBox.style.background=cfg[2]; levelBox.style.borderColor=cfg[3]; }
+
   if(summary){
     summary.innerHTML = risk.level==='incomplete'
-      ? (risk.missing ? 'Complétez les effectifs restants. La vigilance sera calculée à partir des petits groupes et du nombre de critères croisés.' : 'Renseignez les effectifs estimés par option pour calculer le niveau de vigilance.')
+      ? (risk.missing ? 'Complétez les effectifs restants pour calculer le niveau de vigilance.' : 'Renseignez les effectifs estimés par option pour calculer le niveau de vigilance.')
       : risk.level==='danger'
-        ? 'Certaines options ou combinaisons de critères peuvent créer des groupes très petits et plus faciles à interpréter indirectement.'
+        ? 'Certains groupes sont très petits ou vous avez ajouté beaucoup de critères : l’analyse collective peut devenir fragile.'
         : risk.level==='warning'
-          ? 'Les groupes semblent globalement exploitables, mais le nombre de critères ou certains croisements appellent une vigilance.'
-          : 'Les groupes renseignés semblent suffisamment larges pour une lecture collective des résultats.';
+          ? 'Quelques points méritent une vérification, mais la situation reste exploitable.'
+          : 'Les groupes semblent suffisamment larges pour une analyse collective confortable.';
   }
+
   if(advice){
     advice.style.color = risk.level==='danger' ? '#c0392b' : (risk.level==='warning' ? '#b7840a' : '#64748b');
     advice.innerHTML = risk.level==='danger'
-      ? '🚨 Regroupez certaines options ou réduisez le nombre de critères croisés.'
+      ? '🚨 Regroupez les options très petites ou réduisez le nombre de critères si nécessaire.'
       : risk.level==='warning'
-        ? '⚠️ Vérifiez que tous ces critères seront vraiment utiles dans l’analyse.'
+        ? 'Conseil : évitez simplement de multiplier les critères très spécifiques.'
         : 'Conseil : gardez uniquement les données nécessaires à la lecture des tendances.';
   }
+
   if(metrics){
     const minTxt = risk.smallest ? 'Plus petit groupe : '+risk.smallest : 'Effectifs à compléter';
-    const crossTxt = risk.crossEstimate!==null && risk.criteriaCount>=3 ? 'Indice croisement : ≈ '+risk.crossEstimate : (risk.criteriaCount<3 ? 'Croisement : faible complexité' : 'Croisement : à calculer');
+    const crossTxt = 'Complexité du croisement : '+risk.crossingComplexity;
     const critTxt = risk.criteriaCount+' critère(s)';
     const missTxt = risk.missing ? risk.missing+' effectif(s) manquant(s)' : 'Effectifs renseignés';
     metrics.innerHTML = '<span class="anonymity-metric">'+minTxt+'</span><span class="anonymity-metric">'+crossTxt+'</span><span class="anonymity-metric">'+critTxt+'</span><span class="anonymity-metric">'+missTxt+'</span>';
   }
+
   let html='';
   if(risk.level==='incomplete'){
-    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">✍️</span><span><strong>Effectifs à compléter.</strong><br>La moulinette signalera ensuite les petits groupes et les croisements sensibles. Si vous gardez beaucoup de critères, le niveau pourra rester en vigilance même avec des effectifs élevés.</span></div>';
+    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">✍️</span><span><strong>Effectifs à compléter.</strong><br>La moulinette signalera ensuite les petits groupes et la complexité des critères croisés.</span></div>';
   }else if(risk.level==='danger'){
     const ex = risk.smallCritical[0] ? ' Exemple : “'+esc(risk.smallCritical[0].label)+'” contient '+risk.smallCritical[0].count+' personne(s).' : '';
-    const cross = risk.crossDanger ? ' L’indice de croisement est bas : plusieurs critères combinés peuvent créer des sous-groupes trop petits.' : '';
-    html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Risque potentiel de groupes trop petits.</strong><br>'+ex+cross+' Regroupez des options ou retirez un critère si nécessaire.</span></div>';
+    const many = risk.criteriaCount>=5 ? ' Vous avez ajouté beaucoup de critères : les croisements peuvent devenir trop fins.' : '';
+    html='<div class="alert alert-danger" style="margin-bottom:10px"><span class="alert-ico">🚨</span><span><strong>Vigilance élevée.</strong><br>'+ex+many+' Regroupez des options ou retirez un critère si nécessaire.</span></div>';
   }else if(risk.level==='warning'){
-    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance recommandée.</strong><br>Les effectifs sont globalement exploitables, mais le nombre de critères ou certains croisements peuvent réduire la lisibilité statistique.</span></div>';
+    const small = risk.smallWarn[0] ? ' Une option contient moins de 8 personnes.' : '';
+    const many = risk.criteriaCount===4 ? ' Quatre critères peuvent créer des croisements assez fins.' : '';
+    html='<div class="alert alert-warning" style="margin-bottom:10px"><span class="alert-ico">⚠️</span><span><strong>Vigilance légère.</strong><br>'+small+many+' Vérifiez simplement que ces critères sont tous utiles à l’analyse.</span></div>';
   }else{
-    html='<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">✓</span><span><strong>Niveau confortable.</strong> Les groupes renseignés semblent suffisamment larges pour une lecture collective.</span></div>';
+    const sensitive = risk.sensitiveInfo && risk.sensitiveInfo.length ? ' Certaines options proches de 8 à 10 personnes restent à interpréter avec prudence.' : '';
+    html='<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">✓</span><span><strong>Niveau confortable.</strong> Les groupes renseignés semblent suffisamment larges pour une lecture collective.'+sensitive+'</span></div>';
   }
+
   document.getElementById('anon-alert').innerHTML=html;
   save();
 }
