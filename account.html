@@ -29,6 +29,16 @@ body{font-family:'Asap',sans-serif;background:#f3f6f8;color:#18375d;min-height:1
 .its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
 @media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
 
+
+/* ── Grille de recharge depuis Mon compte ───────────────────── */
+.account-pack-grid-card{background:linear-gradient(135deg,#ffffff 0%,#f8fbfd 100%);border:1px solid #cfe4ea;border-radius:22px;padding:18px;margin-top:18px;box-shadow:0 12px 30px rgba(13,76,114,.08)}
+.account-pack-grid-title{font-size:17px;font-weight:950;color:#0d4c72;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.account-pack-grid-sub{font-size:13px;color:#718497;line-height:1.45;margin-bottom:14px}.account-pack-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.account-pack-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:11px 10px;text-align:left;min-height:98px;box-shadow:0 5px 14px rgba(24,55,93,.04);cursor:pointer;transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease;font-family:'Asap',sans-serif;color:#18375d}
+.account-pack-chip:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(24,55,93,.10);border-color:#007883}.account-pack-chip:disabled{cursor:wait;opacity:.62;transform:none}.account-pack-chip strong{display:block;font-size:18px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}.account-pack-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}.account-pack-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}.account-pack-chip b{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:950;border-radius:999px;padding:3px 7px;margin-bottom:7px;background:#fff;color:#8a5a00;border:1px solid rgba(255,199,68,.65)}
+.account-pack-chip.popular{background:linear-gradient(135deg,#fff9e9 0%,#fff1bd 100%);border-color:#ffc744;box-shadow:0 8px 20px rgba(255,199,68,.18)}.account-pack-chip.popular strong,.account-pack-chip.popular em{color:#8a5a00}.account-pack-chip.entreprise{background:linear-gradient(135deg,#eef9fb 0%,#dff2f5 100%);border-color:#9fd0e0;box-shadow:0 8px 20px rgba(0,120,131,.12)}.account-pack-chip.entreprise b{color:#0d4c72;border-color:#9fd0e0;background:#fff}.account-pack-chip.entreprise strong,.account-pack-chip.entreprise em{color:#0d4c72}.account-pack-chip.illimite{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-color:#18375d}.account-pack-chip.illimite strong,.account-pack-chip.illimite em,.account-pack-chip.illimite span{color:#fff}.account-pack-status{display:none;margin-top:12px;border-radius:14px;padding:12px 14px;font-size:13px;font-weight:800;line-height:1.45}.account-pack-status.ok{display:block;background:#eefbf3;color:#176239;border:1px solid #bee8cd}.account-pack-status.err{display:block;background:#fff0f0;color:#9d2b2b;border:1px solid #ffd1d1}
+@media(max-width:980px){.account-pack-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:620px){.account-pack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.account-pack-chip{min-height:86px}}
+
 </style>
 </head>
 <body>
@@ -306,18 +316,85 @@ function itsQuotaCardHTML(q,compact=false){
     <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
     <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
     <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
-    <div class="its-quota-actions"><a class="its-quota-action" href="demande-information.html?objet=recharge-pack">Demander une recharge</a><a class="its-quota-action secondary" href="demande-information.html">Contacter Into The Shift</a></div>
   </div>`;
 }
 function itsQuotaInlineHTML(q){
   return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
 }
 
+
+const ACCOUNT_PACK_TARIFFS = {
+  "50": { price:"250 € HT", label:"Découverte" },
+  "100": { price:"450 € HT", label:"Mini équipe" },
+  "200": { price:"700 € HT", label:"Test" },
+  "500": { price:"1 500 € HT", label:"Déploiement PME", badge:"⭐ Le plus populaire", cls:"popular" },
+  "700": { price:"1 900 € HT", label:"Multi-BU" },
+  "1200": { price:"3 000 € HT", label:"Grand compte / cabinet", badge:"🏢 Entreprise", cls:"entreprise" },
+  "1500": { price:"3 500 € HT", label:"Grand déploiement" },
+  "1700": { price:"3 800 € HT", label:"Organisation étendue" },
+  "2000": { price:"4 000 € HT", label:"Groupe" },
+  "2500": { price:"4 800 € HT", label:"Groupe +" },
+  "3000": { price:"5 400 € HT", label:"Déploiement large" },
+  "4000": { price:"6 600 € HT", label:"Large volume" },
+  "5000": { price:"7 500 € HT", label:"Très grand compte" },
+  "7000": { price:"9 100 € HT", label:"Très large diffusion" },
+  "illimite": { price:"15 000 € HT", label:"Usage intensif", cls:"illimite" }
+};
+
+function accountPackLabel(value){
+  if(String(value)==='illimite') return 'Pack illimité';
+  const n = Number(value || 0);
+  return Number.isFinite(n) && n > 0 ? n.toLocaleString('fr-FR') + ' passations' : 'Pack complémentaire';
+}
+
+function accountPackGridHTML(){
+  return `<div class="account-pack-grid-card">
+    <div class="account-pack-grid-title">💶 Recharger un pack</div>
+    <div class="account-pack-grid-sub">Cliquez sur le pack souhaité : la demande de recharge est envoyée directement à Into The Shift et un accusé de réception est envoyé au client. Aucun formulaire supplémentaire n’est nécessaire.</div>
+    <div class="account-pack-grid">
+      ${Object.entries(ACCOUNT_PACK_TARIFFS).map(([value,item]) => `<button type="button" class="account-pack-chip ${item.cls||''}" data-pack="${value}" onclick="requestAccountPackRecharge('${value}')">${item.badge?`<b>${item.badge}</b>`:''}<strong>${value==='illimite'?'Illimité':Number(value).toLocaleString('fr-FR')}</strong><em>${item.price}</em><span>${item.label}</span></button>`).join('')}
+    </div>
+    <div id="accountPackRechargeStatus" class="account-pack-status"></div>
+  </div>`;
+}
+
+function setAccountPackRechargeStatus(type, message){
+  const el = document.getElementById('accountPackRechargeStatus');
+  if(!el) return;
+  el.className = 'account-pack-status ' + (type === 'ok' ? 'ok' : 'err');
+  el.textContent = message || '';
+}
+
+async function requestAccountPackRecharge(packValue){
+  const selected = String(packValue || '').trim();
+  if(!selected) return;
+  const buttons = document.querySelectorAll('.account-pack-chip');
+  buttons.forEach(btn => btn.disabled = true);
+  setAccountPackRechargeStatus('ok', 'Demande de recharge en cours d’envoi…');
+  try{
+    const response = await fetch(API_BASE_URL + '/api/me/pack-upgrade-request', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+getToken()},
+      body:JSON.stringify({ packChoice:selected })
+    });
+    const data = await response.json().catch(()=>({}));
+    if(!response.ok) throw new Error(data.error || 'Demande de recharge impossible.');
+    setAccountPackRechargeStatus('ok', 'Demande envoyée pour ' + accountPackLabel(selected) + '. Into The Shift revient vers vous rapidement.');
+    showSuccess('Demande de recharge envoyée.');
+  }catch(err){
+    console.error(err);
+    setAccountPackRechargeStatus('err', err.message || 'Impossible d’envoyer la demande de recharge.');
+    showError('Impossible d’envoyer la demande de recharge. Détail : ' + (err.message || 'Erreur inconnue'));
+  }finally{
+    buttons.forEach(btn => btn.disabled = false);
+  }
+}
+
 async function renderAccountQuota(){
   const target=document.getElementById('accountQuotaCard');
   if(!target) return;
   const q=await itsLoadClientQuota();
-  target.innerHTML=itsQuotaCardHTML(q);
+  target.innerHTML=itsQuotaCardHTML(q) + accountPackGridHTML();
 }
 
 function decodeJwt(token){try{const payload=token.split(".")[1];return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return null;}}
