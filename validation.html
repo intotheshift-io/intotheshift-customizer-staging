@@ -1087,6 +1087,7 @@ function buildPayload(){
     extension: isExtension,
     isReprogramming: isValidationReprogramMode(),
     reprogramming: isValidationReprogramMode(),
+    isReprogrammingTransmission: isValidationReprogramMode(),
     transmissionType: isExtension ? 'extension' : (isValidationReprogramMode() ? 'reprogramming' : 'standard'),
     oldEndDate: previousEndDate,
     previousEndDate: previousEndDate,
