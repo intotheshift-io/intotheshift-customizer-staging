@@ -592,10 +592,10 @@ function itsQuotaLabel(q){
 }
 function itsQuotaNudge(q){
   if(!q||(!q.quota && String(q?.pack)!=='illimite')) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
-  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
-  if(q.addedPack && q.baseQuota){
-    return 'Le pack sélectionné s’ajoute à votre pack existant. Le total affiché correspond au volume déjà acheté + le nouveau pack.';
+  if(q.selected && state?.parametrage?.pack_choisi && state.parametrage.pack_choisi !== 'current_pack'){
+    return 'Votre demande de recharge a bien été transmise à Into The Shift. Nous allons la valider et vous envoyer un devis avant activation des nouvelles passations.';
   }
+  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
   const ratio=q.quota? q.remaining/q.quota : 0;
   if(ratio<=0) return 'Votre solde est épuisé : choisissez un nouveau pack ci-dessus pour continuer.';
   if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
