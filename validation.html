@@ -1067,11 +1067,15 @@ function buildPayload(){
     state.oldEndDate ||
     state.previous_end_date ||
     state.old_end_date ||
+    state.originalCampaignEndDate ||
+    state.original_campaign_end_date ||
     state.extensionPreviousEndDate ||
     state.transmission?.previousEndDate ||
     state.transmission?.oldEndDate ||
     state.parametrage?.previousEndDate ||
     state.parametrage?.oldEndDate ||
+    state.parametrage?.originalCampaignEndDate ||
+    state.parametrage?.original_campaign_end_date ||
     '';
 
   return {
