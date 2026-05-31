@@ -376,6 +376,8 @@ td:nth-child(9){width:125px}
   font-weight:800;
   max-width:100%;
 }
+.account-chip.clickable{cursor:pointer;text-decoration:none}
+.account-chip.clickable:hover{background:#eaf3f8;border-color:#cbd9e7;color:#0d4c72}
 .account-chip.empty{
   background:#fbfdfe;
   color:#7b8c9a;
@@ -1530,7 +1532,7 @@ function renderAccounts(){
           <div class="account-name">${escapeHtml(name)}</div>
           <div class="account-email">${escapeHtml(email)}</div>
           <div class="account-chip-row">
-            <span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>
+            ${organizationId ? `<button type="button" class="account-chip clickable" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">🏢 ${escapeHtml(company || organizationName || "Entreprise non renseignée")}</button>` : `<span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>`}
             <span class="account-chip ${jobTitle?"":"empty"}">💼 ${escapeHtml(jobTitle || "Fonction non renseignée")}</span>
             <span class="account-chip ${sector?"":"empty"}">🌐 ${escapeHtml(sector || "Secteur non renseigné")}</span>
           </div>
