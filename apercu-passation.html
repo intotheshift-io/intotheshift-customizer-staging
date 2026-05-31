@@ -128,7 +128,10 @@ function renderSocio(){
     ${(state.demographics||[]).map(d=>`
       <div class="card">
         <div class="q-text">${esc(d.q)} *</div>
-        ${(d.opts||[]).map((o,i)=>`<div class="ans"><div class="ans-num">${i+1}</div><div>${esc(o)}</div></div>`).join("")}
+        ${(d.opts||[]).map((o,i)=>{
+          const label = typeof o === 'object' ? (o.label || o.text || '') : o;
+          return `<div class="ans"><div class="ans-num">${i+1}</div><div>${esc(label)}</div></div>`;
+        }).join("")}
       </div>
     `).join("")}
     <button class="btn btn-primary" onclick="step='question';render()">Étape suivante</button>
