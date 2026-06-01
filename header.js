@@ -210,6 +210,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const clientFolderUrl = organizationId ? `/client-folder.html?id=${encodeURIComponent(organizationId)}` : "";
     const projectKitUrl = projectId ? `/kit-communication.html?projectId=${encodeURIComponent(projectId)}` : "";
 
+    console.log("[ITS NOTIF DEBUG][HEADER][RESOLVE INPUT]", {
+      id: item.id || "",
+      role: admin ? "admin" : partner ? "partner" : client ? "client" : "unknown",
+      type,
+      audience: item.audience || "",
+      projectId,
+      organizationId,
+      actionUrl,
+      clientFolderUrl,
+      projectKitUrl,
+      metadata
+    });
+
     const adminProjectTypes = new Set([
       "submitted",
       "transmission",
@@ -367,6 +380,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       if (!res.ok) return;
       const data = await res.json();
+      console.log("[ITS NOTIF DEBUG][HEADER][LOAD]", {
+        unread: Number(data.unread || 0),
+        count: Array.isArray(data.notifications) ? data.notifications.length : 0,
+        notifications: (data.notifications || []).map(n => ({
+          id: n.id,
+          type: n.type,
+          audience: n.audience,
+          userId: n.userId || n.user_id || null,
+          organizationId: n.organizationId || n.organization_id || n.metadata?.organizationId || n.metadata?.organization_id || null,
+          projectId: n.projectId || n.project_id || n.metadata?.projectId || n.metadata?.project_id || null,
+          actionUrl: n.actionUrl || n.action_url || "",
+          title: n.title || ""
+        }))
+      });
       renderHeaderNotifications(data.notifications || [], Number(data.unread || 0));
     } catch(e) {}
   }
@@ -526,6 +553,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       const url = item.dataset.url || "";
+      console.log("[ITS NOTIF DEBUG][HEADER][CLICK]", {
+        notificationId: item.dataset.id || "",
+        url,
+        projectId: item.dataset.projectId || "",
+        organizationId: item.dataset.organizationId || "",
+        className: item.className || ""
+      });
       prepareNotificationNavigation({
         projectId: item.dataset.projectId || "",
         organizationId: item.dataset.organizationId || ""
