@@ -77,8 +77,8 @@
     .copy-btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:9px;padding:6px 8px;font-size:12px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap}
     .copy-btn:hover{background:#eef6fb;border-color:#b8dfe0}
 
-    .empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
-    .empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
+    .ad-empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
+    .ad-empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
 
     .menu{position:absolute;right:16px;top:74px;background:#fff;border:1px solid #d8e0ea;border-radius:12px;box-shadow:0 14px 35px rgba(24,55,93,.14);min-width:250px;z-index:20;display:none;overflow:hidden}
     .menu.open{display:block}
@@ -1217,7 +1217,7 @@
 
       if (!filtered.length) {
         list.innerHTML = `
-          <div class="empty">
+          <div class="ad-empty">
             <strong>Aucun autodiagnostic trouvé</strong>
             Aucun élément ne correspond à ce filtre.
           </div>
