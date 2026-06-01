@@ -404,7 +404,7 @@ function showTemplate(k,btn){
   if(bodyEl) bodyEl.textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());
 
   c().activeTemplate=key;
-  saveState();
+  if(!isCampaignModeAlreadyTransmitted()) saveState();
 
   if(typeof window.ensureCampaignCopyActionsAvailable === 'function'){
     window.ensureCampaignCopyActionsAvailable();
@@ -543,7 +543,7 @@ function updateDatesFromInputs(){
   validateAndNormalizeCampaignDates(true);
   updateDatesUI();
   updateChecklist();
-  saveState();
+  if(!isCampaignModeAlreadyTransmitted()) saveState();
 }function updateDatesUI(){
   const launchInput=document.getElementById('date-launch');
   const closeInput=document.getElementById('date-close');
@@ -572,6 +572,28 @@ function isCampaignExtendMode(){
     const params = new URLSearchParams(window.location.search || "");
     return params.get("extend") === "1" || state.isExtending === true || state.extending === true;
   }catch(e){ return state.isExtending === true || state.extending === true; }
+}
+
+function isCampaignModeAlreadyTransmitted(){
+  const transmission = state && typeof state === "object" ? (state.transmission || {}) : {};
+  const rawStatus = String(
+    state?.status ||
+    state?.project_status ||
+    transmission.status ||
+    ""
+  ).toLowerCase();
+
+  return Boolean(
+    rawStatus === "sent" ||
+    rawStatus === "submitted" ||
+    rawStatus === "transmitted" ||
+    rawStatus.includes("transmis") ||
+    state?.configTransmise === true ||
+    state?.config_transmise === true ||
+    state?.submitted === true ||
+    transmission.submitted_at ||
+    transmission.submittedAt
+  );
 }
 function isCampaignDateEditMode(){
   return isCampaignReprogramMode() || isCampaignExtendMode();
@@ -1448,16 +1470,19 @@ bootCampagnePage();
     const lockStatus = ["published","unpublished","archived"].includes(campaignStatusForLock) && !reprogram && !extend;
 
     if(reprogram || extend){
+      const alreadyTransmitted = isCampaignModeAlreadyTransmitted();
       document.body.classList.remove("campaign-locked");
       state.isReprogramming = reprogram;
       state.reprogramming = reprogram;
       state.isExtending = extend;
       state.extending = extend;
-      state.status = "draft";
-      state.configTransmise = false;
-      state.config_transmise = false;
-      state.submitted = false;
-      if(state.transmission){ state.transmission.status = "draft"; state.transmission.submitted_at = ""; delete state.transmission.submittedAt; }
+      if(!alreadyTransmitted){
+        state.status = "draft";
+        state.configTransmise = false;
+        state.config_transmise = false;
+        state.submitted = false;
+        if(state.transmission){ state.transmission.status = "draft"; state.transmission.submitted_at = ""; delete state.transmission.submittedAt; }
+      }
       setReprogramOriginalDatesIfMissing();
 
       const title = document.querySelector(".page-title");
