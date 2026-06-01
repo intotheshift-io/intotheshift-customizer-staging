@@ -576,3 +576,33 @@ input[type="url"]:focus,
     order:3;
   }
 }
+
+
+/* ── Correctif header : déconnexion tout à droite ───────────── */
+.header-spacer{
+  flex:1 1 auto;
+  min-width:24px;
+}
+.header-actions{
+  margin-left:0 !important;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex:0 0 auto;
+}
+.compact-topbar .main-nav{
+  flex:0 1 auto !important;
+  min-width:0;
+}
+.compact-topbar .logout-link{
+  margin-left:4px;
+}
+@media(max-width:760px){
+  .header-spacer{
+    display:none;
+  }
+  .header-actions{
+    margin-left:auto !important;
+  }
+}

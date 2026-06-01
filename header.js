@@ -160,7 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
       links: "🔗",
       pack_low: "🟡",
       pack_critical: "🟠",
-      pack_empty: "🔴"
+      pack_empty: "🔴",
+      pack_expiry: "⏰",
+      pack_expired: "🔴",
+      pack_upgrade_request: "🎟️",
+      pack_upgrade_approved: "✅",
+      pack_republished: "🟢",
+      communication_assets: "📣"
     };
     return map[type] || "🔔";
   }
@@ -347,6 +353,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ${accountLink}
 
       </nav>
+
+      <div class="header-spacer" aria-hidden="true"></div>
 
       <div class="header-actions">
         ${notificationBlock}
