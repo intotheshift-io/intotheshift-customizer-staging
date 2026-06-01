@@ -810,35 +810,76 @@ function itsPackExpiryLine(q){
   return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
 }
 function itsQuotaLabel(q){
+  if(itsIsPackExpired(q)) return 'Pack expiré';
   if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
   if(String(q.pack)==='illimite') return 'Pack illimité';
   if(String(q.pack)==='existing') return 'Pack en cours';
   const n=Number(q.pack||q.quota||0);
   return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
 }
+function itsPackExpiryDate(value){
+  if(!value) return null;
+  const s=String(value).trim();
+  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  const d=m?new Date(Number(m[1]),Number(m[2])-1,Number(m[3])):new Date(s);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+function itsIsPackExpired(q){
+  if(!q || String(q.pack)==='illimite') return false;
+  const d=itsPackExpiryDate(q.packExpiresAt);
+  if(!d) return false;
+  const today=new Date();
+  today.setHours(0,0,0,0);
+  d.setHours(0,0,0,0);
+  return d.getTime() < today.getTime();
+}
+function itsDisplayQuota(q){
+  if(itsIsPackExpired(q)){
+    return {...(q||{}), quota:0, used:0, remaining:0, _packExpired:true};
+  }
+  return q || {quota:0, used:0, remaining:0, pack:''};
+}
 function itsQuotaNudge(q){
+  if(itsIsPackExpired(q)) return 'Votre pack a expiré : rechargez votre pack pour relancer vos campagnes et créer de nouveaux autodiagnostics.';
   if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
   const ratio=q.quota? q.remaining/q.quota : 0;
-  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
-  if(ratio<=0) return 'Votre solde est épuisé : contactez Into The Shift pour recharger votre pack avant une nouvelle campagne.';
-  if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
+  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge.';
+  if(ratio<=0) return 'Votre solde est épuisé : demandez une recharge de passations avant une nouvelle campagne.';
+  if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge de passations pour éviter de bloquer une campagne.';
   return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
 }
+function itsFormatPackExpiry(value){
+  const d=itsPackExpiryDate(value);
+  if(!d) return '';
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+}
+function itsPackExpiryLine(q){
+  const formatted=itsFormatPackExpiry(q?.packExpiresAt);
+  if(!formatted) return 'Validité du pack : date de fin non renseignée.';
+  if(itsIsPackExpired(q)) return 'Pack expiré depuis le : <strong>'+formatted+'</strong>.';
+  return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
+}
 function itsQuotaCardHTML(q,compact=false){
-  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
-  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
-  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
+  const source=q||{};
+  const view=itsDisplayQuota(source);
+  const quota=Number(view.quota||0), used=Number(view.used||0), remaining=String(view.pack)==='illimite'?'∞':Number(view.remaining||Math.max(quota-used,0));
+  const pct=String(view.pack)==='illimite'?100:(quota?Math.max(0,Math.min(100,Math.round((Number(view.remaining||0)/quota)*100))):0);
+  const cls=view._packExpired?'empty':(!quota&&!view.pack?'empty':(pct<20&&String(view.pack)!=='illimite'?'warn':'ok'));
   return `<div class="its-quota-card ${cls}">
-    <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+    <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(source)}</div></div><div class="its-quota-pill">${view._packExpired?'Expiré':(String(view.pack)==='illimite'?'Illimité':pct+'% restant')}</div></div>
     <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
-    <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
-    <div class="its-quota-nudge">${itsPackExpiryLine(q)}</div>
-    <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
+    <div class="its-quota-bar"><div class="its-quota-fill" style="width:${pct}%"></div></div>
+    <div class="its-quota-nudge">${itsPackExpiryLine(source)}</div>
+    <div class="its-quota-nudge">${itsQuotaNudge(source)}</div>
+    ${view._packExpired?'<div class="its-quota-actions"><a class="its-quota-action" href="account.html?tab=quota">Recharger mon pack</a></div>':''}
   </div>`;
 }
 function itsQuotaInlineHTML(q){
-  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
+  const view=itsDisplayQuota(q||{});
+  if(view._packExpired) return `<div class="its-quota-inline"><strong>Pack expiré</strong><div class="mini">Rechargez votre pack pour relancer vos campagnes.</div></div>`;
+  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'} · ${itsPackExpiryLine(q)}</div></div>`;
 }
+
 
 function getDashboardRole(){
   const storedRole=(localStorage.getItem('its_user_role')||localStorage.getItem('role')||'').toLowerCase();
