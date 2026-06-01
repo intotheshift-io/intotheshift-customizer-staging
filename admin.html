@@ -2018,6 +2018,8 @@ function renderProjects(){
     const created=formatDate(val(p,["created_at","createdAt","date_creation"],""));
     const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
     const sent=isProjectConfigActuallySent(p);
+    const statusQuickClass=status==="published"?"good":status==="unpublished"?"warn":status==="sent"?"warn":"";
+    const statusQuickSub=sent?"Configuration transmise":"Configuration non transmise";
     const share=getProjectShareUrl(p);
     const results=getProjectResultsUrl(p);
     const startDate=getCampaignStartDate(p);
@@ -2035,7 +2037,7 @@ function renderProjects(){
       </div>
       <div class="project-quick-grid">
         <div class="project-quick-item"><div class="project-quick-label">Cockpit client</div><div class="project-quick-value">${escapeHtml(client)}</div><div class="muted">${orgId?`ID cockpit #${escapeHtml(orgId)}`:"Aucun cockpit rattaché"}</div></div>
-        <div class="project-quick-item"><div class="project-quick-label">Configuration</div><div class="project-quick-value ${sent?'good':'warn'}">${sent?"Transmise":"Non transmise"}</div><div class="muted">${escapeHtml(statusHelp)}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Statut</div><div class="project-quick-value ${statusQuickClass}">${escapeHtml(getProjectStatusLabel(status))}</div><div class="muted">${escapeHtml(statusQuickSub)}</div></div>
         <div class="project-quick-item"><div class="project-quick-label">Début campagne</div><div class="project-quick-value">${formatDate(startDate)}</div></div>
         <div class="project-quick-item"><div class="project-quick-label">Fin campagne</div><div class="project-quick-value ${endLabel.kind}">${escapeHtml(endLabel.text)}</div></div>
       </div>
@@ -2050,7 +2052,7 @@ function renderProjects(){
       <div class="project-card-actions">
         ${orgId?`<button class="mini-btn light" onclick="openClientFolder('${escapeAttr(orgId)}')">Ouvrir cockpit client</button>`:""}
         <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
-        <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Campagne / QR code</button>
+        <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Kit communication / QR code</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
       </div>
       <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
@@ -2061,7 +2063,7 @@ function renderProjects(){
 
 function openProjectCampaign(projectId){
   if(!projectId)return;
-  window.location.href = "campagne.html?projectId=" + encodeURIComponent(projectId);
+  window.location.href = "kit-communication.html?projectId=" + encodeURIComponent(projectId);
 }
 
 function togglePublicationUrlFields(projectId){
