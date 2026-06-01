@@ -482,6 +482,10 @@ document.addEventListener("DOMContentLoaded", function () {
       else loadHeaderNotifications();
     });
     loadHeaderNotifications();
-    setInterval(loadHeaderNotifications, 120000);
+    setInterval(loadHeaderNotifications, 15000);
+    window.addEventListener("focus", loadHeaderNotifications);
+    document.addEventListener("visibilitychange", function(){
+      if (!document.hidden) loadHeaderNotifications();
+    });
   }
 });
