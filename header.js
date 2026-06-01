@@ -178,6 +178,76 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch(e) { return ""; }
   }
 
+
+  function isNotificationUnread(item = {}) {
+    if (!item || typeof item !== "object") return true;
+    if (item.unread === true) return true;
+    if (item.unread === false) return false;
+    return !Boolean(item.readAt || item.read_at);
+  }
+
+  function normalizeNotificationPath(value = "") {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    if (/^https?:\/\//i.test(raw)) {
+      try {
+        const url = new URL(raw);
+        return `${url.pathname || "/"}${url.search || ""}${url.hash || ""}`;
+      } catch(e) {
+        return "";
+      }
+    }
+    return raw.startsWith("/") ? raw : `/${raw}`;
+  }
+
+  function resolveNotificationUrl(item = {}) {
+    const type = String(item.type || "").toLowerCase();
+    const metadata = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+    const projectId = item.projectId || item.project_id || metadata.projectId || metadata.project_id || "";
+    const organizationId = item.organizationId || item.organization_id || metadata.organizationId || metadata.organization_id || "";
+    const actionUrl = normalizeNotificationPath(item.actionUrl || item.action_url || "");
+
+    if (type.startsWith("pack_")) {
+      if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
+      return "/account.html?tab=quota";
+    }
+
+    if (["published", "links", "communication_assets", "ending"].includes(type) && projectId) {
+      return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+    }
+
+    if (["submitted", "extended", "reprogrammed", "unpublished"].includes(type)) {
+      if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
+      return "/mes-autodiagnostics.html";
+    }
+
+    if (actionUrl) {
+      if (actionUrl.includes("client-folder.html") && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
+      if (actionUrl.includes("kit-communication.html") && projectId) return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+      return actionUrl;
+    }
+
+    if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
+    if (projectId) return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+    return "";
+  }
+
+  function prepareNotificationNavigation(item = {}, url = "") {
+    const metadata = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+    const projectId = item.projectId || item.project_id || metadata.projectId || metadata.project_id || "";
+    const organizationId = item.organizationId || item.organization_id || metadata.organizationId || metadata.organization_id || "";
+
+    try {
+      if (projectId) {
+        localStorage.setItem("its_current_project_id", String(projectId));
+        localStorage.setItem("its_current_ad_id", String(projectId));
+      }
+      if ((admin || partner) && organizationId && String(url || "").includes("client-folder.html")) {
+        localStorage.setItem("its_selected_partner_client_id", String(organizationId));
+      }
+    } catch(e) {}
+  }
+
   async function markNotificationRead(id) {
     const token = getToken();
     if (!token || !id) return;
@@ -217,17 +287,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     empty.style.display = "none";
     list.innerHTML = items.map(item => {
-      const url = item.actionUrl || "";
-      const unreadClass = item.unread ? " unread" : " treated";
-      const checkedAttr = item.unread ? "" : " checked";
-      const treatedLabel = item.unread ? "Marquer comme traité" : "Notification traitée";
-      return `<div class="its-notif-item${unreadClass}" data-id="${item.id}" data-url="${url}">
+      const url = resolveNotificationUrl(item);
+      const unread = isNotificationUnread(item);
+      const unreadClass = unread ? " unread" : " treated";
+      const treatedLabel = unread ? "Marquer comme traité" : "Notification traitée";
+      const projectId = item.projectId || item.project_id || item.metadata?.projectId || item.metadata?.project_id || "";
+      const organizationId = item.organizationId || item.organization_id || item.metadata?.organizationId || item.metadata?.organization_id || "";
+      return `<div class="its-notif-item${unreadClass}" data-id="${escapeHtml(item.id || "")}" data-url="${escapeHtml(url)}" data-project-id="${escapeHtml(projectId)}" data-organization-id="${escapeHtml(organizationId)}">
         <span class="its-notif-ico">${notificationIcon(item.type)}</span>
         <button class="its-notif-main" type="button" data-action="open">
-          <span class="its-notif-copy"><strong>${escapeHtml(item.title || "Notification")}</strong><span>${escapeHtml(item.message || "")}</span><small>${formatNotificationDate(item.createdAt)}</small></span>
+          <span class="its-notif-copy"><strong>${escapeHtml(item.title || "Notification")}</strong><span>${escapeHtml(item.message || "")}</span><small>${formatNotificationDate(item.createdAt || item.created_at)}</small></span>
         </button>
         <button class="its-notif-check" type="button" data-action="read" aria-label="${treatedLabel}" title="${treatedLabel}">
-          <span aria-hidden="true">${checkedAttr ? "✓" : ""}</span>
+          <span aria-hidden="true">${unread ? "" : "✓"}</span>
         </button>
       </div>`;
     }).join("");
@@ -402,6 +474,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       const url = item.dataset.url || "";
+      prepareNotificationNavigation({
+        projectId: item.dataset.projectId || "",
+        organizationId: item.dataset.organizationId || ""
+      }, url);
       if (url) window.location.href = url;
       else loadHeaderNotifications();
     });
