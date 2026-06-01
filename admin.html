@@ -380,21 +380,6 @@ td:nth-child(9){width:125px}
   justify-content:flex-end;
   flex-shrink:0;
 }
-.account-role-badge-btn{
-  border:0;
-  background:transparent;
-  padding:0;
-  margin:0;
-  font-family:'Asap',sans-serif;
-  cursor:pointer;
-}
-.account-role-badge-btn:hover .badge-client{
-  box-shadow:0 0 0 2px rgba(44,122,67,.16);
-  transform:translateY(-1px);
-}
-.account-role-badge-btn .badge{
-  transition:all .15s ease;
-}
 .account-chip-row{
   display:flex;
   flex-wrap:wrap;
@@ -1533,6 +1518,47 @@ function organizationOptionsForAccount(currentOrgId){
   }).join("");
 }
 
+function getAccountOrganizationMatch(c){
+  const explicitId=cleanId(val(c,["organizationId","organization_id","orgId","org_id"],""));
+  const orgs=getDirectOrganizations();
+
+  if(explicitId){
+    const explicitOrg=orgs.find(o=>String(val(o,["id"],"")).trim()===explicitId);
+    if(explicitOrg) return { id: explicitId, name: getOrgName(explicitOrg), explicit: true };
+    return { id: explicitId, name: val(c,["organizationName","organization_name"],""), explicit: true };
+  }
+
+  const userId=String(val(c,["id","user_id"],"")).trim();
+  const email=String(val(c,["email"],"")).toLowerCase().trim();
+  const company=normalizeAdminText(getCompany(c));
+
+  const matchedOrg=orgs.find(o=>{
+    const users=Array.isArray(o.users)?o.users:[];
+    const hasUser=users.some(u=>{
+      const uid=String(val(u,["id","user_id"],"")).trim();
+      const uEmail=String(val(u,["email"],"")).toLowerCase().trim();
+      return (userId && uid===userId) || (email && uEmail===email);
+    });
+    if(hasUser) return true;
+
+    const creatorId=String(getOrgCreatorId(o));
+    if(userId && creatorId===userId) return true;
+
+    const ownerEmail=String(val(o,["ownerEmail","owner_email","creatorEmail","creator_email","contactEmail","contact_email","email"],"")).toLowerCase().trim();
+    if(email && ownerEmail===email) return true;
+
+    const orgName=normalizeAdminText(getOrgName(o));
+    return company && orgName && orgName===company;
+  });
+
+  if(matchedOrg){
+    return { id: String(val(matchedOrg,["id"],"")).trim(), name: getOrgName(matchedOrg), explicit: false };
+  }
+
+  return { id: "", name: val(c,["organizationName","organization_name"],""), explicit: false };
+}
+
+
 async function attachUserToOrganization(userId, transferProjects=false){
   const select=document.getElementById("attach-org-"+String(userId));
   const organizationId=select?.value || "";
@@ -1591,9 +1617,6 @@ function renderAccounts(){
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
     const canAttach=role==="client";
-    const roleBadgeHtml=(role==="client" && organizationId)
-      ? `<button type="button" class="account-role-badge-btn" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">${roleBadge(role)}</button>`
-      : roleBadge(role);
 
     return`<article class="account-card">
       <div class="account-card-head">
@@ -1607,7 +1630,7 @@ function renderAccounts(){
           </div>
         </div>
         <div class="account-badges">
-          <span id="role-badge-${escapeAttr(id)}">${roleBadgeHtml}</span>
+          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
           ${statusBadge(status)}
         </div>
       </div>
