@@ -1127,10 +1127,30 @@ function getProjectTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
       const param = payload.parametrage || data.parametrage || {};
+      const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
+      const transmissionPayload = transmission.payload && typeof transmission.payload === "object" ? transmission.payload : {};
+      const campaign = data.campagne || data.campaign || payload.campagne || payload.campaign || {};
+      const communication = data.communication || payload.communication || {};
+
+      const reprogrammingType = [
+        project?.transmissionType, project?.transmission_type, project?.type,
+        data?.transmissionType, data?.transmission_type, data?.type,
+        payload?.transmissionType, payload?.transmission_type, payload?.type,
+        param?.transmissionType, param?.transmission_type,
+        transmission?.transmissionType, transmission?.transmission_type, transmission?.type, transmission?.status,
+        transmissionPayload?.transmissionType, transmissionPayload?.transmission_type, transmissionPayload?.type,
+        campaign?.transmissionType, campaign?.transmission_type, campaign?.type,
+        communication?.transmissionType, communication?.transmission_type
+      ].some(value => String(value || "").toLowerCase().includes("reprogram"));
 
       return Boolean(
+        reprogrammingType ||
         project?.reprogrammed === true ||
         project?.isReprogrammed === true ||
+        project?.is_reprogrammed === true ||
+        project?.reprogramming === true ||
+        project?.isReprogramming === true ||
+        project?.reprogrammingRequest === true ||
         project?.reprogrammed_at ||
         project?.reprogrammedAt ||
         project?.campaign_reprogrammed === true ||
@@ -1139,6 +1159,10 @@ function getProjectTitle(project){
         project?.campaignReprogrammedAt ||
         data?.reprogrammed === true ||
         data?.isReprogrammed === true ||
+        data?.is_reprogrammed === true ||
+        data?.reprogramming === true ||
+        data?.isReprogramming === true ||
+        data?.reprogrammingRequest === true ||
         data?.reprogrammed_at ||
         data?.reprogrammedAt ||
         data?.campaign_reprogrammed === true ||
@@ -1147,6 +1171,10 @@ function getProjectTitle(project){
         data?.campaignReprogrammedAt ||
         payload?.reprogrammed === true ||
         payload?.isReprogrammed === true ||
+        payload?.is_reprogrammed === true ||
+        payload?.reprogramming === true ||
+        payload?.isReprogramming === true ||
+        payload?.reprogrammingRequest === true ||
         payload?.reprogrammed_at ||
         payload?.reprogrammedAt ||
         payload?.campaign_reprogrammed === true ||
@@ -1155,12 +1183,32 @@ function getProjectTitle(project){
         payload?.campaignReprogrammedAt ||
         param?.reprogrammed === true ||
         param?.isReprogrammed === true ||
+        param?.is_reprogrammed === true ||
+        param?.reprogramming === true ||
+        param?.isReprogramming === true ||
+        param?.reprogrammingRequest === true ||
         param?.reprogrammed_at ||
         param?.reprogrammedAt ||
         param?.campaign_reprogrammed === true ||
         param?.campaignReprogrammed === true ||
         param?.campaign_reprogrammed_at ||
-        param?.campaignReprogrammedAt
+        param?.campaignReprogrammedAt ||
+        transmission?.reprogrammed === true ||
+        transmission?.isReprogrammed === true ||
+        transmission?.is_reprogrammed === true ||
+        transmission?.reprogramming === true ||
+        transmission?.isReprogramming === true ||
+        transmission?.reprogrammingRequest === true ||
+        transmission?.reprogrammed_at ||
+        transmission?.reprogrammedAt ||
+        transmissionPayload?.reprogrammed === true ||
+        transmissionPayload?.isReprogrammed === true ||
+        transmissionPayload?.is_reprogrammed === true ||
+        transmissionPayload?.reprogramming === true ||
+        transmissionPayload?.isReprogramming === true ||
+        transmissionPayload?.reprogrammingRequest === true ||
+        transmissionPayload?.reprogrammed_at ||
+        transmissionPayload?.reprogrammedAt
       );
     }
 
