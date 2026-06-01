@@ -210,43 +210,77 @@ document.addEventListener("DOMContentLoaded", function () {
     const clientFolderUrl = organizationId ? `/client-folder.html?id=${encodeURIComponent(organizationId)}` : "";
     const projectKitUrl = projectId ? `/kit-communication.html?projectId=${encodeURIComponent(projectId)}` : "";
 
-    // Côté admin/partner, une notification liée à un client doit ouvrir le cockpit client.
-    // On ne doit jamais envoyer l'admin vers Mes AD ni vers Mon compte client.
+    const adminProjectTypes = new Set([
+      "submitted",
+      "transmission",
+      "configuration",
+      "config_submitted",
+      "extended",
+      "reprogrammed",
+      "unpublished",
+      "published"
+    ]);
+
+    const clientKitTypes = new Set([
+      "published",
+      "links",
+      "communication_assets",
+      "ending"
+    ]);
+
+    const clientMesAdTypes = new Set([
+      "submitted",
+      "transmission",
+      "configuration",
+      "config_submitted",
+      "extended",
+      "reprogrammed",
+      "unpublished"
+    ]);
+
+    // Admin / partner : toutes les notifications liées à un cockpit client
+    // ouvrent le dossier client, jamais Mes AD ni Mon compte client.
     if ((admin || partner) && clientFolderUrl) {
       if (
         type.startsWith("pack_") ||
-        ["submitted", "transmission", "configuration", "config_submitted", "extended", "reprogrammed", "unpublished"].includes(type) ||
+        adminProjectTypes.has(type) ||
         actionUrl.includes("mes-autodiagnostics.html") ||
         actionUrl.includes("account.html") ||
         actionUrl.includes("admin.html") ||
-        actionUrl.includes("client-folder.html")
+        actionUrl.includes("client-folder.html") ||
+        actionUrl.includes("kit-communication.html")
       ) {
         return clientFolderUrl;
       }
     }
 
-    if (type.startsWith("pack_")) {
-      return client ? "/account.html?tab=quota" : (clientFolderUrl || "/admin.html#organizations");
+    // Client : les alertes pack renvoient vers l'onglet crédits.
+    if (client && type.startsWith("pack_")) {
+      return "/account.html?tab=quota";
     }
 
-    if (["published", "links", "communication_assets", "ending"].includes(type) && projectKitUrl) {
+    // Client : les ressources / publication / liens ouvrent le kit de communication.
+    if (client && clientKitTypes.has(type) && projectKitUrl) {
       return projectKitUrl;
     }
 
-    if (["submitted", "transmission", "configuration", "config_submitted", "extended", "reprogrammed", "unpublished"].includes(type)) {
-      if ((admin || partner) && clientFolderUrl) return clientFolderUrl;
+    // Client : transmission, prolongation, reprogrammation, fin de campagne
+    // restent dans Mes Autodiagnostics.
+    if (client && clientMesAdTypes.has(type)) {
       return "/mes-autodiagnostics.html";
     }
 
+    // Si le serveur a fourni une URL explicite, on la respecte en dernier recours,
+    // sauf cas admin/partner déjà sécurisés plus haut.
     if (actionUrl) {
-      if (actionUrl.includes("client-folder.html") && clientFolderUrl) return clientFolderUrl;
       if (actionUrl.includes("kit-communication.html") && projectKitUrl) return projectKitUrl;
-      if ((admin || partner) && clientFolderUrl && (actionUrl.includes("mes-autodiagnostics.html") || actionUrl.includes("account.html"))) return clientFolderUrl;
+      if (actionUrl.includes("client-folder.html") && clientFolderUrl) return clientFolderUrl;
       return actionUrl;
     }
 
     if ((admin || partner) && clientFolderUrl) return clientFolderUrl;
-    if (projectKitUrl) return projectKitUrl;
+    if (clientKitTypes.has(type) && projectKitUrl) return projectKitUrl;
+    if (clientMesAdTypes.has(type)) return "/mes-autodiagnostics.html";
     return "";
   }
 
