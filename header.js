@@ -138,6 +138,111 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.itsLogout = logout;
 
+
+  const API_BASE =
+    window.ITS_API_BASE ||
+    localStorage.getItem("its_api_base") ||
+    (window.location.hostname === "localhost" ||
+     window.location.hostname === "127.0.0.1" ||
+     window.location.hostname.startsWith("staging.") ||
+     window.location.pathname.startsWith("/staging")
+      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
+
+  function notificationIcon(type) {
+    const map = {
+      submitted: "🚀",
+      published: "🟢",
+      unpublished: "🛑",
+      ending: "⏳",
+      extended: "📅",
+      reprogrammed: "🔁",
+      links: "🔗",
+      pack_low: "🟡",
+      pack_critical: "🟠",
+      pack_empty: "🔴"
+    };
+    return map[type] || "🔔";
+  }
+
+  function formatNotificationDate(value) {
+    if (!value) return "";
+    try {
+      return new Date(value).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+    } catch(e) { return ""; }
+  }
+
+  async function markNotificationRead(id) {
+    const token = getToken();
+    if (!token || !id) return;
+    try {
+      await fetch(`${API_BASE}/api/notifications/${encodeURIComponent(id)}/read`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    } catch(e) {}
+  }
+
+  async function markAllNotificationsRead() {
+    const token = getToken();
+    if (!token) return;
+    try {
+      await fetch(`${API_BASE}/api/notifications/read-all`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      await loadHeaderNotifications();
+    } catch(e) {}
+  }
+
+  function renderHeaderNotifications(items = [], unread = 0) {
+    const count = document.getElementById("itsNotifCount");
+    const list = document.getElementById("itsNotifList");
+    const empty = document.getElementById("itsNotifEmpty");
+    if (count) {
+      count.textContent = unread > 9 ? "9+" : String(unread || 0);
+      count.style.display = unread > 0 ? "inline-flex" : "none";
+    }
+    if (!list || !empty) return;
+    if (!items.length) {
+      list.innerHTML = "";
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+    list.innerHTML = items.map(item => {
+      const url = item.actionUrl || "";
+      const unreadClass = item.unread ? " unread" : "";
+      return `<button class="its-notif-item${unreadClass}" type="button" data-id="${item.id}" data-url="${url}">
+        <span class="its-notif-ico">${notificationIcon(item.type)}</span>
+        <span class="its-notif-copy"><strong>${escapeHtml(item.title || "Notification")}</strong><span>${escapeHtml(item.message || "")}</span><small>${formatNotificationDate(item.createdAt)}</small></span>
+      </button>`;
+    }).join("");
+  }
+
+  async function loadHeaderNotifications() {
+    const token = getToken();
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/notifications?limit=12`, {
+        cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      renderHeaderNotifications(data.notifications || [], Number(data.unread || 0));
+    } catch(e) {}
+  }
+
+  function escapeHtml(value = "") {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
   const logged = isLoggedIn();
   const admin = isAdmin();
   const partner = isPartner();
@@ -232,10 +337,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ${accountLink}
 
+        ${logged ? `<div class="its-notif-wrap">
+          <button id="itsNotifBell" class="its-notif-bell" type="button" aria-label="Notifications" aria-expanded="false">🔔<span id="itsNotifCount" class="its-notif-count" style="display:none">0</span></button>
+          <div id="itsNotifPanel" class="its-notif-panel" aria-label="Centre de notifications">
+            <div class="its-notif-head"><strong>Notifications</strong><button id="itsNotifReadAll" type="button">Tout marquer comme lu</button></div>
+            <div id="itsNotifEmpty" class="its-notif-empty">Aucune notification pour le moment.</div>
+            <div id="itsNotifList" class="its-notif-list"></div>
+          </div>
+        </div>` : ``}
+
         ${authLinks}
 
       </nav>
 
     </div>
   `;
+
+  const bell = document.getElementById("itsNotifBell");
+  const panel = document.getElementById("itsNotifPanel");
+  if (bell && panel) {
+    bell.addEventListener("click", function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      const open = panel.classList.toggle("open");
+      bell.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) loadHeaderNotifications();
+    });
+    document.addEventListener("click", function(event){
+      if (!event.target.closest(".its-notif-wrap")) {
+        panel.classList.remove("open");
+        bell.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.getElementById("itsNotifReadAll")?.addEventListener("click", function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      markAllNotificationsRead();
+    });
+    document.getElementById("itsNotifList")?.addEventListener("click", async function(event){
+      const item = event.target.closest(".its-notif-item");
+      if (!item) return;
+      await markNotificationRead(item.dataset.id || "");
+      const url = item.dataset.url || "";
+      if (url) window.location.href = url;
+      else loadHeaderNotifications();
+    });
+    loadHeaderNotifications();
+    setInterval(loadHeaderNotifications, 120000);
+  }
 });
