@@ -399,7 +399,8 @@ td:nth-child(9){width:125px}
   font-weight:800;
   max-width:100%;
 }
-.account-chip.clickable{cursor:pointer;text-decoration:none}
+.account-chip.clickable{cursor:pointer;text-decoration:none;font-family:'Asap',sans-serif;border-style:solid}
+button.account-chip{font-family:'Asap',sans-serif;border:1px solid #e2ebf2;text-align:left}
 .account-chip.clickable:hover{background:#eaf3f8;border-color:#cbd9e7;color:#0d4c72}
 .account-chip.empty{
   background:#fbfdfe;
@@ -1510,7 +1511,7 @@ function renderKpis(){
 }
 
 function organizationOptionsForAccount(currentOrgId){
-  const orgs=getDirectOrganizations();
+  const orgs=getFinalOrganizations();
   const current=String(currentOrgId||"");
   return '<option value="">Choisir un cockpit client</option>'+orgs.map(o=>{
     const id=String(val(o,["id"],""));
@@ -1518,9 +1519,25 @@ function organizationOptionsForAccount(currentOrgId){
   }).join("");
 }
 
+function compactAdminName(value){
+  return normalizeAdminText(String(value || "").replace(/&/g," and "))
+    .replace(/and/g,"")
+    .replace(/\s+/g,"");
+}
+
+function accountMatchesOrganizationByName(accountCompany, org){
+  const accountText=normalizeAdminText(accountCompany);
+  const orgText=normalizeAdminText(getOrgName(org));
+  const accountCompact=compactAdminName(accountCompany);
+  const orgCompact=compactAdminName(getOrgName(org));
+  if(accountText && orgText && accountText===orgText) return true;
+  if(accountCompact && orgCompact && accountCompact===orgCompact) return true;
+  return accountCompact.length>=4 && orgCompact.length>=4 && (accountCompact.includes(orgCompact) || orgCompact.includes(accountCompact));
+}
+
 function getAccountOrganizationMatch(c){
   const explicitId=cleanId(val(c,["organizationId","organization_id","orgId","org_id"],""));
-  const orgs=getDirectOrganizations();
+  const orgs=getFinalOrganizations();
 
   if(explicitId){
     const explicitOrg=orgs.find(o=>String(val(o,["id"],"")).trim()===explicitId);
@@ -1530,7 +1547,21 @@ function getAccountOrganizationMatch(c){
 
   const userId=String(val(c,["id","user_id"],"")).trim();
   const email=String(val(c,["email"],"")).toLowerCase().trim();
-  const company=normalizeAdminText(getCompany(c));
+  const company=getCompany(c);
+
+  const projectOrgId=cleanId(val(
+    adminState.projects.find(p=>{
+      const ownerId=String(val(p,["user_id","client_id","owner_id","created_by","createdBy"],"")).trim();
+      const ownerEmail=String(val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"")).toLowerCase().trim();
+      return (userId && ownerId===userId) || (email && ownerEmail===email);
+    }),
+    ["organization_id","organizationId","org_id","orgId"],
+    ""
+  ));
+  if(projectOrgId){
+    const projectOrg=orgs.find(o=>String(val(o,["id"],"")).trim()===projectOrgId);
+    return { id: projectOrgId, name: projectOrg ? getOrgName(projectOrg) : val(c,["organizationName","organization_name"],""), explicit: false };
+  }
 
   const matchedOrg=orgs.find(o=>{
     const users=Array.isArray(o.users)?o.users:[];
@@ -1547,8 +1578,7 @@ function getAccountOrganizationMatch(c){
     const ownerEmail=String(val(o,["ownerEmail","owner_email","creatorEmail","creator_email","contactEmail","contact_email","email"],"")).toLowerCase().trim();
     if(email && ownerEmail===email) return true;
 
-    const orgName=normalizeAdminText(getOrgName(o));
-    return company && orgName && orgName===company;
+    return accountMatchesOrganizationByName(company, o);
   });
 
   if(matchedOrg){
@@ -1610,13 +1640,17 @@ function renderAccounts(){
     const role=String(val(c,["role"],"client")).toLowerCase();
     const status=val(c,["status","statut"],"active");
     const logos=getUserLogos(c);
-    const organizationId=val(c,["organizationId","organization_id"],"");
-    const organizationName=val(c,["organizationName","organization_name"],"");
+    const organizationMatch=getAccountOrganizationMatch(c);
+    const organizationId=organizationMatch.id;
+    const organizationName=organizationMatch.name || val(c,["organizationName","organization_name"],"");
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
     const canAttach=role==="client";
+    const roleBadgeHtml=(role==="client" && organizationId)
+      ? `<button type="button" class="account-role-badge-btn" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">${roleBadge(role)}</button>`
+      : roleBadge(role);
 
     return`<article class="account-card">
       <div class="account-card-head">
@@ -1630,7 +1664,7 @@ function renderAccounts(){
           </div>
         </div>
         <div class="account-badges">
-          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
+          <span id="role-badge-${escapeAttr(id)}">${roleBadgeHtml}</span>
           ${statusBadge(status)}
         </div>
       </div>
