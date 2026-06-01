@@ -1242,7 +1242,7 @@ function getOrgStats(org){
   const active=campaignLive || statuses.published>0 || statuses.sent>0;
   const packUpgradeRequests=getOrgPackUpgradeRequests(org);
   const packUpgradePending=packUpgradeRequests.filter(item=>String(item.request.status||"").toLowerCase()==="pending").length;
-  return {projects,statuses,pack,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
+  return {projects,statuses,pack,packExpiresAt,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
 }
 function getOrgPriority(org){
   const s=getOrgStats(org);
@@ -1742,6 +1742,7 @@ function renderOrganizations(){
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
     const stats=getOrgStats(o);
     const pack=val(o,["passationsPack","passations_pack"],"");
+    const packExpiresAt=stats.packExpiresAt || val(o,["packExpiresAt","pack_expires_at"],"");
     const quota=stats.quota;
     const used=stats.used;
     const remaining=stats.remaining;
