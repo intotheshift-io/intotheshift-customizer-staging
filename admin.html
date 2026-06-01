@@ -141,6 +141,29 @@ td:nth-child(9){width:125px}
 .publication-save-feedback{grid-column:1/-1;display:none;background:#eefbf3;border:1px solid #bee8cd;color:#176239;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800}
 .publication-save-feedback.on{display:block}
 
+
+/* Vue admin Autodiags épurée : supervision rapide + accès cockpit client */
+.project-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px;background:#f7fafd;border:1px solid #e2ebf2;border-radius:18px;padding:12px}
+.project-toolbar .admin-input,.project-toolbar .admin-select{min-width:180px}
+.project-card.compact{padding:16px 18px;border-radius:20px}
+.project-card.compact .project-card-head{align-items:flex-start;margin-bottom:10px}
+.project-title-block{min-width:0;flex:1}
+.project-title-block h3{font-size:17px;margin-bottom:5px;word-break:break-word}
+.project-badge-row{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start}
+.project-quick-grid{display:grid;grid-template-columns:1.25fr .9fr .9fr .9fr;gap:10px;margin:10px 0}
+.project-quick-item{background:#f7fafd;border:1px solid #e2ebf2;border-radius:14px;padding:10px;min-width:0}
+.project-quick-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900;margin-bottom:4px}
+.project-quick-value{font-size:13px;color:#18375d;font-weight:900;word-break:break-word;line-height:1.25}
+.project-quick-value.warn{color:#9a5b00}.project-quick-value.danger{color:#be123c}.project-quick-value.good{color:#16774a}
+.project-admin-row{display:grid;grid-template-columns:140px 150px 150px minmax(180px,1fr) minmax(180px,1fr);gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e8eef4;border-radius:16px;padding:12px;margin-top:10px}
+.project-admin-row .publication-field label{font-size:10px}
+.project-admin-row .publication-field select,.project-admin-row .publication-field input{height:40px;border-radius:11px;padding:8px 10px;font-size:13px}
+.project-card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:10px}
+.project-card-actions .mini-btn{height:38px;border-radius:999px;padding:0 13px}
+.project-alert-note{font-size:12px;color:#60758a;background:#eef6fb;border:1px solid #d7e8f1;border-radius:12px;padding:8px 10px;margin-top:10px;line-height:1.35}
+@media(max-width:1100px){.project-quick-grid{grid-template-columns:1fr 1fr}.project-admin-row{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.project-quick-grid,.project-admin-row{grid-template-columns:1fr}.project-card-actions{justify-content:flex-start}.project-toolbar .admin-input,.project-toolbar .admin-select{width:100%;min-width:0}}
+
 .org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
@@ -677,14 +700,30 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <h2>Projets / autodiags</h2>
             <div class="section-sub">Toutes les configurations créées dans Shift Studio.</div>
           </div>
-          <div class="section-tools">
-            <input id="projectSearch" class="admin-input" placeholder="Rechercher titre, client, statut..." oninput="renderProjects()">
+          <div class="section-tools project-toolbar">
+            <input id="projectSearch" class="admin-input" placeholder="Rechercher AD, client, email, lien..." oninput="renderProjects()">
             <select id="statusFilter" class="admin-select" onchange="renderProjects()">
               <option value="">Tous les statuts</option>
               <option value="draft">Brouillon</option>
               <option value="sent">À publier</option>
               <option value="published">Publié</option>
               <option value="unpublished">Dépublié</option>
+            </select>
+            <select id="projectIssueFilter" class="admin-select" onchange="renderProjects()">
+              <option value="">Tous les suivis</option>
+              <option value="toPublishNoShare">À publier sans lien</option>
+              <option value="publishedNoEnd">Publiés sans date de fin</option>
+              <option value="ending7">Fin dans 7 jours</option>
+              <option value="ending2">Fin dans 2 jours</option>
+              <option value="expired">Date de fin dépassée</option>
+              <option value="noShare">Sans lien diffusion</option>
+            </select>
+            <select id="projectSort" class="admin-select" onchange="renderProjects()">
+              <option value="updatedDesc">Mis à jour récemment</option>
+              <option value="endAsc">Date de fin proche</option>
+              <option value="createdDesc">Créés récemment</option>
+              <option value="clientAsc">Client A-Z</option>
+              <option value="statusAsc">Statut</option>
             </select>
           </div>
         </div>
@@ -1382,9 +1421,13 @@ function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
   const statusFilter=document.getElementById("statusFilter");
+  const projectIssueFilter=document.getElementById("projectIssueFilter");
+  const projectSort=document.getElementById("projectSort");
   const userStatusFilter=document.getElementById("userStatusFilter");
   if(roleFilter)roleFilter.value="";
   if(statusFilter)statusFilter.value="";
+  if(projectIssueFilter)projectIssueFilter.value="";
+  if(projectSort)projectSort.value="updatedDesc";
   if(userStatusFilter)userStatusFilter.value="active";
   currentOrgFilter="all";
 }
@@ -1862,10 +1905,101 @@ function isProjectConfigActuallySent(p){
   );
 }
 
+function getProjectOrganizationId(p){
+  return cleanId(val(p,["organization_id","organizationId","org_id","orgId"],""));
+}
+
+function getProjectDateDelta(endDate){
+  if(!endDate) return null;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const end = new Date(endDate);
+  if(Number.isNaN(end.getTime())) return null;
+  end.setHours(0,0,0,0);
+  return Math.round((end - today) / 86400000);
+}
+
+function getProjectEndLabel(endDate, status){
+  if(!endDate) return { text:"Non renseignée", kind: status === "published" ? "danger" : "warn" };
+  const delta = getProjectDateDelta(endDate);
+  if(delta === null) return { text:formatDate(endDate), kind:"" };
+  if(delta < 0) return { text:`${formatDate(endDate)} · dépassée`, kind:"danger" };
+  if(delta === 0) return { text:`${formatDate(endDate)} · aujourd’hui`, kind:"danger" };
+  if(delta === 2) return { text:`${formatDate(endDate)} · J-2`, kind:"warn" };
+  if(delta === 7) return { text:`${formatDate(endDate)} · J-7`, kind:"warn" };
+  if(delta <= 10) return { text:`${formatDate(endDate)} · J-${delta}`, kind:"warn" };
+  return { text:formatDate(endDate), kind:"" };
+}
+
+function projectMatchesIssueFilter(p, issue){
+  if(!issue) return true;
+  const status=getProjectEffectiveStatus(p);
+  const share=getProjectShareUrl(p);
+  const endDate=getCampaignEndDate(p);
+  const delta=getProjectDateDelta(endDate);
+  if(issue==="toPublishNoShare") return status==="sent" && !share;
+  if(issue==="publishedNoEnd") return status==="published" && !endDate;
+  if(issue==="ending7") return status==="published" && delta===7;
+  if(issue==="ending2") return status==="published" && delta===2;
+  if(issue==="expired") return status==="published" && delta!==null && delta<0;
+  if(issue==="noShare") return ["sent","published","unpublished"].includes(status) && !share;
+  return true;
+}
+
+function getProjectClientLabel(p, cfg){
+  const organization=val(p,["organizationName","organization_name"],"");
+  const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
+  return organization || creatorCompany || val(cfg,["company","entreprise","clientCompany","clientEmail"],"—");
+}
+
+function sortProjectRows(rows){
+  const sort=document.getElementById("projectSort")?.value || "updatedDesc";
+  return [...rows].sort((a,b)=>{
+    const ca=getProjectClientLabel(a,getProjectConfig(a));
+    const cb=getProjectClientLabel(b,getProjectConfig(b));
+    if(sort==="clientAsc") return String(ca).localeCompare(String(cb));
+    if(sort==="statusAsc") return getProjectEffectiveStatus(a).localeCompare(getProjectEffectiveStatus(b)) || String(ca).localeCompare(String(cb));
+    if(sort==="endAsc"){
+      const da=getCampaignEndDate(a) ? new Date(getCampaignEndDate(a)).getTime() : Number.MAX_SAFE_INTEGER;
+      const db=getCampaignEndDate(b) ? new Date(getCampaignEndDate(b)).getTime() : Number.MAX_SAFE_INTEGER;
+      return da-db;
+    }
+    if(sort==="createdDesc"){
+      const da=new Date(val(a,["created_at","createdAt","date_creation"],"")).getTime()||0;
+      const db=new Date(val(b,["created_at","createdAt","date_creation"],"")).getTime()||0;
+      return db-da;
+    }
+    const da=new Date(val(a,["updated_at","updatedAt","date_update","created_at","createdAt"],"")).getTime()||0;
+    const db=new Date(val(b,["updated_at","updatedAt","date_update","created_at","createdAt"],"")).getTime()||0;
+    return db-da;
+  });
+}
+
+function renderProjectAlertNote({status, share, results, endDate}){
+  const delta=getProjectDateDelta(endDate);
+  if(status==="sent" && !share) return "À publier : ajoutez les liens au moment de la publication depuis ce panneau ou depuis le cockpit client.";
+  if(status==="published" && !endDate) return "Campagne publiée sans date de fin : les alertes J-7/J-2 et la dépublication automatique ne pourront pas fonctionner.";
+  if(status==="published" && delta===7) return "Cette campagne matche l’alerte automatique J-7 si elle n’a pas déjà été envoyée.";
+  if(status==="published" && delta===2) return "Cette campagne matche l’alerte automatique J-2 si elle n’a pas déjà été envoyée.";
+  if(status==="published" && delta!==null && delta<0) return "Date de fin dépassée : la campagne devrait passer en dépublié au prochain traitement serveur.";
+  if(status==="published" && (!share || !results)) return "Publié : vérifiez que les deux liens utiles sont bien renseignés.";
+  return "";
+}
+
 function renderProjects(){
   const q=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
   const sf=(document.getElementById("statusFilter")?.value||"").toLowerCase();
-  const rows=adminState.projects.filter(p=>{const effectiveStatus=getProjectEffectiveStatus(p);const text=JSON.stringify(p).toLowerCase();const specialNoShare=q==="sans lien diffusion";return(!q||specialNoShare||text.includes(q))&&(!sf||effectiveStatus===sf)&&(!specialNoShare||(["sent","published","unpublished"].includes(effectiveStatus)&&!getProjectShareUrl(p)));});
+  const issue=(document.getElementById("projectIssueFilter")?.value||"");
+  let rows=adminState.projects.filter(p=>{
+    const effectiveStatus=getProjectEffectiveStatus(p);
+    const text=JSON.stringify(p).toLowerCase();
+    const specialNoShare=q==="sans lien diffusion";
+    return (!q||specialNoShare||text.includes(q))
+      && (!sf||effectiveStatus===sf)
+      && (!specialNoShare||(["sent","published","unpublished"].includes(effectiveStatus)&&!getProjectShareUrl(p)))
+      && projectMatchesIssueFilter(p, issue);
+  });
+  rows=sortProjectRows(rows);
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
@@ -1875,35 +2009,51 @@ function renderProjects(){
       val(cfg,["titre_repondants","titreRespondants","autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],""),
       val(p,["autodiag_title","project_title","title","name","project_name"],"")
     );
-    const organization=val(p,["organizationName","organization_name"],"—");
+    const organization=val(p,["organizationName","organization_name"],"");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
-    const client=organization || creatorCompany || val(cfg,["company","entreprise","clientCompany","clientEmail"],"—");
-    const status=getProjectEffectiveStatus(p); const created=formatDate(val(p,["created_at","createdAt","date_creation"],"")); const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
-    const sent=isProjectConfigActuallySent(p); const share=getProjectShareUrl(p); const results=getProjectResultsUrl(p); const startDate=getCampaignStartDate(p); const endDate=getCampaignEndDate(p); const logo=getProjectLogo(p);
-    const logoHtml = logo.data ? `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">${escapeHtml(logo.name || "Logo importé")}</div><button class="mini-btn light" style="margin-top:8px" onclick="downloadDataUrl('${escapeAttr(logo.data)}','${escapeAttr(logo.name || 'logo-passation.png')}')">Télécharger</button></div>` : `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">—</div><div class="muted">Aucun logo spécifique</div></div>`;
-    return`<article class="project-card">
-      <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
-      <div class="info-grid">
-        <div class="info-box"><div class="info-label">Client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
-        <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>
-        <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"À publier":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
-        <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
-        <div class="info-box"><div class="info-label">Fin campagne</div><div class="info-value">${formatDate(endDate)}</div></div>
-        ${logoHtml}
+    const client=getProjectClientLabel(p,cfg);
+    const orgId=getProjectOrganizationId(p);
+    const status=getProjectEffectiveStatus(p);
+    const created=formatDate(val(p,["created_at","createdAt","date_creation"],""));
+    const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
+    const sent=isProjectConfigActuallySent(p);
+    const share=getProjectShareUrl(p);
+    const results=getProjectResultsUrl(p);
+    const startDate=getCampaignStartDate(p);
+    const endDate=getCampaignEndDate(p);
+    const endLabel=getProjectEndLabel(endDate,status);
+    const alertNote=renderProjectAlertNote({status, share, results, endDate});
+    const statusHelp=status==="draft"?"Création client en cours":status==="sent"?"Action admin : publier":status==="published"?"Campagne en ligne":status==="unpublished"?"Campagne terminée":"";
+    return`<article class="project-card compact">
+      <div class="project-card-head">
+        <div class="project-title-block">
+          <h3>${escapeHtml(title)}</h3>
+          <div class="card-meta">${escapeHtml(client)} · Créé le ${created} · Mis à jour le ${updated}</div>
+        </div>
+        <div class="project-badge-row">${projectStatusBadge(status)}</div>
       </div>
-      <div class="project-publication">
+      <div class="project-quick-grid">
+        <div class="project-quick-item"><div class="project-quick-label">Cockpit client</div><div class="project-quick-value">${escapeHtml(client)}</div><div class="muted">${orgId?`ID cockpit #${escapeHtml(orgId)}`:"Aucun cockpit rattaché"}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Configuration</div><div class="project-quick-value ${sent?'good':'warn'}">${sent?"Transmise":"Non transmise"}</div><div class="muted">${escapeHtml(statusHelp)}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Début campagne</div><div class="project-quick-value">${formatDate(startDate)}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Fin campagne</div><div class="project-quick-value ${endLabel.kind}">${escapeHtml(endLabel.text)}</div></div>
+      </div>
+      <div class="project-admin-row">
         <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>À publier</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
-        <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
-        <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
-        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
+        <div class="publication-field"><label>Début</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
+        <div class="publication-field"><label>Fin</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
+        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
         <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
+      </div>
+      ${alertNote?`<div class="project-alert-note">${escapeHtml(alertNote)}</div>`:""}
+      <div class="project-card-actions">
+        ${orgId?`<button class="mini-btn light" onclick="openClientFolder('${escapeAttr(orgId)}')">Ouvrir cockpit client</button>`:""}
         <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Campagne / QR code</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
-        <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
-        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"AD à publier par Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
+      <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
     </article>`;
   }).join("");
   document.getElementById("projectsEmpty").style.display=rows.length?"none":"block";
