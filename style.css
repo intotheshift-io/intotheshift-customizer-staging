@@ -513,3 +513,66 @@ input[type="url"]:focus,
 .its-notif-copy small{font-size:11px;color:#94a3b8;font-weight:800}
 .its-notif-empty{display:none;padding:28px 16px;text-align:center;color:#718497;font-size:13px;line-height:1.45}
 @media(max-width:760px){.its-notif-wrap{order:2;margin-left:auto}.its-notif-panel{right:-8px;top:44px}.its-notif-bell{height:34px;min-width:34px}}
+
+
+/* ── Alignement header : navigation à gauche, actions à droite ───────────── */
+.header-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+.header-actions .nav-link,
+.header-actions .btn-register{
+  color:rgba(255,255,255,.86);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  padding:8px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.header-actions .nav-link:hover,
+.header-actions .nav-link.active{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+.compact-topbar{
+  overflow:visible;
+}
+.compact-topbar .main-nav{
+  flex:1 1 auto;
+  min-width:0;
+  overflow-x:auto;
+  max-width:none;
+}
+.compact-topbar .its-notif-wrap{
+  flex:0 0 auto;
+}
+@media(max-width:900px){
+  .compact-topbar{
+    overflow:visible;
+  }
+  .compact-topbar .main-nav{
+    max-width:none;
+  }
+  .header-actions{
+    margin-left:auto;
+  }
+}
+@media(max-width:760px){
+  .header-actions{
+    order:2;
+    margin-left:auto;
+    gap:8px;
+  }
+  .header-actions .nav-link,
+  .header-actions .btn-register{
+    font-size:12px;
+    padding:7px 9px;
+  }
+  .compact-topbar .main-nav{
+    order:3;
+  }
+}

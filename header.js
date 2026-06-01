@@ -306,6 +306,15 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>
     `;
 
+  const notificationBlock = logged ? `<div class="its-notif-wrap">
+    <button id="itsNotifBell" class="its-notif-bell" type="button" aria-label="Notifications" aria-expanded="false">🔔<span id="itsNotifCount" class="its-notif-count" style="display:none">0</span></button>
+    <div id="itsNotifPanel" class="its-notif-panel" aria-label="Centre de notifications">
+      <div class="its-notif-head"><strong>Notifications</strong><button id="itsNotifReadAll" type="button">Tout marquer comme lu</button></div>
+      <div id="itsNotifEmpty" class="its-notif-empty">Aucune notification pour le moment.</div>
+      <div id="itsNotifList" class="its-notif-list"></div>
+    </div>
+  </div>` : ``;
+
   const homeTarget = "home.html";
 
   header.innerHTML = `
@@ -337,18 +346,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ${accountLink}
 
-        ${logged ? `<div class="its-notif-wrap">
-          <button id="itsNotifBell" class="its-notif-bell" type="button" aria-label="Notifications" aria-expanded="false">🔔<span id="itsNotifCount" class="its-notif-count" style="display:none">0</span></button>
-          <div id="itsNotifPanel" class="its-notif-panel" aria-label="Centre de notifications">
-            <div class="its-notif-head"><strong>Notifications</strong><button id="itsNotifReadAll" type="button">Tout marquer comme lu</button></div>
-            <div id="itsNotifEmpty" class="its-notif-empty">Aucune notification pour le moment.</div>
-            <div id="itsNotifList" class="its-notif-list"></div>
-          </div>
-        </div>` : ``}
-
-        ${authLinks}
-
       </nav>
+
+      <div class="header-actions">
+        ${notificationBlock}
+        ${authLinks}
+      </div>
 
     </div>
   `;
