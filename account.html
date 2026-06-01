@@ -21,23 +21,7 @@ body{font-family:'Asap',sans-serif;background:#f3f6f8;color:#18375d;min-height:1
 @media(max-width:560px){.account-page{padding:16px 14px 56px}.account-hero{padding:22px;border-radius:22px}.account-hero h1{font-size:26px}.card{padding:18px;border-radius:20px}.media-grid{grid-template-columns:1fr}}
 
 
-/* ── Crédits & pack client ───────────────────── */
-.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
-.its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
-.its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
-.its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}.its-quota-box:nth-child(1) span::before{content:"🛒"}.its-quota-box:nth-child(2) span::before{content:"✅"}.its-quota-box:nth-child(3) span::before{content:"🚀"}.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}.its-quota-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.its-quota-action{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:14px;padding:11px 14px;background:#fff;color:#0d4c72;font-family:'Asap',sans-serif;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-action.secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.34);box-shadow:none}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
-.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
-@media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
 
-
-/* ── Grille de recharge depuis Mon compte ───────────────────── */
-.account-pack-grid-card{background:linear-gradient(135deg,#ffffff 0%,#f8fbfd 100%);border:1px solid #cfe4ea;border-radius:22px;padding:18px;margin-top:18px;box-shadow:0 12px 30px rgba(13,76,114,.08)}
-.account-pack-grid-title{font-size:17px;font-weight:950;color:#0d4c72;margin-bottom:5px;display:flex;align-items:center;gap:8px}
-.account-pack-grid-sub{font-size:13px;color:#718497;line-height:1.45;margin-bottom:14px}.account-pack-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
-.account-pack-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:11px 10px;text-align:left;min-height:98px;box-shadow:0 5px 14px rgba(24,55,93,.04);cursor:pointer;transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease;font-family:'Asap',sans-serif;color:#18375d}
-.account-pack-chip:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(24,55,93,.10);border-color:#007883}.account-pack-chip:disabled{cursor:wait;opacity:.62;transform:none}.account-pack-chip strong{display:block;font-size:18px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}.account-pack-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}.account-pack-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}.account-pack-chip b{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:950;border-radius:999px;padding:3px 7px;margin-bottom:7px;background:#fff;color:#8a5a00;border:1px solid rgba(255,199,68,.65)}
-.account-pack-chip.popular{background:linear-gradient(135deg,#fff9e9 0%,#fff1bd 100%);border-color:#ffc744;box-shadow:0 8px 20px rgba(255,199,68,.18)}.account-pack-chip.popular strong,.account-pack-chip.popular em{color:#8a5a00}.account-pack-chip.entreprise{background:linear-gradient(135deg,#eef9fb 0%,#dff2f5 100%);border-color:#9fd0e0;box-shadow:0 8px 20px rgba(0,120,131,.12)}.account-pack-chip.entreprise b{color:#0d4c72;border-color:#9fd0e0;background:#fff}.account-pack-chip.entreprise strong,.account-pack-chip.entreprise em{color:#0d4c72}.account-pack-chip.illimite{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-color:#18375d}.account-pack-chip.illimite strong,.account-pack-chip.illimite em,.account-pack-chip.illimite span{color:#fff}.account-pack-status{display:none;margin-top:12px;border-radius:14px;padding:12px 14px;font-size:13px;font-weight:800;line-height:1.45}.account-pack-status.ok{display:block;background:#eefbf3;color:#176239;border:1px solid #bee8cd}.account-pack-status.err{display:block;background:#fff0f0;color:#9d2b2b;border:1px solid #ffd1d1}
-@media(max-width:980px){.account-pack-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:620px){.account-pack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.account-pack-chip{min-height:86px}}
 
 </style>
 </head>
@@ -293,19 +277,7 @@ async function itsLoadClientQuota(){
     return {quota:0,used:0,remaining:0,pack:''};
   }
 }
-function itsPackIsExpired(q){
-  const value=q?.packExpiresAt;
-  if(!value) return false;
-  const s=String(value).trim();
-  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  const d=m?new Date(Number(m[1]),Number(m[2])-1,Number(m[3])):new Date(s);
-  if(Number.isNaN(d.getTime())) return false;
-  const today=new Date();
-  today.setHours(0,0,0,0);
-  return d.getTime()<today.getTime();
-}
 function itsQuotaLabel(q){
-  if(itsPackIsExpired(q)) return 'Pack expiré';
   if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
   if(String(q.pack)==='illimite') return 'Pack illimité';
   if(String(q.pack)==='existing') return 'Pack en cours';
@@ -313,7 +285,6 @@ function itsQuotaLabel(q){
   return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
 }
 function itsQuotaNudge(q){
-  if(itsPackIsExpired(q)) return 'Votre pack est expiré : rechargez vos crédits pour relancer vos campagnes.';
   if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
   const ratio=q.quota? q.remaining/q.quota : 0;
   if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge.';
@@ -332,16 +303,14 @@ function itsFormatPackExpiry(value){
 function itsPackExpiryLine(q){
   const formatted=itsFormatPackExpiry(q?.packExpiresAt);
   if(!formatted) return 'Validité du pack : date de fin non renseignée.';
-  if(itsPackIsExpired(q)) return 'Pack expiré depuis le : <strong>'+formatted+'</strong>.';
   return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
 }
 function itsQuotaCardHTML(q,compact=false){
-  const expired=itsPackIsExpired(q);
-  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':(expired?0:Number(q?.remaining||Math.max(quota-used,0)));
-  const pct=expired?0:(quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0);
-  const cls=expired?'empty':(!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok'));
+  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
+  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
+  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
   return `<div class="its-quota-card ${cls}">
-    <div class="its-quota-top"><div><div class="its-quota-kicker">Mes crédits & pack</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${expired?'Expiré':(String(q?.pack)==='illimite'?'Illimité':pct+'% restant')}</div></div>
+    <div class="its-quota-top"><div><div class="its-quota-kicker">Mes crédits & pack</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
     <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
     <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
     <div class="its-quota-nudge">${itsPackExpiryLine(q)}</div>
