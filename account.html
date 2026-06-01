@@ -339,7 +339,7 @@ function itsQuotaCardHTML(q,compact=false){
     <div class="its-quota-bar"><div class="its-quota-fill" style="width:${pct}%"></div></div>
     <div class="its-quota-nudge">${itsPackExpiryLine(source)}</div>
     <div class="its-quota-nudge">${itsQuotaNudge(source)}</div>
-    ${view._packExpired?'<div class="its-quota-actions"><a class="its-quota-action" href="account.html?tab=quota">Recharger mon pack</a></div>':''}
+    ${view._packExpired && !compact?.hideRechargeAction ? '<div class="its-quota-actions"><a class="its-quota-action" href="account.html?tab=quota">Recharger mon pack</a></div>' : ''}
   </div>`;
 }
 function itsQuotaInlineHTML(q){
@@ -371,6 +371,18 @@ function accountPackLabel(value){
   if(String(value)==='illimite') return 'Pack illimité';
   const n = Number(value || 0);
   return Number.isFinite(n) && n > 0 ? n.toLocaleString('fr-FR') + ' passations' : 'Pack complémentaire';
+}
+
+function accountPackRulesHTML(){
+  return `<div class="account-pack-rules">
+    <div class="account-pack-rules-title">Comment fonctionne votre pack ?</div>
+    <ul>
+      <li>Chaque pack est valable 12 mois à partir de la validation ou de la recharge.</li>
+      <li>Si vous rechargez avant la date d’expiration, les passations restantes sont cumulées avec le nouveau pack et la validité repart pour 12 mois.</li>
+      <li>À expiration, les passations restantes sont perdues et les campagnes publiées sont automatiquement dépubliées.</li>
+      <li>Après recharge d’un pack expiré, seules les campagnes dépubliées automatiquement à cause de l’expiration du pack peuvent être republiées. Les campagnes dépubliées volontairement restent dépubliées.</li>
+    </ul>
+  </div>`;
 }
 
 function accountPackGridHTML(){
@@ -420,7 +432,7 @@ async function renderAccountQuota(){
   const target=document.getElementById('accountQuotaCard');
   if(!target) return;
   const q=await itsLoadClientQuota();
-  target.innerHTML=itsQuotaCardHTML(q) + accountPackGridHTML();
+  target.innerHTML=itsQuotaCardHTML(q, {hideRechargeAction:true}) + accountPackRulesHTML() + accountPackGridHTML();
 }
 
 function decodeJwt(token){try{const payload=token.split(".")[1];return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return null;}}
