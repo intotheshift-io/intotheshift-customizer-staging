@@ -380,6 +380,21 @@ td:nth-child(9){width:125px}
   justify-content:flex-end;
   flex-shrink:0;
 }
+.account-role-badge-btn{
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  font-family:'Asap',sans-serif;
+  cursor:pointer;
+}
+.account-role-badge-btn:hover .badge-client{
+  box-shadow:0 0 0 2px rgba(44,122,67,.16);
+  transform:translateY(-1px);
+}
+.account-role-badge-btn .badge{
+  transition:all .15s ease;
+}
 .account-chip-row{
   display:flex;
   flex-wrap:wrap;
@@ -1576,6 +1591,9 @@ function renderAccounts(){
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
     const canAttach=role==="client";
+    const roleBadgeHtml=(role==="client" && organizationId)
+      ? `<button type="button" class="account-role-badge-btn" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">${roleBadge(role)}</button>`
+      : roleBadge(role);
 
     return`<article class="account-card">
       <div class="account-card-head">
@@ -1589,7 +1607,7 @@ function renderAccounts(){
           </div>
         </div>
         <div class="account-badges">
-          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
+          <span id="role-badge-${escapeAttr(id)}">${roleBadgeHtml}</span>
           ${statusBadge(status)}
         </div>
       </div>
