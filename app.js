@@ -1074,3 +1074,9 @@ if (document.readyState === "loading") {
   }, 0);
 }
 
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted && itsShouldApplyReadOnlyOnThisPage()) {
+    window.location.reload();
+  }
+});
+

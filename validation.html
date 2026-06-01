@@ -1363,6 +1363,29 @@ function getCurrentProjectIdForSave(){
     localStorage.getItem('its_current_ad_id') ||
     '';
 }
+function clearSubmittedProjectCache(projectId){
+  if(!projectId) return;
+  try{
+    if(typeof itsGetStorageKey === 'function') localStorage.removeItem(itsGetStorageKey());
+    if(typeof itsGetCurrentUserKey === 'function'){
+      localStorage.removeItem('intotheshift_customizer_state_v1_' + itsGetCurrentUserKey() + '_project_' + String(projectId));
+    }
+    localStorage.removeItem('its_state');
+    sessionStorage.removeItem('its_state');
+    sessionStorage.removeItem('its_project_cache_' + String(projectId));
+    localStorage.removeItem('its_current_project');
+    localStorage.removeItem('its_current_project_id');
+    localStorage.removeItem('its_current_ad_id');
+  }catch(e){}
+}
+
+function redirectAfterStandardTransmission(){
+  if(isValidationReprogramMode() || isValidationExtendMode()) return false;
+  const projectId = validationCurrentProjectId() || getCurrentProjectIdForSave();
+  clearSubmittedProjectCache(projectId);
+  window.location.replace('mes-autodiagnostics.html?refresh=1');
+  return true;
+}
 async function transmit(){
   if(getMissingValidationItems().length){
     document.getElementById('missing-alert').classList.remove('hidden');
@@ -1504,6 +1527,7 @@ async function transmit(){
     );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = modalLabels.successButton;
+    if(redirectAfterStandardTransmission()) return;
   } else {
     state.transmission.status = 'send_error';
     if (typeof itsSave === 'function') itsSave(state);
