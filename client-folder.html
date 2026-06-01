@@ -576,22 +576,71 @@
 
     function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 
-function getProjectTitle(project){
+function getProjectRespondentTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
       const param = payload.parametrage || data.parametrage || {};
       return cleanAdTitle(
-        payload.titre_autodiag ||
-        payload.autodiagTitle ||
-        payload.title ||
-        payload.titre ||
-        param.nom ||
+        param.titre_repondants ||
+        param.titreRespondants ||
+        param.titre_visible_repondants ||
+        param.titreVisibleRepondants ||
+        param.titre_visible ||
+        param.titreVisible ||
+        payload.titre_repondants ||
+        payload.titreRespondants ||
+        data.titre_repondants ||
+        data.titreRespondants ||
         param.titre ||
-        data.autodiagTitle ||
+        param.nom ||
+        payload.title ||
         data.title ||
         project.title ||
         "Autodiag sans titre"
       );
+    }
+
+function getProjectCatalogueOriginalTitle(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const meta = data.meta || payload.meta || {};
+      return cleanAdTitle(
+        data.catalogueTitle ||
+        data.catalogue_title ||
+        data.originalCatalogueTitle ||
+        data.original_catalogue_title ||
+        data.baseTitle ||
+        data.base_title ||
+        data.templateTitle ||
+        data.template_title ||
+        payload.catalogueTitle ||
+        payload.catalogue_title ||
+        payload.baseTitle ||
+        payload.base_title ||
+        meta.nom ||
+        meta.titre ||
+        payload.titre_autodiag ||
+        payload.autodiagTitle ||
+        data.autodiagTitle ||
+        payload.title ||
+        data.title ||
+        param.nom ||
+        project.autodiag_title ||
+        project.project_title ||
+        project.title ||
+        "Autodiag sans titre"
+      );
+    }
+
+function getProjectTitle(project){
+      return getProjectRespondentTitle(project);
+    }
+
+function renderProjectTitleDetails(project){
+      const original = getProjectCatalogueOriginalTitle(project);
+      const respondent = getProjectRespondentTitle(project);
+      return `<div class="card-meta" style="margin:2px 0 10px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
     }
 
     function getProjectThemes(project){
@@ -1562,6 +1611,7 @@ function getProjectTitle(project){
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
+            ${renderProjectTitleDetails(project)}
             ${renderProjectIds(project)}
             ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}

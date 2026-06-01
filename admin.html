@@ -928,6 +928,46 @@ function cleanAdTitle(title){
   return cleaned;
 }
 function pickProjectTitle(...values){for(const value of values){const cleaned=cleanAdTitle(value); if(cleaned && cleaned!=="Projet sans titre") return cleaned;} return "Projet sans titre";}
+function getAdminProjectRespondentTitle(p,cfg){
+  const data = cfg || getProjectConfig(p);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+  return pickProjectTitle(
+    val(param,["titre_repondants","titreRespondants","titre_visible_repondants","titreVisibleRepondants","titre_visible","titreVisible"],""),
+    val(payload,["titre_repondants","titreRespondants"],""),
+    val(state,["titre_repondants","titreRespondants"],""),
+    val(data,["titre_repondants","titreRespondants"],""),
+    val(param,["titre","nom"],""),
+    val(payload,["title","titre"],""),
+    val(state,["title","titre"],""),
+    val(data,["title","titre"],""),
+    val(p,["autodiag_title","project_title","title","name","project_name"],"")
+  );
+}
+function getAdminProjectCatalogueOriginalTitle(p,cfg){
+  const data = cfg || getProjectConfig(p);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+  const meta = data.meta || state.meta || payload.meta || {};
+  return pickProjectTitle(
+    val(data,["catalogueTitle","catalogue_title","originalCatalogueTitle","original_catalogue_title","baseTitle","base_title","templateTitle","template_title"],""),
+    val(payload,["catalogueTitle","catalogue_title","baseTitle","base_title"],""),
+    val(state,["catalogueTitle","catalogue_title","baseTitle","base_title"],""),
+    val(meta,["nom","titre"],""),
+    val(data,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(payload,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(state,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(param,["nom","titre"],""),
+    val(p,["autodiag_title","project_title","title","name","project_name"],"")
+  );
+}
+function renderAdminProjectTitleDetails(p,cfg){
+  const original=getAdminProjectCatalogueOriginalTitle(p,cfg);
+  const respondent=getAdminProjectRespondentTitle(p,cfg);
+  return `<div class="card-meta">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
+}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
 function statusBadge(status){
@@ -2119,11 +2159,7 @@ function renderProjects(){
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
     const param = cfg.parametrage || cfg.params || cfg.settings || {};
-    const title=pickProjectTitle(
-      val(param,["titre_repondants","titreRespondants","titre_visible_repondants","titreVisibleRepondants","titre_visible","titreVisible","nom","titre"],""),
-      val(cfg,["titre_repondants","titreRespondants","autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],""),
-      val(p,["autodiag_title","project_title","title","name","project_name"],"")
-    );
+    const title=getAdminProjectRespondentTitle(p,cfg);
     const organization=val(p,["organizationName","organization_name"],"");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
@@ -2146,6 +2182,7 @@ function renderProjects(){
       <div class="project-card-head">
         <div class="project-title-block">
           <h3>${escapeHtml(title)}</h3>
+          ${renderAdminProjectTitleDetails(p,cfg)}
           <div class="card-meta">${escapeHtml(client)} · Créé le ${created} · Mis à jour le ${updated}</div>
         </div>
         <div class="project-badge-row">${projectStatusBadge(status)}</div>

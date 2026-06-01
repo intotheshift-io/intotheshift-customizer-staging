@@ -737,6 +737,10 @@ function itsStartFromCatalogue(adId) {
 
   const state = {
     selectedAdId: ad.id,
+    catalogueTitle: ad.title,
+    catalogue_title: ad.title,
+    originalCatalogueTitle: ad.title,
+    original_catalogue_title: ad.title,
     title: ad.title,
     theme: ad.theme,
     audience: ad.audience,

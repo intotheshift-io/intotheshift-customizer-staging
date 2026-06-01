@@ -444,7 +444,7 @@
       return "Projet sans titre";
     }
 
-    function getTitle(p) {
+    function getRespondentTitle(p) {
       const data = getProjectData(p);
       const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
       const state = data.state && typeof data.state === "object" ? data.state : {};
@@ -456,25 +456,74 @@
         param.titreVisibleRepondants,
         param.titre_visible,
         param.titreVisible,
-        param.nom,
-        param.titre,
         payload.titre_repondants,
         payload.titreRespondants,
-        payload.autodiagTitle,
-        payload.title,
         state.titre_repondants,
         state.titreRespondants,
-        state.autodiagTitle,
-        state.title,
         data.titre_repondants,
         data.titreRespondants,
-        data.autodiagTitle,
+        param.titre,
+        param.nom,
+        payload.title,
+        state.title,
         data.title,
         p.title,
         p.name,
         p.project_name,
         p.ad_title
       );
+    }
+
+    function getCatalogueOriginalTitle(p) {
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const meta = data.meta || state.meta || payload.meta || {};
+      return pickTitleValue(
+        data.catalogueTitle,
+        data.catalogue_title,
+        data.originalCatalogueTitle,
+        data.original_catalogue_title,
+        data.baseTitle,
+        data.base_title,
+        data.templateTitle,
+        data.template_title,
+        payload.catalogueTitle,
+        payload.catalogue_title,
+        payload.baseTitle,
+        payload.base_title,
+        state.catalogueTitle,
+        state.catalogue_title,
+        state.baseTitle,
+        state.base_title,
+        meta.nom,
+        meta.titre,
+        data.autodiagTitle,
+        payload.autodiagTitle,
+        state.autodiagTitle,
+        data.title,
+        payload.title,
+        state.title,
+        param.nom,
+        p.autodiag_title,
+        p.project_title,
+        p.title,
+        p.name,
+        p.project_name,
+        p.ad_title
+      );
+    }
+
+    function getTitle(p) {
+      return getRespondentTitle(p);
+    }
+
+    function renderTitleDetails(p) {
+      const original = getCatalogueOriginalTitle(p);
+      const respondent = getRespondentTitle(p);
+      if(!original && !respondent) return "";
+      return `<div class="meta" style="margin:3px 0 8px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
     }
 
     function deepFindTheme(obj, depth = 0) {
@@ -1244,6 +1293,7 @@
 
             <div>
               <div class="title">${escapeHtml(title)}</div>
+              ${renderTitleDetails(p)}
               <div class="meta">
                 Créé le ${formatDate(p.created_at || p.createdAt)} ·
                 ${getCampaignDates(p)}<br>
