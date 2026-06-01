@@ -207,28 +207,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const organizationId = item.organizationId || item.organization_id || metadata.organizationId || metadata.organization_id || "";
     const actionUrl = normalizeNotificationPath(item.actionUrl || item.action_url || "");
 
+    const clientFolderUrl = organizationId ? `/client-folder.html?id=${encodeURIComponent(organizationId)}` : "";
+    const projectKitUrl = projectId ? `/kit-communication.html?projectId=${encodeURIComponent(projectId)}` : "";
+
+    // Côté admin/partner, une notification liée à un client doit ouvrir le cockpit client.
+    // On ne doit jamais envoyer l'admin vers Mes AD ni vers Mon compte client.
+    if ((admin || partner) && clientFolderUrl) {
+      if (
+        type.startsWith("pack_") ||
+        ["submitted", "transmission", "configuration", "config_submitted", "extended", "reprogrammed", "unpublished"].includes(type) ||
+        actionUrl.includes("mes-autodiagnostics.html") ||
+        actionUrl.includes("account.html") ||
+        actionUrl.includes("admin.html") ||
+        actionUrl.includes("client-folder.html")
+      ) {
+        return clientFolderUrl;
+      }
+    }
+
     if (type.startsWith("pack_")) {
-      if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
-      return "/account.html?tab=quota";
+      return client ? "/account.html?tab=quota" : (clientFolderUrl || "/admin.html#organizations");
     }
 
-    if (["published", "links", "communication_assets", "ending"].includes(type) && projectId) {
-      return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+    if (["published", "links", "communication_assets", "ending"].includes(type) && projectKitUrl) {
+      return projectKitUrl;
     }
 
-    if (["submitted", "extended", "reprogrammed", "unpublished"].includes(type)) {
-      if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
+    if (["submitted", "transmission", "configuration", "config_submitted", "extended", "reprogrammed", "unpublished"].includes(type)) {
+      if ((admin || partner) && clientFolderUrl) return clientFolderUrl;
       return "/mes-autodiagnostics.html";
     }
 
     if (actionUrl) {
-      if (actionUrl.includes("client-folder.html") && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
-      if (actionUrl.includes("kit-communication.html") && projectId) return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+      if (actionUrl.includes("client-folder.html") && clientFolderUrl) return clientFolderUrl;
+      if (actionUrl.includes("kit-communication.html") && projectKitUrl) return projectKitUrl;
+      if ((admin || partner) && clientFolderUrl && (actionUrl.includes("mes-autodiagnostics.html") || actionUrl.includes("account.html"))) return clientFolderUrl;
       return actionUrl;
     }
 
-    if (admin && organizationId) return `/client-folder.html?id=${encodeURIComponent(organizationId)}`;
-    if (projectId) return `/kit-communication.html?projectId=${encodeURIComponent(projectId)}`;
+    if ((admin || partner) && clientFolderUrl) return clientFolderUrl;
+    if (projectKitUrl) return projectKitUrl;
     return "";
   }
 

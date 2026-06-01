@@ -401,6 +401,37 @@ td:nth-child(9){width:125px}
 }
 .account-chip.clickable{cursor:pointer;text-decoration:none;font-family:'Asap',sans-serif;border-style:solid}
 button.account-chip{font-family:'Asap',sans-serif;border:1px solid #e2ebf2;text-align:left}
+.account-role-badge-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  font:inherit;
+  line-height:1;
+  cursor:pointer;
+  border-radius:999px;
+}
+.account-role-badge-btn .badge{
+  transition:background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.account-role-badge-btn .badge::after{
+  content:"↗";
+  font-size:10px;
+  margin-left:6px;
+  opacity:.65;
+}
+.account-role-badge-btn:hover .badge{
+  background:#eaf3f8;
+  color:#0d4c72;
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(13,76,114,.10);
+}
+.account-role-badge-btn:focus-visible{
+  outline:3px solid rgba(13,76,114,.18);
+  outline-offset:3px;
+}
 .account-chip.clickable:hover{background:#eaf3f8;border-color:#cbd9e7;color:#0d4c72}
 .account-chip.empty{
   background:#fbfdfe;
