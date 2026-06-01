@@ -486,8 +486,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const item = event.target.closest(".its-notif-item");
       if (!item) return;
       const action = event.target.closest("[data-action]")?.dataset.action || "open";
-      await markNotificationRead(item.dataset.id || "");
       if (action === "read") {
+        await markNotificationRead(item.dataset.id || "");
         await loadHeaderNotifications();
         return;
       }
