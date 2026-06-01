@@ -134,6 +134,17 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .pack-selected-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:950;background:#f0f8f7;color:#007883;border:1px solid #b8dfe0}
 .pack-selected-inline.popular .pack-selected-badge{background:#fff4cf;color:#8a5a00;border-color:#ffc744}
 .pack-selected-inline.entreprise .pack-selected-badge{background:#eef9fb;color:#0d4c72;border-color:#9fd0e0}
+
+.pack-choice-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.pack-choice-validate{border:none;border-radius:9px;background:#007883;color:#fff;padding:8px 12px;font-size:12px;font-weight:900;font-family:'Asap',sans-serif;cursor:pointer}
+.pack-choice-validate:hover{background:#006871}
+.pack-choice-cancel{border:1px solid #d8e0ea;border-radius:9px;background:#fff;color:#64748b;padding:8px 12px;font-size:12px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer}
+.pack-choice-cancel:hover{background:#f7f9fc}
+.pack-choice-hint{font-size:11px;color:#8a5a00;font-weight:800;line-height:1.4;background:#fff8ec;border:1px solid #ffd490;border-radius:10px;padding:8px 10px;flex:1;min-width:180px}
+.pack-choice-hint.ok{background:#f0f8f7;border-color:#b8dfe0;color:#007883}
+.pack-tarif-chip.pending{border-color:#ffc744;box-shadow:0 0 0 3px rgba(255,199,68,.18),0 10px 22px rgba(24,55,93,.08)}
+.pack-tarif-chip.pending::after{content:"…";position:absolute;right:9px;top:9px;width:22px;height:22px;border-radius:999px;background:#ffc744;color:#18375d;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:950}
+
 @media(max-width:980px){.pack-tarifs-grid-full{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:620px){.pack-tarifs-grid-full{grid-template-columns:repeat(2,minmax(0,1fr))}.pack-tarif-chip{min-height:84px}}
 
@@ -254,7 +265,7 @@ select option[value="current_pack"]{
         <div class="field"><label>Description interne</label><input class="inp" id="desc" type="text" oninput="updateParam('desc',this.value)"></div>
         <div class="inp-row">
           <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Ce nom sera intégré dans l’URL envoyée aux répondants. Utilisez un format court, lisible et sans espace.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
-          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
+          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="stagePackChoice(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-choice-actions"><button type="button" class="pack-choice-validate" onclick="confirmPackChoice()">Valider ce pack</button><button type="button" class="pack-choice-cancel" onclick="cancelPackChoice()">Annuler</button><div class="pack-choice-hint" id="packChoiceHint">Choisissez un pack puis validez pour enregistrer votre choix.</div></div></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
         </div>
         <div id="paramQuotaInline" class="partner-hide"></div>
@@ -373,7 +384,7 @@ select option[value="current_pack"]{
 
       <div id="paramQuotaCardSide" class="partner-hide" style="margin-bottom:12px"></div>
 
-      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@intotheshift.io?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
+      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="stagePackChoice(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-choice-actions"><button type="button" class="pack-choice-validate" onclick="confirmPackChoice()">Valider</button><button type="button" class="pack-choice-cancel" onclick="cancelPackChoice()">Annuler</button><div class="pack-choice-hint" id="packChoiceHintSide">Choix non enregistré tant qu’il n’est pas validé.</div></div><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@intotheshift.io?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
     </div>
   </div>
 </div>
@@ -412,6 +423,7 @@ function itsResolveApiBase(){
 const API_URL = itsResolveApiBase();
 
 let state = {};
+let pendingPackChoice = "";
 
 function paramExplicitProjectIdFromUrl(){
   try{
@@ -774,16 +786,20 @@ function refreshPackDisplay(){
 }
 
 function refreshTariffSelection(){
-  const selected = String(state?.parametrage?.pack_choisi || '');
+  const confirmed = String(state?.parametrage?.pack_choisi || '');
+  const pending = String(pendingPackChoice || '');
   document.querySelectorAll('.pack-tarif-chip[data-pack]').forEach(chip => {
-    const isSelected = selected && chip.dataset.pack === selected;
-    chip.classList.toggle('selected', Boolean(isSelected));
-    chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+    const isConfirmed = confirmed && chip.dataset.pack === confirmed;
+    const isPending = pending && pending !== confirmed && chip.dataset.pack === pending;
+    chip.classList.toggle('selected', Boolean(isConfirmed && !pending));
+    chip.classList.toggle('pending', Boolean(isPending));
+    chip.setAttribute('aria-pressed', (isConfirmed || isPending) ? 'true' : 'false');
   });
+  refreshPackChoiceHint();
 }
 function selectPackFromTariff(value){
   if(!value || isPartnerMode()) return;
-  updatePack(value, true);
+  stagePackChoice(value);
   checkContinue();
 }
 function handlePackTariffKey(event, value){
@@ -1100,7 +1116,58 @@ async function init(){
 function buildPassationUrl(){ const company=slugify(state.parametrage.entreprise || document.getElementById('entreprise')?.value || 'nomdelentreprise'); const slug=slugify(state.parametrage.slug || document.getElementById('slug')?.value || 'mon-autodiagnostic'); return 'https://selfdiag-mayt.meandyoutoo.app/' + company + '/' + slug; }
 function updateCompany(v){ state.parametrage.entreprise = slugify(v||'nomdelentreprise'); const el=document.getElementById('entreprise'); if(el) el.value = state.parametrage.entreprise; updateSlug(state.parametrage.slug); }
 function updateSlug(v){ const slug=slugify(v||document.getElementById('slug').value||'mon-autodiagnostic'); state.parametrage.slug=slug; const url=buildPassationUrl(); document.getElementById('slug').value=slug; document.getElementById('url-preview').textContent=url; document.getElementById('sb-url').textContent=url; save(); }
+function packChoiceLabel(value){
+  const selected = String(value || '').trim();
+  if(!selected) return '';
+  if(selected === 'current_pack') return 'J’ai déjà un pack';
+  if(selected === 'illimite') return 'Illimité';
+  const n = Number(selected);
+  return Number.isFinite(n) ? n.toLocaleString('fr-FR') + ' passations' : selected;
+}
+function setPackControlValues(value){
+  const a=document.getElementById('pack_choisi'), b=document.getElementById('pack_choisi_sidebar');
+  if(a) a.value=value||'';
+  if(b) b.value=value||'';
+}
+function stagePackChoice(value){
+  if(isPartnerMode()) return;
+  refreshCurrentPackOptionState();
+  let next = String(value || '').trim();
+  if(next === 'current_pack' && !hasUsableCurrentPack()) next = '';
+  pendingPackChoice = next;
+  setPackControlValues(pendingPackChoice || state?.parametrage?.pack_choisi || '');
+  refreshTariffSelection();
+  refreshPackChoiceHint();
+}
+function confirmPackChoice(){
+  if(isPartnerMode()) return;
+  const value = pendingPackChoice || getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || '';
+  if(!value) return;
+  pendingPackChoice = '';
+  updatePack(value, true);
+  checkContinue();
+}
+function cancelPackChoice(){
+  pendingPackChoice = '';
+  setPackControlValues(state?.parametrage?.pack_choisi || '');
+  refreshTariffSelection();
+  refreshPackChoiceHint();
+}
+function refreshPackChoiceHint(){
+  const confirmed = String(state?.parametrage?.pack_choisi || '');
+  const pending = String(pendingPackChoice || '');
+  const text = pending && pending !== confirmed
+    ? 'Choix en attente : ' + packChoiceLabel(pending) + '. Cliquez sur “Valider ce pack” pour enregistrer.'
+    : (confirmed ? 'Pack validé : ' + packChoiceLabel(confirmed) + '.' : 'Choisissez un pack puis validez pour enregistrer votre choix.');
+  ['packChoiceHint','packChoiceHintSide'].forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.textContent = text;
+    el.classList.toggle('ok', Boolean(confirmed && (!pending || pending === confirmed)));
+  });
+}
 function updatePack(v, shouldSave=true){
+  pendingPackChoice = '';
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
     if(shouldSave) save();
@@ -1447,7 +1514,8 @@ function getMissingParametrageFields(){
     const volume = Number(getFieldValue('volume_prevu') || p.volume_prevu || 0);
     if(!volume || volume < 1) missing.push({ id:'volume_prevu', label:"Volume prévu pour cette campagne" });
   } else {
-    const pack = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || p.pack_choisi || '';
+    const pack = p.pack_choisi || '';
+    if(pendingPackChoice && pendingPackChoice !== pack) missing.push({ id:'pack_choisi', label:"Valider le pack choisi" });
     if(!String(pack).trim()) missing.push({ id:'pack_choisi', label:"Pack choisi" });
     if(String(pack) === 'current_pack' && !hasUsableCurrentPack()) missing.push({ id:'pack_choisi', label:"Pack existant épuisé : choisissez un nouveau pack" });
   }
@@ -1662,7 +1730,7 @@ async function goNext(){
   state.parametrage.nb_repondants = Number(getFieldValue('nb_repondants') || state.parametrage.nb_repondants || 0);
 
   if(!isPartnerMode()){
-    state.parametrage.pack_choisi = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || state.parametrage.pack_choisi || '';
+    state.parametrage.pack_choisi = state.parametrage.pack_choisi || '';
     const displayQuota = getDisplayQuota();
     state.parametrage.pack_ajoute = displayQuota?.addedPack || '';
     state.parametrage.passations_ajoutees = displayQuota?.addedQuota || 0;
