@@ -1549,6 +1549,18 @@
       return escapeHtml(str).replaceAll("`", "");
     }
 
+    function refreshProjectsAfterBrowserBack(){
+      // Quand on revient avec le bouton “page précédente”, le navigateur peut restaurer
+      // l’ancienne page depuis son cache. On force alors un rechargement API pour ne
+      // pas garder un ancien statut local “brouillon” après transmission.
+      loadProjects();
+    }
+
+    window.addEventListener("pageshow", refreshProjectsAfterBrowserBack);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") refreshProjectsAfterBrowserBack();
+    });
+
     loadQuotaCard();
     loadProjects();
   </script>
