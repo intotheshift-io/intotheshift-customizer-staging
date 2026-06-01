@@ -466,6 +466,7 @@ input[type="url"]:focus,
 .url-line a{color:#007883;font-weight:800;text-decoration:none}
 .url-line a:hover{text-decoration:underline}
 
+.quota-wrap{margin:0 0 18px}
 /* ── Composant global Crédits & pack client ───────────────────── */
 .its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
 .its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
