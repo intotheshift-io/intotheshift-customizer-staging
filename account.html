@@ -293,7 +293,19 @@ async function itsLoadClientQuota(){
     return {quota:0,used:0,remaining:0,pack:''};
   }
 }
+function itsPackIsExpired(q){
+  const value=q?.packExpiresAt;
+  if(!value) return false;
+  const s=String(value).trim();
+  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  const d=m?new Date(Number(m[1]),Number(m[2])-1,Number(m[3])):new Date(s);
+  if(Number.isNaN(d.getTime())) return false;
+  const today=new Date();
+  today.setHours(0,0,0,0);
+  return d.getTime()<today.getTime();
+}
 function itsQuotaLabel(q){
+  if(itsPackIsExpired(q)) return 'Pack expiré';
   if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
   if(String(q.pack)==='illimite') return 'Pack illimité';
   if(String(q.pack)==='existing') return 'Pack en cours';
@@ -301,6 +313,7 @@ function itsQuotaLabel(q){
   return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
 }
 function itsQuotaNudge(q){
+  if(itsPackIsExpired(q)) return 'Votre pack est expiré : rechargez vos crédits pour relancer vos campagnes.';
   if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
   const ratio=q.quota? q.remaining/q.quota : 0;
   if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge.';
@@ -319,14 +332,16 @@ function itsFormatPackExpiry(value){
 function itsPackExpiryLine(q){
   const formatted=itsFormatPackExpiry(q?.packExpiresAt);
   if(!formatted) return 'Validité du pack : date de fin non renseignée.';
+  if(itsPackIsExpired(q)) return 'Pack expiré depuis le : <strong>'+formatted+'</strong>.';
   return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
 }
 function itsQuotaCardHTML(q,compact=false){
-  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
-  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
-  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
+  const expired=itsPackIsExpired(q);
+  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':(expired?0:Number(q?.remaining||Math.max(quota-used,0)));
+  const pct=expired?0:(quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0);
+  const cls=expired?'empty':(!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok'));
   return `<div class="its-quota-card ${cls}">
-    <div class="its-quota-top"><div><div class="its-quota-kicker">Mes crédits & pack</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+    <div class="its-quota-top"><div><div class="its-quota-kicker">Mes crédits & pack</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${expired?'Expiré':(String(q?.pack)==='illimite'?'Illimité':pct+'% restant')}</div></div>
     <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
     <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
     <div class="its-quota-nudge">${itsPackExpiryLine(q)}</div>

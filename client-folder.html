@@ -988,6 +988,27 @@ function getProjectTitle(project){
       return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
     }
 
+
+    function clientPackIsExpired(client){
+      const value = val(client || {}, ["packExpiresAt","pack_expires_at"], "");
+      const iso = normalizeDateInputValue(value);
+      if(!iso) return false;
+      const [y,m,d] = iso.split("-").map(Number);
+      const expiry = new Date(y, m - 1, d);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      return !Number.isNaN(expiry.getTime()) && expiry.getTime() < today.getTime();
+    }
+
+    function clientPackValidityLabel(client){
+      const value = val(client || {}, ["packExpiresAt","pack_expires_at"], "");
+      const formatted = formatPackExpiryDate(value);
+      if(formatted === "—") return "Date de fin pack non renseignée";
+      return clientPackIsExpired(client)
+        ? `Pack expiré depuis le ${formatted} · rechargez vos crédits`
+        : `Pack valable jusqu’au : ${formatted}`;
+    }
+
     function formatDate(value){
       if(!value) return "—";
       const d = new Date(value);
@@ -1230,7 +1251,8 @@ function getProjectTitle(project){
       const projects = currentClient.projects || [];
       const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
       const publishedCount = projects.filter(p => normalizeStatus(p.status) === "published").length;
-      const remaining = val(currentClient,["passationsRemaining","passations_remaining"],"—");
+      const packExpired = clientPackIsExpired(currentClient);
+      const remaining = packExpired ? "0" : val(currentClient,["passationsRemaining","passations_remaining"],"—");
 
       document.getElementById("loadingState").style.display = "none";
       document.getElementById("tab-ads").style.display = "block";
@@ -1241,7 +1263,7 @@ function getProjectTitle(project){
         Email créateur : ${escapeHtml(getCreatorEmail(currentClient) || "—")}<br>
         ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
         ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
-        Pack valable jusqu’au : ${escapeHtml(formatPackExpiryDate(val(currentClient,["packExpiresAt","pack_expires_at"],"")))}<br>
+        ${escapeHtml(clientPackValidityLabel(currentClient))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
         ${renderAttachedUsersHero(currentClient)}
       `;
