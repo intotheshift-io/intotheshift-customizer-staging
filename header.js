@@ -218,11 +218,18 @@ document.addEventListener("DOMContentLoaded", function () {
     empty.style.display = "none";
     list.innerHTML = items.map(item => {
       const url = item.actionUrl || "";
-      const unreadClass = item.unread ? " unread" : "";
-      return `<button class="its-notif-item${unreadClass}" type="button" data-id="${item.id}" data-url="${url}">
+      const unreadClass = item.unread ? " unread" : " treated";
+      const checkedAttr = item.unread ? "" : " checked";
+      const treatedLabel = item.unread ? "Marquer comme traité" : "Notification traitée";
+      return `<div class="its-notif-item${unreadClass}" data-id="${item.id}" data-url="${url}">
         <span class="its-notif-ico">${notificationIcon(item.type)}</span>
-        <span class="its-notif-copy"><strong>${escapeHtml(item.title || "Notification")}</strong><span>${escapeHtml(item.message || "")}</span><small>${formatNotificationDate(item.createdAt)}</small></span>
-      </button>`;
+        <button class="its-notif-main" type="button" data-action="open">
+          <span class="its-notif-copy"><strong>${escapeHtml(item.title || "Notification")}</strong><span>${escapeHtml(item.message || "")}</span><small>${formatNotificationDate(item.createdAt)}</small></span>
+        </button>
+        <button class="its-notif-check" type="button" data-action="read" aria-label="${treatedLabel}" title="${treatedLabel}">
+          <span aria-hidden="true">${checkedAttr ? "✓" : ""}</span>
+        </button>
+      </div>`;
     }).join("");
   }
 
@@ -230,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const token = getToken();
     if (!token) return;
     try {
-      const res = await fetch(`${API_BASE}/api/notifications?limit=12`, {
+      const res = await fetch(`${API_BASE}/api/notifications?limit=30`, {
         cache: "no-store",
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -388,7 +395,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("itsNotifList")?.addEventListener("click", async function(event){
       const item = event.target.closest(".its-notif-item");
       if (!item) return;
+      const action = event.target.closest("[data-action]")?.dataset.action || "open";
       await markNotificationRead(item.dataset.id || "");
+      if (action === "read") {
+        await loadHeaderNotifications();
+        return;
+      }
       const url = item.dataset.url || "";
       if (url) window.location.href = url;
       else loadHeaderNotifications();
