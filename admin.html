@@ -853,6 +853,13 @@ async function apiDelete(path){return await apiFetch(path,{method:"DELETE",heade
 
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}
+function formatPackExpiryDate(value){
+  if(!value) return '—';
+  const d=new Date(value);
+  if(Number.isNaN(d.getTime())) return '—';
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+}
+
 function formatNumber(v){return num(v).toLocaleString("fr-FR");}
 function clampRemaining(value, quota){
   const q=Number(quota||0);
@@ -1210,6 +1217,7 @@ function getOrgStats(org){
   const statuses={draft:0,sent:0,published:0,unpublished:0};
   projects.forEach(p=>{const s=getProjectEffectiveStatus(p);statuses[s]=(statuses[s]||0)+1;});
   const pack=val(org,["passationsPack","passations_pack"],"");
+  const packExpiresAt=val(org,["packExpiresAt","pack_expires_at"],"");
   const quota=num(val(org,["passationsQuota","passations_quota"],0));
   const used=num(val(org,["passationsUsed","passations_used"],0));
   const remaining=Math.max(0,quota-used);
@@ -1777,7 +1785,7 @@ function renderOrganizations(){
 
       <div class="org-card-body">
         <div class="org-kpi-grid">
-          <div class="org-kpi pack"><span>Passations achetées</span><strong>${escapeHtml(quotaLabel)}</strong><small>${escapeHtml(formatPackLabel(pack, quota))}</small></div>
+          <div class="org-kpi pack"><span>Passations achetées</span><strong>${escapeHtml(quotaLabel)}</strong><small>${escapeHtml(formatPackLabel(pack, quota))}<br>Fin : ${escapeHtml(formatPackExpiryDate(packExpiresAt))}</small></div>
           <div class="org-kpi remaining"><span>Restantes</span><strong>${formatNumber(remaining)}</strong><small>Solde disponible</small></div>
           <div class="org-kpi used"><span>Utilisation pack</span><strong>${usageRate}%</strong><small>${formatNumber(used)} utilisées</small><div class="org-progress-mini"><div class="org-progress-mini-bar ${progressClass}" style="width:${usageRate}%"></div></div></div>
           <div class="org-kpi users"><span>Comptes</span><strong>${usersCount}</strong><small>${projectsCount} autodiag${projectsCount>1?"s":""}</small></div>
@@ -1807,7 +1815,7 @@ function renderOrganizations(){
 
           <div class="org-quota-panel">
             <div class="org-quota-title"><strong>Gestion du pack</strong><span>${formatNumber(used)} utilisées</span></div>
-            <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
+            <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div><div class="quota-field"><label>Fin validité pack</label><input id="org-pack-expires-${escapeAttr(id)}" type="date" value="${escapeAttr(packExpiresAt ? String(packExpiresAt).slice(0,10) : '')}"></div>
             <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
             <div class="quota-rest"><strong>Utilisées calculées : ${formatNumber(used)}</strong><br><span class="muted">${formatNumber(quota)} achetées · ${formatNumber(remaining)} restantes</span></div>
             <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
@@ -2367,7 +2375,8 @@ async function saveOrganizationPassations(orgId){
     await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/passations`,{
       passationsPack,
       passationsQuota,
-      passationsUsed
+      passationsUsed,
+      packExpiresAt:document.getElementById("org-pack-expires-"+String(orgId))?.value || undefined
     });
     showSuccess("Pack client mis à jour : "+formatNumber(passationsRemaining)+" passations restantes.");
     await loadAdminData();

@@ -268,11 +268,12 @@
       const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
       const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
       const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+      const packExpiresAt = obj.packExpiresAt ?? obj.pack_expires_at ?? obj.organizationPackExpiresAt ?? obj.organization_pack_expires_at ?? obj.packExpirationDate ?? obj.pack_expiration_date ?? '';
       if(quota === undefined && remainingRaw === undefined && !pack) return null;
       const q = Number(quota || 0);
       const u = Number(used || 0);
       const r = remainingRaw !== undefined && remainingRaw !== null && remainingRaw !== '' ? Number(remainingRaw) : Math.max(q - u, 0);
-      return { quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack || '') };
+      return { quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack || ''), packExpiresAt:String(packExpiresAt || '') };
     }
 
     function pickQuotaPayload(data){
@@ -299,6 +300,19 @@
       return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
     }
 
+    function quotaFormatPackExpiry(value){
+      if(!value) return '';
+      const str=String(value).trim();
+      const m=str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      const d=m?new Date(Number(m[1]),Number(m[2])-1,Number(m[3])):new Date(str);
+      if(Number.isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+    }
+    function quotaExpiryLine(q){
+      const formatted=quotaFormatPackExpiry(q?.packExpiresAt);
+      if(!formatted) return 'Validité du pack : date de fin non renseignée.';
+      return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
+    }
     function quotaCardHTML(q){
       const quota = Number(q?.quota || 0);
       const used = Number(q?.used || 0);
@@ -309,6 +323,7 @@
         <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${quotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
         <div class="its-quota-main"><div class="its-quota-box"><strong>${quotaFormatNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${quotaFormatNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':quotaFormatNumber(remaining)}</strong><span>Restantes</span></div></div>
         <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
+        <div class="its-quota-nudge">${quotaExpiryLine(q)}</div>
         <div class="its-quota-nudge">${quotaNudge(q)}</div>
       </div>`;
     }

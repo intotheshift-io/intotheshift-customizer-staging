@@ -555,10 +555,11 @@ function itsReadQuotaFromObject(obj){
   const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
   const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
   const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+  const packExpiresAt = obj.packExpiresAt ?? obj.pack_expires_at ?? obj.organizationPackExpiresAt ?? obj.organization_pack_expires_at ?? obj.packExpirationDate ?? obj.pack_expiration_date ?? '';
   if(quota===undefined && remainingRaw===undefined && !pack) return null;
   const q=Number(quota||0), u=Number(used||0);
   const r=remainingRaw!==undefined && remainingRaw!==null && remainingRaw!=='' ? Number(remainingRaw) : Math.max(q-u,0);
-  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack||'')};
+  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack||''), packExpiresAt:String(packExpiresAt||'')};
 }
 function itsPickQuotaPayload(data){
   const candidates=[data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.account,data?.user,data?.partner,data];
@@ -588,7 +589,8 @@ async function itsLoadClientQuota(){
           passationsPack: project.organizationPassationsPack,
           passationsQuota: project.organizationPassationsQuota,
           passationsUsed: project.organizationPassationsUsed,
-          passationsRemaining: project.organizationPassationsRemaining
+          passationsRemaining: project.organizationPassationsRemaining,
+          packExpiresAt: project.organizationPackExpiresAt || project.organization_pack_expires_at || ''
         });
         if(projectQuota && (projectQuota.pack || projectQuota.quota || projectQuota.remaining)) return projectQuota;
       }catch(e){
@@ -629,6 +631,19 @@ function itsQuotaNudge(q){
   if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
   return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
 }
+function itsFormatPackExpiry(value){
+  if(!value) return '';
+  const s=String(value).trim();
+  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  const d=m?new Date(Number(m[1]),Number(m[2])-1,Number(m[3])):new Date(s);
+  if(Number.isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+}
+function itsPackExpiryLine(q){
+  const formatted=itsFormatPackExpiry(q?.packExpiresAt);
+  if(!formatted) return 'Validité du pack : date de fin non renseignée.';
+  return 'Pack valable jusqu’au : <strong>'+formatted+'</strong>.';
+}
 function itsQuotaCardHTML(q,compact=false){
   const isUnlimited = String(q?.pack)==='illimite' || q?.quota === Infinity || q?.remaining === Infinity;
   const quota = isUnlimited ? Infinity : Number(q?.quota||0);
@@ -640,12 +655,13 @@ function itsQuotaCardHTML(q,compact=false){
     <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${isUnlimited?'Illimité':pct+'% restant'}</div></div>
     <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${isUnlimited?'—':itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
     <div class="its-quota-bar"><div class="its-quota-fill" style="width:${pct}%"></div></div>
+    <div class="its-quota-nudge">${itsPackExpiryLine(q)}</div>
     <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
   </div>`;
 }
 function itsQuotaInlineHTML(q){
   const isUnlimited = String(q?.pack)==='illimite' || q?.quota === Infinity || q?.remaining === Infinity;
-  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${isUnlimited?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
+  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${isUnlimited?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'} · '+itsPackExpiryLine(q)+'</div></div>`;
 }
 
 

@@ -981,6 +981,13 @@ function getProjectTitle(project){
       return projects.find(project => String(project.id) === String(projectId)) || null;
     }
 
+    function formatPackExpiryDate(value){
+      if(!value) return '—';
+      const d = new Date(value);
+      if(Number.isNaN(d.getTime())) return '—';
+      return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+    }
+
     function formatDate(value){
       if(!value) return "—";
       const d = new Date(value);
@@ -1234,6 +1241,7 @@ function getProjectTitle(project){
         Email créateur : ${escapeHtml(getCreatorEmail(currentClient) || "—")}<br>
         ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
         ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
+        Pack valable jusqu’au : ${escapeHtml(formatPackExpiryDate(val(currentClient,["packExpiresAt","pack_expires_at"],"")))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
         ${renderAttachedUsersHero(currentClient)}
       `;
