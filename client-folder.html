@@ -1634,7 +1634,10 @@ function renderProjectTitleDetails(project){
                 ? `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
                 : `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
               }
-              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
+              ${normalizedStatus === "archived"
+                ? `<button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>`
+                : `<button class="small-btn danger" onclick="showDeleteBlockedModal('${escapeAttr(project.id)}')">🗑️ Supprimer</button>`
+              }
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? (packUpgrade.requested && packUpgrade.status === "pending" && !canPublishDespitePendingPack(project)
@@ -2229,14 +2232,18 @@ function renderProjectTitleDetails(project){
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const status = project ? normalizeStatus(project.status) : "";
+      if(status !== "archived"){
+        await showDeleteBlockedModal(projectId);
+        return;
+      }
       const ok = await openConfirmModal({
         tone: "danger",
         icon: "🗑️",
-        title: "Supprimer définitivement cet autodiagnostic ?",
-        subtitle: status === "published" ? "Attention : cet AD est publié." : "Cette action retirera l’AD du cockpit client.",
-        text: "Confirmez-vous la suppression définitive de cet autodiagnostic ?",
+        title: "Supprimer définitivement cet autodiagnostic archivé ?",
+        subtitle: "Cette action retirera l’AD archivé du cockpit client.",
+        text: "Confirmez-vous la suppression définitive de cet autodiagnostic archivé ?",
         project: title,
-        warning: status === "published" ? "La campagne associée sera aussi retirée du cockpit client. Cette action est définitive." : "Cette action est définitive.",
+        warning: "Cette action est définitive.",
         confirmText: "Supprimer"
       });
       if(!ok) return;
@@ -2313,6 +2320,40 @@ function renderProjectTitleDetails(project){
       return new Promise(resolve => {
         confirmModalResolver = resolve;
       });
+    }
+
+
+    async function showDeleteBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const status = project ? normalizeStatus(project.status) : "";
+
+      let text = "Cet autodiagnostic ne peut pas être supprimé directement.";
+      let warning = "Pour éviter une suppression accidentelle, la suppression définitive est disponible uniquement depuis le statut Archivé.";
+
+      if(status === "published"){
+        text = "Dépubliez d’abord la campagne, archivez ensuite l’autodiagnostic, puis vous pourrez le supprimer depuis l’onglet Archivés.";
+        warning = "Un autodiagnostic publié peut encore être actif côté client : il ne doit pas être supprimé directement.";
+      }else if(status === "unpublished"){
+        text = "Archivez d’abord cet autodiagnostic, puis vous pourrez le supprimer depuis l’onglet Archivés.";
+      }else if(status === "sent"){
+        text = "Cet autodiagnostic est à publier. Archivez-le d’abord si vous ne souhaitez plus le traiter, puis supprimez-le depuis l’onglet Archivés.";
+      }else if(status === "draft"){
+        text = "Archivez d’abord ce brouillon, puis vous pourrez le supprimer depuis l’onglet Archivés.";
+      }
+
+      await openConfirmModal({
+        tone: "warn",
+        icon: "🗑️",
+        title: "Archiver avant de supprimer",
+        subtitle: "La suppression définitive est réservée aux autodiagnostics archivés.",
+        text,
+        project: title,
+        warning,
+        confirmText: "Compris",
+        hideCancel: true
+      });
+      return false;
     }
 
     window.showArchivePublishedBlockedModal = showArchivePublishedBlockedModal;
