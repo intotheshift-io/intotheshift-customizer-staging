@@ -737,12 +737,19 @@ function itsStartFromCatalogue(adId) {
 
   const state = {
     selectedAdId: ad.id,
+    selected_ad_id: ad.id,
+    catalogueAdId: ad.id,
+    catalogue_ad_id: ad.id,
+    themeKey: ad.themeKey || "",
+    theme_key: ad.themeKey || "",
+    theme: ad.theme || "",
+    themeLabel: ad.theme || "",
+    theme_label: ad.theme || "",
     catalogueTitle: ad.title,
     catalogue_title: ad.title,
     originalCatalogueTitle: ad.title,
     original_catalogue_title: ad.title,
     title: ad.title,
-    theme: ad.theme,
     audience: ad.audience,
     tags: ad.tags || ["Base assistée par IA", "Aide à la rédaction", "Relecture obligatoire"],
     duration: ad.duration || "8 à 12 min",
@@ -789,9 +796,68 @@ function itsStartFromCatalogue(adId) {
 
   itsCanonicalizeCampaignDates(state);
   itsSave(state);
+
   return state;
 }
 
+function itsGetProjectDataForCatalogue(project) {
+  const raw = project?.data || project?.payload || project?.configuration || project || {};
+  if (typeof raw === "string") {
+    try { return JSON.parse(raw) || {}; } catch(e) { return {}; }
+  }
+  return raw && typeof raw === "object" ? raw : {};
+}
+
+function itsGetProjectCatalogueAdId(project) {
+  const data = itsGetProjectDataForCatalogue(project);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+  const source = data.source && typeof data.source === "object" ? data.source : {};
+  return String(
+    project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+    data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+    payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+    state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+    meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+    source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+    ""
+  ).trim();
+}
+
+function itsGetThemeFromCatalogue(project) {
+  const catalogueAdId = itsGetProjectCatalogueAdId(project);
+  if (!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+  const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+  return ad?.theme || "";
+}
+
+function itsGetProjectThemes(project) {
+  const fromCatalogue = itsGetThemeFromCatalogue(project);
+  if (fromCatalogue) return [fromCatalogue];
+
+  const data = itsGetProjectDataForCatalogue(project);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+
+  const explicit = [
+    project?.theme, project?.themeLabel, project?.themeName, project?.thematique, project?.thématique,
+    data.theme, data.themeLabel, data.themeName, data.thematique, data.thématique,
+    payload.theme, payload.themeLabel, payload.themeName, payload.thematique, payload.thématique,
+    state.theme, state.themeLabel, state.themeName, state.thematique, state.thématique,
+    param.theme, param.themeLabel, param.themeName, param.thematique, param.thématique
+  ].find(value => value !== undefined && value !== null && String(value).trim() !== "");
+
+  return explicit ? [String(explicit).trim()] : [];
+}
+
+window.ITSProject = Object.assign(window.ITSProject || {}, {
+  getThemes: itsGetProjectThemes,
+  getCatalogueAdId: itsGetProjectCatalogueAdId,
+  getThemeFromCatalogue: itsGetThemeFromCatalogue,
+  resumeUrl: typeof window.ITSProject?.resumeUrl === "function" ? window.ITSProject.resumeUrl : undefined
+});
 
 
 function itsNormalizeProjectStatus(projectOrState) {

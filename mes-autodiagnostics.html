@@ -147,6 +147,14 @@
   <div id="header"></div>
   <script src="header.js"></script>
   <script src="app.js"></script>
+  <script src="catalogue-core.js?v=5"></script>
+  <script src="catalogue-cyber.js?v=5"></script>
+  <script src="catalogue-securite.js?v=6"></script>
+  <script src="catalogue-qvt.js?v=5"></script>
+  <script src="catalogue-transfo.js?v=5"></script>
+  <script src="catalogue-rse.js?v=5"></script>
+  <script src="catalogue-ethique.js?v=5"></script>
+  <script src="catalogue-custom.js?v=5"></script>
 
   <main class="page">
     <section class="hero">
@@ -644,41 +652,61 @@
       return "";
     }
 
+    function getProjectCatalogueAdId(p){
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+      const source = data.source && typeof data.source === "object" ? data.source : {};
+      return String(
+        p?.catalogueAdId || p?.catalogue_ad_id || p?.selectedAdId || p?.selected_ad_id ||
+        data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+        payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+        state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+        param.catalogueAdId || param.catalogue_ad_id || param.selectedAdId || param.selected_ad_id ||
+        meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+        source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+        ""
+      ).trim();
+    }
+
+    function getLibraryThemeFromCatalogue(p){
+      const catalogueAdId = getProjectCatalogueAdId(p);
+      if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+      const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+      return ad?.theme || "";
+    }
+
+    function getExplicitProjectTheme(p){
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      return String(
+        p?.theme || p?.themeLabel || p?.themeName || p?.thematique || p?.thématique ||
+        data.theme || data.themeLabel || data.themeName || data.thematique || data.thématique ||
+        payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
+        state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
+        param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
+        ""
+      ).trim();
+    }
+
     function getProjectThemes(p){
       if(window.ITSProject && typeof window.ITSProject.getThemes === "function"){
         const shared = window.ITSProject.getThemes(p);
         if(Array.isArray(shared) && shared.length) return shared;
       }
-      const data = getProjectData(p);
-      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
-      const state = data.state && typeof data.state === "object" ? data.state : {};
-      const param = data.parametrage || state.parametrage || payload.parametrage || {};
-      const titleNorm = normalizeTextForTheme(getTitle(p));
-      const themes = [];
 
-      [
-        p.theme, p.themeName, p.themeLabel, p.themeTitle, p.thematique, p.thématique,
-        data.theme, data.themeName, data.themeLabel, data.themeTitle, data.thematique, data.thématique,
-        payload.theme, payload.themeName, payload.themeLabel, payload.themeTitle, payload.thematique, payload.thématique,
-        state.theme, state.themeName, state.themeLabel, state.themeTitle, state.thematique, state.thématique,
-        param.theme, param.themeName, param.themeLabel, param.themeTitle, param.thematique, param.thématique,
-        data.selectedTheme, payload.selectedTheme, state.selectedTheme, param.selectedTheme,
-        data.category, payload.category, state.category, param.category,
-        data.catalogTheme, payload.catalogTheme, data.catalog_theme, payload.catalog_theme,
-        data.baseTheme, payload.baseTheme, data.base_theme, payload.base_theme
-      ].forEach(value => addThemeCandidate(themes, value, titleNorm, false));
+      const fromCatalogue = getLibraryThemeFromCatalogue(p);
+      if(fromCatalogue) return [fromCatalogue];
 
-      if(!themes.length){
-        [payload.tags, data.tags, state.tags, payload.themeTags, data.themeTags, state.themeTags, payload.theme?.tags, data.theme?.tags]
-          .forEach(value => addThemeCandidate(themes, value, titleNorm, true));
-      }
+      const explicit = getExplicitProjectTheme(p);
+      if(explicit) return [explicit];
 
-      if(!themes.length){
-        const inferred = inferThemeFromProject(p) || inferThemeFromTitle(getTitle(p));
-        if(inferred) themes.push(inferred);
-      }
-
-      return themes.slice(0,4);
+      const inferred = inferThemeFromProject(p) || inferThemeFromTitle(getTitle(p));
+      return inferred ? [inferred] : [];
     }
 
     function renderThemeTags(project){

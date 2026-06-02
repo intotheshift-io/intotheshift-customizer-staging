@@ -337,6 +337,14 @@
   </div>
 
   <script src="header.js"></script>
+  <script src="catalogue-core.js?v=5"></script>
+  <script src="catalogue-cyber.js?v=5"></script>
+  <script src="catalogue-securite.js?v=6"></script>
+  <script src="catalogue-qvt.js?v=5"></script>
+  <script src="catalogue-transfo.js?v=5"></script>
+  <script src="catalogue-rse.js?v=5"></script>
+  <script src="catalogue-ethique.js?v=5"></script>
+  <script src="catalogue-custom.js?v=5"></script>
   <input id="projectLogoInput" type="file" accept="image/*" hidden onchange="uploadProjectLogo(event)">
   <div id="clientFolderToast" class="toast" aria-live="polite"></div>
 
@@ -643,75 +651,54 @@ function renderProjectTitleDetails(project){
       return `<div class="card-meta" style="margin:2px 0 10px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
     }
 
-    function getProjectThemes(project){
+    function getProjectCatalogueAdId(project){
       const payload = getProjectPayload(project);
       const data = getProjectData(project);
-      const param = payload.parametrage || data.parametrage || {};
-      const titleNorm = normalizeTextForTheme(getProjectTitle(project));
-      const forbidden = [
-        "base assistée par ia",
-        "base assistee par ia",
-        "aide à la rédaction",
-        "aide a la redaction",
-        "relecture obligatoire",
-        "conçu par un expert",
-        "concu par un expert",
-        "brouillon",
-        "publié",
-        "publie",
-        "transmis"
-      ];
-      const businessKeywords = [
-        "cybersécurité","cybersecurite","cyber",
-        "qvt","rps","risques psychosociaux",
-        "management","manager","transformation",
-        "compliance","conformité","conformite","éthique","ethique",
-        "diversité","diversite","inclusion","handicap","sexisme","lgbt","religieuse","origines",
-        "rse","environnement","sobriete","sobriété",
-        "sécurité","securite","sûreté","surete","btp"
-      ];
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+      const source = data.source && typeof data.source === "object" ? data.source : {};
+      return String(
+        project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+        data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+        payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+        state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+        meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+        source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+        ""
+      ).trim();
+    }
 
-      function addCandidate(list, value, strictTag){
-        if(Array.isArray(value)){
-          value.forEach(item => addCandidate(list, item, strictTag));
-          return;
-        }
-        if(value && typeof value === "object"){
-          addCandidate(list, value.title || value.name || value.label || value.titre || value.nom || "", strictTag);
-          return;
-        }
-        const raw = String(value || "").trim();
-        if(!raw) return;
-        const norm = normalizeTextForTheme(raw);
-        if(!norm || norm === titleNorm) return;
-        if(forbidden.includes(norm) || forbidden.some(f => norm.includes(f))) return;
-        if(strictTag && !businessKeywords.some(k => norm.includes(normalizeTextForTheme(k)))) return;
-        if(!list.some(existing => normalizeTextForTheme(existing) === norm)) list.push(raw);
-      }
+    function getLibraryThemeFromCatalogue(project){
+      const catalogueAdId = getProjectCatalogueAdId(project);
+      if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+      const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+      return ad?.theme || "";
+    }
 
-      const themes = [];
-      [
-        project.theme, project.themeName, project.themeLabel, project.themeTitle, project.thematique, project.thématique,
-        data.theme, data.themeName, data.themeLabel, data.themeTitle, data.thematique, data.thématique,
-        payload.theme, payload.themeName, payload.themeLabel, payload.themeTitle, payload.thematique, payload.thématique,
-        param.theme, param.themeName, param.themeLabel, param.themeTitle, param.thematique, param.thématique,
-        data.selectedTheme, payload.selectedTheme, param.selectedTheme,
-        data.category, payload.category, param.category,
-        data.catalogTheme, payload.catalogTheme, data.catalog_theme, payload.catalog_theme,
-        data.baseTheme, payload.baseTheme, data.base_theme, payload.base_theme
-      ].forEach(value => addCandidate(themes, value, false));
+    function getExplicitProjectTheme(project){
+      const payload = getProjectPayload(project);
+      const data = getProjectData(project);
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = payload.parametrage || data.parametrage || state.parametrage || {};
+      return String(
+        project?.theme || project?.themeLabel || project?.themeName || project?.thematique || project?.thématique ||
+        data.theme || data.themeLabel || data.themeName || data.thematique || data.thématique ||
+        payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
+        state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
+        param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
+        ""
+      ).trim();
+    }
 
-      if(!themes.length){
-        [payload.tags, data.tags, payload.themeTags, data.themeTags, payload.theme?.tags, data.theme?.tags]
-          .forEach(value => addCandidate(themes, value, true));
-      }
+    function getProjectThemes(project){
+      const fromCatalogue = getLibraryThemeFromCatalogue(project);
+      if(fromCatalogue) return [fromCatalogue];
 
-      if(!themes.length){
-        const inferred = inferThemeFromProject(project);
-        if(inferred) themes.push(inferred);
-      }
+      const explicit = getExplicitProjectTheme(project);
+      if(explicit) return [explicit];
 
-      return themes.slice(0,4);
+      const inferred = inferThemeFromProject(project);
+      return inferred ? [inferred] : [];
     }
 
     function normalizeTextForTheme(value){
