@@ -792,6 +792,8 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip}#header{
 const API_BASE_URL = "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io";
 let adminState = { summary:{}, clients:[], projects:[], organizations:[] };
 let currentOrgFilter = "all";
+let adminRenderedTabs = {};
+let adminOrgStatsCache = new Map();
 const ADMIN_JOB_OPTIONS = [
   'CEO / Direction générale',
   'COO / Direction des opérations',
@@ -1285,6 +1287,8 @@ function focusOrganizationPackEditor(orgId){
 }
 
 function getOrgStats(org){
+  const cacheKey = String(val(org,["id"],""));
+  if(cacheKey && adminOrgStatsCache.has(cacheKey)) return adminOrgStatsCache.get(cacheKey);
   const projects=getProjectsForOrg(org);
   const statuses={draft:0,sent:0,published:0,unpublished:0};
   projects.forEach(p=>{const s=getProjectEffectiveStatus(p);statuses[s]=(statuses[s]||0)+1;});
@@ -1314,7 +1318,9 @@ function getOrgStats(org){
   const active=campaignLive || statuses.published>0 || statuses.sent>0;
   const packUpgradeRequests=getOrgPackUpgradeRequests(org);
   const packUpgradePending=packUpgradeRequests.filter(item=>String(item.request.status||"").toLowerCase()==="pending").length;
-  return {projects,statuses,pack,packExpiresAt,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
+  const result = {projects,statuses,pack,packExpiresAt,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
+  if(cacheKey) adminOrgStatsCache.set(cacheKey, result);
+  return result;
 }
 function getOrgPriority(org){
   const s=getOrgStats(org);
@@ -1433,11 +1439,32 @@ function sortOrganizations(rows){
   });
 }
 
-function showTab(tab){
+function getActiveAdminTab(){
+  const active=document.querySelector(".admin-section.active");
+  return active ? String(active.id || "").replace("tab-","") : "global";
+}
+
+function renderAdminTab(tab, force=false){
+  if(!tab) tab=getActiveAdminTab();
+  if(!force && adminRenderedTabs[tab]) return;
+  if(tab==="accounts") renderAccounts();
+  else if(tab==="partners") renderPartners();
+  else if(tab==="organizations") renderOrganizations();
+  else if(tab==="projects") renderProjects();
+  adminRenderedTabs[tab]=true;
+}
+
+function invalidateAdminRenderedTabs(){
+  adminRenderedTabs={};
+  adminOrgStatsCache=new Map();
+}
+
+function showTab(tab, renderNow=true){
   document.querySelectorAll(".admin-section").forEach(s=>s.classList.remove("active"));
   document.querySelectorAll(".side-link").forEach(a=>a.classList.remove("active"));
   document.getElementById("tab-"+tab)?.classList.add("active");
   document.querySelector(`.side-link[data-tab="${tab}"]`)?.classList.add("active");
+  if(renderNow) renderAdminTab(tab);
 }
 
 function getFocusedOrganizationId(){
@@ -1456,7 +1483,7 @@ function applyFocusedOrganization(){
   const focusOrgId = getFocusedOrganizationId();
   if(!focusOrgId) return false;
 
-  showTab("organizations");
+  showTab("organizations", false);
   currentOrgFilter = "all";
 
   const orgSearch = document.getElementById("orgSearch");
@@ -1480,7 +1507,7 @@ function applyInitialAdminTab(){
 }
 
 function goToProjects(status="", search=""){
-  showTab("projects");
+  showTab("projects", false);
   const statusFilter=document.getElementById("statusFilter");
   const projectSearch=document.getElementById("projectSearch");
   if(statusFilter)statusFilter.value=status||"";
@@ -1489,14 +1516,14 @@ function goToProjects(status="", search=""){
   document.getElementById("tab-projects")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToOrganizations(search=""){
-  showTab("organizations");
+  showTab("organizations", false);
   const orgSearch=document.getElementById("orgSearch");
   if(orgSearch)orgSearch.value=search||"";
   renderOrganizations();
   document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToPackUpgradeRequests(){
-  showTab("organizations");
+  showTab("organizations", false);
   currentOrgFilter="packUpgrade";
   const orgSearch=document.getElementById("orgSearch");
   if(orgSearch)orgSearch.value="";
@@ -1504,14 +1531,14 @@ function goToPackUpgradeRequests(){
   document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToPartners(){
-  showTab("partners");
+  showTab("partners", false);
   const partnerSearch=document.getElementById("partnerSearch");
   if(partnerSearch)partnerSearch.value="";
   renderPartners();
   document.getElementById("tab-partners")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToAccounts(search=""){
-  showTab("accounts");
+  showTab("accounts", false);
   const clientSearch=document.getElementById("clientSearch");
   const roleFilter=document.getElementById("roleFilter");
   const userStatusFilter=document.getElementById("userStatusFilter");
@@ -1551,6 +1578,7 @@ async function loadAdminData(){
     adminState.clients=normalizeArray(clients,["clients","users","data"]);
     adminState.projects=normalizeArray(projects,["projects","autodiags","data"]);
     adminState.organizations=normalizeArray(organizations,["organizations","clients","data"]);
+    invalidateAdminRenderedTabs();
     renderAll();
     applyInitialAdminTab();
   }catch(err){
@@ -1563,10 +1591,7 @@ async function loadAdminData(){
 
 function renderAll(){
   renderKpis();
-  renderAccounts();
-  renderPartners();
-  renderOrganizations();
-  renderProjects();
+  renderAdminTab(getActiveAdminTab(), true);
 }
 
 function getUserStatus(c){return String(val(c,["status","statut"],"active")).toLowerCase();}
@@ -1711,6 +1736,7 @@ async function attachUserToOrganization(userId, transferProjects=false){
 }
 
 function renderAccounts(){
+  adminRenderedTabs.accounts=true;
   const q=(document.getElementById("clientSearch")?.value||"").toLowerCase().trim();
   const rf=document.getElementById("roleFilter")?.value||"";
   const sf=document.getElementById("userStatusFilter")?.value||"active";
@@ -1826,6 +1852,7 @@ function renderAccounts(){
 }
 
 function renderPartners(){
+  adminRenderedTabs.partners=true;
   const q=(document.getElementById("partnerSearch")?.value||"").toLowerCase().trim();
   const partners=adminState.clients.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner").filter(p=>!q||JSON.stringify(p).toLowerCase().includes(q));
   const grid=document.getElementById("partnersGrid");
@@ -1876,6 +1903,8 @@ function renderPartners(){
 }
 
 function renderOrganizations(){
+  adminRenderedTabs.organizations=true;
+  adminOrgStatsCache=new Map();
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
   const sectorFilter=document.getElementById("orgSectorFilter")?.value || "";
   const themeFilter=document.getElementById("orgThemeFilter")?.value || "";
@@ -2167,6 +2196,7 @@ function renderProjectAlertNote({status, share, results, endDate}){
 }
 
 function renderProjects(){
+  adminRenderedTabs.projects=true;
   const q=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
   const sf=(document.getElementById("statusFilter")?.value||"").toLowerCase();
   const issue=(document.getElementById("projectIssueFilter")?.value||"");
@@ -2610,6 +2640,7 @@ async function changeRole(userId){
       if(id===String(userId))return {...c,role};
       return c;
     });
+    invalidateAdminRenderedTabs();
     renderAll();
     showSuccess("Rôle mis à jour.");
   }catch(err){
