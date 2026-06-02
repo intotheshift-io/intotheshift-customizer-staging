@@ -1440,13 +1440,38 @@ function showTab(tab){
   document.querySelector(`.side-link[data-tab="${tab}"]`)?.classList.add("active");
 }
 
+function getFocusedOrganizationId(){
+  const params = new URLSearchParams(window.location.search || "");
+  return cleanId(params.get("focusOrg") || params.get("organizationId") || params.get("orgId") || "");
+}
+
 function getInitialAdminTab(){
   const hash = String(window.location.hash || "").replace("#", "").trim().toLowerCase();
   const allowed = ["global", "create", "accounts", "partners", "organizations", "projects"];
+  if(getFocusedOrganizationId()) return "organizations";
   return allowed.includes(hash) ? hash : "global";
 }
 
+function applyFocusedOrganization(){
+  const focusOrgId = getFocusedOrganizationId();
+  if(!focusOrgId) return false;
+
+  showTab("organizations");
+  currentOrgFilter = "all";
+
+  const orgSearch = document.getElementById("orgSearch");
+  const org = adminState.organizations.find(o => String(val(o,["id"],"")).trim() === String(focusOrgId));
+  if(orgSearch){
+    orgSearch.value = org ? getOrgName(org) : String(focusOrgId);
+  }
+
+  renderOrganizations();
+  document.getElementById("tab-organizations")?.scrollIntoView({behavior:"auto",block:"start"});
+  return true;
+}
+
 function applyInitialAdminTab(){
+  if(applyFocusedOrganization()) return;
   const initialTab = getInitialAdminTab();
   if(initialTab && initialTab !== "global"){
     showTab(initialTab);
@@ -2714,6 +2739,8 @@ window.addEventListener("hashchange",()=>{
 
 document.addEventListener("DOMContentLoaded",()=>{
   resetAdminFilters();
+  const initialTab = getInitialAdminTab();
+  if(initialTab && initialTab !== "global") showTab(initialTab);
   setTimeout(resetAdminFilters,250);
   if(requireAdmin())loadAdminData();
 });
