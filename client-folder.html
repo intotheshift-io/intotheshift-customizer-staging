@@ -365,6 +365,7 @@
     let projectToPublish = null;
     let projectToLogo = null;
     let currentAdFilter = "all";
+    let renderedTabs = { ads:false, campaigns:false, resources:false };
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -462,48 +463,11 @@
     }
 
     function renderProjectIds(project){
-      const projectId = displayId(project?.id);
-      const orgId = displayId(getProjectOrgId(project));
-      const creatorId = displayId(getProjectCreatorId(project));
-      const ownerId = displayId(getProjectOwnerId(project));
-      const orgWarn = orgId === "—" ? " warn" : " good";
-      return `<div class="id-debug-grid">
-        <div class="id-pill good"><strong>ID AD / project.id</strong>${escapeHtml(projectId)}</div>
-        <div class="id-pill${orgWarn}"><strong>ID cockpit / organization_id</strong>${escapeHtml(orgId)}</div>
-        <div class="id-pill"><strong>ID créateur / created_by</strong>${escapeHtml(creatorId)}</div>
-        <div class="id-pill"><strong>ID owner/partner</strong>${escapeHtml(ownerId)}</div>
-      </div>`;
+      return "";
     }
 
     function logClientFolderMappings(clientId, organizations = [], projects = []){
-      try{
-        console.groupCollapsed("ITS DEBUG CLIENT-FOLDER — client / projects mappings");
-        console.log("CLIENT OUVERT", {
-          clientId,
-          currentClientId: currentClient?.id,
-          currentClientName: currentClient?.name,
-          ownerRole: getClientOwnerRole?.(),
-          ownerId: getClientOwnerId?.()
-        });
-        if(Array.isArray(organizations) && organizations.length){
-          console.table(organizations.map(o=>({
-            organization_id: o.id,
-            name: o.name || o.organizationName || o.clientName || o.company || o.company_name,
-            created_by: o.created_by || o.createdBy || o.owner_id || o.ownerId,
-            parent_id: o.parent_id || o.parentId || o.partner_id || o.partnerId,
-            type: o.type || o.organization_type || o.org_type
-          })));
-        }
-        console.table((projects || []).map(project => ({
-          project_id: project.id,
-          organization_id: getProjectOrgId(project),
-          created_by: getProjectCreatorId(project),
-          owner_or_partner_id: getProjectOwnerId(project),
-          status: project.status,
-          title: getProjectTitle(project)
-        })));
-        console.groupEnd();
-      }catch(e){console.warn("ITS DEBUG CLIENT-FOLDER impossible", e);}
+      // Debug volontairement désactivé : les console.table sur tous les projets ralentissaient fortement le cockpit client.
     }
 
     function getContactName(client){
@@ -1309,11 +1273,10 @@ function renderProjectTitleDetails(project){
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
 
+      renderedTabs = { ads:false, campaigns:false, resources:false };
       renderClientPackUpgradePanel();
       renderAds(projects);
-      renderCampaigns(projects);
-      renderResults(projects);
-      renderResources(projects);
+      renderedTabs.ads = true;
     }
 
     function getDaysUntil(dateValue){
@@ -1600,7 +1563,6 @@ function renderProjectTitleDetails(project){
             <h3>${escapeHtml(projectTitle)}</h3>
             ${renderProjectTitleDetails(project)}
             ${renderProjectIds(project)}
-            ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
               <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
@@ -1681,7 +1643,6 @@ function renderProjectTitleDetails(project){
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             ${renderProjectIds(project)}
-            ${getProjectOrgId(project) !== String(getClientId()) ? `<div class="debug-note">⚠️ organization_id de cet AD (${escapeHtml(displayId(getProjectOrgId(project)))}) différent du cockpit ouvert (${escapeHtml(displayId(getClientId()))}).</div>` : ""}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
               <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
@@ -1799,7 +1760,22 @@ function renderProjectTitleDetails(project){
       document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
       if(button) button.classList.add("active");
       document.querySelectorAll(".tab-content").forEach(content => content.style.display = "none");
-      document.getElementById(`tab-${tabName}`).style.display = "block";
+      const target = document.getElementById(`tab-${tabName}`);
+      if(target) target.style.display = "block";
+
+      const projects = currentClient?.projects || [];
+      if(tabName === "ads" && !renderedTabs.ads){
+        renderAds(projects);
+        renderedTabs.ads = true;
+      }
+      if(tabName === "campaigns" && !renderedTabs.campaigns){
+        renderCampaigns(projects);
+        renderedTabs.campaigns = true;
+      }
+      if(tabName === "resources" && !renderedTabs.resources){
+        renderResources(projects);
+        renderedTabs.resources = true;
+      }
     }
 
     function showTabByName(tabName){
