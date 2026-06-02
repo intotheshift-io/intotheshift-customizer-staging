@@ -275,7 +275,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Client : les alertes pack renvoient vers l'onglet crédits.
+    // Client : la republication après recharge ramène vers Mes Autodiagnostics.
+    if (client && type === "pack_republished") {
+      return "/mes-autodiagnostics.html";
+    }
+
+    // Client : les autres alertes pack renvoient vers l'onglet crédits.
     if (client && type.startsWith("pack_")) {
       return "/account.html?tab=quota";
     }
