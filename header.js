@@ -346,6 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     empty.style.display = "none";
     list.innerHTML = items.map(item => {
+      try {
       const url = resolveNotificationUrl(item);
       const unread = isNotificationUnread(item);
       const unreadClass = unread ? " unread" : " treated";
@@ -361,6 +362,10 @@ document.addEventListener("DOMContentLoaded", function () {
           <span aria-hidden="true">${unread ? "" : "✓"}</span>
         </button>
       </div>`;
+      } catch (errItem) {
+        console.error("[ITS NOTIF] rendu ignoré pour une notification", item, errItem);
+        return "";
+      }
     }).join("");
   }
 
@@ -372,10 +377,10 @@ document.addEventListener("DOMContentLoaded", function () {
         cache: "no-store",
         headers: { Authorization: `Bearer ${token}` }
       });
-      if (!res.ok) return;
+      if (!res.ok) { console.error("[ITS NOTIF] GET /api/notifications a échoué", res.status); return; }
       const data = await res.json();
       renderHeaderNotifications(data.notifications || [], Number(data.unread || 0));
-    } catch(e) {}
+    } catch(e) { console.error("[ITS NOTIF] chargement/rendu des notifications", e); }
   }
 
   const logged = isLoggedIn();
