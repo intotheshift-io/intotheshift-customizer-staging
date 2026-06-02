@@ -171,7 +171,8 @@ document.addEventListener("DOMContentLoaded", function () {
       pack_upgrade_request: "🎟️",
       pack_upgrade_approved: "✅",
       pack_republished: "🟢",
-      communication_assets: "📣"
+      communication_assets: "📣",
+      brand_assets: "🎨"
     };
     return map[type] || "🔔";
   }
@@ -223,7 +224,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "extended",
       "reprogrammed",
       "unpublished",
-      "published"
+      "published",
+      "brand_assets"
     ]);
 
     const clientKitTypes = new Set([
