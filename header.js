@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.getElementById("header");
   if (!header) return;
 
+  header.style.position = "sticky";
+  header.style.top = "0";
+  header.style.zIndex = "1000";
+  header.style.width = "100%";
+
 
   const existingFavicon = document.querySelector("link[rel='icon']");
   if (!existingFavicon) {
