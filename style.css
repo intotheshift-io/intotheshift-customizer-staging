@@ -634,3 +634,14 @@ input[type="url"]:focus,
 .its-notif-item.treated .its-notif-main{
   opacity:.72;
 }
+
+/* ── Correctif global notifications : liste déroulante visible partout ───── */
+.its-notif-panel{
+  height:auto !important;
+  max-height:calc(100vh - 88px) !important;
+}
+.its-notif-list{
+  max-height:420px !important;
+  overflow:auto !important;
+  padding:6px !important;
+}
