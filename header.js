@@ -184,6 +184,15 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch(e) { return ""; }
   }
 
+  function escapeHtml(value = "") {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
 
   function isNotificationUnread(item = {}) {
     if (!item || typeof item !== "object") return true;
@@ -330,25 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch(e) {}
   }
 
-
-  function applyNotificationPanelLayout() {
-    const panel = document.getElementById("itsNotifPanel");
-    const list = document.getElementById("itsNotifList");
-
-    if (panel) {
-      panel.style.height = "auto";
-      panel.style.maxHeight = "calc(100vh - 88px)";
-      panel.style.overflow = "hidden";
-    }
-
-    if (list) {
-      list.style.maxHeight = "420px";
-      list.style.overflowY = "auto";
-      list.style.overflowX = "hidden";
-      list.style.padding = "6px";
-    }
-  }
-
   function renderHeaderNotifications(items = [], unread = 0) {
     const count = document.getElementById("itsNotifCount");
     const list = document.getElementById("itsNotifList");
@@ -361,7 +351,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!items.length) {
       list.innerHTML = "";
       empty.style.display = "block";
-      applyNotificationPanelLayout();
       return;
     }
     empty.style.display = "none";
@@ -387,7 +376,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return "";
       }
     }).join("");
-    applyNotificationPanelLayout();
   }
 
   async function loadHeaderNotifications() {
@@ -527,10 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
       const open = panel.classList.toggle("open");
       bell.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open) {
-        applyNotificationPanelLayout();
-        loadHeaderNotifications();
-      }
+      if (open) loadHeaderNotifications();
     });
     document.addEventListener("click", function(event){
       if (!event.target.closest(".its-notif-wrap")) {
@@ -560,9 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (url) window.location.href = url;
       else loadHeaderNotifications();
     });
-    applyNotificationPanelLayout();
     loadHeaderNotifications();
-    window.addEventListener("resize", applyNotificationPanelLayout);
     setInterval(loadHeaderNotifications, 15000);
     window.addEventListener("focus", loadHeaderNotifications);
     document.addEventListener("visibilitychange", function(){
