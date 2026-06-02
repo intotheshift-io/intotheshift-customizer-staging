@@ -233,8 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "extended",
       "reprogrammed",
       "unpublished",
-      "published",
-      "brand_assets"
+      "published"
     ]);
 
     const clientKitTypes = new Set([
@@ -253,6 +252,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "reprogrammed",
       "unpublished"
     ]);
+
+    // Admin / partner : les éléments de marque déposés ouvrent directement
+    // le kit de communication du projet concerné.
+    if ((admin || partner) && type === "brand_assets" && projectKitUrl) {
+      return projectKitUrl;
+    }
 
     // Admin / partner : toutes les notifications liées à un cockpit client
     // ouvrent le dossier client, jamais Mes AD ni Mon compte client.
