@@ -979,6 +979,85 @@ function cleanAutodiagPrefix(value){
   return String(value || '').replace(/^\s*Autodiagnostic\s+/i, '').trim();
 }
 
+function paramAccountCompanyFromObject(obj){
+  if(!obj || typeof obj !== 'object') return '';
+  return String(
+    obj.organizationName ||
+    obj.organization_name ||
+    obj.companyName ||
+    obj.company_name ||
+    obj.company ||
+    obj.organisation ||
+    obj.organization ||
+    ''
+  ).trim();
+}
+
+function getAccountCompanyNameFromLocal(){
+  const direct = localStorage.getItem('its_user_company') || localStorage.getItem('its_company_name') || '';
+  if(String(direct || '').trim()) return String(direct).trim();
+
+  const keys = ['its_user','user','auth_user'];
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const parsed = JSON.parse(raw);
+      const value = paramAccountCompanyFromObject(parsed.user || parsed);
+      if(value) return value;
+    }catch(e){}
+  }
+  return '';
+}
+
+function shouldReplaceEntrepriseWithAccount(value){
+  const current = slugify(value || '');
+  return !current || current === 'nomdelentreprise' || current === 'nom-de-lentreprise' || current === 'nom-de-l-entreprise';
+}
+
+function applyAccountCompanyToParametrage(companyName){
+  const companySlug = slugify(companyName || '');
+  if(!companySlug) return false;
+  state.parametrage = state.parametrage || {};
+  if(!shouldReplaceEntrepriseWithAccount(state.parametrage.entreprise)) return false;
+
+  state.parametrage.entreprise = companySlug;
+  const input = document.getElementById('entreprise');
+  if(input) input.value = companySlug;
+
+  const urlEl = document.getElementById('url-preview');
+  const sbUrlEl = document.getElementById('sb-url');
+  if(urlEl || sbUrlEl){
+    const url = buildPassationUrl();
+    if(urlEl) urlEl.textContent = url;
+    if(sbUrlEl) sbUrlEl.textContent = url;
+  }
+
+  save();
+  checkContinue();
+  return true;
+}
+
+async function loadAccountCompanyForParametrage(){
+  const fromLocal = getAccountCompanyNameFromLocal();
+  if(fromLocal) applyAccountCompanyToParametrage(fromLocal);
+
+  const token = getToken();
+  if(!token) return;
+  try{
+    const response = await fetch(`${API_URL}/api/me`, {
+      headers:{ Authorization:`Bearer ${token}` }
+    });
+    if(!response.ok) return;
+    const data = await response.json();
+    const user = data.user || data.account || data || {};
+    const fromApi = paramAccountCompanyFromObject(user);
+    if(fromApi) applyAccountCompanyToParametrage(fromApi);
+  }catch(err){
+    console.warn('Nom entreprise Mon compte non récupéré pour le paramétrage', err);
+  }
+}
+
 function normalizeAutodiagNames(){
   state.parametrage = state.parametrage || {};
   if(state.parametrage.nom){
@@ -1003,7 +1082,8 @@ function ensureDefaults(){
   if(p.titre == null) p.titre = '';
   if(!p.desc) p.desc = 'Campagne interne sur ' + t + '.';
   if(!p.slug) p.slug = slugify(t) || 'mon-autodiagnostic';
-  if(!p.entreprise) p.entreprise = 'nomdelentreprise';
+  const accountCompanyName = getAccountCompanyNameFromLocal();
+  if(!p.entreprise || shouldReplaceEntrepriseWithAccount(p.entreprise)) p.entreprise = slugify(accountCompanyName) || 'nomdelentreprise';
   if(p.pack_choisi == null) p.pack_choisi = '';
   if(p.volume_prevu == null) p.volume_prevu = '';
   if(!p.intro) p.intro = "Bienvenue dans cet autodiagnostic consacré à " + t + ". Il vous propose des situations concrètes du quotidien professionnel pour vous aider à identifier vos réflexes, vos points d'appui et vos axes de progression. Il ne s'agit pas d'une évaluation individuelle ni d'un contrôle de performance. Cet autodiagnostic est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d'adresse IP. Personne ne pourra associer vos réponses à votre identité. Vous avez donc tout intérêt à répondre sincèrement. Les résultats seront analysés de manière agrégée afin d'aider l'entreprise à mieux cibler ses actions. Temps estimé : 5 à 7 minutes.";
@@ -1082,6 +1162,7 @@ async function loadDefaultClientLogoForPassation(){
 }
 async function init(){
   ensureDefaults();
+  await loadAccountCompanyForParametrage();
   const existingStep = String(state.current_step || state.currentStep || state.step || '').toLowerCase();
   const lockedStatus = typeof itsNormalizeProjectStatus === 'function' ? itsNormalizeProjectStatus(state) : String(state.status || '').toLowerCase();
   const isLockedProject = lockedStatus === 'sent' || lockedStatus === 'submitted' || lockedStatus === 'published' || lockedStatus === 'unpublished' || lockedStatus === 'archived';
