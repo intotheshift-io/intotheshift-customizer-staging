@@ -376,7 +376,6 @@ function itsProjectTitleFromState(state) {
     state?.autodiagTitle ||
     state?.title ||
     p.nom ||
-    state?.subject ||
     state?.theme ||
     "Nouveau projet"
   );

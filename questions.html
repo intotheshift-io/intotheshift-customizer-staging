@@ -814,11 +814,15 @@ function makeBlankDiagnosticState(){
   return {
     mode: 'blank',
     source: 'blank',
-    selectedTheme: null,
+    selectedTheme: '',
     selectedPack: null,
+    themeKey: '',
+    theme_key: '',
+    themeLabel: '',
+    theme_label: '',
+    theme: '',
     currentAdId: null,
     title: '',
-    subject: '',
     chapters: [
       {
         title: 'Chapitre 1',
@@ -1176,7 +1180,7 @@ function norm(v){
 }
 
 function getCurrentSubject(){
-  return state.subject || state.theme || state.topic || state.title || state.name || state.selectedSubject || '';
+  return state.themeLabel || state.theme_label || state.theme || state.selectedTheme || state.title || state.name || '';
 }
 
 function normalizeProv(tags){
@@ -1780,7 +1784,8 @@ function getBlankPrivateThemes(){
   const currentLabel = String(state.themeLabel || state.theme_label || state.selectedTheme || state.privateThemeLabel || state.private_theme_label || '').trim();
   if(currentKey || currentLabel) addTheme({ key: currentKey, label: currentLabel });
 
-  if(!seen.has('autre')) themes.push({ key:'autre', label:'Autre' });
+  const hasAutre = themes.some(t => norm(t.key) === 'autre' || norm(t.label) === 'autre');
+  if(!hasAutre) themes.push({ key:'autre', label:'Autre' });
   return themes;
 }
 
@@ -1818,7 +1823,7 @@ function renderBlankSetup(){
       <div class="blank-setup-hero">
         <div class="blank-setup-kicker">Création de A à Z</div>
         <div class="blank-setup-title">Définir le cadre avant de créer les questions</div>
-        <div class="blank-setup-text">Commencez par préciser le sujet, le public et l’objectif. Les chapitres seront ensuite créés avec 5 situations vides à compléter directement dans l’éditeur.</div>
+        <div class="blank-setup-text">Commencez par préciser la thématique associée, le public et l’objectif. Les chapitres seront ensuite créés avec 5 situations vides à compléter directement dans l’éditeur.</div>
       </div>
       <div class="blank-setup-card">
         <div class="blank-form-grid">
@@ -1827,19 +1832,15 @@ function renderBlankSetup(){
             <input id="blank-title" placeholder="Ex. Autodiag cybersécurité — réflexes du quotidien" value="${esc(state.title || '')}">
           </div>
           <div class="blank-field">
-            <label for="blank-subject">Sujet / thématique</label>
-            <input id="blank-subject" placeholder="Ex. Cybersécurité, QVT, management…" value="${esc(state.subject || '')}">
-          </div>
-          <div class="blank-field">
             <label for="blank-audience">Public cible</label>
             <input id="blank-audience" placeholder="Ex. Managers, collaborateurs, équipe RH…" value="${esc(state.audience || '')}">
           </div>
           <div class="blank-field full">
-            <label for="blank-private-theme">Rangement privé</label>
+            <label for="blank-private-theme">Thématique associée</label>
             <select id="blank-private-theme">
               ${blankThemeOptionsHTML()}
             </select>
-            <div class="blank-help" style="font-size:11px;margin-top:-2px">Cette thématique sert uniquement à classer cet autodiagnostic dans votre espace. Elle ne le rend pas visible par les autres entreprises.</div>
+            <div class="blank-help" style="font-size:11px;margin-top:-2px">Permet de classer votre autodiagnostic dans votre espace.<br>Cette thématique n’est pas visible par les autres entreprises.</div>
           </div>
           <div class="blank-field full">
             <label for="blank-objective">Objectif de l’autodiag</label>
@@ -1856,7 +1857,7 @@ function renderBlankSetup(){
             <input id="blank-chapters" placeholder="Optionnel : séparez par des virgules" value="${esc(state.chapterNames || '')}">
           </div>
         </div>
-        <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, un sujet et un objectif.</div>
+        <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, une thématique associée et un objectif.</div>
         <div class="blank-actions">
           <div class="blank-help">Vous arriverez dans l’éditeur avec 5 situations vides par chapitre. Vous pourrez les compléter directement, puis enregistrer l’autodiag comme modèle réutilisable depuis Mes autodiagnostics, quand il sera vraiment prêt.</div>
           <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Démarrer la création</button>
@@ -1867,7 +1868,6 @@ function renderBlankSetup(){
 
 function completeBlankSetup(){
   const title = document.getElementById('blank-title').value.trim();
-  const subject = document.getElementById('blank-subject').value.trim();
   const audience = document.getElementById('blank-audience').value.trim();
   const privateThemeKey = document.getElementById('blank-private-theme') ? document.getElementById('blank-private-theme').value.trim() : '';
   const privateTheme = getBlankThemeByKey(privateThemeKey);
@@ -1877,7 +1877,7 @@ function completeBlankSetup(){
   const chapterNamesRaw = document.getElementById('blank-chapters').value.trim();
   const err = document.getElementById('blank-error');
 
-  if(!title || !subject || !objective){
+  if(!title || !privateThemeKey || !privateThemeLabel || !objective){
     err.classList.add('on');
     return;
   }
@@ -1887,7 +1887,6 @@ function completeBlankSetup(){
     : [];
 
   state.title = title;
-  state.subject = subject;
   state.themeKey = privateThemeKey;
   state.theme_key = privateThemeKey;
   state.selectedThemeKey = privateThemeKey;
@@ -1898,7 +1897,7 @@ function completeBlankSetup(){
   state.selectedTheme = privateThemeLabel;
   state.privateThemeLabel = privateThemeLabel;
   state.private_theme_label = privateThemeLabel;
-  state.theme = privateThemeLabel || subject;
+  state.theme = privateThemeLabel;
   state.audience = audience;
   state.objective = objective;
   state.chapterCount = count;
@@ -1906,7 +1905,7 @@ function completeBlankSetup(){
   state.blankSetupDone = true;
   state.chapters = Array.from({length: count}, (_, i) => ({
     title: names[i] || '',
-    description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${subject}`,
+    description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${privateThemeLabel}`,
     isCustomChapter: true,
     questions: makeBlankQuestionsForChapter(i),
     profiles: makeBlankProfiles()
@@ -2577,7 +2576,7 @@ async function saveAsCustomModel(){
       body: JSON.stringify({
         projectId: currentProjectId || undefined,
         title: state.title || 'Modèle personnalisé',
-        subject: state.subject || state.theme || 'Personnalisé',
+        subject: state.themeLabel || state.theme_label || state.theme || 'Personnalisé',
         audience: state.audience || 'Collaborateurs',
         description: state.objective || 'Modèle créé par le client',
         data: state
@@ -2824,7 +2823,7 @@ function updatePanelContext(){
   const subject = getCurrentSubject();
   const el = document.getElementById('panel-context-body');
   if(!el) return;
-  el.textContent = `${subject ? `Sujet : ${subject} · ` : ''}Partie : ${ch.name}`;
+  el.textContent = `${subject ? `Thématique : ${subject} · ` : ''}Partie : ${ch.name}`;
 }
 
 function currentQuestionKeys(){
