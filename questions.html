@@ -717,7 +717,7 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec résumé du profil, phrase courte et description.</p>
+    <p>Certains chapitres sont incomplets. Chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec résumé du profil, phrase courte et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -2877,8 +2877,16 @@ function addFromLib(qid) {
   renderPanelList(document.getElementById('panel-search-inp').value, activeFilterTag);
 }
 
+function chapterDisplayName(c){
+  return String((c && (c.name || c.title)) || '').trim();
+}
+
 function chapProblems(c) {
   const problems = [];
+
+  if(!chapterDisplayName(c)) {
+    problems.push({type:'q', msg:'Nom du chapitre requis', tab:'questions'});
+  }
 
   if(c.questions.length < MIN_QUESTIONS_PER_CHAPTER) {
     problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 5 requises`, tab:'questions'});
@@ -2907,7 +2915,7 @@ function updateSaveButton() {
   btn.disabled = isContentOnlyView || allProblems.length > 0;
   hint.classList.toggle('visible', allProblems.length > 0);
 
-  if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
+  if(allProblems.length) hint.textContent = 'Chapitres nommés, 5 questions minimum et profils complets requis';
   updateCustomModelButton();
 }
 
@@ -2920,7 +2928,7 @@ function trySave() {
     const list = document.getElementById('modal-save-list');
     list.innerHTML = allProblems.map(({c,problems}) => problems.map(p => `<div style="display:flex;align-items:center;justify-content:space-between;background:#fafbfc;border:1px solid #e8edf4;border-radius:8px;padding:9px 14px;gap:10px">
       <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(c.name || 'Nommer le chapitre')}</div>
+        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(chapterDisplayName(c) || 'Nommer le chapitre')}</div>
         <div style="font-size:11px;color:#94a3b8;font-family:Asap,sans-serif;margin-top:2px;line-height:1.4">${p.msg}</div>
       </div>
       <button onclick="closeSaveModal();setTab(${c.id-1},'${p.tab}')" style="background:#eb6366;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:Asap,sans-serif;flex-shrink:0">Compléter →</button>
