@@ -151,6 +151,22 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .custom-models-grid{grid-template-columns:1fr}
   .faq-section{padding:20px}
 }
+
+.custom-model-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn-delete-model{background:#fff6f6!important;border:1px solid #ffd1d1!important;color:#b42318!important}
+.btn-delete-model:hover{background:#fceaea!important;border-color:#eb6366!important;color:#7a271a!important}
+#deleteCustomModelModal{position:fixed;inset:0;z-index:21000;background:rgba(15,30,55,.58);display:none;align-items:center;justify-content:center;padding:22px}
+#deleteCustomModelModal.on{display:flex}
+.delete-model-panel{width:min(460px,100%);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 28px 80px rgba(0,0,0,.28);padding:26px}
+.delete-model-icon{width:52px;height:52px;border-radius:16px;background:#fff1f1;color:#b42318;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px}
+.delete-model-title{font-size:20px;font-weight:900;color:#18375d;margin:0 0 8px}
+.delete-model-text{font-size:14px;line-height:1.6;color:#475569;margin:0 0 18px}
+.delete-model-name{font-weight:900;color:#18375d}
+.delete-model-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#7a4b00;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;margin-bottom:14px}
+.delete-model-error.on{display:block}
+.delete-model-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:560px){.delete-model-actions .btn{width:100%;justify-content:center}}
+
 </style>
 </head>
 
@@ -305,6 +321,19 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 </div>
 
+<div id="deleteCustomModelModal" role="dialog" aria-modal="true" aria-labelledby="deleteCustomModelTitle" onclick="if(event.target===this) closeDeleteCustomModelModal()">
+  <div class="delete-model-panel">
+    <div class="delete-model-icon">🗑️</div>
+    <h2 class="delete-model-title" id="deleteCustomModelTitle">Supprimer ce modèle personnalisé ?</h2>
+    <p class="delete-model-text">Êtes-vous sûre de vouloir supprimer <span class="delete-model-name" id="deleteCustomModelName">ce modèle</span> ? Cette action est définitive et le modèle ne sera plus disponible dans votre bibliothèque.</p>
+    <div class="delete-model-error" id="deleteCustomModelError">Impossible de supprimer ce modèle pour le moment.</div>
+    <div class="delete-model-actions">
+      <button class="btn btn-secondary" type="button" onclick="closeDeleteCustomModelModal()">Annuler</button>
+      <button class="btn btn-delete-model" type="button" id="confirmDeleteCustomModelBtn" onclick="confirmDeleteCustomModel()">Supprimer le modèle</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="previewModal">
   <div class="modal-panel">
     <button class="modal-close" onclick="closePreview()" aria-label="Fermer l’aperçu">×</button>
@@ -316,6 +345,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 let currentTheme = "all";
 let expertOnly = false;
 let customModels = [];
+let pendingDeleteCustomModelId = null;
 
 function isLoggedIn(){
   return localStorage.getItem("its_logged_in") === "true";
@@ -403,11 +433,61 @@ function renderCustomModels(){
       <div class="audience">${model.subject} · ${model.audience}</div>
       <div class="ad-title">${model.title}</div>
       <div class="ad-desc">${model.description}</div>
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <div class="custom-model-actions">
         <button class="btn btn-primary" onclick="useCustomModel('${model.id}')">Utiliser ce modèle</button>
+        <button class="btn btn-delete-model" onclick="openDeleteCustomModelModal('${model.id}')">Supprimer</button>
       </div>
     </div>
   `).join("");
+}
+
+function openDeleteCustomModelModal(modelId){
+  const model = customModels.find(m => String(m.id) === String(modelId));
+  if(!model) return;
+  pendingDeleteCustomModelId = modelId;
+  const name = document.getElementById("deleteCustomModelName");
+  const error = document.getElementById("deleteCustomModelError");
+  const btn = document.getElementById("confirmDeleteCustomModelBtn");
+  if(name) name.textContent = "« " + (model.title || "ce modèle") + " »";
+  if(error) error.classList.remove("on");
+  if(btn){ btn.disabled = false; btn.textContent = "Supprimer le modèle"; }
+  document.getElementById("deleteCustomModelModal")?.classList.add("on");
+}
+
+function closeDeleteCustomModelModal(){
+  pendingDeleteCustomModelId = null;
+  document.getElementById("deleteCustomModelModal")?.classList.remove("on");
+}
+
+async function confirmDeleteCustomModel(){
+  const modelId = pendingDeleteCustomModelId;
+  if(!modelId) return;
+  const token = tokenForCatalogueProjects();
+  const btn = document.getElementById("confirmDeleteCustomModelBtn");
+  const error = document.getElementById("deleteCustomModelError");
+  if(error) error.classList.remove("on");
+  if(btn){ btn.disabled = true; btn.textContent = "Suppression…"; }
+
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId), {
+      method:"DELETE",
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok){
+      throw new Error(json.error || "Impossible de supprimer ce modèle pour le moment.");
+    }
+    customModels = customModels.filter(model => String(model.id) !== String(modelId));
+    closeDeleteCustomModelModal();
+    renderCustomModels();
+  }catch(e){
+    console.warn("Suppression modèle personnalisé impossible", e);
+    if(error){
+      error.textContent = e.message || "Impossible de supprimer ce modèle pour le moment.";
+      error.classList.add("on");
+    }
+    if(btn){ btn.disabled = false; btn.textContent = "Supprimer le modèle"; }
+  }
 }
 
 async function useCustomModel(modelId){
@@ -641,7 +721,10 @@ document.getElementById("previewModal").addEventListener("click", function(e){
 });
 
 document.addEventListener("keydown", function(e){
-  if(e.key === "Escape") closePreview();
+  if(e.key === "Escape"){
+    closeDeleteCustomModelModal();
+    closePreview();
+  }
 });
 
 renderFilters();
