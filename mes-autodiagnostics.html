@@ -140,6 +140,17 @@
     .card.unpublished-card{border-color:#d8e2ec}
     .btn-danger-soft{background:#fff1f2;color:#be123c;border-color:#fecdd3}
     .btn-danger-soft:hover{background:#ffe4e6}
+
+    .more-actions{position:relative;display:inline-block}
+    .more-actions summary{list-style:none;border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px}
+    .more-actions summary::-webkit-details-marker{display:none}
+    .more-actions summary:hover{background:#f7f9fc}
+    .more-actions[open] summary{background:#eef6fb;border-color:#b8dfe0;color:#0d4c72}
+    .more-actions-menu{position:absolute;left:0;top:calc(100% + 6px);z-index:50;background:#fff;border:1px solid #d8e0ea;border-radius:14px;box-shadow:0 16px 38px rgba(24,55,93,.16);padding:8px;min-width:245px;display:flex;flex-direction:column;gap:6px}
+    .more-actions-menu .btn{width:100%;justify-content:flex-start}
+    .model-success-modal .modal-icon{background:#e5f4f5;color:#007883}
+    .model-success-name{margin-top:12px;background:#f8fbfd;border:1px solid #d8e0ea;border-radius:12px;padding:10px 12px;color:#18375d;font-size:13px;font-weight:900;line-height:1.35}
+    .model-success-hint{margin-top:10px;color:#64748b;font-size:13px;line-height:1.45}
     @media(max-width:900px){.watch-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.search{max-width:none;width:100%}.list{grid-template-columns:1fr}.url-line{grid-template-columns:1fr auto}.url-line strong{grid-column:1/-1}}
 
     @media(max-width:850px){
@@ -256,6 +267,20 @@
       <div class="modal-actions">
         <button class="modal-btn" type="button" onclick="closeRespondentTitleModal()">Annuler</button>
         <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="confirmRespondentTitleEdit()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-backdrop" id="customModelSuccessModal" aria-hidden="true">
+    <div class="modal-box model-success-modal" role="dialog" aria-modal="true" aria-labelledby="customModelSuccessTitle">
+      <div class="modal-icon">💾</div>
+      <h2 id="customModelSuccessTitle">Modèle enregistré</h2>
+      <p id="customModelSuccessText">Votre autodiagnostic a été ajouté à vos modèles réutilisables.</p>
+      <div class="model-success-name" id="customModelSuccessName"></div>
+      <div class="model-success-hint">Vous pourrez repartir de ce modèle lors de la création d’un prochain autodiagnostic.</div>
+      <div class="modal-actions">
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="closeCustomModelSuccessModal()">Compris</button>
       </div>
     </div>
   </div>
@@ -1414,14 +1439,19 @@
                     🧬 Cloner
                   </button>
                 ` : ""}
-                <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this)" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
-                  💾 Enregistrer comme modèle
-                </button>
-                ${status === "unpublished" ? `
-                  <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}')">
-                    📦 Archiver
-                  </button>
-                ` : ""}
+                <details class="more-actions" onclick="event.stopPropagation()">
+                  <summary>Plus d’actions ▾</summary>
+                  <div class="more-actions-menu">
+                    <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this); this.closest('details') && this.closest('details').removeAttribute('open');" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
+                      💾 Enregistrer comme modèle
+                    </button>
+                    ${status === "unpublished" ? `
+                      <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}'); this.closest('details') && this.closest('details').removeAttribute('open');">
+                        📦 Archiver
+                      </button>
+                    ` : ""}
+                  </div>
+                </details>
               </div>
             </div>
 
@@ -1441,6 +1471,8 @@
       if (e.target.id === "archiveModal") closeArchiveModal();
       if (e.target.id === "cloneModal") closeCloneModal();
       if (e.target.id === "respondentTitleModal") closeRespondentTitleModal();
+      if (e.target.id === "customModelSuccessModal") closeCustomModelSuccessModal();
+      if (!e.target.closest(".more-actions")) document.querySelectorAll(".more-actions[open]").forEach(d => d.removeAttribute("open"));
       if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
         document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       }
@@ -1494,6 +1526,28 @@
       refreshArchiveCounterFromApi();
     }
 
+    function openCustomModelSuccessModal({ updated = false, title = "" } = {}) {
+      const modal = document.getElementById("customModelSuccessModal");
+      const titleEl = document.getElementById("customModelSuccessTitle");
+      const textEl = document.getElementById("customModelSuccessText");
+      const nameEl = document.getElementById("customModelSuccessName");
+      if(titleEl) titleEl.textContent = updated ? "Modèle mis à jour" : "Modèle enregistré";
+      if(textEl) textEl.textContent = updated ? "Le modèle existant a été mis à jour avec la dernière version de cet autodiagnostic." : "Votre autodiagnostic a été ajouté à vos modèles personnalisés réutilisables.";
+      if(nameEl) nameEl.textContent = title || "Modèle personnalisé";
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function closeCustomModelSuccessModal(){
+      const modal = document.getElementById("customModelSuccessModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
     async function saveProjectAsCustomModel(id, btn) {
       if (!id) return alert("Projet introuvable.");
       const project = projects.find(p => getProjectId(p) === String(id));
@@ -1527,7 +1581,7 @@
         if (!res.ok || !data.model) throw new Error(data.error || "Enregistrement impossible");
 
         if (btn) btn.innerHTML = "✅ Modèle enregistré";
-        alert(data.updated ? "Le modèle existant a été mis à jour." : "Le modèle a été ajouté à vos modèles personnalisés.");
+        openCustomModelSuccessModal({ updated: Boolean(data.updated), title });
       } catch (e) {
         alert(e.message || "Impossible d’enregistrer ce modèle pour le moment.");
         if (btn) {

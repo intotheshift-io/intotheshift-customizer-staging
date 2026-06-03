@@ -38,11 +38,19 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 .blank-create-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:5px}
 .blank-create-text{font-size:13px;color:#64748b;line-height:1.5;max-width:780px}
 .blank-create-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
-.custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:0 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
-.custom-models-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
-.custom-models-title{font-size:17px;font-weight:800;color:#18375d}
-.custom-models-text{font-size:13px;color:#64748b;line-height:1.5;margin-top:4px}
-.custom-models-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+.custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;margin:0 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05);overflow:hidden}
+.custom-models-toggle{width:100%;border:0;background:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;cursor:pointer;font-family:'Asap',sans-serif;text-align:left;color:#18375d}
+.custom-models-toggle:hover{background:#fbfdff}
+.custom-models-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:4px}
+.custom-models-text{font-size:13px;color:#64748b;line-height:1.5}
+.custom-models-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.custom-models-arrow{width:30px;height:30px;border-radius:999px;background:#eef6fb;border:1px solid #cfe3ff;color:#0d4c72;display:flex;align-items:center;justify-content:center;font-weight:900;transition:transform .16s ease}
+.custom-models-card[open] .custom-models-arrow{transform:rotate(180deg)}
+.custom-models-card summary{list-style:none}
+.custom-models-card summary::-webkit-details-marker{display:none}
+.custom-models-body{padding:0 22px 22px;border-top:1px solid #edf1f6}
+.custom-models-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:16px}
 
 .guides-card{background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);border:1px solid #d8e0ea;border-radius:18px;padding:24px 26px;margin:22px 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
 .guides-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
@@ -136,6 +144,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .badge-item{grid-template-columns:1fr}
   .badges-card .tag{width:max-content;min-width:118px}
   .blank-create-actions .btn{width:100%;justify-content:center}
+  .custom-models-toggle{padding:18px}
   .custom-models-grid{grid-template-columns:1fr}
   .faq-section{padding:20px}
 }
@@ -197,16 +206,21 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     </div>
   </div>
 
-  <div class="custom-models-card" id="customModelsCard" style="display:none">
-    <div class="custom-models-head">
+  <details class="custom-models-card" id="customModelsCard" style="display:none">
+    <summary class="custom-models-toggle">
       <div>
         <div class="custom-models-title">Mes modèles personnalisés</div>
-        <div class="custom-models-text">Retrouvez ici les autodiagnostics créés de A à Z puis enregistrés comme modèles réutilisables.</div>
+        <div class="custom-models-text">Retrouvez ici vos autodiagnostics enregistrés comme modèles réutilisables, sans encombrer la bibliothèque.</div>
       </div>
-      <div class="catalogue-count" id="customModelsCount"></div>
+      <div class="custom-models-right">
+        <div class="catalogue-count" id="customModelsCount"></div>
+        <div class="custom-models-arrow">⌄</div>
+      </div>
+    </summary>
+    <div class="custom-models-body">
+      <div class="custom-models-grid" id="customModelsGrid"></div>
     </div>
-    <div class="custom-models-grid" id="customModelsGrid"></div>
-  </div>
+  </details>
 
 
   <section class="guides-card" aria-label="Guides métier associés aux bases d’autodiagnostic">
@@ -350,7 +364,7 @@ function customModelFromApi(model){
     title: model.title || "Modèle personnalisé",
     subject: model.subject || "Personnalisé",
     audience: model.audience || "Collaborateurs",
-    description: model.description || "Modèle créé à partir d’une page vierge"
+    description: model.description || "Modèle créé à partir d’un autodiagnostic existant"
   };
 }
 
@@ -390,6 +404,36 @@ function renderCustomModels(){
       </div>
     </div>
   `).join("");
+}
+
+async function useCustomModel(modelId){
+  if(!modelId) return;
+  if(!isLoggedIn()){
+    redirectToLogin("index.html");
+    return;
+  }
+  const token = tokenForCatalogueProjects();
+  if(!token) return;
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId) + "/use", {
+      method:"POST",
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok || !json.project){
+      alert(json.error || "Impossible de créer un autodiag depuis ce modèle.");
+      return;
+    }
+    const projectId = json.project.id || json.project.project_id;
+    if(projectId){
+      localStorage.setItem("its_current_project_id", String(projectId));
+      localStorage.setItem("its_current_ad_id", String(projectId));
+      window.location.href = "questions.html?projectId=" + encodeURIComponent(projectId);
+    }
+  }catch(e){
+    console.warn("Création depuis modèle impossible", e);
+    alert("Impossible de créer un autodiag depuis ce modèle.");
+  }
 }
 
 function cleanTags(tags){
@@ -563,36 +607,6 @@ function startBlankDiagnostic(){
   } catch(e) {}
 
   window.location.assign("questions.html?mode=blank&setup=1");
-}
-
-async function useCustomModel(modelId){
-  if(!modelId) return;
-  if(!isLoggedIn()){
-    redirectToLogin("index.html");
-    return;
-  }
-  const token = tokenForCatalogueProjects();
-  if(!token) return;
-  try{
-    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId) + "/use", {
-      method:"POST",
-      headers:{ Authorization:"Bearer " + token }
-    });
-    const json = await res.json().catch(() => ({}));
-    if(!res.ok || !json.project){
-      alert(json.error || "Impossible de créer un autodiag depuis ce modèle.");
-      return;
-    }
-    const projectId = json.project.id || json.project.project_id;
-    if(projectId){
-      localStorage.setItem("its_current_project_id", String(projectId));
-      localStorage.setItem("its_current_ad_id", String(projectId));
-      window.location.href = "questions.html?projectId=" + encodeURIComponent(projectId);
-    }
-  }catch(e){
-    console.warn("Création depuis modèle impossible", e);
-    alert("Impossible de créer un autodiag depuis ce modèle.");
-  }
 }
 
 function useAd(id){
