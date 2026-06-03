@@ -344,25 +344,13 @@ function apiBaseForCatalogueProjects(){
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 }
 
-function projectData(project){
-  const data = project && project.data && typeof project.data === "object" ? project.data : {};
-  return data.state && typeof data.state === "object" ? data.state : data;
-}
-
-function projectIsCustomModel(project){
-  const data = projectData(project);
-  return data.savedAsCustomModel === true || data.isCustomModel === true || data.custom_model === true;
-}
-
-function customModelFromProject(project){
-  const data = projectData(project);
-  const model = data.customModel || {};
+function customModelFromApi(model){
   return {
-    id: project.id || project.project_id || project.projectId,
-    title: model.title || data.title || project.title || "Modèle personnalisé",
-    subject: model.subject || data.subject || data.theme || "Personnalisé",
-    audience: model.audience || data.audience || "Collaborateurs",
-    description: model.description || data.objective || "Modèle créé à partir d’une page vierge"
+    id: model.id,
+    title: model.title || "Modèle personnalisé",
+    subject: model.subject || "Personnalisé",
+    audience: model.audience || "Collaborateurs",
+    description: model.description || "Modèle créé à partir d’une page vierge"
   };
 }
 
@@ -371,10 +359,10 @@ async function loadCustomModels(){
   const token = tokenForCatalogueProjects();
   if(!token) return;
   try{
-    const res = await fetch(apiBaseForCatalogueProjects() + "/api/projects", { headers:{ Authorization:"Bearer " + token } });
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models", { headers:{ Authorization:"Bearer " + token } });
     if(!res.ok) return;
     const json = await res.json();
-    customModels = (json.projects || []).filter(projectIsCustomModel).map(customModelFromProject);
+    customModels = (json.models || []).map(customModelFromApi);
     renderCustomModels();
   }catch(e){
     console.warn("Modèles personnalisés non chargés", e);
@@ -577,13 +565,34 @@ function startBlankDiagnostic(){
   window.location.assign("questions.html?mode=blank&setup=1");
 }
 
-function useCustomModel(projectId){
-  if(!projectId) return;
+async function useCustomModel(modelId){
+  if(!modelId) return;
   if(!isLoggedIn()){
-    redirectToLogin("questions.html?projectId=" + encodeURIComponent(projectId));
+    redirectToLogin("index.html");
     return;
   }
-  window.location.href = "questions.html?projectId=" + encodeURIComponent(projectId);
+  const token = tokenForCatalogueProjects();
+  if(!token) return;
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId) + "/use", {
+      method:"POST",
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok || !json.project){
+      alert(json.error || "Impossible de créer un autodiag depuis ce modèle.");
+      return;
+    }
+    const projectId = json.project.id || json.project.project_id;
+    if(projectId){
+      localStorage.setItem("its_current_project_id", String(projectId));
+      localStorage.setItem("its_current_ad_id", String(projectId));
+      window.location.href = "questions.html?projectId=" + encodeURIComponent(projectId);
+    }
+  }catch(e){
+    console.warn("Création depuis modèle impossible", e);
+    alert("Impossible de créer un autodiag depuis ce modèle.");
+  }
 }
 
 function useAd(id){

@@ -2438,22 +2438,69 @@ async function saveAsCustomModel(){
   if(itsQuestionsIsEditBlocked()) return;
   if(!isBlankFlow()) return;
   syncToState();
-  state.savedAsCustomModel = true;
-  state.isCustomModel = true;
-  state.customModelSavedAt = new Date().toISOString();
-  state.customModel = {
-    title: state.title || 'Modèle personnalisé',
-    subject: state.subject || state.theme || 'Personnalisé',
-    audience: state.audience || 'Collaborateurs',
-    description: state.objective || 'Modèle créé par le client'
-  };
-  if (typeof itsSave === 'function') itsSave(state);
-  else localStorage.setItem('its_state', JSON.stringify(state));
-  persistQuestionsStateForNextStep();
+
   const btn = document.getElementById('btn-custom-model');
+  const originalText = btn ? btn.textContent : '';
   if(btn){
-    btn.textContent = 'Modèle enregistré ✓';
     btn.disabled = true;
+    btn.textContent = 'Enregistrement…';
+  }
+
+  const token = questionsToken();
+  if(!token){
+    alert('Vous devez être connecté·e pour enregistrer un modèle réutilisable.');
+    if(btn){ btn.disabled = false; btn.textContent = originalText || 'Enregistrer comme modèle réutilisable'; }
+    return;
+  }
+
+  try{
+    const currentProjectId =
+      state.currentAdId ||
+      state.project_id ||
+      state.projectId ||
+      (typeof itsGetCurrentProjectId === 'function' ? itsGetCurrentProjectId() : '') ||
+      '';
+
+    const res = await fetch(`${questionsApiBase()}/api/custom-models`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        projectId: currentProjectId || undefined,
+        title: state.title || 'Modèle personnalisé',
+        subject: state.subject || state.theme || 'Personnalisé',
+        audience: state.audience || 'Collaborateurs',
+        description: state.objective || 'Modèle créé par le client',
+        data: state
+      })
+    });
+
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok || !json.model){
+      throw new Error(json.error || 'Erreur enregistrement modèle personnalisé.');
+    }
+
+    state.savedAsCustomModel = true;
+    state.customModelId = json.model.id;
+    state.custom_model_id = json.model.id;
+    state.customModelSavedAt = new Date().toISOString();
+    if (typeof itsSave === 'function') itsSave(state);
+    else localStorage.setItem('its_state', JSON.stringify(state));
+    persistQuestionsStateForNextStep();
+
+    if(btn){
+      btn.textContent = 'Modèle enregistré ✓';
+      btn.disabled = true;
+    }
+  }catch(e){
+    console.warn('Enregistrement modèle réutilisable impossible', e);
+    alert(e.message || 'Impossible d’enregistrer ce modèle pour le moment.');
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = originalText || 'Enregistrer comme modèle réutilisable';
+    }
   }
 }
 
