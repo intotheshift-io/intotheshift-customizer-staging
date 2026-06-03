@@ -795,7 +795,7 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
 const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
 const hasBlankProjectId = Boolean(urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id'));
-const forceBlankSetup = isBlankMode && (!hasBlankProjectId || urlParams.get('setup') === '1' || sessionStorage.getItem('its_start_blank_setup') === '1');
+const forceBlankSetup = isBlankMode && !hasBlankProjectId;
 if (forceBlankSetup) {
   try { sessionStorage.removeItem('its_start_blank_setup'); } catch(e) {}
 }
@@ -1083,7 +1083,7 @@ if (state && state.state && typeof state.state === 'object') {
   persistQuestionsStateForNextStep();
 }
 
-if (isBlankMode) {
+if (isBlankMode && !requestedProjectId) {
   const freshBlank = makeBlankDiagnosticState();
   if (forceBlankSetup || !state || state.mode !== 'blank') {
     state = freshBlank;

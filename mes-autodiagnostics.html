@@ -1103,7 +1103,6 @@
 }
 
     function resumeUrl(project) {
-      if(window.ITSProject && typeof window.ITSProject.resumeUrl === "function") return window.ITSProject.resumeUrl(project);
       const status = normalizeStatus(project);
       const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
