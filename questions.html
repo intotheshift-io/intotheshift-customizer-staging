@@ -79,6 +79,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .btn-save{width:100%;background:#18375d;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;transition:all 0.15s}
 .btn-save:hover:not(:disabled){background:#122a47}
 .btn-save:disabled{background:#c5ccd5;cursor:not-allowed;opacity:0.7}
+.btn-save.is-blocked{background:#c5ccd5;cursor:pointer;opacity:0.9}
+.btn-save.is-blocked:hover{background:#b8c1cc}
 .btn-save-hint{font-size:10px;color:#eb6366;font-family:'Asap',sans-serif;text-align:center;padding:0 4px;line-height:1.4;display:none}
 .btn-save-hint.visible{display:block}
 
@@ -716,8 +718,8 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
 <div class="modal-overlay" id="modal-save-blocked">
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
-    <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec résumé du profil, phrase courte et description.</p>
+    <h3>Impossible de continuer vers le paramétrage</h3>
+    <p>Certains chapitres sont encore incomplets. Pour passer au paramétrage, chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> complets avec résumé du profil, phrase courte et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -2912,7 +2914,11 @@ function updateSaveButton() {
 
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
-  btn.disabled = isContentOnlyView || allProblems.length > 0;
+  // Le bouton reste cliquable quand il manque des éléments :
+  // il ouvre alors la modale détaillée au lieu de se limiter à une petite phrase rouge.
+  btn.disabled = isContentOnlyView;
+  btn.classList.toggle('is-blocked', !isContentOnlyView && allProblems.length > 0);
+  btn.setAttribute('aria-disabled', (!isContentOnlyView && allProblems.length > 0) ? 'true' : 'false');
   hint.classList.toggle('visible', allProblems.length > 0);
 
   if(allProblems.length) hint.textContent = 'Chapitres nommés, 5 questions minimum et profils complets requis';
