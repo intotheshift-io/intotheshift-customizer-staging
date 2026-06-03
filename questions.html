@@ -667,6 +667,7 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
       <div class="sb-total" id="sb-total"></div>
+      <button class="btn-save" id="btn-custom-model" type="button" onclick="saveAsCustomModel()" style="display:none;background:#fff;color:#18375d;border:1px solid #d8e0ea">Enregistrer comme modèle réutilisable</button>
       <div class="btn-save-hint" id="btn-save-hint">5 questions min. par chapitre</div>
       <button class="btn-save" id="btn-save" onclick="trySave()">Enregistrer le thème</button>
     </div>
@@ -1636,6 +1637,36 @@ function makeBlankProfiles(){
   ];
 }
 
+function makeBlankQuestion(chapterIndex, questionIndex){
+  return {
+    id: `blank-q${chapterIndex + 1}-${questionIndex + 1}-${Date.now()}-${questionIndex}`,
+    type: 'choix',
+    prov: 'COMPANY',
+    text: '',
+    tags: [],
+    answers: [
+      { l: '', s: 0 },
+      { l: '', s: 1 },
+      { l: '', s: 2 }
+    ]
+  };
+}
+
+function makeBlankQuestionState(chapterIndex, questionIndex){
+  const q = makeBlankQuestion(chapterIndex, questionIndex);
+  return {
+    id: q.id,
+    type: q.type,
+    text: q.text,
+    tags: ['Création entreprise', 'Relecture obligatoire'],
+    answers: q.answers.map(a => ({ text: a.l, score: a.s }))
+  };
+}
+
+function makeBlankQuestionsForChapter(chapterIndex){
+  return Array.from({ length: DEFAULT_GENERATED_QUESTIONS }, (_, qi) => makeBlankQuestionState(chapterIndex, qi));
+}
+
 function makeEmptyChapter(index){
   const subject = getCurrentSubject();
   return {
@@ -1643,7 +1674,7 @@ function makeEmptyChapter(index){
     name: '',
     desc: subject ? `À préciser — ${subject}` : 'À préciser',
     isCustomChapter: true,
-    questions: [],
+    questions: isBlankFlow() ? makeBlankQuestionsForChapter(index) : [],
     profils: [0,1,2].map(i => ({
       niveau: i + 1,
       titre: '',
@@ -1688,13 +1719,14 @@ function renderBlankSetup(){
   saveBtn.textContent = 'Cadrage requis';
   hint.classList.add('visible');
   hint.textContent = 'Complétez le cadrage pour créer les chapitres';
+  updateCustomModelButton();
 
   document.getElementById('main-editor').innerHTML = `
     <div class="blank-setup-wrap">
       <div class="blank-setup-hero">
         <div class="blank-setup-kicker">Création de A à Z</div>
         <div class="blank-setup-title">Définir le cadre avant de créer les questions</div>
-        <div class="blank-setup-text">Pour éviter de générer ou de piocher des situations hors sujet, commencez par préciser le thème, le public et l’objectif. Les chapitres seront ensuite créés vides, prêts à être remplis manuellement ou avec une aide contextualisée.</div>
+        <div class="blank-setup-text">Commencez par préciser le sujet, le public et l’objectif. Les chapitres seront ensuite créés avec 5 situations vides à compléter directement dans l’éditeur.</div>
       </div>
       <div class="blank-setup-card">
         <div class="blank-form-grid">
@@ -1727,8 +1759,8 @@ function renderBlankSetup(){
         </div>
         <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, un sujet et un objectif.</div>
         <div class="blank-actions">
-          <div class="blank-help">Après validation, vous arriverez dans l’éditeur avec des chapitres vides. Les boutons IA et bibliothèque seront alors contextualisés par votre sujet.</div>
-          <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Créer les chapitres</button>
+          <div class="blank-help">Vous arriverez dans l’éditeur avec 5 situations vides par chapitre. Vous pourrez les compléter directement, puis enregistrer l’autodiag comme modèle réutilisable.</div>
+          <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Démarrer la création</button>
         </div>
       </div>
     </div>`;
@@ -1763,8 +1795,8 @@ function completeBlankSetup(){
   state.chapters = Array.from({length: count}, (_, i) => ({
     title: names[i] || '',
     description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${subject}`,
-    isCustomChapter: !names[i],
-    questions: [],
+    isCustomChapter: true,
+    questions: makeBlankQuestionsForChapter(i),
     profiles: makeBlankProfiles()
   }));
 
@@ -1985,6 +2017,7 @@ function chapterHasCatalogueQuestions(){
 }
 
 function chapterUsesCatalogueSupport(){
+  if(isBlankFlow()) return false;
   const ch = chapters[activeChap];
   if(!ch) return false;
   if(ch.isCustomChapter === true) return false;
@@ -2048,13 +2081,13 @@ function renderQuestions(ch) {
       ${!isEmpty ? `<div class="chap-actions">
         <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’aperçu répondant</button>
         ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
-        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une question de zéro, puis renseignez au moins 3 réponses et leurs scores.">?</span></button>
+        <button class="btn-add-manual" onclick="addManual()">+ Ajouter une situation vide <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une situation vide, puis renseignez la question, au moins 3 réponses et leurs scores.">?</span></button>
       </div>` : ''}
     </div>`;
 
   const emptyState = `
     <div style="padding:12px 0 0">
-      ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, editBlocked)}
+      ${emptyActionCard('Ajouter une situation vide', 'Créez une nouvelle mise en situation à compléter avec ses réponses et ses scores.', 'addManual()', true, editBlocked)}
       ${catalogueSupport ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
         ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, editBlocked)}
         ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, editBlocked || !aiAllowed)}
@@ -2065,7 +2098,7 @@ function renderQuestions(ch) {
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> Construisez des situations concrètes issues du quotidien professionnel. L’autodiagnostic ne teste ni les connaissances ni les compétences : il expose des comportements réalistes et permet au répondant de se positionner sur ses réflexes habituels.</span></div>
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> ${isBlankFlow() && state.objective ? 'Objectif défini : ' + esc(state.objective) + '<br>' : ''}Construisez des situations concrètes issues du quotidien professionnel. L’autodiagnostic ne teste ni les connaissances ni les compétences : il expose des comportements réalistes et permet au répondant de se positionner sur ses réflexes habituels.</span></div>
     ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
@@ -2375,6 +2408,55 @@ function makeAIQuestion(id){
       {l:'Réponse constructive',s:2}
     ]
   };
+}
+
+function addManual(){
+  if(itsQuestionsIsEditBlocked()) return;
+  const ch = chapters[activeChap];
+  if(!ch) return;
+  if(ch.questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
+  const q = makeBlankQuestion(activeChap, ch.questions.length);
+  ch.questions.push(q);
+  openCards[q.id] = true;
+  refreshThresholdsAfterQuestionChange();
+  saveState();
+  renderNav();
+  renderMain();
+  updateSaveButton();
+}
+
+async function saveAsCustomModel(){
+  if(itsQuestionsIsEditBlocked()) return;
+  if(!isBlankFlow()) return;
+  syncToState();
+  state.savedAsCustomModel = true;
+  state.isCustomModel = true;
+  state.customModelSavedAt = new Date().toISOString();
+  state.customModel = {
+    title: state.title || 'Modèle personnalisé',
+    subject: state.subject || state.theme || 'Personnalisé',
+    audience: state.audience || 'Collaborateurs',
+    description: state.objective || 'Modèle créé par le client'
+  };
+  if (typeof itsSave === 'function') itsSave(state);
+  else localStorage.setItem('its_state', JSON.stringify(state));
+  persistQuestionsStateForNextStep();
+  const btn = document.getElementById('btn-custom-model');
+  if(btn){
+    btn.textContent = 'Modèle enregistré ✓';
+    btn.disabled = true;
+  }
+}
+
+function updateCustomModelButton(){
+  const btn = document.getElementById('btn-custom-model');
+  if(!btn) return;
+  const visible = isBlankFlow() && state.blankSetupDone === true && !isContentOnlyView;
+  btn.style.display = visible ? 'block' : 'none';
+  const allProblems = Array.isArray(chapters) ? chapters.map(c => ({ c, problems: chapProblems(c) })).filter(x => x.problems.length) : [];
+  btn.disabled = state.savedAsCustomModel === true || allProblems.length > 0;
+  btn.title = allProblems.length > 0 ? 'Complétez les questions et les profils avant d’enregistrer ce modèle.' : '';
+  btn.textContent = state.savedAsCustomModel === true ? 'Modèle enregistré ✓' : 'Enregistrer comme modèle réutilisable';
 }
 
 function addOneAI() {
@@ -2688,6 +2770,7 @@ function updateSaveButton() {
   hint.classList.toggle('visible', allProblems.length > 0);
 
   if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
+  updateCustomModelButton();
 }
 
 function trySave() {
@@ -2737,6 +2820,7 @@ if (needsBlankSetup()) {
   renderMain();
   updateSaveButton();
   syncToState();
+  updateCustomModelButton();
 }
 
 
