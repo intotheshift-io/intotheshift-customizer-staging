@@ -88,6 +88,8 @@
     .sep{height:1px;background:#edf1f6;margin:3px 0}
 
 
+    .title-edit-btn{border:0;background:#eef6fb;color:#0d4c72;border-radius:999px;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:900;flex:0 0 auto}.title-edit-btn:hover{background:#dff0f7}.respondent-title-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+
     /* Modale archive */
     .modal-backdrop{position:fixed;inset:0;background:rgba(15,30,55,.42);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
     .modal-backdrop.open{display:flex}
@@ -530,8 +532,9 @@
     function renderTitleDetails(p) {
       const original = getCatalogueOriginalTitle(p);
       const respondent = getRespondentTitle(p);
+      const projectId = getProjectId(p);
       if(!original && !respondent) return "";
-      return `<div class="meta" style="margin:3px 0 8px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
+      return `<div class="meta" style="margin:3px 0 8px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br><span class="respondent-title-line">Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong><button class="title-edit-btn" type="button" onclick="openRespondentTitleEditor('${escapeAttr(projectId)}')" title="Modifier le titre visible par les répondants" aria-label="Modifier le titre visible par les répondants">✏️</button></span></div>`;
     }
 
     function deepFindTheme(obj, depth = 0) {
@@ -1596,6 +1599,69 @@
       if (modal) {
         modal.classList.remove("open");
         modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function applyRespondentTitleLocally(project, newTitle) {
+      if(!project || !newTitle) return;
+      const data = getProjectData(project);
+      const applyAliases = (target) => {
+        if(!target || typeof target !== "object") return;
+        target.titre = newTitle;
+        target.titre_repondants = newTitle;
+        target.titreRespondants = newTitle;
+        target.titre_visible_repondants = newTitle;
+        target.titreVisibleRepondants = newTitle;
+        target.titre_visible = newTitle;
+        target.titreVisible = newTitle;
+      };
+      data.parametrage = data.parametrage && typeof data.parametrage === "object" ? data.parametrage : {};
+      applyAliases(data.parametrage);
+      applyAliases(data);
+      if(data.state && typeof data.state === "object"){
+        data.state.parametrage = data.state.parametrage && typeof data.state.parametrage === "object" ? data.state.parametrage : {};
+        applyAliases(data.state.parametrage);
+        applyAliases(data.state);
+      }
+      if(data.payload && typeof data.payload === "object"){
+        data.payload.parametrage = data.payload.parametrage && typeof data.payload.parametrage === "object" ? data.payload.parametrage : {};
+        applyAliases(data.payload.parametrage);
+        applyAliases(data.payload);
+      }
+      project.title = newTitle;
+      project.displayTitle = newTitle;
+      project.data = data;
+    }
+
+    async function openRespondentTitleEditor(projectId) {
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if(!project) return;
+      const currentTitle = getRespondentTitle(project);
+      const nextTitle = window.prompt("Titre visible par les répondants", currentTitle);
+      if(nextTitle === null) return;
+      const cleaned = String(nextTitle || "").trim();
+      if(!cleaned){
+        alert("Le titre visible par les répondants est obligatoire.");
+        return;
+      }
+      if(cleaned === currentTitle) return;
+
+      try{
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}/respondent-title`, {
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token()}`
+          },
+          body:JSON.stringify({ title: cleaned })
+        });
+        const payload = await res.json().catch(() => ({}));
+        if(!res.ok) throw new Error(payload.error || "Impossible de modifier le titre visible répondants.");
+        applyRespondentTitleLocally(project, payload.project?.displayTitle || payload.project?.title || cleaned);
+        renderStats();
+        renderProjects();
+      }catch(e){
+        alert(e.message || "Impossible de modifier le titre visible répondants.");
       }
     }
 
