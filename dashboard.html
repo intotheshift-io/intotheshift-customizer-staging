@@ -531,7 +531,7 @@ body{
 
       <div class="dash-actions">
         <a href="index.html" class="btn btn-primary">Explorer les bases</a>
-        <a href="questions.html?mode=blank" class="btn btn-secondary">Créer de zéro</a>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" onclick="return dashboardGoBlank(event)">Créer de zéro</a>
         <a href="mes-autodiagnostics.html" class="btn btn-secondary client-only">Voir mes Autodiagnostics</a>
         <a href="account.html?tab=quota" class="btn btn-primary client-only">Recharger mon pack</a>
       </div>
@@ -617,7 +617,7 @@ body{
           <h3>Créer de zéro</h3>
           <p>Construisez votre autodiagnostic sans base prédéfinie, chapitre par chapitre.</p>
         </div>
-        <a href="questions.html?mode=blank" class="btn btn-secondary">Créer un autodiag</a>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" onclick="return dashboardGoBlank(event)">Créer un autodiag</a>
       </div>
 
       <div class="quick-card">
@@ -655,7 +655,7 @@ body{
         <a href="parametrage.html" class="btn btn-secondary" id="settings-draft-btn" style="display:none">Paramétrer</a>
 
         <a href="index.html" class="btn btn-primary" id="draft-library-btn">Explorer les bases</a>
-        <a href="questions.html?mode=blank" class="btn btn-secondary" id="draft-blank-btn">Créer de zéro</a>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" id="draft-blank-btn" onclick="return dashboardGoBlank(event)">Créer de zéro</a>
 
         <button id="delete-draft-btn" class="btn btn-danger" type="button" onclick="openDeleteDraftModal()" style="display:none">
           Supprimer le brouillon
@@ -742,6 +742,23 @@ function itsResolveApiBase(){
   return isStaging
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+}
+
+
+function dashboardIsLoggedIn(){
+  return localStorage.getItem("its_logged_in") === "true" || !!(localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token"));
+}
+
+function dashboardGoBlank(event){
+  if(event) event.preventDefault();
+  const target = "questions.html?mode=blank&setup=1";
+  if(!dashboardIsLoggedIn()){
+    localStorage.setItem("its_after_login_redirect", target);
+    window.location.href = "register.html";
+    return false;
+  }
+  window.location.href = target;
+  return false;
 }
 
 const API_BASE_URL = itsResolveApiBase();

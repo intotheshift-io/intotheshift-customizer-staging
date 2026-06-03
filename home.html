@@ -279,11 +279,11 @@ function goBlankFromHome(event){
   if(event) event.preventDefault();
 
   if(!homeIsLoggedIn()){
-    homeRedirectToLogin("questions.html?mode=blank");
+    homeRedirectToLogin("questions.html?mode=blank&setup=1");
     return false;
   }
 
-  window.location.href = "questions.html?mode=blank";
+  window.location.href = "questions.html?mode=blank&setup=1";
   return false;
 }
 </script>
