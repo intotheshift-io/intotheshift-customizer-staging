@@ -329,6 +329,16 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .blank-error.on{display:block}
 @media(max-width:760px){.blank-form-grid{grid-template-columns:1fr}.blank-setup-hero{padding:22px}.blank-actions{align-items:flex-start;flex-direction:column}.blank-actions .btn-save{width:auto}}
 
+/* ── Modale ajout de tag ───────────────────────── */
+.tag-modal-intro{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}
+.tag-modal-input{width:100%;border:1px solid #d8e0ea;border-radius:10px;padding:11px 13px;font-size:14px;color:#18375d;font-family:'Asap',sans-serif;outline:none;background:#fff;margin-bottom:10px}
+.tag-modal-input:focus{border-color:#007883;box-shadow:0 0 0 3px rgba(0,120,131,.10)}
+.tag-modal-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#8a5a00;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.4;margin-bottom:12px}
+.tag-modal-error.on{display:block}
+.tag-modal-examples{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px}
+.tag-modal-chip{border:1px solid #d8e0ea;background:#f8fafc;color:#18375d;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:700;font-family:'Asap',sans-serif;cursor:pointer}
+.tag-modal-chip:hover{background:#e5f4f5;border-color:#b8dfe0;color:#007883}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 
 
@@ -737,6 +747,25 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-add-tag">
+  <div class="modal" style="max-width:460px;text-align:left">
+    <div style="width:48px;height:48px;border-radius:16px;background:#e5f4f5;color:#007883;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px">🏷️</div>
+    <h3>Ajouter un tag</h3>
+    <p class="tag-modal-intro">Ajoutez un tag court pour qualifier cette situation. Vous pouvez avoir jusqu’à 3 tags par question.</p>
+    <input class="tag-modal-input" id="tag-modal-input" maxlength="40" placeholder="Ex. Signalement, Arbitrage, Réflexe…">
+    <div class="tag-modal-error" id="tag-modal-error">Merci de saisir un tag valide.</div>
+    <div class="tag-modal-examples">
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Signalement')">Signalement</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Arbitrage')">Arbitrage</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Réflexe')">Réflexe</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Vigilance')">Vigilance</button>
+    </div>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="closeTagModal()">Annuler</button>
+      <button class="btn-confirm" style="background:#18375d" onclick="confirmTagModal()">Ajouter le tag</button>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modal-delete-chapter">
   <div class="modal" style="max-width:440px;text-align:left">
@@ -765,7 +794,8 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
-const forceBlankSetup = isBlankMode && (urlParams.get('setup') === '1' || sessionStorage.getItem('its_start_blank_setup') === '1');
+const hasBlankProjectId = Boolean(urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id'));
+const forceBlankSetup = isBlankMode && (!hasBlankProjectId || urlParams.get('setup') === '1' || sessionStorage.getItem('its_start_blank_setup') === '1');
 if (forceBlankSetup) {
   try { sessionStorage.removeItem('its_start_blank_setup'); } catch(e) {}
 }
@@ -2536,15 +2566,67 @@ function removeTag(qid, ti) {
   renderMain();
 }
 
-function addTag(qid) {
+let pendingTagQuestionId = null;
+
+function openTagModal(qid){
+  pendingTagQuestionId = qid;
+  const input = document.getElementById('tag-modal-input');
+  const error = document.getElementById('tag-modal-error');
+  if(input) input.value = '';
+  if(error) error.classList.remove('on');
+  document.getElementById('modal-add-tag')?.classList.add('on');
+  setTimeout(() => input?.focus(), 50);
+}
+
+function closeTagModal(){
+  pendingTagQuestionId = null;
+  document.getElementById('modal-add-tag')?.classList.remove('on');
+}
+
+function prefillTagModal(value){
+  const input = document.getElementById('tag-modal-input');
+  if(input){
+    input.value = value || '';
+    input.focus();
+  }
+}
+
+function confirmTagModal(){
   if(itsQuestionsIsEditBlocked()) return false;
-  const t = prompt('Nom du tag :');
-  if (!t) return;
-  const q = chapters[activeChap].questions.find(q => q.id === qid);
-  if (q && q.tags.length < 3) q.tags.push({t, ai:false});
+  const input = document.getElementById('tag-modal-input');
+  const error = document.getElementById('tag-modal-error');
+  const t = String(input?.value || '').trim();
+  if(!t){
+    error?.classList.add('on');
+    return;
+  }
+  const q = chapters[activeChap].questions.find(q => q.id === pendingTagQuestionId);
+  if(q && q.tags.length < 3){
+    const exists = q.tags.some(tag => norm(tag.t) === norm(t));
+    if(!exists) q.tags.push({t, ai:false});
+  }
   saveState();
+  closeTagModal();
   renderMain();
 }
+
+function addTag(qid) {
+  if(itsQuestionsIsEditBlocked()) return false;
+  openTagModal(qid);
+}
+
+document.addEventListener('keydown', function(e){
+  const modal = document.getElementById('modal-add-tag');
+  if(!modal || !modal.classList.contains('on')) return;
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    confirmTagModal();
+  }
+  if(e.key === 'Escape'){
+    e.preventDefault();
+    closeTagModal();
+  }
+});
 
 function askRegen() {
   if(itsQuestionsIsEditBlocked()) return false;
