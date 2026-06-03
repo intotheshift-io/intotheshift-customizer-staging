@@ -20,7 +20,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 .badges-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:22px 26px;margin-bottom:24px}
 .badges-title{font-size:14px;font-weight:800;color:#18375d;margin-bottom:16px}
-.badges-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.badges-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .badge-item{display:grid;grid-template-columns:118px 1fr;align-items:flex-start;gap:12px;min-width:0}
 .badge-copy{font-size:13px;line-height:1.45;color:#475569;min-width:0}
 .badge-copy strong{display:block;color:#18375d;margin-bottom:4px;font-size:13px}
@@ -34,23 +34,26 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 .catalogue-count{font-size:12px;color:#64748b;margin-left:auto;align-self:center}
 
-.blank-create-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:22px 0 24px;display:flex;justify-content:space-between;align-items:center;gap:18px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
+.quick-start-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:22px 0 24px}
+.blank-create-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:0;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(24,55,93,.05);min-height:168px}
 .blank-create-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:5px}
 .blank-create-text{font-size:13px;color:#64748b;line-height:1.5;max-width:780px}
 .blank-create-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 
-.custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;margin:0 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05);overflow:hidden}
+.custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;margin:0;box-shadow:0 8px 24px rgba(24,55,93,.05);overflow:hidden;min-height:168px}
 .custom-models-toggle{width:100%;border:0;background:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;cursor:pointer;font-family:'Asap',sans-serif;text-align:left;color:#18375d}
 .custom-models-toggle:hover{background:#fbfdff}
 .custom-models-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:4px}
 .custom-models-text{font-size:13px;color:#64748b;line-height:1.5}
 .custom-models-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.custom-models-arrow{width:30px;height:30px;border-radius:999px;background:#eef6fb;border:1px solid #cfe3ff;color:#0d4c72;display:flex;align-items:center;justify-content:center;font-weight:900;transition:transform .16s ease}
-.custom-models-card[open] .custom-models-arrow{transform:rotate(180deg)}
+.custom-models-arrow{display:inline-flex;align-items:center;gap:6px;border:1px solid #d8e0ea;background:#fff;color:#0d4c72;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;white-space:nowrap;transition:background .16s ease,border-color .16s ease}
+.custom-models-arrow::after{content:"▾";font-size:13px;line-height:1;transition:transform .16s ease}
+.custom-models-card[open] .custom-models-arrow{background:#eef6fb;border-color:#b8dfe0}
+.custom-models-card[open] .custom-models-arrow::after{transform:rotate(180deg)}
 .custom-models-card summary{list-style:none}
 .custom-models-card summary::-webkit-details-marker{display:none}
 .custom-models-body{padding:0 22px 22px;border-top:1px solid #edf1f6}
-.custom-models-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:16px}
+.custom-models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-top:16px}
 
 .guides-card{background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);border:1px solid #d8e0ea;border-radius:18px;padding:24px 26px;margin:22px 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
 .guides-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
@@ -132,7 +135,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .guides-grid{grid-template-columns:1fr 1fr}
   .badges-grid{grid-template-columns:1fr 1fr}
   .library-hero{flex-direction:column}
-  .blank-create-card{flex-direction:column;align-items:flex-start}
+  .quick-start-grid{grid-template-columns:1fr}
   .custom-models-grid{grid-template-columns:1fr 1fr}
 }
 
@@ -143,7 +146,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .badges-grid{grid-template-columns:1fr}
   .badge-item{grid-template-columns:1fr}
   .badges-card .tag{width:max-content;min-width:118px}
-  .blank-create-actions .btn{width:100%;justify-content:center}
+  .blank-create-actions,.blank-create-actions .btn{width:100%;justify-content:center}
   .custom-models-toggle{padding:18px}
   .custom-models-grid{grid-template-columns:1fr}
   .faq-section{padding:20px}
@@ -189,38 +192,39 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     <div class="badges-grid">
       <div class="badge-item"><span class="tag ai">Base IA</span><div class="badge-copy"><strong>Base assistée par IA</strong>Contenu généré ou structuré avec l’IA. À adapter avant utilisation.</div></div>
       <div class="badge-item"><span class="tag tbf">Expert</span><div class="badge-copy"><strong>Conçu par un expert</strong>Contenu conçu par un expert. Base robuste et exploitable après relecture.</div></div>
-      <div class="badge-item"><span class="tag help">Aide rédaction</span><div class="badge-copy"><strong>Aide à la rédaction</strong>Support de réflexion pour accélérer la conception.</div></div>
       <div class="badge-item"><span class="tag review">Relecture</span><div class="badge-copy"><strong>Relecture obligatoire</strong>Une relecture est nécessaire avant diffusion.</div></div>
     </div>
   </div>
 
-  <div class="blank-create-card">
-    <div>
-      <div class="blank-create-title">Créer un autodiag de A à Z</div>
-      <div class="blank-create-text">
-        Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue.
-      </div>
-    </div>
-    <div class="blank-create-actions">
-      <button class="btn btn-secondary" onclick="startBlankDiagnostic()">Créer depuis une page vierge</button>
-    </div>
-  </div>
-
-  <details class="custom-models-card" id="customModelsCard" style="display:none">
-    <summary class="custom-models-toggle">
+  <div class="quick-start-grid">
+    <div class="blank-create-card">
       <div>
-        <div class="custom-models-title">Mes modèles personnalisés</div>
-        <div class="custom-models-text">Retrouvez ici vos autodiagnostics enregistrés comme modèles réutilisables, sans encombrer la bibliothèque.</div>
+        <div class="blank-create-title">Créer un autodiag de A à Z</div>
+        <div class="blank-create-text">
+          Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue.
+        </div>
       </div>
-      <div class="custom-models-right">
-        <div class="catalogue-count" id="customModelsCount"></div>
-        <div class="custom-models-arrow">⌄</div>
+      <div class="blank-create-actions">
+        <button class="btn btn-secondary" onclick="startBlankDiagnostic()">Créer depuis une page vierge</button>
       </div>
-    </summary>
-    <div class="custom-models-body">
-      <div class="custom-models-grid" id="customModelsGrid"></div>
     </div>
-  </details>
+
+    <details class="custom-models-card" id="customModelsCard" style="display:none">
+      <summary class="custom-models-toggle">
+        <div>
+          <div class="custom-models-title">Mes modèles personnalisés</div>
+          <div class="custom-models-text">Retrouvez ici vos autodiagnostics enregistrés comme modèles réutilisables, sans encombrer la bibliothèque.</div>
+        </div>
+        <div class="custom-models-right">
+          <div class="catalogue-count" id="customModelsCount"></div>
+          <div class="custom-models-arrow">Afficher</div>
+        </div>
+      </summary>
+      <div class="custom-models-body">
+        <div class="custom-models-grid" id="customModelsGrid"></div>
+      </div>
+    </details>
+  </div>
 
 
   <section class="guides-card" aria-label="Guides métier associés aux bases d’autodiagnostic">
@@ -443,7 +447,6 @@ function cleanTags(tags){
     if(x.includes("base assistée") || x.includes("base assistee")) allowed.push("Base assistée par IA");
     else if(x.includes("the big factory")){allowed.push("Conçu par un expert");allowed.push("Conçu par The Big Factory")}
     else if(x.includes("expert")) allowed.push("Conçu par un expert");
-    else if(x.includes("aide à la rédaction") || x.includes("aide a la redaction")) allowed.push("Aide à la rédaction");
     else if(x.includes("relecture obligatoire")) allowed.push("Relecture obligatoire");
   });
   return [...new Set(allowed)];
@@ -452,7 +455,6 @@ function cleanTags(tags){
 function tagClass(t){
   if(t.includes("Factory") || t.includes("expert")) return "tbf";
   if(t.includes("IA")) return "ai";
-  if(t.includes("Aide")) return "help";
   if(t.includes("Relecture")) return "review";
   return "";
 }

@@ -141,13 +141,15 @@
     .btn-danger-soft{background:#fff1f2;color:#be123c;border-color:#fecdd3}
     .btn-danger-soft:hover{background:#ffe4e6}
 
-    .more-actions{position:relative;display:inline-block}
+    .more-actions{display:block;width:100%;margin-top:2px}
     .more-actions summary{list-style:none;border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px}
     .more-actions summary::-webkit-details-marker{display:none}
     .more-actions summary:hover{background:#f7f9fc}
+    .more-actions summary::after{content:"▾";font-size:12px;transition:transform .16s ease}
     .more-actions[open] summary{background:#eef6fb;border-color:#b8dfe0;color:#0d4c72}
-    .more-actions-menu{position:absolute;left:0;top:calc(100% + 6px);z-index:50;background:#fff;border:1px solid #d8e0ea;border-radius:14px;box-shadow:0 16px 38px rgba(24,55,93,.16);padding:8px;min-width:245px;display:flex;flex-direction:column;gap:6px}
-    .more-actions-menu .btn{width:100%;justify-content:flex-start}
+    .more-actions[open] summary::after{transform:rotate(180deg)}
+    .more-actions-menu{margin-top:8px;background:#f8fbfd;border:1px solid #e1e8f0;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;width:100%}
+    .more-actions-menu .btn{justify-content:flex-start}
     .model-success-modal .modal-icon{background:#e5f4f5;color:#007883}
     .model-success-name{margin-top:12px;background:#f8fbfd;border:1px solid #d8e0ea;border-radius:12px;padding:10px 12px;color:#18375d;font-size:13px;font-weight:900;line-height:1.35}
     .model-success-hint{margin-top:10px;color:#64748b;font-size:13px;line-height:1.45}
@@ -1440,7 +1442,7 @@
                   </button>
                 ` : ""}
                 <details class="more-actions" onclick="event.stopPropagation()">
-                  <summary>Plus d’actions ▾</summary>
+                  <summary>Actions secondaires</summary>
                   <div class="more-actions-menu">
                     <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this); this.closest('details') && this.closest('details').removeAttribute('open');" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
                       💾 Enregistrer comme modèle
