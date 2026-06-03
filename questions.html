@@ -718,7 +718,7 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Impossible de continuer vers le paramétrage</h3>
-    <p>Certains chapitres sont encore incomplets. Pour passer au paramétrage, chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> complets avec résumé du profil, phrase courte et description.</p>
+    <p>Certains chapitres sont encore incomplets. Pour passer au paramétrage, chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions complètes</strong>, chaque question doit contenir un <strong>énoncé</strong> et au moins <strong>3 réponses renseignées</strong> avec scores, et les <strong>3 profils</strong> doivent être complets avec résumé du profil, phrase courte et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -730,7 +730,7 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Complétez d’abord les questions</h3>
-    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
+    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec un <strong>énoncé</strong> et au moins <strong>3 réponses renseignées et scorées</strong> par question, avant d’ouvrir les profils.</p>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
     </div>
@@ -1594,9 +1594,11 @@ const icoTrash = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><p
 const icoStar = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>`;
 
 function questionHasValidScoring(q){
-  return q && Array.isArray(q.answers) && q.answers.length >= 3 && q.answers.every(a => {
+  if(!q || !String(q.text || '').trim()) return false;
+  return Array.isArray(q.answers) && q.answers.length >= 3 && q.answers.every(a => {
+    const label = String(a.l ?? a.label ?? a.text ?? '').trim();
     const n = Number(a.s);
-    return !isNaN(n) && n >= 0 && n <= 2;
+    return label && !isNaN(n) && n >= 0 && n <= 2;
   });
 }
 
@@ -2196,7 +2198,7 @@ function renderQuestions(ch) {
       ${!isEmpty ? `<div class="chap-actions">
         <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’aperçu répondant</button>
         ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
-        <button class="btn-add-manual" onclick="addManual()">+ Ajouter une situation vide <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une situation vide, puis renseignez la question, au moins 3 réponses et leurs scores.">?</span></button>
+        <button class="btn-add-manual" onclick="addManual()">+ Ajouter une situation vide <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une situation vide, puis renseignez l’énoncé de la question, au moins 3 réponses et leurs scores. Une question vide bloque l’accès au paramétrage.">?</span></button>
       </div>` : ''}
     </div>`;
 
@@ -2214,7 +2216,7 @@ function renderQuestions(ch) {
   document.getElementById('main-editor').innerHTML = `
     ${header}
     <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> ${isBlankFlow() && state.objective ? 'Objectif défini : ' + esc(state.objective) + '<br>' : ''}Construisez des situations concrètes issues du quotidien professionnel. L’autodiagnostic ne teste ni les connaissances ni les compétences : il expose des comportements réalistes et permet au répondant de se positionner sur ses réflexes habituels.</span></div>
-    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils : chaque question doit avoir un énoncé et au moins 3 réponses renseignées avec leurs scores. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
@@ -2967,8 +2969,8 @@ function chapProblems(c) {
   if(c.questions.length < MIN_QUESTIONS_PER_CHAPTER) {
     problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 5 requises`, tab:'questions'});
   } else {
-    const badQ = c.questions.filter(q => !q.answers || q.answers.length < 3 || q.answers.some(a => isNaN(Number(a.s)) || Number(a.s)<0 || Number(a.s)>2));
-    if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — min 3 réponses, scores entre 0 et 2 requis`, tab:'questions'});
+    const badQ = c.questions.filter(q => !questionHasValidScoring(q));
+    if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — énoncé, min 3 réponses renseignées et scores entre 0 et 2 requis`, tab:'questions'});
   }
 
   const badP = c.profils.filter(p => !String(p.titre).trim() || !String(p.phrase).trim() || !stripHtml(p.description).trim());
@@ -2995,7 +2997,7 @@ function updateSaveButton() {
   btn.setAttribute('aria-disabled', (!isContentOnlyView && allProblems.length > 0) ? 'true' : 'false');
   hint.classList.toggle('visible', allProblems.length > 0);
 
-  if(allProblems.length) hint.textContent = 'Chapitres nommés, 5 questions minimum et profils complets requis';
+  if(allProblems.length) hint.textContent = 'Chapitres nommés, 5 questions complètes avec 3 réponses minimum et profils complets requis';
   updateCustomModelButton();
 }
 
