@@ -1113,7 +1113,7 @@ function statusLabel(){
 }
 function applyBackendHydrationUI(){
   document.getElementById('bc-theme').textContent=cleanTheme();
-  document.getElementById('sb-title').textContent=cleanTheme();
+  document.getElementById('sb-title').textContent=p().nom||cleanTheme();
   document.getElementById('sb-status').textContent=statusLabel();
   document.getElementById('sb-q').textContent=countQuestions();
   document.getElementById('sb-profils').textContent=countProfiles();
