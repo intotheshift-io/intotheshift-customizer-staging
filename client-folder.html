@@ -1579,7 +1579,7 @@ function renderProjectTitleDetails(project){
             ${renderProjectComment(project)}
             <div class="card-actions">
               ${["draft","sent"].includes(normalizedStatus) ? `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>` : ""}
-              ${["published","archived"].includes(normalizedStatus) ? `<button class="small-btn" onclick="viewProjectContent('${escapeAttr(project.id)}')">Voir le contenu</button>` : ""}
+              ${["published","unpublished","archived"].includes(normalizedStatus) ? `<button class="small-btn" onclick="viewProjectContent('${escapeAttr(project.id)}')">👁️ Voir le contenu</button>` : ""}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
                 : `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
