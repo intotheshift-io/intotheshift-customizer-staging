@@ -1057,7 +1057,8 @@ function itsApplyReadOnlyMode(options = {}) {
   const params = new URLSearchParams(window.location.search || "");
   const isReprogram = params.get("reprogram") === "1";
   const isExtend = params.get("extend") === "1";
-  if (isReprogram || isExtend) return false;
+  const isContentOnly = params.get("contentOnly") === "1" || params.get("viewContent") === "1";
+  if (isReprogram || isExtend || isContentOnly) return false;
 
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
@@ -1117,7 +1118,8 @@ function itsShouldApplyReadOnlyOnThisPage() {
   const params = new URLSearchParams(window.location.search || "");
   const isReprogram = params.get("reprogram") === "1";
   const isExtend = params.get("extend") === "1";
-  if (isReprogram || isExtend) return false;
+  const isContentOnly = params.get("contentOnly") === "1" || params.get("viewContent") === "1";
+  if (isReprogram || isExtend || isContentOnly) return false;
 
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
 

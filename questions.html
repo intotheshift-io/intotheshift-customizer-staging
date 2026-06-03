@@ -2777,7 +2777,7 @@ function restorePanelCloseNavigation(){
   });
 }
 
-if(typeof itsApplyReadOnlyMode === 'function'){
+if(typeof itsApplyReadOnlyMode === 'function' && !isContentOnlyView){
   setTimeout(() => {
     itsApplyReadOnlyMode();
     restoreAdminQuestionNavigation();
