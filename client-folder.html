@@ -1578,7 +1578,8 @@ function renderProjectTitleDetails(project){
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
+              ${["draft","sent"].includes(normalizedStatus) ? `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>` : ""}
+              ${["published","archived"].includes(normalizedStatus) ? `<button class="small-btn" onclick="viewProjectContent('${escapeAttr(project.id)}')">Voir le contenu</button>` : ""}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
                 : `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
@@ -1811,6 +1812,11 @@ function renderProjectTitleDetails(project){
     function editProject(projectId){
       const id = setActiveProjectForNavigation(projectId);
       window.location.href = id ? `questions.html?projectId=${encodeURIComponent(id)}` : "questions.html";
+    }
+
+    function viewProjectContent(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1` : "questions.html?contentOnly=1";
     }
 
     function prepareCampaign(projectId){

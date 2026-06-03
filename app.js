@@ -1057,16 +1057,19 @@ function itsApplyReadOnlyMode(options = {}) {
   const params = new URLSearchParams(window.location.search || "");
   const isReprogram = params.get("reprogram") === "1";
   const isExtend = params.get("extend") === "1";
+  const isContentOnly = params.get("contentOnly") === "1" || params.get("viewContent") === "1";
   if (isReprogram || isExtend) return false;
 
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
-  if (!itsIsProjectReadOnly(state)) return false;
+  if (!isContentOnly && !itsIsProjectReadOnly(state)) return false;
 
   const status = itsNormalizeProjectStatus(state);
   const isPendingPublication = (status === "sent" || status === "submitted") && !itsIsAdminLikeRole();
-  const message = options.message || (isPendingPublication
-    ? "Cet autodiagnostic a été transmis à Into The Shift et il est maintenant en attente de publication. Cette page est en lecture seule. Pour toute modification, contactez <a href=\"mailto:contact@intotheshift.io\" style=\"color:#0d4c72;font-weight:900;text-decoration:none\">contact@intotheshift.io</a>."
-    : "");
+  const message = options.message || (isContentOnly
+    ? `Consultation du contenu uniquement : cette page est en lecture seule. Aucune modification ni navigation d’édition n’est disponible. Pour toute modification, contactez <a href="mailto:contact@intotheshift.io" style="color:#0d4c72;font-weight:900;text-decoration:none">contact@intotheshift.io</a>.`
+    : (isPendingPublication
+      ? `Cet autodiagnostic a été transmis à Into The Shift et il est maintenant en attente de publication. Cette page est en lecture seule. Pour toute modification, contactez <a href="mailto:contact@intotheshift.io" style="color:#0d4c72;font-weight:900;text-decoration:none">contact@intotheshift.io</a>.`
+      : ""));
 
   document.body.classList.add("its-readonly-mode");
   itsInjectReadOnlyBanner(message);

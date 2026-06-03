@@ -593,6 +593,30 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   z-index:10081!important;
 }
 
+
+/* Mode Voir le contenu : aucune navigation ni édition */
+body.its-content-only-view .breadcrumb .bc-link,
+body.its-content-only-view .cni-head,
+body.its-content-only-view .cni-tab,
+body.its-content-only-view .cni-delete,
+body.its-content-only-view .btn-add-chapter,
+body.its-content-only-view .btn-save,
+body.its-content-only-view .chap-actions,
+body.its-content-only-view .qa-btn,
+body.its-content-only-view .tag-x,
+body.its-content-only-view .tag-add,
+body.its-content-only-view .score-pill,
+body.its-content-only-view .mkw-x,
+body.its-content-only-view .mkw-inp,
+body.its-content-only-view .media-slot{
+  pointer-events:none!important;
+  cursor:not-allowed!important;
+  opacity:.55!important;
+}
+body.its-content-only-view .cni.on{opacity:1!important}
+body.its-content-only-view .cni.on .cni-head{opacity:1!important}
+body.its-content-only-view .sidebar{user-select:none}
+
 </style>
 </head>
 
@@ -724,6 +748,16 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
+const isContentOnlyView = urlParams.get('contentOnly') === '1' || urlParams.get('viewContent') === '1';
+
+function blockContentOnlyNavigation(event){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  return false;
+}
+if(isContentOnlyView) document.body.classList.add('its-content-only-view');
 
 function makeBlankDiagnosticState(){
   return {
@@ -1768,7 +1802,7 @@ function confirmDeleteChapter(){
 function renderNav() {
   const addChapBtn = document.getElementById('btn-add-chapter');
   if(addChapBtn){
-    addChapBtn.disabled = needsBlankSetup() || chapters.length >= 10;
+    addChapBtn.disabled = isContentOnlyView || needsBlankSetup() || chapters.length >= 10;
     addChapBtn.textContent = chapters.length >= 10 ? 'Maximum 10 chapitres' : '+ Ajouter un chapitre';
   }
 
@@ -1784,18 +1818,18 @@ function renderNav() {
     const div = document.createElement('div');
     div.className = `cni ${i === activeChap ? 'on' : ''}`;
     div.innerHTML = `
-      <div class="cni-head" onclick="selectChap(${i})">
+      <div class="cni-head" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `selectChap(${i})`}">
         <div class="cni-lbl">Chapitre ${i+1}</div>
         <div class="cni-title-row">
           <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'} <span class="edit-hint" title="Titre modifiable">✏️</span></div>
-          ${canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
+          ${!isContentOnlyView && canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
         </div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorQ}"></span><span class="cni-qcount">${n}/10 questions</span></div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorP}"></span><span class="cni-qcount">${nProfils}/3 profils</span></div>
       </div>
       <div class="cni-tabs">
-        <button class="cni-tab ${i === activeChap && activeTab === 'questions' ? 'on' : ''}" onclick="setTab(${i},'questions')">Questions</button>
-        <button class="cni-tab ${i === activeChap && activeTab === 'profils' ? 'on' : ''} ${chapterQuestionsReady(c) ? '' : 'disabled'}" onclick="tryOpenProfiles(${i})">Profils</button>
+        <button class="cni-tab ${i === activeChap && activeTab === 'questions' ? 'on' : ''} ${isContentOnlyView ? 'disabled' : ''}" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `setTab(${i},'questions')`}">Questions</button>
+        <button class="cni-tab ${i === activeChap && activeTab === 'profils' ? 'on' : ''} ${chapterQuestionsReady(c) && !isContentOnlyView ? '' : 'disabled'}" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `tryOpenProfiles(${i})`}">Profils</button>
       </div>`;
     nav.appendChild(div);
   });
@@ -1805,6 +1839,7 @@ function renderNav() {
 }
 
 function selectChap(i) {
+  if(isContentOnlyView) return false;
   activeChap = i;
   openCards = {};
   renderNav();
@@ -1813,6 +1848,7 @@ function selectChap(i) {
 }
 
 function setTab(i, tab) {
+  if(isContentOnlyView) return false;
   if(tab === 'profils'){
     if(!chapterQuestionsReady(chapters[i])){
       tryOpenProfiles(i);
@@ -2571,11 +2607,11 @@ function updateSaveButton() {
   const btn = document.getElementById('btn-save');
   const hint = document.getElementById('btn-save-hint');
 
-  btn.textContent = 'Continuer vers le paramétrage';
+  btn.textContent = isContentOnlyView ? 'Lecture seule' : 'Continuer vers le paramétrage';
 
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
-  btn.disabled = allProblems.length > 0;
+  btn.disabled = isContentOnlyView || allProblems.length > 0;
   hint.classList.toggle('visible', allProblems.length > 0);
 
   if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
@@ -2656,6 +2692,7 @@ function itsCurrentUserRoleForQuestions(){
 }
 
 function restoreAdminQuestionNavigation(){
+  if(isContentOnlyView) return;
   if(itsCurrentUserRoleForQuestions() !== 'admin') return;
 
   // Le mode lecture seule global peut désactiver tous les boutons d'une page transmise/publiée.

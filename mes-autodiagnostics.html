@@ -1064,9 +1064,9 @@
     function resumeLabel(project) {
   const status = normalizeStatus(project);
 
-  if (status === "submitted" || status === "sent") return "En attente de publication";
+  if (status === "submitted" || status === "sent") return "Voir le contenu";
   if (status === "published") return "Kit de com";
-  if (status === "archived") return "Voir le projet";
+  if (status === "archived") return "Voir le contenu";
 
   const step = getProjectStep(project);
   if (step.includes("validation")) return "Transmettre";
@@ -1082,7 +1082,9 @@
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
       if (status === "published") return "kit-communication.html" + suffix;
-      if (status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
+      if (status === "archived" || status === "submitted" || status === "sent") {
+        return "questions.html" + suffix + (suffix ? "&" : "?") + "contentOnly=1";
+      }
       if (status === "unpublished") return reprogramUrl(project);
 
       const step = getProjectStep(project);
@@ -1155,12 +1157,19 @@
       window.location.assign(`kit-communication.html?projectId=${encodeURIComponent(id)}`);
     }
 
+    function openContentOnlyView(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1`);
+    }
+
     function canOpenKitCommunication(project){
       const status = normalizeStatus(project);
       const data = getProjectData(project);
       const shareUrl = project.shareUrl || project.share_url || project.ad_url || project.public_url || data.shareUrl || data.share_url || "";
       const resultsUrl = project.resultsUrl || project.results_url || project.result_url || data.resultsUrl || data.results_url || "";
-      return (status === "published" || status === "unpublished") && Boolean(shareUrl || resultsUrl);
+      return status === "unpublished" && Boolean(shareUrl || resultsUrl);
     }
 
 
@@ -1357,11 +1366,16 @@
                   </button>
                 `}
                 ${status === "published" ? `
+                  <button class="btn" onclick="openContentOnlyView('${escapeAttr(projectId)}')">
+                    👁️ Voir le contenu
+                  </button>
+                ` : ""}
+                ${status === "published" ? `
                   <button class="btn" onclick="extendProject('${escapeAttr(projectId)}')" title="Même URL : seule la date de clôture est modifiable.">
                     📅 Prolonger
                   </button>
                 ` : ""}
-                ${canOpenKitCommunication(p) && status !== "published" ? `
+                ${canOpenKitCommunication(p) ? `
                   <button class="btn btn-green" onclick="openKitCommunication('${escapeAttr(projectId)}')">
                     📣 Kit de com
                   </button>
