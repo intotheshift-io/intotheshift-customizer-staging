@@ -1675,6 +1675,7 @@ function renderProjectTitleDetails(project){
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
+            ${renderProjectTitleDetails(project)}
             ${renderProjectIds(project)}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
