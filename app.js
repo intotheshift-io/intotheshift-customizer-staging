@@ -832,6 +832,15 @@ function itsGetThemeFromCatalogue(project) {
   return ad?.theme || "";
 }
 
+function itsNormalizeThemeValue(value) {
+  if (value === undefined || value === null) return "";
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "object") {
+    return String(value.title || value.name || value.label || value.titre || value.nom || value.theme || value.value || "").trim();
+  }
+  return String(value || "").trim();
+}
+
 function itsGetProjectThemes(project) {
   const fromCatalogue = itsGetThemeFromCatalogue(project);
   if (fromCatalogue) return [fromCatalogue];
@@ -841,15 +850,20 @@ function itsGetProjectThemes(project) {
   const state = data.state && typeof data.state === "object" ? data.state : {};
   const param = data.parametrage || state.parametrage || payload.parametrage || {};
 
-  const explicit = [
+  const explicitValues = [
     project?.theme, project?.themeLabel, project?.themeName, project?.thematique, project?.thématique,
     data.theme, data.themeLabel, data.themeName, data.thematique, data.thématique,
     payload.theme, payload.themeLabel, payload.themeName, payload.thematique, payload.thématique,
     state.theme, state.themeLabel, state.themeName, state.thematique, state.thématique,
     param.theme, param.themeLabel, param.themeName, param.thematique, param.thématique
-  ].find(value => value !== undefined && value !== null && String(value).trim() !== "");
+  ];
 
-  return explicit ? [String(explicit).trim()] : [];
+  for (const value of explicitValues) {
+    const cleaned = itsNormalizeThemeValue(value);
+    if (cleaned) return [cleaned];
+  }
+
+  return [];
 }
 
 window.ITSProject = Object.assign(window.ITSProject || {}, {

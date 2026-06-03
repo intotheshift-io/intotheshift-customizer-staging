@@ -732,25 +732,41 @@
       return ad?.theme || "";
     }
 
+    function normalizeProjectThemeValue(value){
+      if(value === undefined || value === null) return "";
+      if(typeof value === "string") return value.trim();
+      if(typeof value === "object"){
+        return String(value.title || value.name || value.label || value.titre || value.nom || value.theme || value.value || "").trim();
+      }
+      return String(value || "").trim();
+    }
+
     function getExplicitProjectTheme(p){
       const data = getProjectData(p);
       const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
       const state = data.state && typeof data.state === "object" ? data.state : {};
       const param = data.parametrage || state.parametrage || payload.parametrage || {};
-      return String(
-        p?.theme || p?.themeLabel || p?.themeName || p?.thematique || p?.thématique ||
-        data.theme || data.themeLabel || data.themeName || data.thematique || data.thématique ||
-        payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
-        state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
-        param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
-        ""
-      ).trim();
+      const values = [
+        p?.theme, p?.themeLabel, p?.themeName, p?.thematique, p?.thématique,
+        data.theme, data.themeLabel, data.themeName, data.thematique, data.thématique,
+        payload.theme, payload.themeLabel, payload.themeName, payload.thematique, payload.thématique,
+        state.theme, state.themeLabel, state.themeName, state.thematique, state.thématique,
+        param.theme, param.themeLabel, param.themeName, param.thematique, param.thématique
+      ];
+      for(const value of values){
+        const cleaned = normalizeProjectThemeValue(value);
+        if(cleaned) return cleaned;
+      }
+      return "";
     }
 
     function getProjectThemes(p){
       if(window.ITSProject && typeof window.ITSProject.getThemes === "function"){
         const shared = window.ITSProject.getThemes(p);
-        if(Array.isArray(shared) && shared.length) return shared;
+        if(Array.isArray(shared) && shared.length) {
+          const cleaned = shared.map(normalizeProjectThemeValue).filter(Boolean);
+          if(cleaned.length) return cleaned;
+        }
       }
 
       const fromCatalogue = getLibraryThemeFromCatalogue(p);
@@ -766,7 +782,7 @@
     function renderThemeTags(project){
       const themes = getProjectThemes(project);
       if(!themes.length) return `<span class="tag">Thématique non renseignée</span>`;
-      return themes.map(theme => `<span class="tag">${escapeHtml(theme)}</span>`).join("");
+      return themes.map(normalizeProjectThemeValue).filter(Boolean).map(theme => `<span class="tag">${escapeHtml(theme)}</span>`).join("") || `<span class="tag">Thématique non renseignée</span>`;
     }
 
     function getCampaignDates(p) {
@@ -1442,7 +1458,7 @@
                   </button>
                 ` : ""}
                 <details class="more-actions" onclick="event.stopPropagation()">
-                  <summary>Actions secondaires</summary>
+                  <summary>Autres actions</summary>
                   <div class="more-actions-menu">
                     <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this); this.closest('details') && this.closest('details').removeAttribute('open');" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
                       💾 Enregistrer comme modèle

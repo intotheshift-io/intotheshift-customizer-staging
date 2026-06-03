@@ -1742,6 +1742,62 @@ function addChapter(){
   updateSaveButton();
 }
 
+function normalizeBlankThemeOption(source){
+  if(!source || typeof source !== 'object') return null;
+  const key = String(source.key || source.themeKey || source.theme_key || source.id || source.slug || '').trim();
+  const label = String(source.label || source.name || source.title || source.theme || source.titre || source.nom || '').trim();
+  if(!key && !label) return null;
+  return { key: key || norm(label).replace(/\s+/g, '-'), label: label || key };
+}
+
+function getBlankPrivateThemes(){
+  const themes = [];
+  const seen = new Set();
+
+  function addTheme(source){
+    const item = normalizeBlankThemeOption(source);
+    if(!item) return;
+    const unique = String(item.key || item.label || '').toLowerCase();
+    if(!unique || seen.has(unique)) return;
+    seen.add(unique);
+    themes.push(item);
+  }
+
+  if(Array.isArray(window.ITS_THEMES)){
+    window.ITS_THEMES.forEach(addTheme);
+  }
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    window.ITS_CATALOGUE.forEach(ad => {
+      addTheme({
+        key: ad.themeKey || ad.theme_key || ad.theme || '',
+        label: ad.theme || ad.themeLabel || ad.theme_label || ad.themeName || ad.theme_name || ''
+      });
+    });
+  }
+
+  const currentKey = String(state.themeKey || state.theme_key || state.selectedThemeKey || state.privateThemeKey || state.private_theme_key || '').trim();
+  const currentLabel = String(state.themeLabel || state.theme_label || state.selectedTheme || state.privateThemeLabel || state.private_theme_label || '').trim();
+  if(currentKey || currentLabel) addTheme({ key: currentKey, label: currentLabel });
+
+  if(!seen.has('autre')) themes.push({ key:'autre', label:'Autre' });
+  return themes;
+}
+
+function blankThemeOptionsHTML(){
+  const current = String(state.themeKey || state.theme_key || state.selectedThemeKey || state.privateThemeKey || state.private_theme_key || '').trim();
+  const currentLabel = String(state.themeLabel || state.theme_label || state.selectedTheme || state.privateThemeLabel || state.private_theme_label || '').trim();
+  return '<option value="">Choisir une thématique</option>' + getBlankPrivateThemes().map(t => {
+    const selected = current === t.key || (!current && currentLabel === t.label) ? 'selected' : '';
+    return `<option value="${esc(t.key)}" ${selected}>${esc(t.label)}</option>`;
+  }).join('');
+}
+
+function getBlankThemeByKey(key){
+  const k = String(key || '').trim();
+  return getBlankPrivateThemes().find(t => t.key === k) || null;
+}
+
 
 function renderBlankSetup(){
   updateBreadcrumb('Cadrage de l’autodiag');
@@ -1779,6 +1835,13 @@ function renderBlankSetup(){
             <input id="blank-audience" placeholder="Ex. Managers, collaborateurs, équipe RH…" value="${esc(state.audience || '')}">
           </div>
           <div class="blank-field full">
+            <label for="blank-private-theme">Rangement privé</label>
+            <select id="blank-private-theme">
+              ${blankThemeOptionsHTML()}
+            </select>
+            <div class="blank-help" style="font-size:11px;margin-top:-2px">Cette thématique sert uniquement à classer cet autodiagnostic dans votre espace. Elle ne le rend pas visible par les autres entreprises.</div>
+          </div>
+          <div class="blank-field full">
             <label for="blank-objective">Objectif de l’autodiag</label>
             <textarea id="blank-objective" placeholder="Ex. Identifier les réflexes actuels, sensibiliser aux situations à risque, préparer un plan d’action…">${esc(state.objective || '')}</textarea>
           </div>
@@ -1806,6 +1869,9 @@ function completeBlankSetup(){
   const title = document.getElementById('blank-title').value.trim();
   const subject = document.getElementById('blank-subject').value.trim();
   const audience = document.getElementById('blank-audience').value.trim();
+  const privateThemeKey = document.getElementById('blank-private-theme') ? document.getElementById('blank-private-theme').value.trim() : '';
+  const privateTheme = getBlankThemeByKey(privateThemeKey);
+  const privateThemeLabel = privateTheme ? privateTheme.label : '';
   const objective = document.getElementById('blank-objective').value.trim();
   const count = Math.max(3, Number(document.getElementById('blank-count').value || 3));
   const chapterNamesRaw = document.getElementById('blank-chapters').value.trim();
@@ -1822,7 +1888,17 @@ function completeBlankSetup(){
 
   state.title = title;
   state.subject = subject;
-  state.theme = subject;
+  state.themeKey = privateThemeKey;
+  state.theme_key = privateThemeKey;
+  state.selectedThemeKey = privateThemeKey;
+  state.privateThemeKey = privateThemeKey;
+  state.private_theme_key = privateThemeKey;
+  state.themeLabel = privateThemeLabel;
+  state.theme_label = privateThemeLabel;
+  state.selectedTheme = privateThemeLabel;
+  state.privateThemeLabel = privateThemeLabel;
+  state.private_theme_label = privateThemeLabel;
+  state.theme = privateThemeLabel || subject;
   state.audience = audience;
   state.objective = objective;
   state.chapterCount = count;
