@@ -765,6 +765,10 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
+const forceBlankSetup = isBlankMode && (urlParams.get('setup') === '1' || sessionStorage.getItem('its_start_blank_setup') === '1');
+if (forceBlankSetup) {
+  try { sessionStorage.removeItem('its_start_blank_setup'); } catch(e) {}
+}
 const isContentOnlyView = urlParams.get('contentOnly') === '1' || urlParams.get('viewContent') === '1';
 
 function itsQuestionsIsEditBlocked(){
@@ -1051,7 +1055,7 @@ if (state && state.state && typeof state.state === 'object') {
 
 if (isBlankMode) {
   const freshBlank = makeBlankDiagnosticState();
-  if (!state || state.mode !== 'blank') {
+  if (forceBlankSetup || !state || state.mode !== 'blank') {
     state = freshBlank;
   } else if (!Array.isArray(state.chapters) || !state.chapters.length) {
     state.chapters = freshBlank.chapters;
@@ -1059,6 +1063,7 @@ if (isBlankMode) {
   }
   state.mode = 'blank';
   state.source = 'blank';
+  if (state.blankSetupDone !== true) state.blankSetupDone = false;
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
 } else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
@@ -1958,6 +1963,10 @@ function updateBreadcrumb(label){
 }
 
 function renderMain() {
+  if (needsBlankSetup()) {
+    renderBlankSetup();
+    return;
+  }
   const ch = chapters[activeChap];
   const chapterLabel = ch.name || `Chapitre ${activeChap + 1}`;
   updateBreadcrumb(activeTab === 'questions' ? `Questions — ${chapterLabel}` : `Profils — ${chapterLabel}`);

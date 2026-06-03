@@ -554,22 +554,27 @@ function buildBlankState(){
 
 function startBlankDiagnostic(){
   if(!isLoggedIn()){
-    redirectToLogin("questions.html?mode=blank");
+    redirectToLogin("questions.html?mode=blank&setup=1");
     return;
   }
 
-  const blankState = buildBlankState();
-
-  if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
+  if(typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
+  else if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
   else {
     localStorage.removeItem("its_current_project_id");
     localStorage.removeItem("its_current_ad_id");
   }
 
-  if(typeof itsSave === "function") itsSave(blankState);
-  else localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(blankState));
+  try {
+    sessionStorage.setItem("its_start_blank_setup", "1");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+    Object.keys(localStorage)
+      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
+      .forEach(key => localStorage.removeItem(key));
+  } catch(e) {}
 
-  window.location.assign("questions.html?mode=blank");
+  window.location.assign("questions.html?mode=blank&setup=1");
 }
 
 function useCustomModel(projectId){
