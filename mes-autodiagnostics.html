@@ -90,6 +90,13 @@
 
     .title-edit-btn{border:0;background:#eef6fb;color:#0d4c72;border-radius:999px;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:900;flex:0 0 auto}.title-edit-btn:hover{background:#dff0f7}.respondent-title-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 
+    .respondent-title-modal{width:min(520px,100%)}
+    .respondent-title-modal .modal-icon{background:#eef6fb;color:#0d4c72}
+    .respondent-title-field{margin-top:14px}
+    .respondent-title-field label{display:block;font-size:11px;font-weight:900;color:#18375d;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+    .respondent-title-field input{width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;outline:none}
+    .respondent-title-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
+
     /* Modale archive */
     .modal-backdrop{position:fixed;inset:0;background:rgba(15,30,55,.42);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
     .modal-backdrop.open{display:flex}
@@ -237,6 +244,22 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="respondentTitleModal" aria-hidden="true">
+    <div class="modal-box respondent-title-modal" role="dialog" aria-modal="true" aria-labelledby="respondentTitleModalTitle">
+      <div class="modal-icon">✏️</div>
+      <h2 id="respondentTitleModalTitle">Modifier le titre visible par les répondants</h2>
+      <p>Ce titre est celui qui apparaît côté répondants.</p>
+      <div class="respondent-title-field">
+        <label for="respondentTitleInput">Titre répondants</label>
+        <input id="respondentTitleInput" type="text" onkeydown="if(event.key === 'Enter') confirmRespondentTitleEdit()">
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeRespondentTitleModal()">Annuler</button>
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="confirmRespondentTitleEdit()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const API_BASE = (typeof ITS_API_BASE !== 'undefined' && ITS_API_BASE)
       ? ITS_API_BASE
@@ -253,6 +276,7 @@
     let currentFilter = "all";
     let pendingArchiveProjectId = "";
     let pendingCloneProjectId = "";
+    let pendingRespondentTitleProjectId = "";
 
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
@@ -1414,6 +1438,7 @@
     document.addEventListener("click", e => {
       if (e.target.id === "archiveModal") closeArchiveModal();
       if (e.target.id === "cloneModal") closeCloneModal();
+      if (e.target.id === "respondentTitleModal") closeRespondentTitleModal();
       if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
         document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       }
@@ -1636,15 +1661,42 @@
     async function openRespondentTitleEditor(projectId) {
       const project = projects.find(p => getProjectId(p) === String(projectId));
       if(!project) return;
+      pendingRespondentTitleProjectId = String(projectId);
       const currentTitle = getRespondentTitle(project);
-      const nextTitle = window.prompt("Titre visible par les répondants", currentTitle);
-      if(nextTitle === null) return;
+      const modal = document.getElementById("respondentTitleModal");
+      const input = document.getElementById("respondentTitleInput");
+      if(input) input.value = currentTitle || "";
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        setTimeout(() => input && input.focus(), 80);
+      }
+    }
+
+    function closeRespondentTitleModal(){
+      pendingRespondentTitleProjectId = "";
+      const modal = document.getElementById("respondentTitleModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    async function confirmRespondentTitleEdit(){
+      const projectId = pendingRespondentTitleProjectId;
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if(!project) return closeRespondentTitleModal();
+      const currentTitle = getRespondentTitle(project);
+      const nextTitle = document.getElementById("respondentTitleInput")?.value;
       const cleaned = String(nextTitle || "").trim();
       if(!cleaned){
         alert("Le titre visible par les répondants est obligatoire.");
         return;
       }
-      if(cleaned === currentTitle) return;
+      if(cleaned === currentTitle){
+        closeRespondentTitleModal();
+        return;
+      }
 
       try{
         const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}/respondent-title`, {
@@ -1658,6 +1710,7 @@
         const payload = await res.json().catch(() => ({}));
         if(!res.ok) throw new Error(payload.error || "Impossible de modifier le titre visible répondants.");
         applyRespondentTitleLocally(project, payload.project?.displayTitle || payload.project?.title || cleaned);
+        closeRespondentTitleModal();
         renderStats();
         renderProjects();
       }catch(e){
