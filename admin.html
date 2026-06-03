@@ -534,6 +534,14 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip}#header{
 <body>
 <div id="header"></div>
 <script src="header.js"></script>
+<script src="catalogue-core.js?v=5"></script>
+<script src="catalogue-cyber.js?v=5"></script>
+<script src="catalogue-securite.js?v=6"></script>
+<script src="catalogue-qvt.js?v=5"></script>
+<script src="catalogue-transfo.js?v=5"></script>
+<script src="catalogue-rse.js?v=5"></script>
+<script src="catalogue-ethique.js?v=5"></script>
+<script src="catalogue-custom.js?v=5"></script>
 
 <main class="admin-page">
   <section class="admin-hero">
@@ -1107,18 +1115,63 @@ function getProjectsForOrg(org){
 function normalizeAdminText(value){
   return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 }
-function getProjectThemeLabel(project){
+function getProjectCatalogueAdId(project){
+  const cfg=getProjectConfig(project);
+  const payload=cfg.payload && typeof cfg.payload==="object" ? cfg.payload : {};
+  const state=cfg.state && typeof cfg.state==="object" ? cfg.state : {};
+  const meta=cfg.meta && typeof cfg.meta==="object" ? cfg.meta : {};
+  const source=cfg.source && typeof cfg.source==="object" ? cfg.source : {};
+  return String(
+    project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+    cfg.catalogueAdId || cfg.catalogue_ad_id || cfg.selectedAdId || cfg.selected_ad_id ||
+    payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+    state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+    meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+    source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+    ""
+  ).trim();
+}
+function getProjectThemeFromCatalogue(project){
+  const catalogueAdId=getProjectCatalogueAdId(project);
+  if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+  const ad=window.ITS_CATALOGUE.find(item=>String(item.id)===String(catalogueAdId));
+  return String(ad?.theme || ad?.themeLabel || "").trim();
+}
+function getExplicitProjectTheme(project){
+  const cfg=getProjectConfig(project);
+  const payload=cfg.payload && typeof cfg.payload==="object" ? cfg.payload : {};
+  const state=cfg.state && typeof cfg.state==="object" ? cfg.state : {};
+  const param=cfg.parametrage || state.parametrage || payload.parametrage || {};
+  return String(
+    project?.theme || project?.themeLabel || project?.themeName || project?.thematique || project?.thématique ||
+    cfg.theme || cfg.themeLabel || cfg.themeName || cfg.thematique || cfg.thématique ||
+    payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
+    state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
+    param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
+    ""
+  ).trim();
+}
+function inferProjectThemeFallback(project){
   const cfg=getProjectConfig(project);
   const raw=JSON.stringify(cfg || {})+" "+String(val(project,["title","name","project_title"],""));
   const text=normalizeAdminText(raw);
   if(text.includes("cyber") || text.includes("phishing") || text.includes("numerique")) return "Cybersécurité";
   if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("sante au travail")) return "QVT & RPS";
-  if(text.includes("securite") || text.includes("surete") || text.includes("btp") || text.includes("accident")) return "Sécurité & sûreté";
-  if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Management & transformation";
+  if(text.includes("securite") || text.includes("surete") || text.includes("btp") || text.includes("accident")) return "Sécurité & sûreté au travail";
+  if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
   if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
   if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
   if(text.includes("inclusion") || text.includes("diversite") || text.includes("sexisme") || text.includes("handicap") || text.includes("lgbt")) return "Diversité & inclusion";
-  return "Thématique non renseignée";
+  return "";
+}
+function getProjectThemeLabel(project){
+  const catalogueTheme=getProjectThemeFromCatalogue(project);
+  if(catalogueTheme) return catalogueTheme;
+
+  const explicitTheme=getExplicitProjectTheme(project);
+  if(explicitTheme) return explicitTheme;
+
+  return inferProjectThemeFallback(project) || "Thématique non renseignée";
 }
 function mostFrequent(values, fallback="—"){
   const counts={};
