@@ -140,6 +140,9 @@
     .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
     .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
     .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .project-update-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;border:1px solid #fecdd3;background:#fff1f2;color:#be123c;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 10px;box-shadow:0 8px 18px rgba(190,18,60,.08)}
+    .project-update-dot{width:9px;height:9px;border-radius:999px;background:#e11d48;box-shadow:0 0 0 4px rgba(225,29,72,.12);flex:0 0 auto}
+    .project-update-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .resource-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
     .resource-cat{background:#f9fbfd;border:1px solid #e4edf5;border-radius:20px;padding:15px;display:flex;gap:12px;align-items:flex-start}
     .resource-cat-ico{width:42px;height:42px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef6fb;flex:0 0 auto}
@@ -397,6 +400,7 @@
     let pendingRespondentTitleProjectId = "";
     let currentAdFilter = "all";
     let renderedTabs = { ads:false, campaigns:false, resources:false };
+    let projectUpdateNotifications = {};
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -412,6 +416,62 @@
 
     function getToken(){
       return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+    }
+
+    function notificationIsUnread(item = {}){
+      if(item.unread === true) return true;
+      if(item.unread === false) return false;
+      return !Boolean(item.readAt || item.read_at);
+    }
+
+    function getNotificationProjectId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return cleanId(item.projectId || item.project_id || meta.projectId || meta.project_id || "");
+    }
+
+    function getNotificationOrganizationId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return cleanId(item.organizationId || item.organization_id || meta.organizationId || meta.organization_id || "");
+    }
+
+    function projectUpdateLabel(item = {}){
+      const type = String(item.type || "").toLowerCase();
+      if(type.includes("reprogram")) return "Reprogrammation demandée";
+      if(type.includes("extend")) return "Prolongation demandée";
+      if(type.includes("published")) return "Publication / lien mis à jour";
+      if(type.includes("communication") || type.includes("brand_assets")) return "Kit de communication modifié";
+      if(type.includes("submitted") || type.includes("transmission") || type.includes("configuration")) return "Configuration modifiée";
+      return item.title || "Modification récente";
+    }
+
+    async function loadProjectUpdateNotifications(){
+      projectUpdateNotifications = {};
+      const token = getToken();
+      if(!token) return;
+      try{
+        const data = await apiFetch(`/api/notifications?limit=50`, {
+          headers:{ Authorization:`Bearer ${token}` },
+          cache:"no-store"
+        }, 7000);
+        const clientId = String(getClientId() || "");
+        (data.notifications || []).forEach(item => {
+          if(!notificationIsUnread(item)) return;
+          const projectId = getNotificationProjectId(item);
+          if(!projectId) return;
+          const orgId = String(getNotificationOrganizationId(item) || "");
+          if(clientId && orgId && orgId !== clientId) return;
+          if(!projectUpdateNotifications[projectId]) projectUpdateNotifications[projectId] = projectUpdateLabel(item);
+        });
+      }catch(e){
+        projectUpdateNotifications = {};
+        console.warn("Notifications projet non chargées", e);
+      }
+    }
+
+    function renderProjectUpdateBadge(project){
+      const label = projectUpdateNotifications[String(project?.id || "")] || "";
+      if(!label) return "";
+      return `<div class="project-update-badge" title="${escapeAttr(label)}"><span class="project-update-dot" aria-hidden="true"></span><span class="project-update-text">${escapeHtml(label)}</span></div>`;
     }
 
     function decodeJwt(token){
@@ -1111,6 +1171,8 @@ function renderProjectTitleDetails(project){
           logClientFolderMappings(clientId, data.clients || [], currentClient?.projects || []);
         }
 
+        await loadProjectUpdateNotifications();
+
         if(!currentClient){
           alert("Client introuvable ou non autorisé.");
           goBackToClients();
@@ -1593,6 +1655,7 @@ function renderProjectTitleDetails(project){
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
+            ${renderProjectUpdateBadge(project)}
             ${renderProjectTitleDetails(project)}
             ${renderProjectIds(project)}
             ${renderThemeTags(project)}

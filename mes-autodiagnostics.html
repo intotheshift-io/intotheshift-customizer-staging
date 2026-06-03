@@ -134,6 +134,9 @@
     .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
     .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
     .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .project-update-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;border:1px solid #fecdd3;background:#fff1f2;color:#be123c;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 9px;box-shadow:0 8px 18px rgba(190,18,60,.08)}
+    .project-update-dot{width:9px;height:9px;border-radius:999px;background:#e11d48;box-shadow:0 0 0 4px rgba(225,29,72,.12);flex:0 0 auto}
+    .project-update-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .card.draft-card{border-color:#d8e2ec}
     .card.published-card{border-color:#b8dfe0}
     .card.submitted-card{border-color:#ffdf8a}
@@ -304,9 +307,61 @@
     let pendingArchiveProjectId = "";
     let pendingCloneProjectId = "";
     let pendingRespondentTitleProjectId = "";
+    let projectUpdateNotifications = {};
 
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
+    }
+
+    function notificationIsUnread(item = {}){
+      if(item.unread === true) return true;
+      if(item.unread === false) return false;
+      return !Boolean(item.readAt || item.read_at);
+    }
+
+    function getNotificationProjectId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return String(item.projectId || item.project_id || meta.projectId || meta.project_id || "").trim();
+    }
+
+    function projectUpdateLabel(item = {}){
+      const type = String(item.type || "").toLowerCase();
+      if(type.includes("reprogram")) return "Reprogrammation transmise";
+      if(type.includes("extend")) return "Prolongation transmise";
+      if(type.includes("published")) return "Publication / lien mis à jour";
+      if(type.includes("communication") || type.includes("brand_assets")) return "Kit de communication modifié";
+      if(type.includes("submitted") || type.includes("transmission") || type.includes("configuration")) return "Configuration modifiée";
+      return item.title || "Modification récente";
+    }
+
+    async function loadProjectUpdateNotifications(){
+      projectUpdateNotifications = {};
+      const authToken = token();
+      if(!authToken) return;
+      try{
+        const res = await fetch(`${API_BASE}/api/notifications?limit=50`, {
+          cache:"no-store",
+          headers:{ Authorization:`Bearer ${authToken}` }
+        });
+        if(!res.ok) return;
+        const data = await res.json();
+        (data.notifications || []).forEach(item => {
+          if(!notificationIsUnread(item)) return;
+          const projectId = getNotificationProjectId(item);
+          if(!projectId) return;
+          if(!projectUpdateNotifications[projectId]) projectUpdateNotifications[projectId] = projectUpdateLabel(item);
+        });
+      }catch(e){
+        projectUpdateNotifications = {};
+        console.warn("Notifications projet non chargées", e);
+      }
+    }
+
+    function renderProjectUpdateBadge(project){
+      const projectId = getProjectId(project);
+      const label = projectUpdateNotifications[String(projectId || "")] || "";
+      if(!label) return "";
+      return `<div class="project-update-badge" title="${escapeAttr(label)}"><span class="project-update-dot" aria-hidden="true"></span><span class="project-update-text">${escapeHtml(label)}</span></div>`;
     }
 
     function quotaFormatNumber(v){
@@ -1397,6 +1452,7 @@
 
             <div>
               <div class="title">${escapeHtml(title)}</div>
+              ${renderProjectUpdateBadge(p)}
               ${renderTitleDetails(p)}
               <div class="meta">
                 Créé le ${formatDate(p.created_at || p.createdAt)} ·
@@ -1535,8 +1591,10 @@
 
         const data = await res.json();
         projects = Array.isArray(data) ? data : (data.projects || data.items || []);
+        await loadProjectUpdateNotifications();
       } catch (e) {
         projects = JSON.parse(localStorage.getItem("its_projects_cache") || "[]");
+        await loadProjectUpdateNotifications();
       }
 
       renderStats();
