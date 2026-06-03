@@ -2414,7 +2414,7 @@ function renderProfils(ch) {
           </div>
         </div>
         <div class="pfield">
-          <label>Mots clés / conseils courts <span class="help-tip" tabindex="0" data-help="Ces mots-clés apparaissent dans le récapitulatif final du répondant. Utilisez-les comme repères ou conseils très courts : ex. vérifier, signaler, demander un avis, prendre du recul.">?</span></label>
+          <label>Mots clés / conseils courts <span style="color:#94a3b8;text-transform:none;letter-spacing:0;font-weight:600">(optionnel)</span> <span class="help-tip" tabindex="0" data-help="Ces mots-clés sont optionnels. S’ils sont renseignés, ils apparaissent dans le récapitulatif final du répondant comme repères ou conseils très courts : ex. vérifier, signaler, demander un avis, prendre du recul.">?</span></label>
           <div class="mkw-wrap" onclick="if(!itsQuestionsIsEditBlocked()) this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" ${disabledAttr} placeholder="+ mot clé" onkeydown="if(itsQuestionsIsEditBlocked()) return false; addMkw(event,${i})"></div>
         </div>
       </div>
