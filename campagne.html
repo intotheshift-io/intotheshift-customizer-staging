@@ -185,6 +185,22 @@ function slugify(t){return String(t||'').toLowerCase().normalize('NFD').replace(
 function p(){state.parametrage=state.parametrage||{};return state.parametrage}function c(){state.campagne=state.campagne||{};return state.campagne}
 function themeTitle(){return (state.theme&&state.theme.title)||state.title||p().themeName||'Nouveau thème'}
 function cleanTheme(){return String(themeTitle()).replace(/^Autodiagnostic\s+/i,'')}
+function respondentVisibleTitle(){
+  const param=p();
+  return String(
+    param.titre_repondants ||
+    param.titreRespondants ||
+    param.titre_visible_repondants ||
+    param.titreVisibleRepondants ||
+    param.titre_visible ||
+    param.titreVisible ||
+    param.titre ||
+    state.titre_repondants ||
+    state.titreRespondants ||
+    state.title ||
+    cleanTheme()
+  ).trim();
+}
 function companyName(){return String(p().entreprise||p().company||p().client||'').trim()}
 function companySlug(){return slugify(companyName())}
 function getPublishedShareUrl(){
@@ -1112,7 +1128,7 @@ function statusLabel(){
   return 'Brouillon';
 }
 function applyBackendHydrationUI(){
-  document.getElementById('bc-theme').textContent=cleanTheme();
+  document.getElementById('bc-theme').textContent=respondentVisibleTitle();
   document.getElementById('sb-title').textContent=p().nom||cleanTheme();
   document.getElementById('sb-status').textContent=statusLabel();
   document.getElementById('sb-q').textContent=countQuestions();

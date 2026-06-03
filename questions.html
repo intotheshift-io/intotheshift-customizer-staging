@@ -1891,11 +1891,28 @@ function setTab(i, tab) {
 }
 
 
+function getRespondentVisibleTitle(){
+  const param = state.parametrage || state.meta || {};
+  return String(
+    param.titre_repondants ||
+    param.titreRespondants ||
+    param.titre_visible_repondants ||
+    param.titreVisibleRepondants ||
+    param.titre_visible ||
+    param.titreVisible ||
+    param.titre ||
+    state.titre_repondants ||
+    state.titreRespondants ||
+    state.title ||
+    ''
+  ).trim();
+}
+
 function updateBreadcrumb(label){
   const titleEl = document.getElementById('bc-title');
   const sepEl = document.getElementById('bc-title-sep');
   const curEl = document.getElementById('bc-cur');
-  const title = String(state.title || '').trim();
+  const title = getRespondentVisibleTitle();
   if(title){
     titleEl.textContent = title;
     titleEl.style.display = 'inline';
