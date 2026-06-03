@@ -1414,6 +1414,9 @@
                     🧬 Cloner
                   </button>
                 ` : ""}
+                <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this)" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
+                  💾 Enregistrer comme modèle
+                </button>
                 ${status === "unpublished" ? `
                   <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}')">
                     📦 Archiver
@@ -1489,6 +1492,49 @@
       renderStats();
       renderProjects();
       refreshArchiveCounterFromApi();
+    }
+
+    async function saveProjectAsCustomModel(id, btn) {
+      if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+
+      const originalText = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = "⏳ Enregistrement…";
+      }
+
+      try {
+        const themes = typeof getProjectThemes === "function" ? getProjectThemes(project) : [];
+        const title = getTitle(project) || "Modèle personnalisé";
+        const res = await fetch(`${API_BASE}/api/custom-models`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token()}`
+          },
+          body: JSON.stringify({
+            projectId: id,
+            title,
+            subject: themes[0] || "Personnalisé",
+            audience: getProjectData(project).audience || "Collaborateurs",
+            description: `Modèle créé depuis l’autodiagnostic ${title}`
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.model) throw new Error(data.error || "Enregistrement impossible");
+
+        if (btn) btn.innerHTML = "✅ Modèle enregistré";
+        alert(data.updated ? "Le modèle existant a été mis à jour." : "Le modèle a été ajouté à vos modèles personnalisés.");
+      } catch (e) {
+        alert(e.message || "Impossible d’enregistrer ce modèle pour le moment.");
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalText || "💾 Enregistrer comme modèle";
+        }
+      }
     }
 
     function duplicateProject(id) {
