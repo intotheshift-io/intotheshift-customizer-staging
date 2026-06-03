@@ -143,10 +143,11 @@
       if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
       list.innerHTML=rows.map(p=>{
         const id=projectId(p);
-        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn primary" onclick="reprogramProject('${escapeAttr(id)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">🚀 Reprogrammer</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')" title="Nouvel autodiagnostic : une nouvelle URL sera délivrée après publication.">🧬 Cloner</button></div></article>`;
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openContentOnlyView('${escapeAttr(id)}')">👁 Voir le contenu</button><button class="btn primary" onclick="reprogramProject('${escapeAttr(id)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">🚀 Reprogrammer</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')" title="Nouvel autodiagnostic : une nouvelle URL sera délivrée après publication.">🧬 Cloner</button></div></article>`;
       }).join("");
     }
     function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
+    function openContentOnlyView(id){ if(!id)return; location.href=`questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1`; }
     async function reprogramProject(id){
       if(!id)return;
       const p = archives.find(item => projectId(item) === String(id));

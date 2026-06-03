@@ -594,11 +594,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 }
 
 
-/* Mode Voir le contenu : aucune navigation ni édition */
-body.its-content-only-view .breadcrumb .bc-link,
-body.its-content-only-view .cni-head,
-body.its-content-only-view .cni-tab,
-body.its-content-only-view .cni-delete,
+/* Mode Voir le contenu : consultation possible, édition bloquée */
 body.its-content-only-view .btn-add-chapter,
 body.its-content-only-view .btn-save,
 body.its-content-only-view .chap-actions,
@@ -608,14 +604,34 @@ body.its-content-only-view .tag-add,
 body.its-content-only-view .score-pill,
 body.its-content-only-view .mkw-x,
 body.its-content-only-view .mkw-inp,
-body.its-content-only-view .media-slot{
+body.its-content-only-view .media-slot,
+body.its-content-only-view .rte-toolbar button{
   pointer-events:none!important;
   cursor:not-allowed!important;
   opacity:.55!important;
 }
-body.its-content-only-view .cni.on{opacity:1!important}
-body.its-content-only-view .cni.on .cni-head{opacity:1!important}
-body.its-content-only-view .sidebar{user-select:none}
+body.its-content-only-view .editable-q,
+body.its-content-only-view .chap-name-inp,
+body.its-content-only-view .chap-desc-inp,
+body.its-content-only-view .la-inp,
+body.its-content-only-view .mc-inp,
+body.its-content-only-view .seuil-inp,
+body.its-content-only-view .pfield input,
+body.its-content-only-view .rte-area{
+  cursor:default!important;
+  background:#f8fafc!important;
+}
+body.its-content-only-view .edit-hint{display:none!important}
+body.its-content-only-view .cni-head,
+body.its-content-only-view .cni-tab,
+body.its-content-only-view .q-header,
+body.its-content-only-view .q-chevron-btn{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  opacity:1!important;
+}
+body.its-content-only-view .cni-delete{display:none!important}
+body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;cursor:not-allowed!important;opacity:.42!important}
 
 </style>
 </head>
@@ -750,14 +766,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
 const isContentOnlyView = urlParams.get('contentOnly') === '1' || urlParams.get('viewContent') === '1';
 
-function blockContentOnlyNavigation(event){
-  if(event){
-    event.preventDefault();
-    event.stopPropagation();
-  }
-  return false;
+function itsQuestionsIsEditBlocked(){
+  return Boolean(isContentOnlyView);
 }
-if(isContentOnlyView) document.body.classList.add('its-content-only-view');
+
+if(isContentOnlyView){
+  document.body.classList.add('its-content-only-view');
+}
 
 function makeBlankDiagnosticState(){
   return {
@@ -1075,6 +1090,19 @@ if (isBlankMode) {
   }
   window.location.href = 'index.html';
 }
+
+
+function injectContentOnlyBanner(){
+  if(!isContentOnlyView || document.getElementById('its-content-only-banner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'its-content-only-banner';
+  banner.style.cssText = 'background:#f0fbf2;border-bottom:1px solid #b8e8c0;color:#18375d;padding:12px 24px;font-family:Asap,sans-serif;font-size:13px;line-height:1.45;font-weight:700';
+  banner.innerHTML = 'Consultation du contenu uniquement : les questions et profils sont consultables, mais aucune modification n’est possible. Pour toute modification, contactez <a href="mailto:contact@intotheshift.io" style="color:#0d4c72;font-weight:900;text-decoration:none">contact@intotheshift.io</a>.';
+  const header = document.getElementById('header');
+  if(header && header.parentNode) header.parentNode.insertBefore(banner, header.nextSibling);
+  else document.body.insertBefore(banner, document.body.firstChild);
+}
+injectContentOnlyBanner();
 
 const PROV = {
   AI: { key:'ai', label:'Base assistée par IA', ico:'🤖', cls:'' },
@@ -1818,7 +1846,7 @@ function renderNav() {
     const div = document.createElement('div');
     div.className = `cni ${i === activeChap ? 'on' : ''}`;
     div.innerHTML = `
-      <div class="cni-head" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `selectChap(${i})`}">
+      <div class="cni-head" onclick="selectChap(${i})">
         <div class="cni-lbl">Chapitre ${i+1}</div>
         <div class="cni-title-row">
           <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'} <span class="edit-hint" title="Titre modifiable">✏️</span></div>
@@ -1828,8 +1856,8 @@ function renderNav() {
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorP}"></span><span class="cni-qcount">${nProfils}/3 profils</span></div>
       </div>
       <div class="cni-tabs">
-        <button class="cni-tab ${i === activeChap && activeTab === 'questions' ? 'on' : ''} ${isContentOnlyView ? 'disabled' : ''}" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `setTab(${i},'questions')`}">Questions</button>
-        <button class="cni-tab ${i === activeChap && activeTab === 'profils' ? 'on' : ''} ${chapterQuestionsReady(c) && !isContentOnlyView ? '' : 'disabled'}" onclick="${isContentOnlyView ? 'blockContentOnlyNavigation(event)' : `tryOpenProfiles(${i})`}">Profils</button>
+        <button class="cni-tab ${i === activeChap && activeTab === 'questions' ? 'on' : ''}" onclick="setTab(${i},'questions')">Questions</button>
+        <button class="cni-tab ${i === activeChap && activeTab === 'profils' ? 'on' : ''} ${chapterQuestionsReady(c) ? '' : 'disabled'}" onclick="tryOpenProfiles(${i})">Profils</button>
       </div>`;
     nav.appendChild(div);
   });
@@ -1839,7 +1867,6 @@ function renderNav() {
 }
 
 function selectChap(i) {
-  if(isContentOnlyView) return false;
   activeChap = i;
   openCards = {};
   renderNav();
@@ -1848,7 +1875,6 @@ function selectChap(i) {
 }
 
 function setTab(i, tab) {
-  if(isContentOnlyView) return false;
   if(tab === 'profils'){
     if(!chapterQuestionsReady(chapters[i])){
       tryOpenProfiles(i);
@@ -1983,6 +2009,8 @@ function emptyActionCard(title, text, onclick, primary, disabled){
 }
 
 function renderQuestions(ch) {
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
   const n = ch.questions.length;
   const pct = Math.min(100, Math.round((n / MAX_QUESTIONS_PER_CHAPTER) * 100));
   const isEmpty = n === 0;
@@ -1995,10 +2023,10 @@ function renderQuestions(ch) {
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
         <div class="chap-title-edit-row">
-          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <input class="chap-name-inp" value="${esc(ch.name)}" ${readonlyAttr} placeholder="Renommer le chapitre" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].name=this.value;saveState();renderNav()">
           <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
-        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" ${readonlyAttr} oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
         <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’aperçu répondant</button>
@@ -2009,10 +2037,10 @@ function renderQuestions(ch) {
 
   const emptyState = `
     <div style="padding:12px 0 0">
-      ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, false)}
+      ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, editBlocked)}
       ${catalogueSupport ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, false)}
-        ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, !aiAllowed)}
+        ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, editBlocked)}
+        ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, editBlocked || !aiAllowed)}
       </div>` : ''}
     </div>`;
 
@@ -2042,6 +2070,7 @@ function toggleLikertInfo() {
 }
 
 function updateQuestionText(qid, value) {
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if (q) {
     q.text = value;
@@ -2052,16 +2081,20 @@ function updateQuestionText(qid, value) {
 function renderCard(q, qi) {
   const open = openCards[q.id];
   const p = PROV[q.prov] || PROV.AI;
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
+  const disabledAttr = editBlocked ? 'disabled' : '';
+  const contentEditableAttr = editBlocked ? 'false' : 'true';
   const provHTML = `<span class="tag-prov ${p.cls}">${p.ico} ${p.label}</span>` + complianceBadgesHTML(q.prov);
-  const tagsHTML = (q.tags || []).slice(0,3).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span></span>`).join('');
-  const addBtn = (q.tags || []).length < 3 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
+  const tagsHTML = (q.tags || []).slice(0,3).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}${editBlocked ? '' : `<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span>`}</span>`).join('');
+  const addBtn = !editBlocked && (q.tags || []).length < 3 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
   let bodyHTML = '';
 
   if (open) {
     const isLikert = q.type === 'likert';
     const answersHTML = isLikert
-      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><div class="editable-field-wrap"><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
-      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><div class="editable-field-wrap"><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
+      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><div class="editable-field-wrap"><input class="la-inp" value="${esc(a.l)}" ${readonlyAttr} oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" ${editBlocked ? 'aria-disabled="true"' : ''} onclick="if(itsQuestionsIsEditBlocked()) return false; editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
+      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><div class="editable-field-wrap"><input class="mc-inp" value="${esc(a.l)}" ${readonlyAttr} oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><div class="score-pill" ${editBlocked ? 'aria-disabled="true"' : ''} onclick="if(itsQuestionsIsEditBlocked()) return false; editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
 
     bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive <span class="help-tip" tabindex="0" data-help="Le score n’est pas visible par les répondants. Il sert uniquement à calculer la moyenne du chapitre et à afficher le bon profil de résultat.">?</span></div>${answersHTML}</div>`;
   }
@@ -2071,7 +2104,7 @@ function renderCard(q, qi) {
       <div class="q-num">${qi + 1}</div>
       <div class="q-main">
         <div class="editable-wrap">
-          <div class="q-text editable-q" contenteditable="true" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+          <div class="q-text editable-q" contenteditable="${contentEditableAttr}" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="if(itsQuestionsIsEditBlocked()) return false; updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
           <span class="edit-hint" title="Question modifiable">✏️</span>
         </div>
         <div class="q-tags-row">${provHTML}${tagsHTML}${addBtn}</div>
@@ -2079,8 +2112,8 @@ function renderCard(q, qi) {
       <div class="q-right" onclick="event.stopPropagation()">
         <button class="q-chevron-btn" onclick="toggleCard('${q.id}')">▾</button>
         <div class="q-vsep"></div>
-        <button class="qa-btn regen-q" title="Créer un nouveau brouillon avec l’aide rédactionnelle" onclick="regenOne('${q.id}',this)">${icoRegen}</button>
-        <button class="qa-btn del" title="Supprimer" onclick="deleteQ('${q.id}')">${icoTrash}</button>
+        <button class="qa-btn regen-q" ${disabledAttr} title="Créer un nouveau brouillon avec l’aide rédactionnelle" onclick="if(itsQuestionsIsEditBlocked()) return false; regenOne('${q.id}',this)">${icoRegen}</button>
+        <button class="qa-btn del" ${disabledAttr} title="Supprimer" onclick="if(itsQuestionsIsEditBlocked()) return false; deleteQ('${q.id}')">${icoTrash}</button>
       </div>
     </div>
     ${bodyHTML}
@@ -2088,6 +2121,7 @@ function renderCard(q, qi) {
 }
 
 function updateAnswer(qid, ai, field, value){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q && q.answers[ai]){
     q.answers[ai][field] = field === 's' ? Number(value) : value;
@@ -2097,6 +2131,7 @@ function updateAnswer(qid, ai, field, value){
 }
 
 function addAnswer(qid){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q){
     q.answers.push({l:'Nouvelle réponse',s:1});
@@ -2107,6 +2142,7 @@ function addAnswer(qid){
 }
 
 function deleteAnswer(qid, ai){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q){
     q.answers.splice(ai,1);
@@ -2119,8 +2155,10 @@ function deleteAnswer(qid, ai){
 
 
 function previewUrl(mode){
-  saveState();
-  persistQuestionsStateForNextStep();
+  if(!itsQuestionsIsEditBlocked()){
+    saveState();
+    persistQuestionsStateForNextStep();
+  }
   const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
   const params = new URLSearchParams();
   if(mode) params.set('preview', mode);
@@ -2134,8 +2172,10 @@ function openRespondentPreview(){
 }
 
 function openFinalPreview(){
-  saveState();
-  persistQuestionsStateForNextStep();
+  if(!itsQuestionsIsEditBlocked()){
+    saveState();
+    persistQuestionsStateForNextStep();
+  }
   const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
   const params = new URLSearchParams();
   if(projectId) params.set('projectId', projectId);
@@ -2144,6 +2184,10 @@ function openFinalPreview(){
 }
 
 function renderProfils(ch) {
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
+  const disabledAttr = editBlocked ? 'disabled' : '';
+  const contentEditableAttr = editBlocked ? 'false' : 'true';
   if(!chapterQuestionsReady(ch)){
     openProfilesLockedModal();
     activeTab = 'questions';
@@ -2160,9 +2204,9 @@ function renderProfils(ch) {
       <div class="seuil-dot" style="background:${pc.couleur}"></div>
       <span class="seuil-label">${esc((ch.profils[i] && ch.profils[i].niveau) || pc.nom)}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
       <div class="seuil-range">
-        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" ${readonlyAttr} onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
         <span class="seuil-sep">→</span>
-        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.max}" onchange="chapters[activeChap].seuils[${i}].max=parseFloat(this.value);saveState();updateSaveButton()">
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.max}" ${readonlyAttr} onchange="chapters[activeChap].seuils[${i}].max=parseFloat(this.value);saveState();updateSaveButton()">
       </div>
     </div>`;
   }).join('');
@@ -2184,29 +2228,29 @@ function renderProfils(ch) {
       <div class="profil-body">
         <div class="pfield">
           <label>Titre du profil en quelques mots <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce titre est visible par les répondants sur la page de résultat du chapitre. Il doit résumer le profil en quelques mots.">?</span></label>
-          <input type="text" value="${esc(p.titre)}" placeholder="Ex. Vous êtes en progression sur ce sujet" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
+          <input type="text" value="${esc(p.titre)}" ${readonlyAttr} placeholder="Ex. Vous êtes en progression sur ce sujet" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
           <label>Résumé du profil <span class="help-tip" tabindex="0" data-help="Phrase courte affichée dans le récapitulatif final.">?</span></label>
-          <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Phrase courte affichée dans le récapitulatif final" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
+          <input type="text" class="short" value="${esc(p.phrase)}" ${readonlyAttr} placeholder="Phrase courte affichée dans le récapitulatif final" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
           <label>Description détaillée <span class="help-tip" tabindex="0" data-help="Cette description est visible à la fin du chapitre pendant le parcours de passation. Elle doit expliquer le résultat avec bienveillance et proposer une piste concrète.">?</span></label>
           <div class="rte-wrap">
             <div class="rte-toolbar">
-              <button class="rte-btn" onclick="fmt('bold')" title="Gras"><b>G</b></button>
-              <button class="rte-btn" onclick="fmt('underline')" title="Souligné"><u>S</u></button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('bold')" title="Gras"><b>G</b></button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('underline')" title="Souligné"><u>S</u></button>
               <div class="rte-sep"></div>
-              <button class="rte-btn" onclick="fmt('insertUnorderedList')" title="Liste à puces">☰</button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('insertUnorderedList')" title="Liste à puces">☰</button>
               <div class="rte-sep"></div>
-              <button class="rte-btn" onclick="addLink()" title="Lien hypertexte">🔗</button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; addLink()" title="Lien hypertexte">🔗</button>
             </div>
-            <div class="rte-area" contenteditable="true" data-placeholder="Description bienveillante et actionnable…" oninput="chapters[activeChap].profils[${i}].description=this.innerHTML;saveState();updateSaveButton()">${p.description}</div>
+            <div class="rte-area" contenteditable="${contentEditableAttr}" data-placeholder="Description bienveillante et actionnable…" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].profils[${i}].description=this.innerHTML;saveState();updateSaveButton()">${p.description}</div>
           </div>
         </div>
         <div class="pfield">
           <label>Mots clés / conseils courts <span class="help-tip" tabindex="0" data-help="Ces mots-clés apparaissent dans le récapitulatif final du répondant. Utilisez-les comme repères ou conseils très courts : ex. vérifier, signaler, demander un avis, prendre du recul.">?</span></label>
-          <div class="mkw-wrap" onclick="this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" placeholder="+ mot clé" onkeydown="addMkw(event,${i})"></div>
+          <div class="mkw-wrap" onclick="if(!itsQuestionsIsEditBlocked()) this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" ${disabledAttr} placeholder="+ mot clé" onkeydown="if(itsQuestionsIsEditBlocked()) return false; addMkw(event,${i})"></div>
         </div>
       </div>
     </div>`;
@@ -2222,10 +2266,10 @@ function renderProfils(ch) {
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
         <div class="chap-title-edit-row">
-          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
+          <input class="chap-name-inp" value="${esc(ch.name)}" ${readonlyAttr} placeholder="Renommer le chapitre" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].name=this.value;saveState();renderNav()">
           <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
-        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" ${readonlyAttr} oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].desc=this.value;saveState()">
       </div>
     </div>
     <div class="seuils-card">
@@ -2244,6 +2288,7 @@ function toggleCard(id) {
 }
 
 function deleteQ(id) {
+  if(itsQuestionsIsEditBlocked()) return false;
   chapters[activeChap].questions = chapters[activeChap].questions.filter(q => q.id !== id);
   delete openCards[id];
   refreshThresholdsAfterQuestionChange();
@@ -2254,6 +2299,7 @@ function deleteQ(id) {
 }
 
 function regenOne(id, btn) {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const ch = chapters[activeChap];
   const idx = ch.questions.findIndex(q => q.id === id);
@@ -2328,6 +2374,7 @@ function addOneAI() {
 }
 
 function removeTag(qid, ti) {
+  if(itsQuestionsIsEditBlocked()) return false;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if (q) q.tags.splice(ti, 1);
   saveState();
@@ -2335,6 +2382,7 @@ function removeTag(qid, ti) {
 }
 
 function addTag(qid) {
+  if(itsQuestionsIsEditBlocked()) return false;
   const t = prompt('Nom du tag :');
   if (!t) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
@@ -2344,6 +2392,7 @@ function addTag(qid) {
 }
 
 function askRegen() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const n = chapters[activeChap].questions.length;
   document.getElementById('modal-q-count').textContent = `${n} question${n!==1?'s':''}`;
@@ -2355,6 +2404,7 @@ function closeRegenModal() {
 }
 
 function confirmRegen() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   closeRegenModal();
   const sources = currentLib().slice(0, DEFAULT_GENERATED_QUESTIONS);
@@ -2368,6 +2418,7 @@ function confirmRegen() {
 }
 
 function editScore(pill, e, qid, ai) {
+  if(itsQuestionsIsEditBlocked()) return false;
   e.stopPropagation();
   const v = prompt('Score entre 0 et 2 :', pill.dataset.score);
   if (v === null) return;
@@ -2379,12 +2430,14 @@ function editScore(pill, e, qid, ai) {
 }
 
 function removeMkw(profIdx, mkIdx) {
+  if(itsQuestionsIsEditBlocked()) return false;
   chapters[activeChap].profils[profIdx].motscles.splice(mkIdx, 1);
   saveState();
   renderMain();
 }
 
 function addMkw(e, profIdx) {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (e.key !== 'Enter') return;
   const val = e.target.value.trim();
   if (!val) return;
@@ -2398,10 +2451,12 @@ function genProfil(profIdx) {
   // Fonction conservée par compatibilité, sans contenu générique local.
 }
 function fmt(cmd) {
+  if(itsQuestionsIsEditBlocked()) return false;
   document.execCommand(cmd, false, null);
 }
 
 function addLink() {
+  if(itsQuestionsIsEditBlocked()) return false;
   const url = prompt('URL du lien :');
   if (url) document.execCommand('createLink', false, url);
 }
@@ -2422,6 +2477,7 @@ function libraryMatchesContext(q){
 }
 
 function openPanel() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if(!chapterUsesCatalogueSupport()){ openLibrarySoon(); return; }
   activeFilterTag = '';
   document.getElementById('panel-search-inp').value = '';
@@ -2618,6 +2674,7 @@ function updateSaveButton() {
 }
 
 function trySave() {
+  if(itsQuestionsIsEditBlocked()) return;
   syncToState();
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
@@ -2692,7 +2749,6 @@ function itsCurrentUserRoleForQuestions(){
 }
 
 function restoreAdminQuestionNavigation(){
-  if(isContentOnlyView) return;
   if(itsCurrentUserRoleForQuestions() !== 'admin') return;
 
   // Le mode lecture seule global peut désactiver tous les boutons d'une page transmise/publiée.
