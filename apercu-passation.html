@@ -111,6 +111,12 @@ function resourceUrl(r){
   if(!clean) return "";
   return /^https?:\/\//i.test(clean) ? clean : "";
 }
+function finalResources(){
+  const fromParam = state?.parametrage?.resources;
+  if(Array.isArray(fromParam) && fromParam.length) return fromParam;
+  const fromRoot = state?.resources;
+  return Array.isArray(fromRoot) ? fromRoot : [];
+}
 function profileKeywords(p){ return (p?.keywords || p?.motscles || []).filter(Boolean); }
 const PROFILE_COLORS = ['#ff847e', '#ffc744', '#77cd8a'];
 function profileIndexForScore(profiles, avg){
@@ -232,11 +238,11 @@ function renderFinal(){
         ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
       </div>`;
     }).join("")}
-    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${((state.parametrage && Array.isArray(state.parametrage.resources) ? state.parametrage.resources : state.resources) || []).map(r=>{
+    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${finalResources().map(r=>{
       const url = resourceUrl(r);
       return `<div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:7px">
         <div>${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
-        ${url ? `<a href="${escAttr(url)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:8px;font-size:12px;font-weight:800;color:#0d4c72;text-decoration:none">Tester le lien</a>` : ""}
+        ${url ? `<a href="${escAttr(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:inline-flex;margin-top:8px;font-size:12px;font-weight:800;color:#0d4c72;text-decoration:none;pointer-events:auto;position:relative;z-index:2">Tester le lien</a>` : ""}
       </div>`;
     }).join("")}</div>
   </div>`;
