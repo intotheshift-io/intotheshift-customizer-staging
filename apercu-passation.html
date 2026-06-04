@@ -232,7 +232,7 @@ function renderFinal(){
         ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
       </div>`;
     }).join("")}
-    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${(state.resources||[]).map(r=>{
+    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${((state.parametrage && Array.isArray(state.parametrage.resources) ? state.parametrage.resources : state.resources) || []).map(r=>{
       const url = resourceUrl(r);
       return `<div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:7px">
         <div>${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
