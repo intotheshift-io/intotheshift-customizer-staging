@@ -74,18 +74,35 @@ body{font-family:'Asap',sans-serif;background:#eef0f4;min-height:100vh;color:#18
 <div id="app"></div>
 <script src="app.js"></script>
 <script>
-let state = itsLoad();
-if(!state.chapters){ document.getElementById("app").innerHTML="<div class='page'><div class='card'>Aucun autodiagnostic chargé.</div></div>"; }
+let state = {};
 let step="home", ci=0, qi=0, selected=null, scores=[];
-const previewMode = new URLSearchParams(window.location.search).get("preview") || "";
-const previewFrom = new URLSearchParams(window.location.search).get("from") || "";
+const previewParams = new URLSearchParams(window.location.search);
+const previewMode = previewParams.get("preview") || "";
+const previewFrom = previewParams.get("from") || "";
 // Depuis l’onglet Profils, l’aperçu répondant doit ignorer la page socio-démo
 // car elle n’est pas encore paramétrée à cette étape.
 if(previewMode === "respondent" || previewFrom === "profiles") step = "question";
 if(previewMode === "final") step = "final";
 
+async function loadPreviewState(){
+  let loaded = {};
+  try{
+    if(typeof itsBootstrapProjectFromUrl === "function") loaded = await itsBootstrapProjectFromUrl();
+  }catch(e){ console.warn("Chargement projet aperçu impossible", e); }
+  if(!loaded || typeof loaded !== "object" || !Array.isArray(loaded.chapters)){
+    loaded = (typeof itsLoad === "function") ? itsLoad() : {};
+  }
+  return loaded || {};
+}
+
 
 function closePreview(){
+  try{
+    if(window.parent && window.parent !== window && typeof window.parent.closePassationPreview === "function"){
+      window.parent.closePassationPreview();
+      return;
+    }
+  }catch(e){}
   try{
     window.close();
     setTimeout(()=>{
@@ -99,6 +116,7 @@ function closePreview(){
     else { history.back(); }
   }
 }
+
 
 function title(){ return state.meta?.titre || state.title || "Autodiagnostic"; }
 function totalQ(){ return state.chapters.reduce((a,c)=>a+(c.questions||[]).length,0); }
@@ -248,7 +266,15 @@ function renderFinal(){
   </div>`;
 }
 
-render();
+async function bootPreview(){
+  state = await loadPreviewState();
+  if(!state || !Array.isArray(state.chapters) || !state.chapters.length){
+    document.getElementById("app").innerHTML="<div class='page'><div class='card'>Aucun autodiagnostic chargé.</div></div>";
+    return;
+  }
+  render();
+}
+bootPreview();
 </script>
 </body>
 </html>
