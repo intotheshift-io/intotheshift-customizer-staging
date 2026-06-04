@@ -1531,7 +1531,7 @@ async function transmit(){
   } else {
     state.transmission.status = 'send_error';
     if (typeof itsSave === 'function') itsSave(state);
-    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement par le backend. Vérifiez la configuration email serveur ou contactez contact@intotheshift.io.');
+    showTransmitModal('error', 'Transmission non confirmée', 'La configuration n’a pas pu être transmise.<br>Vérifiez les informations renseignées (notamment les adresses email des contacts) puis réessayez.<br><br>Si le problème persiste, contactez le support : contact@intotheshift.io');
     document.getElementById('btn-transmit').disabled = false;
   }
 }
