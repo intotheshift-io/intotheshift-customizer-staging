@@ -30,6 +30,21 @@ body{font-family:'Asap',sans-serif;background:#eef0f4;min-height:100vh;color:#18
 .kw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .kw{display:inline-flex;align-items:center;border:1px solid #c5cfdc;background:#edf1f7;color:#18375d;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800}
 
+.socio-hint{font-size:12px;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin-bottom:12px;line-height:1.45}
+.result-card{background:#fff;border-radius:14px;box-shadow:0 1px 8px rgba(0,0,0,.06);margin-bottom:12px;overflow:hidden}
+.result-head{padding:22px 20px;border-left:4px solid #77cd8a}
+.result-chapter{font-size:12px;color:#18375d;margin-bottom:14px;line-height:1.35}
+.result-title{font-size:20px;font-weight:800;color:#001b3f;line-height:1.25;margin-bottom:6px}
+.result-desc{font-size:13px;color:#001b3f;line-height:1.55;margin-bottom:14px}
+.result-toggle{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:none;background:#fff;color:#18375d;font-size:12px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer;padding:9px 18px;border-top:1px solid #e2e8f0}
+.result-toggle:before,.result-toggle:after{content:"";height:1px;background:#d8e0ea;flex:1}
+.coll-panel{display:none;padding:0 20px 20px;background:#fff}
+.coll-panel.open{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}
+.coll-box{background:#f8fafc;border-radius:8px;padding:14px 12px;color:#001b3f}
+.coll-pct{font-size:28px;font-weight:900;line-height:1}.coll-pct span{font-size:14px}.coll-lbl{font-size:11px;line-height:1.35;margin-top:6px;color:#18375d}
+.coll-bars{display:flex;flex-direction:column;gap:7px}.coll-line{display:grid;grid-template-columns:1fr 1.3fr;gap:9px;align-items:center;font-size:11px;color:#18375d;line-height:1.35}.coll-track{height:6px;border-radius:6px;background:#e8edf4;overflow:hidden}.coll-fill{height:100%;border-radius:6px;background:#77cd8a}.coll-fill.mid{background:#ffc744}.coll-fill.bad{background:#ff847e}
+@media(max-width:560px){.coll-panel.open{grid-template-columns:1fr}.result-title{font-size:18px}}
+
 
 /* ── Correctifs responsive iPhone / mobile ───────────────── */
 @media (max-width: 760px){
@@ -75,7 +90,7 @@ body{font-family:'Asap',sans-serif;background:#eef0f4;min-height:100vh;color:#18
 <script src="app.js"></script>
 <script>
 let state = {};
-let step="home", ci=0, qi=0, selected=null, scores=[];
+let step="home", ci=0, qi=0, selected=null, scores=[], socioChoices={}, finalOpen={};
 const previewParams = new URLSearchParams(window.location.search);
 const previewMode = previewParams.get("preview") || "";
 const previewFrom = previewParams.get("from") || "";
@@ -173,17 +188,24 @@ function renderHome(){
   </div>`;
 }
 
+function selectSocio(si,oi){
+  socioChoices[si]=oi;
+  renderSocio();
+}
+
 function renderSocio(){
+  const demos = state.parametrage?.sociodemo || state.demographics || [];
   document.getElementById("app").innerHTML = `
   <div class="hbar"><div class="hbar-title">${esc(title())}</div></div>
   <div class="page">
     <div class="note">Aperçu : données socio-démo issues du paramétrage.</div>
-    ${(state.demographics||[]).map(d=>`
+    <div class="socio-hint">Dans l’aperçu, vous pouvez cliquer sur une réponse pour simuler le parcours. Ces choix ne sont pas enregistrés.</div>
+    ${demos.map((d,si)=>`
       <div class="card">
-        <div class="q-text">${esc(d.q)} *</div>
-        ${(d.opts||[]).map((o,i)=>{
-          const label = typeof o === 'object' ? (o.label || o.text || '') : o;
-          return `<div class="ans"><div class="ans-num">${i+1}</div><div>${esc(label)}</div></div>`;
+        <div class="q-text">${esc(d.q || d.question)} *</div>
+        ${(d.opts||d.options||[]).map((o,i)=>{
+          const label = typeof o === 'object' ? (o.label || o.text || o.value || '') : o;
+          return `<div class="ans ${socioChoices[si]===i?'sel':''}" onclick="selectSocio(${si},${i})"><div class="ans-num">${i+1}</div><div>${esc(label)}</div></div>`;
         }).join("")}
       </div>
     `).join("")}
@@ -239,21 +261,52 @@ function nextChapter(){
   render();
 }
 
+function simulatedDistribution(index){
+  const sets = [
+    [{pct:14,label:'Vous devez progresser sur ce thème',cls:'bad'},{pct:56,label:'Vous avez ce même profil',cls:'good'},{pct:30,label:'Vous pouvez encore progresser',cls:'mid'}],
+    [{pct:22,label:'Vous devez progresser sur ce thème',cls:'bad'},{pct:47,label:'Vous avez ce même profil',cls:'good'},{pct:31,label:'Vous pouvez encore progresser',cls:'mid'}],
+    [{pct:18,label:'Vous devez progresser sur ce thème',cls:'bad'},{pct:52,label:'Vous avez ce même profil',cls:'good'},{pct:30,label:'Vous pouvez encore progresser',cls:'mid'}]
+  ];
+  return sets[index % sets.length];
+}
+function toggleColleagues(index){
+  finalOpen[index]=!finalOpen[index];
+  renderFinal();
+}
+function profileShortTitle(p){
+  return String(p?.title || p?.titre || 'Profil simulé').trim();
+}
+function profileSummary(p){
+  return String(p?.summary || p?.phrase || p?.description || p?.desc || '').trim();
+}
+
 function renderFinal(){
   document.getElementById("app").innerHTML = `
   <div class="hbar"><div class="hbar-title">${esc(title())}</div></div>
   <div class="page">
-    <div class="note">Résultats simulés pour l’aperçu. Les résultats réels dépendront des réponses du collaborateur.</div>
+    <div class="note">Résultats simulés pour l’aperçu. Les pourcentages ci-dessous illustrent le rendu final avec comparaison collective.</div>
     <div class="card" style="text-align:center"><div style="font-size:20px;font-weight:800">Récapitulatif de vos résultats</div></div>
     ${state.chapters.map((c,i)=>{
-      const p = (c.profiles||[])[1] || {};
+      const p = (c.profiles||[])[1] || (c.profils||[])[1] || (c.profiles||[])[0] || (c.profils||[])[0] || {};
       const kws = profileKeywords(p);
-      return `<div class="card profil" style="border-left-color:${profileBorderColor(1)}">
-        <div style="font-size:12px;color:#64748b;font-weight:700">${i+1}. ${esc(c.title)}</div>
-        <h3 style="font-size:16px;margin:8px 0">${esc(p.title || "Profil simulé")}</h3>
-        ${p.summary ? `<p style="font-size:13px;color:#64748b;font-style:italic;margin-bottom:9px">${esc(p.summary)}</p>` : ''}
-        <p style="font-size:13px;color:#475569;line-height:1.6">${esc(p.description || "")}</p>
-        ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
+      const border = profileBorderColor(2);
+      const dist = simulatedDistribution(i);
+      const same = dist.find(x=>x.label.includes('même profil')) || dist[1];
+      const open = !!finalOpen[i];
+      return `<div class="result-card">
+        <div class="result-head" style="border-left-color:${border}">
+          <div class="result-chapter">${i+1}. ${esc(c.title)}</div>
+          <div class="result-title">${esc(profileShortTitle(p))}</div>
+          <div class="result-desc">${esc(profileSummary(p))}</div>
+          ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
+        </div>
+        <button type="button" class="result-toggle" onclick="toggleColleagues(${i})">${open?'Masquer':'Afficher'} le résultat de mes collègues</button>
+        <div class="coll-panel ${open?'open':''}">
+          <div class="coll-box"><div class="coll-pct">${same.pct}<span> %</span></div><div class="coll-lbl">de vos collègues ont le même profil que vous</div></div>
+          <div class="coll-bars">
+            ${dist.map(x=>`<div class="coll-line"><div class="coll-track"><div class="coll-fill ${x.cls}" style="width:${x.pct}%"></div></div><div><strong>${x.pct}%</strong> - ${esc(x.label)}</div></div>`).join('')}
+          </div>
+        </div>
       </div>`;
     }).join("")}
     <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${finalResources().map(r=>{
