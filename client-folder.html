@@ -2551,7 +2551,7 @@ function renderProjectTitleDetails(project){
         };
 
         try{
-          const response = await fetch(`${API_URL}/api/admin/projects/${projectToLogo.id}/publication`, {
+          const response = await fetch(`${API_URL}/api/admin/projects/${projectToLogo.id}/passation-logo`, {
             method:"PATCH",
             headers:{
               "Content-Type":"application/json",
