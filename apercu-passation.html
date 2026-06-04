@@ -104,6 +104,13 @@ function title(){ return state.meta?.titre || state.title || "Autodiagnostic"; }
 function totalQ(){ return state.chapters.reduce((a,c)=>a+(c.questions||[]).length,0); }
 function currentQuestion(){ return state.chapters[ci].questions[qi]; }
 function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function escAttr(s){ return esc(s).replace(/"/g,"&quot;").replace(/'/g,"&#039;"); }
+function resourceUrl(r){
+  const raw = r?.url || r?.link || r?.href || r?.lien || r?.linkUrl || r?.link_url || "";
+  const clean = String(raw || "").trim();
+  if(!clean) return "";
+  return /^https?:\/\//i.test(clean) ? clean : "";
+}
 function profileKeywords(p){ return (p?.keywords || p?.motscles || []).filter(Boolean); }
 const PROFILE_COLORS = ['#ff847e', '#ffc744', '#77cd8a'];
 function profileIndexForScore(profiles, avg){
@@ -225,7 +232,13 @@ function renderFinal(){
         ${kws.length ? `<div class="kw-row">${kws.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div>` : ''}
       </div>`;
     }).join("")}
-    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${(state.resources||[]).map(r=>`<div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:7px">${esc(r.titre)}</div>`).join("")}</div>
+    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${(state.resources||[]).map(r=>{
+      const url = resourceUrl(r);
+      return `<div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:7px">
+        <div>${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
+        ${url ? `<a href="${escAttr(url)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:8px;font-size:12px;font-weight:800;color:#0d4c72;text-decoration:none">Tester le lien</a>` : ""}
+      </div>`;
+    }).join("")}</div>
   </div>`;
 }
 
