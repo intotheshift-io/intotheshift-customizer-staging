@@ -583,6 +583,20 @@ input[type="url"]:focus,
 }
 
 
+/* ── Correctif header : bouton Première connexion visible dans les actions ── */
+.header-actions .btn-register{
+  background:#fff !important;
+  color:#0d4c72 !important;
+  border:2px solid #0d4c72 !important;
+  box-shadow:0 8px 20px rgba(13,76,114,.10);
+}
+
+.header-actions .btn-register:hover,
+.header-actions .btn-register.active{
+  background:#eef6fb !important;
+  color:#0d4c72 !important;
+}
+
 /* ── Correctif header : déconnexion tout à droite ───────────── */
 .header-spacer{
   flex:1 1 auto;
