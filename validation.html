@@ -1317,9 +1317,17 @@ function getTransmissionModeLabels(){
 
 
 function getApiBaseUrl(){
-  return (typeof ITS_API_BASE !== 'undefined' && ITS_API_BASE)
-    ? ITS_API_BASE
-    : (window.ITS_API_BASE || localStorage.getItem('its_api_base') || 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+  const forced = window.ITS_API_BASE || localStorage.getItem('its_api_base') || '';
+  if (forced) return forced;
+
+  return (
+    location.hostname === 'localhost' ||
+    location.hostname === '127.0.0.1' ||
+    location.hostname.startsWith('staging.') ||
+    location.pathname.startsWith('/staging')
+  )
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 }
 
 async function sendTransmissionEmails(payload, token){

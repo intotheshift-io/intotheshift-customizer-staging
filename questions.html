@@ -873,9 +873,7 @@ function questionsApiBase(){
   if(forced) return forced;
 
   const isLocal = host === 'localhost' || host === '127.0.0.1';
-  const isStaging = isLocal || host.includes('staging') || host.includes('github.io');
-
-  return isStaging
+  const isStaging = isLocal || host.startsWith('staging.') || window.location.pathname.startsWith('/staging');  return isStaging
     ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
     : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 }
