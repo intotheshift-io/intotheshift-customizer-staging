@@ -387,7 +387,7 @@ function apiBaseForCatalogueProjects(){
   const host = String(window.location.hostname || "").toLowerCase();
   const forced = localStorage.getItem("its_api_base") || "";
   if(forced) return forced;
-  return host === "localhost" || host.startsWith("staging.") || host.includes("github.io")
+  return host === "localhost" || host === "127.0.0.1" || host.startsWith("staging.") || window.location.pathname.startsWith("/staging")
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 }
