@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       <a class="logo" href="${homeTarget}" aria-label="Into The Shift">
         <img
-          src="into-the-shift-logo.png"
+          src="into-the-shift-logo-light.png"
           alt="Into The Shift"
           class="logo-img"
         >
