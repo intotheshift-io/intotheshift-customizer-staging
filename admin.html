@@ -2048,7 +2048,7 @@ function renderOrganizations(){
           <div class="org-kpi pack"><span>Passations achetées</span><strong>${escapeHtml(quotaLabel)}</strong><small>${escapeHtml(formatPackLabel(pack, quota))}<br>Fin : ${escapeHtml(formatPackExpiryDate(packExpiresAt))}</small></div>
           <div class="org-kpi remaining"><span>Restantes</span><strong>${formatNumber(remaining)}</strong><small>Solde disponible</small></div>
           <div class="org-kpi used"><span>Utilisation pack</span><strong>${usageRate}%</strong><small>${formatNumber(used)} utilisées</small><div class="org-progress-mini"><div class="org-progress-mini-bar ${progressClass}" style="width:${usageRate}%"></div></div></div>
-          <div class="org-kpi users"><span>Comptes</span><strong>${usersCount}</strong><small>${projectsCount} autodiag${projectsCount>1?"s":""}</small></div>
+          <div class="org-kpi users"><span>Comptes rattachés</span><strong>${usersCount}</strong><small>${projectsCount} autodiag${projectsCount>1?"s":""}</small></div>
         </div>
 
         ${renderOrgPackUpgradePanel(stats)}
