@@ -1310,7 +1310,7 @@ function getTransmissionModeLabels(){
     loadingTitle: 'Transmission en cours',
     loadingText: 'Nous préparons votre simulateur comportemental et transmettons votre configuration à l’équipe Into The Shift.',
     successTitle: 'Configuration transmise',
-    successText: 'Votre simulateur comportemental a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.',
+    successText: 'Votre simulateur comportemental a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.\n\nVous allez être redirigé vers Mes AD dans quelques secondes.',
     successButton: 'Demande transmise ✓'
   };
 }
@@ -1535,7 +1535,15 @@ async function transmit(){
     );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = modalLabels.successButton;
-    if(redirectAfterStandardTransmission()) return;
+    if(!isValidationReprogramMode() && !isValidationExtendMode()){
+      const modalActions = document.getElementById('transmit-modal-actions');
+      if(modalActions){
+        modalActions.innerHTML = '<button class="transmit-modal-btn" type="button" onclick="redirectAfterStandardTransmission()">Retour à Mes AD</button>';
+      }
+      setTimeout(() => {
+        redirectAfterStandardTransmission();
+      }, 5000);
+    }
   } else {
     state.transmission.status = 'send_error';
     if (typeof itsSave === 'function') itsSave(state);
