@@ -5376,7 +5376,7 @@
         tags: ["poste de travail", "balisage"],
         answers: [
           { text: "Je commence sans balisage — mon chef a validé et tout le monde est prévenu.", score: 0 },
-          { text: "Je balize ma zone avant toute intervention, même si ça retarde le démarrage.", score: 2 },
+          { text: "Je balise ma zone avant toute intervention, même si ça retarde le démarrage.", score: 2 },
           { text: "Je fais un balisage minimal pour délimiter l'essentiel rapidement.", score: 0.5 },
           { text: "Je demande à un collègue de faire le balisage pendant que je commence les travaux.", score: 0.5 },
         ],
