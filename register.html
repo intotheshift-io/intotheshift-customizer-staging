@@ -411,12 +411,12 @@ body{
 
           <div class="form-group">
             <label class="form-label">Prénom</label>
-            <input id="firstname" class="input" type="text" placeholder="Prénom">
+            <input id="firstname" class="input" type="text" placeholder="Prénom" required>
           </div>
 
           <div class="form-group">
             <label class="form-label">Nom</label>
-            <input id="lastname" class="input" type="text" placeholder="Nom">
+            <input id="lastname" class="input" type="text" placeholder="Nom" required>
           </div>
 
           <div class="form-group full">
@@ -427,12 +427,12 @@ body{
 
           <div class="form-group full">
             <label class="form-label">Entreprise</label>
-            <input id="company" class="input" type="text" placeholder="Nom de votre organisation">
+            <input id="company" class="input" type="text" placeholder="Nom de votre organisation" required>
           </div>
 
           <div class="form-group">
             <label class="form-label">Fonction</label>
-            <select id="jobTitle" class="select">
+            <select id="jobTitle" class="select" required>
               <option value="">Sélectionner</option>
               <option>CEO / Direction générale</option>
               <option>COO / Direction des opérations</option>
@@ -453,7 +453,7 @@ body{
 
           <div class="form-group">
             <label class="form-label">Secteur</label>
-            <select id="sector" class="select">
+            <select id="sector" class="select" required>
               <option value="">Sélectionner</option>
               <option>Agriculture / Agroalimentaire</option>
               <option>Banque / Assurance</option>
@@ -591,8 +591,16 @@ document.getElementById("register-form").addEventListener("submit", async functi
     password: document.getElementById("password").value
   };
 
-  if(!payload.email || !payload.password){
-    showRegisterError("Merci de renseigner un email et un mot de passe.");
+  if(
+    !payload.firstName ||
+    !payload.lastName ||
+    !payload.email ||
+    !payload.companyName ||
+    !payload.jobTitle ||
+    !payload.sector ||
+    !payload.password
+  ){
+    showRegisterError("Merci de renseigner tous les champs.");
     submitBtn.disabled = false;
     submitBtn.textContent = "Créer mon espace découverte";
     return;
