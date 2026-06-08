@@ -158,6 +158,37 @@ const ITS_API_BASE =
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
 
+
+(function itsRequireAuthForProtectedPages(){
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  const protectedPages = new Set([
+    "dashboard.html",
+    "mes-autodiagnostics.html",
+    "account.html",
+    "questions.html",
+    "parametrage.html",
+    "campagne.html",
+    "validation.html",
+    "kit-communication.html",
+    "admin.html",
+    "client-folder.html",
+    "partner-folder.html",
+    "archives.html"
+  ]);
+
+  if (!protectedPages.has(page)) return;
+
+  const token = itsGetToken();
+  if (token) return;
+
+  const currentUrl = window.location.pathname.split("/").pop() + window.location.search + window.location.hash;
+  try {
+    localStorage.setItem("its_after_login_redirect", currentUrl || page || "dashboard.html");
+  } catch(e) {}
+
+  window.location.replace("login.html");
+})();
+
 let itsSaveTimer = null;
 let itsIsRestoringProject = false;
 
