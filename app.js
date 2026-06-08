@@ -1127,6 +1127,86 @@ function itsApplyReadOnlyMode(options = {}) {
   return true;
 }
 
+
+
+function itsGetProjectNavigationContext() {
+  const params = new URLSearchParams(window.location.search || "");
+  const projectId =
+    params.get("projectId") ||
+    params.get("projectid") ||
+    params.get("id") ||
+    localStorage.getItem("its_current_project_id") ||
+    localStorage.getItem("its_current_ad_id") ||
+    "";
+
+  const flags = [];
+  ["reprogram", "extend", "contentOnly", "viewContent"].forEach((key) => {
+    const value = params.get(key);
+    if (value !== null && value !== "") flags.push([key, value]);
+  });
+
+  return { projectId: String(projectId || "").trim(), flags };
+}
+
+function itsBuildProjectNavigationUrl(rawHref) {
+  if (!rawHref) return rawHref;
+  if (/^(https?:|mailto:|tel:|#|javascript:)/i.test(rawHref)) return rawHref;
+
+  const targetPage = String(rawHref).split("?")[0].split("#")[0].split("/").pop();
+  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
+  if (!projectPages.includes(targetPage)) return rawHref;
+
+  const context = itsGetProjectNavigationContext();
+  if (!context.projectId) return rawHref;
+
+  const url = new URL(rawHref, window.location.href);
+  url.searchParams.set("projectId", context.projectId);
+  context.flags.forEach(([key, value]) => {
+    if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+  });
+
+  return url.pathname.split("/").pop() + url.search + url.hash;
+}
+
+function itsPreserveProjectIdInCurrentUrl() {
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  const projectPages = ["questions.html", "parametrage.html", "campagne.html", "validation.html"];
+  if (!projectPages.includes(page)) return;
+
+  const params = new URLSearchParams(window.location.search || "");
+  if (params.has("projectId") || params.has("projectid") || params.has("id")) return;
+
+  const context = itsGetProjectNavigationContext();
+  if (!context.projectId) return;
+
+  params.set("projectId", context.projectId);
+  const nextUrl = window.location.pathname + "?" + params.toString() + window.location.hash;
+  window.history.replaceState(window.history.state, "", nextUrl);
+}
+
+function itsRefreshProjectStepLinks() {
+  itsPreserveProjectIdInCurrentUrl();
+
+  document.querySelectorAll(".stepper a[href], a.step-link[href]").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const nextHref = itsBuildProjectNavigationUrl(href);
+    if (nextHref && nextHref !== href) link.setAttribute("href", nextHref);
+  });
+}
+
+function itsInstallProjectStepLinkGuard() {
+  itsRefreshProjectStepLinks();
+
+  document.addEventListener("click", (event) => {
+    const link = event.target && event.target.closest && event.target.closest(".stepper a[href], a.step-link[href]");
+    if (!link) return;
+
+    const href = link.getAttribute("href") || "";
+    const nextHref = itsBuildProjectNavigationUrl(href);
+    if (nextHref && nextHref !== href) link.setAttribute("href", nextHref);
+  }, true);
+}
+
 function itsShouldApplyReadOnlyOnThisPage() {
   const params = new URLSearchParams(window.location.search || "");
   const isReprogram = params.get("reprogram") === "1";
@@ -1151,10 +1231,12 @@ function itsShouldApplyReadOnlyOnThisPage() {
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
+    itsInstallProjectStepLinkGuard();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   });
 } else {
   setTimeout(() => {
+    itsInstallProjectStepLinkGuard();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   }, 0);
 }
