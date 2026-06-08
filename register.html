@@ -304,6 +304,18 @@ body{
   color:#7a4b00;
 }
 
+.pro-email-notice{
+  margin-top:7px;
+  padding:9px 11px;
+  border-radius:12px;
+  background:#eef6fb;
+  border:1px solid #cbddea;
+  color:#0d4c72;
+  font-size:12px;
+  line-height:1.4;
+  font-weight:700;
+}
+
 @media(max-width:1100px){
   .register-page{grid-template-columns:1fr}
   .hero-side{padding:24px 24px 0}
@@ -390,7 +402,7 @@ body{
       </h2>
 
       <p class="form-sub">
-        Quelques informations nous permettent de personnaliser votre espace découverte.
+        Quelques informations nous permettent de personnaliser votre espace découverte. L’inscription est réservée aux usages professionnels avec une adresse email professionnelle.
       </p>
 
       <form id="register-form">
@@ -408,8 +420,9 @@ body{
           </div>
 
           <div class="form-group full">
-            <label class="form-label">Email professionnel</label>
+            <label class="form-label">Email professionnel uniquement</label>
             <input id="email" class="input" type="email" placeholder="prenom.nom@entreprise.com" required>
+            <div class="pro-email-notice">Les adresses personnelles ne sont pas autorisées : utilisez votre email professionnel.</div>
           </div>
 
           <div class="form-group full">
@@ -521,6 +534,24 @@ function itsResolveApiBase(){
 
 const API_BASE_URL = itsResolveApiBase();
 
+const PERSONAL_EMAIL_DOMAINS = new Set([
+  "gmail.com", "googlemail.com",
+  "outlook.com", "outlook.fr", "hotmail.com", "hotmail.fr", "live.com", "live.fr", "msn.com",
+  "yahoo.com", "yahoo.fr", "ymail.com", "rocketmail.com",
+  "icloud.com", "me.com", "mac.com",
+  "orange.fr", "wanadoo.fr", "free.fr", "sfr.fr", "neuf.fr", "bbox.fr", "laposte.net",
+  "aol.com", "gmx.com", "gmx.fr", "mail.com", "mail.fr",
+  "proton.me", "protonmail.com", "pm.me",
+  "tutanota.com", "tuta.com", "zoho.com", "zohomail.com"
+]);
+
+function isPersonalEmail(email){
+  const normalized = String(email || "").trim().toLowerCase();
+  const parts = normalized.split("@");
+  const domain = parts.length === 2 ? parts[1] : "";
+  return Boolean(domain && PERSONAL_EMAIL_DOMAINS.has(domain));
+}
+
 function showRegisterError(message){
   const box = document.getElementById("register-error");
   if(!box) return;
@@ -555,6 +586,13 @@ document.getElementById("register-form").addEventListener("submit", async functi
 
   if(!payload.email || !payload.password){
     showRegisterError("Merci de renseigner un email et un mot de passe.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Créer mon espace découverte";
+    return;
+  }
+
+  if(isPersonalEmail(payload.email)){
+    showRegisterError("Merci d’utiliser une adresse email professionnelle. Les adresses personnelles ne sont pas autorisées sur Into The Shift.");
     submitBtn.disabled = false;
     submitBtn.textContent = "Créer mon espace découverte";
     return;
