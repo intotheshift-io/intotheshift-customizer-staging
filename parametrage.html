@@ -241,16 +241,17 @@ select option[value="current_pack"]{
 
 <div class="stepper-wrap">
   <div class="stepper">
-    <div class="step"><div class="step-circle done">✓</div><span class="step-label done step-link step-link-locked-start" title="Point de départ du parcours : non cliquable une fois le projet commencé">Choisir une base</span></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer</span></div><div class="step-connector todo" id="param-step-connector-campaign"></div>
-    <div class="step" id="param-step-campaign"><div class="step-circle todo" id="param-step-campaign-circle">4</div><span class="step-label todo" id="param-step-campaign-label">Campagne</span></div><div class="step-connector todo" id="param-step-connector-validation"></div>
-    <div class="step" id="param-step-validation"><div class="step-circle todo" id="param-step-validation-circle">5</div><span class="step-label todo" id="param-step-validation-label">Transmettre</span></div>
+    <div class="step"><div class="step-circle done">✓</div><span class="step-label done step-link step-link-locked-start" title="Point de départ du parcours : non cliquable une fois le projet commencé">Choisir une base<span class="its-step-time">⏱️ 2 min</span></span></div><div class="step-connector done"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic<span class="its-step-time">⏱️ 5–15 min</span></a></div><div class="step-connector done"></div>
+    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer<span class="its-step-time">⏱️ 3 min</span></span></div><div class="step-connector todo" id="param-step-connector-campaign"></div>
+    <div class="step" id="param-step-campaign"><div class="step-circle todo" id="param-step-campaign-circle">4</div><span class="step-label todo" id="param-step-campaign-label">Campagne<span class="its-step-time">⏱️ 1 min</span></span></div><div class="step-connector todo" id="param-step-connector-validation"></div>
+    <div class="step" id="param-step-validation"><div class="step-circle todo" id="param-step-validation-circle">5</div><span class="step-label todo" id="param-step-validation-label">Transmettre<span class="its-step-time">⏱️ 1 min</span></span></div>
   </div>
 </div>
 
 <div class="page-wrap">
   <h1 class="page-title">Paramétrer l'autodiagnostic</h1>
+  <div class="its-page-timing">⏱️ Temps moyen : 3 minutes</div>
   <p class="page-sub">Paramétrez votre autodiagnostic, sa date de lancement et de fin, les données socio-démo utiles à l'analyse, et l'URL de passation en renseignant le nom de l'organisation.</p>
 
   <div class="two-col">
@@ -1687,12 +1688,12 @@ function updateParametrageStepper(){
     if(campaignDone){
       campaignCircle.className = 'step-circle done';
       campaignCircle.textContent = '✓';
-      campaignLabel.outerHTML = '<a class="step-label done step-link" id="param-step-campaign-label" href="' + parametrageUrlWithProjectId('campagne.html') + '">Campagne</a>';
+      campaignLabel.outerHTML = '<a class="step-label done step-link" id="param-step-campaign-label" href="' + parametrageUrlWithProjectId('campagne.html') + '">Campagne<span class="its-step-time">⏱️ 1 min</span></a>';
       if(campaignConnector) campaignConnector.className = 'step-connector done';
     }else{
       campaignCircle.className = 'step-circle todo';
       campaignCircle.textContent = '4';
-      campaignLabel.outerHTML = '<span class="step-label todo" id="param-step-campaign-label">Campagne</span>';
+      campaignLabel.outerHTML = '<span class="step-label todo" id="param-step-campaign-label">Campagne<span class="its-step-time">⏱️ 1 min</span></span>';
       if(campaignConnector) campaignConnector.className = 'step-connector todo';
     }
   }
@@ -1701,12 +1702,12 @@ function updateParametrageStepper(){
     if(validationDone){
       validationCircle.className = 'step-circle done';
       validationCircle.textContent = '✓';
-      validationLabel.outerHTML = '<a class="step-label done step-link" id="param-step-validation-label" href="' + parametrageUrlWithProjectId('validation.html') + '">Transmettre</a>';
+      validationLabel.outerHTML = '<a class="step-label done step-link" id="param-step-validation-label" href="' + parametrageUrlWithProjectId('validation.html') + '">Transmettre<span class="its-step-time">⏱️ 1 min</span></a>';
       if(validationConnector) validationConnector.className = 'step-connector done';
     }else{
       validationCircle.className = 'step-circle todo';
       validationCircle.textContent = '5';
-      validationLabel.outerHTML = '<span class="step-label todo" id="param-step-validation-label">Transmettre</span>';
+      validationLabel.outerHTML = '<span class="step-label todo" id="param-step-validation-label">Transmettre<span class="its-step-time">⏱️ 1 min</span></span>';
       if(validationConnector) validationConnector.className = 'step-connector todo';
     }
   }

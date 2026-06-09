@@ -659,3 +659,56 @@ input[type="url"]:focus,
   overflow:auto !important;
   padding:6px !important;
 }
+
+/* ── Nudge timing discret parcours ITS ───────────────── */
+.its-page-timing{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  width:max-content;
+  max-width:100%;
+  margin:0 0 18px;
+  padding:7px 11px;
+  border:1px solid #b8dfe0;
+  border-radius:999px;
+  background:#f0f8f7;
+  color:#0d4c72;
+  font-size:12px;
+  font-weight:900;
+  line-height:1.25;
+}
+.its-page-timing-home{
+  margin:0 0 18px;
+  background:#fff;
+  border-color:#cbddea;
+  box-shadow:0 8px 18px rgba(13,76,114,.08);
+}
+.its-page-timing-compact{
+  margin:10px 24px 0;
+}
+.step-label .its-step-time{
+  display:block;
+  margin-top:2px;
+  font-size:10px;
+  line-height:1.1;
+  font-weight:800;
+  color:#94a3b8;
+  white-space:nowrap;
+}
+.step-label.done .its-step-time{color:#007883}
+.step-label.active .its-step-time{color:#0d4c72}
+.step-label.todo .its-step-time{color:#c5ccd5}
+@media(max-width:760px){
+  .its-page-timing{
+    width:100%;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .its-page-timing-compact{
+    margin:10px 14px 0;
+  }
+  .step-label .its-step-time{
+    font-size:9px;
+  }
+}
+
