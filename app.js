@@ -200,6 +200,72 @@ let itsIsRestoringProject = false;
 })();
 
 
+function itsNormalizeActivityPageName(pageName) {
+  return String(pageName || "")
+    .toLowerCase()
+    .replace(/\.html$/i, "")
+    .replace(/[^a-z0-9-]/g, "")
+    .slice(0, 80);
+}
+
+function itsGetActivityPageName() {
+  const fileName = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  return itsNormalizeActivityPageName(fileName || "dashboard");
+}
+
+function itsShouldTrackUserActivity(pageName) {
+  const trackedPages = new Set([
+    "dashboard",
+    "mes-autodiagnostics",
+    "questions",
+    "parametrage",
+    "campagne",
+    "validation",
+    "account",
+    "kit-communication",
+    "bibliotheque"
+  ]);
+  return trackedPages.has(itsNormalizeActivityPageName(pageName));
+}
+
+async function itsTrackUserActivity(pageName, projectIdOverride) {
+  const token = itsGetToken();
+  const page = itsNormalizeActivityPageName(pageName || itsGetActivityPageName());
+  if (!token || !itsShouldTrackUserActivity(page)) return;
+
+  const projectId = projectIdOverride || itsGetCurrentProjectId() || "";
+  const storageKey = "its_last_activity_ping";
+  const pingSignature = `${page}|${projectId || ""}`;
+  const now = Date.now();
+
+  try {
+    const previous = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    if (previous.signature === pingSignature && now - Number(previous.at || 0) < 30000) return;
+    sessionStorage.setItem(storageKey, JSON.stringify({ signature: pingSignature, at: now }));
+  } catch(e) {}
+
+  try {
+    await fetch(ITS_API_BASE + "/api/users/activity", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({
+        page,
+        projectId: projectId || undefined
+      })
+    });
+  } catch(e) {
+    console.warn("Suivi activité utilisateur impossible", e);
+  }
+}
+
+function itsInstallUserActivityTracking() {
+  itsTrackUserActivity();
+}
+
+
 function itsPickFirstNonEmpty(values) {
   for (const value of values) {
     if (value !== undefined && value !== null && String(value).trim() !== "") {
@@ -582,8 +648,10 @@ async function itsSyncProjectToApi(state) {
         latest.projectId = savedId;
         itsSetCurrentProjectId(savedId);
         itsSafeSetLocalStorage(itsGetStorageKey(), latest);
+        itsTrackUserActivity(currentStep || itsGetActivityPageName(), savedId);
       } catch(e) {
         itsSetCurrentProjectId(savedId);
+        itsTrackUserActivity(currentStep || itsGetActivityPageName(), savedId);
       }
     }
   } catch(e) {
@@ -1263,11 +1331,13 @@ function itsShouldApplyReadOnlyOnThisPage() {
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     itsInstallProjectStepLinkGuard();
+    itsInstallUserActivityTracking();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   });
 } else {
   setTimeout(() => {
     itsInstallProjectStepLinkGuard();
+    itsInstallUserActivityTracking();
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   }, 0);
 }
