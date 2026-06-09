@@ -19,6 +19,15 @@ body{font-family:'Asap',sans-serif;background:linear-gradient(180deg,#eef6fb 0%,
 .hero-content{grid-area:content}
 .product-preview{grid-area:preview}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:#e6f0f6;color:#0d4c72;border:1px solid #c6deec;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;margin-bottom:18px}
+.its-big-timer{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid #ffc000;border-left:7px solid #ffc000;border-radius:20px;padding:14px 16px;margin:0 0 18px;box-shadow:0 14px 30px rgba(24,55,93,.12)}
+.its-big-timer-dial{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#18375d,#007883);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 12px 24px rgba(24,55,93,.18);border:4px solid #fff}
+.its-big-timer-ico{font-size:22px;line-height:1;margin-bottom:2px}
+.its-big-timer-time{font-size:15px;font-weight:950;line-height:1;text-align:center}
+.its-big-timer-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#0d4c72;margin-bottom:4px}
+.its-big-timer-title{font-size:17px;font-weight:950;color:#18375d;line-height:1.25}
+.its-big-timer-text{font-size:13px;color:#5b6b7f;line-height:1.35;margin-top:3px}
+@media(max-width:620px){.its-big-timer{align-items:flex-start}.its-big-timer-dial{width:66px;height:66px}.its-big-timer-time{font-size:13px}.its-big-timer-title{font-size:15px}}
+
 .hero h1{font-size:44px;line-height:1.05;color:#18375d;letter-spacing:-.8px;margin-bottom:18px;max-width:720px}
 .hero h1 span{color:#0d4c72}
 .hero-text{font-size:17px;line-height:1.65;color:#475569;max-width:680px;margin-bottom:26px}
@@ -165,7 +174,14 @@ flex-shrink:0
 
     <div class="hero-content">
       <div class="hero-kicker">Shift Studio</div>
-      <div class="its-page-timing its-page-timing-home">⏱️ Temps moyen : 10 à 20 minutes</div>
+      <div class="its-big-timer" aria-label="Temps moyen du parcours complet">
+        <div class="its-big-timer-dial"><span class="its-big-timer-ico">⏱️</span><span class="its-big-timer-time">10–20<br>min</span></div>
+        <div>
+          <div class="its-big-timer-label">Temps moyen</div>
+          <div class="its-big-timer-title">Parcours complet en 10 à 20 minutes</div>
+          <div class="its-big-timer-text">Choisir une base, personnaliser, paramétrer puis transmettre.</div>
+        </div>
+      </div>
       <h1>Créez un <span>autodiagnostic comportemental</span> prêt à diffuser</h1>
       <p class="hero-text">Avec Shift Studio, composez votre autodiagnostic à partir de situations prêtes à l’emploi, personnalisez vos contenus, puis lancez votre campagne avec notre accompagnement.</p>
       <div class="hero-actions">

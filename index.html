@@ -15,6 +15,15 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 .library-icon{width:52px;height:52px;border-radius:10px;background:#0f6878;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
 .library-title{font-size:22px;font-weight:800;color:#18375d;margin-bottom:8px}
 .library-text{font-size:14px;line-height:1.6;color:#475569;max-width:980px}
+.its-big-timer{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid #ffc000;border-left:7px solid #ffc000;border-radius:20px;padding:14px 16px;margin:14px 0 0;box-shadow:0 12px 28px rgba(24,55,93,.10);max-width:540px}
+.its-big-timer-dial{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#18375d,#007883);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 10px 22px rgba(24,55,93,.18);border:4px solid #fff}
+.its-big-timer-ico{font-size:21px;line-height:1;margin-bottom:2px}
+.its-big-timer-time{font-size:17px;font-weight:950;line-height:1;text-align:center}
+.its-big-timer-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#0d4c72;margin-bottom:4px}
+.its-big-timer-title{font-size:17px;font-weight:950;color:#18375d;line-height:1.25}
+.its-big-timer-text{font-size:13px;color:#5b6b7f;line-height:1.35;margin-top:3px}
+@media(max-width:560px){.its-big-timer{align-items:flex-start}.its-big-timer-dial{width:66px;height:66px}.its-big-timer-time{font-size:15px}.its-big-timer-title{font-size:15px}}
+
 
 .notice{background:#fff7e8;border:1px solid #ffc866;border-radius:10px;padding:14px 18px;margin-bottom:22px;color:#7a4b00;font-size:13px;line-height:1.5}
 
@@ -193,7 +202,14 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
       <div class="library-text">
         Cette bibliothèque propose des bases de situations pour construire vos autodiagnostics. Les contenus servent d’aide à la rédaction : ils doivent être adaptés, relus et validés dans leur contexte avant diffusion. Le client reste responsable du contenu final publié.
       </div>
-      <div class="its-page-timing">⏱️ Temps moyen : 10 à 20 minutes</div>
+      <div class="its-big-timer" aria-label="Temps moyen pour choisir une base">
+        <div class="its-big-timer-dial"><span class="its-big-timer-ico">⏱️</span><span class="its-big-timer-time">2<br>min</span></div>
+        <div>
+          <div class="its-big-timer-label">Temps moyen</div>
+          <div class="its-big-timer-title">Choisir une base : environ 2 minutes</div>
+          <div class="its-big-timer-text">Parcourez les thèmes, ouvrez un aperçu si besoin, puis démarrez depuis la base choisie.</div>
+        </div>
+      </div>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
         <a href="#faq" class="btn btn-secondary">Mode d’emploi</a>
       </div>
