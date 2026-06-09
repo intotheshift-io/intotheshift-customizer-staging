@@ -674,7 +674,10 @@ function itsQuotaCardHTML(q,compact=false){
 }
 function itsQuotaInlineHTML(q){
   const isUnlimited = String(q?.pack)==='illimite' || q?.quota === Infinity || q?.remaining === Infinity;
-  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${isUnlimited?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'} · '+itsPackExpiryLine(q)+'</div></div>`;
+  const quotaText = isUnlimited
+    ? 'Passations illimitées'
+    : itsFormatQuotaNumber(q?.remaining||0) + ' passations restantes sur ' + itsFormatQuotaNumber(q?.quota||0) + ' achetées';
+  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${quotaText} · ${itsPackExpiryLine(q)}</div></div>`;
 }
 
 
