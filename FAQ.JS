@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="faq-list">
       <details class="faq-item" open>
-        <summary>Qu’est-ce qu’un autodiagnostic Into The Shift ?</summary>
-        <p>C’est un simulateur comportemental composé de situations concrètes. Il permet d’explorer les réactions, pratiques et perceptions des répondants sur un sujet donné. Il permet à chacun de prendre conscience de ses pratiques et de pouvoir ainsi bouger ses lignes !</p>
+        <summary>Qu’est-ce qu’un diagnostic comportemental Into The Shift ?</summary>
+        <p>C’est un simulateur comportemental composé de situations concrètes vécues dans le quotidien professionnel. Il permet d’explorer les réactions, pratiques et perceptions des répondants sur un sujet donné. Il permet à chacun de prendre conscience de ses pratiques et de pouvoir ainsi bouger ses lignes !</p>
       </details>
 
       <details class="faq-item">
@@ -26,28 +26,28 @@ document.addEventListener("DOMContentLoaded", function () {
       </details>
 
       <details class="faq-item">
-        <summary>Puis-je créer mon autodiagnostic de zéro ?</summary>
-        <p>Oui. Vous pouvez construire votre autodiagnostic entièrement, en ajoutant vos propres thématiques, questions, situations et profils de résultats.</p>
+        <summary>Puis-je créer mon diagnostic de zéro ?</summary>
+        <p>Oui. Vous pouvez construire votre diagnostic entièrement, en ajoutant vos propres thématiques, questions, situations et profils de résultats.</p>
       </details>
 
       <details class="faq-item">
         <summary>Que se passe-t-il après validation ?</summary>
-        <p>Une fois votre configuration validée, nos équipes préparent la mise en ligne définitive de votre autodiagnostic et vous adressent le lien de votre autodiagnostic personnalisé.</p>
+        <p>Une fois votre configuration validée, nos équipes préparent la mise en ligne définitive de votre autodiagnostic et vous adressent le lien de votre autodiagnostic personnalisé et celui de votre accès aux résultats.</p>
       </details>
 
       <details class="faq-item">
         <summary>Quand recevrai-je mon lien de passation ?</summary>
-        <p>Vous recevez votre lien définitif de passation sous quelques jours, au maximum sous <strong>4 jours ouvrés</strong> après validation.</p>
+        <p>Vous recevez votre lien définitif de passation sous quelques jours, au maximum sous <strong>5 jours ouvrés</strong> après validation.</p>
       </details>
 
       <details class="faq-item">
         <summary>Comment pourrai-je diffuser l’autodiagnostic ?</summary>
-        <p>Vous pourrez partager le lien par email, intranet, messagerie interne ou QR code. Le QR code pourra être utilisé sur vos supports de communication. Into The Shift peut également vous fournir des visuels : affiche, banners, vidéo en motion design, etc.</p>
+        <p>Vous pourrez partager le lien par email, intranet, messagerie interne ou QR code. Le QR code pourra être utilisé sur vos supports de communication. Into The Shift vous fournit des visuels dans votre espace kit de communication de chaque projet : affiche, banners, vidéo en motion design, etc.</p>
       </details>
 
       <details class="faq-item">
         <summary>Les réponses sont-elles anonymes ?</summary>
-        <p>Oui. Les réponses sont exploitées de manière agrégée afin d’identifier des tendances collectives, sans pouvoir retrouver les réponses individuelles des répondants, si le nombre de données socio-démo demandées au départ ne permet pas de recoupement. Il n'y a aucun cookie, aucun tracking d'IP, ni login ou mot de passe pour passer l'autodiagnostic. La passation est conforme au RGPD.</p>
+        <p>Oui à 100%. Les réponses sont exploitées de manière agrégée afin d’identifier des tendances collectives, sans pouvoir retrouver les réponses individuelles des répondants, si le nombre de données socio-démo demandées au départ ne permet pas de recoupement. Il n'y a aucun cookie, aucun tracking d'IP, ni login ou mot de passe pour passer l'autodiagnostic. La passation est conforme au RGPD.</p>
       </details>
 
       <details class="faq-item">
