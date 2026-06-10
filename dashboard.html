@@ -545,13 +545,9 @@ body{
       <div class="dash-mini-row"><span>Prochaine étape</span><span id="mini-next">Choisir une base</span></div>
       <a href="index.html" class="btn btn-primary dash-mini-btn" id="mini-action">Commencer un autodiag</a>
     </aside>
-  </section>
+  
 
-  <section class="dash-section" id="dashboard-quota-section" style="margin-top:18px;display:none">
-    <div id="dashboard-quota-card"></div>
-  </section>
-
-  <section class="dash-section">
+<section class="dash-section">
     <div class="dash-section-head">
       <div>
         <div class="dash-section-kicker">Parcours guidé</div>
@@ -663,6 +659,284 @@ body{
       </div>
     </div>
   </section>
+
+<section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Parcours guidé</div>
+        <h2 class="dash-section-title">De l’idée à la transmission</h2>
+      </div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="path-num">1</div>
+        <h3>Bibliothèque</h3>
+        <p>Choisir une base de travail ou créer de zéro.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">2</div>
+        <h3>Création</h3>
+        <p>Modifier les questions, réponses, profils et ressources.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">3</div>
+        <h3>Paramétrage</h3>
+        <p>Définir le titre, l’introduction et les informations de campagne.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">4</div>
+        <h3>Campagne</h3>
+        <p>Préparer le lien, le QR code et les éléments de diffusion.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">5</div>
+        <h3>Transmission</h3>
+        <p>Envoyer la configuration à l’équipe Into The Shift.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Démarrer rapidement</div>
+        <h2 class="dash-section-title">Que souhaitez-vous faire ?</h2>
+      </div>
+      <p class="dash-section-sub">Choisissez votre point de départ ou ouvrez un aperçu côté répondant.</p>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">▣</div>
+          <h3>Partir d’une base</h3>
+          <p>Choisissez une thématique existante et personnalisez les situations, réponses, profils et ressources.</p>
+        </div>
+        <a href="index.html" class="btn btn-primary">Explorer la bibliothèque</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">＋</div>
+          <h3>Créer de zéro</h3>
+          <p>Construisez votre autodiagnostic sans base prédéfinie, chapitre par chapitre.</p>
+        </div>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" onclick="return dashboardGoBlank(event)">Créer un autodiag</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">◎</div>
+          <h3>Voir l’autodiagnostic côté répondant</h3>
+          <p>Prévisualisez votre autodiagnostic comme une personne répondante, avec un parcours de passation simulé.</p>
+        </div>
+        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Voir côté répondant</button>
+      </div>
+    </div>
+  </section>
+
+<section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Parcours guidé</div>
+        <h2 class="dash-section-title">De l’idée à la transmission</h2>
+      </div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="path-num">1</div>
+        <h3>Bibliothèque</h3>
+        <p>Choisir une base de travail ou créer de zéro.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">2</div>
+        <h3>Création</h3>
+        <p>Modifier les questions, réponses, profils et ressources.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">3</div>
+        <h3>Paramétrage</h3>
+        <p>Définir le titre, l’introduction et les informations de campagne.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">4</div>
+        <h3>Campagne</h3>
+        <p>Préparer le lien, le QR code et les éléments de diffusion.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">5</div>
+        <h3>Transmission</h3>
+        <p>Envoyer la configuration à l’équipe Into The Shift.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Démarrer rapidement</div>
+        <h2 class="dash-section-title">Que souhaitez-vous faire ?</h2>
+      </div>
+      <p class="dash-section-sub">Choisissez votre point de départ ou ouvrez un aperçu côté répondant.</p>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">▣</div>
+          <h3>Partir d’une base</h3>
+          <p>Choisissez une thématique existante et personnalisez les situations, réponses, profils et ressources.</p>
+        </div>
+        <a href="index.html" class="btn btn-primary">Explorer la bibliothèque</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">＋</div>
+          <h3>Créer de zéro</h3>
+          <p>Construisez votre autodiagnostic sans base prédéfinie, chapitre par chapitre.</p>
+        </div>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" onclick="return dashboardGoBlank(event)">Créer un autodiag</a>
+      </div>
+
+      <div class="quick-card">
+        <div>
+          <div class="quick-icon">◎</div>
+          <h3>Voir l’autodiagnostic côté répondant</h3>
+          <p>Prévisualisez votre autodiagnostic comme une personne répondante, avec un parcours de passation simulé.</p>
+        </div>
+        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Voir côté répondant</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Projet en cours</div>
+        <h2 class="dash-section-title" id="current-project-heading">Projet en cours</h2>
+      </div>
+    </div>
+
+    <div class="draft-card">
+      <div>
+        <div class="draft-status" id="draft-status">Aucun projet finalisé</div>
+        <div class="draft-title" id="draft-title">Vous n’avez pas encore créé d’autodiagnostic.</div>
+        <div class="draft-meta">
+          <span class="draft-pill" id="draft-theme">Thématique à choisir</span>
+          <span class="draft-pill" id="draft-questions">0 question</span>
+          <span class="draft-pill" id="draft-step">Étape 1/5</span>
+        </div>
+      </div>
+
+      <div class="draft-actions">
+        <a href="questions.html" class="btn btn-primary" id="resume-draft-btn" style="display:none">Reprendre la création</a>
+        <a href="parametrage.html" class="btn btn-secondary" id="settings-draft-btn" style="display:none">Paramétrer</a>
+
+        <a href="index.html" class="btn btn-primary" id="draft-library-btn">Explorer les bases</a>
+        <a href="questions.html?mode=blank&setup=1" class="btn btn-secondary" id="draft-blank-btn" onclick="return dashboardGoBlank(event)">Créer de zéro</a>
+
+        <button id="delete-draft-btn" class="btn btn-danger" type="button" onclick="openDeleteDraftModal()" style="display:none">
+          Supprimer le brouillon
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Besoin d’aide ?</div>
+        <h2 class="dash-section-title">Deux accompagnements possibles</h2>
+      </div>
+      <p class="dash-section-sub">Un appui sur le fond des contenus ou sur l’utilisation de l’outil.</p>
+    </div>
+
+    <div class="support-grid">
+      <article class="support-card support-content">
+        <div>
+          <div class="support-kicker">Accompagnement éditorial</div>
+          <h2>Besoin d’un expert contenu ?</h2>
+          <p>
+            Nous pouvons vous mettre en contact avec un expert pour vous aider à cadrer votre thématique, reformuler vos situations, relire les réponses ou sécuriser la cohérence pédagogique de votre autodiagnostic.
+          </p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:contact@intotheshift.io?subject=Besoin%20d%27un%20expert%20contenu" class="btn btn-secondary">Contactez-nous</a>
+        </div>
+      </article>
+
+      <article class="support-card support-tool">
+        <div>
+          <div class="support-kicker">Aide outil</div>
+          <h2>Besoin d’aide pour utiliser le studio ?</h2>
+          <p>
+            Nous pouvons vous guider pour choisir une base, reprendre un brouillon, paramétrer votre campagne, générer un QR code ou transmettre votre configuration.
+          </p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:contact@intotheshift.io?subject=Besoin%20d%27aide%20sur%20Shift%20Studio" class="btn">Contactez-nous</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="dash-section">
+    <div class="dash-section-head">
+      <div>
+        <div class="dash-section-kicker">Parcours guidé</div>
+        <h2 class="dash-section-title">De l’idée à la transmission</h2>
+      </div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="path-num">1</div>
+        <h3>Bibliothèque</h3>
+        <p>Choisir une base de travail ou créer de zéro.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">2</div>
+        <h3>Création</h3>
+        <p>Modifier les questions, réponses, profils et ressources.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">3</div>
+        <h3>Paramétrage</h3>
+        <p>Définir le titre, l’introduction et les informations de campagne.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">4</div>
+        <h3>Campagne</h3>
+        <p>Préparer le lien, le QR code et les éléments de diffusion.</p>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">5</div>
+        <h3>Transmission</h3>
+        <p>Envoyer la configuration à l’équipe Into The Shift.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-section" id="dashboard-quota-section" style="margin-top:18px;display:none">
+    <div id="dashboard-quota-card"></div>
+  </section>
+
+  
 
   <section class="dash-section">
     <div class="dash-section-head">
