@@ -538,11 +538,10 @@ body{
     </div>
 
     <aside class="dash-mini-card">
-      <div class="dash-mini-title">Mon parcours</div>
-      <div class="dash-mini-row"><span>Type d’accès</span><span>Découverte</span></div>
-      <div class="dash-mini-row"><span>Projet en cours</span><span id="mini-project">Aucun projet démarré</span></div>
+      <div class="dash-mini-title">Mon brouillon en cours</div>
+      <div class="dash-mini-row"><span>Brouillon</span><span id="mini-project">Aucun brouillon</span></div>
       <div class="dash-mini-row"><span>Avancement</span><span id="mini-progress">À démarrer</span></div>
-      <div class="dash-mini-row"><span>Prochaine étape</span><span id="mini-next">Choisir une base</span></div>
+      <div class="dash-mini-row"><span>Action</span><span id="mini-next">Choisir une base</span></div>
       <a href="index.html" class="btn btn-primary dash-mini-btn" id="mini-action">Commencer un autodiag</a>
     </aside>
   </section>
@@ -550,7 +549,8 @@ body{
   <section class="dash-section" id="dashboard-quota-section" style="margin-top:18px;display:none">
     <div id="dashboard-quota-card"></div>
   </section>
-<section class="dash-section">
+
+  <section class="dash-section">
     <div class="dash-section-head">
       <div>
         <div class="dash-section-kicker">Démarrer rapidement</div>
@@ -1014,14 +1014,26 @@ function confirmDeleteDraft(){
 function getProjectTitle(apiProject){
   const data = apiProject?.data || {};
   const payload = data.payload || {};
+  const state = data.state || {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || data.meta || state.meta || payload.meta || {};
 
-  return apiProject?.title ||
+  return apiProject?.displayTitle ||
+    apiProject?.title ||
+    param.titre_repondants ||
+    param.titreRespondants ||
+    param.titre_visible_repondants ||
+    param.titreVisibleRepondants ||
+    param.titre ||
+    param.nom ||
     data.autodiagTitle ||
     data.title ||
     data.titre ||
+    state.autodiagTitle ||
+    state.title ||
     payload.titre_autodiag ||
     payload.titre_repondants ||
-    "Autodiagnostic";
+    payload.title ||
+    "Brouillon sans titre";
 }
 
 function normalizeDashboardThemeText(value){
@@ -1175,12 +1187,31 @@ async function loadLatestApiProject(){
       return db - da;
     });
 
-    return projects[0];
+    // Dashboard : le bloc de droite doit montrer un brouillon à reprendre,
+    // pas le dernier AD transmis/publié/dépublié.
+    const drafts = projects.filter(project => getEffectiveStatus(project) === "draft");
+    return drafts[0] || null;
   }catch(e){
     console.error("Erreur chargement projets API", e);
     return null;
   }
 }
+
+function setDashboardText(id, value){
+  const el = document.getElementById(id);
+  if(el) el.textContent = value;
+}
+
+function setDashboardDisplay(id, value){
+  const el = document.getElementById(id);
+  if(el) el.style.display = value;
+}
+
+function setDashboardHref(id, value){
+  const el = document.getElementById(id);
+  if(el) el.href = value;
+}
+
 
 function renderNoProject(){
   const miniAction = document.getElementById("mini-action");
@@ -1190,16 +1221,16 @@ function renderNoProject(){
   const libraryBtn = document.getElementById("draft-library-btn");
   const blankBtn = document.getElementById("draft-blank-btn");
 
-  document.getElementById("mini-project").textContent = "Aucun projet démarré";
-  document.getElementById("mini-progress").textContent = "À démarrer";
-  document.getElementById("mini-next").textContent = "Choisir une base";
+  setDashboardText("mini-project", "Aucun brouillon en cours");
+  setDashboardText("mini-progress", "Aucun brouillon");
+  setDashboardText("mini-next", "Commencer");
   const heading = document.getElementById("current-project-heading");
   if(heading) heading.textContent = "Projet en cours";
-  document.getElementById("draft-status").textContent = "Aucun projet finalisé";
-  document.getElementById("draft-title").textContent = "Vous n’avez pas encore créé d’autodiagnostic.";
-  document.getElementById("draft-theme").textContent = "Thématique à choisir";
-  document.getElementById("draft-questions").textContent = "0 question";
-  document.getElementById("draft-step").textContent = "Étape 1/5";
+  setDashboardText("draft-status", "Aucun projet finalisé");
+  setDashboardText("draft-title", "Vous n’avez pas encore créé d’autodiagnostic.");
+  setDashboardText("draft-theme", "Thématique à choisir");
+  setDashboardText("draft-questions", "0 question");
+  setDashboardText("draft-step", "Étape 1/5");
 
   if(miniAction){
     miniAction.textContent = "Commencer un autodiag";
@@ -1237,19 +1268,19 @@ function renderLocalDraft(state){
   const libraryBtn = document.getElementById("draft-library-btn");
   const blankBtn = document.getElementById("draft-blank-btn");
 
-  document.getElementById("mini-project").textContent = title;
-  document.getElementById("mini-progress").textContent = qCount > 0 ? qCount + " question" + (qCount > 1 ? "s" : "") : "Contenus à compléter";
-  document.getElementById("mini-next").textContent = "Continuer la création";
+  setDashboardText("mini-project", title);
+  setDashboardText("mini-progress", qCount > 0 ? qCount + " question" + (qCount > 1 ? "s" : "") : "Contenus à compléter");
+  setDashboardText("mini-next", "Continuer");
   const heading = document.getElementById("current-project-heading");
   if(heading) heading.textContent = "Brouillon en cours";
-  document.getElementById("draft-status").textContent = "Brouillon local";
-  document.getElementById("draft-title").textContent = title;
-  document.getElementById("draft-theme").textContent = theme;
-  document.getElementById("draft-questions").textContent = qCount + " question" + (qCount > 1 ? "s" : "");
-  document.getElementById("draft-step").textContent = "Étape 2/5";
+  setDashboardText("draft-status", "Brouillon local");
+  setDashboardText("draft-title", title);
+  setDashboardText("draft-theme", theme);
+  setDashboardText("draft-questions", qCount + " question" + (qCount > 1 ? "s" : ""));
+  setDashboardText("draft-step", "Étape 2/5");
 
   if(miniAction){
-    miniAction.textContent = "Continuer la création";
+    miniAction.textContent = "Continuer le brouillon";
     miniAction.href = "questions.html";
   }
 
@@ -1297,31 +1328,31 @@ function renderApiProject(apiProject){
   const libraryBtn = document.getElementById("draft-library-btn");
   const blankBtn = document.getElementById("draft-blank-btn");
 
-  document.getElementById("mini-project").textContent = title;
-  document.getElementById("draft-title").textContent = title;
-  document.getElementById("draft-theme").textContent = theme;
-  document.getElementById("draft-questions").textContent = qCount + " question" + (qCount > 1 ? "s" : "");
+  setDashboardText("mini-project", title);
+  setDashboardText("draft-title", title);
+  setDashboardText("draft-theme", theme);
+  setDashboardText("draft-questions", qCount + " question" + (qCount > 1 ? "s" : ""));
 
   if(status === "unpublished"){
-    document.getElementById("mini-progress").textContent = "Dépublié";
-    document.getElementById("mini-next").textContent = "Consulter les résultats";
-    document.getElementById("draft-status").textContent = "Dépublié";
-    document.getElementById("draft-step").textContent = "Campagne terminée";
+    setDashboardText("mini-progress", "Dépublié");
+    setDashboardText("mini-next", "Consulter les résultats");
+    setDashboardText("draft-status", "Dépublié");
+    setDashboardText("draft-step", "Campagne terminée");
   } else if(status === "published"){
-    document.getElementById("mini-progress").textContent = "Publié";
-    document.getElementById("mini-next").textContent = "Consulter";
-    document.getElementById("draft-status").textContent = "Publié";
-    document.getElementById("draft-step").textContent = "Publié";
+    setDashboardText("mini-progress", "Publié");
+    setDashboardText("mini-next", "Consulter");
+    setDashboardText("draft-status", "Publié");
+    setDashboardText("draft-step", "Publié");
   } else if(status === "sent"){
-    document.getElementById("mini-progress").textContent = "En attente de publication";
-    document.getElementById("mini-next").textContent = "Validation Into The Shift";
-    document.getElementById("draft-status").textContent = "Transmis";
-    document.getElementById("draft-step").textContent = "Transmission effectuée";
+    setDashboardText("mini-progress", "En attente de publication");
+    setDashboardText("mini-next", "Validation Into The Shift");
+    setDashboardText("draft-status", "Transmis");
+    setDashboardText("draft-step", "Transmission effectuée");
   } else {
-    document.getElementById("mini-progress").textContent = "Brouillon";
-    document.getElementById("mini-next").textContent = "Continuer";
-    document.getElementById("draft-status").textContent = "Brouillon en cours";
-    document.getElementById("draft-step").textContent = "Étape 2/5";
+    setDashboardText("mini-progress", "Brouillon");
+    setDashboardText("mini-next", "Continuer");
+    setDashboardText("draft-status", "Brouillon en cours");
+    setDashboardText("draft-step", "Étape 2/5");
   }
 
   if(resumeBtn){
@@ -1351,7 +1382,7 @@ function renderApiProject(apiProject){
       miniAction.textContent = "Modifier la configuration";
       miniAction.href = getProjectResumeUrl(apiProject);
     } else {
-      miniAction.textContent = "Continuer la création";
+      miniAction.textContent = "Continuer le brouillon";
       miniAction.href = getProjectResumeUrl(apiProject);
     }
   }
