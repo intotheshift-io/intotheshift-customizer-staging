@@ -110,15 +110,15 @@ const DEMO_STATE = {
       { q:"Votre environnement principal de travail", opts:["Site / terrain","Bureau","Hybride","Télétravail"], min_groupe:10 }
     ],
     resources: [
-      { title:"Faire le module de e-learning", url:"https://intranet.exemple.local/e-learning/communication-en-situation-tendue" },
-      { title:"Consulter notre plan de formation", url:"https://intranet.exemple.local/formation/plan-communication-feedback" },
-      { title:"Accéder aux ressources RH", url:"https://intranet.exemple.local/rh/ressources-management" }
+      { title:"Faire le module de e-learning", description:"Module e-learning interne" },
+      { title:"Consulter notre plan de formation", description:"Catalogue de formation de l’entreprise" },
+      { title:"Accéder aux ressources RH", description:"Guides, procédures et ressources internes" }
     ]
   },
   resources: [
-    { title:"Faire le module de e-learning", url:"https://intranet.exemple.local/e-learning/communication-en-situation-tendue" },
-    { title:"Consulter notre plan de formation", url:"https://intranet.exemple.local/formation/plan-communication-feedback" },
-    { title:"Accéder aux ressources RH", url:"https://intranet.exemple.local/rh/ressources-management" }
+    { title:"Faire le module de e-learning", description:"Module e-learning interne" },
+    { title:"Consulter notre plan de formation", description:"Catalogue de formation de l’entreprise" },
+    { title:"Accéder aux ressources RH", description:"Guides, procédures et ressources internes" }
   ],
   chapters: [
     {
@@ -425,7 +425,8 @@ function renderFinal(){
         const url = resourceUrl(r);
         return `<div style="padding:12px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px">
           <div style="font-weight:800;color:#18375d">${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
-          ${url ? `<div class="resource-actions"><a class="resource-btn" href="${escAttr(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Aller plus loin</a></div>` : ""}
+          <button type="button" class="resource-btn" onclick="event.preventDefault();event.stopPropagation();return false;" style="border:0;margin-top:10px;cursor:default">Aller plus loin</button>
+          ${r.description ? `<div style="font-size:12px;color:#64748b;line-height:1.4;margin-top:8px">${esc(r.description)}</div>` : ""}
         </div>`;
       }).join("")}
     </div>

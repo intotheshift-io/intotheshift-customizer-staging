@@ -47,6 +47,17 @@ body{font-family:'Asap',sans-serif;background:linear-gradient(180deg,#eef6fb 0%,
 .btn-register:hover{
   background:#eef6fb;
   transform:translateY(-1px);
+}
+.btn-demo{
+  background:#ffc000;
+  color:#18375d;
+  border:2px solid #ffc000;
+  box-shadow:0 8px 20px rgba(255,192,0,.22);
+}
+.btn-demo:hover{
+  background:#ffd34d;
+  border-color:#ffd34d;
+  transform:translateY(-1px);
 }  
 .hero-note{font-size:13px;color:#64748b;line-height:1.5}
 .free-offer{
@@ -189,7 +200,7 @@ flex-shrink:0
         <a href="index.html" class="btn btn-primary">Explorer les bases</a>
         <a href="#" class="btn btn-secondary" onclick="goBlankFromHome(event)">Créer de zéro</a>
         <a href="#mode-emploi" class="btn btn-secondary">Mode d’emploi</a>
-        <a href="apercu-passation.html?demo=1" target="_blank" rel="noopener" class="btn btn-secondary">Voir la démo répondant</a>
+        <a href="apercu-passation.html?demo=1" target="_blank" rel="noopener" class="btn btn-demo">Tester l’expérience collaborateur</a>
         <a href="demande-information.html" class="btn btn-secondary">Demande d’information</a>
       </div>
       <div class="free-offer">
@@ -282,7 +293,7 @@ mais comment ils agissent.</h2>
         <div class="method-badge">🧠 Diagnostic comportemental</div>
         <h3>Qu’est-ce qu’un simulateur comportemental ?</h3>
         <p>Une méthode 100% anonyme pour provoquer une prise de conscience individuelle et mesurer collectivement les pratiques professionnelles à partir de situations concrètes.</p>
-        <span class="btn">Comprendre la méthode</span><span class="btn method-demo-link" onclick="event.preventDefault();event.stopPropagation();window.open('apercu-passation.html?demo=1','_blank','noopener');">Voir la démo répondant</span>
+        <span class="btn">Comprendre la méthode</span><span class="btn method-demo-link" onclick="event.preventDefault();event.stopPropagation();window.open('apercu-passation.html?demo=1','_blank','noopener');">Tester l’expérience collaborateur</span>
       </div>
       <div class="method-points" aria-hidden="true">
         <div class="method-point">Situations concrètes</div>

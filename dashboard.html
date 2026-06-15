@@ -581,10 +581,10 @@ body{
       <div class="quick-card">
         <div>
           <div class="quick-icon">◎</div>
-          <h3>Découvrir l’expérience répondant</h3>
-          <p>Testez un exemple complet d’autodiagnostic tel qu’il sera vécu par vos collaborateurs.</p>
+          <h3>Tester l’expérience collaborateur</h3>
+          <p>Lancez une démo fictive pour voir le parcours vécu par une personne répondante, jusqu’aux résultats.</p>
         </div>
-        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Lancer la démo</button>
+        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Tester la démo</button>
       </div>
     </div>
   </section>
@@ -1238,7 +1238,7 @@ function renderNoProject(){
   const previewBtn = document.getElementById("preview-link-card");
   if(previewBtn){
     previewBtn.disabled = false;
-    previewBtn.textContent = "Lancer la démo";
+    previewBtn.textContent = "Tester la démo";
   }
 }
 
@@ -1283,7 +1283,7 @@ function renderLocalDraft(state){
   if(libraryBtn) libraryBtn.style.display = "none";
   if(blankBtn) blankBtn.style.display = "none";
   const previewBtn = document.getElementById("preview-link-card");
-  if(previewBtn) previewBtn.textContent = "Lancer la démo";
+  if(previewBtn) previewBtn.textContent = "Tester la démo";
 }
 
 function getProjectResumeUrl(apiProject){
@@ -1381,7 +1381,7 @@ function renderApiProject(apiProject){
   }
 
   const previewBtn = document.getElementById("preview-link-card");
-  if(previewBtn) previewBtn.textContent = "Lancer la démo";
+  if(previewBtn) previewBtn.textContent = "Tester la démo";
 }
 
 document.addEventListener("DOMContentLoaded", async function(){
