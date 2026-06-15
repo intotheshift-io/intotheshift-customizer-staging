@@ -44,6 +44,10 @@ body{font-family:'Asap',sans-serif;background:#eef0f4;min-height:100vh;color:#18
 .coll-pct{font-size:28px;font-weight:900;line-height:1}.coll-pct span{font-size:14px}.coll-lbl{font-size:11px;line-height:1.35;margin-top:6px;color:#18375d}
 .coll-bars{display:flex;flex-direction:column;gap:7px}.coll-line{display:grid;grid-template-columns:1fr 1.3fr;gap:9px;align-items:center;font-size:11px;color:#18375d;line-height:1.35}.coll-track{height:6px;border-radius:6px;background:#e8edf4;overflow:hidden}.coll-fill{height:100%;border-radius:6px;background:#77cd8a}.coll-fill.mid{background:#ffc744}.coll-fill.bad{background:#ff847e}
 @media(max-width:560px){.coll-panel.open{grid-template-columns:1fr}.result-title{font-size:18px}}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.resource-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:#0d4c72;color:#fff;text-decoration:none;font-size:12px;font-weight:900;padding:9px 11px;line-height:1.2}
+.resource-btn:hover{background:#0a3f60}
+@media(max-width:560px){.resource-btn{width:100%}}
 
 
 /* ── Correctifs responsive iPhone / mobile ───────────────── */
@@ -93,12 +97,118 @@ let step="home", ci=0, qi=0, selected=null, scores=[], socioChoices={}, finalOpe
 const previewParams = new URLSearchParams(window.location.search);
 const previewMode = previewParams.get("preview") || "";
 const previewFrom = previewParams.get("from") || "";
+const previewIsDemo = previewParams.get("demo") === "1";
+
+const DEMO_STATE = {
+  title: "Communiquer en situation tendue",
+  duration: "3 min",
+  intro: "Cette démo illustre le parcours vécu par une personne répondante : des situations concrètes, des choix de réaction, un profil individuel par chapitre et une page finale avec des ressources d’entreprise. Les contenus sont fictifs et servent uniquement à présenter le fonctionnement d’un autodiagnostic Into The Shift.",
+  parametrage: {
+    titre: "Communiquer en situation tendue",
+    sociodemo: [
+      { q:"Votre rôle dans l’organisation", opts:["Collaborateur·rice","Manager","Direction","Fonction support"], min_groupe:10 },
+      { q:"Votre environnement principal de travail", opts:["Site / terrain","Bureau","Hybride","Télétravail"], min_groupe:10 }
+    ],
+    resources: [
+      { title:"Faire le module de e-learning", url:"https://intranet.exemple.local/e-learning/communication-en-situation-tendue" },
+      { title:"Consulter notre plan de formation", url:"https://intranet.exemple.local/formation/plan-communication-feedback" },
+      { title:"Accéder aux ressources RH", url:"https://intranet.exemple.local/rh/ressources-management" }
+    ]
+  },
+  resources: [
+    { title:"Faire le module de e-learning", url:"https://intranet.exemple.local/e-learning/communication-en-situation-tendue" },
+    { title:"Consulter notre plan de formation", url:"https://intranet.exemple.local/formation/plan-communication-feedback" },
+    { title:"Accéder aux ressources RH", url:"https://intranet.exemple.local/rh/ressources-management" }
+  ],
+  chapters: [
+    {
+      title: "Réagir face au désaccord",
+      questions: [
+        { text: "En réunion, une collègue conteste frontalement votre proposition devant l’équipe. Que faites-vous spontanément ?", answers: [
+          { text:"Vous défendez immédiatement votre point de vue pour éviter que votre proposition soit décrédibilisée.", score:0 },
+          { text:"Vous reformulez son objection puis vous proposez de clarifier les points de désaccord.", score:2 },
+          { text:"Vous évitez de répondre sur le moment pour ne pas tendre davantage l’échange.", score:1 }
+        ]},
+        { text: "Un échange écrit devient sec et interprétable. Quelle est votre réaction la plus probable ?", answers: [
+          { text:"Vous répondez point par point par écrit pour garder une trace précise.", score:0 },
+          { text:"Vous proposez un court échange oral pour clarifier l’intention et revenir au sujet.", score:2 },
+          { text:"Vous attendez que la tension retombe avant de relancer.", score:1 }
+        ]},
+        { text: "Deux personnes de votre équipe ne sont pas d’accord sur la priorité à donner à un dossier. Vous intervenez comment ?", answers: [
+          { text:"Vous tranchez rapidement pour éviter de perdre du temps.", score:0 },
+          { text:"Vous faites expliciter les critères de décision avant de choisir une direction.", score:2 },
+          { text:"Vous demandez aux personnes concernées de revenir avec une proposition commune.", score:1 }
+        ]}
+      ],
+      profiles: [
+        { min:0, max:0.8, title:"Vous réagissez vite, parfois au risque de rigidifier l’échange", description:"Votre réflexe est de protéger l’efficacité immédiate. Cela peut être utile en situation d’urgence, mais dans un désaccord tendu, clarifier les perceptions et les critères peut éviter l’escalade.", keywords:["Ralentir","Clarifier","Éviter la surenchère"] },
+        { min:0.81, max:1.45, title:"Vous cherchez l’apaisement mais pouvez différer les clarifications", description:"Vous tentez de préserver la relation. Le point de vigilance est de ne pas laisser les malentendus s’installer. Une clarification courte et cadrée permet souvent d’apaiser durablement.", keywords:["Reformuler","Cadrer","Oser clarifier"] },
+        { min:1.46, max:2, title:"Vous transformez le désaccord en clarification utile", description:"Vous utilisez le désaccord comme une occasion de préciser les besoins, les critères et les décisions. Ce réflexe facilite une coopération plus robuste.", keywords:["Écoute active","Critères partagés","Décision claire"] }
+      ]
+    },
+    {
+      title: "Donner un feedback difficile",
+      questions: [
+        { text: "Vous devez faire un retour à une personne dont le travail n’est pas au niveau attendu. Comment commencez-vous ?", answers: [
+          { text:"Vous listez directement les points qui ne vont pas pour être clair.", score:0 },
+          { text:"Vous décrivez les faits observables puis vous demandez son point de vue.", score:2 },
+          { text:"Vous commencez par beaucoup de positif pour rendre le message plus acceptable.", score:1 }
+        ]},
+        { text: "La personne se braque pendant votre feedback. Que faites-vous ?", answers: [
+          { text:"Vous insistez sur le message pour qu’il soit bien compris.", score:0 },
+          { text:"Vous reconnaissez la réaction, reformulez l’objectif et revenez aux faits.", score:2 },
+          { text:"Vous écourtez l’échange et proposez d’en reparler plus tard.", score:1 }
+        ]},
+        { text: "Après un feedback difficile, quelle suite privilégiez-vous ?", answers: [
+          { text:"Vous laissez la personne corriger seule, puisque le message a été donné.", score:0 },
+          { text:"Vous formalisez un point d’action concret et une échéance de suivi.", score:2 },
+          { text:"Vous restez disponible si la personne revient vers vous.", score:1 }
+        ]}
+      ],
+      profiles: [
+        { min:0, max:0.8, title:"Votre feedback est direct, mais peut manquer d’espace de dialogue", description:"Votre clarté est un atout. Pour renforcer l’adhésion, appuyez-vous davantage sur des faits observables et sur un accord de suivi.", keywords:["Faits","Dialogue","Suivi"] },
+        { min:0.81, max:1.45, title:"Vous cherchez à préserver la relation, parfois au détriment de la précision", description:"Vous êtes attentif·ve à l’impact humain du feedback. Le risque est de diluer le message. Un feedback utile combine bienveillance, faits précis et prochaine étape.", keywords:["Clarté","Bienveillance","Action"] },
+        { min:1.46, max:2, title:"Vous structurez le feedback pour le rendre actionnable", description:"Vous combinez observation, écoute et plan d’action. Cette posture augmente les chances que le feedback soit compris et transformé en progrès concret.", keywords:["Feedback utile","Plan d’action","Responsabilisation"] }
+      ]
+    },
+    {
+      title: "Sortir d’une tension collective",
+      questions: [
+        { text: "Une tension s’installe dans l’équipe après une décision mal comprise. Quelle action lancez-vous ?", answers: [
+          { text:"Vous rappelez la décision et demandez à chacun de s’aligner.", score:0 },
+          { text:"Vous organisez un temps court pour expliciter les impacts et les irritants.", score:2 },
+          { text:"Vous laissez quelques jours pour que les réactions se calment.", score:1 }
+        ]},
+        { text: "Lors d’un échange collectif, plusieurs personnes parlent en même temps. Que faites-vous ?", answers: [
+          { text:"Vous reprenez fermement la main pour imposer un tour de parole.", score:1 },
+          { text:"Vous posez un cadre simple : faits, impacts, besoins, puis options.", score:2 },
+          { text:"Vous laissez l’échange se dérouler pour que chacun vide son sac.", score:0 }
+        ]},
+        { text: "À la fin d’une discussion tendue, comment sécurisez-vous la suite ?", answers: [
+          { text:"Vous résumez la décision prise et vous passez au sujet suivant.", score:1 },
+          { text:"Vous reformulez les accords, les désaccords restants et les prochaines actions.", score:2 },
+          { text:"Vous envoyez un compte-rendu factuel sans rouvrir le débat.", score:0 }
+        ]}
+      ],
+      profiles: [
+        { min:0, max:0.8, title:"Vous cherchez à refermer vite la tension", description:"Votre intention est de restaurer l’efficacité. Mais une tension non explicitée peut réapparaître plus tard. Nommer les impacts et les besoins aide à stabiliser la suite.", keywords:["Impacts","Besoins","Stabilisation"] },
+        { min:0.81, max:1.45, title:"Vous cadrez la discussion mais pouvez encore renforcer la formalisation", description:"Vous cherchez un équilibre entre expression et décision. Pour ancrer les progrès, pensez à formaliser clairement les accords et les prochaines actions.", keywords:["Cadre","Accords","Prochaines actions"] },
+        { min:1.46, max:2, title:"Vous transformez la tension collective en apprentissage d’équipe", description:"Vous savez faire émerger les faits, les impacts et les options. Cette posture permet de réduire les non-dits et de renforcer la capacité de coopération.", keywords:["Apprentissage collectif","Coopération","Clarté"] }
+      ]
+    }
+  ]
+};
+
 // Depuis l’onglet Profils, l’aperçu répondant doit ignorer la page socio-démo
 // car elle n’est pas encore paramétrée à cette étape.
 if(previewMode === "respondent" || previewFrom === "profiles") step = "question";
 if(previewMode === "final") step = "final";
 
 async function loadPreviewState(){
+  if(previewIsDemo){
+    return JSON.parse(JSON.stringify(DEMO_STATE));
+  }
+
   let loaded = {};
   try{
     if(typeof itsBootstrapProjectFromUrl === "function") loaded = await itsBootstrapProjectFromUrl();
@@ -171,7 +281,7 @@ function renderHome(){
   document.getElementById("app").innerHTML = `
   <div class="hbar"><div class="hbar-title">${esc(title())}</div></div>
   <div class="page">
-    <div class="note">Aperçu de passation : les résultats affichés sont simulés.</div>
+    ${previewIsDemo ? `<div class="note">Démo répondant : exemple fictif pour découvrir le parcours. Les résultats affichés sont simulés.</div>` : `<div class="note">Aperçu de passation : les résultats affichés sont simulés.</div>`}
     <div class="hero-wrap">
       <div class="hero-img"><div style="font-size:60px;color:#fff">✓</div></div>
       <div class="hero-body">
@@ -308,13 +418,17 @@ function renderFinal(){
         </div>
       </div>`;
     }).join("")}
-    <div class="card"><div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour approfondir</div>${finalResources().map(r=>{
-      const url = resourceUrl(r);
-      return `<div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:7px">
-        <div>${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
-        ${url ? `<a href="${escAttr(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:inline-flex;margin-top:8px;font-size:12px;font-weight:800;color:#0d4c72;text-decoration:none;pointer-events:auto;position:relative;z-index:2">Tester le lien</a>` : ""}
-      </div>`;
-    }).join("")}</div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:800;margin-bottom:10px">Pour aller plus loin</div>
+      <div style="font-size:12px;color:#64748b;line-height:1.5;margin-bottom:12px">Dans une vraie campagne, ces boutons peuvent renvoyer vers les ressources internes de l’entreprise : intranet RH, module e-learning, plan de formation, charte interne ou programme d’accompagnement.</div>
+      ${finalResources().map(r=>{
+        const url = resourceUrl(r);
+        return `<div style="padding:12px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px">
+          <div style="font-weight:800;color:#18375d">${esc(r.titre || r.title || r.nom || r.name || "Ressource")}</div>
+          ${url ? `<div class="resource-actions"><a class="resource-btn" href="${escAttr(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Aller plus loin</a></div>` : ""}
+        </div>`;
+      }).join("")}
+    </div>
   </div>`;
 }
 

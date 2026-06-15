@@ -556,7 +556,7 @@ body{
         <div class="dash-section-kicker">Démarrer rapidement</div>
         <h2 class="dash-section-title">Que souhaitez-vous faire ?</h2>
       </div>
-      <p class="dash-section-sub">Choisissez votre point de départ ou ouvrez un aperçu côté répondant.</p>
+      <p class="dash-section-sub">Choisissez votre point de départ ou découvrez l’expérience côté répondant.</p>
     </div>
 
     <div class="quick-grid">
@@ -581,10 +581,10 @@ body{
       <div class="quick-card">
         <div>
           <div class="quick-icon">◎</div>
-          <h3>Voir l’autodiagnostic côté répondant</h3>
-          <p>Prévisualisez votre autodiagnostic comme une personne répondante, avec un parcours de passation simulé.</p>
+          <h3>Découvrir l’expérience répondant</h3>
+          <p>Testez un exemple complet d’autodiagnostic tel qu’il sera vécu par vos collaborateurs.</p>
         </div>
-        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Voir côté répondant</button>
+        <button id="preview-link-card" type="button" class="btn btn-secondary" onclick="openPreviewModal()">Lancer la démo</button>
       </div>
     </div>
   </section>
@@ -978,14 +978,7 @@ function openPreviewModal(){
   const frame = document.getElementById("previewFrame");
   if(!modal || !frame) return;
 
-  const projectReady = latestVisibleProject ? savePreviewStateFromProject(latestVisibleProject) : hasLocalPreviewState();
-
-  if(!projectReady){
-    alert("La prévisualisation côté répondant sera disponible dès qu’un autodiagnostic contiendra au moins un chapitre avec des questions.");
-    return;
-  }
-
-  frame.src = "apercu-passation.html";
+  frame.src = "apercu-passation.html?demo=1";
   modal.style.display = "flex";
 }
 
@@ -1245,7 +1238,7 @@ function renderNoProject(){
   const previewBtn = document.getElementById("preview-link-card");
   if(previewBtn){
     previewBtn.disabled = false;
-    previewBtn.textContent = "Voir côté répondant";
+    previewBtn.textContent = "Lancer la démo";
   }
 }
 
@@ -1290,7 +1283,7 @@ function renderLocalDraft(state){
   if(libraryBtn) libraryBtn.style.display = "none";
   if(blankBtn) blankBtn.style.display = "none";
   const previewBtn = document.getElementById("preview-link-card");
-  if(previewBtn) previewBtn.textContent = "Voir côté répondant";
+  if(previewBtn) previewBtn.textContent = "Lancer la démo";
 }
 
 function getProjectResumeUrl(apiProject){
@@ -1388,7 +1381,7 @@ function renderApiProject(apiProject){
   }
 
   const previewBtn = document.getElementById("preview-link-card");
-  if(previewBtn) previewBtn.textContent = "Voir côté répondant";
+  if(previewBtn) previewBtn.textContent = "Lancer la démo";
 }
 
 document.addEventListener("DOMContentLoaded", async function(){

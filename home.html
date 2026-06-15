@@ -144,7 +144,7 @@ font-weight:900;
 font-size:14px;
 flex-shrink:0
 }
-.method-feature .btn{margin-top:18px;background:#ffc000;color:#18375d;border:0;width:max-content}
+.method-feature .btn{margin-top:18px;background:#ffc000;color:#18375d;border:0;width:max-content}.method-demo-link{display:inline-flex;margin-left:10px;background:#fff;color:#0d4c72;border:1px solid rgba(255,255,255,.55)}@media(max-width:620px){.method-demo-link{margin-left:0;margin-top:10px;width:100%}}
 .usecases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .usecase-card{position:relative;overflow:hidden;background:#fff;border:1px solid #d8e0ea;border-radius:20px;padding:22px;box-shadow:0 10px 28px rgba(24,55,93,.06);text-decoration:none;color:#18375d;display:flex;flex-direction:column;min-height:225px;transition:.18s ease}
 .usecase-card::after{content:"";position:absolute;right:-42px;top:-42px;width:118px;height:118px;border-radius:50%;background:rgba(13,76,114,.08)}
@@ -189,6 +189,7 @@ flex-shrink:0
         <a href="index.html" class="btn btn-primary">Explorer les bases</a>
         <a href="#" class="btn btn-secondary" onclick="goBlankFromHome(event)">Créer de zéro</a>
         <a href="#mode-emploi" class="btn btn-secondary">Mode d’emploi</a>
+        <a href="apercu-passation.html?demo=1" target="_blank" rel="noopener" class="btn btn-secondary">Voir la démo répondant</a>
         <a href="demande-information.html" class="btn btn-secondary">Demande d’information</a>
       </div>
       <div class="free-offer">
@@ -281,7 +282,7 @@ mais comment ils agissent.</h2>
         <div class="method-badge">🧠 Diagnostic comportemental</div>
         <h3>Qu’est-ce qu’un simulateur comportemental ?</h3>
         <p>Une méthode 100% anonyme pour provoquer une prise de conscience individuelle et mesurer collectivement les pratiques professionnelles à partir de situations concrètes.</p>
-        <span class="btn">Comprendre la méthode</span>
+        <span class="btn">Comprendre la méthode</span><span class="btn method-demo-link" onclick="event.preventDefault();event.stopPropagation();window.open('apercu-passation.html?demo=1','_blank','noopener');">Voir la démo répondant</span>
       </div>
       <div class="method-points" aria-hidden="true">
         <div class="method-point">Situations concrètes</div>
