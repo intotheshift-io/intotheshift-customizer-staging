@@ -47,6 +47,38 @@ body{font-family:'Asap',sans-serif;background:linear-gradient(180deg,#eef6fb 0%,
 .btn-register:hover{
   background:#eef6fb;
   transform:translateY(-1px);
+}
+.btn-demo{
+  background:#ffc000;
+  color:#18375d;
+  border:2px solid #ffc000;
+  box-shadow:0 10px 24px rgba(255,192,0,.26);
+}
+.btn-demo:hover{
+  background:#ffd34d;
+  border-color:#ffd34d;
+  transform:translateY(-1px);
+}
+.btn-demo-strong{
+  padding:13px 20px;
+  font-size:15px;
+  border-radius:12px;
+}
+.demo-cta-zone{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.demo-cta-note{
+  width:100%;
+  text-align:center;
+  color:#64748b;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:2px;
 }  
 .hero-note{font-size:13px;color:#64748b;line-height:1.5}
 .free-offer{
@@ -249,8 +281,9 @@ flex-shrink:0
         <div class="value-card"><div class="value-icon">🌍</div><h3>France & international</h3><p>Déploiements dans de nombreux contextes culturels et professionnels.</p></div>
       </div>
 
-      <div style="margin-top:20px">
-        <a href="apercu-passation.html?demo=1" target="_blank" rel="noopener" class="btn btn-demo">
+      <div class="demo-cta-zone">
+        <div class="demo-cta-note">Découvrez en quelques minutes le type d’expérience vécue par les répondants.</div>
+        <a href="apercu-passation.html?demo=1" target="_blank" rel="noopener" class="btn btn-demo btn-demo-strong">
           Découvrir un exemple d’autodiagnostic
         </a>
       </div>
@@ -272,6 +305,7 @@ flex-shrink:0
         <h3>Qu’est-ce qu’un simulateur comportemental ?</h3>
         <p>Une méthode 100% anonyme pour provoquer une prise de conscience individuelle et mesurer collectivement les pratiques professionnelles à partir de situations concrètes.</p>
         <span class="btn">Comprendre la méthode</span>
+        <span class="btn btn-demo" onclick="event.preventDefault();event.stopPropagation();window.open('apercu-passation.html?demo=1','_blank','noopener');">Découvrir un exemple d’autodiagnostic</span>
       </div>
       <div class="method-points" aria-hidden="true">
         <div class="method-point">Situations concrètes</div>
