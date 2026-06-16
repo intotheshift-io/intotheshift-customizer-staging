@@ -312,6 +312,10 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .modal{background:#fff;border-radius:14px;padding:26px;max-width:380px;width:90%;border:1px solid #d8e0ea;box-shadow:0 12px 32px rgba(24,55,93,0.15)}
 .modal h3{font-size:15px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;margin-bottom:8px}
 .modal p{font-size:13px;color:#64748b;font-family:'Asap',sans-serif;line-height:1.6;margin-bottom:18px}
+.profile-check-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 18px}
+.profile-check-item{background:#f7fbfc;border:1px solid #d7e8f1;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:700;color:#18375d;font-family:'Asap',sans-serif;display:flex;align-items:center;gap:7px}
+.profile-check-item span{color:#007883;font-weight:950}
+@media(max-width:520px){.profile-check-list{grid-template-columns:1fr}.modal-acts{flex-direction:column}.modal-acts button{width:100%}}
 .modal-acts{display:flex;gap:8px;justify-content:flex-end}
 .btn-cancel{padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;font-family:'Asap',sans-serif;cursor:pointer;border:1px solid #d8e0ea;background:#fff;color:#64748b}
 .btn-cancel:hover{background:#f7f9fc}
@@ -777,6 +781,25 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
     <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec un <strong>énoncé</strong> et au moins <strong>3 réponses renseignées et scorées</strong> par question, avant d’ouvrir les profils.</p>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-profiles-reminder">
+  <div class="modal" style="max-width:520px;text-align:left">
+    <div style="width:52px;height:52px;border-radius:18px;background:#e5f4f5;color:#007883;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px">🎯</div>
+    <h3>Vérification recommandée avant de continuer</h3>
+    <p>Les profils de résultat ont été préremplis pour vous faire gagner du temps. Avant de passer au paramétrage, pensez à les relire et à les adapter à votre contexte.</p>
+    <div class="profile-check-list">
+      <div class="profile-check-item"><span>✓</span> Relire les profils</div>
+      <div class="profile-check-item"><span>✓</span> Personnaliser les titres</div>
+      <div class="profile-check-item"><span>✓</span> Adapter les descriptions</div>
+      <div class="profile-check-item"><span>✓</span> Vérifier les conseils</div>
+    </div>
+    <p style="margin-bottom:18px">Vous pourrez encore revenir les modifier plus tard, mais cette étape évite de diffuser des retours trop génériques aux répondants.</p>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="goBackToProfilesFromReminder()">← Retour aux profils</button>
+      <button class="btn-confirm" style="background:#18375d" onclick="continueAfterProfilesReminder()">Continuer vers le paramétrage →</button>
     </div>
   </div>
 </div>
@@ -1566,6 +1589,52 @@ let activeTab = 'questions';
 let openCards = {};
 let activeFilterTag = '';
 let likertInfoOpen = false;
+let pendingParametrageUrl = '';
+
+function profileVisitKey(){
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || 'local';
+  return 'its_profiles_visited_' + String(projectId);
+}
+
+function markProfilesVisited(chapterIndex){
+  if(chapterIndex === undefined || chapterIndex === null) return;
+  try{
+    const raw = sessionStorage.getItem(profileVisitKey()) || '{}';
+    const visited = JSON.parse(raw);
+    visited[String(chapterIndex)] = true;
+    sessionStorage.setItem(profileVisitKey(), JSON.stringify(visited));
+  }catch(e){}
+}
+
+function getProfilesVisitedMap(){
+  try{ return JSON.parse(sessionStorage.getItem(profileVisitKey()) || '{}') || {}; }catch(e){ return {}; }
+}
+
+function hasUnvisitedProfiles(){
+  const visited = getProfilesVisitedMap();
+  return chapters.some((c, i) => chapterQuestionsReady(c) && !visited[String(i)]);
+}
+
+function openProfilesReminderModal(nextUrl){
+  pendingParametrageUrl = nextUrl || 'parametrage.html';
+  document.getElementById('modal-profiles-reminder')?.classList.add('on');
+}
+
+function closeProfilesReminderModal(){
+  document.getElementById('modal-profiles-reminder')?.classList.remove('on');
+}
+
+function goBackToProfilesFromReminder(){
+  closeProfilesReminderModal();
+  const visited = getProfilesVisitedMap();
+  const target = chapters.findIndex((c, i) => chapterQuestionsReady(c) && !visited[String(i)]);
+  setTab(target >= 0 ? target : 0, 'profils');
+}
+
+function continueAfterProfilesReminder(){
+  closeProfilesReminderModal();
+  if(pendingParametrageUrl) window.location.href = pendingParametrageUrl;
+}
 
 const fallbackBibliotheque = [
   {id:'b1',prov:'AI',subject:'',chapter:'',text:"Vous recevez une demande inhabituelle dans votre quotidien professionnel. Que faites-vous ?",tags:["Réflexe","Situation concrète"],added:false},
@@ -2071,6 +2140,7 @@ function setTab(i, tab) {
   }
   activeChap = i;
   activeTab = tab;
+  if(tab === 'profils') markProfilesVisited(i);
   openCards = {};
   renderNav();
   renderMain();
@@ -2263,7 +2333,7 @@ function renderQuestions(ch) {
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
         <strong>Conversion échelle → score</strong> — Les questions Likert (1→5) sont normalisées : 1=0 · 2=0,5 · 3=1 · 4=1,5 · 5=2.
-        <span id="likert-extra" style="display:none"> Le score du chapitre est une moyenne des réponses, ce qui permet de comparer les profils même si le nombre de questions varie. Les seuils sont proposés automatiquement sur une échelle 0 → 2.</span>
+        <span id="likert-extra" style="display:none"> Le score du chapitre est une moyenne des réponses, ce qui permet de comparer les profils même si le nombre de questions varie. Les seuils sont proposés automatiquement sur une échelle de 0 à 2 : 0 = score le plus bas, 2 = score le plus haut. Le score du chapitre correspond à la moyenne des réponses.</span>
       </div>
       <span class="likert-info-toggle" onclick="toggleLikertInfo()">Voir plus</span>
     </div>` : ''}
@@ -2484,7 +2554,7 @@ function renderProfils(ch) {
     <div class="seuils-card">
       <div class="seuils-head">
         <span class="seuils-title">${icoStar} Seuils de moyenne par profil <span class="seuils-more">Voir plus <span class="help-tip" tabindex="0" data-help="Les seuils déterminent quel profil s’affiche selon la moyenne des réponses du chapitre. Ils sont proposés automatiquement mais restent ajustables.">?</span></span></span>
-        <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne 0 → 2.</span>
+        <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne de 0 à 2 : 0 = score le plus bas, 2 = score le plus haut.</span>
       </div>
       <div class="seuils-row">${seuilsHTML}</div>
     </div>
@@ -3076,7 +3146,12 @@ function trySave() {
     localStorage.setItem('its_current_ad_id', String(projectId));
     persistQuestionsStateForNextStep();
   }
-  window.location.href = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
+  const nextUrl = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
+  if(hasUnvisitedProfiles()){
+    openProfilesReminderModal(nextUrl);
+    return;
+  }
+  window.location.href = nextUrl;
 }
 
 function closeSaveModal() {
