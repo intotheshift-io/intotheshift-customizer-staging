@@ -389,6 +389,19 @@ function profileSummary(p){
   return String(p?.summary || p?.phrase || p?.description || p?.desc || '').trim();
 }
 
+function profileIndexFromSelectedProfile(selectedProfile, profiles){
+  const list = Array.isArray(profiles) ? profiles : [];
+  const directIndex = list.indexOf(selectedProfile);
+  if(directIndex >= 0) return directIndex;
+
+  const level = String(selectedProfile?.level || selectedProfile?.niveau || selectedProfile?.title || selectedProfile?.titre || '').toLowerCase();
+  if(level.includes('développement') || level.includes('developpement') || level.includes('fragile') || level.includes('progresser')) return 0;
+  if(level.includes('intermédiaire') || level.includes('intermediaire') || level.includes('partiel')) return 1;
+  if(level.includes('ancré') || level.includes('ancre') || level.includes('constructif')) return 2;
+
+  return 1;
+}
+
 function renderFinal(){
   document.getElementById("app").innerHTML = `
   <div class="hbar"><div class="hbar-title">${esc(title())}</div></div>
@@ -396,9 +409,11 @@ function renderFinal(){
     <div class="note">Résultats simulés pour l’aperçu. Les pourcentages ci-dessous illustrent le rendu final avec comparaison collective.</div>
     <div class="card" style="text-align:center"><div style="font-size:20px;font-weight:800">Récapitulatif de vos résultats</div></div>
     ${state.chapters.map((c,i)=>{
+      const profiles = c.profiles || c.profils || [];
       const p = (c.profiles||[])[1] || (c.profils||[])[1] || (c.profiles||[])[0] || (c.profils||[])[0] || {};
+      const profileIndex = profileIndexFromSelectedProfile(p, profiles);
       const kws = profileKeywords(p);
-      const border = profileBorderColor(2);
+      const border = profileBorderColor(profileIndex);
       const dist = simulatedDistribution(i);
       const same = dist.find(x=>x.label.includes('même profil')) || dist[1];
       const open = !!finalOpen[i];
