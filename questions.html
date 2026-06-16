@@ -131,6 +131,9 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 
 /* Questions list */
 .q-list{display:flex;flex-direction:column;gap:8px}
+.q-bottom-add{width:100%;margin-top:6px;background:#fff;color:#18375d;border:1.5px dashed #b8c4d4;border-radius:12px;padding:16px 18px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s}
+.q-bottom-add:hover{background:#edf1f7;border-color:#18375d;color:#18375d}
+.q-bottom-add:disabled{opacity:.45;cursor:not-allowed;background:#f7f9fc;color:#94a3b8}
 
 /* Question card */
 .q-card{border:1px solid #d8e0ea;border-radius:12px;overflow:hidden;background:#fff;transition:border-color 0.12s}
@@ -170,6 +173,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .q-chevron-btn{background:none;border:none;cursor:pointer;color:#c5ccd5;font-size:14px;padding:4px 6px;transition:all 0.15s;line-height:1}
 .q-chevron-btn:hover{color:#18375d}
 .q-card.open .q-chevron-btn{color:#18375d;transform:rotate(180deg)}
+.q-toggle-label{display:inline-flex;align-items:center;gap:4px;margin-top:7px;color:#007883;font-size:12px;font-weight:800;font-family:'Asap',sans-serif;line-height:1.25}
+.q-toggle-label:hover{text-decoration:underline}
 .q-vsep{width:1px;height:22px;background:#e8edf4;margin:0 4px}
 .qa-btn{width:30px;height:30px;border-radius:8px;border:1px solid #e8edf4;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.12s;flex-shrink:0}
 .qa-btn:hover{background:#f7f9fc;border-color:#c5cfdc}
@@ -2323,7 +2328,8 @@ function renderQuestions(ch) {
       </div>` : ''}
     </div>`;
 
-  const qHTML = isEmpty ? emptyState : ch.questions.map((q, qi) => renderCard(q, qi)).join('');
+  const bottomAddButton = !isEmpty ? `<button class="q-bottom-add" ${editBlocked || n >= MAX_QUESTIONS_PER_CHAPTER ? 'disabled' : ''} onclick="if(itsQuestionsIsEditBlocked()) return false; addManual()">➕ Ajouter une nouvelle situation</button>` : '';
+  const qHTML = isEmpty ? emptyState : ch.questions.map((q, qi) => renderCard(q, qi)).join('') + bottomAddButton;
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
@@ -2387,6 +2393,7 @@ function renderCard(q, qi) {
           <span class="edit-hint" title="Question modifiable">✏️</span>
         </div>
         <div class="q-tags-row">${provHTML}${tagsHTML}${addBtn}</div>
+        <div class="q-toggle-label">${open ? '▲ Masquer les réponses et les scores' : '▼ Voir les réponses et les scores'}</div>
       </div>
       <div class="q-right" onclick="event.stopPropagation()">
         <button class="q-chevron-btn" onclick="toggleCard('${q.id}')">▾</button>
