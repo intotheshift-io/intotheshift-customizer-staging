@@ -347,10 +347,10 @@ flex-shrink:0
   </section>
 
   <section class="meandyou-home-card" aria-label="Catalogue Inclusion Expert Me&YouToo">
-    <div class="meandyou-home-kicker">🔒 Catalogue expert</div>
+    <div class="meandyou-home-kicker">Me&YouToo</div>
     <h2>Vous recherchez un autodiagnostic Diversité & Inclusion ?</h2>
     <p>
-      Les sujets liés à la diversité, l’inclusion, le sexisme, le handicap, les LGBT+, les origines, la religion, la mixité, les discriminations et le harcèlement relèvent du catalogue expert Me&YouToo.
+      Les sujets liés à la diversité, l’inclusion, le sexisme, le handicap, les LGBT+, les origines, la religion, les discriminations, l’égalité professionnelle, le harcèlement sexuel et l’allié de la mixité relèvent de l’accompagnement Me&YouToo.
       Ils ne sont pas ouverts à la création autonome sur Into The Shift.
     </p>
     <div class="meandyou-home-actions">
@@ -409,11 +409,11 @@ function goBlankFromHome(event){
   if(event) event.preventDefault();
 
   if(!homeIsLoggedIn()){
-    homeRedirectToLogin("questions.html?mode=blank&setup=1");
+    homeRedirectToLogin("index.html?startBlank=1");
     return false;
   }
 
-  window.location.href = "questions.html?mode=blank&setup=1";
+  window.location.href = "index.html?startBlank=1";
   return false;
 }
 </script>

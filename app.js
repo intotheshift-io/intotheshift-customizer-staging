@@ -488,7 +488,7 @@ const ITS_MEANDYOUTOO_LOCKED_TERMS = [
   "religion", "religieuse", "religieux", "diversité religieuse", "diversite religieuse",
   "égalité professionnelle", "egalite professionnelle", "management inclusif", "manager inclusif",
   "collaborateur inclusif", "collègue inclusif", "collegue inclusif", "allié de la mixité",
-  "allie de la mixite", "mixité", "mixite", "micro-agression", "microagression",
+  "allie de la mixite", "micro-agression", "microagression",
   "stéréotype", "stereotype", "stéréotypes", "stereotypes"
 ];
 const ITS_MEANDYOUTOO_SOFT_TERMS = ["harcèlement moral", "harcelement moral"];
@@ -537,6 +537,64 @@ function itsFindMeAndYouTooSoftTerms(state) {
   return found;
 }
 
+function itsEscapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function itsShowMeAndYouTooRestrictionMessage(terms) {
+  const existing = document.getElementById("its-meandyoutoo-restriction-message");
+  if (existing) existing.remove();
+
+  const subjects = (terms || []).slice(0, 4).map(itsEscapeHtml).join(", ");
+  const banner = document.createElement("div");
+  banner.id = "its-meandyoutoo-restriction-message";
+  banner.setAttribute("role", "status");
+  banner.style.cssText = [
+    "position:fixed",
+    "left:50%",
+    "bottom:22px",
+    "transform:translateX(-50%)",
+    "z-index:25000",
+    "width:min(680px,calc(100vw - 28px))",
+    "background:#ffffff",
+    "border:1px solid #ffc866",
+    "border-left:7px solid #ffc000",
+    "border-radius:18px",
+    "box-shadow:0 24px 70px rgba(15,30,55,.25)",
+    "padding:18px 18px 16px",
+    "font-family:Asap,Arial,sans-serif",
+    "color:#18375d"
+  ].join(";");
+
+  banner.innerHTML = `
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="width:38px;height:38px;border-radius:12px;background:#eef6fb;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🔒</div>
+      <div style="min-width:0;flex:1">
+        <div style="font-size:15px;font-weight:950;margin-bottom:5px">Catalogue Inclusion Expert Me&YouToo</div>
+        <div style="font-size:13px;line-height:1.5;color:#475569">
+          Cette thématique n’est pas disponible en création autonome sur Into The Shift.
+          ${subjects ? `<br><strong>Sujets détectés :</strong> ${subjects}` : ""}
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <a href="mailto:${ITS_MEANDYOUTOO_CONTACT_EMAIL}?subject=Catalogue%20Inclusion%20Expert%20Me%26YouToo" style="display:inline-flex;align-items:center;justify-content:center;background:#0d4c72;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900;font-size:13px;text-decoration:none">Contacter Me&YouToo</a>
+          <button type="button" id="its-meandyoutoo-close" style="border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:10px;padding:9px 12px;font-weight:900;font-size:13px;cursor:pointer;font-family:Asap,Arial,sans-serif">Fermer</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+  document.getElementById("its-meandyoutoo-close")?.addEventListener("click", () => banner.remove());
+  setTimeout(() => {
+    if (document.body.contains(banner)) banner.remove();
+  }, 12000);
+}
+
 function itsAlertMeAndYouTooRestriction(terms) {
   const key = "its_meandyoutoo_locked_alert_at";
   const now = Date.now();
@@ -545,10 +603,15 @@ function itsAlertMeAndYouTooRestriction(terms) {
     if (now - last < 120000) return;
     sessionStorage.setItem(key, String(now));
   } catch(e) {}
-  alert(
-    "Cette thématique relève du Catalogue Inclusion Expert Me&YouToo et n’est pas disponible en création autonome sur Into The Shift.\n\n" +
-    "Sujets détectés : " + (terms || []).slice(0, 4).join(", ") + "\n\n" +
-    "Pour être accompagné·e sur ces sujets, contactez Me&YouToo : " + ITS_MEANDYOUTOO_CONTACT_EMAIL
+
+  if (typeof document !== "undefined" && document.body) {
+    itsShowMeAndYouTooRestrictionMessage(terms);
+    return;
+  }
+
+  console.warn(
+    "Catalogue Inclusion Expert Me&YouToo — création autonome bloquée.",
+    terms || []
   );
 }
 
