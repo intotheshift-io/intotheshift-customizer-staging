@@ -701,9 +701,15 @@ function itsHandleRestrictedBlankCreationAttempt(event) {
   itsAlertMeAndYouTooRestriction(terms);
 
   if (page === "questions.html") {
+    try {
+      sessionStorage.setItem("its_meandyoutoo_blocked_terms", JSON.stringify(terms || []));
+      sessionStorage.setItem("its_meandyoutoo_blocked_return", "1");
+    } catch(e) {}
+
+    // On laisse le temps de lire le message avant de revenir sur la bibliothèque.
     setTimeout(() => {
-      try { window.location.replace("index.html?startBlank=1"); } catch(e) {}
-    }, 180);
+      try { window.location.replace("index.html?startBlank=1&blocked=1"); } catch(e) {}
+    }, 6500);
   }
 
   return true;

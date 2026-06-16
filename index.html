@@ -921,7 +921,18 @@ loadCustomModels();
 try{
   const params = new URLSearchParams(window.location.search || "");
   if(params.get("startBlank") === "1"){
-    if(isLoggedIn()) openBlankTopicModal();
+    if(isLoggedIn()) {
+      openBlankTopicModal();
+      if(params.get("blocked") === "1"){
+        let blockedTerms = [];
+        try { blockedTerms = JSON.parse(sessionStorage.getItem("its_meandyoutoo_blocked_terms") || "[]"); } catch(e) {}
+        showBlankTopicError(Array.isArray(blockedTerms) ? blockedTerms : []);
+        try {
+          sessionStorage.removeItem("its_meandyoutoo_blocked_terms");
+          sessionStorage.removeItem("its_meandyoutoo_blocked_return");
+        } catch(e) {}
+      }
+    }
     else redirectToLogin("index.html?startBlank=1");
   }
 }catch(e){}
