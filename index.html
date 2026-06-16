@@ -199,6 +199,12 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 .blank-topic-title{font-size:22px;font-weight:950;color:#18375d;line-height:1.18;margin:0 0 10px}
 .blank-topic-text{font-size:14px;color:#475569;line-height:1.6;margin:0 0 14px}
 .blank-topic-alert{background:#fff7df;border:1px solid #ffc866;border-left:6px solid #ffc000;border-radius:14px;padding:13px 14px;font-size:13px;color:#5f4500;line-height:1.5;margin:0 0 16px}
+.blank-topic-field{margin:14px 0 12px}
+.blank-topic-label{display:block;font-size:13px;font-weight:900;color:#18375d;margin-bottom:7px}
+.blank-topic-input{width:100%;border:1px solid #cbddea;border-radius:12px;padding:12px 13px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;background:#fff}
+.blank-topic-input:focus{outline:3px solid rgba(13,76,114,.12);border-color:#0d4c72}
+.blank-topic-error{display:none;background:#fff1f1;border:1px solid #ffd1d1;border-left:6px solid #e11d48;border-radius:14px;padding:13px 14px;font-size:13px;color:#7a271a;line-height:1.5;margin:0 0 16px}
+.blank-topic-error.on{display:block}
 .blank-topic-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 @media(max-width:560px){.blank-topic-actions .btn{width:100%;justify-content:center}}
 </style>
@@ -379,17 +385,22 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 <div id="blankTopicModal" role="dialog" aria-modal="true" aria-labelledby="blankTopicTitle" onclick="if(event.target===this) closeBlankTopicModal()">
   <div class="blank-topic-panel">
     <div class="blank-topic-kicker">Création de zéro</div>
-    <h2 class="blank-topic-title" id="blankTopicTitle">Votre sujet relève-t-il de la diversité ou de l’inclusion ?</h2>
+    <h2 class="blank-topic-title" id="blankTopicTitle">Quel sujet voulez-vous traiter ?</h2>
     <p class="blank-topic-text">
-      Into The Shift permet de créer librement des diagnostics sur les sujets métiers : management, QVT/RPS, santé-sécurité, transformation, cybersécurité, RSE, éthique et conformité.
+      Indiquez le sujet général de votre autodiagnostic avant de démarrer. Si un mot-clé du Catalogue Inclusion Expert Me&YouToo est détecté, la page Questions ne s’ouvrira pas et aucun brouillon ne sera créé.
     </p>
+    <div class="blank-topic-field">
+      <label class="blank-topic-label" for="blankTopicInput">Sujet de l’autodiagnostic</label>
+      <input class="blank-topic-input" id="blankTopicInput" type="text" placeholder="Ex. gestion des priorités, cybersécurité, culture sécurité terrain…" autocomplete="off">
+    </div>
+    <div class="blank-topic-error" id="blankTopicError"></div>
     <div class="blank-topic-alert">
       Les sujets diversité, inclusion, sexisme, handicap, LGBT+, origines, religion, discriminations, égalité professionnelle, harcèlement sexuel ou allié de la mixité relèvent de Me&YouToo.
     </div>
     <div class="blank-topic-actions">
       <button class="btn btn-secondary" type="button" onclick="closeBlankTopicModal()">Annuler</button>
       <a class="btn btn-secondary" href="mailto:contact@meandyoutoo.app?subject=Catalogue%20Inclusion%20Expert%20Me%26YouToo">Contacter Me&YouToo</a>
-      <button class="btn btn-primary" type="button" onclick="continueBlankDiagnostic()">Continuer sur un autre sujet</button>
+      <button class="btn btn-primary" type="button" onclick="continueBlankDiagnostic()">Continuer</button>
     </div>
   </div>
 </div>
@@ -406,6 +417,18 @@ let currentTheme = "all";
 let expertOnly = false;
 let customModels = [];
 let pendingDeleteCustomModelId = null;
+
+document.addEventListener("DOMContentLoaded", function(){
+  const input = document.getElementById("blankTopicInput");
+  if(input){
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        e.preventDefault();
+        continueBlankDiagnostic();
+      }
+    });
+  }
+});
 
 function isLoggedIn(){
   return localStorage.getItem("its_logged_in") === "true";
@@ -755,12 +778,54 @@ function buildBlankState(){
 
 function openBlankTopicModal(){
   const modal = document.getElementById("blankTopicModal");
+  const error = document.getElementById("blankTopicError");
+  if(error){ error.classList.remove("on"); error.innerHTML = ""; }
   if(modal) modal.classList.add("on");
+  setTimeout(() => document.getElementById("blankTopicInput")?.focus(), 80);
 }
 
 function closeBlankTopicModal(){
   const modal = document.getElementById("blankTopicModal");
   if(modal) modal.classList.remove("on");
+}
+
+function indexClearAnyBlankDraft(){
+  try {
+    if(typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
+    else if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+    localStorage.removeItem("its_current_project");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+    Object.keys(localStorage)
+      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
+      .forEach(key => localStorage.removeItem(key));
+    sessionStorage.removeItem("its_start_blank_setup");
+    sessionStorage.removeItem("its_blank_initial_topic");
+  } catch(e) {}
+}
+
+function indexFindRestrictedTermsInTopic(topic){
+  const state = { title: topic, subject: topic, theme: topic, description: topic };
+  if(typeof itsFindMeAndYouTooLockedTerms === "function") return itsFindMeAndYouTooLockedTerms(state);
+  const normalize = (value) => String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, " ").replace(/[^a-z0-9+]+/g, " ").replace(/\s+/g, " ").trim();
+  const text = normalize(topic);
+  const terms = ["diversite","inclusion","discrimination","discriminations","sexisme","sexiste","agissement sexiste","harcelement sexuel","violences sexistes","violences sexuelles","vss","lgbt","lgbtq","lgbt+","handicap","origine","origines","diversite des origines","religion","religieuse","religieux","diversite religieuse","egalite professionnelle","management inclusif","manager inclusif","collaborateur inclusif","collegue inclusif","allie de la mixite","micro agression","microagression","stereotype","stereotypes"];
+  return terms.filter(term => text.includes(normalize(term))).slice(0, 6);
+}
+
+function showBlankTopicError(terms){
+  const error = document.getElementById("blankTopicError");
+  const detected = (terms || []).slice(0, 5).join(", ");
+  if(error){
+    error.innerHTML = `
+      <strong>Cette thématique relève de l’expertise Me&YouToo.</strong><br>
+      ${detected ? `Sujets détectés : ${detected}<br>` : ""}
+      Elle n’est pas disponible en création autonome sur Into The Shift. Contactez Me&YouToo : <a href="mailto:contact@meandyoutoo.app?subject=Catalogue%20Inclusion%20Expert%20Me%26YouToo" style="color:#7a271a;font-weight:900">contact@meandyoutoo.app</a>.
+    `;
+    error.classList.add("on");
+  }
 }
 
 function startBlankDiagnostic(){
@@ -769,26 +834,39 @@ function startBlankDiagnostic(){
     return;
   }
 
+  indexClearAnyBlankDraft();
   openBlankTopicModal();
 }
 
 function continueBlankDiagnostic(){
-  closeBlankTopicModal();
+  const input = document.getElementById("blankTopicInput");
+  const topic = String(input?.value || "").trim();
+  const error = document.getElementById("blankTopicError");
+  if(error){ error.classList.remove("on"); error.innerHTML = ""; }
 
-  if(typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
-  else if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
-  else {
-    localStorage.removeItem("its_current_project_id");
-    localStorage.removeItem("its_current_ad_id");
+  if(!topic){
+    if(error){
+      error.textContent = "Indiquez d’abord le sujet de votre autodiagnostic.";
+      error.classList.add("on");
+    }
+    input?.focus();
+    return;
   }
+
+  const restrictedTerms = indexFindRestrictedTermsInTopic(topic);
+  if(restrictedTerms.length){
+    indexClearAnyBlankDraft();
+    showBlankTopicError(restrictedTerms);
+    input?.focus();
+    return;
+  }
+
+  closeBlankTopicModal();
+  indexClearAnyBlankDraft();
 
   try {
     sessionStorage.setItem("its_start_blank_setup", "1");
-    localStorage.removeItem("its_state");
-    localStorage.removeItem("intotheshift_customizer_state_v1");
-    Object.keys(localStorage)
-      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
-      .forEach(key => localStorage.removeItem(key));
+    sessionStorage.setItem("its_blank_initial_topic", topic);
   } catch(e) {}
 
   window.location.assign("questions.html?mode=blank&setup=1");
