@@ -52,6 +52,11 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 .blank-create-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:0;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(24,55,93,.05);min-height:168px}
 .blank-create-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:5px}
 .blank-create-text{font-size:13px;color:#64748b;line-height:1.5;max-width:780px}
+.blank-create-visual{width:100%;margin-top:20px;border:1px solid #d8e0ea;border-radius:18px;background:linear-gradient(135deg,#f8fbfd 0%,#eef6fb 100%);padding:18px;display:grid;grid-template-columns:86px minmax(0,1fr);gap:16px;align-items:center}
+.blank-create-illustration{width:86px;height:86px;border-radius:24px;background:#18375d;color:#fff;display:flex;align-items:center;justify-content:center;font-size:38px;box-shadow:0 14px 28px rgba(24,55,93,.16)}
+.blank-create-steps{display:grid;gap:8px;min-width:0}
+.blank-create-step{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#18375d;line-height:1.25}
+.blank-create-step span{width:27px;height:27px;border-radius:999px;background:#fff;border:1px solid #cbddea;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
 .blank-create-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 
 .custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;margin:0;box-shadow:0 8px 24px rgba(24,55,93,.05);overflow:hidden;min-height:168px}
@@ -161,6 +166,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .badge-item{grid-template-columns:1fr}
   .badges-card .tag{width:max-content;min-width:118px}
   .blank-create-actions,.blank-create-actions .btn{width:100%;justify-content:center}
+  .blank-create-visual{grid-template-columns:1fr;padding:16px}
+  .blank-create-illustration{width:72px;height:72px;font-size:31px}
   .custom-models-toggle{padding:18px}
   .custom-models-grid{grid-template-columns:1fr}
   .faq-section{padding:20px}
@@ -266,6 +273,15 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
         <div class="blank-create-title">Créer un autodiag de A à Z</div>
         <div class="blank-create-text">
           Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue. Les sujets diversité, inclusion et discriminations relèvent de l’accompagnement Me&YouToo.
+        </div>
+        <div class="blank-create-visual" aria-hidden="true">
+          <div class="blank-create-illustration">✦</div>
+          <div class="blank-create-steps">
+            <div class="blank-create-step"><span>📝</span>Définissez vos chapitres</div>
+            <div class="blank-create-step"><span>❓</span>Ajoutez vos situations</div>
+            <div class="blank-create-step"><span>🎯</span>Personnalisez vos profils</div>
+            <div class="blank-create-step"><span>🚀</span>Lancez votre campagne</div>
+          </div>
         </div>
       </div>
       <div class="blank-create-actions">
