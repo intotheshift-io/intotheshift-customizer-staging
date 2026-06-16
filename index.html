@@ -395,7 +395,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     </div>
     <div class="blank-topic-error" id="blankTopicError"></div>
     <div class="blank-topic-alert">
-      Les sujets diversité, inclusion, sexisme, handicap, LGBT+, origines, religion, discriminations, égalité professionnelle, harcèlement sexuel ou allié de la mixité relèvent de Me&YouToo.
+      Les sujets diversité, inclusion, sexisme, handicap, LGBT+, origines, religion, discriminations, égalité professionnelle, harcèlement sexuel, mixité ou allié de la mixité relèvent de Me&YouToo.
     </div>
     <div class="blank-topic-actions">
       <button class="btn btn-secondary" type="button" onclick="closeBlankTopicModal()">Annuler</button>
@@ -679,6 +679,7 @@ function renderCatalogue(){
         <span class="meandyou-topic-pill">Origines</span>
         <span class="meandyou-topic-pill">Religion</span>
         <span class="meandyou-topic-pill">Management inclusif</span>
+        <span class="meandyou-topic-pill">Mixité</span>
         <span class="meandyou-topic-pill">Allié de la mixité</span>
         <span class="meandyou-topic-pill">Harcèlement moral</span>
       </div>
@@ -811,7 +812,7 @@ function indexFindRestrictedTermsInTopic(topic){
   if(typeof itsFindMeAndYouTooLockedTerms === "function") return itsFindMeAndYouTooLockedTerms(state);
   const normalize = (value) => String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, " ").replace(/[^a-z0-9+]+/g, " ").replace(/\s+/g, " ").trim();
   const text = normalize(topic);
-  const terms = ["diversite","inclusion","discrimination","discriminations","sexisme","sexiste","agissement sexiste","harcelement sexuel","violences sexistes","violences sexuelles","vss","lgbt","lgbtq","lgbt+","handicap","origine","origines","diversite des origines","religion","religieuse","religieux","diversite religieuse","egalite professionnelle","management inclusif","manager inclusif","collaborateur inclusif","collegue inclusif","allie de la mixite","micro agression","microagression","stereotype","stereotypes"];
+  const terms = ["diversite","inclusion","discrimination","discriminations","sexisme","sexiste","agissement sexiste","harcelement sexuel","violences sexistes","violences sexuelles","vss","lgbt","lgbtq","lgbt+","handicap","origine","origines","diversite des origines","religion","religieuse","religieux","diversite religieuse","egalite professionnelle","management inclusif","manager inclusif","collaborateur inclusif","collegue inclusif","mixite","allie de la mixite","micro agression","microagression","stereotype","stereotypes"];
   return terms.filter(term => text.includes(normalize(term))).slice(0, 6);
 }
 

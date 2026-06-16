@@ -487,8 +487,8 @@ const ITS_MEANDYOUTOO_LOCKED_TERMS = [
   "handicap", "origine", "origines", "diversité des origines", "diversite des origines",
   "religion", "religieuse", "religieux", "diversité religieuse", "diversite religieuse",
   "égalité professionnelle", "egalite professionnelle", "management inclusif", "manager inclusif",
-  "collaborateur inclusif", "collègue inclusif", "collegue inclusif", "allié de la mixité",
-  "allie de la mixite", "micro-agression", "microagression",
+  "collaborateur inclusif", "collègue inclusif", "collegue inclusif", "mixité", "mixite",
+  "allié de la mixité", "allie de la mixite", "micro-agression", "microagression",
   "stéréotype", "stereotype", "stéréotypes", "stereotypes"
 ];
 const ITS_MEANDYOUTOO_SOFT_TERMS = ["harcèlement moral", "harcelement moral"];
@@ -628,6 +628,106 @@ function itsWarnMeAndYouTooSoftTermsOnce(terms) {
     "Sujet sensible détecté : " + terms.join(", ") +
     ". Peut relever des RPS/QVCT ou du Catalogue Inclusion Expert Me&YouToo selon le contexte."
   );
+}
+
+
+function itsCollectBlankCreationFormText() {
+  if (typeof document === "undefined") return "";
+  const fields = Array.from(document.querySelectorAll("input, textarea, select"));
+  const values = [];
+
+  fields.forEach((field) => {
+    const type = String(field.getAttribute("type") || "").toLowerCase();
+    if (type === "password" || type === "hidden" || type === "file") return;
+    if (field.disabled) return;
+
+    const value = String(field.value || "").trim();
+    if (value) values.push(value);
+
+    if (field.tagName && field.tagName.toLowerCase() === "select") {
+      const selected = field.options && field.selectedIndex >= 0 ? field.options[field.selectedIndex] : null;
+      const label = String(selected?.textContent || "").trim();
+      if (label) values.push(label);
+    }
+  });
+
+  return values.join(" \n ");
+}
+
+function itsLooksLikeBlankCreationTrigger(target) {
+  if (!target || typeof target.closest !== "function") return false;
+  const trigger = target.closest("button, a, input[type='submit'], input[type='button']");
+  if (!trigger) return false;
+
+  const label = itsNormalizeForRestrictedTerms(trigger.textContent || trigger.value || trigger.getAttribute("aria-label") || "");
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  const blankModalOpen = Boolean(document.getElementById("blankTopicModal")?.classList.contains("on"));
+
+  if (label.includes("demarrer la creation") || label.includes("creer depuis une page vierge")) return true;
+  if (label.includes("continuer") && blankModalOpen) return true;
+  if (page === "questions.html" && label.includes("continuer vers")) return true;
+
+  return false;
+}
+
+function itsHandleRestrictedBlankCreationAttempt(event) {
+  const text = itsCollectBlankCreationFormText();
+  const terms = itsFindMeAndYouTooLockedTerms({
+    title: text,
+    subject: text,
+    theme: text,
+    objective: text,
+    description: text,
+    customPrompt: text
+  });
+
+  if (!terms.length) return false;
+
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
+  }
+
+  try {
+    if (typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
+    else itsClearCurrentProjectId();
+    sessionStorage.removeItem("its_start_blank_setup");
+    sessionStorage.removeItem("its_blank_initial_topic");
+  } catch(e) {}
+
+  itsAlertMeAndYouTooRestriction(terms);
+
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  if (page === "questions.html") {
+    setTimeout(() => {
+      try { window.location.replace("index.html?startBlank=1"); } catch(e) {}
+    }, 180);
+  }
+
+  return true;
+}
+
+function itsInstallBlankCreationRestrictionGuard() {
+  if (typeof document === "undefined" || document.__itsBlankCreationRestrictionGuardInstalled) return;
+  document.__itsBlankCreationRestrictionGuardInstalled = true;
+
+  document.addEventListener("click", function(event) {
+    if (!itsLooksLikeBlankCreationTrigger(event.target)) return;
+    itsHandleRestrictedBlankCreationAttempt(event);
+  }, true);
+
+  document.addEventListener("submit", function(event) {
+    itsHandleRestrictedBlankCreationAttempt(event);
+  }, true);
+}
+
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", itsInstallBlankCreationRestrictionGuard);
+  } else {
+    itsInstallBlankCreationRestrictionGuard();
+  }
 }
 
 function itsCompactStateForLocalStorage(value) {
