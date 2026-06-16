@@ -599,8 +599,6 @@ function itsAlertMeAndYouTooRestriction(terms) {
   const key = "its_meandyoutoo_locked_alert_at";
   const now = Date.now();
   try {
-    const last = Number(sessionStorage.getItem(key) || 0);
-    if (now - last < 120000) return;
     sessionStorage.setItem(key, String(now));
   } catch(e) {}
 
@@ -661,16 +659,20 @@ function itsLooksLikeBlankCreationTrigger(target) {
 
   const label = itsNormalizeForRestrictedTerms(trigger.textContent || trigger.value || trigger.getAttribute("aria-label") || "");
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
-  const blankModalOpen = Boolean(document.getElementById("blankTopicModal")?.classList.contains("on"));
-
   if (label.includes("demarrer la creation") || label.includes("creer depuis une page vierge")) return true;
-  if (label.includes("continuer") && blankModalOpen) return true;
   if (page === "questions.html" && label.includes("continuer vers")) return true;
 
   return false;
 }
 
 function itsHandleRestrictedBlankCreationAttempt(event) {
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+
+  // Sur la bibliothèque, la modale de création de zéro possède déjà son propre
+  // contrôle bloquant avec message intégré. On laisse index.html gérer le clic,
+  // sinon le garde global intercepte le bouton Continuer et peut bloquer la modale.
+  if (page === "index.html" || page === "" || page === "/") return false;
+
   const text = itsCollectBlankCreationFormText();
   const terms = itsFindMeAndYouTooLockedTerms({
     title: text,
@@ -698,7 +700,6 @@ function itsHandleRestrictedBlankCreationAttempt(event) {
 
   itsAlertMeAndYouTooRestriction(terms);
 
-  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
   if (page === "questions.html") {
     setTimeout(() => {
       try { window.location.replace("index.html?startBlank=1"); } catch(e) {}

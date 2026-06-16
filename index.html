@@ -395,7 +395,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     </div>
     <div class="blank-topic-error" id="blankTopicError"></div>
     <div class="blank-topic-alert">
-      Les sujets diversité, inclusion, sexisme, handicap, LGBT+, origines, religion, discriminations, égalité professionnelle, harcèlement sexuel, mixité ou allié de la mixité relèvent de Me&YouToo.
+      Les sujets diversité, inclusion, sexisme, handicap, LGBT+, origines, religion, discriminations, égalité professionnelle, harcèlement sexuel ou allié de la mixité relèvent de Me&YouToo.
     </div>
     <div class="blank-topic-actions">
       <button class="btn btn-secondary" type="button" onclick="closeBlankTopicModal()">Annuler</button>
@@ -787,7 +787,11 @@ function openBlankTopicModal(){
 
 function closeBlankTopicModal(){
   const modal = document.getElementById("blankTopicModal");
+  const error = document.getElementById("blankTopicError");
+  const input = document.getElementById("blankTopicInput");
   if(modal) modal.classList.remove("on");
+  if(error){ error.classList.remove("on"); error.innerHTML = ""; }
+  if(input) input.value = "";
 }
 
 function indexClearAnyBlankDraft(){
