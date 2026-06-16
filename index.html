@@ -181,6 +181,20 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 .delete-model-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 @media(max-width:560px){.delete-model-actions .btn{width:100%;justify-content:center}}
 
+
+.meandyou-expert-card{background:linear-gradient(135deg,#ffffff 0%,#fff7df 52%,#eef6fb 100%);border:1px solid #ffc866;border-left:7px solid #ffc000;border-radius:18px;padding:24px 26px;margin:22px 0 24px;box-shadow:0 12px 30px rgba(24,55,93,.08)}
+.meandyou-expert-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:16px}
+.meandyou-expert-kicker{display:inline-flex;align-items:center;gap:7px;background:#18375d;color:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.meandyou-expert-title{font-size:22px;font-weight:950;color:#18375d;margin:0 0 8px}
+.meandyou-expert-text{font-size:13px;line-height:1.6;color:#475569;max-width:820px;margin:0}
+.meandyou-expert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0 18px}
+.meandyou-expert-item{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #d8e0ea;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:850;color:#18375d}
+.meandyou-lock{width:25px;height:25px;border-radius:999px;background:#18375d;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.meandyou-expert-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.meandyou-expert-note{font-size:12px;color:#64748b;line-height:1.45}
+@media(max-width:900px){.meandyou-expert-grid{grid-template-columns:1fr 1fr}.meandyou-expert-head{display:block}}
+@media(max-width:560px){.meandyou-expert-grid{grid-template-columns:1fr}.meandyou-expert-card{padding:20px}}
+
 </style>
 </head>
 
@@ -234,12 +248,43 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     </div>
   </div>
 
+  <section class="meandyou-expert-card" aria-label="Catalogue Inclusion Expert Me&YouToo">
+    <div class="meandyou-expert-head">
+      <div>
+        <div class="meandyou-expert-kicker">🔒 Catalogue protégé</div>
+        <h2 class="meandyou-expert-title">Catalogue Inclusion Expert Me&YouToo</h2>
+        <p class="meandyou-expert-text">
+          Ces thématiques relèvent de l’expertise Me&YouToo et ne sont pas disponibles en création autonome sur Into The Shift.
+          Elles peuvent être adaptées ou construites avec notre équipe, à partir de contenus éprouvés et de plus de <strong>250 000 passations</strong> réalisées.
+        </p>
+      </div>
+    </div>
+    <div class="meandyou-expert-grid">
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Sexisme</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Handicap</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>LGBT+</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Diversité des origines</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Diversité religieuse</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Management inclusif</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Collaborateur inclusif</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Allié de la mixité</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Harcèlement moral</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Harcèlement sexuel</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Discriminations</div>
+      <div class="meandyou-expert-item"><span class="meandyou-lock">🔒</span>Égalité professionnelle</div>
+    </div>
+    <div class="meandyou-expert-actions">
+      <a class="btn btn-primary" href="mailto:contact@meandyoutoo.app?subject=Catalogue%20Inclusion%20Expert%20Me%26YouToo">Contacter Me&YouToo</a>
+      <span class="meandyou-expert-note">Pour ces sujets, nous privilégions un accompagnement expert plutôt qu’une création autonome.</span>
+    </div>
+  </section>
+
   <div class="quick-start-grid">
     <div class="blank-create-card">
       <div>
         <div class="blank-create-title">Créer un autodiag de A à Z</div>
         <div class="blank-create-text">
-          Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue.
+          Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue. Les sujets Inclusion & Diversité restent réservés au catalogue expert Me&YouToo.
         </div>
       </div>
       <div class="blank-create-actions">

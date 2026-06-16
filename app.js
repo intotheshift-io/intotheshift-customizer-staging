@@ -478,6 +478,95 @@ function itsProjectTitleFromState(state) {
   );
 }
 
+
+const ITS_MEANDYOUTOO_CONTACT_EMAIL = "contact@meandyoutoo.app";
+const ITS_MEANDYOUTOO_LOCKED_TERMS = [
+  "diversité", "diversite", "inclusion", "discrimination", "discriminations",
+  "sexisme", "sexiste", "agissement sexiste", "harcèlement sexuel", "harcelement sexuel",
+  "violences sexistes", "violences sexuelles", "vss", "lgbt", "lgbtq", "lgbt+",
+  "handicap", "origine", "origines", "diversité des origines", "diversite des origines",
+  "religion", "religieuse", "religieux", "diversité religieuse", "diversite religieuse",
+  "égalité professionnelle", "egalite professionnelle", "management inclusif", "manager inclusif",
+  "collaborateur inclusif", "collègue inclusif", "collegue inclusif", "allié de la mixité",
+  "allie de la mixite", "mixité", "mixite", "micro-agression", "microagression",
+  "stéréotype", "stereotype", "stéréotypes", "stereotypes"
+];
+const ITS_MEANDYOUTOO_SOFT_TERMS = ["harcèlement moral", "harcelement moral"];
+
+function itsNormalizeForRestrictedTerms(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’']/g, " ")
+    .replace(/[^a-z0-9+]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function itsProjectTextForRestrictedTerms(state) {
+  const source = state && typeof state === "object" ? state : {};
+  const param = source.parametrage || source.meta || {};
+  const fields = [
+    source.title, source.autodiagTitle, source.subject, source.theme, source.themeLabel, source.objective, source.description,
+    param.nom, param.titre, param.titre_repondants, param.titreRespondants, param.desc, param.description, param.intro,
+    source.customPrompt, source.prompt, source.aiPrompt
+  ];
+  return fields.filter(Boolean).join(" \n ");
+}
+
+function itsFindMeAndYouTooLockedTerms(state) {
+  const text = itsNormalizeForRestrictedTerms(itsProjectTextForRestrictedTerms(state));
+  if (!text) return [];
+  const found = [];
+  ITS_MEANDYOUTOO_LOCKED_TERMS.forEach((term) => {
+    const normalized = itsNormalizeForRestrictedTerms(term);
+    if (normalized && text.includes(normalized) && !found.includes(term)) found.push(term);
+  });
+  return found;
+}
+
+function itsFindMeAndYouTooSoftTerms(state) {
+  const text = itsNormalizeForRestrictedTerms(itsProjectTextForRestrictedTerms(state));
+  if (!text) return [];
+  const found = [];
+  ITS_MEANDYOUTOO_SOFT_TERMS.forEach((term) => {
+    const normalized = itsNormalizeForRestrictedTerms(term);
+    if (normalized && text.includes(normalized) && !found.includes(term)) found.push(term);
+  });
+  return found;
+}
+
+function itsAlertMeAndYouTooRestriction(terms) {
+  const key = "its_meandyoutoo_locked_alert_at";
+  const now = Date.now();
+  try {
+    const last = Number(sessionStorage.getItem(key) || 0);
+    if (now - last < 120000) return;
+    sessionStorage.setItem(key, String(now));
+  } catch(e) {}
+  alert(
+    "Cette thématique relève du Catalogue Inclusion Expert Me&YouToo et n’est pas disponible en création autonome sur Into The Shift.\n\n" +
+    "Sujets détectés : " + (terms || []).slice(0, 4).join(", ") + "\n\n" +
+    "Pour être accompagné·e sur ces sujets, contactez Me&YouToo : " + ITS_MEANDYOUTOO_CONTACT_EMAIL
+  );
+}
+
+function itsWarnMeAndYouTooSoftTermsOnce(terms) {
+  if (!terms || !terms.length) return;
+  const key = "its_meandyoutoo_soft_warning_at";
+  const now = Date.now();
+  try {
+    const last = Number(sessionStorage.getItem(key) || 0);
+    if (now - last < 120000) return;
+    sessionStorage.setItem(key, String(now));
+  } catch(e) {}
+  console.warn(
+    "Sujet sensible détecté : " + terms.join(", ") +
+    ". Peut relever des RPS/QVCT ou du Catalogue Inclusion Expert Me&YouToo selon le contexte."
+  );
+}
+
 function itsCompactStateForLocalStorage(value) {
   if (!value || typeof value !== "object") return value || {};
   const cloned = JSON.parse(JSON.stringify(value));
@@ -582,6 +671,14 @@ async function itsSyncProjectToApi(state) {
   const token = itsGetToken();
   if (!token || !state || typeof state !== "object") return;
 
+  const lockedTerms = itsFindMeAndYouTooLockedTerms(state);
+  if (lockedTerms.length) {
+    itsAlertMeAndYouTooRestriction(lockedTerms);
+    return;
+  }
+
+  itsWarnMeAndYouTooSoftTermsOnce(itsFindMeAndYouTooSoftTerms(state));
+
   const projectId = state.currentAdId || state.project_id || state.projectId || itsGetCurrentProjectId();
   state = itsAttachOrganizationContext(state, projectId);
   const organizationId = itsCleanOrganizationId(state.organizationId || state.organization_id || state.orgId || state.org_id || "");
@@ -619,6 +716,10 @@ async function itsSyncProjectToApi(state) {
     if (!res.ok) {
       let errorPayload = {};
       try { errorPayload = await res.json(); } catch(e) {}
+
+      if (errorPayload?.code === "MEANDYOUTOO_RESTRICTED_TOPIC") {
+        itsAlertMeAndYouTooRestriction(errorPayload?.terms || []);
+      }
 
       if (res.status === 404 && errorPayload?.code === "PROJECT_NOT_FOUND_NO_RECREATE") {
         const staleProjectId = String(projectId || "");
