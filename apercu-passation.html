@@ -270,6 +270,24 @@ function profileBorderColor(index){
   return PROFILE_COLORS[index] || PROFILE_COLORS[1];
 }
 
+function chapterAverageForFinal(chapterIndex){
+  const chapter = state.chapters[chapterIndex] || {};
+  const questionCount = (chapter.questions || []).length;
+  if(!questionCount) return null;
+
+  const start = state.chapters
+    .slice(0, chapterIndex)
+    .reduce((sum, previousChapter) => sum + ((previousChapter.questions || []).length), 0);
+
+  const chapterScores = scores
+    .slice(start, start + questionCount)
+    .map(Number)
+    .filter(n => !isNaN(n));
+
+  if(chapterScores.length !== questionCount) return null;
+  return chapterScores.reduce((sum, score) => sum + score, 0) / questionCount;
+}
+
 function render(){
   if(step==="home") return renderHome();
   if(step==="question") return renderQuestion();
@@ -410,8 +428,9 @@ function renderFinal(){
     <div class="card" style="text-align:center"><div style="font-size:20px;font-weight:800">Récapitulatif de vos résultats</div></div>
     ${state.chapters.map((c,i)=>{
       const profiles = c.profiles || c.profils || [];
-      const p = (c.profiles||[])[1] || (c.profils||[])[1] || (c.profiles||[])[0] || (c.profils||[])[0] || {};
-      const profileIndex = profileIndexFromSelectedProfile(p, profiles);
+      const avg = chapterAverageForFinal(i);
+      const profileIndex = avg === null ? 1 : profileIndexForScore(profiles, avg);
+      const p = profiles[profileIndex] || profiles[1] || profiles[0] || {};
       const kws = profileKeywords(p);
       const border = profileBorderColor(profileIndex);
       const dist = simulatedDistribution(i);
