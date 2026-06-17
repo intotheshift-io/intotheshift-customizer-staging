@@ -970,3 +970,97 @@ input[type="url"]:focus,
   .its-anon-seal-slot .its-anon-seal-percent,
   .param-seal-slot .its-anon-seal-percent{font-size:14px!important}
 }
+
+/* ── Correctif final badge anonymat — label qualité épuré ── */
+.its-anon-seal{
+  --seal-size:68px;
+  position:relative!important;
+  width:var(--seal-size)!important;
+  height:var(--seal-size)!important;
+  flex:0 0 var(--seal-size)!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  border:3px solid #007883!important;
+  outline:1px solid #18375d!important;
+  outline-offset:-7px!important;
+  color:#18375d!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-shadow:0 10px 24px rgba(24,55,93,.13)!important;
+  filter:none!important;
+  overflow:visible!important;
+  isolation:isolate!important;
+}
+.its-anon-seal::before,
+.its-anon-seal::after{
+  content:none!important;
+  display:none!important;
+}
+.its-anon-seal-inner{
+  position:relative!important;
+  z-index:1!important;
+  width:100%!important;
+  height:100%!important;
+  padding:8px 7px 7px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  gap:1px!important;
+  line-height:1!important;
+}
+.its-anon-seal-lock{
+  display:block!important;
+  font-size:12px!important;
+  line-height:1!important;
+  margin:0 0 1px!important;
+}
+.its-anon-seal-percent,
+.its-anon-index-card .its-anon-seal-percent,
+.its-anon-seal-slot .its-anon-seal-percent,
+.param-seal-slot .its-anon-seal-percent{
+  display:block!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  letter-spacing:-.045em!important;
+  line-height:.96!important;
+  white-space:nowrap!important;
+  color:#18375d!important;
+}
+.its-anon-seal-label,
+.its-anon-index-card .its-anon-seal-label,
+.its-anon-seal-slot .its-anon-seal-label,
+.param-seal-slot .its-anon-seal-label{
+  display:block!important;
+  max-width:100%!important;
+  font-size:6.1px!important;
+  font-weight:950!important;
+  letter-spacing:.055em!important;
+  line-height:.92!important;
+  margin:2px 0 0!important;
+  white-space:nowrap!important;
+  color:#18375d!important;
+  transform:scaleX(.94)!important;
+  transform-origin:center!important;
+}
+.its-index-reassurance-row .its-anon-index-card .its-anon-seal{--seal-size:66px!important}
+.its-anon-seal-slot .its-anon-seal{--seal-size:64px!important}
+.param-seal-slot .its-anon-seal{--seal-size:62px!important}
+.param-seal-slot .its-anon-seal-label{font-size:5.8px!important}
+@media(max-width:760px){
+  .its-anon-seal{--seal-size:58px!important;border-width:2.5px!important;outline-offset:-6px!important}
+  .its-anon-seal-inner{padding:7px 6px 6px!important;gap:0!important}
+  .its-anon-seal-lock{font-size:10px!important}
+  .its-anon-seal-percent,
+  .its-anon-index-card .its-anon-seal-percent,
+  .its-anon-seal-slot .its-anon-seal-percent,
+  .param-seal-slot .its-anon-seal-percent{font-size:13px!important}
+  .its-anon-seal-label,
+  .its-anon-index-card .its-anon-seal-label,
+  .its-anon-seal-slot .its-anon-seal-label,
+  .param-seal-slot .its-anon-seal-label{font-size:5.2px!important;letter-spacing:.045em!important}
+  .its-anon-seal-slot .its-anon-seal{--seal-size:56px!important}
+  .param-seal-slot .its-anon-seal{--seal-size:54px!important}
+}
