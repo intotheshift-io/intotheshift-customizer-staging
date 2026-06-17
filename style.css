@@ -925,3 +925,48 @@ input[type="url"]:focus,
   .its-index-reassurance-row .its-anon-index-card{align-items:flex-start!important;padding:12px!important}
   .param-seal-slot .its-anon-seal{--seal-size:54px!important}
 }
+
+
+.its-anon-seal{
+  background:#fff!important;
+  border:3px solid #18375d!important;
+  outline:2px solid #007883!important;
+  outline-offset:-7px!important;
+  box-shadow:0 10px 22px rgba(24,55,93,.14)!important;
+}
+.its-anon-seal::before{
+  display:none!important;
+}
+.its-anon-seal::after{
+  display:none!important;
+}
+.its-anon-seal-inner{
+  padding:0!important;
+  gap:2px!important;
+  line-height:1!important;
+}
+.its-anon-seal-lock{
+  font-size:10px!important;
+  line-height:1!important;
+  margin:0!important;
+}
+.its-anon-seal-percent{
+  font-size:16px!important;
+  line-height:1!important;
+  letter-spacing:-.04em!important;
+  white-space:nowrap!important;
+}
+.its-anon-seal-label{
+  display:none!important;
+}
+.its-anon-index-card .its-anon-seal-percent,
+.its-anon-seal-slot .its-anon-seal-percent,
+.param-seal-slot .its-anon-seal-percent{
+  font-size:16px!important;
+}
+@media(max-width:760px){
+  .its-anon-seal-percent,
+  .its-anon-index-card .its-anon-seal-percent,
+  .its-anon-seal-slot .its-anon-seal-percent,
+  .param-seal-slot .its-anon-seal-percent{font-size:14px!important}
+}
