@@ -736,7 +736,9 @@ function renderCatalogue(){
     </div>
   `;
 
-  grid.innerHTML = meAndYouTooCard + ads.map(ad => `
+  const meAndYouTooCardHtml = currentTheme === "all" ? meAndYouTooCard : "";
+
+  grid.innerHTML = meAndYouTooCardHtml + ads.map(ad => `
     <div class="ad-card card">
       <div class="audience">${ad.theme} · ${ad.audience}</div>
       <div class="ad-title">${ad.title}</div>
