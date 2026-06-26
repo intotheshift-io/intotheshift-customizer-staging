@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shiftstudio.intotheshift.io/sitemap.xml
+
+# LLM reference file
+LLM: https://shiftstudio.intotheshift.io/llms.txt
