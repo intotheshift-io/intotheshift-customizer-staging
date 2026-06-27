@@ -1175,7 +1175,7 @@ body.content-article .article-btn{display:inline-flex;border-radius:13px;padding
 /* ── Correctif articles ressources : éviter que le texte déborde sur l'image ── */
 body.content-article .article-hero{
   display:grid !important;
-  grid-template-columns:minmax(0,1.04fr) minmax(360px,.96fr) !important;
+  grid-template-columns:minmax(0,1fr) minmax(340px,.78fr) !important;
   align-items:stretch !important;
 }
 body.content-article .article-hero img{
@@ -1203,7 +1203,7 @@ body.content-article .article-hero-content{
 }
 body.content-article .article-hero-content h1,
 body.content-article .article-hero-content .article-lead{
-  max-width:620px !important;
+  max-width:640px !important;
 }
 @media(max-width:980px){
   body.content-article .article-hero{
@@ -1222,4 +1222,17 @@ body.content-article .article-hero-content .article-lead{
   body.content-article .article-hero-content .article-lead{
     max-width:none !important;
   }
+}
+
+
+/* ── Correctif largeur textes pages vitrine ───────────────── */
+.pricing-page .section-head,
+.pricing-page .section-text{
+  max-width:none!important;
+  width:100%!important;
+}
+body.resources-body .section-head,
+body.resources-body .section-text{
+  max-width:none!important;
+  width:100%!important;
 }
