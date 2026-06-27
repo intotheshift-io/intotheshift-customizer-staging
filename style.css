@@ -1134,3 +1134,40 @@ body.resources-body .cta .res-btn{background:#ffc000;color:#18375d;white-space:n
 @media(max-width:980px){body.resources-body .hero-photo{position:relative;width:100%;height:260px;display:block}body.resources-body .resources-hero:after{background:linear-gradient(180deg,rgba(255,255,255,.10),#fff 90%)}body.resources-body .hero-content{max-width:none;padding:32px}body.resources-body .article-grid{grid-template-columns:1fr 1fr}body.resources-body .audience-grid{grid-template-columns:1fr 1fr}body.resources-body .resources-hero h1{font-size:40px}body.resources-body .blog-tools{position:static}body.resources-body .cta{display:block}body.resources-body .cta .res-btn{margin-top:18px}}
 @media(max-width:640px){body.resources-body .resources-page{padding:24px 14px 56px}body.resources-body .resources-hero{border-radius:22px}body.resources-body .hero-content{padding:24px}body.resources-body .hero-photo{height:210px}body.resources-body .resources-hero h1{font-size:31px}body.resources-body .section h2{font-size:26px}body.resources-body .article-grid,body.resources-body .audience-grid{grid-template-columns:1fr}body.resources-body .res-btn{width:100%}body.resources-body .search-row{grid-template-columns:1fr}body.resources-body .result-count{white-space:normal}body.resources-body .article-image{height:178px}}
 
+
+
+/* ── Pages articles ressources ───────────────── */
+body.content-article{margin:0;font-family:'Asap',sans-serif;color:#18375d;background:linear-gradient(180deg,#eef6fb 0%,#fff 48%,#f8fbfd 100%)}
+body.content-article .article-page{max-width:1120px;margin:0 auto;padding:36px 22px 78px}
+body.content-article .article-hero{position:relative;overflow:hidden;background:#fff;border:1px solid #cbddea;border-radius:30px;box-shadow:0 24px 64px rgba(24,55,93,.12)}
+body.content-article .article-hero img{position:absolute;right:0;top:0;width:44%;height:100%;object-fit:cover}
+body.content-article .article-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 52%,rgba(255,255,255,.12) 100%)}
+body.content-article .article-hero-content{position:relative;z-index:1;max-width:700px;padding:52px 46px}
+body.content-article .article-kicker{display:inline-flex;background:#eef6fb;border:1px solid #d8e0ea;border-radius:999px;padding:9px 14px;color:#0d4c72;font-size:13px;font-weight:950;margin-bottom:18px}
+body.content-article h1{font-size:48px;line-height:1.05;letter-spacing:-.8px;margin:0 0 18px;color:#18375d}
+body.content-article h1 span{color:#0d4c72}
+body.content-article .article-lead{font-size:18px;line-height:1.72;color:#526274;margin:0}
+body.content-article .article-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+body.content-article .article-meta span{background:#f8fbfd;border:1px solid #e2e8f0;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;color:#64748b}
+body.content-article .article-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;margin-top:42px;align-items:start}
+body.content-article .article-content{background:#fff;border:1px solid #d8e0ea;border-radius:26px;padding:34px;box-shadow:0 12px 30px rgba(24,55,93,.06)}
+body.content-article .article-content h2{font-size:30px;line-height:1.16;margin:34px 0 12px;color:#18375d}
+body.content-article .article-content h2:first-child{margin-top:0}
+body.content-article .article-content h3{font-size:22px;margin:24px 0 10px;color:#18375d}
+body.content-article .article-content p{font-size:16px;line-height:1.78;color:#526274;margin:0 0 16px}
+body.content-article .article-content ul,body.content-article .article-content ol{color:#526274;line-height:1.75;margin:0 0 20px;padding-left:22px}
+body.content-article .article-focus{background:linear-gradient(135deg,#fff 0%,#eef6fb 100%);border:1px solid #d8e0ea;border-left:7px solid #ffc000;border-radius:22px;padding:22px;margin:24px 0}
+body.content-article .article-focus strong{display:block;font-size:18px;margin-bottom:8px;color:#18375d}
+body.content-article .article-toc{position:sticky;top:82px;background:#fff;border:1px solid #d8e0ea;border-radius:22px;padding:20px;box-shadow:0 12px 30px rgba(24,55,93,.06)}
+body.content-article .article-toc strong{display:block;margin-bottom:12px}
+body.content-article .article-toc a{display:block;color:#0d4c72;text-decoration:none;font-weight:900;font-size:13px;margin:10px 0}
+body.content-article .article-related{background:#fff;border:1px solid #d8e0ea;border-radius:26px;padding:26px;margin-top:28px}
+body.content-article .article-related h2{font-size:26px;margin:0 0 16px;color:#18375d}
+body.content-article .article-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+body.content-article .article-related-grid a{display:block;background:#f8fbfd;border:1px solid #e2e8f0;border-radius:18px;padding:16px;color:#18375d;text-decoration:none;font-weight:900}
+body.content-article .article-cta{margin-top:32px;background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);color:#fff;border-radius:26px;padding:28px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+body.content-article .article-cta h2{color:#fff;margin:0 0 8px;font-size:28px}
+body.content-article .article-cta p{color:rgba(255,255,255,.86);margin:0}
+body.content-article .article-btn{display:inline-flex;border-radius:13px;padding:13px 18px;background:#ffc000;color:#18375d;text-decoration:none;font-weight:950;white-space:nowrap}
+@media(max-width:900px){body.content-article .article-hero img{position:relative;width:100%;height:240px;display:block}body.content-article .article-hero:after{background:linear-gradient(180deg,rgba(255,255,255,.05),#fff 90%)}body.content-article .article-hero-content{padding:30px}body.content-article .article-layout{grid-template-columns:1fr}body.content-article .article-toc{position:static}body.content-article .article-related-grid{grid-template-columns:1fr}body.content-article .article-cta{display:block}body.content-article .article-cta .article-btn{margin-top:16px}}
+@media(max-width:560px){body.content-article .article-page{padding:24px 14px 56px}body.content-article .article-hero{border-radius:22px}body.content-article h1{font-size:32px}body.content-article .article-content{padding:22px}body.content-article .article-content h2{font-size:25px}body.content-article .article-btn{width:100%;justify-content:center}}
