@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RSE & environnement : mesurer les comportements au travail | Into The Shift</title>
-<meta name="description" content="Guide métier RSE : mesurer les comportements environnementaux au travail, sobriété, achats responsables, numérique responsable, déplacements et engagement collectif.">
+<title>Signaux faibles RPS & QVT : mesurer les comportements | Into The Shift</title>
+<meta name="description" content="Guide métier QVT & RPS : identifier les signaux faibles, réguler la charge, intervenir sans psychologiser et orienter les collaborateurs à partir de situations concrètes.">
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://shiftstudio.intotheshift.io/guide-metier-rse.html">
+<link rel="canonical" href="https://shiftstudio.intotheshift.io/guide-metier-qvt-rps.html">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs">
 <link rel="alternate" type="text/markdown" href="/llms-full.md" title="LLMs Full">
 
-<meta property="og:title" content="RSE & environnement : mesurer les comportements au travail">
-<meta property="og:description" content="Un guide métier concret pour transformer les engagements RSE en situations professionnelles, profils individuels et résultats collectifs anonymes.">
+<meta property="og:title" content="Signaux faibles RPS & QVT : mesurer les comportements">
+<meta property="og:description" content="Un guide métier concret pour comprendre comment un autodiagnostic comportemental aide à repérer les signaux faibles RPS et les pratiques managériales à renforcer.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://shiftstudio.intotheshift.io/guide-metier-rse.html">
+<meta property="og:url" content="https://shiftstudio.intotheshift.io/guide-metier-qvt-rps.html">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
 <link rel="stylesheet" href="style.css">
@@ -39,7 +39,7 @@ body{
   margin:0;
   font-family:'Asap',sans-serif;
   color:var(--navy);
-  background:linear-gradient(180deg,#edf8f1 0%,#ffffff 48%,#f8fbfd 100%);
+  background:linear-gradient(180deg,#eef6fb 0%,#ffffff 48%,#f8fbfd 100%);
 }
 .page{
   max-width:1120px;
@@ -49,7 +49,7 @@ body{
 .hero{
   position:relative;
   overflow:hidden;
-  background:linear-gradient(135deg,#ffffff 0%,#e8f6ee 58%,#fff6d7 100%);
+  background:linear-gradient(135deg,#ffffff 0%,#e8f3f3 58%,#f2f8e9 100%);
   border:1px solid #cbddea;
   border-radius:30px;
   padding:48px;
@@ -63,7 +63,7 @@ body{
   width:280px;
   height:280px;
   border-radius:50%;
-  background:rgba(119,205,138,.22);
+  background:rgba(119,205,138,.20);
 }
 .hero::after{
   content:"";
@@ -73,7 +73,7 @@ body{
   width:250px;
   height:250px;
   border-radius:50%;
-  background:rgba(255,192,0,.16);
+  background:rgba(255,192,0,.14);
 }
 .hero>*{position:relative;z-index:1}
 .hero-grid{
@@ -101,7 +101,7 @@ h1{
   letter-spacing:-.8px;
   margin:0 0 18px;
 }
-h1 span{color:#237a50}
+h1 span{color:var(--blue)}
 .lead{
   font-size:18px;
   line-height:1.72;
@@ -126,9 +126,9 @@ h1 span{color:#237a50}
   transition:.18s ease;
 }
 .btn-primary{
-  background:#237a50;
+  background:var(--blue);
   color:#fff;
-  box-shadow:0 8px 20px rgba(35,122,80,.18);
+  box-shadow:0 8px 20px rgba(13,76,114,.18);
 }
 .btn-secondary{
   background:#fff;
@@ -168,7 +168,7 @@ h1 span{color:#237a50}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#edf8f1;
+  background:#eef6fb;
   font-size:20px;
 }
 .signal-item strong{
@@ -184,13 +184,13 @@ h1 span{color:#237a50}
 }
 .section{margin-top:48px}
 .section-head{
-  max-width:790px;
+  max-width:780px;
   margin-bottom:20px;
 }
 .eyebrow{
   font-size:13px;
   font-weight:900;
-  color:#237a50;
+  color:var(--cyan);
   letter-spacing:.08em;
   text-transform:uppercase;
   margin-bottom:8px;
@@ -249,8 +249,8 @@ h2{
   border-radius:999px;
   font-size:12px;
   font-weight:900;
-  background:#edf8f1;
-  color:#237a50;
+  background:#edf7ff;
+  color:var(--blue);
   margin-bottom:14px;
 }
 .qa-card h3{
@@ -300,7 +300,7 @@ h2{
   gap:18px;
 }
 .panel.dark{
-  background:linear-gradient(135deg,#237a50 0%,#18375d 100%);
+  background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);
   color:#fff;
 }
 .panel.dark p,.panel.dark li{
@@ -313,7 +313,7 @@ ul{
 }
 .cta{
   margin-top:52px;
-  background:linear-gradient(135deg,#237a50 0%,#18375d 100%);
+  background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);
   color:#fff;
   border-radius:26px;
   padding:30px;
@@ -321,7 +321,7 @@ ul{
   justify-content:space-between;
   gap:22px;
   align-items:center;
-  box-shadow:0 18px 44px rgba(35,122,80,.18);
+  box-shadow:0 18px 44px rgba(13,76,114,.18);
 }
 .cta h2{color:#fff;margin-bottom:8px}
 .cta p{
@@ -403,24 +403,24 @@ ul{
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="kicker">🌍 RSE · environnement · comportements</div>
-        <h1>Transformer les engagements <span>RSE</span> en comportements concrets au travail</h1>
+        <div class="kicker">🌿 QVT · RPS · Signaux faibles</div>
+        <h1>Identifier les <span>signaux faibles RPS</span> avant qu’ils ne deviennent des situations critiques</h1>
         <p class="lead">
-          Les politiques RSE restent souvent abstraites si elles ne descendent pas dans les arbitrages du quotidien : imprimer ou non, choisir un fournisseur, réduire un déplacement, signaler une incohérence ou maintenir une pratique sous pression.
+          Les risques psychosociaux ne se déclarent pas toujours frontalement. Ils apparaissent souvent à travers des changements discrets : retrait, irritabilité, retards inhabituels, surcharge silencieuse ou coopération qui se dégrade.
         </p>
         <div class="hero-actions">
-          <a href="index.html" class="btn btn-primary">Explorer les bases RSE</a>
+          <a href="index.html" class="btn btn-primary">Explorer les bases QVT & RPS</a>
           <a href="simulateur-comportemental.html" class="btn btn-secondary">Comprendre la méthode</a>
         </div>
       </div>
 
-      <aside class="hero-card" aria-label="Exemples de comportements RSE">
-        <div class="hero-card-title">Ce qui se joue vraiment</div>
+      <aside class="hero-card" aria-label="Exemples de signaux faibles RPS">
+        <div class="hero-card-title">Ce qui doit alerter sans surveiller</div>
         <div class="signal-list">
-          <div class="signal-item"><div class="signal-icon">💡</div><div><strong>Sobriété quotidienne</strong><span>Énergie, impressions, gobelets, équipements allumés.</span></div></div>
-          <div class="signal-item"><div class="signal-icon">🛒</div><div><strong>Achats responsables</strong><span>Besoin réel, fournisseur, emballage, livraison, reconditionné.</span></div></div>
-          <div class="signal-item"><div class="signal-icon">💻</div><div><strong>Numérique responsable</strong><span>Emails, stockage, équipements, outils, notifications.</span></div></div>
-          <div class="signal-item"><div class="signal-icon">🚆</div><div><strong>Déplacements sobres</strong><span>Visio, train, regroupement des rendez-vous, présence utile.</span></div></div>
+          <div class="signal-item"><div class="signal-icon">🤐</div><div><strong>Retrait progressif</strong><span>Une personne habituellement active ne prend plus d’initiatives.</span></div></div>
+          <div class="signal-item"><div class="signal-icon">🔥</div><div><strong>Tension collective</strong><span>Les échanges deviennent plus secs, l’entraide diminue.</span></div></div>
+          <div class="signal-item"><div class="signal-icon">⏱️</div><div><strong>Surcharge banalisée</strong><span>Les soirées et week-ends deviennent une norme implicite.</span></div></div>
+          <div class="signal-item"><div class="signal-icon">🧭</div><div><strong>Rôle managérial flou</strong><span>Intervenir, orienter, protéger : le manager hésite sur son périmètre.</span></div></div>
         </div>
       </aside>
     </div>
@@ -442,9 +442,9 @@ ul{
   <section class="section">
     <div class="section-head">
       <div class="eyebrow">Problème / réponse</div>
-      <h2>Le problème n’est pas seulement de “sensibiliser à la RSE”.</h2>
+      <h2>Le problème n’est pas seulement de “mesurer le stress”.</h2>
       <p class="section-text">
-        Beaucoup de démarches RSE expliquent les enjeux ou rappellent les bons gestes. Mais la difficulté réelle apparaît dans les arbitrages : confort ou sobriété, urgence ou impact, prix ou responsabilité, habitude ou remise en question.
+        Beaucoup d’enquêtes QVT demandent si les collaborateurs se sentent stressés ou si la charge est tenable. C’est utile, mais cela ne montre pas toujours les comportements concrets qui précèdent la dégradation : attendre trop longtemps, absorber sans alerter, ne pas créer d’espace d’échange, ou traiter les symptômes sans agir sur l’organisation.
       </p>
     </div>
 
@@ -452,13 +452,13 @@ ul{
       <div class="panel problem">
         <h3>Le risque</h3>
         <p>
-          Les collaborateurs peuvent adhérer au discours RSE tout en reproduisant les pratiques habituelles, faute de cadre concret, de réflexes collectifs ou de marges d’action visibles.
+          Attendre que les collaborateurs signalent eux-mêmes leurs difficultés laisse de nombreuses situations se dégrader silencieusement. Les signaux faibles sont souvent visibles avant d’être formulés.
         </p>
       </div>
       <div class="panel solution">
         <h3>La réponse Into The Shift</h3>
         <p>
-          Mettre les personnes face à des situations professionnelles réalistes pour observer leurs arbitrages RSE, leur capacité à agir à leur niveau et leur façon d’embarquer le collectif sans moraliser.
+          Proposer un diagnostic comportemental à partir de situations professionnelles concrètes : les répondants choisissent la réaction la plus proche de leur pratique, reçoivent un profil et l’organisation observe les tendances anonymes.
         </p>
       </div>
     </div>
@@ -467,78 +467,78 @@ ul{
   <section class="section">
     <div class="section-head">
       <div class="eyebrow">Questions / réponses lisibles par le SEO</div>
-      <h2>Exemples de situations RSE concrètes</h2>
+      <h2>Exemples de situations issues d’une logique QVT & RPS terrain</h2>
       <p class="section-text">
-        Ces cartes reprennent la logique des bases RSE : une situation du quotidien, plusieurs réactions possibles, puis une lecture comportementale.
+        Les cartes ci-dessous montrent le principe : partir d’une situation crédible, proposer plusieurs réactions, puis révéler ce que la situation mesure.
       </p>
     </div>
 
     <div class="qa-grid">
 
       <article class="qa-card">
-        <div class="tag">Sobriété · Énergie</div>
-        <h3>Le chauffage trop haut</h3>
+        <div class="tag">Signaux faibles · Observation</div>
+        <h3>Le collaborateur qui se retire</h3>
         <p class="question">
-          Le chauffage de votre bureau est réglé trop haut. Tout le monde s’y est habitué. Que faites-vous ?
+          David, habituellement moteur dans les réunions, n’a pratiquement pas pris la parole depuis deux semaines. Il répond aux sollicitations mais ne prend plus d’initiatives. Rien de visible ne s’est passé.
         </p>
-        <div class="answer bad">❌ Je ne dis rien — c’est confortable comme ça.</div>
-        <div class="answer mid">⚠️ Je baisse moi-même le thermostat.</div>
-        <div class="answer good">✅ J’en parle à l’équipe et propose un réglage adapté à la saison.</div>
+        <div class="answer bad">❌ Je laisse — certaines personnes ont des phases moins actives, c’est normal.</div>
+        <div class="answer mid">⚠️ J’observe encore une semaine pour voir si c’est une tendance qui se confirme.</div>
+        <div class="answer good">✅ Je lui crée un prétexte professionnel pour échanger en dehors des réunions.</div>
       </article>
 
       <article class="qa-card">
-        <div class="tag">Achats · Besoin réel</div>
-        <h3>La version reconditionnée</h3>
+        <div class="tag">Charge collective · Tension d’équipe</div>
+        <h3>L’irritabilité qui monte</h3>
         <p class="question">
-          Un achat est disponible en version reconditionnée à -40 %. La version neuve est privilégiée par habitude. Que faites-vous ?
+          Depuis deux semaines, le niveau d’irritabilité de votre équipe a visiblement monté : échanges plus secs, moins d’entraide spontanée. Tout le monde est sous pression.
         </p>
-        <div class="answer bad">❌ Je commande la version neuve — c’est la procédure.</div>
-        <div class="answer mid">⚠️ Je propose la version reconditionnée si quelqu’un est d’accord.</div>
-        <div class="answer good">✅ Je compare et propose l’option reconditionnée avec une justification claire.</div>
+        <div class="answer bad">❌ C’est une période difficile pour tout le monde — l’ambiance reviendra quand la pression retombera.</div>
+        <div class="answer mid">⚠️ Je vois individuellement les personnes qui semblent les plus affectées.</div>
+        <div class="answer good">✅ J’en parle en réunion d’équipe pour nommer ce que j’observe sans dramatiser.</div>
       </article>
 
       <article class="qa-card">
-        <div class="tag">Numérique responsable · Stockage</div>
-        <h3>La boîte mail saturée</h3>
+        <div class="tag">Intervention · Faits observés</div>
+        <h3>La peur d’être maladroit</h3>
         <p class="question">
-          Votre boîte mail contient 8 000 emails dont la plupart sont inutiles. Que faites-vous ?
+          Vous voulez parler à Charlotte de ce que vous observez depuis quelques semaines. Vous craignez d’être maladroit·e et de dire quelque chose de blessant.
         </p>
-        <div class="answer bad">❌ Je les laisse — ils ne prennent pas de place visible.</div>
-        <div class="answer mid">⚠️ Je supprime les plus anciens quand j’en ai le temps.</div>
-        <div class="answer good">✅ Je consacre un moment à nettoyer ma boîte de façon systématique.</div>
+        <div class="answer bad">❌ Je renonce — mieux vaut ne rien dire que risquer une maladresse.</div>
+        <div class="answer mid">⚠️ Je lui pose une question ouverte sur son travail pour voir si elle ouvre le sujet.</div>
+        <div class="answer good">✅ Je m’appuie sur des faits observables et je lui laisse l’espace d’interpréter elle-même.</div>
       </article>
 
       <article class="qa-card">
-        <div class="tag">Déplacements · Présence utile</div>
-        <h3>La réunion à 200 km</h3>
+        <div class="tag">Charge · Priorisation</div>
+        <h3>Les urgences concurrentes</h3>
         <p class="question">
-          Vous devez vous rendre à une réunion de 1h à 200 km. Aucun autre collègue n’a soulevé la question du format. Que faites-vous ?
+          Trois demandes arrivent en même matinée, toutes présentées comme urgentes — de David, de Sarah et de votre responsable. Vous ne pouvez pas tout traiter avant midi.
         </p>
-        <div class="answer bad">❌ Je réserve mon billet — c’est prévu.</div>
-        <div class="answer mid">⚠️ Je vérifie si une participation en visio est possible.</div>
-        <div class="answer good">✅ Je propose activement une visio et explique pourquoi c’est suffisant pour ce cas.</div>
+        <div class="answer bad">❌ Je commence par la demande de mon responsable, c’est la plus risquée à laisser attendre.</div>
+        <div class="answer mid">⚠️ Je préviens les trois que je ferai ce que je peux dans la journée.</div>
+        <div class="answer good">✅ Je contacte chacun pour comprendre ce qui est vraiment bloquant avant de m’organiser.</div>
       </article>
 
       <article class="qa-card">
-        <div class="tag">Manager RSE · Arbitrage</div>
-        <h3>Performance court terme ou impact</h3>
+        <div class="tag">Organisation · Prévention</div>
+        <h3>Les rôles qui deviennent flous</h3>
         <p class="question">
-          Vous devez arbitrer entre une décision bonne pour la performance à court terme et une meilleure pour l’impact environnemental. Que faites-vous ?
+          Dans votre équipe, les périmètres de responsabilité ne sont pas très clairs. Certains collaborateurs font des tâches qui ne sont officiellement à personne. Des tensions silencieuses émergent.
         </p>
-        <div class="answer bad">❌ Je priorise la performance — c’est mon indicateur principal.</div>
-        <div class="answer mid">⚠️ Je cherche un compromis.</div>
-        <div class="answer good">✅ Je rends l’arbitrage visible pour que la décision soit prise en conscience, au bon niveau.</div>
+        <div class="answer bad">❌ Je laisse — les flous de périmètre se règlent généralement d’eux-mêmes.</div>
+        <div class="answer mid">⚠️ Je traite les tensions au cas par cas quand elles remontent.</div>
+        <div class="answer good">✅ Je clarifie les rôles et les périmètres pour supprimer les zones de friction.</div>
       </article>
 
       <article class="qa-card">
-        <div class="tag">Engagement · Culture collective</div>
-        <h3>Le collègue sceptique</h3>
+        <div class="tag">Orientation · Relais</div>
+        <h3>La situation qui dépasse le manager</h3>
         <p class="question">
-          Un collègue dit que ses gestes individuels ne changent rien à l’échelle du problème. Que lui répondez-vous ?
+          Sophie traverse visiblement quelque chose de difficile. Vous avez eu plusieurs échanges. Vous pensez que cela dépasse votre rôle de manager. Elle ne vous a rien demandé de concret.
         </p>
-        <div class="answer bad">❌ Je suis d’accord avec lui.</div>
-        <div class="answer mid">⚠️ Je lui dis qu’il a tort mais sans argumenter vraiment.</div>
-        <div class="answer good">✅ J’engage une discussion sur le lien entre comportements individuels et culture collective sans le moraliser.</div>
+        <div class="answer bad">❌ J’attends qu’elle me le demande — sans sollicitation, je n’ai pas de légitimité.</div>
+        <div class="answer mid">⚠️ Je contacte directement les RH pour les mettre en alerte.</div>
+        <div class="answer good">✅ Je lui parle de ce que j’observe et je lui mentionne les ressources disponibles, sans l’y obliger.</div>
       </article>
 
     </div>
@@ -547,22 +547,22 @@ ul{
   <section class="section">
     <div class="section-head">
       <div class="eyebrow">Ce que le diagnostic mesure</div>
-      <h2>Une lecture comportementale de la transition environnementale</h2>
+      <h2>Une lecture comportementale de la QVT et des RPS</h2>
     </div>
 
     <div class="measure-grid">
-      <div class="measure"><strong>Sobriété</strong><span>Capacité à questionner les usages automatiques : énergie, papier, équipements.</span></div>
-      <div class="measure"><strong>Arbitrage</strong><span>Réflexes face aux tensions entre urgence, coût, performance et impact.</span></div>
-      <div class="measure"><strong>Influence collective</strong><span>Capacité à embarquer sans culpabiliser ni moraliser.</span></div>
-      <div class="measure"><strong>Ancrage</strong><span>Maintien des pratiques dans la durée, même sous pression.</span></div>
+      <div class="measure"><strong>Détection précoce</strong><span>Repérer les changements de comportement sans attendre la crise.</span></div>
+      <div class="measure"><strong>Régulation de la charge</strong><span>Qualifier les urgences, arbitrer, rendre visible la charge réelle.</span></div>
+      <div class="measure"><strong>Intervention managériale</strong><span>Intervenir sur les faits sans psychologiser ni dépasser son rôle.</span></div>
+      <div class="measure"><strong>Orientation</strong><span>Mobiliser les relais au bon moment : RH, médecine du travail, service d’écoute.</span></div>
     </div>
   </section>
 
   <section class="section split">
     <div class="panel">
-      <h2>Des profils individuels activables</h2>
+      <h2>Des profils individuels utiles</h2>
       <p>
-        Chaque répondant comprend ses réflexes : agir seul, signaler, proposer une solution, influencer l’équipe ou faire remonter un arbitrage.
+        Chaque répondant comprend ses réflexes dominants : attendre, observer, intervenir, orienter, arbitrer ou réguler.
       </p>
       <ul>
         <li>Repères à consolider</li>
@@ -572,40 +572,26 @@ ul{
     </div>
 
     <div class="panel dark">
-      <h2>Une vision collective des pratiques RSE</h2>
+      <h2>Une vision collective anonyme</h2>
       <p>
-        L’organisation identifie les zones où la RSE reste déclarative et celles où les comportements sont déjà ancrés : sobriété, achats, numérique, déplacements, management et engagement.
+        L’entreprise identifie les tendances collectives : surcharge banalisée, signaux faibles peu traités, manque de relais ou difficultés à agir sur l’organisation.
       </p>
       <ul>
         <li>Analyse par population ou métier</li>
-        <li>Support de sensibilisation RSE</li>
-        <li>Débriefing en atelier ou formation</li>
-        <li>Priorisation des actions concrètes</li>
+        <li>Priorisation des actions QVT</li>
+        <li>Support de formation managériale</li>
+        <li>Débriefing collectif des situations</li>
       </ul>
-    </div>
-  </section>
-
-
-  <section class="section split">
-    <div class="panel">
-      <h2>Utiliser ce diagnostic en entreprise</h2>
-      <p>Le diagnostic RSE peut servir à réaliser un état des lieux, sensibiliser les équipes, préparer un atelier ou mesurer l’évolution des pratiques environnementales.</p>
-      <p style="margin-top:14px"><a href="pourquoi-diffuser-un-diagnostic-comportemental.html" class="btn btn-secondary">Voir les usages entreprise</a></p>
-    </div>
-    <div class="panel">
-      <h2>Utiliser ce diagnostic en formation</h2>
-      <p>Il peut aussi être diffusé avant une formation RSE pour analyser les besoins, puis repris pendant la session comme support de cas pratiques.</p>
-      <p style="margin-top:14px"><a href="diagnostic-comportemental-formation-professionnelle.html" class="btn btn-secondary">Voir les usages formation</a></p>
     </div>
   </section>
 
   <section class="cta">
     <div>
       <div class="eyebrow" style="color:#d8f1fb">Shift Studio</div>
-      <h2>Créer un diagnostic RSE orienté comportements</h2>
-      <p>Partez d’une base existante, adaptez les situations à vos enjeux environnementaux, puis diffusez le diagnostic par lien ou QR code.</p>
+      <h2>Créer un diagnostic QVT & RPS orienté comportements</h2>
+      <p>Partez d’une base existante, adaptez les situations à votre contexte, puis diffusez le diagnostic par lien ou QR code.</p>
     </div>
-    <a href="index.html" class="btn">Explorer les bases RSE</a>
+    <a href="index.html" class="btn">Explorer les bases QVT & RPS</a>
   </section>
 
 </main>
