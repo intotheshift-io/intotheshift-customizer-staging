@@ -453,6 +453,12 @@ document.addEventListener("DOMContentLoaded", function () {
     </a>
   `;
 
+  const tariffLink = `
+    <a class="nav-link ${active("tarifs.html")}" href="tarifs.html">
+      Tarifs
+    </a>
+  `;
+
   const creationLinks = "";
 
   const authLinks = logged
@@ -509,6 +515,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ${libraryLink}
 
         ${resourcesLink}
+
+        ${tariffLink}
 
         ${creationLinks}
 
