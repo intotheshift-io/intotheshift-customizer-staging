@@ -111,8 +111,19 @@
       const categories = String(card.dataset.category || '').split(/\s+/);
       const categoryMatch = activeFilter === 'all' || categories.includes(activeFilter);
       const formatMatch = activeFormat === 'all' || card.dataset.format === activeFormat;
-      const haystack = normalize(card.textContent + ' ' + (card.dataset.search || ''));
-      const searchMatch = !query || haystack.includes(query);
+      const title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      const tags = Array.from(card.querySelectorAll('.article-tag')).map(tag => tag.textContent).join(' ');
+      const meta = Array.from(card.querySelectorAll('.article-meta span')).map(item => item.textContent).join(' ');
+      const searchable = normalize([
+        card.dataset.search || '',
+        card.dataset.category || '',
+        card.dataset.format || '',
+        title,
+        tags,
+        meta
+      ].join(' '));
+      const words = searchable.split(/[^a-z0-9]+/).filter(Boolean);
+      const searchMatch = !query || words.some(word => word === query || word.startsWith(query));
       const show = categoryMatch && formatMatch && searchMatch;
       card.style.display = show ? '' : 'none';
       if(show) visible += 1;
