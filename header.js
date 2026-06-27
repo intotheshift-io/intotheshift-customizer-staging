@@ -446,6 +446,13 @@ document.addEventListener("DOMContentLoaded", function () {
       Bibliothèque
     </a>
   `;
+
+  const resourcesLink = `
+    <a class="nav-link ${active("ressources.html")}" href="ressources.html">
+      Ressources
+    </a>
+  `;
+
   const creationLinks = "";
 
   const authLinks = logged
@@ -500,6 +507,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ${partnerLink}
 
         ${libraryLink}
+
+        ${resourcesLink}
 
         ${creationLinks}
 
