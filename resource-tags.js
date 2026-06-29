@@ -49,7 +49,10 @@
     'pourquoi-les-formations-cyber-echouent-elles-souvent.html':['cyber','formation'],
     'guide-metier-rse.html':['rse-ethique-security'],
     'guide-metier-ethique.html':['rse-ethique-security'],
-    'guide-metier-securite.html':['rse-ethique-security']
+    'guide-metier-securite.html':['rse-ethique-security'],
+    'culture-securite.html':['rse-ethique-security'],
+    'prevention-accidents-travail.html':['rse-ethique-security'],
+    'presque-accident.html':['rse-ethique-security'],
   };
 
   function pageName(){
