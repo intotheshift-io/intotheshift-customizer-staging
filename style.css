@@ -1573,112 +1573,104 @@ body.resources-body .article-grid{
 }
 
 
-/* ── Menu tags sur les pages contenu ───────────────── */
+/* ── Menu tags compact pages contenu ───────────────── */
 .content-tag-menu{
-  max-width:1180px;
-  margin:26px auto 0;
+  max-width:1120px;
+  margin:18px auto 0;
   padding:0 22px;
-  font-family:'Asap',sans-serif;
 }
 .content-tag-menu-inner{
-  background:rgba(255,255,255,.97);
-  border:1px solid #cfe4ea;
-  border-radius:28px;
-  padding:18px 20px;
-  box-shadow:0 18px 44px rgba(24,55,93,.10);
-}
-.content-tag-search-row{
   display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:12px;
+  gap:10px;
+  background:rgba(255,255,255,.96);
+  border:1px solid #cfe4ea;
+  border-radius:22px;
+  padding:12px 14px;
+  box-shadow:0 12px 30px rgba(24,55,93,.08);
+  backdrop-filter:blur(8px);
+}
+.content-tag-menu-head{
+  display:grid;
+  grid-template-columns:auto minmax(240px,1fr);
+  gap:10px;
   align-items:center;
+}
+.content-tag-home{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  border-radius:999px;
+  padding:8px 12px;
+  background:#0d4c72;
+  color:#fff!important;
+  font-size:12px;
+  font-weight:950;
+  text-decoration:none!important;
+  white-space:nowrap;
 }
 .content-tag-search{
   position:relative;
   display:block;
+  min-width:0;
 }
 .content-tag-search span{
   position:absolute;
-  left:15px;
+  left:12px;
   top:50%;
   transform:translateY(-50%);
-  font-size:18px;
+  font-size:15px;
   color:#718497;
 }
 .content-tag-search input{
   width:100%;
-  height:54px;
+  height:36px;
   border:1px solid #d5e1e9;
-  border-radius:18px;
-  padding:12px 14px 12px 44px;
+  border-radius:999px;
+  padding:8px 12px 8px 36px;
   font-family:'Asap',sans-serif;
-  font-size:15px;
+  font-size:13px;
   color:#18375d;
-  outline:none;
   background:#fff;
+  outline:none;
 }
 .content-tag-search input:focus{
   border-color:#0d4c72;
-  box-shadow:0 0 0 4px rgba(13,76,114,.08);
+  box-shadow:0 0 0 3px rgba(13,76,114,.08);
 }
-.content-tag-count{
-  color:#64748b;
-  font-size:13px;
-  font-weight:950;
-  text-decoration:none;
-  white-space:nowrap;
-}
-.content-tag-count:hover{color:#0d4c72;text-decoration:underline}
-.content-tag-chips,
-.content-format-row{
+.content-tag-chips{
   display:flex;
-  gap:9px;
+  gap:7px;
   flex-wrap:wrap;
-  margin-top:16px;
+  align-items:center;
 }
-.content-tag-chip,
-.content-format-row a{
+.content-tag-chip{
   display:inline-flex;
   align-items:center;
-  min-height:40px;
-  border:1px solid #cfe0ea;
-  background:#fff;
-  color:#0d4c72;
+  min-height:32px;
+  border:1px solid #d8e0ea;
   border-radius:999px;
-  padding:9px 14px;
-  font-family:'Asap',sans-serif;
-  font-size:13px;
-  font-weight:950;
-  text-decoration:none;
-  box-shadow:0 6px 16px rgba(24,55,93,.04);
+  padding:7px 10px;
+  background:#fff;
+  color:#0d4c72!important;
+  text-decoration:none!important;
+  font-size:12px;
+  font-weight:900;
+  line-height:1.15;
+  box-shadow:0 6px 14px rgba(24,55,93,.04);
 }
 .content-tag-chip:hover,
-.content-tag-chip.is-active,
-.content-format-row a:hover{
-  background:#0d4c72;
-  border-color:#0d4c72;
-  color:#fff;
+.content-tag-chip.is-active{
+  background:#f0f8f7;
+  border-color:#007883;
+  color:#007883!important;
 }
-.content-format-row{
-  align-items:center;
-  padding-top:12px;
-  border-top:1px solid #edf2f6;
-}
-.content-format-row span{
-  color:#64748b;
-  font-size:12px;
-  font-weight:950;
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  margin-right:2px;
-  align-self:center;
-}
-body.content-article .article-page,
-body.resources-body .resources-page{padding-top:26px}
+body.content-article .article-page{padding-top:22px}
 @media(max-width:760px){
-  .content-tag-menu{padding:0 14px;margin-top:18px}
-  .content-tag-menu-inner{border-radius:22px;padding:14px}
-  .content-tag-search-row{grid-template-columns:1fr}
-  .content-tag-count{white-space:normal}
-  .content-tag-chip,.content-format-row a{font-size:12px;min-height:36px;padding:8px 10px}
+  .content-tag-menu{padding:0 14px;margin-top:12px}
+  .content-tag-menu-inner{border-radius:18px;padding:10px}
+  .content-tag-menu-head{grid-template-columns:1fr;gap:8px}
+  .content-tag-home{width:100%}
+  .content-tag-chip{font-size:11px;min-height:30px;padding:6px 9px}
 }
+/* ── Fin menu tags compact ── */

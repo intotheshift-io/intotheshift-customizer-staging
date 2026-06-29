@@ -295,53 +295,11 @@ h2{font-size:26px}
 <body>
 <div id="header"></div>
 <script src="header.js"></script>
+<script src="resource-tags.js" defer></script>
 <script src="app.js"></script>
 
 
 
-<section class="content-tag-menu" aria-label="Menu des tags ressources">
-  <div class="content-tag-menu-inner">
-    <div class="content-tag-search-row">
-      <label class="content-tag-search"><span>🔎</span><input type="search" placeholder="Rechercher : management, RSE, formation, phishing, QVCT…" autocomplete="off"></label>
-      <a class="content-tag-count" href="ressources.html#articles">Tous les articles</a>
-    </div>
-    <div class="content-tag-chips" aria-label="Tags thématiques">
-      <a class="content-tag-chip is-active" href="ressources.html#articles">Tous les sujets</a>
-      <a class="content-tag-chip" href="ressources.html?tag=method#articles">🧠 Méthodologie</a>
-      <a class="content-tag-chip" href="ressources.html?tag=management#articles">👥 Management & Transformation</a>
-      <a class="content-tag-chip" href="ressources.html?tag=formation#articles">🎓 Formation professionnelle</a>
-      <a class="content-tag-chip" href="ressources.html?tag=qvct#articles">💚 QVCT & RPS</a>
-      <a class="content-tag-chip" href="ressources.html?tag=cyber#articles">🔐 Cybersécurité</a>
-      <a class="content-tag-chip" href="ressources.html?tag=rse-ethique-security#articles">🌍 RSE, Éthique & Sécurité</a>
-    </div>
-    <div class="content-format-row" aria-label="Formats de ressources">
-      <span>Format</span>
-      <a href="ressources.html#articles">Tous</a>
-      <a href="ressources.html?format=article#articles">Article</a>
-      <a href="ressources.html?format=guide#articles">Guide pratique</a>
-      <a href="ressources.html?format=guide-metier#articles">Guide métier</a>
-      <a href="ressources.html?format=comparatif#articles">Comparatif</a>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  const wrapper = document.currentScript.previousElementSibling;
-  if(!wrapper) return;
-  const input = wrapper.querySelector('input[type="search"]');
-  if(!input) return;
-  input.addEventListener('keydown', function(event){
-    if(event.key !== 'Enter') return;
-    event.preventDefault();
-    const query = input.value.trim();
-    if(query){
-      window.location.href = 'ressources.html?search=' + encodeURIComponent(query) + '#articles';
-    }else{
-      window.location.href = 'ressources.html#articles';
-    }
-  });
-})();
-</script>
 <main class="page">
 
 <section class="hero">

@@ -25,51 +25,9 @@
 <body>
 <div id="header"></div>
 <script src="header.js"></script>
+<script src="resource-tags.js" defer></script>
 <script src="app.js"></script>
 
-<section class="content-tag-menu" aria-label="Menu des tags ressources">
-  <div class="content-tag-menu-inner">
-    <div class="content-tag-search-row">
-      <label class="content-tag-search"><span>🔎</span><input type="search" placeholder="Rechercher : management, RSE, formation, phishing, QVCT…" autocomplete="off"></label>
-      <a class="content-tag-count" href="ressources.html#articles">Tous les articles</a>
-    </div>
-    <div class="content-tag-chips" aria-label="Tags thématiques">
-      <a class="content-tag-chip is-active" href="ressources.html#articles">Tous les sujets</a>
-      <a class="content-tag-chip" href="ressources.html?tag=method#articles">🧠 Méthodologie</a>
-      <a class="content-tag-chip" href="ressources.html?tag=management#articles">👥 Management & Transformation</a>
-      <a class="content-tag-chip" href="ressources.html?tag=formation#articles">🎓 Formation professionnelle</a>
-      <a class="content-tag-chip" href="ressources.html?tag=qvct#articles">💚 QVCT & RPS</a>
-      <a class="content-tag-chip" href="ressources.html?tag=cyber#articles">🔐 Cybersécurité</a>
-      <a class="content-tag-chip" href="ressources.html?tag=rse-ethique-security#articles">🌍 RSE, Éthique & Sécurité</a>
-    </div>
-    <div class="content-format-row" aria-label="Formats de ressources">
-      <span>Format</span>
-      <a href="ressources.html#articles">Tous</a>
-      <a href="ressources.html?format=article#articles">Article</a>
-      <a href="ressources.html?format=guide#articles">Guide pratique</a>
-      <a href="ressources.html?format=guide-metier#articles">Guide métier</a>
-      <a href="ressources.html?format=comparatif#articles">Comparatif</a>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  const wrapper = document.currentScript.previousElementSibling;
-  if(!wrapper) return;
-  const input = wrapper.querySelector('input[type="search"]');
-  if(!input) return;
-  input.addEventListener('keydown', function(event){
-    if(event.key !== 'Enter') return;
-    event.preventDefault();
-    const query = input.value.trim();
-    if(query){
-      window.location.href = 'ressources.html?search=' + encodeURIComponent(query) + '#articles';
-    }else{
-      window.location.href = 'ressources.html#articles';
-    }
-  });
-})();
-</script>
 <main class="page">
 
 <section class="hero"><div class="hero-grid"><div><div class="kicker">🎓 Formation professionnelle · ingénierie pédagogique</div><h1>Utiliser un <span>diagnostic comportemental</span> pour préparer et mesurer vos formations</h1><p class="lead">Into The Shift aide les entreprises, organismes de formation et cabinets de conseil à créer des diagnostics anonymes pour analyser les besoins, animer une formation et mesurer son impact.</p><div class="hero-actions"><a href="index.html" class="btn btn-primary">Explorer les bases</a><a href="pourquoi-diffuser-un-diagnostic-comportemental.html" class="btn btn-secondary">Voir les usages entreprise</a></div></div><aside class="hero-card"><div class="hero-card-title">Avant · pendant · après</div><div class="mini-list"><div class="mini-item"><div class="mini-icon">1</div><div><strong>Avant la formation</strong><span>Identifier les pratiques et les besoins réels des apprenants.</span></div></div><div class="mini-item"><div class="mini-icon">2</div><div><strong>Pendant la formation</strong><span>Utiliser les situations comme cas pratiques et supports de débat.</span></div></div><div class="mini-item"><div class="mini-icon">3</div><div><strong>Après la formation</strong><span>Mesurer l’évolution des comportements et des réflexes.</span></div></div></div></aside></div></section>

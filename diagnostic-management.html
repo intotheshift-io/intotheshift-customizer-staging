@@ -13,50 +13,8 @@
 <link rel="stylesheet" href="style.css">
 <style>
 :root{--blue:#0d4c72;--navy:#18375d;--purple:#6b5bd6;--yellow:#ffc000;--soft:#f1f0ff;--text:#526274;--border:#d8e0ea}*{box-sizing:border-box}body{margin:0;font-family:'Asap',sans-serif;color:var(--navy);background:linear-gradient(180deg,#f2f1ff 0%,#fff 52%,#f8fbfd 100%)}.page{max-width:1120px;margin:0 auto;padding:36px 22px 76px}.hero{background:linear-gradient(135deg,#fff 0%,#f1f0ff 62%,#eef6fb 100%);border:1px solid #d8d5fb;border-radius:30px;padding:48px;box-shadow:0 24px 64px rgba(24,55,93,.10)}.kicker{display:inline-flex;background:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 14px;color:var(--purple);font-size:13px;font-weight:900;margin-bottom:18px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center}h1{font-size:48px;line-height:1.05;letter-spacing:-.9px;margin:0 0 18px}h1 span{color:var(--purple)}.lead{font-size:18px;line-height:1.7;color:var(--text);margin:0}.hero-card,.card,.panel{background:#fff;border:1px solid var(--border);border-radius:24px;box-shadow:0 10px 28px rgba(24,55,93,.06)}.hero-card{padding:24px}.hero-icon{font-size:46px;margin-bottom:12px}.steps{display:grid;gap:10px;margin-top:16px}.steps div{padding:10px 12px;border-radius:12px;background:var(--soft);font-weight:800;color:var(--purple);font-size:13px}.section{margin-top:42px}.eyebrow{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.45px;color:var(--purple);margin-bottom:8px}h2{font-size:31px;line-height:1.16;margin:0 0 12px}.section p{font-size:16px;line-height:1.72;color:var(--text)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{padding:22px}.card:nth-child(1){border-top:5px solid var(--purple)}.card:nth-child(2){border-top:5px solid var(--blue)}.card:nth-child(3){border-top:5px solid var(--yellow)}.card:nth-child(4){border-top:5px solid var(--navy)}.icon{width:44px;height:44px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}.card h3{font-size:18px;margin:0 0 8px}.card p{font-size:14px;margin:0;line-height:1.6}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:26px}.panel.dark{background:linear-gradient(135deg,#6b5bd6 0%,#18375d 100%);color:#fff}.panel.dark p{color:rgba(255,255,255,.88)}ul{margin:12px 0 0;padding-left:20px;color:var(--text);line-height:1.75}.cta{margin-top:46px;background:linear-gradient(135deg,#fff 0%,#f1f0ff 100%);border:1px solid #d8d5fb;border-radius:26px;padding:30px;display:flex;justify-content:space-between;gap:22px;align-items:center}.btn{display:inline-flex;text-decoration:none;border-radius:12px;padding:13px 18px;background:var(--purple);color:#fff;font-weight:900;white-space:nowrap}@media(max-width:900px){.hero-grid,.split{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}h1{font-size:38px}.hero{padding:32px}.cta{display:block}.cta .btn{margin-top:16px}}@media(max-width:560px){.grid{grid-template-columns:1fr}.page{padding:24px 14px 54px}h1{font-size:31px}h2{font-size:25px}.hero{padding:24px}.btn{width:100%;justify-content:center}}
-</style></head><body><div id="header"></div><script src="header.js"></script><script src="app.js"></script>
-<section class="content-tag-menu" aria-label="Menu des tags ressources">
-  <div class="content-tag-menu-inner">
-    <div class="content-tag-search-row">
-      <label class="content-tag-search"><span>🔎</span><input type="search" placeholder="Rechercher : management, RSE, formation, phishing, QVCT…" autocomplete="off"></label>
-      <a class="content-tag-count" href="ressources.html#articles">Tous les articles</a>
-    </div>
-    <div class="content-tag-chips" aria-label="Tags thématiques">
-      <a class="content-tag-chip is-active" href="ressources.html#articles">Tous les sujets</a>
-      <a class="content-tag-chip" href="ressources.html?tag=method#articles">🧠 Méthodologie</a>
-      <a class="content-tag-chip" href="ressources.html?tag=management#articles">👥 Management & Transformation</a>
-      <a class="content-tag-chip" href="ressources.html?tag=formation#articles">🎓 Formation professionnelle</a>
-      <a class="content-tag-chip" href="ressources.html?tag=qvct#articles">💚 QVCT & RPS</a>
-      <a class="content-tag-chip" href="ressources.html?tag=cyber#articles">🔐 Cybersécurité</a>
-      <a class="content-tag-chip" href="ressources.html?tag=rse-ethique-security#articles">🌍 RSE, Éthique & Sécurité</a>
-    </div>
-    <div class="content-format-row" aria-label="Formats de ressources">
-      <span>Format</span>
-      <a href="ressources.html#articles">Tous</a>
-      <a href="ressources.html?format=article#articles">Article</a>
-      <a href="ressources.html?format=guide#articles">Guide pratique</a>
-      <a href="ressources.html?format=guide-metier#articles">Guide métier</a>
-      <a href="ressources.html?format=comparatif#articles">Comparatif</a>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  const wrapper = document.currentScript.previousElementSibling;
-  if(!wrapper) return;
-  const input = wrapper.querySelector('input[type="search"]');
-  if(!input) return;
-  input.addEventListener('keydown', function(event){
-    if(event.key !== 'Enter') return;
-    event.preventDefault();
-    const query = input.value.trim();
-    if(query){
-      window.location.href = 'ressources.html?search=' + encodeURIComponent(query) + '#articles';
-    }else{
-      window.location.href = 'ressources.html#articles';
-    }
-  });
-})();
-</script>
+</style></head><body><div id="header"></div><script src="header.js"></script>
+<script src="resource-tags.js" defer></script><script src="app.js"></script>
 <main class="page">
 <section class="hero"><div class="hero-grid"><div><div class="kicker">🚀 Management · Diagnostic des pratiques</div><h1>Diagnostic individuel et collectif des <span>pratiques managériales</span></h1><p class="lead">Un autodiagnostic anonyme pour mesurer les comportements managériaux vécus au quotidien : feedback, autonomie, priorisation, coopération, gestion des tensions et accompagnement des équipes.</p></div><aside class="hero-card"><div class="hero-icon">🧩</div><strong>Une lecture à deux niveaux</strong><div class="steps"><div>Individuel : prise de conscience</div><div>Collectif : tendances managériales</div><div>Action : axes de progrès</div></div></aside></div></section>
 <section class="section"><div class="eyebrow">Pourquoi ce diagnostic</div><h2>Évaluer les pratiques, pas les personnes</h2><p>Le management ne se résume pas à des intentions. Il se traduit dans des décisions, des arbitrages et des réactions face à des situations concrètes. Into The Shift aide à objectiver ces pratiques sans transformer le diagnostic en jugement individuel.</p></section>
