@@ -27,19 +27,49 @@
 <script src="header.js"></script>
 <script src="app.js"></script>
 
-<nav class="resources-mini-tags" aria-label="Navigation par tags des ressources">
-  <div class="resources-mini-tags-inner">
-    <a class="mini-tag-back" href="ressources.html#articles">📚 Toutes les ressources</a>
-    <div class="mini-tag-links">
-      <a href="ressources.html?tag=method#articles">🧠 Méthodologie</a>
-      <a href="ressources.html?tag=management#articles">👥 Management & Transformation</a>
-      <a href="ressources.html?tag=formation#articles">🎓 Formation professionnelle</a>
-      <a href="ressources.html?tag=qvct#articles">💚 QVCT & RPS</a>
-      <a href="ressources.html?tag=cyber#articles">🔐 Cybersécurité</a>
-      <a href="ressources.html?tag=rse-ethique-security#articles">🌍 RSE, Éthique & Sécurité</a>
+<section class="content-tag-menu" aria-label="Menu des tags ressources">
+  <div class="content-tag-menu-inner">
+    <div class="content-tag-search-row">
+      <label class="content-tag-search"><span>🔎</span><input type="search" placeholder="Rechercher : management, RSE, formation, phishing, QVCT…" autocomplete="off"></label>
+      <a class="content-tag-count" href="ressources.html#articles">Tous les articles</a>
+    </div>
+    <div class="content-tag-chips" aria-label="Tags thématiques">
+      <a class="content-tag-chip is-active" href="ressources.html#articles">Tous les sujets</a>
+      <a class="content-tag-chip" href="ressources.html?tag=method#articles">🧠 Méthodologie</a>
+      <a class="content-tag-chip" href="ressources.html?tag=management#articles">👥 Management & Transformation</a>
+      <a class="content-tag-chip" href="ressources.html?tag=formation#articles">🎓 Formation professionnelle</a>
+      <a class="content-tag-chip" href="ressources.html?tag=qvct#articles">💚 QVCT & RPS</a>
+      <a class="content-tag-chip" href="ressources.html?tag=cyber#articles">🔐 Cybersécurité</a>
+      <a class="content-tag-chip" href="ressources.html?tag=rse-ethique-security#articles">🌍 RSE, Éthique & Sécurité</a>
+    </div>
+    <div class="content-format-row" aria-label="Formats de ressources">
+      <span>Format</span>
+      <a href="ressources.html#articles">Tous</a>
+      <a href="ressources.html?format=article#articles">Article</a>
+      <a href="ressources.html?format=guide#articles">Guide pratique</a>
+      <a href="ressources.html?format=guide-metier#articles">Guide métier</a>
+      <a href="ressources.html?format=comparatif#articles">Comparatif</a>
     </div>
   </div>
-</nav>
+</section>
+<script>
+(function(){
+  const wrapper = document.currentScript.previousElementSibling;
+  if(!wrapper) return;
+  const input = wrapper.querySelector('input[type="search"]');
+  if(!input) return;
+  input.addEventListener('keydown', function(event){
+    if(event.key !== 'Enter') return;
+    event.preventDefault();
+    const query = input.value.trim();
+    if(query){
+      window.location.href = 'ressources.html?search=' + encodeURIComponent(query) + '#articles';
+    }else{
+      window.location.href = 'ressources.html#articles';
+    }
+  });
+})();
+</script>
 <main class="page">
 
 <section class="hero"><div class="hero-grid"><div><div class="kicker">🎯 Entreprises · transformation · comportements</div><h1>Pourquoi diffuser un <span>diagnostic comportemental</span> dans votre entreprise ?</h1><p class="lead">Pour sensibiliser les collaborateurs, préparer une action de formation, réaliser un état des lieux anonyme et mesurer l’évolution des pratiques professionnelles à partir de situations concrètes.</p><div class="hero-actions"><a href="index.html" class="btn btn-primary">Explorer les bases</a><a href="simulateur-comportemental.html" class="btn btn-secondary">Comprendre la méthode</a></div></div><aside class="hero-card"><div class="hero-card-title">Les usages les plus fréquents</div><div class="mini-list"><div class="mini-item"><div class="mini-icon">📊</div><div><strong>État des lieux</strong><span>Objectiver les pratiques avant de lancer un plan d’action.</span></div></div><div class="mini-item"><div class="mini-icon">🧠</div><div><strong>Sensibilisation</strong><span>Faire réfléchir sans passer par un questionnaire déclaratif.</span></div></div><div class="mini-item"><div class="mini-icon">🎓</div><div><strong>Formation</strong><span>Préparer un atelier, une séquence pédagogique ou un débrief collectif.</span></div></div><div class="mini-item"><div class="mini-icon">📈</div><div><strong>Mesure d’impact</strong><span>Comparer les pratiques avant et après une action.</span></div></div></div></aside></div></section>

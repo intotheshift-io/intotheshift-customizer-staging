@@ -103,28 +103,6 @@
   const noResults = document.getElementById('noResults');
   let activeFilter = 'all';
   let activeFormat = 'all';
-  const params = new URLSearchParams(window.location.search);
-  const tagParam = params.get('tag');
-  const formatParam = params.get('format');
-  const tagMap = {
-    method: 'method',
-    management: 'management',
-    formation: 'formation',
-    qvct: 'qvct',
-    cyber: 'cyber',
-    'rse-ethique-security': 'rse ethique security'
-  };
-  if(tagParam && tagMap[tagParam]){
-    activeFilter = tagMap[tagParam];
-    chips.forEach(item => item.classList.toggle('is-active', (item.dataset.filter || 'all') === activeFilter));
-  }
-  if(formatParam){
-    const hasFormat = formatChips.some(item => item.dataset.format === formatParam);
-    if(hasFormat){
-      activeFormat = formatParam;
-      formatChips.forEach(item => item.classList.toggle('is-active', (item.dataset.format || 'all') === activeFormat));
-    }
-  }
   function normalize(value){return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
   function applyFilters(){
     const query = normalize(searchInput.value);
@@ -167,6 +145,30 @@
     applyFilters();
   }));
   searchInput.addEventListener('input', applyFilters);
+
+  const params = new URLSearchParams(window.location.search);
+  const requestedTag = params.get('tag');
+  const requestedFormat = params.get('format');
+  const requestedSearch = params.get('search');
+  const tagMap = {'rse-ethique-security':'rse ethique security'};
+  if(requestedSearch){ searchInput.value = requestedSearch; }
+  if(requestedTag){
+    const mappedTag = tagMap[requestedTag] || requestedTag;
+    const tagChip = chips.find(chip => (chip.dataset.filter || '') === mappedTag);
+    if(tagChip){
+      chips.forEach(item => item.classList.remove('is-active'));
+      tagChip.classList.add('is-active');
+      activeFilter = mappedTag;
+    }
+  }
+  if(requestedFormat){
+    const formatChip = formatChips.find(chip => (chip.dataset.format || '') === requestedFormat);
+    if(formatChip){
+      formatChips.forEach(item => item.classList.remove('is-active'));
+      formatChip.classList.add('is-active');
+      activeFormat = requestedFormat;
+    }
+  }
   applyFilters();
 })();
 </script>
