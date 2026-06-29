@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culture cybersécurité en entreprise : mesurer les comportements | Into The Shift</title>
+<meta content="Mesurez les réflexes cybersécurité des collaborateurs avec des situations concrètes : phishing, fraude, mots de passe et signalement." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://shiftstudio.intotheshift.io/resources/cyber/guide-metier-cybersecurite.html" rel="canonical"/>
+<link href="/llms.txt" rel="alternate" title="LLMs" type="text/plain"/>
+<link href="/llms-full.md" rel="alternate" title="LLMs Full" type="text/markdown"/>
+<meta content="Culture cybersécurité en entreprise : mesurer les comportements" property="og:title"/>
+<meta content="Exemples concrets de situations et réponses pour diagnostiquer les réflexes cybersécurité des collaborateurs." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://shiftstudio.intotheshift.io/resources/cyber/guide-metier-cybersecurite.html" property="og:url"/>
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css" rel="stylesheet"/>
+<link href="../../style.css" rel="stylesheet"/>
+<style>
+:root{--blue:#0d4c72;--navy:#18375d;--cyan:#0097a7;--yellow:#ffc000;--red:#ff847e;--green:#77cd8a;--soft:#eef6fb;--text:#526274;--border:#d8e0ea;--muted:#f8fbfd}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Asap',sans-serif;color:var(--navy);background:linear-gradient(180deg,#eef6fb 0%,#fff 48%,#fff7df 100%)}.page{max-width:1120px;margin:0 auto;padding:36px 22px 76px}.seo-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#e6f0f6 58%,#d8f4f7 100%);border:1px solid #cbddea;border-radius:30px;padding:46px;box-shadow:0 24px 64px rgba(24,55,93,.12)}.seo-hero::before{content:"";position:absolute;right:-86px;top:-90px;width:260px;height:260px;border-radius:50%;background:rgba(255,192,0,.22)}.seo-hero::after{content:"";position:absolute;left:-82px;bottom:-110px;width:260px;height:260px;border-radius:50%;background:rgba(0,151,167,.12)}.seo-hero>*{position:relative;z-index:1}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}.kicker{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 14px;color:var(--blue);font-size:13px;font-weight:900;margin-bottom:16px}h1{font-size:47px;line-height:1.05;letter-spacing:-.8px;margin:0 0 18px}h1 span{color:var(--blue)}.lead{font-size:18px;line-height:1.72;color:var(--text);margin:0}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;font-size:14px;transition:.18s ease}.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(13,76,114,.18)}.btn-primary:hover{background:#0a3f60;transform:translateY(-1px)}.btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--border)}.btn-secondary:hover{background:#f7fafc;transform:translateY(-1px)}.hero-card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:22px;box-shadow:0 16px 34px rgba(24,55,93,.10)}.hero-card-title{font-size:15px;font-weight:900;margin-bottom:14px}.risk-list{display:grid;gap:10px}.risk-item{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;background:var(--muted);border:1px solid #e4ebf3;border-radius:15px;padding:12px}.risk-icon{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#eef6fb}.risk-item strong{display:block;font-size:13px;margin-bottom:3px}.risk-item span{display:block;color:#64748b;font-size:12px;line-height:1.45}.section{margin-top:46px}.section-head{display:flex;justify-content:space-between;gap:22px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:13px;font-weight:900;color:var(--blue);letter-spacing:.45px;text-transform:uppercase;margin-bottom:7px}h2{font-size:31px;line-height:1.15;margin:0}.section-text{color:var(--text);font-size:16px;line-height:1.72;margin:0;max-width:720px}.problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:0 10px 28px rgba(24,55,93,.06)}.panel.problem{border-top:5px solid var(--red)}.panel.solution{border-top:5px solid var(--green)}.panel h3{margin:0 0 10px;font-size:20px}.panel p{color:var(--text);line-height:1.66;margin:0}.question-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.question-card{background:#fff;border:1px solid var(--border);border-radius:24px;box-shadow:0 12px 30px rgba(24,55,93,.07);overflow:hidden}.question-top{padding:20px 20px 16px;background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);border-bottom:1px solid #e6edf5}.question-tag{display:inline-flex;border-radius:999px;padding:6px 10px;background:#e6f0f6;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:12px}.question-card h3{margin:0 0 8px;font-size:18px;line-height:1.25}.question-text{margin:0;color:#42556b;font-size:14px;line-height:1.62}.answers{display:grid;gap:9px;padding:16px 20px}.answer{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;border:1px solid #e4ebf3;background:#fbfdff;border-radius:14px;padding:11px 12px;color:#42556b;font-size:13px;line-height:1.45}.answer-marker{width:24px;height:24px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;background:#edf1f7;color:#64748b}.answer.best{border-color:rgba(119,205,138,.65);background:rgba(119,205,138,.10)}.answer.best .answer-marker{background:var(--green);color:#fff}.answer.warning{border-color:rgba(255,132,126,.55);background:rgba(255,132,126,.08)}.answer.warning .answer-marker{background:var(--red);color:#fff}.question-insight{padding:0 20px 20px}.insight-box{border-left:5px solid var(--yellow);background:#fff8df;border-radius:14px;padding:13px 14px;color:#6b4a00;font-size:13px;line-height:1.5}.measure-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.measure{background:linear-gradient(135deg,#fff 0%,#f7fbfc 100%);border:1px solid var(--border);border-radius:18px;padding:18px}.measure strong{display:block;font-size:15px;margin-bottom:7px}.measure span{display:block;font-size:13px;color:#5b6b7f;line-height:1.45}.steps{background:#fff;border:1px solid var(--border);border-radius:24px;padding:26px;box-shadow:0 10px 28px rgba(24,55,93,.06);display:grid;gap:16px}.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}.step-num{width:42px;height:42px;border-radius:14px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}.step h3{margin:0 0 5px;font-size:18px}.step p{margin:0;color:var(--text);line-height:1.58}.cta{margin-top:48px;background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);color:#fff;border-radius:26px;padding:30px;display:flex;justify-content:space-between;gap:22px;align-items:center;box-shadow:0 18px 44px rgba(13,76,114,.18)}.cta h2{color:#fff}.cta p{color:rgba(255,255,255,.86);line-height:1.6;margin:10px 0 0}.cta .btn{background:#ffc000;color:#18375d;white-space:nowrap}.note{margin-top:14px;font-size:13px;color:#64748b;line-height:1.55}@media(max-width:900px){.hero-grid,.problem-solution,.question-grid{grid-template-columns:1fr}.measure-grid{grid-template-columns:1fr 1fr}.section-head{display:block}h1{font-size:38px}.seo-hero{padding:32px}.cta{display:block}.cta .btn{margin-top:18px}}@media(max-width:560px){.page{padding:24px 14px 54px}.seo-hero{padding:24px;border-radius:22px}h1{font-size:31px}h2{font-size:25px}.measure-grid{grid-template-columns:1fr}.step{grid-template-columns:1fr}.btn{width:100%}}
+
+.anonymous-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);
+  border:1px solid var(--border);
+  border-left:6px solid var(--yellow);
+  border-radius:22px;
+  padding:22px 24px;
+  box-shadow:0 12px 30px rgba(24,55,93,.07);
+}
+.anonymous-box strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.anonymous-box p{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.65;
+}
+.anonymous-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.anonymous-tags span{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--blue);
+}
+
+</style>
+<meta content="https://shiftstudio.intotheshift.io/assets/img/resources/guide-metier-cybersecurite.svg" property="og:image"/></head>
+<body>
+<div id="header"></div>
+<script src="../../header.js"></script>
+<script defer="" src="../../assets/js/resource-tags.js"></script>
+<script src="../../app.js"></script>
+<main class="page" id="main-content">
+<section class="seo-hero">
+<div class="hero-grid">
+<div>
+<div class="kicker">🛡️ Cybersécurité · comportements collaborateurs</div>
+<h1>Culture cybersécurité : <span>les outils ne suffisent pas si les réflexes ne suivent pas</span></h1>
+<p class="lead">Les entreprises forment, équipent et rappellent les règles. Pourtant, les incidents naissent souvent d’un geste ordinaire : cliquer trop vite, partager un accès, contourner une procédure ou ne pas signaler un doute.</p>
+<nav aria-label="Navigation principale du guide" class="hero-actions">
+<a class="btn btn-primary" href="../../index.html">Explorer les bases cybersécurité</a>
+<a class="btn btn-secondary" href="../../resources/methodologie/simulateur-comportemental.html">Comprendre la méthode</a>
+</nav>
+</div>
+<aside aria-label="Exemples de risques comportementaux en cybersécurité" class="hero-card">
+<h2 class="hero-card-title">Ce qui se joue dans le quotidien</h2>
+<div class="risk-list">
+<div class="risk-item"><div class="risk-icon">✉️</div><div><strong>Email suspect</strong><span>Le collaborateur hésite entre cliquer, transférer ou signaler.</span></div></div>
+<div class="risk-item"><div class="risk-icon">🔑</div><div><strong>Accès partagé</strong><span>Un mot de passe circule “pour gagner du temps”.</span></div></div>
+<div class="risk-item"><div class="risk-icon">💻</div><div><strong>Télétravail</strong><span>Des documents sensibles sont ouverts hors cadre sécurisé.</span></div></div>
+<div class="risk-item"><div class="risk-icon">🚩</div><div><strong>Doute non signalé</strong><span>Un incident faible reste invisible jusqu’à devenir critique.</span></div></div>
+</div>
+</aside>
+</div>
+</section>
+<section aria-label="Anonymat des diagnostics Into The Shift" class="anonymous-box">
+<strong>🔒 100 % anonyme dès la première réponse</strong>
+<p>Les répondants accèdent au diagnostic sans compte, sans login, sans mot de passe et sans adresse email à renseigner. Aucune adresse IP n’est conservée, aucun cookie de tracking n’est déposé : les résultats sont exploités uniquement sous forme collective et anonyme.</p>
+<div class="anonymous-tags">
+<span>Sans compte répondant</span>
+<span>Sans email</span>
+<span>Sans mot de passe</span>
+<span>Aucune IP conservée</span>
+<span>Résultats collectifs</span>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div><div class="eyebrow">Problème / réponse</div><h2>Le problème n’est pas seulement la connaissance des règles.</h2></div>
+<p class="section-text">Beaucoup de collaborateurs savent qu’il faut être vigilant. La vraie question est : que font-ils quand la situation est ambiguë, urgente ou socialement inconfortable ?</p>
+</div>
+<div class="problem-solution">
+<div class="panel problem"><h3>Le problème</h3><p>Les campagnes de sensibilisation cybersécurité mesurent souvent la mémorisation des consignes. Mais elles montrent rarement comment les personnes arbitrent dans les situations réelles : pression du temps, demande d’un supérieur, peur de déranger l’IT, contournement “exceptionnel” d’une règle.</p></div>
+<div class="panel solution"><h3>La réponse Into The Shift</h3><p>Transformer la cybersécurité en diagnostic comportemental individuel et collectif : les répondants se positionnent face à des situations professionnelles concrètes, reçoivent un profil de réflexes cyber et l’entreprise observe les tendances anonymes.</p></div>
+</div>
+</section>
+<article>
+<section class="section" id="exemples-questions-cybersecurite">
+<div class="section-head">
+<div><div class="eyebrow">Exemples de situations</div><h2>Des cartes question / réponses lisibles par Google.</h2></div>
+<p class="section-text">Ces exemples montrent la différence entre une sensibilisation théorique et un autodiagnostic comportemental : on observe un choix face à une situation réaliste.</p>
+</div>
+<div class="question-grid">
+<article class="question-card">
+<div class="question-top">
+<div class="question-tag">Phishing · intranet RH</div>
+<h3>Fausse mise à jour RH</h3>
+<p class="question-text">Vous recevez un mail qui semble venir du service RH vous demandant de mettre à jour vos coordonnées personnelles pour garantir la bonne transmission de vos documents administratifs. Le message reprend le logo de l’entreprise, mais le lien pointe vers une adresse très proche de l’intranet habituel.</p>
+</div>
+<div aria-label="Réponses possibles" class="answers">
+<div class="answer warning"><div class="answer-marker">!</div><div>Je clique sur le lien et je renseigne les informations demandées : le message semble venir des RH et le logo est correct.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je me connecte directement à l’intranet RH sans utiliser le lien du mail pour vérifier si une mise à jour est réellement demandée.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je transfère le message à l’équipe informatique ou au canal de signalement prévu avant de renseigner quoi que ce soit.</div></div>
+<div class="answer"><div class="answer-marker">~</div><div>Je supprime le mail sans cliquer, mais je ne le signale pas car je pense avoir évité le risque.</div></div>
+</div>
+<div class="question-insight"><div class="insight-box">Ce que la situation mesure : la capacité à ne pas se laisser rassurer par un logo connu, à vérifier via un canal interne fiable et à signaler les tentatives plausibles.</div></div>
+</article>
+<article class="question-card">
+<div class="question-top">
+<div class="question-tag">Phishing · urgence</div>
+<h3>Faux ordre du dirigeant</h3>
+<p class="question-text">Un mail signé par votre directeur général vous demande de transférer urgemment une somme sur un compte fournisseur “pour débloquer un contrat avant ce soir”. Il précise de ne pas en parler aux autres pour l’instant.</p>
+</div>
+<div aria-label="Réponses possibles" class="answers">
+<div class="answer warning"><div class="answer-marker">!</div><div>Je fais le transfert : le dirigeant demande, c’est urgent et il dit de ne pas en parler.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>J’appelle directement le dirigeant sur son numéro habituel pour vérifier avant toute action.</div></div>
+<div class="answer warning"><div class="answer-marker">!</div><div>Je réponds au mail en demandant plus de détails sur le contrat.</div></div>
+<div class="answer"><div class="answer-marker">~</div><div>Je transmets à la comptabilité pour qu’elle valide le virement.</div></div>
+</div>
+<div class="question-insight"><div class="insight-box">Ce que la situation mesure : la résistance à l’urgence, à l’autorité apparente et à l’injonction de confidentialité.</div></div>
+</article>
+<article class="question-card">
+<div class="question-top">
+<div class="question-tag">Lien suspect · contact connu</div>
+<h3>Document partagé par un collègue</h3>
+<p class="question-text">Vous recevez un mail d’un collègue vous demandant de valider un document partagé. Il vous envoie souvent des fichiers. Le lien pointe vers une URL qui ressemble à OneDrive mais avec un domaine différent.</p>
+</div>
+<div aria-label="Réponses possibles" class="answers">
+<div class="answer warning"><div class="answer-marker">!</div><div>Je clique : ce collègue m’envoie souvent des fichiers et cela ressemble à OneDrive.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je lui envoie un message séparé pour lui demander s’il m’a bien envoyé ce lien.</div></div>
+<div class="answer"><div class="answer-marker">~</div><div>Je passe la souris sur le lien pour voir l’URL complète avant de décider.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je lui téléphone pour confirmer avant de cliquer.</div></div>
+</div>
+<div class="question-insight"><div class="insight-box">Ce que la situation mesure : le réflexe de vérification indépendante, même lorsqu’un message semble venir d’un contact habituel.</div></div>
+</article>
+<article class="question-card">
+<div class="question-top">
+<div class="question-tag">Ingénierie sociale · support IT</div>
+<h3>Appel d’un faux technicien</h3>
+<p class="question-text">Vous recevez un appel d’une personne qui se présente comme technicien du support informatique de votre entreprise. Elle dit que votre poste est infecté et qu’elle a besoin de votre mot de passe pour intervenir à distance.</p>
+</div>
+<div aria-label="Réponses possibles" class="answers">
+<div class="answer warning"><div class="answer-marker">!</div><div>Je lui donne mon mot de passe : le support IT en a besoin pour travailler.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je lui dis de rappeler dans 5 minutes et je contacte directement le support IT pour confirmer.</div></div>
+<div class="answer"><div class="answer-marker">~</div><div>Je lui demande son nom et son matricule avant de donner quoi que ce soit.</div></div>
+<div class="answer best"><div class="answer-marker">✓</div><div>Je refuse de donner mon mot de passe et je propose de passer par un ticket officiel.</div></div>
+</div>
+<div class="question-insight"><div class="insight-box">Ce que la situation mesure : la capacité à protéger ses accès et à ne jamais communiquer un mot de passe, même sous pression.</div></div>
+</article>
+</div>
+</section>
+</article>
+<section class="section">
+<div class="section-head">
+<div><div class="eyebrow">Ce que vous mesurez</div><h2>Une lecture comportementale de la culture cyber.</h2></div>
+</div>
+<div class="measure-grid">
+<div class="measure"><strong>Vigilance</strong><span>Capacité à repérer les signaux faibles et demandes inhabituelles.</span></div>
+<div class="measure"><strong>Signalement</strong><span>Réflexe d’alerter rapidement en cas de doute ou d’erreur.</span></div>
+<div class="measure"><strong>Respect des accès</strong><span>Gestion des mots de passe, droits et partages d’informations.</span></div>
+<div class="measure"><strong>Arbitrages</strong><span>Comportements face à l’urgence, la pression ou la demande d’un tiers.</span></div>
+</div>
+</section>
+<section class="section">
+<div class="section-head"><div><div class="eyebrow">Déploiement</div><h2>Un diagnostic utilisable seul, en formation ou en campagne cyber.</h2></div></div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div><h3>Créer ou adapter les situations</h3><p>Sélectionnez une base cybersécurité, adaptez les cas à vos métiers, vos outils et vos règles internes.</p></div></div>
+<div class="step"><div class="step-num">2</div><div><h3>Diffuser par lien ou QR code</h3><p>Les collaborateurs répondent anonymement, en quelques minutes, depuis un lien de passation ou un QR code.</p></div></div>
+<div class="step"><div class="step-num">3</div><div><h3>Restituer les profils</h3><p>Chaque répondant obtient un profil individuel avec des axes de progrès concrets.</p></div></div>
+<div class="step"><div class="step-num">4</div><div><h3>Analyser les tendances collectives</h3><p>L’entreprise consulte les résultats consolidés et anonymes pour cibler ses actions de sensibilisation.</p></div></div>
+</div>
+<p class="note">Les résultats ne visent pas à contrôler les individus, mais à identifier les comportements à renforcer collectivement.</p>
+</section>
+<section class="cta">
+<div><div class="eyebrow" style="color:#d8f1fb">Shift Studio</div><h2>Créer un diagnostic cybersécurité orienté comportements</h2><p>Partez d’une base existante, personnalisez les situations, puis transmettez votre projet pour mise en production.</p></div>
+<a class="btn" href="../../index.html">Explorer les bases</a>
+</section>
+</main>
+</body>
+</html>

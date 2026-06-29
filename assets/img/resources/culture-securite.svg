@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Culture Securite">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b23b3e"/><stop offset="1" stop-color="#0d4c72"/></linearGradient><filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#18375d" flood-opacity="0.18"/></filter></defs>
+<rect width="1200" height="720" fill="#eef6fb"/><circle cx="1020" cy="120" r="210" fill="#0d4c72" opacity="0.22"/><circle cx="130" cy="620" r="260" fill="#b23b3e" opacity="0.14"/>
+<rect x="92" y="86" width="1016" height="548" rx="42" fill="white" filter="url(#s)"/>
+<rect x="146" y="142" width="210" height="210" rx="42" fill="url(#g)"/><text x="251" y="274" text-anchor="middle" font-size="92" font-family="Arial, sans-serif">🦺</text>
+<text x="410" y="210" font-size="32" font-family="Arial, sans-serif" font-weight="700" fill="#b23b3e">Santé &amp; Sécurité</text>
+<text x="410" y="285" font-size="58" font-family="Arial, sans-serif" font-weight="800" fill="#18375d">Culture Securite</text>
+<text x="410" y="345" font-size="28" font-family="Arial, sans-serif" fill="#526274">Comportements observables · pratiques terrain</text>
+<g fill="none" stroke="#b23b3e" stroke-width="12" stroke-linecap="round" opacity="0.30"><path d="M170 500h190M170 545h330M170 590h260"/><path d="M700 500h280M700 545h220M700 590h330"/></g>
+</svg>

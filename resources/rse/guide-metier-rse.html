@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RSE &amp; environnement : mesurer les comportements au travail | Into The Shift</title>
+<meta content="Guide métier RSE : mesurer les comportements environnementaux au travail, sobriété, achats responsables, numérique responsable, déplacements et engagement collectif." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://shiftstudio.intotheshift.io/resources/rse/guide-metier-rse.html" rel="canonical"/>
+<link href="/llms.txt" rel="alternate" title="LLMs" type="text/plain"/>
+<link href="/llms-full.md" rel="alternate" title="LLMs Full" type="text/markdown"/>
+<meta content="RSE &amp; environnement : mesurer les comportements au travail" property="og:title"/>
+<meta content="Un guide métier concret pour transformer les engagements RSE en situations professionnelles, profils individuels et résultats collectifs anonymes." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://shiftstudio.intotheshift.io/resources/rse/guide-metier-rse.html" property="og:url"/>
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css" rel="stylesheet"/>
+<link href="../../style.css" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#0d4c72;
+  --navy:#18375d;
+  --cyan:#0097a7;
+  --yellow:#ffc000;
+  --green:#e9f8ee;
+  --orange:#fff5d8;
+  --red:#ffe8e6;
+  --soft:#eef6fb;
+  --text:#526274;
+  --border:#d8e0ea;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Asap',sans-serif;
+  color:var(--navy);
+  background:linear-gradient(180deg,#edf8f1 0%,#ffffff 48%,#f8fbfd 100%);
+}
+.page{
+  max-width:1120px;
+  margin:0 auto;
+  padding:36px 22px 76px;
+}
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffffff 0%,#e8f6ee 58%,#fff6d7 100%);
+  border:1px solid #cbddea;
+  border-radius:30px;
+  padding:48px;
+  box-shadow:0 24px 64px rgba(24,55,93,.12);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  right:-90px;
+  top:-90px;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(119,205,138,.22);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:-90px;
+  bottom:-110px;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:rgba(255,192,0,.16);
+}
+.hero>*{position:relative;z-index:1}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:34px;
+  align-items:center;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:9px 14px;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:16px;
+}
+h1{
+  font-size:48px;
+  line-height:1.05;
+  letter-spacing:-.8px;
+  margin:0 0 18px;
+}
+h1 span{color:#237a50}
+.lead{
+  font-size:18px;
+  line-height:1.72;
+  color:var(--text);
+  margin:0;
+}
+.hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  padding:13px 18px;
+  text-decoration:none;
+  font-weight:900;
+  font-size:14px;
+  transition:.18s ease;
+}
+.btn-primary{
+  background:#237a50;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(35,122,80,.18);
+}
+.btn-secondary{
+  background:#fff;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+.hero-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 16px 34px rgba(24,55,93,.10);
+}
+.hero-card-title{
+  font-size:16px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.signal-list{
+  display:grid;
+  gap:10px;
+}
+.signal-item{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:10px;
+  align-items:start;
+  background:#f8fbfd;
+  border:1px solid #e4ebf3;
+  border-radius:15px;
+  padding:12px;
+}
+.signal-icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#edf8f1;
+  font-size:20px;
+}
+.signal-item strong{
+  display:block;
+  font-size:13px;
+  margin-bottom:3px;
+}
+.signal-item span{
+  display:block;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.45;
+}
+.section{margin-top:48px}
+.section-head{
+  max-width:790px;
+  margin-bottom:20px;
+}
+.eyebrow{
+  font-size:13px;
+  font-weight:900;
+  color:#237a50;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+h2{
+  font-size:34px;
+  line-height:1.15;
+  margin:0 0 14px;
+}
+.section-text{
+  color:var(--text);
+  font-size:16px;
+  line-height:1.75;
+  margin:0;
+}
+.problem-solution{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(24,55,93,.06);
+}
+.panel.problem{border-top:5px solid #ff847e}
+.panel.solution{border-top:5px solid #77cd8a}
+.panel h3{
+  margin:0 0 10px;
+  font-size:21px;
+}
+.panel p{
+  color:var(--text);
+  line-height:1.68;
+  margin:0;
+}
+.qa-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.qa-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(24,55,93,.06);
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  background:#edf8f1;
+  color:#237a50;
+  margin-bottom:14px;
+}
+.qa-card h3{
+  margin:0 0 12px;
+  font-size:22px;
+}
+.question{
+  color:var(--text);
+  line-height:1.68;
+  margin:0 0 16px;
+}
+.answer{
+  padding:12px 14px;
+  border-radius:14px;
+  margin-top:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+.bad{background:var(--red)}
+.mid{background:var(--orange)}
+.good{background:var(--green)}
+.measure-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.measure{
+  background:linear-gradient(135deg,#fff 0%,#f7fbfc 100%);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+}
+.measure strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:7px;
+}
+.measure span{
+  display:block;
+  font-size:13px;
+  color:#5b6b7f;
+  line-height:1.45;
+}
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.panel.dark{
+  background:linear-gradient(135deg,#237a50 0%,#18375d 100%);
+  color:#fff;
+}
+.panel.dark p,.panel.dark li{
+  color:rgba(255,255,255,.88);
+}
+ul{
+  margin:12px 0 0;
+  padding-left:20px;
+  line-height:1.75;
+}
+.cta{
+  margin-top:52px;
+  background:linear-gradient(135deg,#237a50 0%,#18375d 100%);
+  color:#fff;
+  border-radius:26px;
+  padding:30px;
+  display:flex;
+  justify-content:space-between;
+  gap:22px;
+  align-items:center;
+  box-shadow:0 18px 44px rgba(35,122,80,.18);
+}
+.cta h2{color:#fff;margin-bottom:8px}
+.cta p{
+  color:rgba(255,255,255,.86);
+  line-height:1.6;
+  margin:0;
+}
+.cta .btn{
+  background:#ffc000;
+  color:#18375d;
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  .hero-grid,.problem-solution,.qa-grid,.split{grid-template-columns:1fr}
+  .measure-grid{grid-template-columns:1fr 1fr}
+  h1{font-size:38px}
+  .hero{padding:32px}
+  .cta{display:block}
+  .cta .btn{margin-top:18px}
+}
+@media(max-width:560px){
+  .page{padding:24px 14px 54px}
+  .hero{padding:24px;border-radius:22px}
+  h1{font-size:31px}
+  h2{font-size:26px}
+  .measure-grid{grid-template-columns:1fr}
+  .btn{width:100%}
+}
+
+.anonymous-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);
+  border:1px solid var(--border);
+  border-left:6px solid var(--yellow);
+  border-radius:22px;
+  padding:22px 24px;
+  box-shadow:0 12px 30px rgba(24,55,93,.07);
+}
+.anonymous-box strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.anonymous-box p{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.65;
+}
+.anonymous-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.anonymous-tags span{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--blue);
+}
+
+</style>
+<meta content="https://shiftstudio.intotheshift.io/assets/img/resources/guide-metier-rse.svg" property="og:image"/></head>
+<body>
+<div id="header"></div>
+<script src="../../header.js"></script>
+<script defer="" src="../../assets/js/resource-tags.js"></script>
+<script src="../../app.js"></script>
+<main class="page">
+<section class="hero">
+<div class="hero-grid">
+<div>
+<div class="kicker">🌍 RSE · environnement · comportements</div>
+<h1>Transformer les engagements <span>RSE</span> en comportements concrets au travail</h1>
+<p class="lead">
+          Les politiques RSE restent souvent abstraites si elles ne descendent pas dans les arbitrages du quotidien : imprimer ou non, choisir un fournisseur, réduire un déplacement, signaler une incohérence ou maintenir une pratique sous pression.
+        </p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="../../index.html">Explorer les bases RSE</a>
+<a class="btn btn-secondary" href="../../resources/methodologie/simulateur-comportemental.html">Comprendre la méthode</a>
+</div>
+</div>
+<aside aria-label="Exemples de comportements RSE" class="hero-card">
+<div class="hero-card-title">Ce qui se joue vraiment</div>
+<div class="signal-list">
+<div class="signal-item"><div class="signal-icon">💡</div><div><strong>Sobriété quotidienne</strong><span>Énergie, impressions, gobelets, équipements allumés.</span></div></div>
+<div class="signal-item"><div class="signal-icon">🛒</div><div><strong>Achats responsables</strong><span>Besoin réel, fournisseur, emballage, livraison, reconditionné.</span></div></div>
+<div class="signal-item"><div class="signal-icon">💻</div><div><strong>Numérique responsable</strong><span>Emails, stockage, équipements, outils, notifications.</span></div></div>
+<div class="signal-item"><div class="signal-icon">🚆</div><div><strong>Déplacements sobres</strong><span>Visio, train, regroupement des rendez-vous, présence utile.</span></div></div>
+</div>
+</aside>
+</div>
+</section>
+<section aria-label="Anonymat des diagnostics Into The Shift" class="anonymous-box">
+<strong>🔒 100 % anonyme dès la première réponse</strong>
+<p>Les répondants accèdent au diagnostic sans compte, sans login, sans mot de passe et sans adresse email à renseigner. Aucune adresse IP n’est conservée, aucun cookie de tracking n’est déposé : les résultats sont exploités uniquement sous forme collective et anonyme.</p>
+<div class="anonymous-tags">
+<span>Sans compte répondant</span>
+<span>Sans email</span>
+<span>Sans mot de passe</span>
+<span>Aucune IP conservée</span>
+<span>Résultats collectifs</span>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Problème / réponse</div>
+<h2>Le problème n’est pas seulement de “sensibiliser à la RSE”.</h2>
+<p class="section-text">
+        Beaucoup de démarches RSE expliquent les enjeux ou rappellent les bons gestes. Mais la difficulté réelle apparaît dans les arbitrages : confort ou sobriété, urgence ou impact, prix ou responsabilité, habitude ou remise en question.
+      </p>
+</div>
+<div class="problem-solution">
+<div class="panel problem">
+<h3>Le risque</h3>
+<p>
+          Les collaborateurs peuvent adhérer au discours RSE tout en reproduisant les pratiques habituelles, faute de cadre concret, de réflexes collectifs ou de marges d’action visibles.
+        </p>
+</div>
+<div class="panel solution">
+<h3>La réponse Into The Shift</h3>
+<p>
+          Mettre les personnes face à des situations professionnelles réalistes pour observer leurs arbitrages RSE, leur capacité à agir à leur niveau et leur façon d’embarquer le collectif sans moraliser.
+        </p>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Questions / réponses lisibles par le SEO</div>
+<h2>Exemples de situations RSE concrètes</h2>
+<p class="section-text">
+        Ces cartes reprennent la logique des bases RSE : une situation du quotidien, plusieurs réactions possibles, puis une lecture comportementale.
+      </p>
+</div>
+<div class="qa-grid">
+<article class="qa-card">
+<div class="tag">Sobriété · Énergie</div>
+<h3>Le chauffage trop haut</h3>
+<p class="question">
+          Le chauffage de votre bureau est réglé trop haut. Tout le monde s’y est habitué. Que faites-vous ?
+        </p>
+<div class="answer bad">❌ Je ne dis rien — c’est confortable comme ça.</div>
+<div class="answer mid">⚠️ Je baisse moi-même le thermostat.</div>
+<div class="answer good">✅ J’en parle à l’équipe et propose un réglage adapté à la saison.</div>
+</article>
+<article class="qa-card">
+<div class="tag">Achats · Besoin réel</div>
+<h3>La version reconditionnée</h3>
+<p class="question">
+          Un achat est disponible en version reconditionnée à -40 %. La version neuve est privilégiée par habitude. Que faites-vous ?
+        </p>
+<div class="answer bad">❌ Je commande la version neuve — c’est la procédure.</div>
+<div class="answer mid">⚠️ Je propose la version reconditionnée si quelqu’un est d’accord.</div>
+<div class="answer good">✅ Je compare et propose l’option reconditionnée avec une justification claire.</div>
+</article>
+<article class="qa-card">
+<div class="tag">Numérique responsable · Stockage</div>
+<h3>La boîte mail saturée</h3>
+<p class="question">
+          Votre boîte mail contient 8 000 emails dont la plupart sont inutiles. Que faites-vous ?
+        </p>
+<div class="answer bad">❌ Je les laisse — ils ne prennent pas de place visible.</div>
+<div class="answer mid">⚠️ Je supprime les plus anciens quand j’en ai le temps.</div>
+<div class="answer good">✅ Je consacre un moment à nettoyer ma boîte de façon systématique.</div>
+</article>
+<article class="qa-card">
+<div class="tag">Déplacements · Présence utile</div>
+<h3>La réunion à 200 km</h3>
+<p class="question">
+          Vous devez vous rendre à une réunion de 1h à 200 km. Aucun autre collègue n’a soulevé la question du format. Que faites-vous ?
+        </p>
+<div class="answer bad">❌ Je réserve mon billet — c’est prévu.</div>
+<div class="answer mid">⚠️ Je vérifie si une participation en visio est possible.</div>
+<div class="answer good">✅ Je propose activement une visio et explique pourquoi c’est suffisant pour ce cas.</div>
+</article>
+<article class="qa-card">
+<div class="tag">Manager RSE · Arbitrage</div>
+<h3>Performance court terme ou impact</h3>
+<p class="question">
+          Vous devez arbitrer entre une décision bonne pour la performance à court terme et une meilleure pour l’impact environnemental. Que faites-vous ?
+        </p>
+<div class="answer bad">❌ Je priorise la performance — c’est mon indicateur principal.</div>
+<div class="answer mid">⚠️ Je cherche un compromis.</div>
+<div class="answer good">✅ Je rends l’arbitrage visible pour que la décision soit prise en conscience, au bon niveau.</div>
+</article>
+<article class="qa-card">
+<div class="tag">Engagement · Culture collective</div>
+<h3>Le collègue sceptique</h3>
+<p class="question">
+          Un collègue dit que ses gestes individuels ne changent rien à l’échelle du problème. Que lui répondez-vous ?
+        </p>
+<div class="answer bad">❌ Je suis d’accord avec lui.</div>
+<div class="answer mid">⚠️ Je lui dis qu’il a tort mais sans argumenter vraiment.</div>
+<div class="answer good">✅ J’engage une discussion sur le lien entre comportements individuels et culture collective sans le moraliser.</div>
+</article>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Ce que le diagnostic mesure</div>
+<h2>Une lecture comportementale de la transition environnementale</h2>
+</div>
+<div class="measure-grid">
+<div class="measure"><strong>Sobriété</strong><span>Capacité à questionner les usages automatiques : énergie, papier, équipements.</span></div>
+<div class="measure"><strong>Arbitrage</strong><span>Réflexes face aux tensions entre urgence, coût, performance et impact.</span></div>
+<div class="measure"><strong>Influence collective</strong><span>Capacité à embarquer sans culpabiliser ni moraliser.</span></div>
+<div class="measure"><strong>Ancrage</strong><span>Maintien des pratiques dans la durée, même sous pression.</span></div>
+</div>
+</section>
+<section class="section split">
+<div class="panel">
+<h2>Des profils individuels activables</h2>
+<p>
+        Chaque répondant comprend ses réflexes : agir seul, signaler, proposer une solution, influencer l’équipe ou faire remonter un arbitrage.
+      </p>
+<ul>
+<li>Repères à consolider</li>
+<li>Pratiques en développement</li>
+<li>Réflexes installés</li>
+</ul>
+</div>
+<div class="panel dark">
+<h2>Une vision collective des pratiques RSE</h2>
+<p>
+        L’organisation identifie les zones où la RSE reste déclarative et celles où les comportements sont déjà ancrés : sobriété, achats, numérique, déplacements, management et engagement.
+      </p>
+<ul>
+<li>Analyse par population ou métier</li>
+<li>Support de sensibilisation RSE</li>
+<li>Débriefing en atelier ou formation</li>
+<li>Priorisation des actions concrètes</li>
+</ul>
+</div>
+</section>
+<section class="section split">
+<div class="panel">
+<h2>Utiliser ce diagnostic en entreprise</h2>
+<p>Le diagnostic RSE peut servir à réaliser un état des lieux, sensibiliser les équipes, préparer un atelier ou mesurer l’évolution des pratiques environnementales.</p>
+<p style="margin-top:14px"><a class="btn btn-secondary" href="../../resources/methodologie/pourquoi-diffuser-un-diagnostic-comportemental.html">Voir les usages entreprise</a></p>
+</div>
+<div class="panel">
+<h2>Utiliser ce diagnostic en formation</h2>
+<p>Il peut aussi être diffusé avant une formation RSE pour analyser les besoins, puis repris pendant la session comme support de cas pratiques.</p>
+<p style="margin-top:14px"><a class="btn btn-secondary" href="../../resources/formation/diagnostic-comportemental-formation-professionnelle.html">Voir les usages formation</a></p>
+</div>
+</section>
+<section class="cta">
+<div>
+<div class="eyebrow" style="color:#d8f1fb">Shift Studio</div>
+<h2>Créer un diagnostic RSE orienté comportements</h2>
+<p>Partez d’une base existante, adaptez les situations à vos enjeux environnementaux, puis diffusez le diagnostic par lien ou QR code.</p>
+</div>
+<a class="btn" href="../../index.html">Explorer les bases RSE</a>
+</section>
+</main>
+</body>
+</html>

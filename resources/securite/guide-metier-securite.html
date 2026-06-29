@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culture sécurité terrain | Into The Shift</title>
+<meta content="Autodiagnostic des comportements sécurité : EPI, pression terrain, signalement, procédures et culture de sécurité collective." name="description"/>
+<link href="https://shiftstudio.intotheshift.io/resources/securite/guide-metier-securite.html" rel="canonical"/>
+<link href="/llms.txt" rel="alternate" title="LLMs" type="text/plain"/>
+<link href="/llms-full.md" rel="alternate" title="LLMs Full" type="text/markdown"/>
+<meta content="https://shiftstudio.intotheshift.io/resources/securite/guide-metier-securite.html" property="og:url"/>
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css" rel="stylesheet"/>
+<link href="../../style.css" rel="stylesheet"/>
+<style>
+:root{
+--blue:#0d4c72;
+--navy:#18375d;
+--cyan:#0097a7;
+--yellow:#ffc000;
+--soft:#eef6fb;
+--text:#526274;
+--border:#d8e0ea;
+--green:#e9f8ee;
+--orange:#fff5d8;
+--red:#ffe8e6;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:'Asap',sans-serif;
+color:var(--navy);
+background:linear-gradient(180deg,#eef6fb 0%,#fff 55%,#f8fbfd 100%);
+}
+.page{
+max-width:1120px;
+margin:0 auto;
+padding:36px 22px 76px;
+}
+.hero{
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#fff 0%,#e6f0f6 65%,#dff8fb 100%);
+border:1px solid #cbddea;
+border-radius:30px;
+padding:48px;
+box-shadow:0 24px 64px rgba(24,55,93,.12);
+}
+.hero:before{
+content:"";
+position:absolute;
+right:-70px;
+top:-90px;
+width:260px;
+height:260px;
+background:rgba(255,192,0,.28);
+border-radius:50%;
+}
+.hero>*{position:relative;z-index:1}
+.kicker{
+display:inline-flex;
+gap:8px;
+align-items:center;
+background:#fff;
+border:1px solid var(--border);
+border-radius:999px;
+padding:9px 14px;
+color:var(--blue);
+font-size:13px;
+font-weight:900;
+margin-bottom:18px;
+}
+.hero-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:34px;
+align-items:center;
+}
+h1{
+font-size:50px;
+line-height:1.03;
+letter-spacing:-1px;
+margin:0 0 18px;
+}
+h1 span{color:var(--blue)}
+.lead{
+font-size:18px;
+line-height:1.7;
+color:var(--text);
+margin:0;
+}
+.hero-card{
+background:#fff;
+border:1px solid var(--border);
+border-radius:24px;
+padding:24px;
+box-shadow:0 18px 44px rgba(24,55,93,.10);
+}
+.hero-icon{
+font-size:46px;
+margin-bottom:12px;
+}
+.mini-list{
+display:grid;
+gap:10px;
+margin-top:16px;
+}
+.mini-list div{
+display:flex;
+gap:10px;
+align-items:flex-start;
+color:#42556b;
+font-size:14px;
+line-height:1.45;
+}
+.dot{
+width:9px;
+height:9px;
+border-radius:50%;
+background:var(--cyan);
+margin-top:6px;
+flex:0 0 auto;
+}
+.section{margin-top:46px}
+.section-head{
+max-width:760px;
+margin-bottom:20px;
+}
+.eyebrow{
+font-size:13px;
+font-weight:900;
+text-transform:uppercase;
+letter-spacing:.08em;
+color:var(--cyan);
+margin-bottom:10px;
+}
+h2{
+font-size:34px;
+line-height:1.15;
+margin:0;
+}
+.section p{
+color:var(--text);
+line-height:1.75;
+font-size:16px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:18px;
+}
+.card{
+background:#fff;
+border:1px solid var(--border);
+border-radius:24px;
+padding:24px;
+box-shadow:0 10px 26px rgba(24,55,93,.06);
+}
+.card h3{
+margin:0 0 12px;
+font-size:22px;
+}
+.card p{
+margin:0 0 18px;
+}
+.tag{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 12px;
+border-radius:999px;
+font-size:12px;
+font-weight:800;
+background:#edf6ff;
+color:#0d4c72;
+margin-bottom:14px;
+}
+.answer{
+padding:12px 14px;
+border-radius:14px;
+margin-top:10px;
+font-size:14px;
+line-height:1.5;
+}
+.bad{background:var(--red)}
+.mid{background:var(--orange)}
+.good{background:var(--green)}
+.split{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+.panel{
+background:#fff;
+border:1px solid var(--border);
+border-radius:24px;
+padding:28px;
+}
+.panel.highlight{
+background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);
+color:#fff;
+}
+.panel.highlight p,.panel.highlight li{
+color:rgba(255,255,255,.88);
+}
+ul{
+margin:12px 0 0;
+padding-left:20px;
+line-height:1.75;
+}
+.cta{
+margin-top:46px;
+background:linear-gradient(135deg,#fff 0%,#fff8df 100%);
+border:1px solid #ffd86d;
+border-radius:26px;
+padding:30px;
+display:flex;
+justify-content:space-between;
+gap:22px;
+align-items:center;
+}
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+border-radius:12px;
+padding:13px 18px;
+background:var(--blue);
+color:#fff;
+font-weight:900;
+white-space:nowrap;
+}
+@media(max-width:900px){
+.hero-grid,.split,.grid{
+grid-template-columns:1fr;
+}
+h1{font-size:38px}
+.hero{padding:32px}
+.cta{display:block}
+.cta .btn{margin-top:16px}
+}
+@media(max-width:560px){
+.page{padding:24px 14px 54px}
+.hero{padding:24px}
+h1{font-size:31px}
+h2{font-size:26px}
+.btn{width:100%}
+}
+
+.anonymous-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);
+  border:1px solid var(--border);
+  border-left:6px solid var(--yellow);
+  border-radius:22px;
+  padding:22px 24px;
+  box-shadow:0 12px 30px rgba(24,55,93,.07);
+}
+.anonymous-box strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.anonymous-box p{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.65;
+}
+.anonymous-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.anonymous-tags span{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--blue);
+}
+
+</style>
+<meta content="https://shiftstudio.intotheshift.io/assets/img/resources/guide-metier-securite.svg" property="og:image"/></head>
+<body>
+<div id="header"></div>
+<script src="../../header.js"></script>
+<script defer="" src="../../assets/js/resource-tags.js"></script>
+<script src="../../app.js"></script>
+<main class="page">
+<section class="hero">
+<div class="hero-grid">
+<div>
+<div class="kicker">🦺 Sécurité &amp; sûreté au travail · Diagnostic comportemental</div>
+<h1>Mesurer la <span>culture sécurité terrain</span> au-delà des procédures</h1>
+<p class="lead">
+Les procédures existent souvent déjà. Pourtant, les incidents continuent d’apparaître dans les situations du quotidien : pression de production, habitudes installées, raccourcis terrain, absence de signalement ou banalisation du risque. Into The Shift aide à observer ces comportements de manière concrète, sans culpabiliser les répondants.
+</p>
+</div>
+<aside class="hero-card">
+<div class="hero-icon">⚠️</div>
+<strong>Ce que l’entreprise obtient</strong>
+<div class="mini-list">
+<div><span class="dot"></span><span>Une lecture des comportements réels face au risque.</span></div>
+<div><span class="dot"></span><span>Des profils sécurité individuels et collectifs.</span></div>
+<div><span class="dot"></span><span>Des axes de progression exploitables en formation et prévention.</span></div>
+</div>
+</aside>
+</div>
+</section>
+<section aria-label="Anonymat des diagnostics Into The Shift" class="anonymous-box">
+<strong>🔒 100 % anonyme dès la première réponse</strong>
+<p>Les répondants accèdent au diagnostic sans compte, sans login, sans mot de passe et sans adresse email à renseigner. Aucune adresse IP n’est conservée, aucun cookie de tracking n’est déposé : les résultats sont exploités uniquement sous forme collective et anonyme.</p>
+<div class="anonymous-tags">
+<span>Sans compte répondant</span>
+<span>Sans email</span>
+<span>Sans mot de passe</span>
+<span>Aucune IP conservée</span>
+<span>Résultats collectifs</span>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Pourquoi ce diagnostic</div>
+<h2>Les accidents naissent souvent dans les situations “habituelles”</h2>
+</div>
+<p>
+Zone connue, collègue expérimenté, urgence opérationnelle, chef absent, presque accident sans conséquence immédiate : ce sont précisément dans ces contextes que les standards sécurité peuvent se relâcher. Le diagnostic aide à révéler les arbitrages réels et les réflexes terrain. Inspiré des logiques présentes dans les bases « culture sécurité terrain », « managers sécurité » ou encore « culture de sûreté ». fileciteturn9file0turn9file6
+</p>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Situations évaluées</div>
+<h2>Des mises en situation proches du quotidien opérationnel</h2>
+</div>
+<div class="grid">
+<article class="card">
+<div class="tag">EPI · Zone connue</div>
+<h3>L’EPI oublié</h3>
+<p>
+Vous pénétrez dans une zone que vous connaissez parfaitement. L’affichage indique qu’un EPI spécifique est requis. Vous l’avez oublié à votre poste.
+</p>
+<div class="answer bad">❌ “J’entre quand même, mon intervention sera courte.”</div>
+<div class="answer mid">⚠️ “Je vérifie d’abord si l’EPI est vraiment nécessaire.”</div>
+<div class="answer good">✅ “Je retourne chercher l’EPI avant d’entrer.”</div>
+</article>
+<article class="card">
+<div class="tag">Pression terrain · Production</div>
+<h3>Le délai à tenir</h3>
+<p>
+Une correction de sécurité ou un arrêt de maintenance risque d’impacter le planning de production.
+</p>
+<div class="answer bad">❌ “On reporte, la production passe d’abord.”</div>
+<div class="answer mid">⚠️ “On cherche un compromis temporaire.”</div>
+<div class="answer good">✅ “La sécurité reste prioritaire malgré l’impact planning.”</div>
+</article>
+<article class="card">
+<div class="tag">Signalement · Presque accident</div>
+<h3>L’incident sans blessé</h3>
+<p>
+Un événement n’a eu aucune conséquence immédiate mais aurait pu provoquer un accident grave.
+</p>
+<div class="answer bad">❌ “On ne remonte rien puisque tout va bien.”</div>
+<div class="answer mid">⚠️ “On en parle oralement sans traçabilité.”</div>
+<div class="answer good">✅ “On déclare l’événement pour éviter sa répétition.”</div>
+</article>
+<article class="card">
+<div class="tag">Exemplarité · Management</div>
+<h3>Le manager observé</h3>
+<p>
+Le manager traverse une zone sans EPI “pour quelques secondes” alors que son équipe le regarde.
+</p>
+<div class="answer bad">❌ “L’urgence justifie l’exception.”</div>
+<div class="answer mid">⚠️ “On explique simplement que c’est exceptionnel.”</div>
+<div class="answer good">✅ “On applique les règles même sous pression.”</div>
+</article>
+</div>
+</section>
+<section class="section split">
+<div class="panel">
+<h2>Des profils individuels</h2>
+<p>
+Chaque répondant reçoit une restitution personnalisée avec ses réflexes dominants, ses points forts et les comportements à renforcer.
+</p>
+<ul>
+<li>Rapport au risque</li>
+<li>Respect des procédures</li>
+<li>Signalement et vigilance</li>
+<li>Réactions sous pression</li>
+</ul>
+</div>
+<div class="panel highlight">
+<h2>Une lecture collective des pratiques</h2>
+<p>
+L’organisation obtient une vision statistique des tendances observées dans les équipes : banalisation du risque, influence hiérarchique, culture du signalement, exemplarité managériale ou arbitrages sécurité / production.
+</p>
+<ul>
+<li>Analyse par population ou métier</li>
+<li>Identification des signaux faibles</li>
+<li>Préparation des plans d’action</li>
+<li>Mesure avant / après sensibilisation</li>
+</ul>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div class="eyebrow">Exemples d’usages</div>
+<h2>Utilisable dans différents contextes sécurité</h2>
+</div>
+<div class="grid">
+<div class="card">
+<h3>Safety Day</h3>
+<p>
+Créer des prises de conscience collectives à partir de situations concrètes vécues sur le terrain.
+</p>
+</div>
+<div class="card">
+<h3>Industrie &amp; maintenance</h3>
+<p>
+Travailler les réflexes sécurité, la consignation, les EPI et les presque accidents.
+</p>
+</div>
+<div class="card">
+<h3>BTP &amp; chantier</h3>
+<p>
+Aborder la coactivité, les écarts de procédure, le PGCSPS ou les arbitrages sous pression.
+</p>
+</div>
+<div class="card">
+<h3>Sûreté &amp; nucléaire</h3>
+<p>
+Questionnement permanent, défense des barrières de sûreté et culture du retour d’expérience.
+</p>
+</div>
+</div>
+</section>
+<section class="cta">
+<div>
+<div class="eyebrow">Shift Studio</div>
+<h2>Créer un diagnostic culture sécurité</h2>
+<p>
+Explorez les bases disponibles ou construisez votre propre autodiagnostic comportemental.
+</p>
+</div>
+<a class="btn" href="../../index.html">Explorer les bases</a>
+</section>
+</main>
+</body>
+</html>
