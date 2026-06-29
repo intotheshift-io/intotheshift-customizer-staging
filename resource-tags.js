@@ -5,7 +5,9 @@
     {key:'formation', label:'🎓 Formation professionnelle', href:'ressources.html?tag=formation#articles'},
     {key:'qvct', label:'💚 QVCT & RPS', href:'ressources.html?tag=qvct#articles'},
     {key:'cyber', label:'🔐 Cybersécurité', href:'ressources.html?tag=cyber#articles'},
-    {key:'rse-ethique-security', label:'🌍 RSE, Éthique & Sécurité', href:'ressources.html?tag=rse-ethique-security#articles'}
+    {key:'rse', label:'🌍 RSE & Environnement', href:'ressources.html?tag=rse#articles'},
+    {key:'security', label:'🦺 Santé & Sécurité', href:'ressources.html?tag=security#articles'},
+    {key:'ethique', label:'⚖️ Éthique & Compliance', href:'ressources.html?tag=ethique#articles'}
   ];
 
   const PAGE_TAGS = {
@@ -47,19 +49,19 @@
     'diagnostic-cybersecurite.html':['cyber'],
     'guide-metier-cybersecurite.html':['cyber'],
     'pourquoi-les-formations-cyber-echouent-elles-souvent.html':['cyber','formation'],
-    'guide-metier-rse.html':['rse-ethique-security'],
-    'guide-metier-ethique.html':['rse-ethique-security'],
-    'guide-metier-securite.html':['rse-ethique-security'],
-    'culture-securite.html':['rse-ethique-security'],
-    'prevention-accidents-travail.html':['rse-ethique-security'],
-    'presque-accident.html':['rse-ethique-security'],
-    'port-des-epi.html':['rse-ethique-security'],
-    'signalement-situation-dangereuse.html':['rse-ethique-security'],
-    'comportements-securite.html':['rse-ethique-security'],
-    'management-securite.html':['rse-ethique-security','management'],
-    'formation-sante-securite-au-travail.html':['rse-ethique-security','formation'],
-    'quart-dheure-securite.html':['rse-ethique-security'],
-    'culture-juste-entreprise.html':['rse-ethique-security','management'],
+    'guide-metier-rse.html':['rse'],
+    'guide-metier-ethique.html':['ethique'],
+    'guide-metier-securite.html':['security'],
+    'culture-securite.html':['security'],
+    'prevention-accidents-travail.html':['security'],
+    'presque-accident.html':['security'],
+    'port-des-epi.html':['security'],
+    'signalement-situation-dangereuse.html':['security'],
+    'comportements-securite.html':['security'],
+    'management-securite.html':['security','management'],
+    'formation-sante-securite-au-travail.html':['security','formation'],
+    'quart-dheure-securite.html':['security'],
+    'culture-juste-entreprise.html':['ethique','security','management'],
   };
 
   function pageName(){
@@ -135,8 +137,7 @@
       }
 
       if(tag){
-        const filterValue = tag === 'rse-ethique-security' ? 'rse ethique security' : tag;
-        const chip = document.querySelector(`.filter-chip:not(.format-chip)[data-filter="${CSS.escape(filterValue)}"]`);
+        const chip = document.querySelector(`.filter-chip:not(.format-chip)[data-filter="${CSS.escape(tag)}"]`);
         if(chip) chip.click();
       }
 
