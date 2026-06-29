@@ -1377,3 +1377,147 @@ body.seo-rich-article .article-link-panel{display:none!important}
   .seo-topic-nav-head strong{font-size:18px}
   .seo-topic-nav-links a{width:100%;justify-content:center}
 }
+
+/* ── Navigation ressources harmonisée ───────────────── */
+.resource-top-nav{
+  background:linear-gradient(180deg,#eef6fb 0%,rgba(238,246,251,.62) 100%);
+  border-bottom:1px solid rgba(203,221,234,.70);
+  padding:14px 22px 0;
+}
+.resource-top-nav-inner{
+  max-width:1180px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 14px;
+  background:rgba(255,255,255,.88);
+  border:1px solid #cfe4ea;
+  border-radius:999px;
+  box-shadow:0 14px 34px rgba(24,55,93,.08);
+  backdrop-filter:blur(10px);
+}
+.resource-top-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:40px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#0d4c72 0%,#18375d 100%);
+  color:#fff!important;
+  text-decoration:none!important;
+  font-weight:950;
+  white-space:nowrap;
+  box-shadow:0 10px 22px rgba(13,76,114,.16);
+}
+.resource-top-brand span{font-size:16px;line-height:1}
+.resource-top-brand strong{font-size:13px;letter-spacing:.02em;color:#fff!important}
+.resource-top-links{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  flex:1 1 auto;
+  min-width:0;
+}
+.resource-top-links::-webkit-scrollbar{display:none}
+.resource-top-links a{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  padding:8px 12px;
+  border-radius:999px;
+  color:#0d4c72!important;
+  text-decoration:none!important;
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+  border:1px solid transparent;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.resource-top-links a:hover{
+  background:#f0f8f7;
+  border-color:#b8dfe0;
+  transform:translateY(-1px);
+}
+.resource-top-links a.is-active{
+  background:#f0f8f7;
+  border-color:#007883;
+  color:#007883!important;
+  box-shadow:inset 0 0 0 1px rgba(0,120,131,.08);
+}
+body.content-article .article-page,
+body.resources-body .resources-page{padding-top:26px}
+@media(max-width:760px){
+  .resource-top-nav{padding:10px 12px 0}
+  .resource-top-nav-inner{border-radius:22px;align-items:flex-start;padding:10px;gap:8px}
+  .resource-top-brand{min-height:36px;padding:8px 10px}
+  .resource-top-brand strong{display:none}
+  .resource-top-links a{min-height:36px;font-size:12px;padding:8px 10px}
+}
+
+/* ── Bloc exemple opérationnel : alignement et lisibilité ───────────────── */
+.article-split-visual{
+  grid-template-columns:minmax(0,1fr) 270px!important;
+  gap:26px!important;
+  align-items:center!important;
+  padding:28px!important;
+}
+.article-split-visual .split-copy{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left!important;
+  max-width:620px;
+}
+.article-split-visual h3{
+  display:block!important;
+  margin:12px 0 16px!important;
+  font-size:27px!important;
+  line-height:1.18!important;
+  text-align:left!important;
+  max-width:560px;
+}
+.article-split-visual h3::before{display:none!important}
+.article-split-visual h3::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:5px;
+  border-radius:999px;
+  background:#ffc000;
+  margin-top:12px;
+}
+.article-split-visual p{
+  text-align:left!important;
+  margin:0 0 12px!important;
+  max-width:580px;
+  font-size:16px!important;
+  line-height:1.65!important;
+}
+.article-split-visual p strong{color:#fff!important}
+.split-principle{
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
+  background:rgba(255,255,255,.08);
+}
+.split-behaviour{
+  padding-left:16px;
+  border-left:4px solid #ffc000;
+}
+.split-metrics{
+  min-height:220px;
+  padding:22px!important;
+  align-content:center!important;
+}
+@media(max-width:900px){
+  .article-split-visual{grid-template-columns:1fr!important;padding:22px!important}
+  .article-split-visual h3{font-size:23px!important}
+  .split-metrics{min-height:auto}
+}
