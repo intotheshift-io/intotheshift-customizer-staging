@@ -53,6 +53,13 @@
     'culture-securite.html':['rse-ethique-security'],
     'prevention-accidents-travail.html':['rse-ethique-security'],
     'presque-accident.html':['rse-ethique-security'],
+    'port-des-epi.html':['rse-ethique-security'],
+    'signalement-situation-dangereuse.html':['rse-ethique-security'],
+    'comportements-securite.html':['rse-ethique-security'],
+    'management-securite.html':['rse-ethique-security','management'],
+    'formation-sante-securite-au-travail.html':['rse-ethique-security','formation'],
+    'quart-dheure-securite.html':['rse-ethique-security'],
+    'culture-juste-entreprise.html':['rse-ethique-security','management'],
   };
 
   function pageName(){
