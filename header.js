@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
     favicon.type = "image/png";
-    favicon.href = "favicon.png";
+    favicon.href = "/favicon.png";
     document.head.appendChild(favicon);
   }
 
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     } catch(e) {}
 
-    window.location.href = "home.html";
+    window.location.href = "/home.html";
   }
 
   window.itsLogout = logout;
@@ -413,48 +413,48 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   if (hiddenPages.includes(currentPage) && !admin && !partner) {
-    window.location.href = "dashboard.html";
+    window.location.href = "/dashboard.html";
     return;
   }
 
-  const accueilLink = `<a class="nav-link ${active("home.html")}" href="home.html">Accueil</a>`;
+  const accueilLink = `<a class="nav-link ${active("home.html")}" href="/home.html">Accueil</a>`;
 
   const dashboardLink = logged
-    ? `<a class="nav-link ${active("dashboard.html")}" href="dashboard.html">Mon dashboard</a>`
+    ? `<a class="nav-link ${active("dashboard.html")}" href="/dashboard.html">Mon dashboard</a>`
     : "";
 
   const mesAdLink = logged && !admin && !partner
-    ? `<a class="nav-link ${active("mes-autodiagnostics.html")}" href="mes-autodiagnostics.html">Mes Autodiagnostics</a>`
+    ? `<a class="nav-link ${active("mes-autodiagnostics.html")}" href="/mes-autodiagnostics.html">Mes Autodiagnostics</a>`
     : "";
 
   const adminLink = admin
-    ? `<a class="nav-link ${active("admin.html")}" href="admin.html">Cockpit</a>`
+    ? `<a class="nav-link ${active("admin.html")}" href="/admin.html">Cockpit</a>`
     : "";
 
   const partnerLink =
   partner
-    ? `<a class="nav-link ${active("partner.html")}" href="partner.html">Mes clients</a>`
+    ? `<a class="nav-link ${active("partner.html")}" href="/partner.html">Mes clients</a>`
     : "";
 
   const accountLink = logged
-    ? `<a class="nav-link ${active("account.html")}" href="account.html">Mon compte</a>`
+    ? `<a class="nav-link ${active("account.html")}" href="/account.html">Mon compte</a>`
     : "";
 
 
   const libraryLink = `
-    <a class="nav-link ${active("index.html")}" href="index.html">
+    <a class="nav-link ${active("index.html")}" href="/index.html">
       Bibliothèque
     </a>
   `;
 
   const resourcesLink = `
-    <a class="nav-link ${active("ressources.html")}" href="ressources.html">
+    <a class="nav-link ${active("ressources.html")}" href="/ressources.html">
       Ressources
     </a>
   `;
 
   const tariffLink = `
-    <a class="nav-link ${active("tarifs.html")}" href="tarifs.html">
+    <a class="nav-link ${active("tarifs.html")}" href="/tarifs.html">
       Tarifs
     </a>
   `;
@@ -469,11 +469,11 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>
     `
     : `
-      <a class="nav-link ${active("login.html")}" href="login.html">
+      <a class="nav-link ${active("login.html")}" href="/login.html">
         Connexion
       </a>
 
-      <a class="btn-register ${active("register.html")}" href="register.html">
+      <a class="btn-register ${active("register.html")}" href="/register.html">
         Première connexion
       </a>
     `;
@@ -487,14 +487,14 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>` : ``;
 
-  const homeTarget = "home.html";
+  const homeTarget = "/home.html";
 
   header.innerHTML = `
     <div class="topbar compact-topbar">
 
       <a class="logo" href="${homeTarget}" aria-label="Into The Shift">
         <img
-          src="into-the-shift-logo-light.png"
+          src="/into-the-shift-logo-light.png"
           alt="Into The Shift"
           class="logo-img"
         >
