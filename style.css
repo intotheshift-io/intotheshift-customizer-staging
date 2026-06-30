@@ -1679,3 +1679,18 @@ body.content-article .article-page{padding-top:22px}
   .content-tag-chip{font-size:11px;min-height:30px;padding:6px 9px}
 }
 /* ── Fin menu tags compact ── */
+
+
+/* ---- Correctif SVG ressources ---- */
+body.resources-body .article-image img[src$=".svg"]{
+  object-fit:contain !important;
+  object-position:center;
+  padding:10px;
+  background:#eef6fb;
+}
+body.content-article .article-hero img[src$=".svg"]{
+  object-fit:contain !important;
+  object-position:center;
+  padding:18px;
+  background:#eef6fb;
+}
