@@ -1,19 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Authentification multifacteur : usages, résistances et comportements à sécuriser | Into The Shift</title>
-<meta name="description" content="Comprendre le rôle de la MFA, ses limites comportementales et les réflexes à développer face aux demandes de validation suspectes."/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://shiftstudio.intotheshift.io/resources/cyber/authentification-multifacteur.html"/>
-<link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs"/>
-<link rel="alternate" type="text/markdown" href="/llms-full.md" title="LLMs Full"/>
-<meta property="og:title" content="Authentification multifacteur : usages, résistances et comportements à sécuriser"/>
-<meta property="og:description" content="Comprendre le rôle de la MFA, ses limites comportementales et les réflexes à développer face aux demandes de validation suspectes."/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="https://shiftstudio.intotheshift.io/resources/cyber/authentification-multifacteur.html"/>
-<meta property="og:image" content="https://shiftstudio.intotheshift.io/assets/img/resources/authentification-multifacteur.jpg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Authentification multifacteur : éviter les validations MFA à risque | Into The Shift</title>
+<meta content="Comprendre les bons réflexes face aux demandes MFA suspectes : validation push, fatigue MFA, urgence et vérification des accès." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://shiftstudio.intotheshift.io/resources/cyber/authentification-multifacteur.html" rel="canonical"/>
+<link href="/llms.txt" rel="alternate" title="LLMs" type="text/plain"/>
+<link href="/llms-full.md" rel="alternate" title="LLMs Full" type="text/markdown"/>
+<meta content="Authentification multifacteur : éviter les validations MFA à risque" property="og:title"/>
+<meta content="Comprendre les bons réflexes face aux demandes MFA suspectes : validation push, fatigue MFA, urgence et vérification des accès." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://shiftstudio.intotheshift.io/resources/cyber/authentification-multifacteur.html" property="og:url"/>
+<meta content="https://shiftstudio.intotheshift.io/assets/img/resources/authentification-multifacteur.jpg" property="og:image"/>
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css" rel="stylesheet"/>
 <link href="../../style.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://shiftstudio.intotheshift.io/home.html"},{"@type":"ListItem","position":2,"name":"Ressources","item":"https://shiftstudio.intotheshift.io/ressources.html"},{"@type":"ListItem","position":3,"name":"Authentification multifacteur","item":"https://shiftstudio.intotheshift.io/resources/cyber/authentification-multifacteur.html"}]}</script>
@@ -23,17 +24,17 @@
 <body class="content-article seo-rich-article">
 <div id="header"></div>
 <script src="../../header.js"></script>
-<script defer src="../../assets/js/resource-tags.js"></script>
+<script defer="" src="../../assets/js/resource-tags.js"></script>
 <main class="article-page">
-<nav aria-label="Fil d’Ariane" class="breadcrumb"><a class="bc-link" href="../../home.html">Accueil</a><span class="bc-sep">›</span><a class="bc-link" href="../../ressources.html">Ressources</a><span class="bc-sep">›</span><span class="bc-cur">Authentification multifacteur</span></nav>
+<nav aria-label="Fil d’Ariane" class="breadcrumb"><a class="bc-link" href="../../home.html">Accueil</a><span class="bc-sep">›</span><a class="bc-link" href="../../ressources.html">Ressources</a><span class="bc-sep">›</span><span class="bc-cur">Authentification multifacteur : éviter les validations MFA à risque</span></nav>
 <section class="article-hero">
 <div class="article-hero-content">
 <div class="article-kicker">Cybersécurité · comportements · prévention</div>
-<h1>Authentification multifacteur  : <span>usages, résistances et comportements à sécuriser</span></h1>
+<h1>Authentification multifacteur : éviter les validations MFA à risque</h1>
 <p class="article-lead">L’authentification multifacteur renforce fortement la sécurité des accès, mais elle n’est pas magique. Quand les collaborateurs valident mécaniquement une notification, confondent urgence et légitimité ou ne signalent pas une demande étrange, le risque revient par le comportement.</p>
 <div class="article-meta"><span>Guide pratique</span><span>10 min de lecture</span><span>RSSI</span><span>RH</span><span>Formation</span></div>
 </div>
-<img src="../../assets/img/resources/authentification-multifacteur.jpg" alt="Illustration professionnelle du sujet authentification multifacteur en cybersécurité"/>
+<img alt="Illustration professionnelle du sujet authentification multifacteur en cybersécurité" src="../../assets/img/resources/authentification-multifacteur.jpg"/>
 </section>
 <section class="article-visual-strip">
 <div class="visual-card"><span class="visual-icon">🔎</span><strong>Identifier</strong><p>Repérer les signaux faibles et les situations ambiguës où le risque apparaît.</p></div>

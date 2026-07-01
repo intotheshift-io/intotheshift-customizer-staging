@@ -42,6 +42,7 @@
     'comment-mesurer-la-culture-cybersecurite.html':["cyber"],
     'comment-savoir-si-une-campagne-de-sensibilisation-cybersecurite-fonctionne.html':["cyber"],
     'fraude-au-dirigeant-et-demandes-urgentes.html':["cyber"],
+    'phishing-fraude-president-manipulation.html':["cyber"],
     'phishing.html':["cyber"],
     'mots-de-passe.html':["cyber"],
     'authentification-multifacteur.html':["cyber"],
