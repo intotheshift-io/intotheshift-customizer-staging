@@ -332,6 +332,26 @@ h2{font-size:28px}
 <body>
 <div id="header"></div>
 <script src="../../header.js"></script>
+<script>
+(function(){
+  function setHeaderImageDimensions(img){
+    if(!img.hasAttribute("width")) img.setAttribute("width","260");
+    if(!img.hasAttribute("height")) img.setAttribute("height","60");
+    if(!img.hasAttribute("decoding")) img.setAttribute("decoding","async");
+  }
+
+  function scanHeaderImages(){
+    document.querySelectorAll("#header img").forEach(setHeaderImageDimensions);
+  }
+
+  scanHeaderImages();
+
+  const header = document.getElementById("header");
+  if(header){
+    new MutationObserver(scanHeaderImages).observe(header,{childList:true,subtree:true});
+  }
+})();
+</script>
 <script defer="" src="../../assets/js/resource-tags.js"></script>
 <script src="../../app.js"></script>
 <main class="page">
