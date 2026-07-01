@@ -2099,3 +2099,75 @@ body.home-body .meandyou-home-card h2{font-size:26px;line-height:1.15;color:#183
 body.home-body .meandyou-home-card p{font-size:14px;line-height:1.6;color:#475569;max-width:820px;margin:0 0 18px}
 body.home-body .meandyou-home-actions{display:flex;gap:8px;flex-wrap:wrap}
 
+
+/* ── Correctif Home : bloc anonymat après extraction CSS ───────────────── */
+body.home-body .its-anon-home-block{
+  display:block !important;
+  width:100% !important;
+  max-width:620px !important;
+  background:#fff !important;
+  border:1px solid #ffc866 !important;
+  border-left:7px solid #ffc000 !important;
+  border-radius:18px !important;
+  padding:16px 18px !important;
+  margin:0 0 18px !important;
+  box-shadow:0 12px 28px rgba(24,55,93,.10) !important;
+}
+body.home-body .its-anon-home-kicker{
+  display:inline-flex !important;
+  align-items:center !important;
+  width:auto !important;
+  max-width:max-content !important;
+  gap:7px !important;
+  background:#18375d !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  padding:6px 10px !important;
+  font-size:11px !important;
+  line-height:1.1 !important;
+  font-weight:950 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.05em !important;
+  margin:0 0 10px !important;
+}
+body.home-body .its-anon-home-title{
+  display:block !important;
+  font-size:19px !important;
+  font-weight:950 !important;
+  color:#18375d !important;
+  line-height:1.25 !important;
+  margin:0 0 7px !important;
+}
+body.home-body .its-anon-home-text{
+  display:block !important;
+  font-size:13px !important;
+  line-height:1.55 !important;
+  color:#475569 !important;
+  margin:0 !important;
+}
+body.home-body .its-anon-home-points{
+  display:flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  flex-wrap:wrap !important;
+  margin:11px 0 0 !important;
+}
+body.home-body .its-anon-home-points span{
+  display:inline-flex !important;
+  align-items:center !important;
+  width:auto !important;
+  border:1px solid #d8e0ea !important;
+  background:#f8fbfd !important;
+  color:#18375d !important;
+  border-radius:999px !important;
+  padding:5px 9px !important;
+  font-size:11px !important;
+  line-height:1.15 !important;
+  font-weight:900 !important;
+  white-space:nowrap !important;
+}
+@media(max-width:620px){
+  body.home-body .its-anon-home-block{max-width:none !important;padding:14px !important}
+  body.home-body .its-anon-home-title{font-size:17px !important}
+  body.home-body .its-anon-home-points span{white-space:normal !important}
+}
