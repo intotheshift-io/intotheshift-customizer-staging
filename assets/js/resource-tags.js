@@ -207,7 +207,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    injectContentTagMenu();
-    applyResourcePageParams();
-  });
+  applyResourcePageParams();
+});
 })();
