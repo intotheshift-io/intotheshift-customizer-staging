@@ -1694,3 +1694,9 @@ body.content-article .article-hero img[src$=".svg"]{
   padding:18px;
   background:#eef6fb;
 }
+
+
+/* ── Correctif articles : masquer le fil d’Ariane redondant sous le menu tags ── */
+body:not(.resources-body) main > nav:first-child{
+  display:none !important;
+}
