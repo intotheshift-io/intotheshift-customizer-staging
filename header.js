@@ -1,3 +1,22 @@
+(function protectStagingFromIndexing() {
+  const isStaging = window.location.hostname === "staging.shiftstudio.intotheshift.io";
+  if (!isStaging) return;
+
+  const existingRobotsMeta = document.querySelector('meta[name="robots"]');
+  if (existingRobotsMeta) {
+    existingRobotsMeta.setAttribute("content", "noindex, nofollow");
+  } else {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+  }
+
+  document
+    .querySelectorAll('link[rel="alternate"][href="/llms.txt"], link[rel="alternate"][href="/llms-full.md"]')
+    .forEach((el) => el.remove());
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
 
   const header = document.getElementById("header");
