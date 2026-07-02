@@ -534,6 +534,35 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   `;
 
+
+
+  function loadGlobalFooterScript() {
+    const footerHiddenPages = new Set([
+      "questions.html",
+      "profils.html",
+      "profiles.html",
+      "scoring.html",
+      "parametrage.html",
+      "parametres.html",
+      "campaign.html",
+      "campagne.html",
+      "validation.html",
+      "publication.html",
+      "kit-communication.html"
+    ]);
+
+    if (footerHiddenPages.has(currentPage)) return;
+    if (document.querySelector('script[data-its-footer="true"]')) return;
+
+    const footerScript = document.createElement("script");
+    footerScript.src = "/footer.js";
+    footerScript.defer = true;
+    footerScript.dataset.itsFooter = "true";
+    document.body.appendChild(footerScript);
+  }
+
+  loadGlobalFooterScript();
+
   const bell = document.getElementById("itsNotifBell");
   const panel = document.getElementById("itsNotifPanel");
   if (bell && panel) {
