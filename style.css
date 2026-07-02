@@ -2259,3 +2259,241 @@ body.home-body .its-anon-home-points span{
   .its-footer-nav{grid-template-columns:1fr}
   .its-footer-bottom{padding:14px 16px 18px}
 }
+
+
+/* ── Home widescreen premium : grille 1450px + FAQ/footer alignés ───────── */
+body.home-body .home-wrap{
+  max-width:1450px !important;
+  padding:34px 28px 72px !important;
+}
+
+body.home-body .hero{
+  grid-template-columns:minmax(0,1.02fr) minmax(520px,.98fr) !important;
+  gap:36px 72px !important;
+  padding:54px 60px !important;
+  border-radius:34px !important;
+  align-items:center !important;
+}
+
+body.home-body .hero-logo{
+  width:460px !important;
+  margin-bottom:10px !important;
+}
+
+body.home-body .hero h1{
+  font-size:48px !important;
+  max-width:760px !important;
+}
+
+body.home-body .hero-text{
+  max-width:740px !important;
+}
+
+body.home-body .product-preview{
+  padding:24px !important;
+  border-radius:26px !important;
+}
+
+body.home-body .preview-stack{
+  gap:14px !important;
+}
+
+body.home-body .section{
+  margin-top:44px !important;
+}
+
+body.home-body .section-head{
+  align-items:flex-start !important;
+}
+
+body.home-body .section-sub{
+  max-width:760px !important;
+}
+
+body.home-body .method-feature{
+  grid-template-columns:1.15fr .85fr !important;
+  padding:36px !important;
+  border-radius:28px !important;
+}
+
+body.home-body .steps-grid{
+  gap:18px !important;
+}
+
+body.home-body .values-grid,
+body.home-body .usecases-grid{
+  gap:18px !important;
+}
+
+body.home-body .choices{
+  gap:20px !important;
+}
+
+body.home-body .step-card,
+body.home-body .value-card,
+body.home-body .choice-card,
+body.home-body .usecase-card{
+  border-radius:24px !important;
+}
+
+body.home-body #faq{
+  max-width:1450px !important;
+  margin:0 auto !important;
+  padding:0 28px 0 !important;
+}
+
+body.home-body #faq .faq-section,
+body.home-body .faq-section{
+  max-width:1450px !important;
+  margin:56px auto 0 !important;
+  padding:42px !important;
+  border-radius:30px !important;
+  box-shadow:0 18px 44px rgba(24,55,93,.08) !important;
+}
+
+body.home-body .faq-header{
+  margin-bottom:30px !important;
+}
+
+body.home-body .faq-list{
+  gap:14px !important;
+}
+
+body.home-body .faq-item{
+  border-radius:18px !important;
+}
+
+body.home-body .faq-item summary{
+  padding:20px 24px !important;
+  font-size:16px !important;
+}
+
+body.home-body .faq-item p{
+  padding:0 24px 22px !important;
+  font-size:15px !important;
+}
+
+.its-footer{
+  margin-top:72px !important;
+}
+
+.its-footer-inner{
+  max-width:1450px !important;
+  padding:52px 28px 42px !important;
+  grid-template-columns:minmax(320px,.9fr) minmax(0,1.6fr) !important;
+  gap:72px !important;
+}
+
+.its-footer-logo{
+  width:230px !important;
+  margin-bottom:18px !important;
+}
+
+.its-footer-brand p{
+  max-width:470px !important;
+  font-size:15px !important;
+  line-height:1.75 !important;
+}
+
+.its-footer-nav{
+  gap:42px !important;
+}
+
+.its-footer-nav div{
+  gap:12px !important;
+}
+
+.its-footer-nav strong{
+  margin-bottom:8px !important;
+}
+
+.its-footer-nav a{
+  font-size:15px !important;
+  line-height:1.45 !important;
+}
+
+.its-footer-bottom{
+  max-width:1450px !important;
+  padding:20px 28px 28px !important;
+}
+
+@media(max-width:1200px){
+  body.home-body .hero{
+    grid-template-columns:1fr !important;
+    grid-template-areas:"logo" "content" "preview" !important;
+    gap:30px !important;
+  }
+  body.home-body .product-preview{
+    max-width:none !important;
+  }
+  body.home-body .method-feature{
+    grid-template-columns:1fr !important;
+  }
+  body.home-body .steps-grid{
+    grid-template-columns:repeat(3,1fr) !important;
+  }
+}
+
+@media(max-width:980px){
+  body.home-body .home-wrap,
+  body.home-body #faq{
+    max-width:100% !important;
+    padding-left:22px !important;
+    padding-right:22px !important;
+  }
+  body.home-body .hero{
+    padding:34px !important;
+    border-radius:26px !important;
+  }
+  body.home-body .hero h1{
+    font-size:38px !important;
+  }
+  body.home-body .steps-grid{
+    grid-template-columns:1fr 1fr !important;
+  }
+  .its-footer-inner{
+    grid-template-columns:1fr !important;
+    gap:34px !important;
+  }
+}
+
+@media(max-width:620px){
+  body.home-body .home-wrap,
+  body.home-body #faq{
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+  body.home-body .hero{
+    padding:24px !important;
+    border-radius:20px !important;
+  }
+  body.home-body .hero-logo{
+    width:260px !important;
+  }
+  body.home-body .hero h1{
+    font-size:30px !important;
+  }
+  body.home-body .steps-grid{
+    grid-template-columns:1fr !important;
+  }
+  body.home-body #faq .faq-section,
+  body.home-body .faq-section{
+    margin-top:38px !important;
+    padding:20px !important;
+    border-radius:22px !important;
+  }
+  body.home-body .faq-item summary{
+    padding:16px 18px !important;
+    font-size:14px !important;
+  }
+  body.home-body .faq-item p{
+    padding:0 18px 18px !important;
+    font-size:14px !important;
+  }
+  .its-footer-inner{
+    padding:32px 16px 26px !important;
+  }
+  .its-footer-bottom{
+    padding:16px 16px 22px !important;
+  }
+}
