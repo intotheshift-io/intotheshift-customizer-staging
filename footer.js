@@ -51,7 +51,7 @@
 
           <div>
             <strong>Contact</strong>
-            <a href="mailto:contact@intotheshift.io">Demande d’information</a>
+            <a href="/demande-information.html">Demande d’information</a>
             <a href="https://meandyoutoo.app/fr/autodiagnostic-diversite-et-inclusion" target="_blank" rel="noopener">Catalogue Inclusion Expert</a>
           </div>
         </nav>
