@@ -1,12 +1,41 @@
 (function itsLoadHubSpotTracking(){
   if (document.getElementById("hs-script-loader")) return;
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.id = "hs-script-loader";
-  script.async = true;
-  script.defer = true;
-  script.src = "//js-eu1.hs-scripts.com/139575435.js";
-  document.head.appendChild(script);
+
+  var loaded = false;
+  var publicPerformanceDelay = 6000;
+  var immediatePaths = new Set([
+    "/demande-information.html",
+    "/login.html",
+    "/register.html",
+    "/forgot-password.html",
+    "/reset-password.html"
+  ]);
+
+  function injectHubSpot(){
+    if (loaded || document.getElementById("hs-script-loader")) return;
+    loaded = true;
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.id = "hs-script-loader";
+    script.async = true;
+    script.defer = true;
+    script.src = "//js-eu1.hs-scripts.com/139575435.js";
+    document.head.appendChild(script);
+  }
+
+  if (immediatePaths.has(window.location.pathname)) {
+    injectHubSpot();
+    return;
+  }
+
+  var interactionEvents = ["pointerdown", "keydown", "touchstart", "scroll"];
+  interactionEvents.forEach(function(eventName){
+    window.addEventListener(eventName, injectHubSpot, { once: true, passive: true });
+  });
+
+  window.addEventListener("load", function(){
+    window.setTimeout(injectHubSpot, publicPerformanceDelay);
+  }, { once: true });
 })();
 
 function itsDecodeJwtPayloadForStorage() {
