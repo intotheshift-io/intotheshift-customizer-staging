@@ -23,15 +23,7 @@ if (window.location.pathname === '/' || window.location.pathname === '') {
 <div id="header"></div>
 <script src="header.js"></script>
 <script src="app.js"></script>
-<script src="catalogue-core.js?v=5"></script>
-<script src="catalogue-cyber.js?v=5"></script>
-<script src="catalogue-securite.js?v=6"></script>
-<script src="catalogue-qvt.js?v=5"></script>
-<script src="catalogue-transfo.js?v=5"></script>
-<script src="catalogue-rse.js?v=5"></script>
-<script src="catalogue-ethique.js?v=5"></script>
-<script src="catalogue-custom.js?v=5"></script>
-<script src="catalogue-init.js?v=5"></script>
+<!-- Les scripts catalogue sont chargés après le premier affichage pour ne pas bloquer le LCP. -->
 
 <div class="page-wrap">
 
@@ -763,9 +755,62 @@ document.addEventListener("keydown", function(e){
   }
 });
 
-renderFilters();
-renderCatalogue();
-loadCustomModels();
+function loadScriptOnce(src){
+  return new Promise(function(resolve, reject){
+    const existing = document.querySelector('script[data-its-catalogue-src="' + src + '"]');
+    if(existing){
+      if(existing.dataset.loaded === "true") return resolve();
+      existing.addEventListener("load", resolve, { once:true });
+      existing.addEventListener("error", reject, { once:true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = false;
+    script.dataset.itsCatalogueSrc = src;
+    script.onload = function(){ script.dataset.loaded = "true"; resolve(); };
+    script.onerror = reject;
+    document.body.appendChild(script);
+  });
+}
+
+async function loadCatalogueAfterFirstPaint(){
+  const scripts = [
+    "catalogue-core.js?v=5",
+    "catalogue-cyber.js?v=5",
+    "catalogue-securite.js?v=6",
+    "catalogue-qvt.js?v=5",
+    "catalogue-transfo.js?v=5",
+    "catalogue-rse.js?v=5",
+    "catalogue-ethique.js?v=5",
+    "catalogue-custom.js?v=5",
+    "catalogue-init.js?v=5"
+  ];
+
+  const count = document.getElementById("catalogueCount");
+  if(count) count.textContent = "Chargement des bases…";
+
+  try{
+    for(const src of scripts){
+      await loadScriptOnce(src);
+    }
+    renderFilters();
+    renderCatalogue();
+    loadCustomModels();
+  }catch(e){
+    console.error("Catalogue non chargé", e);
+    if(count) count.textContent = "Catalogue momentanément indisponible";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  const start = function(){ setTimeout(loadCatalogueAfterFirstPaint, 0); };
+  if("requestAnimationFrame" in window){
+    requestAnimationFrame(function(){ requestAnimationFrame(start); });
+  } else {
+    start();
+  }
+});
 
 try{
   const params = new URLSearchParams(window.location.search || "");
