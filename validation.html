@@ -1528,6 +1528,22 @@ async function transmit(){
     state.submitted = true;
     state.transmission.status = 'sent';
     if (typeof itsSave === 'function') itsSave(state);
+    if (window.ITSAnalytics) {
+      const trackingParams = {
+        project_id: validationCurrentProjectId(),
+        pack: getPackChoice() || '',
+        company: getCompany() || '',
+        transmission_type: isExtensionTransmission ? 'extension' : (isReprogrammingTransmission ? 'reprogramming' : 'standard')
+      };
+      if (isExtensionTransmission && typeof window.ITSAnalytics.extendCampaign === 'function') {
+        window.ITSAnalytics.extendCampaign(trackingParams);
+      } else if (isReprogrammingTransmission && typeof window.ITSAnalytics.reprogramCampaign === 'function') {
+        window.ITSAnalytics.reprogramCampaign(trackingParams);
+      } else if (typeof window.ITSAnalytics.submitConfiguration === 'function') {
+        window.ITSAnalytics.submitConfiguration(trackingParams);
+      }
+    }
+
     document.getElementById('success-alert').classList.remove('hidden');
     showTransmitModal(
       'success',

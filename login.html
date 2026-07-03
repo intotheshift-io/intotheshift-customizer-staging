@@ -631,6 +631,10 @@ document.getElementById("login-form").addEventListener("submit", async function(
       ? "account.html?tab=securite&firstLogin=1"
       : (forcedRedirect || queryRedirect || "dashboard.html");
 
+    if (window.ITSAnalytics && typeof window.ITSAnalytics.login === "function") {
+      window.ITSAnalytics.login();
+    }
+
     window.location.href = redirect;
   }catch(error){
     showLoginError(error.message || "Erreur de connexion à l’API.");

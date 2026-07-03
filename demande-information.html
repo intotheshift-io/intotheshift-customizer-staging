@@ -38,7 +38,15 @@ h1{font-size:34px;line-height:1.12;color:#18375d;margin-bottom:10px}
         hbspt.forms.create({
           portalId: "139575435",
           formId: "3ed49d01-9f25-43fd-bd02-b9480176f396",
-          region: "eu1"
+          region: "eu1",
+          onFormSubmitted: function () {
+            if (window.ITSAnalytics && typeof window.ITSAnalytics.informationRequest === "function") {
+              window.ITSAnalytics.informationRequest({
+                form_id: "3ed49d01-9f25-43fd-bd02-b9480176f396",
+                form_name: "demande_information"
+              });
+            }
+          }
         });
       </script>
     </div>

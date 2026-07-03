@@ -506,11 +506,11 @@ document.getElementById("register-form").addEventListener("submit", async functi
     localStorage.setItem("its_user_role", data.user?.role || "client");
     localStorage.setItem("its_user_firstname", data.user?.firstName || payload.firstName || "Mon espace");
 
-   if (window.ITSAnalytics && typeof window.ITSAnalytics.signUp === "function") {
-     window.ITSAnalytics.signUp();
-   }
+    if (window.ITSAnalytics && typeof window.ITSAnalytics.signUp === "function") {
+      window.ITSAnalytics.signUp();
+    }
 
-   window.location.href = "account.html";
+    window.location.href = "account.html";
   }catch(error){
     showRegisterError(error.message || "Erreur de connexion à l’API.");
     submitBtn.disabled = false;

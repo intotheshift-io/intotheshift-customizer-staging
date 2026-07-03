@@ -715,6 +715,10 @@ function continueBlankDiagnostic(){
     sessionStorage.setItem("its_blank_initial_topic", topic);
   } catch(e) {}
 
+  if (window.ITSAnalytics && typeof window.ITSAnalytics.createBlankDiagnostic === "function") {
+    window.ITSAnalytics.createBlankDiagnostic({ topic: topic });
+  }
+
   window.location.assign("questions.html?mode=blank&setup=1");
 }
 
@@ -738,6 +742,15 @@ function useAd(id){
   if(!isLoggedIn()){
     redirectToLogin("questions.html");
     return;
+  }
+
+  if (window.ITSAnalytics && typeof window.ITSAnalytics.selectCatalogItem === "function") {
+    const selectedAd = getAdById(id) || {};
+    window.ITSAnalytics.selectCatalogItem({
+      catalog_item_id: id,
+      catalog_item_title: selectedAd.title || "",
+      theme: selectedAd.theme || selectedAd.themeLabel || selectedAd.themeKey || ""
+    });
   }
 
   window.location.href = "questions.html";
