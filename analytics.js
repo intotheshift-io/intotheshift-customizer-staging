@@ -117,7 +117,6 @@
   };
 
   window.ITSAnalytics.informationRequest = function (params) {
-    track("information_request_submit", params);
     track("generate_lead", Object.assign({ currency: "EUR", value: 1 }, params || {}));
   };
 
