@@ -26,4 +26,14 @@
 
   // Propriété Google Analytics 4.
   window.gtag("config", gaMeasurementId);
+  window.ITSAnalytics = window.ITSAnalytics || {};
+
+window.ITSAnalytics.signUp = function () {
+  if (window.location.hostname.includes("staging.")) return;
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("event", "sign_up", {
+    method: "email"
+  });
+};
 })();
