@@ -52,5 +52,6 @@ async function notifyVideoReady(){if(!videoDownloadUrl()){showToast('Ajoutez un 
 function goBack(e){if(e)e.preventDefault();if(isAdmin()||isPartner()){const org=project?.organizationId||project?.organization_id||localStorage.getItem('its_selected_partner_client_id')||'';location.href=org?'client-folder.html?id='+encodeURIComponent(org):'client-folder.html';return}location.href='mes-autodiagnostics.html'}
 document.addEventListener('DOMContentLoaded',()=>{bindDropZone('brandDropZone','brandAssetInput',handleBrandAssetUpload);bindDropZone('assetDropZone','assetInput',handleAssetUpload);loadProject().catch(e=>{console.error(e);alert(e.message||'Impossible de charger le kit de communication.')})});
 </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>
