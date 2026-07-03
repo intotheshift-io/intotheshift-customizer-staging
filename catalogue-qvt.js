@@ -1,6 +1,6 @@
 /**
  * catalogue-qvt.js — INTO THE SHIFT
- * Domaine : QVT & RPS (8 ADs)
+ * Domaine : QVCT & RPS (8 ADs)
  *
  * Dépend de : catalogue-core.js
  */
@@ -9,7 +9,7 @@
   var T = window._ITS_CORE.templates;
 
   // ─────────────────────────────────────────────────────────────────────────
-  //  QUESTIONS RÉDIGÉES — QVT & RPS
+  //  QUESTIONS RÉDIGÉES — QVCT & RPS
   // ─────────────────────────────────────────────────────────────────────────
 
   Object.assign(window.CUSTOM_QUESTIONS, {
@@ -5403,7 +5403,7 @@
   //  Les ADs sans contenu rédigé conservent les templates génériques.
   // ─────────────────────────────────────────────────────────────────────────
 
-  window.ITS_registerTheme("qvt", "QVT & RPS", "🌿", [
+  window.ITS_registerTheme("qvt", "QVCT & RPS", "🌿", [
     ["rps-signaux-faibles", "Repérer les signaux faibles de RPS", "Tous publics",
       "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",
       { domain: "qvt", chapters: [

@@ -7898,13 +7898,13 @@ window.INTOTHESHIFT_LIBRARY = {
     },
     {
       "id": "qvt",
-      "label": "Qualité de vie au travail",
+      "label": "Qualité de vie et des conditions de travail",
       "description": "Charge, coopération, signaux d’épuisement, qualité des échanges et équilibres durables.",
       "autodiags": [
         {
           "id": "qvt-ad1",
-          "title": "QVT et charge de travail",
-          "shortDescription": "Une base prête à personnaliser sur qvt et charge de travail, avec situations professionnelles, réponses scorées et profils par chapitre.",
+          "title": "QVCT et charge de travail",
+          "shortDescription": "Une base prête à personnaliser sur QVCT et charge de travail, avec situations professionnelles, réponses scorées et profils par chapitre.",
           "chapters": [
             {
               "id": "qvt-ad1-c1",
@@ -7938,7 +7938,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c1-q2",
-                  "text": "Pendant une journée chargée, une réunion tardive crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une réunion tardive crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -8030,7 +8030,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c1-q6",
-                  "text": "Vous hésitez à intervenir car un irritant logistique concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car un irritant logistique concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -8101,7 +8101,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Réflexes encore dispersés",
                   "summary": "Vous repérez certains enjeux de exprimer la charge réelle, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -8151,7 +8151,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c2-q2",
-                  "text": "Pendant une journée chargée, un collègue moins disponible crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, un collègue moins disponible crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -8243,7 +8243,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c2-q6",
-                  "text": "Vous hésitez à intervenir car un retour à faire concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car un retour à faire concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -8318,7 +8318,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Vigilance intermittente",
                   "summary": "Vous repérez certains enjeux de préserver les temps de récupération, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -8372,7 +8372,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c3-q2",
-                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -8464,7 +8464,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c3-q6",
-                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -8535,7 +8535,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Réflexes encore dispersés",
                   "summary": "Vous repérez certains enjeux de coopérer sans s’épuiser, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -8585,7 +8585,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c4-q2",
-                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -8677,7 +8677,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad1-c4-q6",
-                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -8752,7 +8752,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Repères à consolider",
                   "summary": "Vous repérez certains enjeux de traiter les irritants du quotidien, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -8809,7 +8809,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c1-q2",
-                  "text": "Pendant une journée chargée, un collègue moins disponible crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, un collègue moins disponible crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -8901,7 +8901,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c1-q6",
-                  "text": "Vous hésitez à intervenir car un retour à faire concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car un retour à faire concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -8976,7 +8976,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Action surtout réactive",
                   "summary": "Vous repérez certains enjeux de exprimer la charge réelle, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -9030,7 +9030,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c2-q2",
-                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -9122,7 +9122,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c2-q6",
-                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -9193,7 +9193,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Réflexes encore dispersés",
                   "summary": "Vous repérez certains enjeux de préserver les temps de récupération, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -9243,7 +9243,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c3-q2",
-                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -9335,7 +9335,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c3-q6",
-                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -9410,7 +9410,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Repères à consolider",
                   "summary": "Vous repérez certains enjeux de coopérer sans s’épuiser, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -9464,7 +9464,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c4-q2",
-                  "text": "Pendant une journée chargée, un irritant logistique crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, un irritant logistique crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -9556,7 +9556,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad2-c4-q6",
-                  "text": "Vous hésitez à intervenir car une réunion tardive concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une réunion tardive concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -9627,7 +9627,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Réflexes encore dispersés",
                   "summary": "Vous repérez certains enjeux de traiter les irritants du quotidien, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -9688,7 +9688,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c1-q2",
-                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une tension récurrente crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -9780,7 +9780,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c1-q6",
-                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une période de forte activité concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous corrigez discrètement pour éviter de mettre quelqu’un en difficulté.",
@@ -9851,7 +9851,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Vigilance intermittente",
                   "summary": "Vous repérez certains enjeux de exprimer la charge réelle, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -9901,7 +9901,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c2-q2",
-                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, une urgence qui déborde crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -9993,7 +9993,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c2-q6",
-                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une surcharge qui s’installe concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous traitez la situation seul·e, pour ne pas ralentir l’activité, puis vous ajustez si un problème apparaît.",
@@ -10068,7 +10068,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Vigilance intermittente",
                   "summary": "Vous repérez certains enjeux de préserver les temps de récupération, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -10122,7 +10122,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c3-q2",
-                  "text": "Pendant une journée chargée, un irritant logistique crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, un irritant logistique crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -10214,7 +10214,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c3-q6",
-                  "text": "Vous hésitez à intervenir car une réunion tardive concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car une réunion tardive concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous laissez passer cette fois, car l’intention semble bonne et le risque paraît limité.",
@@ -10285,7 +10285,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Réflexes encore dispersés",
                   "summary": "Vous repérez certains enjeux de coopérer sans s’épuiser, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },
@@ -10335,7 +10335,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c4-q2",
-                  "text": "Pendant une journée chargée, un retour à faire crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Pendant une journée chargée, un retour à faire crée un doute. La situation n’est pas grave à première vue, mais elle pourrait se reproduire. Quelle réaction vous semble la plus juste ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -10427,7 +10427,7 @@ window.INTOTHESHIFT_LIBRARY = {
                 },
                 {
                   "id": "qvt-ad3-c4-q6",
-                  "text": "Vous hésitez à intervenir car un collègue moins disponible concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie au travail, le bon choix n’est pas forcément le plus visible.",
+                  "text": "Vous hésitez à intervenir car un collègue moins disponible concerne une personne expérimentée. Que faites-vous ? Dans ce contexte qualité de vie et des conditions de travail, le bon choix n’est pas forcément le plus visible.",
                   "answers": [
                     {
                       "text": "Vous demandez un éclairage à une personne référente avant d’agir, en expliquant ce qui vous met en doute.",
@@ -10502,7 +10502,7 @@ window.INTOTHESHIFT_LIBRARY = {
                   "level": "low",
                   "title": "Action surtout réactive",
                   "summary": "Vous repérez certains enjeux de traiter les irritants du quotidien, mais l’action reste dépendante du contexte.",
-                  "description": "Sur la thématique Qualité de vie au travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
+                  "description": "Sur la thématique Qualité de vie et des conditions de travail, ce profil montre des repères présents mais encore fragiles. Les bonnes intentions existent, cependant les décisions peuvent varier selon l’urgence, la pression du collectif ou la familiarité avec les règles. L’enjeu est de rendre les réflexes plus réguliers, sans créer de lourdeur inutile.",
                   "min": 0,
                   "max": 1.59
                 },

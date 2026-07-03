@@ -8069,7 +8069,7 @@ function makeQuestions(prefix, domain, chapterIndex, extraTags) {
       ["securite-nucleaire",         "Culture de sûreté en environnement nucléaire",        "Tous publics — Nucléaire", "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.", templates.securiteNucleaire],
       ["securite-chantier-btp",      "Sécurité sur chantier BTP",                          "Équipes terrain — BTP",    "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",          templates.securiteChantierBTP]
     ]],
-    ["qvt-rps", "QVT & RPS", "🌿", [
+    ["qvt-rps", "QVCT & RPS", "🌿", [
       ["rps-signaux-faibles",    "Repérer les signaux faibles de RPS",                      "Tous publics",          "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",                  templates.qvtRps],
       ["charge-priorites",       "Charge de travail et priorisation",                       "Tous publics",          "Prendre du recul sur l'urgence, les arbitrages et les limites soutenables.",                                  templates.qvtRps],
       ["cooperation-climat",     "Coopération et climat de travail",                        "Collaborateurs",        "Agir dans les irritants du quotidien, désamorcer et préserver la qualité relationnelle.",                      templates.qvtRps],

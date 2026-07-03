@@ -663,7 +663,7 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip}#header{
             <option>Responsable formation</option>
             <option>Responsable D&I / Diversité & Inclusion</option>
             <option>Responsable RSE / Développement durable</option>
-            <option>QVT / Santé au travail / Prévention</option>
+            <option>QVCT / Santé au travail / Prévention</option>
             <option>Compliance / Éthique / Risques</option>
             <option>Communication interne / Engagement</option>
             <option>Manager / Direction métier</option>
@@ -865,7 +865,7 @@ const ADMIN_JOB_OPTIONS = [
   'Responsable formation',
   'Responsable D&I / Diversité & Inclusion',
   'Responsable RSE / Développement durable',
-  'QVT / Santé au travail / Prévention',
+  'QVCT / Santé au travail / Prévention',
   'Compliance / Éthique / Risques',
   'Communication interne / Engagement',
   'Manager / Direction métier',
@@ -1217,7 +1217,7 @@ function inferProjectThemeFallback(project){
   const raw=JSON.stringify(cfg || {})+" "+String(val(project,["title","name","project_title"],""));
   const text=normalizeAdminText(raw);
   if(text.includes("cyber") || text.includes("phishing") || text.includes("numerique")) return "Cybersécurité";
-  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("sante au travail")) return "QVT & RPS";
+  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("sante au travail")) return "QVCT & RPS";
   if(text.includes("securite") || text.includes("surete") || text.includes("btp") || text.includes("accident")) return "Sécurité & sûreté au travail";
   if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
   if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";

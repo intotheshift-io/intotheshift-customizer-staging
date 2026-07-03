@@ -1075,7 +1075,7 @@ function inferDashboardThemeFromProject(apiProject){
   const text = normalizeDashboardThemeText(JSON.stringify(apiProject || {}) + " " + getProjectTitle(apiProject));
 
   if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
-  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVCT & RPS";
   if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
   if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
   if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
