@@ -2497,3 +2497,112 @@ body.home-body .faq-item p{
     padding:16px 16px 22px !important;
   }
 }
+
+
+/* ── Home : deux accompagnements possibles ───────────────── */
+body.home-body .help-options-section{
+  margin-top:44px !important;
+}
+body.home-body .help-options-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:24px;
+  margin-bottom:18px;
+}
+body.home-body .help-options-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+body.home-body .help-option-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:30px;
+  min-height:250px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  box-shadow:0 18px 44px rgba(24,55,93,.09);
+}
+body.home-body .help-option-card h3{
+  font-size:25px;
+  line-height:1.18;
+  color:#18375d;
+  margin:16px 0 12px;
+}
+body.home-body .help-option-card p{
+  font-size:15px;
+  line-height:1.62;
+  color:#5b6b7f;
+  margin:0 0 22px;
+}
+body.home-body .help-option-card .btn{
+  margin-top:auto;
+}
+body.home-body .help-option-pill{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:12px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+body.home-body .help-option-method{
+  background:linear-gradient(135deg,#ffffff 0%,#fffaf0 100%);
+  border:2px solid #ffd97a;
+}
+body.home-body .help-option-method .help-option-pill{
+  background:#fff3cc;
+  color:#8a5a00;
+  border:1px solid #ffc866;
+}
+body.home-body .help-option-tool{
+  background:linear-gradient(135deg,#0d4c72 0%,#007883 100%);
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;
+}
+body.home-body .help-option-tool::after{
+  content:"";
+  position:absolute;
+  right:-34px;
+  top:-54px;
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  background:rgba(255,255,255,.24);
+}
+body.home-body .help-option-tool > *{
+  position:relative;
+  z-index:1;
+}
+body.home-body .help-option-tool h3{
+  color:#fff;
+}
+body.home-body .help-option-tool p{
+  color:rgba(255,255,255,.88);
+}
+body.home-body .help-option-tool .help-option-pill{
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.28);
+}
+body.home-body .help-option-tool .btn-secondary{
+  background:#fff;
+  color:#0d4c72;
+  border-color:#d8e0ea;
+}
+@media(max-width:900px){
+  body.home-body .help-options-head{display:block}
+  body.home-body .help-options-head .section-sub{margin-top:10px}
+  body.home-body .help-options-grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  body.home-body .help-option-card{padding:22px;border-radius:22px;min-height:auto}
+  body.home-body .help-option-card h3{font-size:21px}
+}
