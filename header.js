@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Client : la republication après recharge ramène vers Mes Autodiagnostics.
+    // Client : la republication après recharge ramène vers Mes Campagnes.
     if (client && type === "pack_republished") {
       return "/mes-autodiagnostics.html";
     }
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Client : transmission, prolongation, reprogrammation, fin de campagne
-    // restent dans Mes Autodiagnostics.
+    // restent dans Mes Campagnes.
     if (client && clientMesAdTypes.has(type)) {
       return "/mes-autodiagnostics.html";
     }
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", function () {
     : "";
 
   const mesAdLink = logged && !admin && !partner
-    ? `<a class="nav-link ${active("mes-autodiagnostics.html")}" href="/mes-autodiagnostics.html">Mes Autodiagnostics</a>`
+    ? `<a class="nav-link ${active("mes-autodiagnostics.html")}" href="/mes-autodiagnostics.html">Mes Campagnes</a>`
     : "";
 
   const adminLink = admin
