@@ -7,7 +7,8 @@
     {key:'cyber', label:'🔐 Cybersécurité', href:'ressources.html?tag=cyber#articles'},
     {key:'rse', label:'🌍 RSE & Environnement', href:'ressources.html?tag=rse#articles'},
     {key:'security', label:'🦺 Santé & Sécurité', href:'ressources.html?tag=security#articles'},
-    {key:'ethique', label:'⚖️ Éthique & Compliance', href:'ressources.html?tag=ethique#articles'}
+    {key:'ethique', label:'⚖️ Éthique & Compliance', href:'ressources.html?tag=ethique#articles'},
+    {key:'webinaire', label:'🎥 Webinaires', href:'ressources.html?tag=webinaire#articles'}
   ];
 
     const PAGE_TAGS = {
@@ -123,6 +124,7 @@
     'simulateur-comportemental.html':["method"],
     'stress-au-travail.html':["qvct"],
     'transformation-manageriale.html':["management"],
+    'mesurez-impact-formations-webinaire.html':["webinaire","formation"],
   };
 
   function pageName(){
