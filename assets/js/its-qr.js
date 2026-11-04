@@ -3,7 +3,7 @@
 (function () {
   const QR_COLOR = '#273a64';
   const REFERENCE_SIZE = 1200;
-  const FALLBACK_LOGO = '/favicon.png';
+  const FALLBACK_LOGO = '/into-the-shift-logo.png';
   const renderTokens = new WeakMap();
 
   function buildOptions(url, { size = REFERENCE_SIZE, type = 'canvas', logo = '' } = {}) {
