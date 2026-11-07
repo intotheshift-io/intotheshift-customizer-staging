@@ -638,32 +638,32 @@ body{
     <div class="path-grid">
       <div class="path-card">
         <div class="path-num">1</div>
-        <h3>Bibliothèque</h3>
-        <p>Choisir une base de travail ou créer de zéro.</p>
+        <h3>Choisir une base</h3>
+        <p>Partir d’une base de travail ou d’une page vierge.</p>
       </div>
 
       <div class="path-card">
         <div class="path-num">2</div>
-        <h3>Création</h3>
-        <p>Modifier les questions, réponses, profils et ressources.</p>
+        <h3>Créer l’autodiagnostic</h3>
+        <p>Adapter les chapitres, questions, réponses et profils.</p>
       </div>
 
       <div class="path-card">
         <div class="path-num">3</div>
-        <h3>Paramétrage</h3>
-        <p>Définir le titre, l’introduction et les informations de campagne.</p>
+        <h3>Paramétrer</h3>
+        <p>Renseigner le titre, le pack, les dates, l’introduction et les données d’analyse.</p>
       </div>
 
       <div class="path-card">
         <div class="path-num">4</div>
         <h3>Campagne</h3>
-        <p>Préparer le lien, le QR code et les éléments de diffusion.</p>
+        <p>Tester l’expérience répondant et préparer la diffusion.</p>
       </div>
 
       <div class="path-card">
         <div class="path-num">5</div>
-        <h3>Transmission</h3>
-        <p>Envoyer la configuration à l’équipe Into The Shift.</p>
+        <h3>Transmettre</h3>
+        <p>Envoyer la configuration à Into The Shift pour la mise en ligne.</p>
       </div>
     </div>
   </section>
@@ -1303,6 +1303,13 @@ async function openLatestProject(){
   window.location.href = latestVisibleProject ? getProjectResumeUrl(latestVisibleProject) : "index.html";
 }
 
+function itsIsScheduledProject(project){
+  const data = project && project.data && typeof project.data === "object" ? project.data : {};
+  const param = data.parametrage || {};
+  const start = String(project?.campaign_start_date || project?.campaignStartDate || data.campaign_start_date || data.campaignStartDate || param.date_lancement || "").slice(0,10);
+  const today = new Intl.DateTimeFormat("fr-CA",{timeZone:"Europe/Paris"}).format(new Date());
+  return /^\d{4}-\d{2}-\d{2}$/.test(start) && start > today;
+}
 function renderApiProject(apiProject){
   const title = getProjectTitle(apiProject);
   const theme = getProjectTheme(apiProject);
@@ -1311,7 +1318,7 @@ function renderApiProject(apiProject){
   latestVisibleProject = apiProject;
   const heading = document.getElementById("current-project-heading");
   if(heading){
-    heading.textContent = status === "unpublished" ? "Autodiagnostic dépublié" : status === "published" ? "Autodiagnostic publié" : status === "sent" ? "Autodiagnostic transmis" : "Brouillon en cours";
+    heading.textContent = status === "unpublished" ? "Autodiagnostic dépublié" : status === "published" ? (itsIsScheduledProject(apiProject) ? "Autodiagnostic programmé" : "Autodiagnostic publié") : status === "sent" ? "Autodiagnostic transmis" : "Brouillon en cours";
   }
 
   const miniAction = document.getElementById("mini-action");
@@ -1332,10 +1339,11 @@ function renderApiProject(apiProject){
     setDashboardText("draft-status", "Dépublié");
     setDashboardText("draft-step", "Campagne terminée");
   } else if(status === "published"){
-    setDashboardText("mini-progress", "Publié");
+    const publishedLabel = itsIsScheduledProject(apiProject) ? "Programmé" : "Publié";
+    setDashboardText("mini-progress", publishedLabel);
     setDashboardText("mini-next", "Consulter");
-    setDashboardText("draft-status", "Publié");
-    setDashboardText("draft-step", "Publié");
+    setDashboardText("draft-status", publishedLabel);
+    setDashboardText("draft-step", publishedLabel);
   } else if(status === "sent"){
     setDashboardText("mini-progress", "En attente de publication");
     setDashboardText("mini-next", "Validation Into The Shift");

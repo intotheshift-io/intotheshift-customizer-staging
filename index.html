@@ -722,7 +722,19 @@ function continueBlankDiagnostic(){
   window.location.assign("questions.html?mode=blank&setup=1");
 }
 
+function useBaseFromUrlIfNeeded(){
+  const id = new URLSearchParams(window.location.search || "").get("useBase");
+  if(!id || !isLoggedIn()) return;
+  if(getCatalogue().some(ad => String(ad.id) === String(id))) useAd(id);
+}
+
 function useAd(id){
+
+  // Sans compte, on garde la base dans l'adresse de retour : elle s'ouvrira après la connexion ou l'inscription.
+  if(!isLoggedIn()){
+    redirectToLogin("index.html?useBase=" + encodeURIComponent(id));
+    return;
+  }
 
   if(typeof itsClearProjectContextOnly === "function"){
     itsClearProjectContextOnly();
@@ -737,11 +749,6 @@ function useAd(id){
     window.itsStartFromCatalogue(id);
   } else {
     localStorage.setItem("its_current_ad_id", id);
-  }
-
-  if(!isLoggedIn()){
-    redirectToLogin("questions.html");
-    return;
   }
 
   if (window.ITSAnalytics && typeof window.ITSAnalytics.selectCatalogItem === "function") {
@@ -810,6 +817,7 @@ async function loadCatalogueAfterFirstPaint(){
     renderFilters();
     renderCatalogue();
     loadCustomModels();
+    useBaseFromUrlIfNeeded();
   }catch(e){
     console.error("Catalogue non chargé", e);
     if(count) count.textContent = "Catalogue momentanément indisponible";

@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
       pack_expired: "🔴",
       pack_upgrade_request: "🎟️",
       pack_upgrade_approved: "✅",
+      pack_welcome: "🎁",
       pack_republished: "🟢",
       communication_assets: "📣",
       brand_assets: "🎨"

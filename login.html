@@ -444,7 +444,7 @@ body{
       <h2>Bienvenue dans Shift Studio</h2>
 
       <p class="login-sub">
-        Connectez-vous pour continuer votre parcours.
+        <span id="login-intro-text">Connectez-vous pour continuer votre parcours.</span>
       </p>
 
       <form id="login-form">
@@ -499,6 +499,14 @@ body{
 
 
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+  const pending = localStorage.getItem("its_after_login_redirect") || "";
+  const intro = document.getElementById("login-intro-text");
+  if(intro && pending.includes("useBase=")){
+    intro.textContent = "Connectez-vous, ou créez votre compte avec « Première connexion » : la base choisie s’ouvrira juste après.";
+  }
+});
+
 function itsResolveApiBase(){
   const host = window.location.hostname;
   const path = window.location.pathname;

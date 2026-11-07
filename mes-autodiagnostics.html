@@ -51,6 +51,7 @@
     .status.draft{background:#edf1f7;color:#475569}
     .status.submitted{background:#fff4d5;color:#9a6700}
     .status.published{background:#e5f4f5;color:#007883}
+    .status.scheduled{background:#eef6ff;color:#1f4e91}
     .status.results{background:#e8f8ef;color:#22824d}
     .status.archived{background:#f1f4f8;color:#94a3b8}
     .status.unpublished{background:#eef2f6;color:#64748b}
@@ -218,6 +219,7 @@
           <button class="tab" data-filter="submitted">🚀 Transmis <span class="filter-count" id="countSubmitted">0</span></button>
           <button class="tab" data-filter="results">📊 Résultats dispo <span class="filter-count" id="countResults">0</span></button>
           <button class="tab" data-filter="draft">✏️ Brouillons <span class="filter-count" id="countDraft">0</span></button>
+          <button class="tab" data-filter="scheduled">🗓️ Programmés <span class="filter-count" id="countScheduled">0</span></button>
           <button class="tab" data-filter="published">🟢 Publiés <span class="filter-count" id="countPublished">0</span></button>
           <button class="tab" data-filter="unpublished">🛑 Dépubliés <span class="filter-count" id="countUnpublished">0</span></button>
         </div>
@@ -849,6 +851,14 @@
       return `Campagne : ${formatDate(start)} → ${formatDate(end)}`;
     }
 
+    // Publié par Into The Shift, mais la date de lancement n'est pas encore arrivée (heure de Paris).
+    function isScheduledProject(p){
+      if(normalizeStatus(p) !== "published") return false;
+      const start = String(getCampaignStartDate(p) || "").slice(0,10);
+      const today = new Intl.DateTimeFormat("fr-CA",{timeZone:"Europe/Paris"}).format(new Date());
+      return /^\d{4}-\d{2}-\d{2}$/.test(start) && start > today;
+    }
+
     function getCampaignStartDate(p){
       const data = getProjectData(p);
       const param = data.parametrage || {};
@@ -920,7 +930,7 @@
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
       if(status === "published" && isProjectReprogrammed(p)) alerts.push({kind:"warn", icon:"🔁", text:"Campagne reprogrammée"});
-      if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
+      if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:isScheduledProject(p) ? `Lien à diffuser à partir du ${formatDate(getCampaignStartDate(p))}` : "Lien de diffusion disponible"});
       if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
       if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
@@ -1352,10 +1362,11 @@
       const activeProjects = getActiveProjects();
       const archivedCount = getArchivedProjects().length;
       updateArchiveCounter(archivedCount);
-      const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
+      const counts = { draft:0, submitted:0, scheduled:0, published:0, unpublished:0, endingSoon:0, results:0 };
       activeProjects.forEach(p => {
         const status = normalizeStatus(p);
-        counts[status] = (counts[status] || 0) + 1;
+        const countKey = isScheduledProject(p) ? "scheduled" : status;
+        counts[countKey] = (counts[countKey] || 0) + 1;
         if(isEndingSoon(p)) counts.endingSoon += 1;
         if(hasResultsAvailable(p)) counts.results += 1;
       });
@@ -1368,6 +1379,7 @@
       setCount("countAll", activeProjects.length);
       setCount("countDraft", counts.draft || 0);
       setCount("countSubmitted", counts.submitted || 0);
+      setCount("countScheduled", counts.scheduled || 0);
       setCount("countPublished", counts.published || 0);
       setCount("countUnpublished", counts.unpublished || 0);
       setCount("countEndingSoon", counts.endingSoon || 0);
@@ -1417,7 +1429,10 @@
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
         const filterOk =
           currentFilter === "all" ||
-          (status === currentFilter || (currentFilter === "submitted" && status === "sent")) ||
+          (currentFilter === "scheduled" && isScheduledProject(p)) ||
+          (currentFilter === "published" && status === "published" && !isScheduledProject(p)) ||
+          (currentFilter !== "published" && status === currentFilter) ||
+          (currentFilter === "submitted" && status === "sent") ||
           (currentFilter === "endingSoon" && isEndingSoon(p)) ||
           (currentFilter === "results" && hasResultsAvailable(p));
         return filterOk && (!q || text.includes(q));
@@ -1474,7 +1489,7 @@
 
             <div class="actions">
               <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
-                <span class="status ${status}">${statusLabel(status)}</span>
+                <span class="status ${isScheduledProject(p) ? "scheduled" : status}">${isScheduledProject(p) ? "Programmé" : statusLabel(status)}</span>
                 ${extendedStatusHTML(p)}
                 ${reprogrammedStatusHTML(p)}
               </div>

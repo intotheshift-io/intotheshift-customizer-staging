@@ -291,6 +291,7 @@ select option[value="current_pack"]{
           <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="stagePackChoice(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack" style="font-weight:900">✅ J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-choice-actions"><button type="button" class="pack-choice-validate" onclick="confirmPackChoice()">Valider ce pack</button><button type="button" class="pack-choice-cancel" onclick="cancelPackChoice()">Annuler</button><div class="pack-choice-hint" id="packChoiceHint">Choisissez un pack puis validez pour enregistrer votre choix.</div></div></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
         </div>
+        <div id="welcomeOfferBox" class="alert alert-neutral partner-hide" style="margin-bottom:14px;display:none"></div>
         <div id="paramQuotaInline" class="partner-hide"></div>
         <div class="alert alert-neutral partner-hide" style="margin-bottom:14px">
           <span class="alert-ico">💡</span>
@@ -361,7 +362,7 @@ select option[value="current_pack"]{
           </div>
         </div>
         <div class="anonymity-top-grid">
-          <div class="field"><label>Nombre total de répondants estimé<span class="req">*</span></label><input class="inp" id="nb_repondants" type="number" min="1" oninput="updateParam('nb_repondants',parseInt(this.value||0));checkAnonymity()"></div>
+          <div class="field"><label>Nombre total de répondants estimé<span class="req">*</span></label><input class="inp" id="nb_repondants" type="number" min="1" oninput="updateParam('nb_repondants',parseInt(this.value||0));checkAnonymity();checkContinue()"></div>
           <div class="anonymity-summary-card">
             <div class="anonymity-summary-title">Niveau de vigilance</div>
             <div id="anonymity-level" style="font-size:20px;font-weight:800;color:#64748b">À compléter</div>
@@ -741,7 +742,60 @@ function hasUsableCurrentPack(){
   const q = getCurrentClientQuotaSafe();
   return String(q.pack) === 'illimite' || q.remaining > 0;
 }
+const WELCOME_PACK_VALUE = 'offert_15';
+const WELCOME_PACK_SIZE = 15;
+let itsWelcomeOfferAvailable = false;
+async function itsLoadWelcomeOffer(){
+  try{
+    const r = await fetch(API_URL + '/api/me/organization-quota', { headers:{ Authorization:'Bearer ' + getToken() } });
+    if(!r.ok) return false;
+    const data = await r.json();
+    return data.welcomePassationsAvailable === true;
+  }catch(e){
+    return false;
+  }
+}
+function estimatedRespondents(){
+  return Number(getFieldValue('nb_repondants') || state?.parametrage?.nb_repondants || 0);
+}
+function syncWelcomePackOption(){
+  ['pack_choisi','pack_choisi_sidebar'].forEach(id => {
+    const select = document.getElementById(id);
+    if(!select) return;
+    let opt = select.querySelector('option[value="' + WELCOME_PACK_VALUE + '"]');
+    if(itsWelcomeOfferAvailable && !opt){
+      opt = document.createElement('option');
+      opt.value = WELCOME_PACK_VALUE;
+      opt.textContent = '🎁 15 passations offertes';
+      select.insertBefore(opt, select.options[1] || null);
+    }
+    if(!itsWelcomeOfferAvailable && opt) opt.remove();
+  });
+}
+function useWelcomePack(){
+  if(!itsWelcomeOfferAvailable || estimatedRespondents() > WELCOME_PACK_SIZE) return;
+  updatePack(WELCOME_PACK_VALUE, true);
+  checkContinue();
+}
+function renderWelcomeOffer(){
+  const box = document.getElementById('welcomeOfferBox');
+  if(!box) return;
+  if(!itsWelcomeOfferAvailable || isPartnerMode()){ box.style.display = 'none'; return; }
+  const nb = estimatedRespondents();
+  const selected = state?.parametrage?.pack_choisi === WELCOME_PACK_VALUE;
+  let html = '';
+  if(nb > WELCOME_PACK_SIZE){
+    html = '<strong>Vos 15 passations offertes</strong> seront créditées à votre première transmission. Vous prévoyez ' + nb.toLocaleString('fr-FR') + ' répondants : choisissez un pack en plus, ou ramenez votre estimation à 15 pour un premier test.';
+  }else if(selected){
+    html = '<strong>✓ 15 passations offertes retenues.</strong> Elles seront créditées automatiquement à votre première transmission, valables 12 mois, sans devis.';
+  }else{
+    html = '<strong>Vos 15 passations sont offertes</strong> pour ce premier autodiagnostic, sans devis. <button type="button" class="btn-secondary" style="margin-left:6px" onclick="useWelcomePack()">Utiliser mes 15 passations offertes</button>';
+  }
+  box.innerHTML = '<span class="alert-ico">🎁</span><span>' + html + '</span>';
+  box.style.display = '';
+}
 function refreshCurrentPackOptionState(){
+  syncWelcomePackOption();
   const usable = hasUsableCurrentPack();
   ['pack_choisi','pack_choisi_sidebar'].forEach(id => {
     const select = document.getElementById(id);
@@ -749,6 +803,7 @@ function refreshCurrentPackOptionState(){
     const opt = select.querySelector('option[value="current_pack"]');
     if(opt){
       opt.disabled = !usable;
+      opt.hidden = !usable && itsWelcomeOfferAvailable;
       opt.textContent = usable ? '✅ J’ai déjà un pack' : 'Pack existant épuisé — choisissez un nouveau pack';
     }
     if(!usable && select.value === 'current_pack') select.value = '';
@@ -783,6 +838,7 @@ function getDisplayQuota(){
 }
 function packSelectedInlineHTML(q){
   const selected = state?.parametrage?.pack_choisi || '';
+  if(selected === WELCOME_PACK_VALUE) return '';
   if(!selected || selected === 'current_pack') return itsQuotaInlineHTML(q);
 
   const tariff = PACK_TARIFFS[selected] || {};
@@ -808,6 +864,7 @@ function refreshPackDisplay(){
   const side=document.getElementById('paramQuotaCardSide');
   if(inline) inline.innerHTML=packSelectedInlineHTML(displayQuota);
   if(side) side.innerHTML=itsQuotaCardHTML(displayQuota,true);
+  renderWelcomeOffer();
   refreshTariffSelection();
 }
 
@@ -839,8 +896,11 @@ let itsCurrentClientQuota = null;
 async function renderParamQuota(){
   if(isPartnerMode()) return;
   itsCurrentClientQuota = await itsLoadClientQuota();
+  itsWelcomeOfferAvailable = await itsLoadWelcomeOffer();
   refreshCurrentPackOptionState();
   const p=state.parametrage||{};
+  // Brouillon préparé avec l'offre alors qu'elle a déjà été utilisée : on repart du pack réel.
+  if(p.pack_choisi === WELCOME_PACK_VALUE && !itsWelcomeOfferAvailable) updatePack('', true);
   if(itsCurrentClientQuota && (itsCurrentClientQuota.quota || itsCurrentClientQuota.pack)){
     if(!p.pack_choisi && hasUsableCurrentPack()){ updatePack('current_pack', true); return; }
     if(p.pack_choisi === 'current_pack' && !hasUsableCurrentPack()){ updatePack('', true); }
@@ -1226,6 +1286,7 @@ function updateSlug(v){ const slug=slugify(v||document.getElementById('slug').va
 function packChoiceLabel(value){
   const selected = String(value || '').trim();
   if(!selected) return '';
+  if(selected === WELCOME_PACK_VALUE) return '15 passations offertes';
   if(selected === 'current_pack') return 'J’ai déjà un pack';
   if(selected === 'illimite') return 'Illimité';
   const n = Number(selected);
@@ -1287,7 +1348,7 @@ function updatePack(v, shouldSave=true){
     console.warn('Pack existant épuisé : choix d’un nouveau pack obligatoire.');
   }
   state.parametrage.pack_choisi=v||'';
-  const label=!state.parametrage.pack_choisi?'':(state.parametrage.pack_choisi==='current_pack'?'J’ai déjà un pack':(state.parametrage.pack_choisi==='illimite'?'Illimité':Number(state.parametrage.pack_choisi).toLocaleString('fr-FR')+' passations'));
+  const label=!state.parametrage.pack_choisi?'':state.parametrage.pack_choisi===WELCOME_PACK_VALUE?'15 passations offertes':(state.parametrage.pack_choisi==='current_pack'?'J’ai déjà un pack':(state.parametrage.pack_choisi==='illimite'?'Illimité':Number(state.parametrage.pack_choisi).toLocaleString('fr-FR')+' passations'));
   const title=document.getElementById('pack-title');
   if(title) title.textContent=label?'Pack choisi : '+label:'Pack à choisir';
   const a=document.getElementById('pack_choisi'), b=document.getElementById('pack_choisi_sidebar');
@@ -1625,6 +1686,7 @@ function getMissingParametrageFields(){
     if(pendingPackChoice && pendingPackChoice !== pack) missing.push({ id:'pack_choisi', label:"Valider le pack choisi" });
     if(!String(pack).trim()) missing.push({ id:'pack_choisi', label:"Pack choisi" });
     if(String(pack) === 'current_pack' && !hasUsableCurrentPack()) missing.push({ id:'pack_choisi', label:"Pack existant épuisé : choisissez un nouveau pack" });
+    if(String(pack) === WELCOME_PACK_VALUE && nbRepondants > WELCOME_PACK_SIZE) missing.push({ id:'pack_choisi', label:"Plus de 15 répondants prévus : choisissez un pack ou réduisez l’estimation" });
   }
 
   return missing;
@@ -1740,6 +1802,7 @@ function updateParametrageStepper(){
 }
 
 function checkContinue(){
+  renderWelcomeOffer();
   const btn = document.getElementById('btn-continue');
   if(!btn) return false;
   const missing = getMissingParametrageFields();

@@ -1205,6 +1205,19 @@ function renderProjectTitleDetails(project){
       return "Brouillon";
     }
 
+    function itsIsScheduledProject(project){
+      const data = project && project.data && typeof project.data === "object" ? project.data : {};
+      const param = data.parametrage || {};
+      const start = String(project?.campaign_start_date || project?.campaignStartDate || data.campaign_start_date || data.campaignStartDate || param.date_lancement || "").slice(0,10);
+      const today = new Intl.DateTimeFormat("fr-CA",{timeZone:"Europe/Paris"}).format(new Date());
+      return /^\d{4}-\d{2}-\d{2}$/.test(start) && start > today;
+    }
+
+    function getProjectStatusLabel(project){
+      if(normalizeStatus(project.status) === "published" && itsIsScheduledProject(project)) return "Programmé";
+      return getStatusLabel(project.status);
+    }
+
     function getStatusClass(status){
       const s = normalizeStatus(status);
       if(s === "sent") return "status-sent";
@@ -1660,7 +1673,7 @@ function renderProjectTitleDetails(project){
             ${renderProjectIds(project)}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
-              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              <span class="status ${getStatusClass(project.status)}">${getProjectStatusLabel(project)}</span>
               ${renderExtendedBadge(project)}
               ${renderReprogrammedBadge(project)}
             </div>
@@ -1742,7 +1755,7 @@ function renderProjectTitleDetails(project){
             ${renderProjectIds(project)}
             ${renderThemeTags(project)}
             <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
-              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              <span class="status ${getStatusClass(project.status)}">${getProjectStatusLabel(project)}</span>
               ${renderExtendedBadge(project)}
               ${renderReprogrammedBadge(project)}
             </div>

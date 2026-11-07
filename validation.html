@@ -241,17 +241,17 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="block-title">Validation finale</div>
         <div class="block-sub">Cochez les points validés avant de transmettre votre demande.</div>
         <div class="checklist">
-          <label class="check-row"><input type="checkbox" checked onchange="updateReady()"><span><span class="check-title">Dates de campagne validées</span><span class="check-sub">La date de lancement souhaitée et la date de clôture sont correctes.</span></span></label>
-          <label class="check-row"><input type="checkbox" checked onchange="updateReady()"><span><span class="check-title">Contenu validé</span><span class="check-sub">Les chapitres, questions, réponses, profils et ressources sont prêts à être transmis.</span></span></label>
+          <label class="check-row"><input type="checkbox" onchange="updateReady()"><span><span class="check-title">Dates de campagne validées</span><span class="check-sub">La date de lancement souhaitée et la date de clôture sont correctes.</span></span></label>
+          <label class="check-row"><input type="checkbox" onchange="updateReady()"><span><span class="check-title">Contenu validé</span><span class="check-sub">Les chapitres, questions, réponses, profils et ressources sont prêts à être transmis.</span></span></label>
           <label class="check-row"><input type="checkbox" onchange="updateReady()"><span><span class="check-title">Transmission à Into The Shift validée</span><span class="check-sub">Vous confirmez que les éléments peuvent être transmis pour préparation de la mise en ligne.</span></span></label>
         </div>
         <div class="alert alert-warning" id="missing-alert">
           <span class="alert-ico">⚠️</span>
-          <span>Le bouton de transmission s’activera quand les informations obligatoires seront remplies, notamment l’entreprise commanditaire et la fonction, et quand tous les points seront cochés.</span>
+          <span id="missing-alert-text">Pour transmettre, complétez les informations obligatoires et cochez les trois points de validation.</span>
         </div>
         <div class="alert alert-success hidden" id="success-alert">
           <span class="alert-ico">✓</span>
-          <span><strong>Votre demande a bien été transmise.</strong><br>L’équipe Into The Shift va finaliser la mise en ligne et vous envoyer prochainement le lien de passation.</span>
+          <span><strong>Votre demande a bien été transmise.</strong><br>L’équipe Into The Shift va finaliser la mise en ligne et vous envoyer prochainement le lien de passation.<span class="hidden" id="success-welcome"><br>🎁 Vos 15 passations offertes sont créditées sur votre compte, valables 12 mois.</span></span>
         </div>
       </section>
 
@@ -292,7 +292,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="side-mini-body">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
             <span style="font-size:12px;color:#64748b">Points validés</span>
-            <span class="pill" id="check-pill">0/5</span>
+            <span class="pill" id="check-pill">0/3</span>
           </div>
           <div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div>
           <div style="font-size:11px;color:#94a3b8;line-height:1.4" id="check-hint">Transmission en attente de validation.</div>
@@ -448,6 +448,7 @@ function formatPack(pack){
     : pack;
   const v = String(raw || '').trim();
   if(!v) return '—';
+  if(v === 'offert_15') return '15 passations offertes';
   if(v === 'current_pack' || v === 'existing') return 'Pack déjà en cours';
   if(v === 'illimite') return 'Illimité';
   const n = Number(v);
@@ -1265,6 +1266,10 @@ function updateReady(){
     btn.classList.toggle('not-ready', !ok);
   }
   document.getElementById('missing-alert').classList.toggle('hidden', ok);
+  const missingText = document.getElementById('missing-alert-text');
+  if(missingText && !ok){
+    missingText.textContent = 'Pour transmettre, il reste à compléter : ' + getMissingValidationItems().map(item => item.label).join(', ') + '.';
+  }
 }
 
 
@@ -1545,6 +1550,9 @@ async function transmit(){
     }
 
     document.getElementById('success-alert').classList.remove('hidden');
+    if(transmissionResult.details?.welcomePassationsGranted){
+      document.getElementById('success-welcome')?.classList.remove('hidden');
+    }
     showTransmitModal(
       'success',
       modalLabels.successTitle,

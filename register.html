@@ -510,7 +510,10 @@ document.getElementById("register-form").addEventListener("submit", async functi
       window.ITSAnalytics.signUp();
     }
 
-    window.location.href = "account.html";
+    // Retour à la page d'origine (base choisie, création de zéro…), sinon au tableau de bord.
+    const pendingRedirect = localStorage.getItem("its_after_login_redirect") || "";
+    localStorage.removeItem("its_after_login_redirect");
+    window.location.href = /^[a-z0-9-]+\.html(\?[^#]*)?$/i.test(pendingRedirect) ? pendingRedirect : "dashboard.html";
   }catch(error){
     showRegisterError(error.message || "Erreur de connexion à l’API.");
     submitBtn.disabled = false;
