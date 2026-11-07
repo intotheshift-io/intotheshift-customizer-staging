@@ -1081,6 +1081,8 @@ function buildPayload(){
     '';
 
   return {
+    // Transmission standard : l'API a besoin du projet pour le suivi et le crédit des passations offertes.
+    projectId: (isExtension || isValidationReprogramMode()) ? undefined : (getCurrentProjectIdForSave() || undefined),
     organizationId: getSelectedPartnerClientId(),
     submitted_at: new Date().toISOString(),
     isExtending: isExtension,
